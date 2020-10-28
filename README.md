@@ -3,16 +3,21 @@
 ## EPC9143 300W 16th Brick Non-Isolated Step Down Converter Advanced Voltage Mode Control Firmware
 **2-Phase Synchronous Buck Converter with Advanced Voltage Mode Control and Current Balancing**
 
-<p>
-  <center>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9143_r4.png" alt="EPC9143 Top View" width="300">
-	</a>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9143_r4_back.png" alt="EPC9143 Top View" width="300">
-	</a>
-  </center>
-</p>
+<table style="width:90%">
+  <tr>
+    <th>
+      <a href="https://www.microchip.com/EPC9143" rel="nofollow">
+        <img src="images/9143_r4.png" alt="EPC9143 Top View" width="300">
+	  </a>	
+	</th>
+	<th> nbsp; </th>
+    <th>
+      <a href="https://www.microchip.com/EPC9143" rel="nofollow">
+        <img src="images/9143_r4_back.png" alt="EPC9143 Top View" width="300">
+	  </a>
+	</th>
+  </tr>
+</table>    
 
 ## Summary
 This code example demonstrates a closed loop voltage mode control implementation for dsPIC33CK. It has specifically been developed for the EPC9143 Rev4.0 1/16 brick converter.
@@ -42,7 +47,13 @@ The control loop is based on a digital type IV compensator (4P4Z controller).
   - EPC9143: EPC9143 16th Brick Non-Isolated Step Down Converter, Revision 4.0
   - EPC9531: EPC9531 test fixture for EPC9143 16th brick reference design
 
-  ![image](images/9531_test_fixture.png)
+<p>
+  <center>
+    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
+      <img src="images/9531_test_fixture.png" alt="EPC9143 mounted on EPC9531 Test Fixture" width="300">
+	</a>
+  </center>
+</p>
 
 ##Device Support:
   - [dsPIC33CK32MP102](https://www.microchip.com/dsPIC33CK32MP102)
