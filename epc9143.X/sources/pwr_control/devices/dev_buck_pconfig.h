@@ -20,10 +20,11 @@
  */
 
 /* 
- * File:   
- * Author: 
- * Comments:
+ * File:   dev_buck_pconfig.h
+ * Author: M91406
+ * Comments: Peripheral configuration template header file for generic buck converter driver
  * Revision history: 
+ * 1.0  initial release
  */
 
 // This is a guard condition so that contents of this file are not included
@@ -36,93 +37,71 @@
 #include <stdbool.h> // include standard boolean data types
 #include <stddef.h> // include standard definition data types
 
-#ifdef	__cplusplus
-extern "C" {
-#endif /* __cplusplus */
+#include "dev_buck_typedef.h"
+#include "xc16_pral.h"
 
-// Digital-To-Analog Converter and High Speed Comparator Special Function Register Set 
-#define ADC_POWRUP_TIMEOUT  5000
-    
-// GENERIC GPIO INSTANCE SPECIAL FUNCTION REGISTER SET
-// DO NOT REORDER ELEMENTS AS THEY MAP ONTO DEVICE REGISTER MEMORY !!!
-#ifndef P33C_GPIO_INSTANCE_s
-    typedef struct P33C_GPIO_INSTANCE_s {
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }ANSELx; // ANSELx: ANALOG SELECT FOR PORTx REGISTER
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }TRISx; // TRISx: OUTPUT ENABLE FOR PORTx REGISTER
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }PORTx; // PORTx: INPUT DATA FOR PORTx REGISTER
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }LATx; // LATx: OUTPUT DATA FOR PORTx REGISTER
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }ODCx; // ODCx: OPEN-DRAIN ENABLE FOR PORTx REGISTER
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }CNPUx; // CNPUx: CHANGE NOTIFICATION PULL-UP ENABLE FOR PORTx REGISTER
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }CNPDx; // CNPDx: CHANGE NOTIFICATION PULL-DOWN ENABLE FOR PORTx REGISTER
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }CNCONx; // CNCONx: CHANGE NOTIFICATION CONTROL FOR PORTx REGISTER
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }CNEN0x; // CNEN0x: CHANGE NOTIFICATION INTERRUPT ENABLE FOR PORTx REGISTER
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }CNSTATx; // CNSTATx: CHANGE NOTIFICATION STATUS FOR PORTx REGISTER
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }CNEN1x; // CNEN1x: CHANGE NOTIFICATION EDGE SELECT FOR PORTx REGISTER
-        union {   
-            volatile struct tagLATABITS bits; // Register bit-field
-            volatile uint16_t value; // 16-bit wide register value
-        }CNFx; // CNFx: CHANGE NOTIFICATION INTERRUPT FLAG FOR PORTx REGISTER
-    } __attribute__((packed)) obj_P33C_GPIO_INSTANCE_t; // GPIO REGISTER SET
-    #define P33C_GPIO_SFR_OFFSET  ((volatile uint16_t)&ANSELB - (volatile uint16_t)&ANSELA)
-#endif
+/* ********************************************************************************
+ * *******************************************************************************/
+
+extern volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
+extern volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance);
+extern volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance);
+extern volatile bool     buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance);
+
+/* ********************************************************************************
+ * PWM GENERATOR CONFIGURATION
+ * *******************************************************************************/
+/* PCLKCON: PWM CLOCK CONTROL REGISTER
+
+                           ________________ BIT 15: HRRDY: High-Resolution Ready bit
+                          | _______________ BIT 14: HRERR: High-Resolution Error bit
+                          || ______________ BIT 13: (unimplemented) 
+                          ||| _____________ BIT 12: (unimplemented) 
+                          |||| ____________ BIT 11: (unimplemented) 
+                          ||||| ___________ BIT 10: (unimplemented)
+                          |||||| __________ BIT  9: (unimplemented)
+                          ||||||| _________ BIT  8: LOCK: Lock bit
+                          |||||||| ________ BIT  7: (unimplemented)
+                          ||||||||| _______ BIT  6: (unimplemented)
+                          |||||||||| ______ BIT  5: DIVSEL[1:0]: PWM Clock Divider Selection bits
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: (unimplemented)
+                          |||||||||||||| __ BIT  1: MCLKSEL[1:0]: PWM Master Clock Selection bits
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_PCLKCON     0b0000000000000011
+
+// PWM module default configuration
+volatile struct P33C_PWM_MODULE_s buckPwmModuleConfig = 
+{
+        .vPCLKCON.value = REG_PCLKCON,  // PCLKCON: PWM CLOCK CONTROL REGISTER
+        .vFSCL.value = 0,               // FSCL: FREQUENCY SCALE REGISTER
+        .vFSMINPER.value = 0,           // FSMINPER: FREQUENCY SCALING MINIMUM PERIOD REGISTER
+        .vMPHASE.value = 0,             // MPHASE: MASTER PHASE REGISTER
+        .vMDC.value = 0,                // MDC: MASTER DUTY CYCLE REGISTER
+        .vMPER.value = 0,               // MPER: MASTER PERIOD REGISTER
+        .vLFSR.value = 0,               // LFSR: LINEAR FEEDBACK SHIFT REGISTER
+        .vCMBTRIGL.value = 0,           // CMBTRIGL: COMBINATIONAL TRIGGER REGISTER LOW
+        .vCMBTRIGH.value = 0,           // CMBTRIGH: COMBINATIONAL TRIGGER REGISTER HIGH
+        .LOGCON_A.value = 0,            // LOGCONA: COMBINATORIAL PWM LOGIC CONTROL REGISTER A
+        .LOGCON_B.value = 0,            // LOGCONB: COMBINATORIAL PWM LOGIC CONTROL REGISTER B
+        .LOGCON_C.value = 0,            // LOGCONC: COMBINATORIAL PWM LOGIC CONTROL REGISTER C
+        .LOGCON_D.value = 0,            // LOGCOND: COMBINATORIAL PWM LOGIC CONTROL REGISTER D
+        .LOGCON_E.value = 0,            // LOGCONE: COMBINATORIAL PWM LOGIC CONTROL REGISTER E
+        .LOGCON_F.value = 0,            // LOGCONF: COMBINATORIAL PWM LOGIC CONTROL REGISTER F
+        .PWMEVT_A.value = 0,            // PWMEVTA: PWM EVENT OUTPUT CONTROL REGISTER A
+        .PWMEVT_B.value = 0,            // PWMEVTB: PWM EVENT OUTPUT CONTROL REGISTER B
+        .PWMEVT_C.value = 0,            // PWMEVTC: PWM EVENT OUTPUT CONTROL REGISTER C
+        .PWMEVT_D.value = 0,            // PWMEVTD: PWM EVENT OUTPUT CONTROL REGISTER D
+        .PWMEVT_E.value = 0,            // PWMEVTE: PWM EVENT OUTPUT CONTROL REGISTER E
+        .PWMEVT_F.value = 0             // PWMEVTF: PWM EVENT OUTPUT CONTROL REGISTER F
+    };
 
 
-// GENERIC PDM DAC MODULE SPECIAL FUNCTION REGISTER SET
-#ifndef P33C_DAC_MODULE_s
-    typedef struct P33C_DAC_MODULE_s{
-        volatile uint16_t DACCTRL1L;    // DAC CONTROL 1 REGISTER LOW
-        volatile unsigned : 16;         // (reserved)
-        volatile uint16_t DACCTRL2L;    // DACCTRL2L: DAC CONTROL 2 REGISTER LOW
-        volatile uint16_t DACCTRL2H;    // DACCTRL2H: DAC CONTROL 2 REGISTER HIGH
-    } __attribute__((packed)) obj_P33C_DAC_MODULE_t; // PDM DAC MODULE REGISTER SET
-#endif
-
-// GENERIC PDM DAC INSTANCE SPECIAL FUNCTION REGISTER SET
-#ifndef P33C_DAC_INSTANCE_s    
-    typedef struct P33C_DAC_INSTANCE_s{
-        volatile uint16_t DACxCONL; // DACxCONL: DACx CONTROL LOW REGISTER
-        volatile uint16_t DACxCONH; // DACxCONH: DACx CONTROL HIGH REGISTER
-        volatile uint16_t DACxDATL; // DACxDATL: DACx DATA LOW REGISTER
-        volatile uint16_t DACxDATH; // DACxDATH: DACx DATA HIGH REGISTER
-        volatile uint16_t SLPxCONL; // SLPxCONL: DACx SLOPE CONTROL LOW REGISTER
-        volatile uint16_t SLPxCONH; // SLPxCONH: DACx SLOPE CONTROL HIGH REGISTER
-        volatile uint16_t SLPxDAT;  // SLPxDAT:  DACx SLOPE DATA REGISTER
-    } __attribute__((packed)) obj_P33C_DAC_INSTANCE_t; // PDM DAC INSTANCE REGISTER SET
-    #define P33C_DAC_SFR_OFFSET  ((volatile uint16_t)&DAC2CONL - (volatile uint16_t)&DAC1CONL)
-#endif
+/* ********************************************************************************
+ * PWM GENERATOR CONFIGURATION
+ * *******************************************************************************/
     
 #define P33C_PGxCONL_PWM_ON     0x8000  // control bit in PGxCONL enabling/disabling the PWM generator
 #define P33C_PGxCONL_HRES_EN    0x0080  // control bit in PGxCONL enabling/disabling High Resolution Mode
@@ -131,8 +110,11 @@ extern "C" {
 #define P33C_PGxSTAT_UPDREQ     0x0008  // Control bit in PGxSTAT setting the Update Request bit
 #define P33C_PGxCONH_MPERSEL    0x4000  // Control bit in PGxCONH seting the PERIOD register source
     
+#define P33C_PGxCONH_UPDMOD_MSTR 0b001  // Master Immediate Update
+#define P33C_PGxCONH_UPDMOD_SLV  0b011  // Slaved immediate Update
+
 // ==============================================================================================
-// BUCK converter Peripheral Configuration for Voltage Mode Control (VMC)
+// BUCK converter Peripheral Configuration for Voltage and Average Current Mode Control
 // ==============================================================================================
 
 /* PGxCONL: PWM GENERATOR x CONTROL REGISTER LOW
@@ -175,7 +157,7 @@ extern "C" {
                           |||||||||||||| __ BIT  1: 
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
-#define REG_PGxCONH     0b0000000101000000
+#define REG_PGxCONH     0b0000000100000000
 
 
 /* PGxIOCONL: PWM GENERATOR x I/O CONTROL REGISTER LOW
@@ -251,7 +233,7 @@ extern "C" {
                           ||| _____________ BIT 12: SIEN: PCI Sync Interrupt Enable
                           |||| ____________ BIT 11: (unimplemented)
                           ||||| ___________ BIT 10: (unimplemented)
-                          |||||| __________ BIT  9: IEVTSEL[1:0]: Interrupt Event Selection
+                          |||||| __________ BIT  9: IEVTSEL[1:0]: Interrupt Event Selection = Interrupts CPU at TRIGA compare event
                           ||||||| _________ BIT  8: 
                           |||||||| ________ BIT  7: ADTR2EN3: ADC Trigger 2 Source is PGxTRIGC Compare Event Enable
                           ||||||||| _______ BIT  6: ADTR2EN2: ADC Trigger 2 Source is PGxTRIGB Compare Event Enable
@@ -262,7 +244,7 @@ extern "C" {
                           |||||||||||||| __ BIT  1: 
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
-#define REG_PGxEVTH     0b0000001001000000
+#define REG_PGxEVTH     0b0000000101000000
 
 
 /* PGxCLPCIL: PWM GENERATOR CURRENT LIMIT PCI REGISTER LOW
@@ -284,7 +266,8 @@ extern "C" {
                           |||||||||||||| __ BIT  1: 
                           ||||||||||||||| _ BIT  0:                
                           ||||||||||||||||  */
-#define REG_PGxCLPCIL   0b0001101000011011
+//#define REG_PGxCLPCIL   0b0001101000011011    // Peak Current Mode Configuration
+#define REG_PGxCLPCIL   0b0000000000000000    
     
 /* PGxCLPCIH: PWM GENERATOR CURRENT LIMIT PCI REGISTER HIGH
 
@@ -305,7 +288,8 @@ extern "C" {
                           |||||||||||||| __ BIT  1: 
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
-#define REG_PGxCLPCIH   0b0000011000000000
+//#define REG_PGxCLPCIH   0b0000011000000000  // Peak Current Mode Configuration
+#define REG_PGxCLPCIH   0b0000000000000000  
 
 /* PGxFPCIL: PWM GENERATOR FAULT PCI REGISTER LOW
 
@@ -496,54 +480,70 @@ extern "C" {
                           ||||||||||||||||  */
 #define REG_PGxDCA      0b0000000000000000
 
- 
-/* @@pwmConfigDispose
- * ********************************************************************************
- * Summary:
- *   Default RESET configuration of one PWM generator channel SFRs
- * 
- * Data type:
- *   struct P33C_PG_SFRSET_s:
- *      PWM module base Special Function Register (SFR) set
- *
- * Description:
- *   Default configuration of the PWM generator SFRs with all its registers 
- *   being reset to their default state when the device comes out of RESET.
- *   Programmers can use this template to reset (dispose) a previously used
- *   PWM generator when it's not used anymore or to secure a known startup
- *   condition before writing individual configurations to its SFRs.
- * 
+// PWM generator default configuration
+volatile struct P33C_PWM_GENERATOR_s buckPwmGeneratorConfig = 
+{
+        .PGxCONL.value = REG_PGxCONL,       // PGxCONL: PWM GENERATOR x CONTROL REGISTER LOW
+        .PGxCONH.value = REG_PGxCONH,       // PGxCONH: PWM GENERATOR x CONTROL REGISTER HIGH
+        .PGxSTAT.value = 0x0000,            // PGxSTAT: Clear status bits 
+        .PGxIOCONL.value = REG_PGxIOCONL,   // PGxIOCONL: PWM GENERATOR x I/O CONTROL REGISTER LOW
+        .PGxIOCONH.value = REG_PGxIOCONH,   // PGxIOCONL: PWM GENERATOR x I/O CONTROL REGISTER HIGH
+        .PGxEVTL.value = REG_PGxEVTL,       // PGxEVTL: PWM GENERATOR x EVENT REGISTER LOW
+        .PGxEVTH.value = REG_PGxEVTH,       // PGxEVTH: PWM GENERATOR x EVENT REGISTER HIGH
+        .PGxCLPCIL.value = REG_PGxCLPCIL,   // PGxLCPCIL: PWM GENERATOR x CURRENT LIMIT PCI REGISTER LOW
+        .PGxCLPCIH.value = REG_PGxCLPCIH,   // PGxLCPCIL: PWM GENERATOR x CURRENT LIMIT PCI REGISTER HIGH
+        .PGxFPCIL.value = REG_PGxFPCIL,     // PGxFPCIL: PWM GENERATOR x FAULT PCI REGISTER LOW
+        .PGxFPCIH.value = REG_PGxFPCIH,     // PGxFPCIL: PWM GENERATOR x FAULT PCI REGISTER HIGH
+        .PGxFFPCIL.value = REG_PGxFFPCIL,   // PGxFFPCIL: PWM GENERATOR x FEED FORWARD PCI REGISTER LOW
+        .PGxFFPCIH.value = REG_PGxFFPCIH,   // PGxFFPCIL: PWM GENERATOR x FEED FORWARD PCI REGISTER HIGH
+        .PGxSPCIL.value = REG_PGxSPCIL,     // PGxSPCIL: PWM GENERATOR x SOFTWARE PCI REGISTER LOW
+        .PGxSPCIH.value = REG_PGxSPCIH,     // PGxSPCIL: PWM GENERATOR x SOFTWARE PCI REGISTER HIGH
+        .PGxLEBL.value = REG_PGxLEBL,       // PGxLEBL: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER LOW
+        .PGxLEBH.value = REG_PGxLEBH,       // PGxLEBL: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER HIGH
+        .PGxPHASE.value = 0x0000,           // PGxPHASE: PWM GENERATOR x PHASE REGISTER
+        .PGxDC.value = 0x0000,              // PGxDC: PWM GENERATOR x DUTY CYCLE REGISTER
+        .PGxDCA.value = 0x0000,             // PGxDCA: PWM GENERATOR x DUTY CYCLE ADJUSTMENT REGISTER
+        .PGxPER.value = 0x0000,             // PGxPER: PWM GENERATOR x PERIOD REGISTER
+        .PGxTRIGA.value = 0x0000,           // PGxTRIGA: PWM GENERATOR x TRIGGER A REGISTER
+        .PGxTRIGB.value = 0x0000,           // PGxTRIGA: PWM GENERATOR x TRIGGER B REGISTER
+        .PGxTRIGC.value = 0x0000,           // PGxTRIGA: PWM GENERATOR x TRIGGER C REGISTER
+        .PGxDTL.value = 0x0000,             // PGxDTL: PWM GENERATOR x DEAD TIME REGISTER LOW
+        .PGxDTH.value = 0x0000,             // PGxDTH: PWM GENERATOR x DEAD TIME REGISTER HIGH
+        .PGxCAP.value = 0x0000              // PGxCAP: PWM GENERATOR x CAPTURE REGISTER
+};
+
+// POWER CONVERTER PERIPHERAL CONFIGURATION ROUTINES OF PWM DRIVER
+    
+extern volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
+extern volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
+extern volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
+extern volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
+extern volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
+extern volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
+
+/* ********************************************************************************
  * *******************************************************************************/
 
-volatile struct P33C_PWM_GENERATOR_s pgConfigBuckPWM = {
-        .PGxCONL.value = REG_PGxCONL, // PGxCONL: PWM GENERATOR x CONTROL REGISTER LOW
-        .PGxCONH.value = REG_PGxCONH, // PGxCONH: PWM GENERATOR x CONTROL REGISTER HIGH
-        .PGxSTAT.value = 0x0000, // PGxSTAT: PWM GENERATOR x STATUS REGISTER
-        .PGxIOCONL.value = REG_PGxIOCONL, // PGxIOCONL: PWM GENERATOR x I/O CONTROL REGISTER LOW
-        .PGxIOCONH.value = REG_PGxIOCONH, // PGxIOCONL: PWM GENERATOR x I/O CONTROL REGISTER HIGH
-        .PGxEVTL.value = REG_PGxEVTL, // PGxEVTL: PWM GENERATOR x EVENT REGISTER LOW
-        .PGxEVTH.value = REG_PGxEVTH, // PGxEVTH: PWM GENERATOR x EVENT REGISTER HIGH
-        .PGxFPCIL.value = REG_PGxFPCIL, // PGxFPCIL: PWM GENERATOR x FAULT PCI REGISTER LOW
-        .PGxFPCIH.value = REG_PGxFPCIH, // PGxFPCIL: PWM GENERATOR x FAULT PCI REGISTER HIGH
-        .PGxCLPCIL.value = REG_PGxCLPCIL, // PGxLCPCIL: PWM GENERATOR x CURRENT LIMIT PCI REGISTER LOW
-        .PGxCLPCIH.value = REG_PGxCLPCIH, // PGxLCPCIL: PWM GENERATOR x CURRENT LIMIT PCI REGISTER HIGH
-        .PGxFFPCIL.value = REG_PGxFFPCIL, // PGxFFPCIL: PWM GENERATOR x FEED FORWARD PCI REGISTER LOW
-        .PGxFFPCIH.value = REG_PGxFFPCIH, // PGxFFPCIL: PWM GENERATOR x FEED FORWARD PCI REGISTER HIGH
-        .PGxSPCIL.value = REG_PGxSPCIL, // PGxSPCIL: PWM GENERATOR x SOFTWARE PCI REGISTER LOW
-        .PGxSPCIH.value = REG_PGxSPCIH, // PGxSPCIL: PWM GENERATOR x SOFTWARE PCI REGISTER HIGH
-        .PGxLEBL.value = REG_PGxLEBL, // PGxLEBL: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER LOW
-        .PGxLEBH.value = REG_PGxLEBH, // PGxLEBL: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER HIGH
-        .PGxPHASE.value = 0x0000, // PGxPHASE=0
-        .PGxDC.value = 0x0000, // PGxDC=0
-        .PGxDCA.value = 0x0000, // PGxDCA=0
-        .PGxPER.value = 0x0000, // PGxPER=0
-        .PGxTRIGA.value = 0x0000, // PGxTRIGA=0
-        .PGxTRIGB.value = 0x0000, // PGxTRIGB=0
-        .PGxTRIGC.value = 0x0000, // PGxTRIGC=0
-        .PGxDTL.value = 0x0000, // DTL=0
-        .PGxDTH.value = 0x0000, // DTH=0
-        .PGxCAP.value = 0x0000 // CAP=0
-    };
+// Digital-To-Analog Converter and High Speed Comparator Special Function Register Set 
+#define ADC_POWERUP_TIMEOUT  5000
+/* SLPxDAT: DACx SLOPE DATA REGISTER => Timing Register: User value will be set in code */
+
+// ADC specific declarations
+#define ADC_CORE_MASK           0b0000000010001111
+#define ADC_CORE0_MASK_INDEX    0b0000000000000001
+#define ADC_CORE1_MASK_INDEX    0b0000000000000010
+#define ADC_CORE2_MASK_INDEX    0b0000000000000100
+#define ADC_CORE3_MASK_INDEX    0b0000000000001000
+#define ADC_SHRCORE_MASK_INDEX  0b0000000010000000
+
+
+extern volatile uint16_t buckADC_ModuleInitialize(void);
+extern volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* adcInstance);
+extern volatile uint16_t buckADC_Start(void);
+
+
+/* ********************************************************************************
+ * *******************************************************************************/
 
 
 /* DACxCONL: DACx CONTROL REGISTER LOW
@@ -565,7 +565,8 @@ volatile struct P33C_PWM_GENERATOR_s pgConfigBuckPWM = {
                           |||||||||||||| __ BIT  1: HYSSEL[1:0]: Comparator Hysteresis Select
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
-#define REG_DACxCONL    0b0000010100000101
+//#define REG_DACxCONL    0b0000010100000101  // Peak Current Mode Configuration
+#define REG_DACxCONL    0b0000000000000000
 
 /* DACxCONH: DACx CONTROL REGISTER HIGH => Timing Register: User value will be set in code */
 /* DACxCONL: DACx CONTROL REGISTER LOW  => Timing Register: User value will be set in code */
@@ -589,7 +590,8 @@ volatile struct P33C_PWM_GENERATOR_s pgConfigBuckPWM = {
                           |||||||||||||| __ BIT  1: 
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
-#define REG_SLPxCONL    0b0000000100010001
+//#define REG_SLPxCONL    0b0000000100010001  // Peak Current Mode Configuration
+#define REG_SLPxCONL    0b0000000000000000
 
 /* SLPxCONH: DACx SLOPE CONTROL REGISTER HIGH
 
@@ -610,23 +612,12 @@ volatile struct P33C_PWM_GENERATOR_s pgConfigBuckPWM = {
                           |||||||||||||| __ BIT  1: (unimplemented)
                           ||||||||||||||| _ BIT  0: (unimplemented)
                           ||||||||||||||||  */
-#define REG_SLPxCONH    0b1000000000000000
-
-                           
-/* SLPxDAT: DACx SLOPE DATA REGISTER => Timing Register: User value will be set in code */
-
-// ADC specific declarations
-#define ADC_CORE_MASK           0b0000000010001111
-#define ADC_CORE0_MASK_INDEX    0b0000000000000001
-#define ADC_CORE1_MASK_INDEX    0b0000000000000010
-#define ADC_CORE2_MASK_INDEX    0b0000000000000100
-#define ADC_CORE3_MASK_INDEX    0b0000000000001000
-#define ADC_SHRCORE_MASK_INDEX  0b0000000010000000
-
+//#define REG_SLPxCONH    0b1000000000000000  // Peak Current Mode Configuration
+#define REG_SLPxCONH    0b0000000000000000
     
-#ifdef	__cplusplus
-}
-#endif /* __cplusplus */
+
+
+
 
 #endif	/* BUCK_CONVERTER_PERIPHERAL_CONFIGURAITON_H */
 

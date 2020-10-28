@@ -20,38 +20,30 @@
  */
 
 /* 
- * File:   dev_buck_converter.h
+ * File:   dev_buck_opstates.h
  * Author: M91406
- * Comments: power controller functions for buck converter
+ * Comments: Buck converter operation states header file
  * Revision history: 
- * 1.0  initial version
+ *   10/09/20   1.0  initial version
  */
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef BUCK_CONVERTER_STATE_MACHINE_H
-#define	BUCK_CONVERTER_STATE_MACHINE_H
+#ifndef BUCK_CONVERTER_OPERATION_STATES_H
+#define	BUCK_CONVERTER_OPERATION_STATES_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-#include <stdint.h> // include standard integer types header file
-#include <stdbool.h> // include standard boolean types header file
+#include <stdint.h> // include standard integer data types
+#include <stdbool.h> // include standard boolean data types
 
-#include "dev_buck_typedef.h"
+// Buck converter state machine function pointer array
+extern volatile uint16_t (*BuckConverterStateMachine[])
+            (volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 
-// ==============================================================================================
-// BUCK converter public function prototypes
-// ==============================================================================================
-
-// POWER CONVERTER FUNCTION API
-
-extern volatile uint16_t drv_BuckConverter_Initialize(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-extern volatile uint16_t drv_BuckConverter_Execute(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-extern volatile uint16_t drv_BuckConverter_Start(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-extern volatile uint16_t drv_BuckConverter_Stop(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-extern volatile uint16_t drv_BuckConverter_Suspend(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-extern volatile uint16_t drv_BuckConverter_Resume(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
+// Buck converter state machine function pointer array size
+extern volatile uint16_t BuckStateList_size;
 
 
-#endif	/* BUCK_CONVERTER_STATE_MACHINE_H */
+#endif	/* BUCK_CONVERTER_OPERATION_STATES_H */
 
 // END OF FILE

@@ -1,164 +1,393 @@
 /*
- * File:   drv_cuck_pconfig.c
+ * File:   drv_buck_pconfig.c
  * Author: M91406
  *
  * Created on March 12, 2020, 4:31 PM
  */
 
-// Include MCC peripheral driver files
-#include "p33c_pwm.h"
+#if (__XC16_VERSION__ > 1500)
+  #pragma message ("Warning: Library file '" __FILE__ "' has not been tested with the recently selected compiler version")
+#endif
 
-// Include buck converter driver files
-#include "pwr_control/devices/dev_buck_pconfig.h"
-#include "pwr_control/devices/dev_buck_typedef.h"
+#include <xc.h> // include processor files - each processor file is guarded.  
+#include <stdint.h> // include standard integer types header file
+#include <stdbool.h> // include standard boolean types header file
+
+#include "dev_buck_pconfig.h"
 
 /* PRIVATE VARIABLES */
 volatile uint16_t adcore_mask=0;
 volatile uint16_t adcore_diff_mask=0;
 
-
+/* @@buckPWM_ModuleInitialize
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Parameters:
+ * 
+ * Returns:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
 
 volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
 {
     volatile uint16_t retval=1;
-    volatile struct P33C_PWM_MODULE_SFRSET_s* pwm;
+    volatile struct P33C_PWM_MODULE_s* pwm;
+    
+    pwm = (volatile struct P33C_PWM_MODULE_s*) ((volatile uint16_t*) &PCLKCON);
     
     // Make sure power to the peripheral is enabled
     PMD1bits.PWMMD = 0; // PWM Module Disable: PWM module is enabled
     
-    // Initialize PWM module in default mode with Aux PLL = 500 MHz input frequency
-    retval = p33c_PwmModule_Initialize();
-    pwm = p33c_PwmModule_GetHandle();
+    // PWM GENERATOR ENABLE
+    PG1CONLbits.ON = 0; // PWM Generator #1 Enable: PWM Generator is not enabled
+    PG2CONLbits.ON = 0; // PWM Generator #2 Enable: PWM Generator is not enabled
+    PG3CONLbits.ON = 0; // PWM Generator #3 Enable: PWM Generator is not enabled
+    PG4CONLbits.ON = 0; // PWM Generator #4 Enable: PWM Generator is not enabled
+    
+    #if defined (PG5CONL)
+    PG5CONLbits.ON = 0; // PWM Generator #5 Enable: PWM Generator is not enabled
+    #endif
+    #if defined (PG6CONL)
+    PG6CONLbits.ON = 0; // PWM Generator #6 Enable: PWM Generator is not enabled
+    #endif
+    #if defined (PG7CONL)
+    PG7CONLbits.ON = 0; // PWM Generator #7 Enable: PWM Generator is not enabled
+    #endif
+    #if defined (PG8CONL)
+    PG8CONLbits.ON = 0; // PWM Generator #8 Enable: PWM Generator is not enabled
+    #endif
+    
+    // PWM CLOCK CONTROL REGISTER
+    pwm->vPCLKCON.value = 0b0000000000000011;
+    
+//    PCLKCONbits.LOCK = 0;       // Lock bit: Write-protected registers and bits are unlocked
+//    PCLKCONbits.DIVSEL = 0b00;  // PWM Clock Divider Selection: Divide ratio is 1:2
+//    PCLKCONbits.MCLKSEL = 0b11; // PWM Master Clock Selection: Auxiliary PLL post-divider output
+    
+    // FREQUENCY SCALE REGISTER & FREQUENCY SCALING MINIMUM PERIOD REGISTER
+    pwm->vFSCL.value = 0x0000;      // Reset frequency scaling register
+    pwm->vFSMINPER.value = 0x0000;  // Reset frequency scaling minimum register
+    
+    // MASTER PHASE, DUTY CYCLE AND PERIOD REGISTERS
+    pwm->vMPHASE.value = 0;    // Reset master phase
+    pwm->vMDC.value = 0x0000;  // Reset master duty cycle
+    pwm->vMPER.value = 0x0000; // Reset Master period 
     
     // If buck converter has been configured in MASTER PERIOD mode
-    if (buckInstance->sw_node.master_period)
-        pwm->vMPER.value = buckInstance->sw_node.period; // Set Period
+    if (buckInstance->sw_node[0].master_period_enable) // If master period mode is enabled...
+        pwm->vMPER.value = buckInstance->sw_node[0].period; // Set Period of phase #1
     
-    // Return success of PWM module configuration
-    return(retval);    
+    // LINEAR FEEDBACK SHIFT REGISTER
+    pwm->vLFSR.value = 0x0000;      // Reset linear feedback shift register
+    
+    // COMBINATIONAL TRIGGER REGISTERS
+    pwm->vCMBTRIGL.value = 0x0000;
+    pwm->vCMBTRIGH.value = 0x0000;
 
+    // COMBINATORIAL PWM LOGIC A CONTROL REGISTERS A-F
+    pwm->LOGCON_A.value = 0x0000;
+    pwm->LOGCON_B.value = 0x0000;
+    pwm->LOGCON_C.value = 0x0000;
+    pwm->LOGCON_D.value = 0x0000;
+    pwm->LOGCON_E.value = 0x0000;
+    pwm->LOGCON_F.value = 0x0000;
+    
+    // PWM EVENT OUTPUT CONTROL REGISTERS A-F
+    pwm->PWMEVT_A.value = 0x0000;
+    pwm->PWMEVT_B.value = 0x0000;
+    pwm->PWMEVT_C.value = 0x0000;
+    pwm->PWMEVT_D.value = 0x0000;
+    pwm->PWMEVT_E.value = 0x0000;
+    pwm->PWMEVT_F.value = 0x0000;
+
+    return(retval);    
 }
 
-volatile uint16_t buckPWM_VMC_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
+/* @@buckPWM_ChannelInitialize
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Parameters:
+ * 
+ * Returns:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
+
+volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
 {
     volatile uint16_t retval=1;
+    volatile uint16_t _i=0;
 
-    volatile struct P33C_PWM_GENERATOR_s* pg;
     volatile struct P33C_GPIO_INSTANCE_s* gpio;
+    volatile struct P33C_PWM_GENERATOR_s* pg;
+    volatile uint16_t pwm_Instance;
     volatile uint16_t gpio_Instance;
 
-    // LOAD PERIPHERAL INSTANCES FROM BUCK CONVERTER OBJECT
-    gpio_Instance = buckInstance->sw_node.gpio_instance;
+    for (_i=0; _i<buckInstance->set_values.phases; _i++) {
     
-    // CAPTURE MEMORY ADDRESS OF GIVEN PWM GENERATOR INSTANCE
-    gpio = (volatile struct P33C_GPIO_INSTANCE_s*)((volatile struct P33C_GPIO_INSTANCE_s*) 
-        ((volatile uint8_t*) &ANSELA + ((gpio_Instance - 1) * P33C_GPIO_SFR_OFFSET)));
-    
-    // Capture PWM generator instance used to drive buck converter
-    pg = p33c_PwmGenerator_GetHandle(buckInstance->sw_node.pwm_instance);
-    
-    // WRITE GPIO CONFIGURATION OF PWM OUTPUT(S)
-    gpio->LATx.value  &= ~(0x0001 << buckInstance->sw_node.gpio_high);  // Clear PWMxH output LOW
-    gpio->LATx.value  &= ~(0x0001 << buckInstance->sw_node.gpio_low);   // Clear PWMxL output LOW
-    gpio->TRISx.value &= ~(0x0001 << buckInstance->sw_node.gpio_high);  // Clear PWMxH output to OUTPUT
-    gpio->TRISx.value &= ~(0x0001 << buckInstance->sw_node.gpio_low);   // Clear PWMxL output to OUTPUT
-    gpio->CNPDx.value |= (0x0001 << buckInstance->sw_node.gpio_high); // Enable intern pull down register (PWM1H)
-    gpio->CNPDx.value |= (0x0001 << buckInstance->sw_node.gpio_low); // Enable intern pull down register (PWM1L)
-    
-    // COPY CONFIGURATION FROM TEMPLATE TO PWM GENERATOR x CONTROL REGISTERS
-    retval = p33c_PwmGenerator_ConfigWrite(buckInstance->sw_node.pwm_instance, pgConfigBuckPWM);
+        // LOAD PERIPHERAL INSTANCES FROM BUCK CONVERTER OBJECT
+        pwm_Instance = buckInstance->sw_node[_i].pwm_instance;
+        gpio_Instance = buckInstance->sw_node[_i].gpio_instance;
 
-    // LOAD USER PWM GENERATOR CONFIGURATION FROM BUCK CONVERTER OBJECT
-    pg->PGxPHASE.value = buckInstance->sw_node.phase; // PGxPHASE: PWM GENERATOR x PHASE REGISTER
-    pg->PGxDC.value = buckInstance->sw_node.duty_ratio_min; // PGxDC: PWM GENERATOR x DUTY CYCLE REGISTER
-    pg->PGxDCA.value = REG_PGxDCA; // PGxDCA: PWM GENERATOR x DUTY CYCLE ADJUSTMENT REGISTER (not used)
-    pg->PGxPER.value = buckInstance->sw_node.period; // PGxPER: PWM GENERATOR x PERIOD REGISTER
-    pg->PGxTRIGA.value = 0; // PGxTRIGA: PWM GENERATOR x TRIGGER A REGISTER
-    pg->PGxTRIGB.value = 0; // PGxTRIGB: PWM GENERATOR x TRIGGER B REGISTER
-    pg->PGxTRIGC.value = 0; // PGxTRIGC: PWM GENERATOR x TRIGGER C REGISTER
-    pg->PGxDTL.value = buckInstance->sw_node.dead_time_falling; // PGxDTL: PWM GENERATOR x DEAD-TIME REGISTER LOW
-    pg->PGxDTH.value = buckInstance->sw_node.dead_time_rising; // PGxDTH: PWM GENERATOR x DEAD-TIME REGISTER HIGH
-    pg->PGxLEBL.value = buckInstance->sw_node.leb_period; // PWM GENERATOR x LEADING-EDGE BLANKING REGISTER LOW 
+        // CAPTURE MEMORY ADDRESS OF GIVEN PWM GENERATOR INSTANCE
+        gpio = (volatile struct P33C_GPIO_INSTANCE_s*)
+            ((volatile uint8_t*)&ANSELA + (gpio_Instance * P33C_GPIO_SFR_OFFSET));
 
-    pg->PGxCONL.bits.HREN = buckInstance->sw_node.hres_enable; // Enable/Disable High Resolution Mode
+        pg   = (volatile struct P33C_PWM_GENERATOR_s*) 
+            ((volatile uint16_t*)&PG1CONL + ((pwm_Instance - 1) * P33C_PWMGEN_SFR_OFFSET));
+
+        // WRITE GPIO CONFIGURATION OF PWM OUTPUT(S)
+        gpio->LATx.value  &= ~(0x0001 << buckInstance->sw_node[_i].gpio_high); // Clear PWMxH output LOW
+        gpio->LATx.value  &= ~(0x0001 << buckInstance->sw_node[_i].gpio_low);  // Clear PWMxL output LOW
+        gpio->TRISx.value &= ~(0x0001 << buckInstance->sw_node[_i].gpio_high); // Clear PWMxH output to OUTPUT
+        gpio->TRISx.value &= ~(0x0001 << buckInstance->sw_node[_i].gpio_low);  // Clear PWMxL output to OUTPUT
+        gpio->CNPDx.value |= (0x0001 << buckInstance->sw_node[_i].gpio_high);  // Enable intern pull down register (PWM1H)
+        gpio->CNPDx.value |= (0x0001 << buckInstance->sw_node[_i].gpio_low);   // Enable intern pull down register (PWM1L)
     
+        // COPY CONFIGURATION FROM TEMPLATE TO PWM GENERATOR x CONTROL REGISTERS
+        retval &= p33c_PwmGenerator_ConfigWrite(buckInstance->sw_node[_i].pwm_instance, buckPwmGeneratorConfig);
+//        pg->PGxCONL.value = REG_PGxCONL; // PGxCONL: PWM GENERATOR x CONTROL REGISTER LOW
+//        pg->PGxCONH.value = REG_PGxCONH; // PGxCONH: PWM GENERATOR x CONTROL REGISTER HIGH
+//        pg->PGxIOCONL.value = REG_PGxIOCONL; // PGxIOCONL: PWM GENERATOR x I/O CONTROL REGISTER LOW
+//        pg->PGxIOCONH.value = REG_PGxIOCONH; // PGxIOCONL: PWM GENERATOR x I/O CONTROL REGISTER HIGH
+//        pg->PGxEVTL.value = REG_PGxEVTL; // PGxEVTL: PWM GENERATOR x EVENT REGISTER LOW
+//        pg->PGxEVTH.value = REG_PGxEVTH; // PGxEVTH: PWM GENERATOR x EVENT REGISTER HIGH
+//        pg->PGxCLPCIL.value = REG_PGxCLPCIL; // PGxLCPCIL: PWM GENERATOR x CURRENT LIMIT PCI REGISTER LOW
+//        pg->PGxCLPCIH.value = REG_PGxCLPCIH; // PGxLCPCIL: PWM GENERATOR x CURRENT LIMIT PCI REGISTER HIGH
+//        pg->PGxFPCIL.value = REG_PGxFPCIL; // PGxFPCIL: PWM GENERATOR x FAULT PCI REGISTER LOW
+//        pg->PGxFPCIH.value = REG_PGxFPCIH; // PGxFPCIL: PWM GENERATOR x FAULT PCI REGISTER HIGH
+//        pg->PGxFFPCIL.value = REG_PGxFFPCIL; // PGxFFPCIL: PWM GENERATOR x FEED FORWARD PCI REGISTER LOW
+//        pg->PGxFFPCIH.value = REG_PGxFFPCIH; // PGxFFPCIL: PWM GENERATOR x FEED FORWARD PCI REGISTER HIGH
+//        pg->PGxSPCIL.value = REG_PGxSPCIL; // PGxSPCIL: PWM GENERATOR x SOFTWARE PCI REGISTER LOW
+//        pg->PGxSPCIH.value = REG_PGxSPCIH; // PGxSPCIL: PWM GENERATOR x SOFTWARE PCI REGISTER HIGH
+//        pg->PGxLEBL.value = REG_PGxLEBL; // PGxLEBL: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER LOW
+//        pg->PGxLEBH.value = REG_PGxLEBH; // PGxLEBL: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER HIGH
+
+        // LOAD PWM GENERATOR TIMING SETTINGS FROM BUCK CONVERTER OBJECT
+        pg->PGxCONH.bits.MPERSEL = (uint16_t)buckInstance->sw_node[_i].master_period_enable;
+        
+        pg->PGxDC.value = buckInstance->sw_node[_i].duty_ratio_min; // PGxDC: PWM GENERATOR x DUTY CYCLE REGISTER
+        pg->PGxPER.value = buckInstance->sw_node[_i].period; // PGxPER: PWM GENERATOR x PERIOD REGISTER
+        pg->PGxDTL.value = buckInstance->sw_node[_i].dead_time_falling; // PGxDTL: PWM GENERATOR x DEAD-TIME REGISTER LOW
+        pg->PGxDTH.value = buckInstance->sw_node[_i].dead_time_rising; // PGxDTH: PWM GENERATOR x DEAD-TIME REGISTER HIGH
+        pg->PGxLEBL.value = buckInstance->sw_node[_i].leb_period; // PWM GENERATOR x LEADING-EDGE BLANKING REGISTER LOW 
+        
+        // First switch-node object of array is used as master PWM
+        if( _i == 0) {
+            pg->PGxCONH.bits.MSTEN = 1; // Make first PWM of switch node objects MASTER
+            pg->PGxCONH.bits.UPDMOD = P33C_PGxCONH_UPDMOD_MSTR; // Master PWM updates PWM registers Immediately
+            pg->PGxCONH.bits.SOCS = 0b0000; // Master PWM is self-triggered
+            pg->PGxEVTL.bits.PGTRGSEL = 0b011; // Master PWM uses PGxTRIGC as master trigger output
+            pg->PGxTRIGC.bits.TRIG = buckInstance->sw_node[_i].phase; // Set phase shift of trigger
+        }
+        else {
+            pg->PGxCONH.bits.MSTEN = 0; // Make all other PWMs of switch node objects SLAVES
+            pg->PGxCONH.bits.UPDMOD = P33C_PGxCONH_UPDMOD_SLV; // Slave PWMs update PWM registers Immediately at MASTER trigger
+            pg->PGxCONH.bits.SOCS = BUCK_PWM_MASTER_SOCS; // Slave PWMs are triggered by MASTER PWM
+            pg->PGxEVTL.bits.PGTRGSEL = 0b000; // Slave PWM does not have PWM trigger output 
+            pg->PGxTRIGC.bits.TRIG = buckInstance->sw_node[_i].phase; // Set phase shift of trigger
+        }
+        
+        // Update PWM generator timing registers
+        pg->PGxSTAT.bits.UPDREQ = 1;
+        
+    }
+        
     return(retval);    
 }
 
-volatile uint16_t buckPWM_Start(volatile uint16_t pwmInstance) 
+/* @@buckPWM_Start
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Parameters:
+ * 
+ * Returns:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
+
+volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
 {
     volatile uint16_t retval=1;
+    volatile uint16_t _i=0;
     volatile uint16_t timeout=0;
+    volatile uint16_t pwm_Instance=0;
     volatile struct P33C_PWM_GENERATOR_s* pg;
-    
 
-    pg = p33c_PwmGenerator_GetHandle(pwmInstance);
+    // Enable all PWM channels of the recent buck converter configuration
+    for(_i=0; _i< buckInstance->set_values.phases; _i++) {
     
-    pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN; // PWMxH/L Output Override Enable: PWM generator controls the PWMxH output pin
-    pg->PGxIOCONH.value &= ~(P33C_PGxIOCONH_PEN); // PWMxH/L Output Port Disable: PWM generator controls the PWMxH output pin
-    
-    pg->PGxCONL.value |= P33C_PGxCONL_PWM_ON; // PWM Generator Enable: PWM Generator is enabled
-    pg->PGxSTAT.value |= P33C_PGxSTAT_UPDREQ; // Update all PWM registers
+        // Capture PWM instance of the recent channel
+        pwm_Instance = buckInstance->sw_node[_i].pwm_instance;
+        
+        // CAPTURE MEMORY ADDRESS OF GIVEN PWM GENERATOR INSTANCE
+        pg   = (volatile struct P33C_PWM_GENERATOR_s*) 
+            ((volatile uint16_t*)&PG1CONL + ((pwm_Instance - 1) * P33C_PWMGEN_SFR_OFFSET));
 
-    if(pg->PGxCONL.value & P33C_PGxCONL_HRES_EN) { // If high resolution is enabled
-        while((!PCLKCONbits.HRRDY) && (timeout++ < 5000));  // wait for high resolution to get ready
-        if ((timeout >= 5000) || (PCLKCONbits.HRERR))       // if there is an error
-            return(0);  // return ERROR
+        pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN; // PWMxH/L Output Override Enable: PWM generator controls the PWMxH output pin
+        pg->PGxIOCONH.value &= ~(P33C_PGxIOCONH_PEN); // PWMxH/L Output Port Disable: PWM generator controls the PWMxH output pin
+
+//        pg->PGxCONL.value |= P33C_PGxCONL_PWM_ON; // PWM Generator Enable: PWM Generator is enabled
+//        pg->PGxSTAT.value |= P33C_PGxSTAT_UPDREQ; // Update all PWM timing registers
+
+        pg->PGxCONL.bits.ON = 1;  // PWM Generator Enable: PWM Generator is enabled
+        pg->PGxSTAT.bits.UPDREQ = 1;  // Update all PWM timing registers
+        
+        if(pg->PGxCONL.value & P33C_PGxCONL_HRES_EN) // If high resolution is enabled
+        {
+            while((!PCLKCONbits.HRRDY) && (timeout++ < 5000));  // wait for high resolution to get ready
+            if ((timeout >= 5000) || (PCLKCONbits.HRERR))       // if there is an error ...
+                return(0);                                      // ... exit returning ERROR
+        }
+
+        pg->PGxIOCONH.value |= P33C_PGxIOCONH_PEN; // PWMxH/L Output Port Enable: PWM generator controls the PWMxH output pin
+
+        retval &= (volatile uint16_t)(pg->PGxCONL.bits.ON);
+
     }
     
-    pg->PGxIOCONH.value |= P33C_PGxIOCONH_PEN; // PWMxH/L Output Port Enable: PWM generator controls the PWMxH output pin
-
     return(retval);    
 }
 
-volatile uint16_t buckPWM_Stop(volatile uint16_t pwmInstance) 
+/* @@buckPWM_Stop
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Parameters:
+ * 
+ * Returns:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
+
+volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
 {
     volatile uint16_t retval=1;
+    volatile uint16_t _i=0;
+    volatile uint16_t pwm_Instance=0;
     volatile struct P33C_PWM_GENERATOR_s* pg;
 
-    pg = p33c_PwmGenerator_GetHandle(pwmInstance);
+    // Disable all PWM channels of the recent buck converter configuration
+    for(_i=0; _i< buckInstance->set_values.phases; _i++) {
     
-    pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN;  // PWMxH/L Output Override Enable
-    pg->PGxIOCONH.value &= ~(P33C_PGxIOCONH_PEN); // PWMxH/L Output Pint Control Disable
-    pg->PGxCONL.value &= ~(P33C_PGxCONL_PWM_ON);  // PWM Generator Disable
-    pg->PGxDC.value = 0; // Reset Duty Cycle
-    pg->PGxSTAT.value |= P33C_PGxSTAT_UPDREQ;     // Set the Update Request bit to update PWM timing
+            // Capture PWM instance of the recent channel
+        pwm_Instance = buckInstance->sw_node[_i].pwm_instance;
 
+        // CAPTURE MEMORY ADDRESS OF GIVEN PWM GENERATOR INSTANCE
+        pg   = (volatile struct P33C_PWM_GENERATOR_s*) 
+            ((volatile uint16_t*)&PG1CONL + ((pwm_Instance - 1) * P33C_PWMGEN_SFR_OFFSET));
+
+        pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN;  // PWMxH/L Output Override Enable
+        pg->PGxIOCONH.value &= ~(P33C_PGxIOCONH_PEN); // PWMxH/L Output Pint Control Disable
+        pg->PGxCONL.value &= ~(P33C_PGxCONL_PWM_ON);  // PWM Generator Disable
+        pg->PGxDC.value = buckInstance->sw_node[_i].duty_ratio_min; // Reset Duty Cycle
+        pg->PGxSTAT.value |= P33C_PGxSTAT_UPDREQ;     // Set the Update Request bit to update PWM timing
+        
+        retval &= (volatile uint16_t)((volatile bool)(pg->PGxCONL.bits.ON == 0));
+
+    }
+        
     return(retval);    
 }
 
-volatile uint16_t buckPWM_Suspend(volatile uint16_t pwmInstance) 
+/* @@buckPWM_Suspend
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Parameters:
+ * 
+ * Returns:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
+
+volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
 {
     volatile uint16_t retval=1;
+    volatile uint16_t _i=0;
+    volatile uint16_t pwm_Instance;
     volatile struct P33C_PWM_GENERATOR_s* pg;
 
-    pg = p33c_PwmGenerator_GetHandle(pwmInstance);
+    // Disable all PWM outputs of the recent buck converter configuration
+    for(_i=0; _i< buckInstance->set_values.phases; _i++) {
+    
+            // Capture PWM instance of the recent channel
+        pwm_Instance = buckInstance->sw_node[_i].pwm_instance;
 
-    pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN; // PWMxH/L Output Override Enable
-    pg->PGxDC.value = 0;  // Reset Duty Cycle
-    pg->PGxSTAT.value |= P33C_PGxSTAT_UPDREQ; // Set the Update Request bit to update PWM timing
+        // CAPTURE MEMORY ADDRESS OF GIVEN PWM GENERATOR INSTANCE
+        pg   = (volatile struct P33C_PWM_GENERATOR_s*) 
+            ((volatile uint16_t*)&PG1CONL + ((pwm_Instance - 1) * P33C_PWMGEN_SFR_OFFSET));
+        
+        pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN; // PWMxH/L Output Override Enable
+        pg->PGxDC.value = 0;  // Reset Duty Cycle
+        pg->PGxSTAT.value |= P33C_PGxSTAT_UPDREQ; // Set the Update Request bit to update PWM timing
 
-    retval &= (bool)(pg->PGxIOCONL.value & P33C_PGxIOCONL_OVREN);
+        retval &= (bool)(pg->PGxIOCONL.value & P33C_PGxIOCONL_OVREN);
 
+    }
+    
     return(retval);    
 }
 
+/* @@<function_name>
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Parameters:
+ * 
+ * Returns:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
 
-volatile uint16_t buckPWM_Resume(volatile uint16_t pwmInstance) 
+volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
 {
     volatile uint16_t retval=1;
+    volatile uint16_t _i=0;
+    volatile uint16_t pwm_Instance=0;
     volatile struct P33C_PWM_GENERATOR_s* pg;
-    
-    pg = p33c_PwmGenerator_GetHandle(pwmInstance);
-    
-    pg->PGxSTAT.value |= P33C_PGxSTAT_UPDREQ; // Set the Update Request bit to update PWM timing
-    pg->PGxIOCONL.value &= ~(P33C_PGxIOCONL_OVREN); // PWMxH/L Output Override Disable
 
-    retval = (bool)(pg->PGxIOCONL.value & P33C_PGxIOCONL_OVREN);
+    // Disable all PWM channels of the recent buck converter configuration
+    for(_i=0; _i< buckInstance->set_values.phases; _i++) {
+    
+            // Capture PWM instance of the recent channel
+        pwm_Instance = (uint16_t)buckInstance->sw_node[_i].pwm_instance;
 
+        // CAPTURE MEMORY ADDRESS OF GIVEN PWM GENERATOR INSTANCE
+        pg   = (volatile struct P33C_PWM_GENERATOR_s*) 
+            ((volatile uint16_t*)&PG1CONL + ((pwm_Instance - 1) * P33C_PWMGEN_SFR_OFFSET));
+    
+        pg->PGxSTAT.bits.UPDREQ = 1; // Set the Update Request bit to update PWM timing
+        pg->PGxIOCONL.value &= (volatile uint16_t)(~(P33C_PGxIOCONL_OVREN)); // PWMxH/L Output Override Disable
+
+        retval &= (uint16_t)((bool)(!(pg->PGxIOCONL.value & P33C_PGxIOCONL_OVREN)));
+
+    }
+        
     return(retval);    
 }
 
+/* @@<function_name>
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Parameters:
+ * 
+ * Returns:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
 
 volatile uint16_t buckADC_ModuleInitialize(void) 
 {
@@ -179,7 +408,6 @@ volatile uint16_t buckADC_ModuleInitialize(void)
     ADCON2Lbits.REFCIE = 0;; // Band Gap and Reference Voltage Ready Common Interrupt Enable: Common interrupt is disabled for the band gap ready event
     ADCON2Lbits.REFERCIE = 0; // Band Gap or Reference Voltage Error Common Interrupt Enable: Disabled
     ADCON2Lbits.EIEN = 1; // Early Interrupts Enable: The early interrupt feature is enabled
-    ADCON2Lbits.PTGEN = 0; // External Conversion Request Interface: Disabled
     ADCON2Lbits.SHREISEL = 0b111; // Shared Core Early Interrupt Time Selection: Early interrupt is set and interrupt is generated 8 TADCORE clocks prior to when the data are ready
     ADCON2Lbits.SHRADCS = 0b0000001; // Shared ADC Core Input Clock Divider: 2:1 (minimum)
 
@@ -244,75 +472,91 @@ volatile uint16_t buckADC_ModuleInitialize(void)
     return(retval);    
 }
 
-volatile uint16_t buckADC_Channel_Initialize(volatile struct BUCK_ADC_INPUT_SETTINGS_s* adcInstance) 
+/* @@<function_name>
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Parameters:
+ * 
+ * Returns:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
+
+volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* adc_Instance) 
 {
     volatile uint16_t retval=1;
     volatile uint8_t* ptrADCRegister;
     volatile uint8_t bit_offset;
     
     // Initialize ADC input registers
-    if (adcInstance->enabled) {
+    if (adc_Instance->enabled) {
 
         // Write level trigger setting
-        if (adcInstance->adc_input < 16) {
-            ADLVLTRGL |= ((uint16_t)(adcInstance->level_trigger) << adcInstance->adc_input);
-            ADEIEL |= ((uint16_t)(adcInstance->early_interrupt_enable) << adcInstance->adc_input);
-            ADIEL |= ((uint16_t)(adcInstance->interrupt_enable) << adcInstance->adc_input);
+        if (adc_Instance->adc_input < 16) {
+            ADLVLTRGL |= ((uint16_t)(adc_Instance->level_trigger) << adc_Instance->adc_input);
+            ADEIEL |= ((uint16_t)(adc_Instance->early_interrupt_enable) << adc_Instance->adc_input);
+            ADIEL |= ((uint16_t)(adc_Instance->interrupt_enable) << adc_Instance->adc_input);
         }
-        else if (adcInstance->adc_input < 32) {
-            ADLVLTRGH |= ((uint16_t)(adcInstance->level_trigger) << (adcInstance->adc_input - 16));
-            ADEIEH |= ((uint16_t)(adcInstance->early_interrupt_enable) << (adcInstance->adc_input - 16));
-            ADIEH |= ((uint16_t)(adcInstance->interrupt_enable) << (adcInstance->adc_input - 16));
+        else if (adc_Instance->adc_input < 32) {
+            ADLVLTRGH |= ((uint16_t)(adc_Instance->level_trigger) << (adc_Instance->adc_input - 16));
+            ADEIEH |= ((uint16_t)(adc_Instance->early_interrupt_enable) << (adc_Instance->adc_input - 16));
+            ADIEH |= ((uint16_t)(adc_Instance->interrupt_enable) << (adc_Instance->adc_input - 16));
         }
         else {
             return(0); // ADC input number out of range
         }
 
         // write input mode setting
-        ptrADCRegister = (volatile uint8_t *)((volatile uint8_t *)&ADMOD0L + (volatile uint8_t)(adcInstance->adc_input >> 8));
-        if (adcInstance->adc_input < 8)
-            bit_offset = (2 * adcInstance->adc_input);
-        else if (adcInstance->adc_input < 16)
-            bit_offset = (2 * (adcInstance->adc_input-8));
-        else if (adcInstance->adc_input < 24)
-            bit_offset = (2 * (adcInstance->adc_input-16));
-        else if (adcInstance->adc_input < 32)
-            bit_offset = (2 * (adcInstance->adc_input-24));
+        if (adc_Instance->adc_input < 8)
+            bit_offset = (2 * adc_Instance->adc_input);
+        else if (adc_Instance->adc_input < 16)
+            bit_offset = (2 * (adc_Instance->adc_input-8));
+        else if (adc_Instance->adc_input < 24)
+            bit_offset = (2 * (adc_Instance->adc_input-16));
+        else if (adc_Instance->adc_input < 32)
+            bit_offset = (2 * (adc_Instance->adc_input-24));
         else
             return(0); // ADC input number out of range
+
+        ptrADCRegister = (volatile uint8_t *)
+            ((volatile uint8_t *)&ADMOD0L + (volatile uint8_t)(adc_Instance->adc_input >> 8));
         
-        *ptrADCRegister |= ((unsigned int)adcInstance->signed_result << bit_offset);
-        *ptrADCRegister |= ((unsigned int)adcInstance->differential_input << (bit_offset + 1));
+        *ptrADCRegister |= ((unsigned int)adc_Instance->signed_result << bit_offset);
+        *ptrADCRegister |= ((unsigned int)adc_Instance->differential_input << (bit_offset + 1));
        
         // Write ADC trigger source setting
-        ptrADCRegister = (volatile uint8_t *)((volatile uint8_t *)&ADTRIG0L + adcInstance->adc_input);
-        *ptrADCRegister = adcInstance->trigger_source;
+        ptrADCRegister = (volatile uint8_t *)
+            ((volatile uint8_t *)&ADTRIG0L + (volatile uint8_t)adc_Instance->adc_input);
+        
+        *ptrADCRegister = (volatile uint8_t)adc_Instance->trigger_source;
         
         // Register ADC core to be active
-        switch (adcInstance->adc_core) {
+        switch (adc_Instance->adc_core) {
             case 0:
                 adcore_mask |= ADC_CORE0_MASK_INDEX;
-                if (adcInstance->differential_input)
+                if (adc_Instance->differential_input)
                     adcore_diff_mask |= ADC_CORE0_MASK_INDEX;
                 break;
             case 1:
                 adcore_mask |= ADC_CORE1_MASK_INDEX;
-                if (adcInstance->differential_input)
+                if (adc_Instance->differential_input)
                     adcore_diff_mask |= ADC_CORE1_MASK_INDEX;
                 break;
             case 2:
                 adcore_mask |= ADC_CORE2_MASK_INDEX;
-                if (adcInstance->differential_input)
+                if (adc_Instance->differential_input)
                     adcore_diff_mask |= ADC_CORE2_MASK_INDEX;
                 break;
             case 3:
                 adcore_mask |= ADC_CORE3_MASK_INDEX;
-                if (adcInstance->differential_input)
+                if (adc_Instance->differential_input)
                     adcore_diff_mask |= ADC_CORE3_MASK_INDEX;
                 break;
             default:
                 adcore_mask |= ADC_SHRCORE_MASK_INDEX;
-                if (adcInstance->differential_input)
+                if (adc_Instance->differential_input)
                     adcore_diff_mask |= ADC_SHRCORE_MASK_INDEX;
                 break;
         }
@@ -321,6 +565,18 @@ volatile uint16_t buckADC_Channel_Initialize(volatile struct BUCK_ADC_INPUT_SETT
     
     return(retval);
 }
+
+/* @@buckADC_Start
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Parameters:
+ * 
+ * Returns:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
 
 volatile uint16_t buckADC_Start(void) 
 {
@@ -334,8 +590,8 @@ volatile uint16_t buckADC_Start(void)
     ADCON5L = adcore_mask;    // Enable power to all used ADC cores
     adcore_mask_compare = ((adcore_mask << 8) | adcore_mask); // Set ADC Core Ready Bit Mask
     
-    while ((ADCON5L != adcore_mask_compare) & (timeout++ < ADC_POWRUP_TIMEOUT)); // Wait until ADC cores are ready
-    if (timeout >= ADC_POWRUP_TIMEOUT) return(0); // Skip if powering up ADC cores was unsuccessful
+    while ((ADCON5L != adcore_mask_compare) & (timeout++ < ADC_POWERUP_TIMEOUT)); // Wait until ADC cores are ready
+    if (timeout >= ADC_POWERUP_TIMEOUT) return(0); // Skip if powering up ADC cores was unsuccessful
     ADCON3H = adcore_mask; // Enable ADC cores
 
 
@@ -418,10 +674,10 @@ volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOI
 volatile bool buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
 {
     volatile bool retval=1;
-    volatile struct P33C_GPIO_INSTANCE_s* gpio;
+    volatile P33C_GPIO_INSTANCE_t* gpio;
 
     // Capture register of GPIO port
-    gpio = (volatile struct P33C_GPIO_INSTANCE_s*) 
+    gpio = (volatile P33C_GPIO_INSTANCE_t*) 
         ((volatile uint8_t*)&ANSELA + (buckGPIOInstance->port * P33C_GPIO_SFR_OFFSET));
     
     // Read pin 
@@ -452,8 +708,9 @@ volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_
     volatile struct P33C_GPIO_INSTANCE_s* gpio;
 
     // Capture register of GPIO port
-    gpio = (volatile struct P33C_GPIO_INSTANCE_s*) 
-        ((volatile uint8_t*)&ANSELA + (buckGPIOInstance->port * P33C_GPIO_SFR_OFFSET));
+    gpio = p33c_GpioInstance_GetHandle(buckGPIOInstance->port);
+//    gpio = (volatile struct P33C_GPIO_INSTANCE_s*) 
+//        ((volatile uint8_t*)&ANSELA + (buckGPIOInstance->port * P33C_GPIO_SFR_OFFSET));
     
     // Set pin to INACTIVE state
     if (buckGPIOInstance->polarity == 0)
