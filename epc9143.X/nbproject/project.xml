@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>com.microchip.mplab.nbide.embedded.makeproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/make-project/1">
+            <name>epc9143</name>
+            <creation-uuid>fdac5ced-dfa7-4368-a3cb-42bdf808e3c1</creation-uuid>
+            <make-project-type>0</make-project-type>
+            <c-extensions>c</c-extensions>
+            <cpp-extensions/>
+            <header-extensions>h</header-extensions>
+            <asminc-extensions>inc</asminc-extensions>
+            <sourceEncoding>ISO-8859-1</sourceEncoding>
+            <make-dep-projects/>
+            <sourceRootList>
+                <sourceRootElem>.</sourceRootElem>
+                <sourceRootElem>sources/config/init</sourceRootElem>
+                <sourceRootElem>sources/common</sourceRootElem>
+                <sourceRootElem>sources/fault_handler</sourceRootElem>
+                <sourceRootElem>sources/fault_handler/drivers</sourceRootElem>
+                <sourceRootElem>sources/pwr_control/drivers</sourceRootElem>
+                <sourceRootElem>sources/pwr_control/devices</sourceRootElem>
+            </sourceRootList>
+            <confList>
+                <confElem>
+                    <name>EPC9143_R40</name>
+                    <type>2</type>
+                </confElem>
+            </confList>
+            <formatting>
+                <project-formatting-style>false</project-formatting-style>
+            </formatting>
+        </data>
+    </configuration>
+</project>

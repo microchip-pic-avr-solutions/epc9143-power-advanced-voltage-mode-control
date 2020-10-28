@@ -83,12 +83,12 @@ volatile uint16_t p33c_PwmModule_Initialize(void)
  * 
  * ********************************************************************************/
 
-volatile struct P33C_PWM_MODULE_SFRSET_s* p33c_PwmModule_GetHandle(void)
+volatile struct P33C_PWM_MODULE_s* p33c_PwmModule_GetHandle(void)
 {
-    volatile struct P33C_PWM_MODULE_SFRSET_s* pwm;
+    volatile struct P33C_PWM_MODULE_s* pwm;
     
     // Capture Handle: set pointer to memory address of desired PWM instance
-    pwm = (volatile struct P33C_PWM_MODULE_SFRSET_s*) ((volatile uint8_t*)&PCLKCON);
+    pwm = (volatile struct P33C_PWM_MODULE_s*) ((volatile uint8_t*)&PCLKCON);
     
     return(pwm);
 }
@@ -141,18 +141,18 @@ volatile uint16_t p33c_PwmModule_Dispose(void)
  * 
  * Description:
  *     This function reads all registers with their current configuration into
- *     a data structure of type P33C_PWM_MODULE_SFRSET_s. Users can read and 
+ *     a data structure of type P33C_PWM_MODULE_s. Users can read and 
  *     verify of modify the configuration to write it back to the PWM module  
  *     base registers.
  * 
  * ********************************************************************************/
 
-volatile struct P33C_PWM_MODULE_SFRSET_s p33c_PwmModule_ConfigRead(void)
+volatile struct P33C_PWM_MODULE_s p33c_PwmModule_ConfigRead(void)
 {
-    volatile struct P33C_PWM_MODULE_SFRSET_s* pwm;
+    volatile struct P33C_PWM_MODULE_s* pwm;
 
     // Set pointer to memory address of desired PWM instance
-    pwm = (volatile struct P33C_PWM_MODULE_SFRSET_s*) 
+    pwm = (volatile struct P33C_PWM_MODULE_s*) 
         ((volatile uint8_t*) &PCLKCON);
 
     return(*pwm);    
@@ -173,7 +173,7 @@ volatile struct P33C_PWM_MODULE_SFRSET_s p33c_PwmModule_ConfigRead(void)
  * 
  * Description:
  *     This function writes a user-defined PWM module configuration of type 
- *     P33C_PWM_MODULE_SFRSET_s to the PWM module base registers. The 
+ *     P33C_PWM_MODULE_s to the PWM module base registers. The 
  *     individual register configurations have to be set in user-code 
  *     before calling this function. To simplify the configuration process
  *     of standard functions, this driver provides templates, which can be 
@@ -182,13 +182,13 @@ volatile struct P33C_PWM_MODULE_SFRSET_s p33c_PwmModule_ConfigRead(void)
  * 
  * ********************************************************************************/
 
-volatile uint16_t p33c_PwmModule_ConfigWrite(volatile struct P33C_PWM_MODULE_SFRSET_s pwmConfig)
+volatile uint16_t p33c_PwmModule_ConfigWrite(volatile struct P33C_PWM_MODULE_s pwmConfig)
 {
     volatile uint16_t retval=1;
-    volatile struct P33C_PWM_MODULE_SFRSET_s* pwm;    
+    volatile struct P33C_PWM_MODULE_s* pwm;    
 
     // Set pointer to memory address of desired PWM instance
-    pwm = (volatile struct P33C_PWM_MODULE_SFRSET_s*) 
+    pwm = (volatile struct P33C_PWM_MODULE_s*) 
         ((volatile uint8_t*) &PCLKCON);
     *pwm = pwmConfig;
     
@@ -824,7 +824,7 @@ volatile uint16_t p33c_PwmGenerator_SyncGenerators(
  *   Default RESET configuration of the PWM module SFRs
  * 
  * Data type:
- *   struct P33C_PWM_MODULE_SFRSET_s:
+ *   struct P33C_PWM_MODULE_s:
  *      PWM module base Special Function Register (SFR) set
  *
  * Description:
@@ -836,7 +836,7 @@ volatile uint16_t p33c_PwmGenerator_SyncGenerators(
  * 
  * *******************************************************************************/
 
-volatile struct P33C_PWM_MODULE_SFRSET_s pwmConfigClear = { 
+volatile struct P33C_PWM_MODULE_s pwmConfigClear = { 
     
         .vPCLKCON.value = 0x0000, // HRRDY=0, HRERR=0, LOCK=0, DIVSEL=0b00, MCLKSEL=0b00
         .vFSCL.value = 0x0000, // FSCL=0
@@ -867,7 +867,7 @@ volatile struct P33C_PWM_MODULE_SFRSET_s pwmConfigClear = {
  *   Default initialization configuration of the PWM module SFRs
  * 
  * Data type:
- *   struct P33C_PWM_MODULE_SFRSET_s:
+ *   struct P33C_PWM_MODULE_s:
  *      PWM module base Special Function Register (SFR) set
  *
  * Description:
@@ -880,7 +880,7 @@ volatile struct P33C_PWM_MODULE_SFRSET_s pwmConfigClear = {
  * 
  * *******************************************************************************/
 
-volatile struct P33C_PWM_MODULE_SFRSET_s pwmConfigDefault = { 
+volatile struct P33C_PWM_MODULE_s pwmConfigDefault = { 
     
         .vPCLKCON.value = 0x0003, // HRRDY=0, HRERR=0, LOCK=0, DIVSEL=0b00, MCLKSEL=0b11
         .vFSCL.value = 0x0000, // FSCL=0

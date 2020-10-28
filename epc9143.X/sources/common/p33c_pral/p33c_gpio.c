@@ -47,7 +47,7 @@
  * 
  * ********************************************************************************/
 
-volatile struct P33C_GPIO_INSTANCE_s* p33c_GpioInstance__GetHandle(volatile uint16_t gpio_Instance)
+volatile struct P33C_GPIO_INSTANCE_s* p33c_GpioInstance_GetHandle(volatile uint16_t gpio_Instance)
 {
     volatile struct P33C_GPIO_INSTANCE_s* gpio;
     

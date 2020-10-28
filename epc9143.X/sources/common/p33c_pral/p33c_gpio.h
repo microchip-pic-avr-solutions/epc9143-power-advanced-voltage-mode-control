@@ -111,7 +111,7 @@
  * API FUNCTION PROTOTYPES
  * ********************************************************************************************* */
     
-extern volatile struct P33C_GPIO_INSTANCE_s* p33c_GpioInstance__GetHandle(
+extern volatile struct P33C_GPIO_INSTANCE_s* p33c_GpioInstance_GetHandle(
             volatile uint16_t gpio_Instance
         );
     

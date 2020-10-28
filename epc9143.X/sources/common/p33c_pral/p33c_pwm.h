@@ -81,7 +81,7 @@
 
 // GENERIC PWM MODULE SPECIAL FUNCTION REGISTER SET
 
-#ifndef P33C_PWM_MODULE_SFRSET_s     
+#ifndef P33C_PWM_MODULE_s     
 
     typedef struct P33C_PWM_MODULE_s {
         
@@ -340,10 +340,10 @@
  * ********************************************************************************************* */
     
 // PWM Module essential functions
-extern volatile struct P33C_PWM_MODULE_SFRSET_s* p33c_PwmModule_GetHandle(void);
+extern volatile struct P33C_PWM_MODULE_s* p33c_PwmModule_GetHandle(void);
 
-extern volatile struct P33C_PWM_MODULE_SFRSET_s p33c_PwmModule_ConfigRead(void);
-extern volatile uint16_t p33c_PwmModule_ConfigWrite(volatile struct P33C_PWM_MODULE_SFRSET_s pwmConfig);
+extern volatile struct P33C_PWM_MODULE_s p33c_PwmModule_ConfigRead(void);
+extern volatile uint16_t p33c_PwmModule_ConfigWrite(volatile struct P33C_PWM_MODULE_s pwmConfig);
 
 // PWM Module higher functions
 extern volatile uint16_t p33c_PwmModule_Initialize(void); 
@@ -390,8 +390,8 @@ volatile uint16_t p33c_PwmGenerator_SyncGenerators(
 /* ********************************************************************************************* * 
  * PWM GENERATOR CONFIGURATION TEMPLATES
  * ********************************************************************************************* */
-extern volatile struct P33C_PWM_MODULE_SFRSET_s pwmConfigClear;
-extern volatile struct P33C_PWM_MODULE_SFRSET_s pwmConfigDefault;
+extern volatile struct P33C_PWM_MODULE_s pwmConfigClear;
+extern volatile struct P33C_PWM_MODULE_s pwmConfigDefault;
 
 /* ********************************************************************************************* * 
  * PWM GENERATOR CONFIGURATION TEMPLATES
