@@ -36,11 +36,16 @@
 #include <stdbool.h> // include standard boolean types  
 #include <stddef.h> // include standard definitions  
 
-#ifdef	__cplusplus
-extern "C" {
-#endif /* __cplusplus */
+/* @@FLT_COMPARE_TYPE_e enumeration
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
 
-typedef enum {
+typedef enum FLT_COMPARE_TYPE_e {
+    
 	FLTCMP_NONE				= 0, // No comparison type has been defined (fault object will be ignored)
 	FLTCMP_GREATER_THAN		= 1, // Check for condition: SOURCE > trip level
 	FLTCMP_LESS_THAN		= 2, // Check for condition: SOURCE < trip level
@@ -48,44 +53,89 @@ typedef enum {
 	FLTCMP_IS_NOT_EQUAL		= 4, // Check for condition: SOURCE != trip level
 	FLTCMP_BETWEEN			= 5, // Check for condition: (reset_level < SOURCE) && (SOURCE < trip_level)
 	FLTCMP_OUTSIDE			= 6  // Check for condition: (SOURCE < reset_level) || (trip_level < SOURCE)
-} FLT_COMPARE_TYPE_e;
+        
+} FLT_COMPARE_TYPE_t;
 
-typedef union{
+/* @@FLT_OBJECT_STATUS_s data structure
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
 
+typedef struct FLT_OBJECT_STATUS_s{
+
+    union {
 	struct {
-		volatile bool fault_status : 1;         // Bit 0: Flag bit indicating if FAULT has been tripped
-		volatile bool fault_active : 1;         // Bit 1: Flag bit indicating if fault condition has benn detected but FAULT has not been tripped yet
+		volatile bool FaultStatus : 1;          // Bit 0: Flag bit indicating if FAULT has been tripped
+		volatile bool FaultActive : 1;          // Bit 1: Flag bit indicating if fault condition has been detected but FAULT has not been tripped yet
 		volatile unsigned : 6;					// Bit <7:2>: (reserved)
-		volatile FLT_COMPARE_TYPE_e type: 3;	// Bit <10:8>: Fault check comparison type control bits
+		volatile enum FLT_COMPARE_TYPE_e CompareType: 3;	// Bit <10:8>: Fault check comparison type control bits
 		volatile unsigned : 4;					// Bit 14: (reserved)
-		volatile bool enabled : 1;              // Bit 15: Control bit enabling/disabling monitoring of the fault object
-	} __attribute__((packed)) bits; // Fault object status bit field for signle bit access  
+		volatile bool Enabled : 1;              // Bit 15: Control bit enabling/disabling monitoring of the fault object
+	} __attribute__((packed)) bits; // Fault object status bit field for single bit access  
 
 	volatile uint16_t value;		// Fault object status word  
-
+    };
+    
 } FLT_OBJECT_STATUS_t;	// Fault object status
 
-typedef struct {
-	volatile FLT_OBJECT_STATUS_t status; // Status word of this fault object
-	volatile uint16_t* source_obj;	// Pointer to variable or SFR to be monitored 
-	volatile uint16_t* ref_obj;     // Pointer to variable or SFR defining the threshold
-    volatile uint16_t (*trip_response)(void); // pointer to a user function called when a defined fault condition is detected
-    volatile uint16_t (*reset_response)(void); // pointer to a user function called when a defined fault condition is cleared
-	volatile uint16_t bit_mask;		// Bit mask will be &-ed with source as value (use 0xFFFF for full value comparison)
-	volatile uint16_t counter;		// Fault event counter (controlled by FAULT HANDLER)
-	volatile uint16_t trip_level;	// Signal level at which the fault condition will be detected
-	volatile uint16_t tripcnt_max;	// Counter value at/above which the fault condition will be triggered 
-	volatile uint16_t reset_level;	// Signal level at which the fault condition will be cleared
-	volatile uint16_t rstcnt_max;	// Counter value at/above which the fault condition will be triggered 
-} FAULT_OBJECT_t;
+/* @@FLT_COMPARE_OBJECT_s data structure
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
 
+typedef struct FLT_COMPARE_OBJECT_s {
+    
+    volatile uint16_t* ptrObject; // Pointer to register or variable which should be monitored 
+    volatile uint16_t bitMask; // Bit mask will be &-ed with source as value (use 0xFFFF for full value comparison)
+    
+} FLT_COMPARE_OBJECT_t;	// Fault compare object
+
+/* @@FLT_EVENT_RESPONSE_s data structure
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
+
+typedef struct FLT_EVENT_RESPONSE_s {
+    
+    volatile uint16_t compareThreshold; // Signal level at which the fault condition will be detected
+    volatile uint16_t eventThreshold; // Bit mask will be &-ed with source as value (use 0xFFFF for full value comparison)
+    volatile uint16_t (*ptrResponseFunction)(void); // pointer to a user-defined function called when a defined fault monitoring event is detected
+    
+} FLT_EVENT_RESPONSE_t;	// Fault monitor event response object
+
+/* @@FAULT_OBJECT_s data structure
+ * ********************************************************************************
+ * Summary:
+ * 
+ * Description:
+ * 
+ * ********************************************************************************/
+
+typedef struct FAULT_OBJECT_s {
+
+	volatile struct FLT_OBJECT_STATUS_s  Status; // Status word of this fault object
+	volatile uint16_t Counter;		// Fault event counter (controlled by FAULT HANDLER)
+	volatile struct FLT_COMPARE_OBJECT_s SourceObject;     // Object which should be monitored
+	volatile struct FLT_COMPARE_OBJECT_s ReferenceObject;  // Reference object the source should be compared with
+    volatile struct FLT_EVENT_RESPONSE_s TripResponse;     // Settings defining the fault trip event
+    volatile struct FLT_EVENT_RESPONSE_s RecoveryResponse; // Settings defining the fault recovery event
+
+} FAULT_OBJECT_t; // 
+
+// Public Fault Configuration Templates
+extern volatile struct FAULT_OBJECT_s fltobjClear;
 
 // Public Function Prototypes
-extern volatile uint16_t fault_check(volatile FAULT_OBJECT_t* fltobj);
+extern volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj);
     
-#ifdef	__cplusplus
-}
-#endif /* __cplusplus */
-
 #endif	/* FAULT_HANDLER_H */
 
