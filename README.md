@@ -2,8 +2,8 @@
 
 ## EPC9143 300W 16th Brick Non-Isolated Step Down Converter Advanced Voltage Mode Control Firmware
 **2-Phase Synchronous Buck Converter with Advanced Voltage Mode Control and Current Balancing**
-
-<table style="width:90%">
+<center>
+<table style="width:70%">
   <tr>
     <th>
       <a href="https://www.microchip.com/EPC9143" rel="nofollow">
@@ -13,11 +13,12 @@
 	<th> &nbsp; </th>
     <th>
       <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-        <img src="images/9143_r4_back.png" alt="EPC9143 Top View" width="290">
+        <img src="images/9143_r4_back.png" alt="EPC9143 Top View" width="300">
 	  </a>
 	</th>
   </tr>
 </table>    
+</center>
 
 ## Summary
 This code example demonstrates a closed loop voltage mode control implementation for dsPIC33CK. It has specifically been developed for the EPC9143 Rev4.0 1/16 brick converter.
