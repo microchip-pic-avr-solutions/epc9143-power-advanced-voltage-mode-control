@@ -26,7 +26,7 @@ This code example demonstrates a closed loop voltage mode control implementation
 The board starts up the buck converter automatically when power is applied to the board, providing a regulated output voltage of 12 V at the output of the converter. The startup procedure is controlled and executed by the power controller state machine (PWRLIB_BUCK) and includes an configurable startup procedure with power-on delay, ramp up period and power good delay before dropping into constant regulation mode.
 An additional fault handler (FUNLIB_FAULT_HANDLER) shuts down the power supply if the input voltage is outside the defined range of 18V to 72.5V (UVLO/OVLO) or if the output voltage is more than 0.5V out of regulation for more than 10 milliseconds.
 
-The control loop is based on a digital type IV compensator (4P4Z controller).
+A single, high-speed type IV (4P4Z) voltage mode controller with enforced PWM steering is used to automatically create balanced phase currents in both phases of this interleaved converter. An underlying current balancing scheme compensates component tolerances and deviations over temperature. A built-in adaptive gain control algorithm stabilizes gain variations of the voltage loop controller during input- and output voltage transients, stabilizing cross-over frequency and output impedance, supporting control bandwidths of 25 kHz, for improved transient response, helping to minimize power distribution network (PDN) decoupling capacity.
 
 #### Product Features:
   - Input Voltage: 18 V to 61 V
@@ -56,7 +56,7 @@ The control loop is based on a digital type IV compensator (4P4Z controller).
   </center>
 </p>
 
-##Device Support:
+## Device Support:
   - [dsPIC33CK32MP102](https://www.microchip.com/dsPIC33CK32MP102)
 
 ## Setup
