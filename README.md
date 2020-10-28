@@ -10,10 +10,10 @@
         <img src="images/9143_r4.png" alt="EPC9143 Top View" width="300">
 	  </a>	
 	</th>
-	<th> nbsp; </th>
+	<th> &nbsp; </th>
     <th>
       <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-        <img src="images/9143_r4_back.png" alt="EPC9143 Top View" width="300">
+        <img src="images/9143_r4_back.png" alt="EPC9143 Top View" width="290">
 	  </a>
 	</th>
   </tr>
