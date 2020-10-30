@@ -186,7 +186,7 @@ volatile uint16_t drv_BuckConverter_Start(volatile struct BUCK_POWER_CONTROLLER_
 
     if (buckInstance->set_values.control_mode == BUCK_CONTROL_MODE_ACMC) { // In current mode...
         
-        for (_i=0; _i<buckInstance->set_values.phases; _i++)
+        for (_i=0; _i<buckInstance->set_values.no_of_phases; _i++)
         { 
             buckInstance->i_loop[_i].controller->status.bits.enabled = false; // Disable current loop
             buckInstance->i_loop[_i].ctrl_Reset(buckInstance->i_loop[_i].controller); // Reset current loop histories
@@ -228,7 +228,7 @@ volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s
     buckInstance->v_loop.controller->status.bits.enabled = false; // Disable voltage loop
     
     if (buckInstance->set_values.control_mode == BUCK_CONTROL_MODE_ACMC) {// In current mode...
-        for (_i=0; _i<buckInstance->set_values.phases; _i++)
+        for (_i=0; _i<buckInstance->set_values.no_of_phases; _i++)
         { buckInstance->i_loop[_i].controller->status.bits.enabled = false; } // Disable current loop
     }
     

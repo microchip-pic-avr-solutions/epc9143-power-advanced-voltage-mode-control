@@ -129,7 +129,7 @@ volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLE
     volatile uint16_t pwm_Instance;
     volatile uint16_t gpio_Instance;
 
-    for (_i=0; _i<buckInstance->set_values.phases; _i++) {
+    for (_i=0; _i<buckInstance->set_values.no_of_phases; _i++) {
     
         // LOAD PERIPHERAL INSTANCES FROM BUCK CONVERTER OBJECT
         pwm_Instance = buckInstance->sw_node[_i].pwm_instance;
@@ -223,7 +223,7 @@ volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckIns
     volatile struct P33C_PWM_GENERATOR_s* pg;
 
     // Enable all PWM channels of the recent buck converter configuration
-    for(_i=0; _i< buckInstance->set_values.phases; _i++) {
+    for(_i=0; _i< buckInstance->set_values.no_of_phases; _i++) {
     
         // Capture PWM instance of the recent channel
         pwm_Instance = buckInstance->sw_node[_i].pwm_instance;
@@ -277,7 +277,7 @@ volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInst
     volatile struct P33C_PWM_GENERATOR_s* pg;
 
     // Disable all PWM channels of the recent buck converter configuration
-    for(_i=0; _i< buckInstance->set_values.phases; _i++) {
+    for(_i=0; _i< buckInstance->set_values.no_of_phases; _i++) {
     
             // Capture PWM instance of the recent channel
         pwm_Instance = buckInstance->sw_node[_i].pwm_instance;
@@ -319,7 +319,7 @@ volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckI
     volatile struct P33C_PWM_GENERATOR_s* pg;
 
     // Disable all PWM outputs of the recent buck converter configuration
-    for(_i=0; _i< buckInstance->set_values.phases; _i++) {
+    for(_i=0; _i< buckInstance->set_values.no_of_phases; _i++) {
     
             // Capture PWM instance of the recent channel
         pwm_Instance = buckInstance->sw_node[_i].pwm_instance;
@@ -359,7 +359,7 @@ volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckIn
     volatile struct P33C_PWM_GENERATOR_s* pg;
 
     // Disable all PWM channels of the recent buck converter configuration
-    for(_i=0; _i< buckInstance->set_values.phases; _i++) {
+    for(_i=0; _i< buckInstance->set_values.no_of_phases; _i++) {
     
             // Capture PWM instance of the recent channel
         pwm_Instance = (uint16_t)buckInstance->sw_node[_i].pwm_instance;

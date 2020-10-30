@@ -148,7 +148,7 @@ volatile uint16_t appPowerSupply_Execute(void)
     buck.data.i_sns[1] = BUCK_ISNS2_ADCBUF;
     
     // Accumulate phase currents
-    for (_i=0; _i<buck.set_values.phases; _i++) 
+    for (_i=0; _i<buck.set_values.no_of_phases; _i++) 
     { i_dummy += buck.data.i_sns[_i]; }
     buck.data.i_out = i_dummy; // Set output current value
 
@@ -200,7 +200,7 @@ volatile uint16_t appPowerSupply_Dispose(void)
 
     buck.status.value = 0;
     
-    for (_i=0; _i<buck.set_values.phases; _i++) // Reset phase current values
+    for (_i=0; _i<buck.set_values.no_of_phases; _i++) // Reset phase current values
     { buck.data.i_sns[0] = 0; }
     buck.data.i_out = 0; // Reset output current value
     buck.data.v_out = 0; // Reset output voltage value
@@ -284,10 +284,10 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.set_values.control_mode = BUCK_CONTROL_MODE_VMC; // Set Control Mode
     buck.set_values.i_ref = BUCK_ISNS_REF; // Set current loop reference
     buck.set_values.v_ref = BUCK_VOUT_REF; // Set voltage loop reference
-    buck.set_values.phases = BUCK_NO_OF_PHASES; // Set number of converter phases
+    buck.set_values.no_of_phases = BUCK_NO_OF_PHASES; // Set number of converter phases
     
     // Clear Runtime Data
-    for (_i=0; _i<buck.set_values.phases; _i++) // Reset phase current values
+    for (_i=0; _i<buck.set_values.no_of_phases; _i++) // Reset phase current values
     { buck.data.i_sns[0] = 0; }
     buck.data.i_out = 0; // Reset output current value
     buck.data.v_out = 0; // Reset output voltage value

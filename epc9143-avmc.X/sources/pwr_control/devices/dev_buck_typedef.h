@@ -288,9 +288,9 @@ typedef enum {
 typedef struct BUCK_CONVERTER_CONTROL_s {
     
     volatile BUCK_CONTROL_MODE_e control_mode;  ///< Fundamental control mode 
+    volatile uint16_t no_of_phases;             ///< number of converter phases
     volatile uint16_t v_ref;                    ///< User reference setting used to control the power converter controller
     volatile uint16_t i_ref;                    ///< User reference setting used to control the power converter controller
-    volatile uint16_t phases;                   ///< number of converter phases
     
 } BUCK_CONVERTER_CONTROL_t;
 
