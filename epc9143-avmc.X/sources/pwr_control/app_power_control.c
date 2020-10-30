@@ -529,13 +529,13 @@ volatile uint16_t appPowerSupply_ControllerInitialize(void)
     
      // Set Controller Object of Voltage Loop
     buck.v_loop.controller = &v_loop;
-    buck.v_loop.ctrl_Initialization = &v_loop_Initialize;
+    buck.v_loop.ctrl_Initialize = &v_loop_Initialize;
     buck.v_loop.ctrl_Update = &v_loop_Update;
     buck.v_loop.ctrl_Reset = &v_loop_Reset;
     buck.v_loop.ctrl_Precharge = &v_loop_Precharge;
     
     // Configure Voltage Loop Controller Object
-    buck.v_loop.ctrl_Initialization(&v_loop);   // Call Initialization Routine setting histories and scaling
+    buck.v_loop.ctrl_Initialize(&v_loop);   // Call Initialization Routine setting histories and scaling
     
     // Configure controller input ports
     buck.v_loop.controller->Ports.Source.ptrAddress = &BUCK_VOUT_ADCBUF; // Output Voltage is Common Source

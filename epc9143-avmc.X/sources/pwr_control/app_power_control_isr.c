@@ -47,7 +47,6 @@ void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void
     Nop(); // Debugging break point anchors
     Nop();
     Nop();
-    Nop();
     
     // Clear the ADCANx interrupt flag 
     _BUCK_VLOOP_ISR_IF = 0;  
