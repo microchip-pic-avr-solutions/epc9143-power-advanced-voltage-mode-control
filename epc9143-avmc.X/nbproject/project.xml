@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>epc9143</name>
+            <name>epc9143-avmc</name>
             <creation-uuid>fdac5ced-dfa7-4368-a3cb-42bdf808e3c1</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
