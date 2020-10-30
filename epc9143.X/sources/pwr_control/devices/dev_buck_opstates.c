@@ -4,11 +4,6 @@
  * Created on October 9, 2020, 9:16 AM
  */
 
-/** 
- * \file dev_buck_opstates.c
- * \brief Functions of the buck converter state machine operating states
- * \defgroup buck_state_machine Buck Converter State Machine 
- */
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h> // include standard integer data types

@@ -4,7 +4,37 @@
  *
  * Created on December 27, 2019, 12:21 PM
  */
-
+/**
+ *  (c) 2020 Microchip Technology Inc. and its subsidiaries.
+ *
+ *  Subject to your compliance with these terms, you may use Microchip software
+ *  and any derivatives exclusively with Microchip products. You're responsible
+ *  for complying with 3rd party license terms applicable to your use of 3rd
+ *  party software (including open source software) that may accompany Microchip
+ *  software.
+ *
+ *  SOFTWARE IS "AS IS." NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY,
+ *  APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT,
+ *  MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ *  IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+ *  INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+ *  WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP
+ *  HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO
+ *  THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL
+ *  CLAIMS RELATED TO THE SOFTWARE WILL NOT EXCEED AMOUNT OF FEES, IF ANY,
+ *  YOU PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+ *
+ *  @file    drv_fault_handler.c
+ *  @brief   This file contains APIs to check current fault status of a user-defined fault object
+ *
+ *  @note
+ *  Microchip Technology Inc. has followed development methods required by
+ *  IEC-60730 and performed extensive validation and static testing to ensure
+ *  that the code operates as intended. Any modification to the code can
+ *  invalidate the results of Microchip's validation and testing.
+ *
+ */
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h> // include standard integer data types
@@ -13,45 +43,48 @@
 
 #include "drv_fault_handler.h" // 
 
-/* @@fltobjClear
+/**
+ * @brief This contains driver fault handler APIs 
+ * @addtogroup fault_handler
+ * @{
+ */
+
+/**
+ * @struct FAULT_OBJECT_s fltobjClear
  * ********************************************************************************
- * Summary:
- * Pre-initialized data structure object of a default fault object 
- * 
- * Description:
+ * @brief Pre-initialized data structure object of a default fault object 
  * 
  * ********************************************************************************/
 
 volatile struct FAULT_OBJECT_s fltobjClear = 
 {
-        .Status.bits.CompareType = FLTCMP_NONE,     // Clear fault object comparison type
-        .Status.bits.Enabled = false,               // Clear fault object enable bit
-        .Status.bits.FaultActive = true,            // Set fault object ACTIVE bit (must be cleared by fault check)
-        .Status.bits.FaultStatus = true,            // Set fault object STATUS bit (must be cleared by fault check)
-        .Counter = 0,                               // Clear internal fault counter
-        .SourceObject.ptrObject = NULL,             // Clear source object pointer
-        .SourceObject.bitMask = 0xFFFF,             // Reset bit-filter mask to compare all bits
-        .ReferenceObject.ptrObject = NULL,          // Clear reference object pointer
-        .ReferenceObject.bitMask = 0xFFFF,          // Reset bit-filter mask to compare all bits
-        .TripResponse.compareThreshold = 0,         // Clear fault trip signal level
-        .TripResponse.eventThreshold = 0,           // Clear fault trip counter threshold
-        .TripResponse.ptrResponseFunction = NULL,   // Clear fault trip response function pointer
-        .RecoveryResponse.compareThreshold = 0,     // Clear fault recovery signal level
-        .RecoveryResponse.eventThreshold = 0,       // Clear fault recovery counter threshold
-        .RecoveryResponse.ptrResponseFunction = NULL,  // Clear fault recovery response function pointer
+        .Status.bits.CompareType = FLTCMP_NONE,     ///< Clear fault object comparison type
+        .Status.bits.Enabled = false,               ///< Clear fault object enable bit
+        .Status.bits.FaultActive = true,            ///< Set fault object ACTIVE bit (must be cleared by fault check)
+        .Status.bits.FaultStatus = true,            ///< Set fault object STATUS bit (must be cleared by fault check)
+        .Counter = 0,                               ///< Clear internal fault counter
+        .SourceObject.ptrObject = NULL,             ///< Clear source object pointer
+        .SourceObject.bitMask = 0xFFFF,             ///< Reset bit-filter mask to compare all bits
+        .ReferenceObject.ptrObject = NULL,          ///< Clear reference object pointer
+        .ReferenceObject.bitMask = 0xFFFF,          ///< Reset bit-filter mask to compare all bits
+        .TripResponse.compareThreshold = 0,         ///< Clear fault trip signal level
+        .TripResponse.eventThreshold = 0,           ///< Clear fault trip counter threshold
+        .TripResponse.ptrResponseFunction = NULL,   ///< Clear fault trip response function pointer
+        .RecoveryResponse.compareThreshold = 0,     ///< Clear fault recovery signal level
+        .RecoveryResponse.eventThreshold = 0,       ///< Clear fault recovery counter threshold
+        .RecoveryResponse.ptrResponseFunction = NULL,  ///< Clear fault recovery response function pointer
     };
 
 
 /*!drv_FaultCheck()
  *****************************************************************************
- * Function:	uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj)
- * Parameters:	FAULT_OBJECT_t* fltobj
- * Returns:     Unsigned Integer
+ * @fn	uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj)
+ * @param	FAULT_OBJECT_t* fltobj
+ * @return  Unsigned Integer
  *
- * Summary:
- * Check current fault status of a user-defined fault object
+ * @brief Check current fault status of a user-defined fault object
  *
- * Description:
+ * <b>Description:</b>
  * 
  * This routine compares the most recent value of a global variable or SFR
  * (SOURCE) against user-defined thresholds. If the value violates/exceeds
@@ -67,7 +100,7 @@ volatile struct FAULT_OBJECT_s fltobjClear =
  * has been RSTCNT_MAX times below the RECOVERY_LEVEL threshold, the fault 
  * will automatically be cleared.
  * 
- *      Please note:
+ *<b>Please note:</b>
  *      If the value is within normal operating conditions, the fault 
  *      counter will be cleared. Thus fault events must occur successively 
  *      incrementing the fault event counter high enough to eventually 
@@ -78,41 +111,40 @@ volatile struct FAULT_OBJECT_s fltobjClear =
  * a) Comparison Types
  * 
  * The fault handler offers the following different comparison methods:
+ *  - Greater Than:
+ *          - performs comparison SOURCE > TRIP_LEVEL
  * 
- *      - Greater Than:
- *          performs comparison SOURCE > TRIP_LEVEL
- * 
- *          TRIP_LEVEL is greater than RECOVERY_LEVEL. The difference between 
+ *          - TRIP_LEVEL is greater than RECOVERY_LEVEL. The difference between 
  *          TRIP_LEVEL and RECOVERY_LEVEL is the hysteresis of the defined
  *          threshold.
  * 
- *      - Less Than:
- *          performs comparison SOURCE < TRIP_LEVEL
+ *  - Less Than:
+ *          - performs comparison SOURCE < TRIP_LEVEL
  * 
- *          TRIP_LEVEL is less than RECOVERY_LEVEL. The difference between 
+ *          - TRIP_LEVEL is less than RECOVERY_LEVEL. The difference between 
  *          TRIP_LEVEL and RECOVERY_LEVEL is the hysteresis of the defined
  *          threshold.
  *
- *      - Is Equal:
- *          performs comparison SOURCE == TRIP_LEVEL
+ * - Is Equal:
+ *          - performs comparison SOURCE == TRIP_LEVEL
  *
- *          RECOVERY_LEVEL is ignored.
+ *          - RECOVERY_LEVEL is ignored.
  *
- *      - Is Not Equal:
- *          performs comparison SOURCE != TRIP_LEVEL
+ * - Is Not Equal:
+ *          - performs comparison SOURCE != TRIP_LEVEL
  *
- *          RECOVERY_LEVEL is ignored.
+ *          - RECOVERY_LEVEL is ignored.
  *
- *      - Between:
- *          performs comparison RECOVERY_LEVEL < SOURCE < TRIP_LEVEL
+ * - Between:
+ *          - performs comparison RECOVERY_LEVEL < SOURCE < TRIP_LEVEL
  *
- *          min/max of the FAULT range is defined by the range between
+ *          - min/max of the FAULT range is defined by the range between
  *          RECOVERY_LEVEL (min) and TRIP_LEVEL (max)
  *
- *      - Outside:
- *          performs comparison (SOURCE < RECOVERY_LEVEL) or (TRIP_LEVEL < SOURCE)
+ * - Outside:
+ *          - performs comparison (SOURCE < RECOVERY_LEVEL) or (TRIP_LEVEL < SOURCE)
  *
- *          min/max of the allowed operating range is defined by the range 
+ *          - min/max of the allowed operating range is defined by the range 
  *          between RECOVERY_LEVEL (min) and TRIP_LEVEL (max)
  * 
  * b) Value Filtering
@@ -273,3 +305,5 @@ volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj) {
     
     return (fres); // Fault handler executed successfully
 }
+
+/** @} */ // end of group

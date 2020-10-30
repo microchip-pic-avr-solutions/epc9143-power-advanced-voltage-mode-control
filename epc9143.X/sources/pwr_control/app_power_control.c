@@ -1,3 +1,34 @@
+/**
+ *  (c) 2020 Microchip Technology Inc. and its subsidiaries.
+ *
+ *  Subject to your compliance with these terms, you may use Microchip software
+ *  and any derivatives exclusively with Microchip products. You're responsible
+ *  for complying with 3rd party license terms applicable to your use of 3rd
+ *  party software (including open source software) that may accompany Microchip
+ *  software.
+ *
+ *  SOFTWARE IS "AS IS." NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY,
+ *  APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT,
+ *  MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ *  IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+ *  INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+ *  WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP
+ *  HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO
+ *  THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL
+ *  CLAIMS RELATED TO THE SOFTWARE WILL NOT EXCEED AMOUNT OF FEES, IF ANY,
+ *  YOU PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+ *
+ *  @file    app_power_control.c
+ *  @brief   This file contains APIs to for the power control
+ *
+ *  @note
+ *  Microchip Technology Inc. has followed development methods required by
+ *  IEC-60730 and performed extensive validation and static testing to ensure
+ *  that the code operates as intended. Any modification to the code can
+ *  invalidate the results of Microchip's validation and testing.
+ *
+ */
 /*
  * File:   pwr_control.c
  * Author: M91406
@@ -17,20 +48,23 @@
 
 #include "fault_handler/app_faults_monitor.h" // include fault monitor application object declarations
 
+/**
+ * @addtogroup power_handler
+ * @{
+ */
 
 // ADVANCED CONTROL FUNCTION DECLARATIONS
 
-extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); // Pointer to nPnZ data type object
+extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer to nPnZ data type object
                                                 // Calls the AGC Factor Modulation Function (Assembly)
 
 
 
 /*!BUCK_POWER_CONTROLLER_s data structure
  * *************************************************************************************************
- * Summary:
- * Global data object for a BUCK CONVERTER 
+ * @brief Global data object for a BUCK CONVERTER 
  * 
- * Description:
+ * <b>Description:</b>
  * The 'buck' data object holds all status, control and monitoring values of the BUCK power 
  * controller. The BUCK_POWER_CONTROLLER_s data structure is defined in dev_buck_converter.h.
  * Please refer to the comments on top of this file for further information.
@@ -654,3 +688,4 @@ inline void appPowerSupply_CurrentSenseCalibration(void)
 
 
 // END OF FILE
+/** @} */ // end of group
