@@ -343,6 +343,7 @@ typedef struct BUCK_SWITCH_NODE_SETTINGS_s {
     volatile uint16_t gpio_high;            ///< GPIO port pin-number of PWMxH of the selected PWM generator
     volatile uint16_t gpio_low;             ///< GPIO port pin-number of PWMxL of the selected PWM generator
     volatile bool     master_period_enable; ///< Selecting MASTER or Individual period register
+    volatile bool     high_resolution_enable; ///< Selecting if PWM module should use high-resolution mode 
     volatile uint16_t period;               ///< Switching period
     volatile uint16_t phase;                ///< Switching signal phase-shift
     volatile uint16_t duty_ratio_init;      ///< Initial duty cycle when the PWM module is being turned on

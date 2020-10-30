@@ -171,6 +171,7 @@ volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLE
 
         // LOAD PWM GENERATOR TIMING SETTINGS FROM BUCK CONVERTER OBJECT
         pg->PGxCONH.bits.MPERSEL = (uint16_t)buckInstance->sw_node[_i].master_period_enable;
+        pg->PGxCONL.bits.HREN = (uint16_t)buckInstance->sw_node[_i].high_resolution_enable;
         
         pg->PGxDC.value = buckInstance->sw_node[_i].duty_ratio_min; // PGxDC: PWM GENERATOR x DUTY CYCLE REGISTER
         pg->PGxPER.value = buckInstance->sw_node[_i].period; // PGxPER: PWM GENERATOR x PERIOD REGISTER

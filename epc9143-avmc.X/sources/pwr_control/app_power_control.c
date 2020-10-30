@@ -298,6 +298,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.sw_node[0].gpio_high = BUCK_PWM1_GPIO_PORT_PINH;
     buck.sw_node[0].gpio_low = BUCK_PWM1_GPIO_PORT_PINL;
     buck.sw_node[0].master_period_enable = true;
+	buck.sw_node[0].high_resolution_enable = true;
     buck.sw_node[0].period = BUCK_PWM_PERIOD;
     buck.sw_node[0].phase = BUCK_PWM_PHASE_SHIFT; 
     buck.sw_node[0].duty_ratio_min = BUCK_PWM_DC_MIN;
@@ -315,6 +316,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.sw_node[1].gpio_high = BUCK_PWM2_GPIO_PORT_PINH;
     buck.sw_node[1].gpio_low = BUCK_PWM2_GPIO_PORT_PINL;
     buck.sw_node[1].master_period_enable = true;
+	buck.sw_node[1].high_resolution_enable = true;
     buck.sw_node[1].period = BUCK_PWM_PERIOD;
     buck.sw_node[1].phase = BUCK_PWM_PHASE_SHIFT; 
     buck.sw_node[1].duty_ratio_min = BUCK_PWM_DC_MIN;
