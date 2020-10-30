@@ -107,7 +107,7 @@ typedef struct BUCK_CONVERTER_STATUS_s
         volatile bool ready:1;                  ///< Bit #0: status bit, indicating buck converter is initialized and ready to run
         volatile bool adc_active:1;             ///< Bit #1: indicating that ADC has been started and samples are taken
         volatile bool pwm_active:1;             ///< Bit #2: indicating that PWM has been started and ADC triggers are generated
-        volatile bool power_source_detected:1;	///< Bit #3:  indicating that a valid power source was detected
+        volatile unsigned :1;                   ///< Bit #3: (reserved)
         volatile bool cs_calib_complete :1;     ///< Bit #4: indicating that current sensor calibration has completed
         volatile bool fault_active :1;          ///< Bit #5: Flag bit indicating system is in enforced shut down mode (usually due to a fault condition)
         volatile unsigned :1;                   ///< Bit #6: (reserved)
@@ -117,7 +117,7 @@ typedef struct BUCK_CONVERTER_STATUS_s
         volatile unsigned :1;                   ///< Bit #9:  (reserved)
         volatile unsigned :1;                   ///< Bit #10: (reserved)
         volatile unsigned :1;                   ///< Bit #11: (reserved)
-        volatile unsigned :1;                   ///< Bit #12: (reserved)
+        volatile bool suspend :1;               ///< Bit #12: Control bit to put the converter in suspend mode (turned off while ENABLE bit is still on)
         volatile bool GO :1;                    ///< Bit #13: When set, the GO-bit fires up the power supply
         volatile bool autorun :1;               ///< Bit #14: Control bit determining if charger is starting automatically or on command (using the GO bit)
         volatile bool enabled :1;               ///< Bit #15: Control bit enabling/disabling the charger port

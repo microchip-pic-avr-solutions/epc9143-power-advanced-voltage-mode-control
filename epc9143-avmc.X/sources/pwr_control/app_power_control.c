@@ -153,8 +153,9 @@ volatile uint16_t appPowerSupply_Execute(void)
     buck.data.i_out = i_dummy; // Set output current value
 
     // Check conditional parameters and fault flags
-    buck.status.bits.power_source_detected = (bool)
-        ((BUCK_VIN_UVLO_TRIP < buck.data.v_in) && (buck.data.v_in<BUCK_VIN_OVLO_TRIP));
+    // ToDo: remove - flag has been replaced by fault handler function
+//    buck.status.bits.power_source_detected = (bool)
+//        ((BUCK_VIN_UVLO_TRIP < buck.data.v_in) && (buck.data.v_in<BUCK_VIN_OVLO_TRIP));
     
     // Execute buck converter state machine
     retval &= drv_BuckConverter_Execute(&buck);
@@ -228,8 +229,6 @@ volatile uint16_t appPowerSupply_Suspend(void)
     volatile uint16_t retval=1;
 
     retval &= drv_BuckConverter_Suspend(&buck); // Shut down PWM immediately
-    buck.status.bits.fault_active = true; // Set FAULT flag
-    buck.state_id.value = BUCK_OPSTATE_RESET; // Reset State Machine (causes loop reset)
 
     return(retval); 
 }
@@ -250,8 +249,7 @@ volatile uint16_t appPowerSupply_Resume(void)
 { 
     volatile uint16_t retval=0;
 
-    buck.state_id.value = BUCK_OPSTATE_RESET;       // Ensure State Machine is RESET
-    buck.status.bits.enabled = true;    // Ensure Buck Converter is enabled
+    retval &= drv_BuckConverter_Resume(&buck); // Shut down PWM immediately
     
     return(retval); 
 }
@@ -270,7 +268,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.status.bits.ready = false; // Clear Converter Ready flag
     buck.status.bits.adc_active = false; // Clear ADC STARTED flag
     buck.status.bits.pwm_active = false; // clear PWM STARTED flag
-    buck.status.bits.power_source_detected = false; // Clear POWER SOURCE DETECTED flag
+//    buck.status.bits.power_source_detected = false; // Clear POWER SOURCE DETECTED flag // ToDo: remove
     buck.status.bits.cs_calib_complete = false; // Clear Current Sense Calibration flag
     buck.status.bits.fault_active = true; // Set global FAULT flag
     buck.status.bits.cs_calib_enable = BUCK_ISNS_NEED_CALIBRATION; // Topology current sensors need to be calibrated

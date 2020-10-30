@@ -254,7 +254,7 @@ volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLE
     
     volatile uint16_t retval=1;
     
-    buckInstance->state_id.value = BUCK_OPSTATE_RESET;  // Reset running state machine
+    buckInstance->status.bits.suspend = true;  // Set SUSPEND bit terminating operation
     retval &= drv_BuckConverter_Execute(buckInstance);  // Enforce state switch immediately
     
     return(retval);
@@ -276,7 +276,7 @@ volatile uint16_t drv_BuckConverter_Resume(volatile struct BUCK_POWER_CONTROLLER
     
     volatile uint16_t retval=1;
     
-    buckInstance->state_id.value = BUCK_OPSTATE_RESET;  // Reset running state machine
+    buckInstance->status.bits.suspend = false;  // Reset running state machine
     retval &= drv_BuckConverter_Execute(buckInstance);  // Enforce state switch immediately
     
     return(retval);
