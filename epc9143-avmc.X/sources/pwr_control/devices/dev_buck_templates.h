@@ -20,36 +20,27 @@
  */
 
 /* 
- * File:   dev_buck_pconfig.h
+ * File:   dev_buck_templates.h
  * Author: M91406
- * Comments: Peripheral configuration template header file for generic buck converter driver
+ * Comments: Peripheral Special Function Register Configuration Templates
  * Revision history: 
- * 1.0  initial release
+ *   10/29/2020     1.0     initial release
  */
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef BUCK_CONVERTER_PERIPHERAL_CONFIGURAITON_H
-#define	BUCK_CONVERTER_PERIPHERAL_CONFIGURAITON_H
+#ifndef BUCK_CONVERTER_PERIPHERAL_CONFIGURATION_TEMPLATES_H
+#define	BUCK_CONVERTER_PERIPHERAL_CONFIGURATION_TEMPLATES_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h> // include standard integer data types
 #include <stdbool.h> // include standard boolean data types
 #include <stddef.h> // include standard definition data types
 
-#include "dev_buck_typedef.h"
-#include "xc16_pral.h"
+#include "xc16_pral.h" // include peripehral register abstraction layer drivers
 
 /* ********************************************************************************
- * *******************************************************************************/
-
-extern volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
-extern volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance);
-extern volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance);
-extern volatile bool     buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance);
-
-/* ********************************************************************************
- * PWM GENERATOR CONFIGURATION
+ * PWM MODULE BASE REGISTER CONFIGURATION
  * *******************************************************************************/
 /* PCLKCON: PWM CLOCK CONTROL REGISTER
 
@@ -72,32 +63,299 @@ extern volatile bool     buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE
                           ||||||||||||||||  */
 #define REG_PCLKCON     0b0000000000000011
 
-// PWM module default configuration
-volatile struct P33C_PWM_MODULE_s buckPwmModuleConfig = 
-{
-        .vPCLKCON.value = REG_PCLKCON,  // PCLKCON: PWM CLOCK CONTROL REGISTER
-        .vFSCL.value = 0,               // FSCL: FREQUENCY SCALE REGISTER
-        .vFSMINPER.value = 0,           // FSMINPER: FREQUENCY SCALING MINIMUM PERIOD REGISTER
-        .vMPHASE.value = 0,             // MPHASE: MASTER PHASE REGISTER
-        .vMDC.value = 0,                // MDC: MASTER DUTY CYCLE REGISTER
-        .vMPER.value = 0,               // MPER: MASTER PERIOD REGISTER
-        .vLFSR.value = 0,               // LFSR: LINEAR FEEDBACK SHIFT REGISTER
-        .vCMBTRIGL.value = 0,           // CMBTRIGL: COMBINATIONAL TRIGGER REGISTER LOW
-        .vCMBTRIGH.value = 0,           // CMBTRIGH: COMBINATIONAL TRIGGER REGISTER HIGH
-        .LOGCON_A.value = 0,            // LOGCONA: COMBINATORIAL PWM LOGIC CONTROL REGISTER A
-        .LOGCON_B.value = 0,            // LOGCONB: COMBINATORIAL PWM LOGIC CONTROL REGISTER B
-        .LOGCON_C.value = 0,            // LOGCONC: COMBINATORIAL PWM LOGIC CONTROL REGISTER C
-        .LOGCON_D.value = 0,            // LOGCOND: COMBINATORIAL PWM LOGIC CONTROL REGISTER D
-        .LOGCON_E.value = 0,            // LOGCONE: COMBINATORIAL PWM LOGIC CONTROL REGISTER E
-        .LOGCON_F.value = 0,            // LOGCONF: COMBINATORIAL PWM LOGIC CONTROL REGISTER F
-        .PWMEVT_A.value = 0,            // PWMEVTA: PWM EVENT OUTPUT CONTROL REGISTER A
-        .PWMEVT_B.value = 0,            // PWMEVTB: PWM EVENT OUTPUT CONTROL REGISTER B
-        .PWMEVT_C.value = 0,            // PWMEVTC: PWM EVENT OUTPUT CONTROL REGISTER C
-        .PWMEVT_D.value = 0,            // PWMEVTD: PWM EVENT OUTPUT CONTROL REGISTER D
-        .PWMEVT_E.value = 0,            // PWMEVTE: PWM EVENT OUTPUT CONTROL REGISTER E
-        .PWMEVT_F.value = 0             // PWMEVTF: PWM EVENT OUTPUT CONTROL REGISTER F
-    };
+/* CMBTRIGL: COMBINATIONAL TRIGGER REGISTER LOW
 
+                           ________________ BIT 15: (unimplemented)
+                          | _______________ BIT 14: (unimplemented)
+                          || ______________ BIT 13: (unimplemented) 
+                          ||| _____________ BIT 12: (unimplemented) 
+                          |||| ____________ BIT 11: (unimplemented) 
+                          ||||| ___________ BIT 10: (unimplemented)
+                          |||||| __________ BIT  9: (unimplemented)
+                          ||||||| _________ BIT  8: (unimplemented)
+                          |||||||| ________ BIT  7: CTA8EN: Enable Trigger Output from PWM Generator #8 as Source for Combinational Trigger A bit
+                          ||||||||| _______ BIT  6: CTA7EN: Enable Trigger Output from PWM Generator #7 as Source for Combinational Trigger A bit
+                          |||||||||| ______ BIT  5: CTA6EN: Enable Trigger Output from PWM Generator #6 as Source for Combinational Trigger A bit
+                          ||||||||||| _____ BIT  4: CTA5EN: Enable Trigger Output from PWM Generator #5 as Source for Combinational Trigger A bit
+                          |||||||||||| ____ BIT  3: CTA4EN: Enable Trigger Output from PWM Generator #4 as Source for Combinational Trigger A bit
+                          ||||||||||||| ___ BIT  2: CTA3EN: Enable Trigger Output from PWM Generator #3 as Source for Combinational Trigger A bit
+                          |||||||||||||| __ BIT  1: CTA2EN: Enable Trigger Output from PWM Generator #2 as Source for Combinational Trigger A bit
+                          ||||||||||||||| _ BIT  0: CTA1EN: Enable Trigger Output from PWM Generator #1 as Source for Combinational Trigger A bit
+                          ||||||||||||||||  */
+#define REG_CMBTRIGL    0b0000000000000000
+
+/* CMBTRIGH: COMBINATIONAL TRIGGER REGISTER HIGH
+
+                           ________________ BIT 15: (unimplemented)
+                          | _______________ BIT 14: (unimplemented)
+                          || ______________ BIT 13: (unimplemented) 
+                          ||| _____________ BIT 12: (unimplemented) 
+                          |||| ____________ BIT 11: (unimplemented) 
+                          ||||| ___________ BIT 10: (unimplemented)
+                          |||||| __________ BIT  9: (unimplemented)
+                          ||||||| _________ BIT  8: (unimplemented)
+                          |||||||| ________ BIT  7: CTB8EN: Enable Trigger Output from PWM Generator #8 as Source for Combinational Trigger B bit
+                          ||||||||| _______ BIT  6: CTB7EN: Enable Trigger Output from PWM Generator #7 as Source for Combinational Trigger B bit
+                          |||||||||| ______ BIT  5: CTB6EN: Enable Trigger Output from PWM Generator #6 as Source for Combinational Trigger B bit
+                          ||||||||||| _____ BIT  4: CTB5EN: Enable Trigger Output from PWM Generator #5 as Source for Combinational Trigger B bit
+                          |||||||||||| ____ BIT  3: CTB4EN: Enable Trigger Output from PWM Generator #4 as Source for Combinational Trigger B bit
+                          ||||||||||||| ___ BIT  2: CTB3EN: Enable Trigger Output from PWM Generator #3 as Source for Combinational Trigger B bit
+                          |||||||||||||| __ BIT  1: CTB2EN: Enable Trigger Output from PWM Generator #2 as Source for Combinational Trigger B bit
+                          ||||||||||||||| _ BIT  0: CTB1EN: Enable Trigger Output from PWM Generator #1 as Source for Combinational Trigger B bit
+                          ||||||||||||||||  */
+#define REG_CMBTRIGH    0b0000000000000000
+
+/* LOGCONA: COMBINATORIAL PWM LOGIC CONTROL REGISTER A
+
+                           ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          | _______________ BIT 14: 
+                          || ______________ BIT 13:  
+                          ||| _____________ BIT 12:  
+                          |||| ____________ BIT 11: PWMS2y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          ||||| ___________ BIT 10: 
+                          |||||| __________ BIT  9: 
+                          ||||||| _________ BIT  8: 
+                          |||||||| ________ BIT  7: S1yPOL: Combinatorial PWM Logic Source #1 Polarity bit
+                          ||||||||| _______ BIT  6: S2yPOL: Combinatorial PWM Logic Source #2 Polarity bit
+                          |||||||||| ______ BIT  5: PWMLFy[1:0]: Combinatorial PWM Logic Function Selection bits
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: PWMLFyD[2:0]: Combinatorial PWM Logic Destination Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_LOGCONA     0b0000000000000000
+
+/* LOGCONB: COMBINATORIAL PWM LOGIC CONTROL REGISTER B
+
+                           ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          | _______________ BIT 14: 
+                          || ______________ BIT 13:  
+                          ||| _____________ BIT 12:  
+                          |||| ____________ BIT 11: PWMS2y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          ||||| ___________ BIT 10: 
+                          |||||| __________ BIT  9: 
+                          ||||||| _________ BIT  8: 
+                          |||||||| ________ BIT  7: S1yPOL: Combinatorial PWM Logic Source #1 Polarity bit
+                          ||||||||| _______ BIT  6: S2yPOL: Combinatorial PWM Logic Source #2 Polarity bit
+                          |||||||||| ______ BIT  5: PWMLFy[1:0]: Combinatorial PWM Logic Function Selection bits
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: PWMLFyD[2:0]: Combinatorial PWM Logic Destination Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_LOGCONB     0b0000000000000000
+
+/* LOGCONC: COMBINATORIAL PWM LOGIC CONTROL REGISTER C
+
+                           ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          | _______________ BIT 14: 
+                          || ______________ BIT 13:  
+                          ||| _____________ BIT 12:  
+                          |||| ____________ BIT 11: PWMS2y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          ||||| ___________ BIT 10: 
+                          |||||| __________ BIT  9: 
+                          ||||||| _________ BIT  8: 
+                          |||||||| ________ BIT  7: S1yPOL: Combinatorial PWM Logic Source #1 Polarity bit
+                          ||||||||| _______ BIT  6: S2yPOL: Combinatorial PWM Logic Source #2 Polarity bit
+                          |||||||||| ______ BIT  5: PWMLFy[1:0]: Combinatorial PWM Logic Function Selection bits
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: PWMLFyD[2:0]: Combinatorial PWM Logic Destination Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_LOGCONC     0b0000000000000000
+
+/* LOGCOND: COMBINATORIAL PWM LOGIC CONTROL REGISTER D
+
+                           ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          | _______________ BIT 14: 
+                          || ______________ BIT 13:  
+                          ||| _____________ BIT 12:  
+                          |||| ____________ BIT 11: PWMS2y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          ||||| ___________ BIT 10: 
+                          |||||| __________ BIT  9: 
+                          ||||||| _________ BIT  8: 
+                          |||||||| ________ BIT  7: S1yPOL: Combinatorial PWM Logic Source #1 Polarity bit
+                          ||||||||| _______ BIT  6: S2yPOL: Combinatorial PWM Logic Source #2 Polarity bit
+                          |||||||||| ______ BIT  5: PWMLFy[1:0]: Combinatorial PWM Logic Function Selection bits
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: PWMLFyD[2:0]: Combinatorial PWM Logic Destination Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_LOGCOND     0b0000000000000000
+
+/* LOGCONE: COMBINATORIAL PWM LOGIC CONTROL REGISTER E
+
+                           ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          | _______________ BIT 14: 
+                          || ______________ BIT 13:  
+                          ||| _____________ BIT 12:  
+                          |||| ____________ BIT 11: PWMS2y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          ||||| ___________ BIT 10: 
+                          |||||| __________ BIT  9: 
+                          ||||||| _________ BIT  8: 
+                          |||||||| ________ BIT  7: S1yPOL: Combinatorial PWM Logic Source #1 Polarity bit
+                          ||||||||| _______ BIT  6: S2yPOL: Combinatorial PWM Logic Source #2 Polarity bit
+                          |||||||||| ______ BIT  5: PWMLFy[1:0]: Combinatorial PWM Logic Function Selection bits
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: PWMLFyD[2:0]: Combinatorial PWM Logic Destination Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_LOGCONE     0b0000000000000000
+
+/* LOGCONF: COMBINATORIAL PWM LOGIC CONTROL REGISTER F
+
+                           ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          | _______________ BIT 14: 
+                          || ______________ BIT 13:  
+                          ||| _____________ BIT 12:  
+                          |||| ____________ BIT 11: PWMS2y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
+                          ||||| ___________ BIT 10: 
+                          |||||| __________ BIT  9: 
+                          ||||||| _________ BIT  8: 
+                          |||||||| ________ BIT  7: S1yPOL: Combinatorial PWM Logic Source #1 Polarity bit
+                          ||||||||| _______ BIT  6: S2yPOL: Combinatorial PWM Logic Source #2 Polarity bit
+                          |||||||||| ______ BIT  5: PWMLFy[1:0]: Combinatorial PWM Logic Function Selection bits
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: PWMLFyD[2:0]: Combinatorial PWM Logic Destination Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_LOGCONF     0b0000000000000000
+
+/* PWMEVTA: PWM EVENT OUTPUT CONTROL REGISTER A
+
+                           ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
+                          | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
+                          || ______________ BIT 13: EVTySTRD: PWM Event Output Stretch Disable bit
+                          ||| _____________ BIT 12: EVTySYNC: PWM Event Output Sync bit
+                          |||| ____________ BIT 11: (unimplemented)
+                          ||||| ___________ BIT 10: (unimplemented)
+                          |||||| __________ BIT  9: (unimplemented)
+                          ||||||| _________ BIT  8: (unimplemented)
+                          |||||||| ________ BIT  7: EVTySEL[3:0]: PWM Event Selection bits
+                          ||||||||| _______ BIT  6: 
+                          |||||||||| ______ BIT  5: 
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: EVTyPGS[2:0]: PWM Event Source Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_PWMEVTA     0b0000000000000000
+
+/* PWMEVTB: PWM EVENT OUTPUT CONTROL REGISTER B
+
+                           ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
+                          | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
+                          || ______________ BIT 13: EVTySTRD: PWM Event Output Stretch Disable bit
+                          ||| _____________ BIT 12: EVTySYNC: PWM Event Output Sync bit
+                          |||| ____________ BIT 11: (unimplemented)
+                          ||||| ___________ BIT 10: (unimplemented)
+                          |||||| __________ BIT  9: (unimplemented)
+                          ||||||| _________ BIT  8: (unimplemented)
+                          |||||||| ________ BIT  7: EVTySEL[3:0]: PWM Event Selection bits
+                          ||||||||| _______ BIT  6: 
+                          |||||||||| ______ BIT  5: 
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: EVTyPGS[2:0]: PWM Event Source Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_PWMEVTB     0b0000000000000000
+
+/* PWMEVTC: PWM EVENT OUTPUT CONTROL REGISTER C
+
+                           ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
+                          | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
+                          || ______________ BIT 13: EVTySTRD: PWM Event Output Stretch Disable bit
+                          ||| _____________ BIT 12: EVTySYNC: PWM Event Output Sync bit
+                          |||| ____________ BIT 11: (unimplemented)
+                          ||||| ___________ BIT 10: (unimplemented)
+                          |||||| __________ BIT  9: (unimplemented)
+                          ||||||| _________ BIT  8: (unimplemented)
+                          |||||||| ________ BIT  7: EVTySEL[3:0]: PWM Event Selection bits
+                          ||||||||| _______ BIT  6: 
+                          |||||||||| ______ BIT  5: 
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: EVTyPGS[2:0]: PWM Event Source Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_PWMEVTC     0b0000000000000000
+
+/* PWMEVTD: PWM EVENT OUTPUT CONTROL REGISTER D
+
+                           ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
+                          | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
+                          || ______________ BIT 13: EVTySTRD: PWM Event Output Stretch Disable bit
+                          ||| _____________ BIT 12: EVTySYNC: PWM Event Output Sync bit
+                          |||| ____________ BIT 11: (unimplemented)
+                          ||||| ___________ BIT 10: (unimplemented)
+                          |||||| __________ BIT  9: (unimplemented)
+                          ||||||| _________ BIT  8: (unimplemented)
+                          |||||||| ________ BIT  7: EVTySEL[3:0]: PWM Event Selection bits
+                          ||||||||| _______ BIT  6: 
+                          |||||||||| ______ BIT  5: 
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: EVTyPGS[2:0]: PWM Event Source Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_PWMEVTD     0b0000000000000000
+
+/* PWMEVTE: PWM EVENT OUTPUT CONTROL REGISTER E
+
+                           ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
+                          | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
+                          || ______________ BIT 13: EVTySTRD: PWM Event Output Stretch Disable bit
+                          ||| _____________ BIT 12: EVTySYNC: PWM Event Output Sync bit
+                          |||| ____________ BIT 11: (unimplemented)
+                          ||||| ___________ BIT 10: (unimplemented)
+                          |||||| __________ BIT  9: (unimplemented)
+                          ||||||| _________ BIT  8: (unimplemented)
+                          |||||||| ________ BIT  7: EVTySEL[3:0]: PWM Event Selection bits
+                          ||||||||| _______ BIT  6: 
+                          |||||||||| ______ BIT  5: 
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: EVTyPGS[2:0]: PWM Event Source Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_PWMEVTE     0b0000000000000000
+
+/* PWMEVTF: PWM EVENT OUTPUT CONTROL REGISTER F
+
+                           ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
+                          | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
+                          || ______________ BIT 13: EVTySTRD: PWM Event Output Stretch Disable bit
+                          ||| _____________ BIT 12: EVTySYNC: PWM Event Output Sync bit
+                          |||| ____________ BIT 11: (unimplemented)
+                          ||||| ___________ BIT 10: (unimplemented)
+                          |||||| __________ BIT  9: (unimplemented)
+                          ||||||| _________ BIT  8: (unimplemented)
+                          |||||||| ________ BIT  7: EVTySEL[3:0]: PWM Event Selection bits
+                          ||||||||| _______ BIT  6: 
+                          |||||||||| ______ BIT  5: 
+                          ||||||||||| _____ BIT  4: 
+                          |||||||||||| ____ BIT  3: (unimplemented)
+                          ||||||||||||| ___ BIT  2: EVTyPGS[2:0]: PWM Event Source Selection bits
+                          |||||||||||||| __ BIT  1: 
+                          ||||||||||||||| _ BIT  0: 
+                          ||||||||||||||||  */
+#define REG_PWMEVTF     0b0000000000000000
 
 /* ********************************************************************************
  * PWM GENERATOR CONFIGURATION
@@ -480,48 +738,9 @@ volatile struct P33C_PWM_MODULE_s buckPwmModuleConfig =
                           ||||||||||||||||  */
 #define REG_PGxDCA      0b0000000000000000
 
-// PWM generator default configuration
-volatile struct P33C_PWM_GENERATOR_s buckPwmGeneratorConfig = 
-{
-        .PGxCONL.value = REG_PGxCONL,       // PGxCONL: PWM GENERATOR x CONTROL REGISTER LOW
-        .PGxCONH.value = REG_PGxCONH,       // PGxCONH: PWM GENERATOR x CONTROL REGISTER HIGH
-        .PGxSTAT.value = 0x0000,            // PGxSTAT: Clear status bits 
-        .PGxIOCONL.value = REG_PGxIOCONL,   // PGxIOCONL: PWM GENERATOR x I/O CONTROL REGISTER LOW
-        .PGxIOCONH.value = REG_PGxIOCONH,   // PGxIOCONL: PWM GENERATOR x I/O CONTROL REGISTER HIGH
-        .PGxEVTL.value = REG_PGxEVTL,       // PGxEVTL: PWM GENERATOR x EVENT REGISTER LOW
-        .PGxEVTH.value = REG_PGxEVTH,       // PGxEVTH: PWM GENERATOR x EVENT REGISTER HIGH
-        .PGxCLPCIL.value = REG_PGxCLPCIL,   // PGxLCPCIL: PWM GENERATOR x CURRENT LIMIT PCI REGISTER LOW
-        .PGxCLPCIH.value = REG_PGxCLPCIH,   // PGxLCPCIL: PWM GENERATOR x CURRENT LIMIT PCI REGISTER HIGH
-        .PGxFPCIL.value = REG_PGxFPCIL,     // PGxFPCIL: PWM GENERATOR x FAULT PCI REGISTER LOW
-        .PGxFPCIH.value = REG_PGxFPCIH,     // PGxFPCIL: PWM GENERATOR x FAULT PCI REGISTER HIGH
-        .PGxFFPCIL.value = REG_PGxFFPCIL,   // PGxFFPCIL: PWM GENERATOR x FEED FORWARD PCI REGISTER LOW
-        .PGxFFPCIH.value = REG_PGxFFPCIH,   // PGxFFPCIL: PWM GENERATOR x FEED FORWARD PCI REGISTER HIGH
-        .PGxSPCIL.value = REG_PGxSPCIL,     // PGxSPCIL: PWM GENERATOR x SOFTWARE PCI REGISTER LOW
-        .PGxSPCIH.value = REG_PGxSPCIH,     // PGxSPCIL: PWM GENERATOR x SOFTWARE PCI REGISTER HIGH
-        .PGxLEBL.value = REG_PGxLEBL,       // PGxLEBL: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER LOW
-        .PGxLEBH.value = REG_PGxLEBH,       // PGxLEBL: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER HIGH
-        .PGxPHASE.value = 0x0000,           // PGxPHASE: PWM GENERATOR x PHASE REGISTER
-        .PGxDC.value = 0x0000,              // PGxDC: PWM GENERATOR x DUTY CYCLE REGISTER
-        .PGxDCA.value = 0x0000,             // PGxDCA: PWM GENERATOR x DUTY CYCLE ADJUSTMENT REGISTER
-        .PGxPER.value = 0x0000,             // PGxPER: PWM GENERATOR x PERIOD REGISTER
-        .PGxTRIGA.value = 0x0000,           // PGxTRIGA: PWM GENERATOR x TRIGGER A REGISTER
-        .PGxTRIGB.value = 0x0000,           // PGxTRIGA: PWM GENERATOR x TRIGGER B REGISTER
-        .PGxTRIGC.value = 0x0000,           // PGxTRIGA: PWM GENERATOR x TRIGGER C REGISTER
-        .PGxDTL.value = 0x0000,             // PGxDTL: PWM GENERATOR x DEAD TIME REGISTER LOW
-        .PGxDTH.value = 0x0000,             // PGxDTH: PWM GENERATOR x DEAD TIME REGISTER HIGH
-        .PGxCAP.value = 0x0000              // PGxCAP: PWM GENERATOR x CAPTURE REGISTER
-};
-
-// POWER CONVERTER PERIPHERAL CONFIGURATION ROUTINES OF PWM DRIVER
-    
-extern volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
-extern volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
-extern volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
-extern volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
-extern volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
-extern volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
 
 /* ********************************************************************************
+ * ADC BASE MODULE CONFIGURATION
  * *******************************************************************************/
 
 // Digital-To-Analog Converter and High Speed Comparator Special Function Register Set 
@@ -536,15 +755,15 @@ extern volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s*
 #define ADC_CORE3_MASK_INDEX    0b0000000000001000
 #define ADC_SHRCORE_MASK_INDEX  0b0000000010000000
 
+/* ********************************************************************************
+ * ADC INPUT INSTANCE CONFIGURATION
+ * *******************************************************************************/
 
-extern volatile uint16_t buckADC_ModuleInitialize(void);
-extern volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* adcInstance);
-extern volatile uint16_t buckADC_Start(void);
 
 
 /* ********************************************************************************
+ * DAC / COMPARATOR / SLOPE COMPENSATION INSTANCE CONFIGURATION
  * *******************************************************************************/
-
 
 /* DACxCONL: DACx CONTROL REGISTER LOW
 
@@ -618,6 +837,5 @@ extern volatile uint16_t buckADC_Start(void);
 
 
 
-
-#endif	/* BUCK_CONVERTER_PERIPHERAL_CONFIGURAITON_H */
+#endif	/* BUCK_CONVERTER_PERIPHERAL_CONFIGURATION_TEMPLATES_H */
 

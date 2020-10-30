@@ -40,6 +40,7 @@
             <itemPath>sources/pwr_control/devices/dev_buck_pconfig.h</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_typedef.h</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_substates.h</itemPath>
+            <itemPath>sources/pwr_control/devices/dev_buck_templates.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="drivers" projectFiles="true">
             <itemPath>sources/pwr_control/drivers/npnz16b.h</itemPath>
@@ -91,6 +92,7 @@
             <itemPath>sources/pwr_control/devices/dev_buck_pconfig.c</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_opstates.c</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_substates.c</itemPath>
+            <itemPath>sources/pwr_control/devices/dev_buck_templates.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="drivers" projectFiles="true">
             <itemPath>sources/pwr_control/drivers/v_loop.c</itemPath>

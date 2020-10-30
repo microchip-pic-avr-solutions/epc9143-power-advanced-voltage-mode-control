@@ -14,6 +14,7 @@
 #include <stdbool.h> // include standard boolean types header file
 
 #include "dev_buck_pconfig.h"
+#include "dev_buck_templates.h"
 
 /* PRIVATE VARIABLES */
 volatile uint16_t adcore_mask=0;
