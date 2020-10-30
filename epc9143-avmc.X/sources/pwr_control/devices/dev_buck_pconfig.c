@@ -60,7 +60,7 @@ volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER
     #if defined (PG8CONL)
     PG8CONLbits.ON = 0; // PWM Generator #8 Enable: PWM Generator is not enabled
     #endif
-    
+
     // PWM CLOCK CONTROL REGISTER
     pwm->vPCLKCON.value = 0b0000000000000011;
     
@@ -76,11 +76,11 @@ volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER
     pwm->vMPHASE.value = 0;    // Reset master phase
     pwm->vMDC.value = 0x0000;  // Reset master duty cycle
     pwm->vMPER.value = 0x0000; // Reset Master period 
-    
+
     // If buck converter has been configured in MASTER PERIOD mode
     if (buckInstance->sw_node[0].master_period_enable) // If master period mode is enabled...
         pwm->vMPER.value = buckInstance->sw_node[0].period; // Set Period of phase #1
-    
+
     // LINEAR FEEDBACK SHIFT REGISTER
     pwm->vLFSR.value = 0x0000;      // Reset linear feedback shift register
     
@@ -764,4 +764,4 @@ volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* b
     
 }
 
-// end of file
+// END OF FILE

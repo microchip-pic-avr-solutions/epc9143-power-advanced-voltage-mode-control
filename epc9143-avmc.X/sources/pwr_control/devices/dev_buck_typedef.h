@@ -51,7 +51,7 @@
 #include <stddef.h> // include standard definition data types
 
 #include "pwr_control/drivers/npnz16b.h"
-#include "config/epc9143_r40_hwdescr.h"
+#include "config/hal.h"
 
 /**
  * 
@@ -147,12 +147,12 @@ typedef struct BUCK_CONVERTER_STATUS_s
  * *************************************************************************************************** */
 typedef enum BUCK_OPSTATES_e {  // Enumeration of state machine operating states 
     
-    BUCK_OPSTATE_ERROR          = 0x0000,  ///< power converter control state #0: in case of an error, state machine will reset to RESET
-    BUCK_OPSTATE_INITIALIZE     = 0x0001,  ///< power converter control state #1: initialize variables and hijack controller reference
-    BUCK_OPSTATE_RESET          = 0x0002,  ///< power converter control state #2: Initializing variable but bypassing delays
-    BUCK_OPSTATE_STANDBY        = 0x0003,  ///< power converter control state #3: power converter control state #2 standing by, ready to launch, waiting for GO (no action)
-    BUCK_OPSTATE_RAMPUP         = 0x0004,  ///< power converter control state #4: Startup handler sub-state machine
-    BUCK_OPSTATE_ONLINE         = 0x0005   ///< power converter control state #5: Output in regulation and power is OK (normal continuous operation)
+    BUCK_OPSTATE_ERROR          = 0x00,  ///< power converter control state #0: in case of an error, state machine will reset to RESET
+    BUCK_OPSTATE_INITIALIZE     = 0x01,  ///< power converter control state #1: initialize variables and hijack controller reference
+    BUCK_OPSTATE_RESET          = 0x02,  ///< power converter control state #2: Initializing variable but bypassing delays
+    BUCK_OPSTATE_STANDBY        = 0x03,  ///< power converter control state #3: power converter control state #2 standing by, ready to launch, waiting for GO (no action)
+    BUCK_OPSTATE_RAMPUP         = 0x04,  ///< power converter control state #4: Startup handler sub-state machine
+    BUCK_OPSTATE_ONLINE         = 0x05   ///< power converter control state #5: Output in regulation and power is OK (normal continuous operation)
         
 } BUCK_OPSTATE_t; // Enumeration of state machine operating states 
 
@@ -164,11 +164,11 @@ typedef enum BUCK_OPSTATES_e {  // Enumeration of state machine operating states
  * *************************************************************************************************** */
 typedef enum BUCK_SUBSTATES_e {  // Enumeration of state machine operating sub-states
 
-    BUCK_OPSTATE_POWER_ON_DELAY = (uint8_t)0x00,  ///< power converter control state #3: power on delay (no action)
-    BUCK_OPSTATE_PREPARE_V_RAMP = (uint8_t)0x01,  ///< power converter control state #4: turn on PWM outputs and enable controller
-    BUCK_OPSTATE_V_RAMP_UP      = (uint8_t)0x02,  ///< power converter control state #5: perform output voltage ramp up based on parameters and system response 
-    BUCK_OPSTATE_I_RAMP_UP      = (uint8_t)0x03,  ///< power converter control state #6: perform output current ramp up based on parameters and system response (average current mode only)
-    BUCK_OPSTATE_PWRGOOD_DELAY  = (uint8_t)0x04   ///< power converter control state #7: Output reached regulation point but waits until things have settled
+    BUCK_OPSTATE_POWER_ON_DELAY = 0x00,  ///< power converter control state #3: power on delay (no action)
+    BUCK_OPSTATE_PREPARE_V_RAMP = 0x01,  ///< power converter control state #4: turn on PWM outputs and enable controller
+    BUCK_OPSTATE_V_RAMP_UP      = 0x02,  ///< power converter control state #5: perform output voltage ramp up based on parameters and system response 
+    BUCK_OPSTATE_I_RAMP_UP      = 0x03,  ///< power converter control state #6: perform output current ramp up based on parameters and system response (average current mode only)
+    BUCK_OPSTATE_PWRGOOD_DELAY  = 0x04   ///< power converter control state #7: Output reached regulation point but waits until things have settled
     
 } BUCK_OP_SUBSTATES_t; // Enumeration of state machine operating sub-states 
 
@@ -179,9 +179,9 @@ typedef enum BUCK_SUBSTATES_e {  // Enumeration of state machine operating sub-s
  * *************************************************************************************************** */
 typedef enum BUCK_OPSTATE_RETURNS_e {  // Enumeration of state machine operating state return values
     
-    BUCK_OPSRET_ERROR           = 0x00,  ///< power converter state return #0: internal error occurred
-    BUCK_OPSRET_COMPLETE        = 0x01,  ///< power converter state return #1: operation state has completed
-    BUCK_OPSRET_REPEAT          = 0x02   ///< power converter state return #2: operation state is in progress and needs to be recalled
+    BUCK_OPSRET_ERROR           = 0x0000,  ///< power converter state return #0: internal error occurred
+    BUCK_OPSRET_COMPLETE        = 0x0001,  ///< power converter state return #1: operation state has completed
+    BUCK_OPSRET_REPEAT          = 0x0002   ///< power converter state return #2: operation state is in progress and needs to be recalled
         
 } BUCK_OPSTATE_RETURNS_t; // Enumeration of state machine operating state return values
 
@@ -194,14 +194,13 @@ typedef struct BUCK_STATE_ID_s
 {
     union {
     struct { 
-        volatile enum BUCK_SUBSTATES_e substate_id;
-        volatile enum BUCK_OPSTATES_e opstate_id;
+        volatile enum BUCK_OPSTATES_e opstate_id;   ///< Most recent operating state of main state machine
+        volatile enum BUCK_SUBSTATES_e substate_id; ///< Most recent operating state of active sub state machine
     } bits;
-    volatile uint16_t value;
+    volatile uint32_t value; ///> full state ID value access to main and sub-state machine state
     };
     
 } BUCK_STATE_ID_t;
-
 
 
 /*!BUCK_STARTUP_SETTINGS_t
@@ -223,7 +222,7 @@ typedef struct BUCK_STARTUP_PERIOD_HANDLER_s {
     volatile uint16_t reference;    ///< Internal dummy reference used to increment/decrement controller reference
     volatile uint16_t ref_inc_step; ///< Size/value of one reference increment/decrement or this period
     
-} BUCK_STARTUP_PERIOD_HANDLER_t; // Power converter soft-start auxiliary variables
+} BUCK_STARTUP_PERIOD_HANDLER_t; ///> Power converter soft-start auxiliary variables
 
 
 /*!BUCK_CONVERTER_STARTUP_s
@@ -240,7 +239,7 @@ typedef struct BUCK_CONVERTER_STARTUP_s {
     volatile struct BUCK_STARTUP_PERIOD_HANDLER_s i_ramp;
     volatile struct BUCK_STARTUP_PERIOD_HANDLER_s v_ramp;
     
-} BUCK_CONVERTER_STARTUP_t; // Power converter start-up settings and variables
+} BUCK_CONVERTER_STARTUP_t; ///> Power converter start-up settings and variables
 
 // ==============================================================================================
 // BUCK converter runtime data object 
@@ -261,7 +260,11 @@ typedef struct BUCK_CONVERTER_DATA_s {
     volatile uint16_t v_out;                        ///< BUCK output voltage
     volatile uint16_t temp;                         ///< BUCK board temperature
     
-}BUCK_CONVERTER_DATA_t;         // BUCK runtime data
+    volatile uint16_t control_input;                ///< BUCK most recent control input value (raw input)
+    volatile uint16_t control_error;                ///< BUCK most recent control error value
+    volatile uint16_t control_output;               ///< BUCK most recent control output value
+    
+}BUCK_CONVERTER_DATA_t;         ///< BUCK runtime data
 
 /* !BUCK_CONTROL_MODE_e
  * ***************************************************************************************************
@@ -271,7 +274,7 @@ typedef struct BUCK_CONVERTER_DATA_s {
 typedef enum {
     
     BUCK_CONTROL_MODE_VMC = 0,              ///< Voltage Mode Control
-//    BUCK_CONTROL_MODE_PCMC = 1, // Peak Current Mode Control (not supported yet)
+//    BUCK_CONTROL_MODE_PCMC = 1,           // Peak Current Mode Control (not supported yet)
     BUCK_CONTROL_MODE_ACMC = 2              ///< Average Current Mode Control
         
 } BUCK_CONTROL_MODE_e;
@@ -285,14 +288,14 @@ typedef enum {
  * to control the power control object, such as voltage and current references.
  *  
  * *************************************************************************************************** */
-typedef struct BUCK_CONVERTER_CONTROL_s {
+typedef struct BUCK_CONVERTER_SETTINGS_s {
     
     volatile BUCK_CONTROL_MODE_e control_mode;  ///< Fundamental control mode 
     volatile uint16_t no_of_phases;             ///< number of converter phases
     volatile uint16_t v_ref;                    ///< User reference setting used to control the power converter controller
     volatile uint16_t i_ref;                    ///< User reference setting used to control the power converter controller
     
-} BUCK_CONVERTER_CONTROL_t;
+} BUCK_CONVERTER_SETTINGS_t;  ///> Buck converter main settings
 
 
 /*!BUCK_LOOP_SETTINGS_s
@@ -316,12 +319,12 @@ typedef struct BUCK_LOOP_SETTINGS_s {
     // Control Loop Object
     volatile struct NPNZ16b_s* controller;  ///< pointer to control loop object data structure
     // Function pointers
-    volatile uint16_t (*ctrl_Initialization)(volatile struct NPNZ16b_s*); ///< Function pointer to INIT routine
+    volatile uint16_t (*ctrl_Initialize)(volatile struct NPNZ16b_s*); ///< Function pointer to INIT routine
     void (*ctrl_Reset)(volatile struct NPNZ16b_s*); ///< Function pointer to RESET routine
     void (*ctrl_Update)(volatile struct NPNZ16b_s*); ///< Function pointer to UPDATE routine
     void (*ctrl_Precharge)(volatile struct NPNZ16b_s*, volatile fractional, volatile fractional); ///< Function pointer to PRECHARGE routine
     
-} BUCK_LOOP_SETTINGS_t; // User defined settings for control loops; 
+} BUCK_LOOP_SETTINGS_t; ///< User defined settings for control loops; 
 
 /*!BUCK_SWITCH_NODE_SETTINGS_s
  * ***************************************************************************************************
@@ -351,7 +354,7 @@ typedef struct BUCK_SWITCH_NODE_SETTINGS_s {
     volatile uint16_t trigger_scaler;       ///< PWM triggers for ADC will be generated every n-th cycle
     volatile uint16_t trigger_offset;       ///< PWM triggers for ADC will be offset by n cycles
     
-} BUCK_SWITCH_NODE_SETTINGS_t; // Switching signal timing settings
+} BUCK_SWITCH_NODE_SETTINGS_t; ///< Switching signal timing settings
 
 /*!BUCK_ADC_INPUT_SCALING_s 
  * ***************************************************************************************************
@@ -370,7 +373,7 @@ typedef struct BUCK_ADC_INPUT_SCALING_s {
     volatile int16_t scaler; ///< Feedback number scaler used for number normalization
     volatile int16_t offset; ///< Signal offset as signed integer to be subtracted from ADC input
 
-} BUCK_ADC_INPUT_SCALING_t; // ADC input signal scaling = (ADCBUF - <offset>) * <factor> >> 2^<scaler>
+} BUCK_ADC_INPUT_SCALING_t; ///< ADC input signal scaling = (ADCBUF - <offset>) * <factor> >> 2^<scaler>
 
 /*!BUCK_ADC_INPUT_SETTINGS_s
  * ***************************************************************************************************
@@ -394,7 +397,7 @@ typedef struct BUCK_ADC_INPUT_SETTINGS_s {
     volatile bool level_trigger;            ///< input channel level trigger mode enable bit
     volatile struct BUCK_ADC_INPUT_SCALING_s scaling; ///< normalization scaling settings
 
-} BUCK_ADC_INPUT_SETTINGS_t; // ADC input channel configuration
+} BUCK_ADC_INPUT_SETTINGS_t; ///< ADC input channel configuration
 
 
 /*!BUCK_FEEDBACK_SETTINGS_s
@@ -411,7 +414,7 @@ typedef struct BUCK_FEEDBACK_SETTINGS_s {
     volatile struct BUCK_ADC_INPUT_SETTINGS_s ad_isns[BUCK_MPHASE_COUNT];   ///< ADC input sampling phase current
     volatile struct BUCK_ADC_INPUT_SETTINGS_s ad_temp;                      ///< ADC input sampling temperature
     
-} BUCK_FEEDBACK_SETTINGS_t;
+} BUCK_FEEDBACK_SETTINGS_t; ///< Buck converter feedback declarations
 
 /*!MPHBUCK_GPIO_SETTINGS_t
  * ***************************************************************************************************
@@ -430,7 +433,7 @@ typedef struct BUCK_GPIO_INSTANCE_s {
     volatile uint16_t polarity; ///< Output polarity, where 0=ACTIVE HIGH, 1=ACTIVE_LOW
     volatile uint16_t io_type;  ///< Input/Output definition (0=output, 1=input)
 
-} BUCK_GPIO_INSTANCE_t; // GPIO instance of the converter control GPIO
+} BUCK_GPIO_INSTANCE_t; ///< GPIO instance of the converter control GPIO
 
 /*!BUCK_GPIO_SETTINGS_t
  * ***************************************************************************************************
@@ -444,7 +447,7 @@ typedef struct BUCK_GPIO_SETTINGS_s {
     volatile struct BUCK_GPIO_INSTANCE_s Enable;    ///< External ENABLE input
     volatile struct BUCK_GPIO_INSTANCE_s PowerGood; ///< Power Good Output
 
-} BUCK_GPIO_SETTINGS_t; // GPIO instance of the converter control GPIO
+} BUCK_GPIO_SETTINGS_t; ///< GPIO instance of the converter control GPIO
 
 // ==============================================================================================
 // BUCK converter state machine data structure and defines
@@ -463,7 +466,7 @@ typedef struct BUCK_POWER_CONTROLLER_s
     volatile struct BUCK_CONVERTER_STATUS_s status;     ///< BUCK operation status bits 
     volatile struct BUCK_STATE_ID_s state_id;           ///< BUCK state machine operating state ID
     volatile struct BUCK_CONVERTER_STARTUP_s startup;   ///< BUCK startup timing settings 
-    volatile struct BUCK_CONVERTER_CONTROL_s set_values;///< Control field for global access to references
+    volatile struct BUCK_CONVERTER_SETTINGS_s set_values;///< Control field for global access to references
     volatile struct BUCK_CONVERTER_DATA_s data;         ///< BUCK runtime data
     volatile struct BUCK_FEEDBACK_SETTINGS_s feedback;  ///< BUCK converter feedback settings
 
@@ -473,7 +476,7 @@ typedef struct BUCK_POWER_CONTROLLER_s
     volatile struct BUCK_LOOP_SETTINGS_s v_loop;        ///< BUCK voltage control loop object
     volatile struct BUCK_LOOP_SETTINGS_s i_loop[BUCK_MPHASE_COUNT]; ///< BUCK Current control loop objects
     
-} BUCK_POWER_CONTROLLER_t; // BUCK control & monitoring data structure
+} BUCK_POWER_CONTROLLER_t; ///< BUCK control & monitoring data structure
 
 
 //#else

@@ -28,7 +28,7 @@ volatile uint16_t __attribute__((always_inline)) SubState_IRampUp(volatile struc
 volatile uint16_t __attribute__((always_inline)) SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 
 // Function pointer array of buck converter startup sub-states
-volatile uint16_t (*BuckConverterSubStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) = {
+volatile uint16_t (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) = {
 
     SubState_PowerOnDelay,      // Sub-State #0: Wait programmed number of state machine ticks until startup is triggered
     SubState_PrepareVRampUp,    // Sub-State #1: Determine ramp up condition, pre-charge controllers and program PWM/Peripherals
@@ -39,7 +39,7 @@ volatile uint16_t (*BuckConverterSubStateMachine[])(volatile struct BUCK_POWER_C
 };
 
 // buck converter sub-state machine function pointer array size
-volatile uint16_t BuckSubStateList_size = (sizeof(BuckConverterSubStateMachine)/sizeof(BuckConverterSubStateMachine[0])); 
+volatile uint16_t BuckRampUpSubStateList_size = (sizeof(BuckConverterRampUpSubStateMachine)/sizeof(BuckConverterRampUpSubStateMachine[0])); 
 
 /*@@SubState_PowerOnDelay
  * *********************************************************************************
@@ -69,12 +69,12 @@ volatile uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s 
         buckInstance->startup.power_on_delay.counter = 
             (buckInstance->startup.power_on_delay.period + 1); // Saturate power on counter
 
-        retval = BUCK_OPSTATE_POWER_ON_DELAY; 
+        retval = BUCK_OPSRET_COMPLETE; 
     }
     else
-    // When the period has expired, move on to next state
+    // When the period has not expired yet, return to this function
     {
-        retval = BUCK_OPSTATE_PREPARE_V_RAMP;
+        retval = BUCK_OPSRET_REPEAT;
     }    
 
     return(retval);
@@ -200,10 +200,10 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
     }
     else
     {
-        return(BUCK_OPSTATE_INITIALIZE);
+        return(BUCK_OPSRET_ERROR);
     }
 
-    return(BUCK_OPSTATE_V_RAMP_UP);
+    return(BUCK_OPSRET_COMPLETE);
     
 }
 
@@ -255,6 +255,11 @@ volatile uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buck
                 buckInstance->i_loop[_i].controller->status.bits.enabled = true; 
             }
         }
+        // IF control mode is set to unsupported control mode, return error
+        else
+        {
+            return(BUCK_OPSRET_ERROR);
+        }
 
     }
 
@@ -270,16 +275,13 @@ volatile uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buck
         // Reconnect API reference to controller
         buckInstance->v_loop.controller->Ports.ptrControlReference = &buckInstance->v_loop.reference;
 
-        if (buckInstance->set_values.control_mode == BUCK_CONTROL_MODE_VMC)
-            retval = BUCK_OPSTATE_PWRGOOD_DELAY;
-        else if (buckInstance->set_values.control_mode == BUCK_CONTROL_MODE_ACMC)
-            retval = BUCK_OPSTATE_I_RAMP_UP;
-
+        retval = BUCK_OPSRET_COMPLETE;
+        
     }
     else
     // remain in this state until ramp is complete
     {
-        retval = BUCK_OPSTATE_V_RAMP_UP;
+        retval = BUCK_OPSRET_REPEAT;
     }
 
     
@@ -322,18 +324,18 @@ volatile uint16_t SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buck
         {
             buckInstance->v_loop.maximum = buckInstance->set_values.i_ref;
             buckInstance->v_loop.controller->Limits.MaxOutput = buckInstance->v_loop.maximum;
-            retval = BUCK_OPSTATE_PWRGOOD_DELAY;
+            retval = BUCK_OPSRET_COMPLETE;
         }
         else
         // if ramp is not complete yet, remain in this state
         {
-            retval = BUCK_OPSTATE_I_RAMP_UP;
+            retval = BUCK_OPSRET_REPEAT;
         }
     }
     else // Non-Current Loops Ending up here need to be lifted to PG_DELAY
     { 
         buckInstance->v_loop.controller->Limits.MaxOutput = buckInstance->v_loop.maximum;
-        retval = BUCK_OPSTATE_PWRGOOD_DELAY; 
+        retval = BUCK_OPSRET_COMPLETE; 
     }
 
     return(retval);
@@ -375,12 +377,12 @@ volatile uint16_t SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_
                 return(BUCK_OPSTATE_ERROR);
         }
         
-        retval = BUCK_OPSTATE_ONLINE;
+        retval = BUCK_OPSRET_COMPLETE;
     }
     else
     // if period has not expired yet, remain in this state
     {
-        retval = BUCK_OPSTATE_PWRGOOD_DELAY;
+        retval = BUCK_OPSRET_REPEAT;
     }
 
     return(retval);

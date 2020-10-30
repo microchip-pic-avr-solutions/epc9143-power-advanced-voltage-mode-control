@@ -60,7 +60,7 @@ volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_POWER_CONTRO
     retval &= buckADC_ChannelInitialize(&buckInstance->feedback.ad_vin);  // Initialize Input Voltage Channel
     retval &= buckADC_ChannelInitialize(&buckInstance->feedback.ad_vout); // Initialize Output Voltage Channel
     
-    for (_i=0; _i<buckInstance->set_values.phases; _i++) // Reset phase current values
+    for (_i=0; _i<buckInstance->set_values.no_of_phases; _i++) // Reset phase current values
         retval &= buckADC_ChannelInitialize(&buckInstance->feedback.ad_isns[_i]); // Initialize Phase Current Channel
     
     retval &= buckGPIO_Initialize(buckInstance); // Initialize additional control IOs
@@ -70,7 +70,7 @@ volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_POWER_CONTRO
     
     if (buckInstance->set_values.control_mode == BUCK_CONTROL_MODE_ACMC) { // In current mode...
      
-        for (_i=0; _i<buckInstance->set_values.phases; _i++) // Reset phase current values
+        for (_i=0; _i<buckInstance->set_values.no_of_phases; _i++) // Reset phase current values
         { buckInstance->i_loop[_i].controller->status.bits.enabled = false; } // Disable current loop
     
     }
@@ -98,27 +98,38 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
     volatile uint16_t retval=1;
     
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    /* NULL POINTER PROTECTION                                                            */
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    // If no buck instance has been declared, leave here
+    if(buckInstance == NULL)
+        return(0);
+    
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     /* DISABLE-RESET                                                                      */
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    // When enable status has changed from ENABLED to DISABLED, reset the state machine
-    if ((!buckInstance->status.bits.enabled) || 
+    // When enable status has changed from ENABLED to DISABLED or a fault condition 
+    // is active, reset the state machine and hold it in RESET state
+    if ((!buckInstance->status.bits.enabled) || (buckInstance->status.bits.suspend) ||
         (buckInstance->status.bits.fault_active))
     {
         if (!buckInstance->status.bits.ready)
             buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE;
         else
             buckInstance->state_id.value = BUCK_OPSTATE_RESET;
+        
+        retval = BuckConverterStateMachine[buckInstance->state_id.bits.opstate_id](buckInstance);
+        
+        return((bool)(retval>0)); // Return
     }    
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     /* FUNCTION CALL PROTECTION                                                           */
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    // If the state array pointer is out of range, roll over and start from first 
+    // valid state
     if(buckInstance->state_id.bits.opstate_id >= BuckStateList_size)
         buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE;
-    
-    if(buckInstance == NULL)
-        return(0);
     
     if (BuckConverterStateMachine[buckInstance->state_id.bits.opstate_id] == NULL)
         return(0);
@@ -132,14 +143,18 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
         /* If state machine state returns ERROR, switch to ERROR state in next execution cycle */
         case BUCK_OPSRET_ERROR:
             
-            buckInstance->state_id.value = BUCK_OPSTATE_ERROR;
+            buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE;
             retval = 0;
             break;
             
         /* IF state machine state signals state completion, move on to next state in line */
         case BUCK_OPSRET_COMPLETE:
             
-            if (++buckInstance->state_id.value >= BuckStateList_size)
+            // Increment main operating state pointer by one tick
+            buckInstance->state_id.value = (buckInstance->state_id.bits.opstate_id++);
+            
+            // Check if new index is out of range, reset to RESET if so
+            if (buckInstance->state_id.value >= BuckStateList_size)
                 buckInstance->state_id.value = BUCK_OPSTATE_RESET;
 
             retval = 1;
@@ -147,14 +162,15 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
             
         /* When state machine state returns REPEAT, the recent state function will be called again */
         case BUCK_OPSRET_REPEAT:
-            
+            // Do nothing, same state will be called next time
             retval = 1;
             break;
             
         /* When state machine state returns an unknown result, the 
          * state machine will be reset to INITIALIZE again */
         default:
-            
+            // In case an undefined return value has been received,
+            // REset state machine and start from scratch
             buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE;
             retval = 0;
             break;
