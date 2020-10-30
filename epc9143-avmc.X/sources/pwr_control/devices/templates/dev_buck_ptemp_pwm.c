@@ -1,12 +1,12 @@
 /*
- * File:   dev_buck_templates.c
+ * File:   dev_buck_ptemp_pwm.c
  * Author: M91406
  *
  * Created on October 29, 2020, 10:31 AM
  */
 
-
-#include "dev_buck_templates.h"
+#include "xc16_pral.h" // include peripehral register abstraction layer drivers
+#include "dev_buck_ptemp_pwm.h" // include peripheral register configuration values header
 
 // PWM module default configuration
 volatile struct P33C_PWM_MODULE_s buckPwmModuleConfig = 

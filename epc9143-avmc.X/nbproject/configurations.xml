@@ -35,6 +35,11 @@
             <itemPath>sources/pwr_control/app_power_control.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="devices" projectFiles="true">
+            <logicalFolder name="f1" displayName="templates" projectFiles="true">
+              <itemPath>sources/pwr_control/devices/templates/dev_buck_ptemp_pwm.h</itemPath>
+              <itemPath>sources/pwr_control/devices/templates/dev_buck_ptemp_adc.h</itemPath>
+              <itemPath>sources/pwr_control/devices/templates/dev_buck_ptemp_dac.h</itemPath>
+            </logicalFolder>
             <itemPath>sources/pwr_control/devices/dev_buck_converter.h</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_opstates.h</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_pconfig.h</itemPath>
@@ -88,11 +93,15 @@
             <itemPath>sources/pwr_control/app_power_control_isr.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="devices" projectFiles="true">
+            <logicalFolder name="f1" displayName="templates" projectFiles="true">
+              <itemPath>sources/pwr_control/devices/templates/dev_buck_ptemp_pwm.c</itemPath>
+              <itemPath>sources/pwr_control/devices/templates/dev_buck_ptemp_adc.c</itemPath>
+              <itemPath>sources/pwr_control/devices/templates/dev_buck_ptemp_dac.c</itemPath>
+            </logicalFolder>
             <itemPath>sources/pwr_control/devices/dev_buck_converter.c</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_pconfig.c</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_opstates.c</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_substates.c</itemPath>
-            <itemPath>sources/pwr_control/devices/dev_buck_templates.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="drivers" projectFiles="true">
             <itemPath>sources/pwr_control/drivers/v_loop.c</itemPath>
