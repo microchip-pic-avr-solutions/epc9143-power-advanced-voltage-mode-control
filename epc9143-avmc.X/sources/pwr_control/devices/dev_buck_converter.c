@@ -105,7 +105,23 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
         return(0);
     
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    /* DISABLE-RESET                                                                      */
+    /* CAPTURE ENABLE PIN STATE IF ENABLED BY USER CODE                                   */
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    if(buckInstance->gpio.EnableInput.enabled)
+    {
+        // Capture Enable Input pin status (1=high, 0=low)
+        uint16_t pin_state = buckGPIO_GetPinState(&buckInstance->gpio.EnableInput);
+        
+        if(!buckInstance->gpio.EnableInput.polarity)
+        // If POLARITY setting 0 = Active High (default)
+            buckInstance->status.bits.enabled = (bool)(pin_state == 1);
+        else
+        // If POLARITY setting 1 = Active Low
+            buckInstance->status.bits.enabled = (bool)(pin_state == 0);
+    }
+    
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    /* DISABLE/SUSPEND/FAULT-RESET                                                                      */
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     // When enable status has changed from ENABLED to DISABLED or a fault condition 
     // is active, reset the state machine and hold it in RESET state
