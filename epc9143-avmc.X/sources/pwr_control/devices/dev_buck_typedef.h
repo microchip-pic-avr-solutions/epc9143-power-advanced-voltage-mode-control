@@ -445,7 +445,7 @@ typedef struct BUCK_GPIO_INSTANCE_s {
  * *************************************************************************************************** */
 typedef struct BUCK_GPIO_SETTINGS_s {
     
-    volatile struct BUCK_GPIO_INSTANCE_s Enable;    ///< External ENABLE input
+    volatile struct BUCK_GPIO_INSTANCE_s EnableInput; ///< External ENABLE input
     volatile struct BUCK_GPIO_INSTANCE_s PowerGood; ///< Power Good Output
 
 } BUCK_GPIO_SETTINGS_t; ///< GPIO instance of the converter control GPIO

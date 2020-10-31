@@ -331,7 +331,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     // Initialize additional GPIOs 
     
     // ~~~ EXTERNAL ENABLE INPUT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    buck.gpio.Enable.enabled = false; // this converter doesn't support external enable control
+    buck.gpio.EnableInput.enabled = false; // this converter doesn't support external enable control
     // ~~~ EXTERNAL ENABLE INPUT END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     // ~~~ POWER GOOD OUTPUT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
