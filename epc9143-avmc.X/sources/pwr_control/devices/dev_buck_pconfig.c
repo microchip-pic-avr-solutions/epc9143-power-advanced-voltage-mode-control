@@ -235,7 +235,11 @@ volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInst
         retval &= (volatile uint16_t)((volatile bool)(pg->PGxCONL.bits.ON == 0));
 
     }
-        
+
+    // If defined, reset POWER_GOOD output
+    if(buckInstance->gpio.PowerGood.enabled)
+        retval &= buckGPIO_Clear(&buckInstance->gpio.PowerGood);
+    
     return(retval);    
 }
 
@@ -274,6 +278,10 @@ volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckI
         retval &= (bool)(pg->PGxIOCONL.value & P33C_PGxIOCONL_OVREN);
 
     }
+    
+    // If defined, reset POWER_GOOD output
+    if(buckInstance->gpio.PowerGood.enabled)
+        retval &= buckGPIO_Clear(&buckInstance->gpio.PowerGood);
     
     return(retval);    
 }
@@ -699,13 +707,16 @@ volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* b
     volatile uint16_t retval=1;
 
     // Initialize ENABLE input pin
-    if(buckInstance->gpio.Enable.enabled)
-        retval = buckGPIO_PrivateInitialize(&buckInstance->gpio.Enable);
+    if(buckInstance->gpio.EnableInput.enabled)
+        retval = buckGPIO_PrivateInitialize(&buckInstance->gpio.EnableInput);
     
     // Initialize POWER GOOD output pin
     if(buckInstance->gpio.PowerGood.enabled)
         retval = buckGPIO_PrivateInitialize(&buckInstance->gpio.PowerGood);
 
+    // If defined, reset POWER_GOOD output
+    if(buckInstance->gpio.PowerGood.enabled)
+        retval &= buckGPIO_Clear(&buckInstance->gpio.PowerGood);
 
     return(retval);
     
