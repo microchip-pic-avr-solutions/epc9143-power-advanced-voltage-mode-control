@@ -552,16 +552,23 @@ volatile uint16_t buckADC_Start(void)
 volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
 {
     volatile uint16_t retval=1;
+    volatile uint16_t filter_mask=0;
     volatile struct P33C_GPIO_INSTANCE_s* gpio;
 
     // Capture register of GPIO port
     gpio = p33c_GpioInstance_GetHandle(buckGPIOInstance->port);
     
+    // Capture filter mask
+    filter_mask = (0x0001 << buckGPIOInstance->pin);
+        
     // Set pin to ACTIVE state
     if (buckGPIOInstance->polarity == 0)
-        gpio->LATx.value |= (0x0001 << buckGPIOInstance->pin); // Set pin bit in register
+        gpio->LATx.value |= (filter_mask); // Set pin bit in register
     else
-        gpio->LATx.value &= ~(0x0001 << buckGPIOInstance->pin); // Clear pin bit in register            
+        gpio->LATx.value &= ~(filter_mask); // Clear pin bit in register            
+
+    // Verifying the set state is applied at the pin
+    retval = (bool)((gpio->LATx.value & filter_mask) == (gpio->PORTx.value & filter_mask));
     
     return(retval);
 }
@@ -581,16 +588,23 @@ volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOIns
 volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
 {
     volatile uint16_t retval=1;
+    volatile uint16_t filter_mask=0;
     volatile struct P33C_GPIO_INSTANCE_s* gpio;
 
     // Capture register of GPIO port
     gpio = p33c_GpioInstance_GetHandle(buckGPIOInstance->port);
     
+    // Capture filter mask
+    filter_mask = (0x0001 << buckGPIOInstance->pin);
+        
     // Set pin to INACTIVE state
     if (buckGPIOInstance->polarity == 0)
-        gpio->LATx.value &= ~(0x0001 << buckGPIOInstance->pin); // Clear pin bit in register            
+        gpio->LATx.value &= ~(filter_mask); // Clear pin bit in register            
     else
-        gpio->LATx.value |= (0x0001 << buckGPIOInstance->pin); // Set pin bit in register
+        gpio->LATx.value |= (filter_mask); // Set pin bit in register
+    
+    // Verifying the set state is applied at the pin
+    retval = (bool)((gpio->LATx.value & filter_mask) == (gpio->PORTx.value & filter_mask));
     
     return(retval);
 }
