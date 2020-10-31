@@ -227,7 +227,7 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
  * *********************************************************************************/
 volatile uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
 {
-    volatile uint16_t retval=0;
+    volatile uint16_t retval=1;
     volatile uint16_t _i=0;
     
     // Set BUSY bit until process is complete
