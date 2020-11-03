@@ -243,7 +243,7 @@ volatile uint16_t State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
             // Increment sub-state pointer by one tick
             buckInstance->state_id.bits.substate_id++;
             
-            // CHeck if pointer is out of range
+            // Check if pointer is out of range
             if (buckInstance->state_id.bits.substate_id < BuckRampUpSubStateList_size)
             { // if execution list is not complete yet, return op-state as REPEAT
                 retval = BUCK_OPSRET_REPEAT;
