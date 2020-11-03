@@ -52,10 +52,19 @@
 #include <stdbool.h> // include standard boolean types  
 #include <stddef.h> // include standard definitions  
 
-/**FLT_COMPARE_TYPE_e enumeration
- * *********************************************************************************
+/**
+ * 
+ * @defgroup fault_handler_enum Fault Handler Enumeration
+ * @ingroup fault_handler
+ * @{
+ */
+
+
+/***********************************************************************************
  * @enum FLT_COMPARE_TYPE_e
  * @brief This data structure is comprise of fault comparison types
+ * 
+ * @extends FLT_OBJECT_STATUS_s
  * ********************************************************************************/
 
 typedef enum FLT_COMPARE_TYPE_e {
@@ -70,11 +79,19 @@ typedef enum FLT_COMPARE_TYPE_e {
         
 } FLT_COMPARE_TYPE_t;
 
-/**FLT_OBJECT_STATUS_s data structure
- * ********************************************************************************
+/** @} */ // end of group
+
+/**
+ * @defgroup fault_handler_struct Fault Handler Data Structure
+ * @ingroup fault_handler
+ * @{
+ */
+
+/**********************************************************************************
  * @struct FLT_OBJECT_STATUS_s
  * @brief This data structure defines the fault object status
- * 
+ *
+ * @extends FAULT_OBJECT_s
  * ********************************************************************************/
 
 typedef struct FLT_OBJECT_STATUS_s{
@@ -94,10 +111,12 @@ typedef struct FLT_OBJECT_STATUS_s{
     
 } FLT_OBJECT_STATUS_t;	// Fault object status
 
-/** FLT_COMPARE_OBJECT_s data structure
- * ********************************************************************************
+
+/**********************************************************************************
  * @struct FLT_COMPARE_OBJECT_s
  * @brief This data structure defines the fault compare status
+ * 
+ * @extends FAULT_OBJECT_s
  * ********************************************************************************/
 
 typedef struct FLT_COMPARE_OBJECT_s {
@@ -107,10 +126,12 @@ typedef struct FLT_COMPARE_OBJECT_s {
     
 } FLT_COMPARE_OBJECT_t;	// Fault compare object
 
-/**FLT_EVENT_RESPONSE_s data structure
- * ********************************************************************************
+
+/**********************************************************************************
  * @struct FLT_EVENT_RESPONSE_s
  * @brief This data structure defines the fault monitor event response object
+ * 
+ * @extends FAULT_OBJECT_s
  * ********************************************************************************/
 
 typedef struct FLT_EVENT_RESPONSE_s {
@@ -121,12 +142,11 @@ typedef struct FLT_EVENT_RESPONSE_s {
     
 } FLT_EVENT_RESPONSE_t;	// Fault monitor event response object
 
-/**FAULT_OBJECT_s data structure
- * ********************************************************************************
+
+/**********************************************************************************
  * @struct FAULT_OBJECT_s
  * @brief This data structure is a collection of data structures for fault handling.
  * ********************************************************************************/
-
 typedef struct FAULT_OBJECT_s {
 
 	volatile struct FLT_OBJECT_STATUS_s  Status;           ///< Status word of this fault object
@@ -138,6 +158,7 @@ typedef struct FAULT_OBJECT_s {
 
 } FAULT_OBJECT_t; // 
 
+/** @} */ // end of group
 // Public Fault Configuration Templates
 extern volatile struct FAULT_OBJECT_s fltobjClear;
 

@@ -59,7 +59,10 @@ extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer
                                                 // Calls the AGC Factor Modulation Function (Assembly)
 
 
-
+/**
+ * @addtogroup power_handler_struct
+ * @{
+ */
 /*!BUCK_POWER_CONTROLLER_s data structure
  * *************************************************************************************************
  * @brief Global data object for a BUCK CONVERTER 
@@ -71,14 +74,6 @@ extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer
  *  
  * *************************************************************************************************/
 volatile struct BUCK_POWER_CONTROLLER_s  buck;
-
-/* PRIVATE FUNCTION PROTOTYPES */
-volatile uint16_t appPowerSupply_ConverterObjectInitialize(void);
-volatile uint16_t appPowerSupply_ControllerInitialize(void);
-volatile uint16_t appPowerSupply_PeripheralsInitialize(void);
-
-void appPowerSupply_CurrentBalancing(void); 
-void appPowerSupply_CurrentSenseCalibration(void);
 
 
 /* CURRENT SENSE CALIBRATION */
@@ -92,11 +87,35 @@ typedef struct CS_CALIBRATION_s {
     
 volatile struct CS_CALIBRATION_s calib_cs1;
 volatile struct CS_CALIBRATION_s calib_cs2;
+/** @} */ // end of group
+
+/* PRIVATE FUNCTION PROTOTYPES */
+volatile uint16_t appPowerSupply_ConverterObjectInitialize(void);
+volatile uint16_t appPowerSupply_ControllerInitialize(void);
+volatile uint16_t appPowerSupply_PeripheralsInitialize(void);
+
+void appPowerSupply_CurrentBalancing(void); 
+void appPowerSupply_CurrentSenseCalibration(void);
 
 /* *************************************************************************************************
  * PUBLIC FUNCTIONS
  * ************************************************************************************************/
+/**
+ * @defgroup power_handler_function Power Handler Functions
+ * @ingroup power_handler
+ * @{
+ */
 
+/*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_Initialize(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
+ * 
+ *********************************************************************************/
 volatile uint16_t appPowerSupply_Initialize(void)
 { 
     volatile uint16_t retval=1;
@@ -117,24 +136,20 @@ volatile uint16_t appPowerSupply_Initialize(void)
     return(retval); 
 }
 
-/* @@appPowerSupply_Execute
- * ********************************************************************************
- * Summary:
- * This is the top-level function call calling the most recent state machine response
+/*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_Execute(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief This is the top-level function call calling the most recent state machine response
  * 
- * Parameters:
- *      (none)
- * 
- * Returns:
- *      unsigned integer    (0=failure, 1=success)
- * 
- * Description:
+ * <b>Description</b> 
  * After initialization, the proprietary user code has to call this function 
  * on a deterministic, constant time base. In each execution step this function
  * will call the power control state machines of each supported/included power
  * supply unit. 
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t appPowerSupply_Execute(void)
 { 
@@ -181,17 +196,16 @@ volatile uint16_t appPowerSupply_Execute(void)
     return(retval); 
 }
 
-/* @@appPowerSupply_Dispose
- * ********************************************************************************
- * Summary:
+/*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_Dispose(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
  * 
- * Parameters:
- * 
- * Returns:
- * 
- * Description:
- * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t appPowerSupply_Dispose(void)
 { 
@@ -211,17 +225,16 @@ volatile uint16_t appPowerSupply_Dispose(void)
     return(retval); 
 }
 
-/* @@appPowerSupply_Suspend
- * ********************************************************************************
- * Summary:
+/*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_Suspend(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
  * 
- * Parameters:
- * 
- * Returns:
- * 
- * Description:
- * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t appPowerSupply_Suspend(void)
 { 
@@ -234,17 +247,16 @@ volatile uint16_t appPowerSupply_Suspend(void)
     return(retval); 
 }
 
-/* @@appPowerSupply_Resume
- * ********************************************************************************
- * Summary:
+/*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_Resume(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
  * 
- * Parameters:
- * 
- * Returns:
- * 
- * Description:
- * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t appPowerSupply_Resume(void)
 { 
@@ -259,6 +271,17 @@ volatile uint16_t appPowerSupply_Resume(void)
 /* *************************************************************************************************
  * PRIVATE FUNCTIONS
  * ************************************************************************************************/
+
+/*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
+ * 
+ *********************************************************************************/
 
 volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
 {
@@ -465,17 +488,17 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     return(retval);
 }
 
-/* @@appPowerSupply_PeripheralsInitialize
- * ********************************************************************************
- * Summary:
+
+/*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
  * 
- * Parameters:
- * 
- * Returns:
- * 
- * Description:
- * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
 {
@@ -502,17 +525,16 @@ volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
     return(retval);
 }
 
-/* @@appPowerSupply_ControllerInitialize
- * ********************************************************************************
- * Summary:
+/*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_ControllerInitialize(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
  * 
- * Parameters:
- * 
- * Returns:
- * 
- * Description:
- * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t appPowerSupply_ControllerInitialize(void)
 {
@@ -613,17 +635,17 @@ volatile uint16_t appPowerSupply_ControllerInitialize(void)
 }
 
 
-/* @@appPowerSupply_CurrentBalancing
- * ********************************************************************************
- * Summary:
+/*******************************************************************************
+ * @fn	inline void appPowerSupply_CurrentBalancing(void) 
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
  * 
- * Parameters:
- * 
- * Returns:
- * 
- * Description:
- * 
- * ********************************************************************************/
+ *********************************************************************************/
+
 inline void appPowerSupply_CurrentBalancing(void) 
 {
     static int16_t offset=0;
@@ -646,17 +668,16 @@ inline void appPowerSupply_CurrentBalancing(void)
 
 }
 
-/* @@appPowerSupply_CurrentSenseCalibration
- * ********************************************************************************
- * Summary:
+/*******************************************************************************
+ * @fn	inline void appPowerSupply_CurrentSenseCalibration(void) 
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
  * 
- * Parameters:
- * 
- * Returns:
- * 
- * Description:
- * 
- * ********************************************************************************/
+ *********************************************************************************/
 inline void appPowerSupply_CurrentSenseCalibration(void)
 {
     // Current Calibration Procedure
@@ -686,6 +707,5 @@ inline void appPowerSupply_CurrentSenseCalibration(void)
     
 }
 
-
-// END OF FILE
 /** @} */ // end of group
+// END OF FILE
