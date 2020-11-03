@@ -42,7 +42,7 @@
 #define	FAULT_HANDLER_H
 
 /**
- * 
+ * @grouporder 3
  * @defgroup fault_handler Fault Handler Reference
  * @{
  */

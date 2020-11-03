@@ -54,6 +54,7 @@
 #include "config/epc9143_r40_hwdescr.h"
 
 /**
+ * @grouporder 2
  * @defgroup power_handler Power Control Handler Reference
  * @{
  */

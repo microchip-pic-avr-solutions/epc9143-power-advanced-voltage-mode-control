@@ -6,8 +6,9 @@
  */
 
 /**
- * @mainpage EPC9143KIT : 300 W 1/16 th Brick Evaluation Module
- * @section overview Overview
+ * @grouporder 1
+ * @defgroup A_short_Desc Short Description
+ * @section summary Summary
  * Brick DC-DC converters are widely used in data center, telecommunication and
  *  automotive applications, converting a nominal 48 V to different output nominal
  *  voltages such as 5 V, 9 V or 12 V. The standard dimension of the 1/16th brick 

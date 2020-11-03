@@ -63,9 +63,9 @@ extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer
  * @addtogroup power_handler_struct
  * @{
  */
-/*!BUCK_POWER_CONTROLLER_s data structure
- * *************************************************************************************************
- * @brief Global data object for a BUCK CONVERTER 
+/**************************************************************************************************
+ * @stuct BUCK_POWER_CONTROLLER_s 
+ *  @brief Global data object for a BUCK CONVERTER 
  * 
  * <b>Description:</b>
  * The 'buck' data object holds all status, control and monitoring values of the BUCK power 
@@ -78,13 +78,20 @@ volatile struct BUCK_POWER_CONTROLLER_s  buck;
 
 /* CURRENT SENSE CALIBRATION */
 #define  CS_CALIB_STEPS         8
+/*******************************************************************************
+ * @struct	CS_CALIBRATION_s
+ * @brief
+ *  
+ * <b>Description</b> 
+ * 
+ *********************************************************************************/
 typedef struct CS_CALIBRATION_s {
     
     volatile uint16_t cs_calib_cnt;
     volatile uint16_t cs_calib_offset;
     
 } CS_CALIBRATION_t;
-    
+
 volatile struct CS_CALIBRATION_s calib_cs1;
 volatile struct CS_CALIBRATION_s calib_cs2;
 /** @} */ // end of group
