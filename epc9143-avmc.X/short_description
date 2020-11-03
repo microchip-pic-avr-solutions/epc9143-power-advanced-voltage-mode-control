@@ -1,6 +1,4 @@
-Compensated Loop Voltage Mode with Current Balancing Control 
-============================================================
-
+/** @subsection CLVM Compensated Loop Voltage Mode with Current Balancing Control 
 This code example establishes a closed loop control system using voltage mode control
 of the multiphase buck converter of EPC9143. 
 

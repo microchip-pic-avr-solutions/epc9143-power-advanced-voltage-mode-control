@@ -6,12 +6,6 @@
  *   10/28/20   1.0  initial version
  */
 
-/** 
- * \file dev_buck_opstates.c
- * \brief Functions of the buck converter state machine operating states
- * \defgroup buck_state_machine Buck Converter State Machine 
- */
-
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h> // include standard integer data types
 #include <stdbool.h> // include standard boolean data types
