@@ -27,9 +27,7 @@ The main function of this fault handler is restricted to detecting fault conditi
 * Automatic trigger of user-defined software function when a fault condition trips
 * Automatic trigger of user-defined software function when a fault condition is released
 
-**Integration Template and Test Container:**
-* Function and code integration can be reviewed in [code example CE200](https://bitbucket.microchip.com/projects/MCU16ASMPSCE/repos/p33c_ce200/browse).
-
 **History:**
 * 03/13/2020 v1.0 Initial release by M91406
+* 11/02/2020 v2.0 Enhanced version with generic trap handler by M91406
 
