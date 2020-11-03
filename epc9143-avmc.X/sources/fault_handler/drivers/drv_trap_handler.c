@@ -56,7 +56,7 @@
 #include <xc.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include "common/fdrv_TrapHandler.h"
+#include "drv_trap_handler.h"
 
 // data structure used as buffer for trap monitoring
 volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog; 
