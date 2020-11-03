@@ -47,6 +47,8 @@
 
 #include "p33smps_devices.h" // Include extended device identifier macros
 
+#if defined (__P33SMPS_CK__) || defined (__P33SMPS_CH__)
+
 #include "p33c_ccp.h"  // include capture/compare instance SFR abstraction driver file
 #include "p33c_dac.h"  // include digital-to-analog converter module & instance SFR abstraction driver file
 #include "p33c_dsp.h"  // include DSP configuration SFR abstraction driver file
@@ -56,6 +58,9 @@
 
 #include "p33c_macros.h"  // include dsPIC33C CPU macros
 
+#else
+    #pragma message "warning: currently selected device is not supported by XC16 Periperhal Register Abstraction Layer (PRAL) drivers"
+#endif
 
 #endif // End of MCAL_P33C_SFR_ABSTRACTION_DRIVER_H
 // END OF FILE

@@ -80,18 +80,18 @@ volatile uint16_t State_Initialize(volatile struct BUCK_POWER_CONTROLLER_s *buck
     
     if (buckInstance->set_values.control_mode == BUCK_CONTROL_MODE_ACMC) // In current mode...
     {
-        for (_i=0; _i<BUCK_NO_OF_PHASES; _i++) {
+        for (_i=0; _i<buckInstance->set_values.no_of_phases; _i++) {
             buckInstance->i_loop[_i].controller->status.bits.enabled = false; // Disable current loop
         }        
     }
     
     // Clear busy bit
-    buckInstance->status.bits.fault_active = true; // set fault bit to be cleared by fault handler
-    buckInstance->status.bits.ready = false; // Clear ready bit
+    //buckInstance->status.bits.fault_active = true; // set fault bit to be cleared by fault handler
     buckInstance->status.bits.busy = false; // Clear BUSY bit
+    buckInstance->status.bits.ready = true; // Set READY bit indicating state machine has passed INITIALIZED state
     
     // Transition to STATE_RESET
-    return(BUCK_OPSTATE_RESET); 
+    return(BUCK_OPSRET_COMPLETE); 
     
 }
 
@@ -123,7 +123,7 @@ volatile uint16_t State_Reset(volatile struct BUCK_POWER_CONTROLLER_s *buckInsta
     // Disable current loop controller and reset control loop histories
     if (buckInstance->set_values.control_mode == BUCK_CONTROL_MODE_ACMC) 
     {   // Disable all current control loops and reset control loop histories
-        for (_i=0; _i<BUCK_NO_OF_PHASES; _i++) {
+        for (_i=0; _i<buckInstance->set_values.no_of_phases; _i++) {
             buckInstance->i_loop[_i].controller->status.bits.enabled = false; 
             buckInstance->i_loop[_i].ctrl_Reset(buckInstance->i_loop[_i].controller); 
             *buckInstance->i_loop[_i].controller->Ports.Target.ptrAddress = 
@@ -134,14 +134,18 @@ volatile uint16_t State_Reset(volatile struct BUCK_POWER_CONTROLLER_s *buckInsta
     // Reset the bulk voltage settling counters
     buckInstance->startup.power_on_delay.counter = 0; // Clear Power On Delay counter
     buckInstance->startup.power_good_delay.counter = 0; // Clear Power Good Delay counter
+
+    // Reset all status bits
+    buckInstance->status.bits.adc_active = false;
+    buckInstance->status.bits.busy = false; // Clear BUSY bit
     
-    // If any sub-function calls went unsuccessful, reset state machine
+    // If any sub-function call went unsuccessful, reset state machine
     // else, move on to next state
     
     if (retval)
-        return(BUCK_OPSTATE_STANDBY);
+        return(BUCK_OPSRET_COMPLETE);
     else
-        return(BUCK_OPSTATE_INITIALIZE);
+        return(BUCK_OPSRET_ERROR);
     
 }
                 
@@ -173,31 +177,52 @@ volatile uint16_t State_Standby(volatile struct BUCK_POWER_CONTROLLER_s *buckIns
         (buckInstance->status.bits.adc_active) &&       // ADC needs to be running
         (buckInstance->status.bits.pwm_active) &&       // PWM needs to be running 
         (!buckInstance->status.bits.fault_active) &&    // No active fault is present
-        (buckInstance->status.bits.cs_calib_complete)      // Current Sensor Calibration complete
+        (!buckInstance->status.bits.suspend) &&         // Power supply is not held in suspend mode
+        (buckInstance->status.bits.cs_calib_complete)   // Current Sensor Calibration complete
         )
     {
         buckInstance->status.bits.GO = false;
-        buckInstance->status.bits.ready = true;
-        return(BUCK_OPSTATE_POWER_ON_DELAY);
+        return(BUCK_OPSRET_COMPLETE);
     }
     else
     // Remain in current state until bit-test becomes true
     {
-        return(BUCK_OPSTATE_STANDBY);
+        return(BUCK_OPSRET_REPEAT);
     }
     
 }
+
+/*@@State_RampUp
+ * *********************************************************************************
+ * Parameters:
+ *   - BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * 
+ * Returns:
+ *   - uint16_t   16-bit unsigned integer
+ *          0 = BUCK_OPSRET_REPEAT
+ *          1 = BUCK_OPSRET_COMPLETE
+ *          2 = BUCK_OPSRET_REPEAT
+ * 
+ * Description:
+ * After a successful state machine reset, the state machine waits in  
+ * STANDBY mode until all conditional flag bits are set/cleared allowing  
+ * the converter to run. 
+ * *********************************************************************************/
 
 volatile uint16_t State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
 {
     volatile uint16_t retval=0;
     
+    // If sub-state pointer index is out of range, reset to ZERO
+    if (buckInstance->state_id.bits.substate_id >= BuckRampUpSubStateList_size)
+        buckInstance->state_id.bits.substate_id = 0;
+    
     // If selected sub-state index contains a NULL-pointer, exit here
-    if (BuckConverterSubStateMachine[buckInstance->state_id.bits.opstate_id] == NULL)
+    if (BuckConverterRampUpSubStateMachine[buckInstance->state_id.bits.substate_id] == NULL)
         return(BUCK_OPSRET_ERROR);
     
     // Execute ramp-up sub-state
-    retval = BuckConverterSubStateMachine[buckInstance->state_id.bits.substate_id](buckInstance);
+    retval = BuckConverterRampUpSubStateMachine[buckInstance->state_id.bits.substate_id](buckInstance);
     
     // Validate sub-state function return
     switch (retval) 
@@ -215,7 +240,11 @@ volatile uint16_t State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
         // State_RampUp again
         case BUCK_OPSRET_COMPLETE:
 
-            if (++buckInstance->state_id.bits.substate_id < BuckSubStateList_size)
+            // Increment sub-state pointer by one tick
+            buckInstance->state_id.bits.substate_id++;
+            
+            // Check if pointer is out of range
+            if (buckInstance->state_id.bits.substate_id < BuckRampUpSubStateList_size)
             { // if execution list is not complete yet, return op-state as REPEAT
                 retval = BUCK_OPSRET_REPEAT;
 
@@ -273,8 +302,6 @@ volatile uint16_t State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
  * *********************************************************************************/
 volatile uint16_t State_Online(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
 {
-    volatile uint16_t retval=0;
-    
     if(buckInstance->set_values.v_ref != buckInstance->v_loop.reference) 
     {
         // Set the BUSY bit indicating a delay/ramp period being executed
@@ -306,9 +333,7 @@ volatile uint16_t State_Online(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
     }
 
     // remain in STATE_ONLINE
-    retval = BUCK_OPSTATE_ONLINE;
-
-    return(retval);
+    return(BUCK_OPSRET_REPEAT);
     
 }
 
@@ -334,9 +359,13 @@ volatile uint16_t State_Error(volatile struct BUCK_POWER_CONTROLLER_s *buckInsta
     // by resetting it to INITIALIZE
     
     retval = buckPWM_Suspend(buckInstance);             // Hold PWM output (turning off power)
-
     buckInstance->status.bits.busy = false;             // Reset busy bit
-    buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE; // Reset state machine to INITIALIZE
+
+    if(retval)
+        retval = BUCK_OPSRET_COMPLETE;
+    else
+        retval = BUCK_OPSRET_ERROR;
+
     
     return(retval);
 }

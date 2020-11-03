@@ -20,24 +20,29 @@
  */
 
 /* 
- * File:   p33c_macros.h
+ * File:   dev_buck_templates.h
  * Author: M91406
- * Comments: Header files providing inline assembly macros for basic CPU instructions
+ * Comments: Peripheral Special Function Register Configuration Templates
  * Revision history: 
- * 1.0	Initial release		06/22/20
+ *   10/29/2020     1.0     initial release
  */
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef P33C_CPU_MACROS_H
-#define	P33C_CPU_MACROS_H
+#ifndef BUCK_CONVERTER_PERIPHERAL_CONFIGURATION_TEMPLATES_H
+#define	BUCK_CONVERTER_PERIPHERAL_CONFIGURATION_TEMPLATES_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
+#include <stdint.h> // include standard integer data types
+#include <stdbool.h> // include standard boolean data types
+#include <stddef.h> // include standard definition data types
 
-#define WDT_RESET()     asm volatile ("CRLWDT\n")
-#define PWRSAV_IDLE()   asm volatile ("PWRSAV #1\n")
-#define PWRSAV_SLEEP()  asm volatile ("PWRSAV #0\n")
-#define CPU_RESET()     asm volatile ("RESET\n")
+#include "xc16_pral.h" // include peripehral register abstraction layer drivers
 
-#endif	/* P33C_CPU_MACROS_H */
+#include "templates/dev_buck_ptemp_pwm.h" // Include PWM configuration template header file
+#include "templates/dev_buck_ptemp_adc.h" // Include ADC configuration template header file
+#include "templates/dev_buck_ptemp_dac.h" // Include DAC configuration template header file
+
+
+#endif	/* BUCK_CONVERTER_PERIPHERAL_CONFIGURATION_TEMPLATES_H */
 

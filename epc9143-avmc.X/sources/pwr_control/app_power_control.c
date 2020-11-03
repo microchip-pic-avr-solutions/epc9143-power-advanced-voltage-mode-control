@@ -170,13 +170,14 @@ volatile uint16_t appPowerSupply_Execute(void)
     buck.data.i_sns[1] = BUCK_ISNS2_ADCBUF;
     
     // Accumulate phase currents
-    for (_i=0; _i<buck.set_values.phases; _i++) 
+    for (_i=0; _i<buck.set_values.no_of_phases; _i++) 
     { i_dummy += buck.data.i_sns[_i]; }
     buck.data.i_out = i_dummy; // Set output current value
 
     // Check conditional parameters and fault flags
-    buck.status.bits.power_source_detected = (bool)
-        ((BUCK_VIN_UVLO_TRIP < buck.data.v_in) && (buck.data.v_in<BUCK_VIN_OVLO_TRIP));
+    // ToDo: remove - flag has been replaced by fault handler function
+//    buck.status.bits.power_source_detected = (bool)
+//        ((BUCK_VIN_UVLO_TRIP < buck.data.v_in) && (buck.data.v_in<BUCK_VIN_OVLO_TRIP));
     
     // Execute buck converter state machine
     retval &= drv_BuckConverter_Execute(&buck);
@@ -221,7 +222,7 @@ volatile uint16_t appPowerSupply_Dispose(void)
 
     buck.status.value = 0;
     
-    for (_i=0; _i<buck.set_values.phases; _i++) // Reset phase current values
+    for (_i=0; _i<buck.set_values.no_of_phases; _i++) // Reset phase current values
     { buck.data.i_sns[0] = 0; }
     buck.data.i_out = 0; // Reset output current value
     buck.data.v_out = 0; // Reset output voltage value
@@ -248,8 +249,6 @@ volatile uint16_t appPowerSupply_Suspend(void)
     volatile uint16_t retval=1;
 
     retval &= drv_BuckConverter_Suspend(&buck); // Shut down PWM immediately
-    buck.status.bits.fault_active = true; // Set FAULT flag
-    buck.state_id.value = BUCK_OPSTATE_RESET; // Reset State Machine (causes loop reset)
 
     return(retval); 
 }
@@ -269,8 +268,7 @@ volatile uint16_t appPowerSupply_Resume(void)
 { 
     volatile uint16_t retval=0;
 
-    buck.state_id.value = BUCK_OPSTATE_RESET;       // Ensure State Machine is RESET
-    buck.status.bits.enabled = true;    // Ensure Buck Converter is enabled
+    retval &= drv_BuckConverter_Resume(&buck); // Shut down PWM immediately
     
     return(retval); 
 }
@@ -300,7 +298,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.status.bits.ready = false; // Clear Converter Ready flag
     buck.status.bits.adc_active = false; // Clear ADC STARTED flag
     buck.status.bits.pwm_active = false; // clear PWM STARTED flag
-    buck.status.bits.power_source_detected = false; // Clear POWER SOURCE DETECTED flag
+//    buck.status.bits.power_source_detected = false; // Clear POWER SOURCE DETECTED flag // ToDo: remove
     buck.status.bits.cs_calib_complete = false; // Clear Current Sense Calibration flag
     buck.status.bits.fault_active = true; // Set global FAULT flag
     buck.status.bits.cs_calib_enable = BUCK_ISNS_NEED_CALIBRATION; // Topology current sensors need to be calibrated
@@ -314,10 +312,10 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.set_values.control_mode = BUCK_CONTROL_MODE_VMC; // Set Control Mode
     buck.set_values.i_ref = BUCK_ISNS_REF; // Set current loop reference
     buck.set_values.v_ref = BUCK_VOUT_REF; // Set voltage loop reference
-    buck.set_values.phases = BUCK_NO_OF_PHASES; // Set number of converter phases
+    buck.set_values.no_of_phases = BUCK_NO_OF_PHASES; // Set number of converter phases
     
     // Clear Runtime Data
-    for (_i=0; _i<buck.set_values.phases; _i++) // Reset phase current values
+    for (_i=0; _i<buck.set_values.no_of_phases; _i++) // Reset phase current values
     { buck.data.i_sns[0] = 0; }
     buck.data.i_out = 0; // Reset output current value
     buck.data.v_out = 0; // Reset output voltage value
@@ -330,6 +328,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.sw_node[0].gpio_high = BUCK_PWM1_GPIO_PORT_PINH;
     buck.sw_node[0].gpio_low = BUCK_PWM1_GPIO_PORT_PINL;
     buck.sw_node[0].master_period_enable = true;
+	buck.sw_node[0].high_resolution_enable = true;
     buck.sw_node[0].period = BUCK_PWM_PERIOD;
     buck.sw_node[0].phase = BUCK_PWM_PHASE_SHIFT; 
     buck.sw_node[0].duty_ratio_min = BUCK_PWM_DC_MIN;
@@ -347,6 +346,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.sw_node[1].gpio_high = BUCK_PWM2_GPIO_PORT_PINH;
     buck.sw_node[1].gpio_low = BUCK_PWM2_GPIO_PORT_PINL;
     buck.sw_node[1].master_period_enable = true;
+	buck.sw_node[1].high_resolution_enable = true;
     buck.sw_node[1].period = BUCK_PWM_PERIOD;
     buck.sw_node[1].phase = BUCK_PWM_PHASE_SHIFT; 
     buck.sw_node[1].duty_ratio_min = BUCK_PWM_DC_MIN;
@@ -361,7 +361,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     // Initialize additional GPIOs 
     
     // ~~~ EXTERNAL ENABLE INPUT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    buck.gpio.Enable.enabled = false; // this converter doesn't support external enable control
+    buck.gpio.EnableInput.enabled = false; // this converter doesn't support external enable control
     // ~~~ EXTERNAL ENABLE INPUT END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     // ~~~ POWER GOOD OUTPUT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -558,13 +558,13 @@ volatile uint16_t appPowerSupply_ControllerInitialize(void)
     
      // Set Controller Object of Voltage Loop
     buck.v_loop.controller = &v_loop;
-    buck.v_loop.ctrl_Initialization = &v_loop_Initialize;
+    buck.v_loop.ctrl_Initialize = &v_loop_Initialize;
     buck.v_loop.ctrl_Update = &v_loop_Update;
     buck.v_loop.ctrl_Reset = &v_loop_Reset;
     buck.v_loop.ctrl_Precharge = &v_loop_Precharge;
     
     // Configure Voltage Loop Controller Object
-    buck.v_loop.ctrl_Initialization(&v_loop);   // Call Initialization Routine setting histories and scaling
+    buck.v_loop.ctrl_Initialize(&v_loop);   // Call Initialization Routine setting histories and scaling
     
     // Configure controller input ports
     buck.v_loop.controller->Ports.Source.ptrAddress = &BUCK_VOUT_ADCBUF; // Output Voltage is Common Source
