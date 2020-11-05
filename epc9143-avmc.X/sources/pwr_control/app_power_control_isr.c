@@ -13,23 +13,28 @@
  * **************************************************************************************************
  * 
  * **************************************************************************************************/
-
-/* @@_BUCK_VLOOP_Interrupt
- * ********************************************************************************
- * Summary: Main Control Interrupt
+/**
+ * @addtogroup power_handler
+ * @{
+ */
+/**
+ * @addtogroup power_handler_function
+ * @{
+ */
+/*********************************************************************************
+ * @fn void _BUCK_VLOOP_Interrupt(void)
+ * @brief Main Control Interrupt
  * 
- * Parameters:
- *  (none)
+ * @param NONE
  * 
- * Returns:
- *  (none)
- * 
- * Description:
+ * @return NONE
+ *   
+ * <b>Description<b>
  * The control interrupt is calling the control loop. The point in time where
  * this interrupt is thrown is determined by selecting the BUCK_VOUT_TRIGGER_MODE
  * option. 
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void)
 {
@@ -55,3 +60,5 @@ void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void
 //    PWRGOOD_CLEAR;
     
 }
+/**@}*/
+/**@}*/

@@ -41,11 +41,7 @@
 #ifndef FAULT_HANDLER_H
 #define	FAULT_HANDLER_H
 
-/**
- * @grouporder 3
- * @defgroup fault_handler Fault Handler Reference
- * @{
- */
+
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h> // include standard integer types 
@@ -54,18 +50,22 @@
 
 /**
  * 
+ * @defgroup fault_handler Fault Handler Reference
+ * @{
+ */
+
+/**
+ * 
  * @defgroup fault_handler_enum Fault Handler Enumeration
  * @ingroup fault_handler
  * @{
  */
-
-
 /***********************************************************************************
  * @enum FLT_COMPARE_TYPE_e
  * @brief This data structure is comprise of fault comparison types
  * 
  * @extends FLT_OBJECT_STATUS_s
- * ********************************************************************************/
+ *********************************************************************************/
 
 typedef enum FLT_COMPARE_TYPE_e {
     
@@ -92,7 +92,7 @@ typedef enum FLT_COMPARE_TYPE_e {
  * @brief This data structure defines the fault object status
  *
  * @extends FAULT_OBJECT_s
- * ********************************************************************************/
+ *********************************************************************************/
 
 typedef struct FLT_OBJECT_STATUS_s{
 
@@ -117,7 +117,7 @@ typedef struct FLT_OBJECT_STATUS_s{
  * @brief This data structure defines the fault compare status
  * 
  * @extends FAULT_OBJECT_s
- * ********************************************************************************/
+ *********************************************************************************/
 
 typedef struct FLT_COMPARE_OBJECT_s {
     
@@ -132,7 +132,7 @@ typedef struct FLT_COMPARE_OBJECT_s {
  * @brief This data structure defines the fault monitor event response object
  * 
  * @extends FAULT_OBJECT_s
- * ********************************************************************************/
+ *********************************************************************************/
 
 typedef struct FLT_EVENT_RESPONSE_s {
     
@@ -146,7 +146,7 @@ typedef struct FLT_EVENT_RESPONSE_s {
 /**********************************************************************************
  * @struct FAULT_OBJECT_s
  * @brief This data structure is a collection of data structures for fault handling.
- * ********************************************************************************/
+ *********************************************************************************/
 typedef struct FAULT_OBJECT_s {
 
 	volatile struct FLT_OBJECT_STATUS_s  Status;           ///< Status word of this fault object
@@ -159,12 +159,22 @@ typedef struct FAULT_OBJECT_s {
 } FAULT_OBJECT_t; // 
 
 /** @} */ // end of group
+
+/**
+ * @defgroup fault_trap Fault Trap Handler
+ * @ingroup fault_handler
+ * @{
+ * @}
+ */
+
+
+/** @} */ // end of group
 // Public Fault Configuration Templates
 extern volatile struct FAULT_OBJECT_s fltobjClear;
 
+
 // Public Function Prototypes
 extern volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj);
-    
+
 #endif	/* FAULT_HANDLER_H */
 
-/** @} */ // end of group

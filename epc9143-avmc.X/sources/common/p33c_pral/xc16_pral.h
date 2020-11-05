@@ -21,12 +21,11 @@
  * THIRD PARTIES (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
  *
  * ***********************************************************************************************/
-/*@@xc16_pral.h
- * ************************************************************************************************
- * Summary:
- * Generic Peripheral Special Function Register Abstraction Layer Header Files
+/*************************************************************************************************
+ * @file xc16_pral.h
+ * @brief Generic Peripheral Special Function Register Abstraction Layer Header Files
  *
- * Description:
+ * <b>Description</b>
  * This additional header file contains include paths to header files providing additional 
  * peripheral special function register abstraction drivers. These PRAL drivers provide 
  * abstracted data structures of peripheral module and instance register sets used as virtual
@@ -49,14 +48,14 @@
 
 #if defined (__P33SMPS_CK__) || defined (__P33SMPS_CH__)
 
-#include "p33c_ccp.h"  // include capture/compare instance SFR abstraction driver file
-#include "p33c_dac.h"  // include digital-to-analog converter module & instance SFR abstraction driver file
-#include "p33c_dsp.h"  // include DSP configuration SFR abstraction driver file
-#include "p33c_gpio.h" // include GPIO instance SFR abstraction driver file
-#include "p33c_pps.h"  // include peripheral pin select SFR abstraction driver file
-#include "p33c_pwm.h"  // include high-speed pwm module & instance SFR abstraction driver file
+#include "p33c_ccp.h"  ///< include capture/compare instance SFR abstraction driver file
+#include "p33c_dac.h"  ///< include digital-to-analog converter module & instance SFR abstraction driver file
+#include "p33c_dsp.h"  ///< include DSP configuration SFR abstraction driver file
+#include "p33c_gpio.h" ///< include GPIO instance SFR abstraction driver file
+#include "p33c_pps.h"  ///< include peripheral pin select SFR abstraction driver file
+#include "p33c_pwm.h"  ///< include high-speed pwm module & instance SFR abstraction driver file
 
-#include "p33c_macros.h"  // include dsPIC33C CPU macros
+#include "p33c_macros.h"  ///< include dsPIC33C CPU macros
 
 #else
     #pragma message "warning: currently selected device is not supported by XC16 Periperhal Register Abstraction Layer (PRAL) drivers"

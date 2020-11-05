@@ -24,20 +24,21 @@ volatile uint16_t __attribute__((always_inline)) ovlo_FaultInitialize(void);
 volatile uint16_t __attribute__((always_inline)) ocp_FaultInitialize(void);
 volatile uint16_t __attribute__((always_inline)) regerr_FaultInitialize(void);
 
-/* @@appFaults_Initialize
- * ********************************************************************************
- * Summary:
- *   Initialization of user-defined fault objects
+/**
+ * @addtogroup fault_handler
+ * @addtogroup fault_handler_function
+ * @{ 
+ */
+
+/*********************************************************************************
+ * @fn volatile uint16_t appFaultMonitor_Initialize(void)
+ * @brief  Initialization of user-defined fault objects
+ * @param (none)
+ * @return unsigned integer   (0=failure, 1=success)
  * 
- * Parameters:
- *   (none)
+ * <b>Description</b>
  * 
- * Returns:
- *   unsigned integer   (0=failure, 1=success)
- * 
- * Description:
- * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t appFaultMonitor_Initialize(void) 
 {
@@ -52,23 +53,19 @@ volatile uint16_t appFaultMonitor_Initialize(void)
     return(retval);
 }
 
-/* @@appFaults_Dispose
- * ********************************************************************************
- * Summary:
- *   Function clearing all fault object settings
+
+/*********************************************************************************
+ * @fn volatile uint16_t appFaultMonitor_Dispose(void) 
+ * @brief Function clearing all fault object settings
+ * @param (none)
+ * @return unsigned integer   (0=failure, 1=success)
  * 
- * Parameters:
- *   (none)
- * 
- * Returns:
- *   unsigned integer   (0=failure, 1=success)
- * 
- * Description:
+ * <b>Description</b>
  *   This function is used to clear all fault objects settings. Once cleared,
  *   the fault objects are detached from memory addresses and cannot be used
  *   for fault monitoring anymore until they have been re-initialized.
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t appFaultMonitor_Dispose(void) 
 {
@@ -80,18 +77,13 @@ volatile uint16_t appFaultMonitor_Dispose(void)
     return(1);
 }
 
-/* @@appFaultMonitor_Execute
- * ********************************************************************************
- * Summary:
- *   Application wide fault object monitoring routine
+/*********************************************************************************
+ * @fn volatile uint16_t appFaultMonitor_Execute(void)  
+ * @brief Application wide fault object monitoring routine
+ * @param (none)
+ * @return unsigned integer   (0=failure, 1=success)
  * 
- * Parameters:
- *   (none)
- * 
- * Returns:
- *   unsigned integer   (0=failure, 1=success)
- * 
- * Description:
+ * <b>Description</b>
  *   In this function all user-defined fault objects are monitored for 
  *   threshold violations. While fault responses are triggered by each 
  *   fault object individually, system recovery from a fault condition is 
@@ -99,7 +91,7 @@ volatile uint16_t appFaultMonitor_Dispose(void)
  *   individual fault status bits are combined into a common fault bit, 
  *   which needs to be cleared to allow the power supply to start-up again.
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t appFaultMonitor_Execute(void) 
 {
@@ -138,20 +130,15 @@ volatile uint16_t appFaultMonitor_Execute(void)
  * ********************************************************************************/
 
 
-/* @@uvlo_FaultInitialize
- * ********************************************************************************
- * Summary:
+/*********************************************************************************
+ * @fn volatile uint16_t uvlo_FaultInitialize(void)
+ * @brief 
+ * @param (none)
+ * @return unsigned integer   (0=failure, 1=success)
  * 
- * Parameters:
- *   (none)
+ * <b>Description</b>
  * 
- * Returns:
- *   unsigned integer   (0=failure, 1=success)
- * 
- * Description:
- * 
- * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t uvlo_FaultInitialize(void)
 {
@@ -184,19 +171,15 @@ volatile uint16_t uvlo_FaultInitialize(void)
     
 }
 
-/* @@<function_name>
- * ********************************************************************************
- * Summary:
+/*********************************************************************************
+ * @fn volatile uint16_t ovlo_FaultInitialize(void)
+ * @brief 
+ * @param (none)
+ * @return unsigned integer   (0=failure, 1=success)
  * 
- * Parameters:
- *   (none)
+ * <b>Description</b>
  * 
- * Returns:
- *   unsigned integer   (0=failure, 1=success)
- * 
- * Description:
- * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t ovlo_FaultInitialize(void)
 {
@@ -228,20 +211,15 @@ volatile uint16_t ovlo_FaultInitialize(void)
     
 }
     
-/* @@<function_name>
- * ********************************************************************************
- * Summary:
+/*********************************************************************************
+ * @fn volatile uint16_t regerr_FaultInitialize(void)
+ * @brief 
+ * @param (none)
+ * @return unsigned integer   (0=failure, 1=success)
  * 
- * Parameters:
- *   (none)
+ * <b>Description</b>
  * 
- * Returns:
- *   unsigned integer   (0=failure, 1=success)
- * 
- * Description:
- * 
- * ********************************************************************************/
-
+ *********************************************************************************/
 volatile uint16_t regerr_FaultInitialize(void)
 {
     volatile uint16_t retval=1;
@@ -272,20 +250,15 @@ volatile uint16_t regerr_FaultInitialize(void)
     
 }
     
-/* @@<function_name>
- * ********************************************************************************
- * Summary:
+/*********************************************************************************
+ * @fn volatile uint16_t ocp_FaultInitialize(void)
+ * @brief 
+ * @param (none)
+ * @return unsigned integer   (0=failure, 1=success)
  * 
- * Parameters:
- *   (none)
+ * <b>Description</b>
  * 
- * Returns:
- *   unsigned integer   (0=failure, 1=success)
- * 
- * Description:
- * 
- * ********************************************************************************/
-
+ *********************************************************************************/
 volatile uint16_t ocp_FaultInitialize(void)
 {
     volatile uint16_t retval=1;
@@ -315,5 +288,5 @@ volatile uint16_t ocp_FaultInitialize(void)
     return(retval);
     
 }
-    
+/**@}*/    
 // END OF FILE
