@@ -48,36 +48,34 @@
 
 #include "fault_handler/app_faults_monitor.h" // include fault monitor application object declarations
 
-/**
- * @addtogroup power_handler
- * @{
- */
+
 
 // ADVANCED CONTROL FUNCTION DECLARATIONS
 
 extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer to nPnZ data type object
                                                 // Calls the AGC Factor Modulation Function (Assembly)
 
-
 /**
+ * @addtogroup power_handler
  * @addtogroup power_handler_struct
  * @{
  */
 /**************************************************************************************************
- * @stuct BUCK_POWER_CONTROLLER_s 
- *  @brief Global data object for a BUCK CONVERTER 
+ * @struct BUCK_POWER_CONTROLLER_s 
+ * @brief Global data object for a BUCK CONVERTER 
  * 
  * <b>Description:</b>
  * The 'buck' data object holds all status, control and monitoring values of the BUCK power 
  * controller. The BUCK_POWER_CONTROLLER_s data structure is defined in dev_buck_converter.h.
  * Please refer to the comments on top of this file for further information.
  *  
- * *************************************************************************************************/
+ **************************************************************************************************/
 volatile struct BUCK_POWER_CONTROLLER_s  buck;
 
 
 /* CURRENT SENSE CALIBRATION */
 #define  CS_CALIB_STEPS         8
+
 /*******************************************************************************
  * @struct	CS_CALIBRATION_s
  * @brief
@@ -108,11 +106,11 @@ void appPowerSupply_CurrentSenseCalibration(void);
  * PUBLIC FUNCTIONS
  * ************************************************************************************************/
 /**
- * @defgroup power_handler_function Power Handler Functions
+ * @addtogroup power_handler
+ * @defgroup power_handler_function Power Control Handler Functions
  * @ingroup power_handler
  * @{
  */
-
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Initialize(void)
  * @param	None
@@ -713,6 +711,5 @@ inline void appPowerSupply_CurrentSenseCalibration(void)
     return;
     
 }
-
 /** @} */ // end of group
 // END OF FILE

@@ -62,15 +62,30 @@
 volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog; 
 
 
-/*!init_SoftTraps
- * *************************************************************************************************
- * Summary:
- * Configures the software-configurable traps
+/**
+ * @addtogroup fault_handler
+ * @addtogroup fault_trap
+ * @defgroup fault_trap_function Fault Trap Handler Functions
+ * @ingroup fault_trap
+ * @{ 
+ */
+
+/**************************************************************************************************
+ * @fn volatile uint16_t drv_TrapHandler_SoftTrapsInitialize(
+                bool accumulator_a_overflow_trap_enable, 
+                bool accumulator_b_overflow_trap_enable, 
+                bool accumulator_catastrophic_overflow_trap_enable)
+
+ * @brief Configures the software-configurable traps
+ * @param bool accumulator_a_overflow_trap_enable
+ * @param bool accumulator_b_overflow_trap_enable
+ * @param bool accumulator_catastrophic_overflow_trap_enable
+ * @return
  * 
- * Description:
+ * <b>Description</b>
  * This routine sets the DSP-specific traps for overflow-events of accumulator A and B. 
  * 
- * ************************************************************************************************/
+ *************************************************************************************************/
 volatile uint16_t drv_TrapHandler_SoftTrapsInitialize(
                 bool accumulator_a_overflow_trap_enable, 
                 bool accumulator_b_overflow_trap_enable, 
@@ -84,19 +99,18 @@ volatile uint16_t drv_TrapHandler_SoftTrapsInitialize(
 }
 
 
-/*!DefaultTrapHandler
- * *************************************************************************************************
- * Summary:
- * Centralized trap handler routine
+/**************************************************************************************************
+ * @fn void DefaultTrapHandler(enum TRAP_ID_e trap_id)
+ * @brief Centralized trap handler routine
  * 
- * Description:
+ * <b>Description</b>
  * This routine is used as centralized trap handler for all traps. Each trap is identified 
  * and logged by a unique trap ID and the status bits of traps and interrupt vectors are 
  * captured
  * 
  * Users may modify the basic framework provided here to suit to the needs of their application.
  *
- * ************************************************************************************************/
+ *************************************************************************************************/
 void DefaultTrapHandler(enum TRAP_ID_e trap_id) {
 
     // Capture Trap logger values
@@ -191,7 +205,7 @@ void __attribute__((interrupt, no_auto_psv)) _StackError(void) {
 void __attribute__((interrupt, no_auto_psv)) _MathError(void) {
     DefaultTrapHandler(TRAP_MATH_ERROR);
 }
-
+/**@}*/
 #if (TRAP_DMA_SUPPORT == 1)
 #if defined (_DMACError)
 // =================================================================================================

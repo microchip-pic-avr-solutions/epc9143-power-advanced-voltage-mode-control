@@ -50,10 +50,6 @@
 #include "devices/dev_buck_typedef.h"    // include buck converter object declarations
 #include "pwr_control/drivers/npnz16b.h" // include NPNZ control loop object declarations
 
-/**
- * @addtogroup power_handler
- * @{
- */
 
 /*!BUCK_POWER_CONTROLLER_t
  * *************************************************************************************************
@@ -78,4 +74,3 @@ extern volatile uint16_t appPowerSupply_Resume(void);
   #pragma message "app_power_control.h inclusion bypassed"
 #endif	/* APPLICATION_LAYER_POWER_CONTROL_H */
 
-/** @} */ // end of group

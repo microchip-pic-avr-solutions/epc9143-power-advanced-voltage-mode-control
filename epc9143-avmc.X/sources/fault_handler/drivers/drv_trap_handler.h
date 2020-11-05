@@ -60,20 +60,33 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h> // include standard integer types header file
 #include <stdbool.h> // include standard boolean types header file
-		
-// =================================================================================================
-//
-//	DMA ERROR TRAP SUPPORT
-//
-// =================================================================================================
 
-// Compile-switch determine if DMA is supported on selected device
+/**
+ * @addtogroup fault_handler
+ * @addtogroup fault_trap
+ * @{ 
+ */
+
+/**
+ * @defgroup THV Trap Handler Variable
+ * @ingroup fault_trap
+ * @{
+ */
+/**********************************************************************************
+ * @var TRAP_DMA_SUPPORT
+ * @brief defining trap-ID for primary and secondary vectors 
+ *********************************************************************************/
 #if ((__HAS_DMA__) || (__HAS_DMAV2__))
-  #define TRAP_DMA_SUPPORT			1		// Device supports DMA
+  #define TRAP_DMA_SUPPORT			1		///< Device supports DMA
 #else
-  #define TRAP_DMA_SUPPORT			0		// Device does not support DMA
+  #define TRAP_DMA_SUPPORT			0		///< Device does not support DMA
 #endif
-									
+
+
+#define FAULT_OBJECT_CPU_RESET_TRIGGER_BIT_MASK     0b0000000000000001
+#define CPU_RESET_TRIGGER_LOW_BIT_MASK 0b00000000000000011011101110000000 ///< This define is used to filter on critical fault conditions used to trigger a CPU reset
+
+/**@}*/
 
 // =================================================================================================
 //
@@ -81,33 +94,42 @@
 //
 // =================================================================================================
 
+/**
+ * @defgroup THE Trap Handler Enumeration
+ * @ingroup fault_trap
+ * @{
+ */
 
+/**********************************************************************************
+ * @enum TRAP_ID_e
+ * @brief defining trap-ID for primary and secondary vectors 
+ *********************************************************************************/
 typedef enum TRAP_ID_e
 {
-	TRAP_OSCILLATOR_FAIL		= 0x0001,	// Trap ID for primary exception vector
-	TRAP_ADDRESS_ERROR			= 0x0002,	// Trap ID for primary exception vector
-	TRAP_STACK_ERROR			= 0x0004,	// Trap ID for primary exception vector
-	TRAP_MATH_ERROR				= 0x0008,	// Trap ID for primary exception vector
-	TRAP_DMA_ERROR				= 0x0010,	// Trap ID for primary exception vector
+	TRAP_OSCILLATOR_FAIL		= 0x0001,	///< Trap ID for primary exception vector
+	TRAP_ADDRESS_ERROR			= 0x0002,	///< Trap ID for primary exception vector
+	TRAP_STACK_ERROR			= 0x0004,	///< Trap ID for primary exception vector
+	TRAP_MATH_ERROR				= 0x0008,	///< Trap ID for primary exception vector
+	TRAP_DMA_ERROR				= 0x0010,	///< Trap ID for primary exception vector
 
-    TRAP_SOFT_TRAP_ERROR        = 0x0020,   // Trap ID for generic soft trap exception vector
-    TRAP_HARD_TRAP_ERROR        = 0x0040,   // Trap ID for generic hard trap exception vector
-    TRAP_RESERVED_TRAP_5_ERROR  = 0x0080,   // Trap ID for generic exception vector
-    TRAP_RESERVED_TRAP_7_ERROR  = 0x0080,   // Trap ID for generic exception vector
+    TRAP_SOFT_TRAP_ERROR        = 0x0020,   ///< Trap ID for generic soft trap exception vector
+    TRAP_HARD_TRAP_ERROR        = 0x0040,   ///< Trap ID for generic hard trap exception vector
+    TRAP_RESERVED_TRAP_5_ERROR  = 0x0080,   ///< Trap ID for generic exception vector
+    TRAP_RESERVED_TRAP_7_ERROR  = 0x0080,   ///< Trap ID for generic exception vector
 
-	TRAP_ALT_OSCILLATOR_FAIL	= 0x0100,	// Trap ID for alternate exception vector
-	TRAP_ALT_ADDRESS_ERROR		= 0x0200,	// Trap ID for alternate exception vector
-	TRAP_ALT_STACK_ERROR		= 0x0400,	// Trap ID for alternate exception vector
-	TRAP_ALT_MATH_ERROR			= 0x0800,	// Trap ID for alternate exception vector
-	TRAP_ALT_DMA_ERROR			= 0x1000,	// Trap ID for alternate exception vector
+	TRAP_ALT_OSCILLATOR_FAIL	= 0x0100,	///< Trap ID for alternate exception vector
+	TRAP_ALT_ADDRESS_ERROR		= 0x0200,	///< Trap ID for alternate exception vector
+	TRAP_ALT_STACK_ERROR		= 0x0400,	///< Trap ID for alternate exception vector
+	TRAP_ALT_MATH_ERROR			= 0x0800,	///< Trap ID for alternate exception vector
+	TRAP_ALT_DMA_ERROR			= 0x1000,	///< Trap ID for alternate exception vector
 
-    TRAP_ALT_SOFT_TRAP_ERROR    = 0x2000,   // Trap ID for alternate generic soft trap exception vector
-    TRAP_ALT_HARD_TRAP_ERROR    = 0x4000,   // Trap ID for alternate generic hard trap exception vector
+    TRAP_ALT_SOFT_TRAP_ERROR    = 0x2000,   ///< Trap ID for alternate generic soft trap exception vector
+    TRAP_ALT_HARD_TRAP_ERROR    = 0x4000,   ///< Trap ID for alternate generic hard trap exception vector
         
-	TRAP_RESET_MSK				= 0x7F1F	// Bit Mask to filter used bits only
+	TRAP_RESET_MSK				= 0x7F1F	///< Bit Mask to filter used bits only
 
 } TRAP_ID_t;
-
+/**@}*/
 
 // =================================================================================================
 //
@@ -115,35 +137,43 @@ typedef enum TRAP_ID_e
 //
 // =================================================================================================
 
-// This define is used to filter on critical fault conditions used to trigger a CPU reset
-#define CPU_RESET_TRIGGER_LOW_BIT_MASK 0b00000000000000011011101110000000
+/**
+ * @defgroup THS Trap Handler Data Structure
+ * @ingroup fault_trap
+ * @{
+ */
 
+/**********************************************************************************
+ * @struct TRAP_FLAGS_s
+ * @brief 
+ *
+ *********************************************************************************/
 typedef struct TRAP_FLAGS_s
 {
     union {
     struct {
 
-        volatile unsigned OVAERR    :1; // Bit #0:  Accumulator A Overflow Trap Flag bit
-        volatile unsigned OVBERR    :1; // Bit #1:  Accumulator B Overflow Trap Flag bit
-        volatile unsigned COVAERR   :1; // Bit #2:  Accumulator A Catastrophic Overflow Trap Flag bit
-        volatile unsigned COVBERR   :1; // Bit #3:  Accumulator B Catastrophic Overflow Trap Flag bit
-        volatile unsigned SFTACERR  :1; // Bit #4:  Shift Accumulator Error Status bit
-        volatile unsigned DIV0ERR   :1; // Bit #5:  Divide-by-Zero Error Status bit
-        volatile unsigned MATHERR   :1; // Bit #6:  Math Error Status bit
-        volatile unsigned ADDRERR   :1; // Bit #7:  Address Error Trap Status bit
-        volatile unsigned STKERR    :1; // Bit #8:  Stack Error Trap Status bit
-        volatile unsigned OSCFAIL   :1; // Bit #9:  Oscillator Failure Trap Status bit
-        volatile unsigned SWTRAP    :1; // Bit #10: Software Trap Status bit
-        volatile unsigned NAE       :1; // Bit #11: NVM Address Error Soft Trap Status bit
-        volatile unsigned DOOVR     :1; // Bit #12: DO Stack Overflow Soft Trap Status bit
-        volatile unsigned APLL      :1; // Bit #13: Auxiliary PLL Loss of Lock Soft Trap Status bit
-        volatile unsigned SGHT      :1; // Bit #14: Software Generated Hard Trap Status bit
-        volatile unsigned DMACERR   :1; // Bit #15: DMA Trap Status bit
+        volatile unsigned OVAERR    :1; ///< Bit #0:  Accumulator A Overflow Trap Flag bit
+        volatile unsigned OVBERR    :1; ///< Bit #1:  Accumulator B Overflow Trap Flag bit
+        volatile unsigned COVAERR   :1; ///< Bit #2:  Accumulator A Catastrophic Overflow Trap Flag bit
+        volatile unsigned COVBERR   :1; ///< Bit #3:  Accumulator B Catastrophic Overflow Trap Flag bit
+        volatile unsigned SFTACERR  :1; ///< Bit #4:  Shift Accumulator Error Status bit
+        volatile unsigned DIV0ERR   :1; ///< Bit #5:  Divide-by-Zero Error Status bit
+        volatile unsigned MATHERR   :1; ///< Bit #6:  Math Error Status bit
+        volatile unsigned ADDRERR   :1; ///< Bit #7:  Address Error Trap Status bit
+        volatile unsigned STKERR    :1; ///< Bit #8:  Stack Error Trap Status bit
+        volatile unsigned OSCFAIL   :1; ///< Bit #9:  Oscillator Failure Trap Status bit
+        volatile unsigned SWTRAP    :1; ///< Bit #10: Software Trap Status bit
+        volatile unsigned NAE       :1; ///< Bit #11: NVM Address Error Soft Trap Status bit
+        volatile unsigned DOOVR     :1; ///< Bit #12: DO Stack Overflow Soft Trap Status bit
+        volatile unsigned APLL      :1; ///< Bit #13: Auxiliary PLL Loss of Lock Soft Trap Status bit
+        volatile unsigned SGHT      :1; ///< Bit #14: Software Generated Hard Trap Status bit
+        volatile unsigned DMACERR   :1; ///< Bit #15: DMA Trap Status bit
 
-        volatile unsigned ECCDBE    :1; // Bit #16: ECC Double-Bit Error Trap Status bit
-        volatile unsigned CAN       :1; // Bit #17: CAN Address Error Soft Trap Status bit
-        volatile unsigned CAN2      :1; // Bit #18: CAN2 Address Error Soft Trap Status bit
-        volatile unsigned           :13; // Bit <19:31> (reserved)
+        volatile unsigned ECCDBE    :1; ///< Bit #16: ECC Double-Bit Error Trap Status bit
+        volatile unsigned CAN       :1; ///< Bit #17: CAN Address Error Soft Trap Status bit
+        volatile unsigned CAN2      :1; ///< Bit #18: CAN2 Address Error Soft Trap Status bit
+        volatile unsigned           :13; ///< Bit <19:31> (reserved)
 
     }__attribute__((packed))bits;
 
@@ -152,16 +182,21 @@ typedef struct TRAP_FLAGS_s
     
 }TRAP_FLAGS_t;
 
+/**********************************************************************************
+ * @struct CPU_INTTREG_s
+ * @brief 
+ *
+ *********************************************************************************/
 typedef struct CPU_INTTREG_s
 {
     union {
     struct {
-        volatile unsigned VECNUM:8;	// Bit #0-7:  Pending Interrupt Number List
-        volatile unsigned ILR	:4;	// Bit #8-11: New Interrupt Priority Level
-        volatile unsigned		:1;	// Bit #12: Reserved
-        volatile unsigned VHOLD :1; // Bit #13: Vector Number Capture Enable bit
-        volatile unsigned       :1;	// Bit #14: Reserved
-        volatile unsigned       :1;	// Bit #15: Reserved
+        volatile unsigned VECNUM:8;	///< Bit #0-7:  Pending Interrupt Number List
+        volatile unsigned ILR	:4;	///< Bit #8-11: New Interrupt Priority Level
+        volatile unsigned		:1;	///< Bit #12: Reserved
+        volatile unsigned VHOLD :1; ///< Bit #13: Vector Number Capture Enable bit
+        volatile unsigned       :1;	///< Bit #14: Reserved
+        volatile unsigned       :1;	///< Bit #15: Reserved
     }__attribute__((packed))bits;
 
 	volatile uint16_t value;
@@ -169,29 +204,32 @@ typedef struct CPU_INTTREG_s
     
 } CPU_INTTREG_t;
 
-// Data structure for RCON status capturing
-
+/**********************************************************************************
+ * @struct CPU_RCON_s 
+ * @brief Data structure for RCON status capturing
+ *
+ *********************************************************************************/
 typedef struct CPU_RCON_s 
 {
     union {
     struct {
 
-        volatile unsigned por	:1;	// Bit #0:  Power-on Reset Flag bit
-        volatile unsigned bor	:1;	// Bit #1:  Brown-out Reset Flag bit
-        volatile unsigned idle	:1;	// Bit #2:  Wake-up from Idle Flag bit
-        volatile unsigned sleep	:1;	// Bit #3:  Wake-up from Sleep Flag bit
-        volatile unsigned wdto	:1;	// Bit #4:  Watchdog Timer Time-out Flag bit
-        volatile unsigned swdten:1;	// Bit #5:  Software Enable/Disable of WDT bit
-        volatile unsigned swr	:1;	// Bit #6:  Software Reset Flag (Instruction) bit
-        volatile unsigned extr	:1;	// Bit #7:  External Reset Pin (MCLR) bit
-        volatile unsigned vregs	:1;	// Bit #8:  Voltage Regulator Standby During Sleep bit
-        volatile unsigned cm    :1;	// Bit #9:  Configuration Mismatch Flag bit
-        volatile unsigned		:1;	// Bit #10: Reserved
-        volatile unsigned vregsf:1;	// Bit #11: Flash Voltage Regulator Standby During Sleep bit
-        volatile unsigned		:1;	// Bit #12: Reserved
-        volatile unsigned		:1;	// Bit #13: Reserved
-        volatile unsigned iopuwr:1;	// Bit #14: Illegal Opcode or Uninitialized W Access Reset Flag bit
-        volatile unsigned trapr :1;	// Bit #15: Trap Reset Flag bit
+        volatile unsigned por	:1;	///< Bit #0:  Power-on Reset Flag bit
+        volatile unsigned bor	:1;	///< Bit #1:  Brown-out Reset Flag bit
+        volatile unsigned idle	:1;	///< Bit #2:  Wake-up from Idle Flag bit
+        volatile unsigned sleep	:1;	///< Bit #3:  Wake-up from Sleep Flag bit
+        volatile unsigned wdto	:1;	///< Bit #4:  Watchdog Timer Time-out Flag bit
+        volatile unsigned swdten:1;	///< Bit #5:  Software Enable/Disable of WDT bit
+        volatile unsigned swr	:1;	///< Bit #6:  Software Reset Flag (Instruction) bit
+        volatile unsigned extr	:1;	///< Bit #7:  External Reset Pin (MCLR) bit
+        volatile unsigned vregs	:1;	///< Bit #8:  Voltage Regulator Standby During Sleep bit
+        volatile unsigned cm    :1;	///< Bit #9:  Configuration Mismatch Flag bit
+        volatile unsigned		:1;	///< Bit #10: Reserved
+        volatile unsigned vregsf:1;	///< Bit #11: Flash Voltage Regulator Standby During Sleep bit
+        volatile unsigned		:1;	///< Bit #12: Reserved
+        volatile unsigned		:1;	///< Bit #13: Reserved
+        volatile unsigned iopuwr:1;	///< Bit #14: Illegal Opcode or Uninitialized W Access Reset Flag bit
+        volatile unsigned trapr :1;	///< Bit #15: Trap Reset Flag bit
 
     }__attribute__((packed))bits;
 
@@ -200,9 +238,11 @@ typedef struct CPU_RCON_s
     
 } CPU_RCON_t;
 
-
-#define FAULT_OBJECT_CPU_RESET_TRIGGER_BIT_MASK     0b0000000000000001
-
+/**********************************************************************************
+ * @struct TRAPLOG_STATUS_s
+ * @brief Data structure for RCON status capturing
+ *
+ *********************************************************************************/
 typedef struct TRAPLOG_STATUS_s 
 {
     union {
@@ -235,6 +275,10 @@ typedef struct TRAPLOG_STATUS_s
     
 } TRAPLOG_STATUS_t;
 
+/**********************************************************************************
+ * @struct TASK_INFO_s
+ * @brief 
+ *********************************************************************************/
 
 typedef struct TASK_INFO_s 
 {
@@ -249,21 +293,25 @@ typedef struct TASK_INFO_s
 //	GLOBAL DATA STRUCTURE - TRAP LOGGER OBJECT
 //
 // =================================================================================================
-
+/**********************************************************************************
+ * @struct TRAP_LOGGER_s
+ * @brief Global data structure for trap event capturing
+ *********************************************************************************/
 typedef struct TRAP_LOGGER_s 
 {
-    volatile struct TRAPLOG_STATUS_s status;    // Status word of the Trap Logger object
-    volatile uint16_t reset_count;              // Counter of CPU RESET events (read/write)
-	volatile enum TRAP_ID_e trap_id;            // Trap-ID of the captured incident
-	volatile uint16_t trap_count;               // Counter tracking the number of occurrences
-    volatile struct TRAP_FLAGS_s trap_flags;    // Complete list of trap flags (showing all trap flags)
-	volatile struct CPU_RCON_s rcon_reg;        // Captures the RESET CONTROL register
-    volatile struct CPU_INTTREG_s inttreg;      // Interrupt Vector and Priority register capture
-    volatile struct TASK_INFO_s task_capture;   // Information of last task executed
+    volatile struct TRAPLOG_STATUS_s status;    ///< Status word of the Trap Logger object
+    volatile uint16_t reset_count;              ///< Counter of CPU RESET events (read/write)
+	volatile enum TRAP_ID_e trap_id;            ///< Trap-ID of the captured incident
+	volatile uint16_t trap_count;               ///< Counter tracking the number of occurrences
+    volatile struct TRAP_FLAGS_s trap_flags;    ///< Complete list of trap flags (showing all trap flags)
+	volatile struct CPU_RCON_s rcon_reg;        ///< Captures the RESET CONTROL register
+    volatile struct CPU_INTTREG_s inttreg;      ///< Interrupt Vector and Priority register capture
+    volatile struct TASK_INFO_s task_capture;   ///< Information of last task executed
     
 } TRAP_LOGGER_t; // Global data structure for trap event capturing
 
-
+/**@}*/
+/** @} */ // end of group 
 
 // Global data structure used as buffer for trap monitoring
 extern volatile struct TRAP_LOGGER_s __attribute__((__persistent__))traplog; 
