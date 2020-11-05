@@ -6,7 +6,7 @@ cd..\..\docs
 echo 
 del *.*
 echo 
-cd..\.mchp_private\docs_src
+cd..\.mchp_private\doxygen_src
 echo 
 doxygen doxyfile
 echo 
