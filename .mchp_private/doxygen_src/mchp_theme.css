@@ -88,9 +88,10 @@ a.SelectItem:hover {
 }
 
 #MSearchResultsWindow {
+	vertical-align: top;
 	border: 1px solid #000000;
 	background: #fafafa;
-	color: #359aff !important;;
+	color: #359aff !important;
 }
 
 /*********************************************/
@@ -101,8 +102,29 @@ a.SelectItem:hover {
 }
 
 #nav-tree .selected {
-	background-image: none;
 	background: #EBEBEB;
+}
+
+#nav-tree .label.selected {
+	font: 'Lucida Grande',Geneva,Helvetica,Arial,sans-serif;
+	font-weight: normal;
+}
+/* review and optimize left-side index format */
+div.item {
+	border: 1px solid #ffffff;
+	background: transparent;
+}
+
+div.item:hover {
+	border: 1px solid #D8D8D8;
+	background: #fafafa;
+}
+
+div#selected.item.selected {
+	font-size: 100%; 
+	font-weight: normal;
+	border: 1px solid #cccce6;
+	background: #d9d9ec;
 }
 
 /*********************************************/
@@ -333,6 +355,7 @@ h2.groupheader {
 /*********************************************/
 /**                 Mem items               **/
 /*********************************************/
+
 .memtitle {
 	background: #ebebeb !important;
 	border-color: #32363d;
