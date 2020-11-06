@@ -43,6 +43,8 @@
  * @defgroup buck_state_machine Buck Converter State Machine 
  * @dot
  * digraph State_Machine{ 
+ *      node [fontname = "Consolas, 'Courier New', Courier, Sans-Serif"];
+ *      node [fontsize = 10];
  *      node [shape = box]; State_Initialize; State_Reset; State_Standby; State_RampUp; State_Online;    
  *      node [shape = box]; yes1; no1; yes2; no2;
  *      node [shape = diamond]; e_f; c_r;
