@@ -6,11 +6,7 @@
  *   10/28/20   1.0  initial version
  */
 
-/** 
- * \file dev_buck_opstates.c
- * \brief Functions of the buck converter state machine operating states
- * \defgroup buck_state_machine Buck Converter State Machine 
- */
+
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h> // include standard integer data types
@@ -27,34 +23,55 @@ volatile uint16_t __attribute__((always_inline)) SubState_VRampUp(volatile struc
 volatile uint16_t __attribute__((always_inline)) SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 volatile uint16_t __attribute__((always_inline)) SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 
+/**
+ * @defgroup buck_state_machine_struct Buck State Machine Data Structures
+ * @ingroup buck_state_machine
+ * @{
+*/
 // Function pointer array of buck converter startup sub-states
+
+/*******************************************************************************
+ * @struct	volatile uint16_t (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @param	
+ *
+ * @brief 
+ * 
+ * <b>Description</b> 
+ * 
+ *********************************************************************************/
+
 volatile uint16_t (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) = {
 
-    SubState_PowerOnDelay,      // Sub-State #0: Wait programmed number of state machine ticks until startup is triggered
-    SubState_PrepareVRampUp,    // Sub-State #1: Determine ramp up condition, pre-charge controllers and program PWM/Peripherals
-    SubState_VRampUp,           // Sub-State #2: Output voltage ramp up
-    SubState_IRampUp,           // Sub-State #3: Output current ramp up (optional, for startup current limiting only)
-    SubState_PowerGoodDelay     // Sub-State #4: Wait until power good delay has expired and optionally set a GPIO
+    SubState_PowerOnDelay,      ///< Sub-State #0: Wait programmed number of state machine ticks until startup is triggered
+    SubState_PrepareVRampUp,    ///< Sub-State #1: Determine ramp up condition, pre-charge controllers and program PWM/Peripherals
+    SubState_VRampUp,           ///< Sub-State #2: Output voltage ramp up
+    SubState_IRampUp,           ///< Sub-State #3: Output current ramp up (optional, for startup current limiting only)
+    SubState_PowerGoodDelay     ///< Sub-State #4: Wait until power good delay has expired and optionally set a GPIO
 
 };
 
 // buck converter sub-state machine function pointer array size
 volatile uint16_t BuckRampUpSubStateList_size = (sizeof(BuckConverterRampUpSubStateMachine)/sizeof(BuckConverterRampUpSubStateMachine[0])); 
+/**@}*/
 
-/*@@SubState_PowerOnDelay
- * *********************************************************************************
- * Parameters:
- *   - BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+
+/**
+ * @defgroup buck_state_machine_function Buck State Machine Functions
+ * @ingroup buck_state_machine
+ * @{
+*/
+
+/*******************************************************************************
+ * @fn volatile uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief 
  * 
- * Returns:
- *   - uint16_t   16-bit unsigned integer
- *          0 = failure
- *          1 = success
- * 
- * Description:
+ * <b>Description</b> 
  * After the converter has been cleared to get started, the power-on 
- * delay counter until the defined power-on delay period has expired. 
- * *********************************************************************************/
+ * delay counter until the defined power-on delay period has expired.  
+ *********************************************************************************/
 volatile uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
 {
    volatile uint16_t retval=0;
@@ -80,17 +97,14 @@ volatile uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s 
     return(retval);
 }
 
-/*@@SubState_PrepareVRampUp
- * *********************************************************************************
- * Parameters:
- *   - BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+/*******************************************************************************
+ * @fn volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief 
  * 
- * Returns:
- *   - uint16_t   16-bit unsigned integer
- *          0 = failure
- *          1 = success
- * 
- * Description:
+ * <b>Description</b> 
  * After the POWER ON DELAY has expired, the ramp up starting point is determined  
  * by measuring the input and output voltage and calculates the ideal duty ratio 
  * of the PWM. This value is then programmed into the PWM module duty cycle register 
@@ -101,7 +115,7 @@ volatile uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s 
  * When voltage mode control is enabled, the voltage loop control history is 
  * charged, when average current mode control is enabled, the current loop control 
  * history is charged.
- * *********************************************************************************/
+ *********************************************************************************/
 volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
 {
     volatile uint16_t _i=0;
@@ -207,24 +221,22 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
     
 }
 
-/*@@SubState_VRampUp
- * *********************************************************************************
- * Parameters:
- *   - BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+/*******************************************************************************
+ * @fn volatile uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief 
  * 
- * Returns:
- *   - uint16_t   16-bit unsigned integer
- *          0 = failure
- *          1 = success
- * 
- * Description:
+ * <b>Description</b> 
  * This is the essential step in which the output voltage is ramped up by 
  * incrementing the outer control loop reference. In voltage mode the output  
  * voltage will ramp up to the nominal regulation point. 
  * In average current mode the inner loop will limit the voltage as soon as the 
  * current reference limit is hit and the output is switched to constant current 
- * mode. 
- * *********************************************************************************/
+ * mode.
+ *********************************************************************************/
+
 volatile uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
 {
     volatile uint16_t retval=1;
@@ -289,22 +301,19 @@ volatile uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buck
     
 }
 
-/*@@SubState_IRampUp
- * *********************************************************************************
- * Parameters:
- *   - BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+/*******************************************************************************
+ * @fn volatile uint16_t SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief 
  * 
- * Returns:
- *   - uint16_t   16-bit unsigned integer
- *          0 = failure
- *          1 = success
- * 
- * Description:
+ * <b>Description</b> 
  * This phase of the soft-start ramp is only executed in average current mode and 
  * will only take effect when the current limit is hit before the nominal voltage 
  * regulation point. In this case the constant output current is ramped up to from 
  * the startup current to the nominal constant charging current.
- * *********************************************************************************/
+ *********************************************************************************/
 volatile uint16_t SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
 {
     volatile uint16_t retval=0;
@@ -342,20 +351,17 @@ volatile uint16_t SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buck
     
 }
 
-/*@@SubState_PowerGoodDelay
- * *********************************************************************************
- * Parameters:
- *   - BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+/*******************************************************************************
+ * @fn volatile uint16_t SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief 
  * 
- * Returns:
- *   - uint16_t   16-bit unsigned integer
- *          0 = failure
- *          1 = success
- * 
- * Description:
+ * <b>Description</b> 
  * In this phase of the soft-start procedure a counter is incremented until the 
  * power good delay has expired before the soft-start process is marked as COMPLETED
- * *********************************************************************************/
+ *********************************************************************************/
 volatile uint16_t SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
 {
     volatile uint16_t retval=0;
@@ -389,5 +395,5 @@ volatile uint16_t SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_
     
 }
 
-
+/**@}*/
 // END OF FILE
