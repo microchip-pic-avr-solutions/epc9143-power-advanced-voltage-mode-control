@@ -106,7 +106,7 @@ void appPowerSupply_CurrentSenseCalibration(void);
  * PUBLIC FUNCTIONS
  * ************************************************************************************************/
 /**
- * @addtogroup power_handler
+ * 
  * @defgroup power_handler_function Power Control Handler Functions
  * @ingroup power_handler
  * @{

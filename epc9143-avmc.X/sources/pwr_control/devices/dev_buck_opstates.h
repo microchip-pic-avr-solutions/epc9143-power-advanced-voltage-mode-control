@@ -37,6 +37,37 @@
  *   10/09/20   1.0  initial version
  */
 
+/** 
+ * @file dev_buck_opstates.c
+ * @brief Functions of the buck converter state machine operating states
+ * @defgroup buck_state_machine Buck Converter State Machine 
+ * @dot
+ * digraph State_Machine{ 
+ *      node [shape = box]; State_Initialize; State_Reset; State_Standby; State_RampUp; State_Online;    
+ *      node [shape = box]; yes1; no1; yes2; no2;
+ *      node [shape = diamond]; e_f; c_r;
+ *      yes1 [label = "YES"];
+ *      no1 [label = "NO"];
+ *      yes2 [label = "YES"];
+ *      no2 [label = "NO"];
+ *      
+ *      State_Initialize [label="State Initialize" URL="@ref State_Initialize"];
+ *      State_Reset [label="State Reset" URL="@ref State_Reset"];
+ *      State_Standby [label="State Standby" URL="@ref State_Standby"]; 
+ *      State_RampUp [label="State Ramp Up" URL="@ref State_RampUp"]; 
+ *      State_Online [label="State Online" URL="@ref State_Online"];
+ * 
+ *      e_f [label = "Enabled and Fault cleared?"];
+ *      c_r [label = "Converter Running?"];
+ *      e_f -> no1 -> c_r -> no2 -> State_Initialize;
+ *      c_r -> yes2 -> State_Reset;
+ *      e_f -> yes1 -> State_Initialize;
+ *      State_Initialize->State_Reset->State_Standby->State_RampUp->State_Online;
+ * }
+ * @enddot
+ * 
+ */
+
 // This is a guard condition so that contents of this file are not included
 // more than once.  
 #ifndef BUCK_CONVERTER_OPERATION_STATES_H

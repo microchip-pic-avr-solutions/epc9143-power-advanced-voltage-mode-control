@@ -159,15 +159,6 @@ typedef struct FAULT_OBJECT_s {
 } FAULT_OBJECT_t; // 
 
 /** @} */ // end of group
-
-/**
- * @defgroup fault_trap Fault Trap Handler
- * @ingroup fault_handler
- * @{
- * @}
- */
-
-
 /** @} */ // end of group
 // Public Fault Configuration Templates
 extern volatile struct FAULT_OBJECT_s fltobjClear;
