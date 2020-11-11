@@ -1,6 +1,6 @@
 [GUI]
 CreateDate=03/02/2020 10:13:13 PM
-SaveDate=10/28/2020 00:08:28
+SaveDate=11/11/2020 13:58:53
 Name=z-Domain Control Loop Designer
 Version=0.9.12.642
 AGS Version=2.0.15
@@ -130,7 +130,7 @@ MPLABX_DefaultCIncludeDirectory=./sources
 MPLABX_DefaultAsmIncludeDirectory=./
 MPLABX_IncludeDirectoryOverride=0
 AsmIncPath=.\sources\pwr_control\drivers\
-IncludeLibIncPathInAssembly=0
+IncludeLibIncPathInAssembly=1
 [BodePlot]
 XScale-NyquistShannonLimit=0
 XScale-SamplingFrequency=1
@@ -158,8 +158,8 @@ TriggerPlacement=1
 UserTriggerPosition=1.358e+3
 LoopTriggerOption=0
 [generator_history]
-count=23
-active_item=23
+count=24
+active_item=24
 1=2020-03-26 00:19:16||M91406||Initial 3P3Z controller with dual bit shifting||2; 0; 12; 0.5000; 1; 0; 0; 500k; 667; 104.5k; 250k; 250k; 250k; 250k; 3020; 5033; 62066; 50000; 50000
 2=2020-03-30 01:46:13||M91406||Tuned loop for fx > 20kHz||2; 3; 12; 0.5000; 1; 0; 0; 500k; 1334; 104.5k; 250k; 250k; 250k; 250k; 3020; 5033; 62066; 50000; 50000
 3=2020-05-20 20:00:10||M91406||Taken back loop gain for 48V migration||2; 2; 12; 0.208791; 1; 0; 0; 500k; 300; 230k; 250k; 250k; 250k; 250k; 4600; 7800; 62066; 50000; 50000
@@ -183,5 +183,6 @@ active_item=23
 21=2020-10-27 19:16:54||M91406||(Autosave) [4P4Z, Scaling 3, 500kHz]||3; 2; 12; 0.208791; 1; 0; 0; 500000; 95; 23800; 217400; 250000; 250000; 250000; 2060; 8440; 25250; 28400; 50000
 22=2020-10-27 19:17:24||M91406||(Autosave) [4P4Z, Scaling 3, 500kHz]||3; 2; 12; 0.208791; 1; 0; 0; 500000; 95; 23800; 217400; 250000; 250000; 250000; 2060; 8440; 25250; 28400; 50000
 23=2020-10-27 19:18:17||M91406||(Autosave) [4P4Z, Scaling 3, 500kHz]||3; 2; 12; 0.208791; 1; 0; 0; 500000; 95; 23800; 217400; 250000; 250000; 250000; 2060; 8440; 25250; 28400; 50000
+24=2020-11-11 13:59:37||M91406||(Autosave) [4P4Z, Scaling 3, 500kHz]||3; 2; 12; 0.208791; 1; 0; 0; 500000; 95; 23800; 217400; 250000; 250000; 250000; 2060; 8440; 25250; 28400; 50000
 [CodeGenerationOptions]
 IncludeUnsusedSettingsInTemplate=0
