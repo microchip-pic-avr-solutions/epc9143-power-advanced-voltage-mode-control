@@ -42,32 +42,51 @@
  * @brief Functions of the buck converter state machine operating states
  * @defgroup buck_state_machine Buck Converter State Machine 
  * @dot
- * digraph State_Machine{ 
- *      node [fontname = "Consolas, 'Courier New', Courier, Sans-Serif"];
- *      node [fontsize = 10];
- *      node [shape = box]; State_Initialize; State_Reset; State_Standby; State_RampUp; State_Online;    
- *      node [shape = box]; yes1; no1; yes2; no2;
- *      node [shape = diamond]; e_f; c_r;
- *      yes1 [label = "YES"];
- *      no1 [label = "NO"];
- *      yes2 [label = "YES"];
- *      no2 [label = "NO"];
- *      
- *      State_Initialize [label="State Initialize" URL="@ref State_Initialize"];
- *      State_Reset [label="State Reset" URL="@ref State_Reset"];
- *      State_Standby [label="State Standby" URL="@ref State_Standby"]; 
- *      State_RampUp [label="State Ramp Up" URL="@ref State_RampUp"]; 
- *      State_Online [label="State Online" URL="@ref State_Online"];
+ * digraph State_Machine  
+ * {
+ *      node [fontname="Consolas, 'Courier New', Courier, Sans-Serif", fontsize=10];
  * 
- *      e_f [label = "Enabled and Fault cleared?"];
- *      c_r [label = "Converter Running?"];
- *      e_f -> no1 -> c_r -> no2 -> State_Initialize;
- *      c_r -> yes2 -> State_Reset;
- *      e_f -> yes1 -> State_Initialize;
- *      State_Initialize->State_Reset->State_Standby->State_RampUp->State_Online;
+ *      efs_clear [shape=invhouse, label="Enabled, Fault- and Suspend Flag cleared?"];
+ *      conv_run  [shape=invhouse, label="Converter Running?"];
+ *
+ *      en_pin    [shape=diamond, label="Enable pin set? (optional)", URL="@ref BUCK_GPIO_SETTINGS_s"];
+ *      en_set    [shape=diamond, label="Enable bit set?", URL="@ref BUCK_CONVERTER_STATUS_s"];
+ *      flt_clear [shape=diamond, label="Fault Flag cleared?", URL="@ref BUCK_CONVERTER_STATUS_s"];
+ *      sf_clear  [shape=diamond, label="Suspend Flag cleared?", URL="@ref BUCK_CONVERTER_STATUS_s"];
+ *
+ *      yes1 [shape=invtriangle, label="YES"];
+ *      no1  [shape=invtriangle, label="NO"];
+ *      yes2 [shape=invtriangle, label="YES"];
+ *      no2  [shape=invtriangle, label="NO"];
+ *      exit [shape=cds, label="Exit"];
+ *
+ *      PreState_Initialize [shape=box, label="State Initialize", URL="@ref State_Initialize"];
+ *      PreState_Reset      [shape=box, label="State Reset", URL="@ref State_Reset"];
+ * 
+ *      State_Reset   [shape=box, label="State Reset",  URL="@ref State_Reset"];
+ *      State_Standby [shape=box, label="State Standby", URL="@ref State_Standby"]; 
+ *      State_RampUp  [shape=box, label="State Ramp Up", URL="@ref State_RampUp"]; 
+ *      State_Online  [shape=box, label="State Online", URL="@ref State_Online"];
+ *
+ *      SubState_PowerOnDelay   [shape=ellipse, label="Power On Delay", URL="@ref SubState_PowerOnDelay"];
+ *      SubState_PrepareVRampUp [shape=ellipse, label="Prepare Voltage Ramp Up", URL="@ref SubState_PrepareVRampUp"];
+ *      SubState_VRampUp        [shape=ellipse, label="Voltage Ramp Up", URL="@ref SubState_VRampUp"]; 
+ *      SubState_IRampUp        [shape=ellipse, label="Current Ramp Up", URL="@ref SubState_IRampUp"]; 
+ *      SubState_PowerGoodDelay [shape=ellipse, label="Power Good Delay", URL="@ref SubState_PowerGoodDelay"];
+ *
+ *      en_pin->en_set->efs_clear;
+ *      flt_clear -> efs_clear;
+ *      sf_clear -> efs_clear;
+ *      efs_clear -> no1 -> conv_run -> no2 -> PreState_Initialize -> exit;
+ *      conv_run -> yes2 -> PreState_Reset-> exit;
+ *      efs_clear -> yes1 -> State_Reset;
+ * 
+ *      State_Reset -> State_Standby -> State_RampUp;
+ *      State_RampUp -> SubState_PowerOnDelay -> SubState_PrepareVRampUp -> SubState_VRampUp ->
+ *          SubState_IRampUp -> SubState_PowerGoodDelay -> State_Online;
+ * 
  * }
  * @enddot
- * 
  */
 
 // This is a guard condition so that contents of this file are not included
