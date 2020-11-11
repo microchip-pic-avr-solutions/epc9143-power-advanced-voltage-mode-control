@@ -103,7 +103,6 @@ volatile uint16_t State_Initialize(volatile struct BUCK_POWER_CONTROLLER_s *buck
     }
     
     // Clear busy bit
-    //buckInstance->status.bits.fault_active = true; // set fault bit to be cleared by fault handler
     buckInstance->status.bits.busy = false; // Clear BUSY bit
     buckInstance->status.bits.ready = true; // Set READY bit indicating state machine has passed INITIALIZED state
     
@@ -281,7 +280,8 @@ volatile uint16_t State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
         // return ERROR to outer state machine triggering a main state machine reset.
         default:
             // if any other return value is received, switch immediately to ERROR
-            retval = BUCK_OPSRET_ERROR;            
+            retval = BUCK_OPSRET_ERROR;        
+            
             break;
     }
     

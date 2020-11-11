@@ -360,10 +360,6 @@ typedef struct NPNZ_USER_DATA_BUFFER_s{
 
 } __attribute__((packed)) NPNZ_USER_DATA_BUFFER_t; // Generic data buffer for undetermined use. These data buffers may be used by advanced control algorithms or be used by proprietary user code modules
 
-/*!
- * NPNZ16b_s* class.
- * \extends BUCK_LOOP_SETTINGS_s
- */
 /*@@NPNZ16b_t data structure
  * *************************************************************************************************
  * Summary:

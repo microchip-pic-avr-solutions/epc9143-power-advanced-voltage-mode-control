@@ -358,9 +358,11 @@ volatile uint16_t SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buck
  *
  * @brief 
  * 
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * In this phase of the soft-start procedure a counter is incremented until the 
- * power good delay has expired before the soft-start process is marked as COMPLETED
+ * power good delay has expired before the soft-start process is marked as COMPLETED.
+ * If option for driving a user-defined general purpose output (PG output) is enabled
+ * in proprietary user code, this pin will be set automatically.
  *********************************************************************************/
 volatile uint16_t SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
 {
