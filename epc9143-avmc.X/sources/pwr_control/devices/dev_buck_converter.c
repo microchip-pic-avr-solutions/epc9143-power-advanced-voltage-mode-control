@@ -61,7 +61,7 @@ volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_POWER_CONTRO
     }
         
     buckInstance->status.bits.enabled = false;  // Disable Buck Converter
-    buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE; // Reset state machine
+    buckInstance->state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE; // Reset state machine
     
     return(retval);
 }
@@ -113,9 +113,9 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
         (buckInstance->status.bits.fault_active))
     {
         if (!buckInstance->status.bits.ready)
-            buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE;
+            buckInstance->state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE;
         else
-            buckInstance->state_id.value = BUCK_OPSTATE_RESET;
+            buckInstance->state_id.value = (uint32_t)BUCK_OPSTATE_RESET;
         
         retval = BuckConverterStateMachine[buckInstance->state_id.bits.opstate_id](buckInstance);
         
@@ -129,7 +129,7 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
     // If the state array pointer is out of range, roll over and start from first 
     // valid state
     if(buckInstance->state_id.bits.opstate_id >= BuckStateList_size)
-        buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE;
+        buckInstance->state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE;
     
     if (BuckConverterStateMachine[buckInstance->state_id.bits.opstate_id] == NULL)
         return(0);
@@ -143,7 +143,7 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
         /* If state machine state returns ERROR, switch to ERROR state in next execution cycle */
         case BUCK_OPSRET_ERROR:
             
-            buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE;
+            buckInstance->state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE;
             retval = 0;
             break;
             
@@ -151,11 +151,11 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
         case BUCK_OPSRET_COMPLETE:
             
             // Increment main operating state pointer by one tick
-            buckInstance->state_id.value = (buckInstance->state_id.bits.opstate_id++);
+            buckInstance->state_id.value = (uint32_t)(buckInstance->state_id.bits.opstate_id++);
             
             // Check if new index is out of range, reset to RESET if so
-            if (buckInstance->state_id.value >= BuckStateList_size)
-                buckInstance->state_id.value = BUCK_OPSTATE_RESET;
+            if (buckInstance->state_id.bits.opstate_id >= BuckStateList_size)
+                buckInstance->state_id.value = (uint32_t)BUCK_OPSTATE_RESET;
 
             retval = 1;
             break;
@@ -171,7 +171,7 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
         default:
             // In case an undefined return value has been received,
             // REset state machine and start from scratch
-            buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE;
+            buckInstance->state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE;
             retval = 0;
             break;
     }
@@ -210,12 +210,12 @@ volatile uint16_t drv_BuckConverter_Start(volatile struct BUCK_POWER_CONTROLLER_
     
     // Sequence PWM and ADC peripheral startup
     retval &= buckPWM_Start(buckInstance);   // Start PWM (All Outputs Disabled)
-    if (retval) buckInstance->status.bits.pwm_active = 1;
+    if (retval) buckInstance->status.bits.pwm_active = 1; // IF PWM startup was successful, set PWM_ACTIVE flag
     retval &= buckADC_Start();              // Start ADC
 
     // Enable buck converter and reset state machine to INITIALIZE
     buckInstance->status.bits.enabled = true;   // Enable Buck Converter
-    buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE; // Reset state machine
+    buckInstance->state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE; // Reset state machine
 
     return(retval);
 }
@@ -246,7 +246,7 @@ volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s
     }
     
     buckInstance->status.bits.enabled = false;  // Disable Buck Converter
-    buckInstance->state_id.value = BUCK_OPSTATE_INITIALIZE; // Reset state machine
+    buckInstance->state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE; // Reset state machine
 
     return(retval);
 }
