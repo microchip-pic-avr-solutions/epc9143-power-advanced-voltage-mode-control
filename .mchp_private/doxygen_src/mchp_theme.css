@@ -22,6 +22,10 @@ div.fragment, pre.fragment {
 	background: #FFFFFF;
 }
 
+a, a:link {
+	color: #007fff !important;
+}
+
 a, a:link, a:visited {
 	color: #32363d !important;
 }
@@ -102,7 +106,10 @@ a.SelectItem:hover {
 }
 
 #nav-tree .selected {
-	background: #EBEBEB;
+  background: #ffffff;
+  background-image: none;
+  background-repeat:no-repeat;
+  text-shadow: none;
 }
 
 #nav-tree .label.selected {
@@ -123,8 +130,8 @@ div.item:hover {
 div#selected.item.selected {
 	font-size: 100%; 
 	font-weight: normal;
-	border: 1px solid #cccce6;
-	background: #d9d9ec;
+	border: 1px solid #D8D8D8;
+	background: #ebebeb;
 }
 
 /*********************************************/
@@ -267,6 +274,7 @@ div.line {
 	background: transparent;
 	/*color: #d7d7d7;*/
 	color: #32363d;
+	font: consolas,'courier new',courier,monospace,sans-serif;
 }
 
 div.line a {
@@ -275,8 +283,9 @@ div.line a {
 
 span.keyword {
 	/*color: #f92472;*/
-	color: #ff8000;
-	font-style: italic;
+	color: #007fff;
+/*	font-style: italic; */
+	font-weight: bold;
 }
 
 span.keywordtype {
@@ -291,18 +300,21 @@ span.keywordflow {
 }
 
 span.comment {
-	/*color: #74705a;*/
+	color: #969696;
 }
 
 span.preprocessor {
+	color: #007F00;
 	/*color: #a6e22b;*/
 }
 
 span.stringliteral {
+	color: #7f00ff;
 	/*color: #e7db74;*/
 }
 
 span.charliteral {
+	color: #ff7f00;
 	/*color: #e7db74;*/
 }
 

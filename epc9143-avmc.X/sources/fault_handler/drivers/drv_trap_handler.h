@@ -61,15 +61,10 @@
 #include <stdint.h> // include standard integer types header file
 #include <stdbool.h> // include standard boolean types header file
 
-/**
- * @addtogroup fault_handler
- * @addtogroup fault_trap
- * @{ 
- */
 
 /**
  * @defgroup THV Trap Handler Variable
- * @ingroup fault_trap
+ * @ingroup fault_handler
  * @{
  */
 /**********************************************************************************
@@ -96,7 +91,7 @@
 
 /**
  * @defgroup THE Trap Handler Enumeration
- * @ingroup fault_trap
+ * @ingroup fault_handler
  * @{
  */
 
@@ -139,7 +134,7 @@ typedef enum TRAP_ID_e
 
 /**
  * @defgroup THS Trap Handler Data Structure
- * @ingroup fault_trap
+ * @ingroup fault_handler
  * @{
  */
 

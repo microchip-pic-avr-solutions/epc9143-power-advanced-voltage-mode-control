@@ -37,7 +37,7 @@
 #include <stdbool.h> // include standard boolean data types
 #include <stddef.h> // include standard definition data types
 
-#include "xc16_pral.h" // include peripehral register abstraction layer drivers
+#include "xc16_pral.h" // include peripheral register abstraction layer drivers
 
 #include "templates/dev_buck_ptemp_pwm.h" // Include PWM configuration template header file
 #include "templates/dev_buck_ptemp_adc.h" // Include ADC configuration template header file

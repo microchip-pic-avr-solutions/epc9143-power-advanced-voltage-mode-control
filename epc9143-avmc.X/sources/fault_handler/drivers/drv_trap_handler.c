@@ -63,10 +63,8 @@ volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog;
 
 
 /**
- * @addtogroup fault_handler
- * @addtogroup fault_trap
  * @defgroup fault_trap_function Fault Trap Handler Functions
- * @ingroup fault_trap
+ * @ingroup fault_handler
  * @{ 
  */
 
