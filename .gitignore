@@ -18,6 +18,7 @@ docs/
 
 # Excluding Netbeans specific build directories and file types
 ~*.*
+.generated_files/
 nbproject/build/
 nbproject/dist/
 nbproject/private/
