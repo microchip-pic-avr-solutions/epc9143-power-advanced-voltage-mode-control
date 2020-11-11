@@ -226,7 +226,7 @@ volatile uint16_t appPowerSupply_Dispose(void)
     buck.data.v_out = 0; // Reset output voltage value
     buck.data.v_in = 0;  // Reset input voltage value
     buck.data.temp = 0;  // Reset output temperature value
-    buck.state_id.value = BUCK_OPSTATE_INITIALIZE; // Set state machine
+    buck.state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE; // Set state machine
     
     return(retval); 
 }
@@ -302,9 +302,10 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.status.bits.cs_calib_enable = BUCK_ISNS_NEED_CALIBRATION; // Topology current sensors need to be calibrated
     buck.status.bits.autorun = true;  // Allow the buck converter to run when cleared of faults
     buck.status.bits.enabled = false; // Disable buck converter
- 
+    buck.status.bits.suspend = true; // Set SUSPEND flag bit to keep power supply on hold until startup conditions are cleared
+
     // Set Initial State Machine State
-    buck.state_id.value = BUCK_OPSTATE_INITIALIZE; // Reset Buck State Machine
+    buck.state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE; // Reset Buck State Machine
     
     // Set Reference values
     buck.set_values.control_mode = BUCK_CONTROL_MODE_VMC; // Set Control Mode
