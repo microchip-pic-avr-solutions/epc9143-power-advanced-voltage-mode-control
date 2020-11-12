@@ -28,6 +28,7 @@ dist/
 private/
 disassembly/
 *.zip
+!code-templates.zip
 *.mk
 *.bash
 Makefile-genesis.properties
