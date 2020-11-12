@@ -76,13 +76,13 @@ volatile struct BUCK_POWER_CONTROLLER_s  buck;
 /* CURRENT SENSE CALIBRATION */
 #define  CS_CALIB_STEPS         8
 
-/*******************************************************************************
+/***********************************************************************************
  * @struct	CS_CALIBRATION_s
  * @brief
  *  
  * <b>Description</b> 
  * 
- *********************************************************************************/
+ **********************************************************************************/
 typedef struct CS_CALIBRATION_s {
     
     volatile uint16_t cs_calib_cnt;
@@ -101,6 +101,7 @@ volatile uint16_t appPowerSupply_PeripheralsInitialize(void);
 
 void appPowerSupply_CurrentBalancing(void); 
 void appPowerSupply_CurrentSenseCalibration(void);
+
 
 /* *************************************************************************************************
  * PUBLIC FUNCTIONS
