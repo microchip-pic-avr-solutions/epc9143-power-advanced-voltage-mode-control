@@ -18,7 +18,7 @@
     
 ;------------------------------------------------------------------------------
 ;include NPNZ16B_t data structure and global constants.
-    .include ".\sources\pwr_control\drivers\npnz16b.inc" ; include NPNZ16b_t object data structure value offsets and status flag labels
+    .include "sources/pwr_control/drivers/npnz16b.inc" ; include NPNZ16b_t object data structure value offsets and status flag labels
     
 ;------------------------------------------------------------------------------
 ;source code section.
