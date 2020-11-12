@@ -20,30 +20,30 @@
  */
 
 /* 
- * File:   main.h
+ * File:   system_initialize.h
  * Author: M91406
- * Comments: main header file of this application
+ * Comments: Combines the fundamental MCU and peripheral initialization routines
  * Revision history: 
- * v1.0 initial version
+ *    1.0   initial release
  */
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef APPLICATION_MAIN_HEADER_H
-#define	APPLICATION_MAIN_HEADER_H
+#ifndef APPLICAITON_SYSTEM_INITIALIZE_H
+#define	APPLICAITON_SYSTEM_INITIALIZE_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-#include <stdint.h> // include standard integer data types
-#include <stdbool.h> // include standard boolean data types
-#include <stddef.h> // include standard definition data types
 
-// COMMON SOFTWARE MODULES
-#include "config/hal.h"
-#include "config/system_initialize.h"
+#include "config/init/init_fosc.h"
+#include "config/init/init_timer1.h"
+#include "config/init/init_gpio.h"
 
-// APPLICATION LAYER HEADER FILES
-#include "fault_handler/app_faults_monitor.h"
-#include "pwr_control/app_power_control.h"
+#include "config/init/init_opa.h"
+#include "config/init/init_dac.h"
 
-#endif	/* APPLICATION_MAIN_HEADER_H */
+/* PUCLIC FUNCTION CALL PROTOTYPES */
+
+volatile uint16_t SYSTEM_Initialize(void);
+
+#endif	/* APPLICAITON_SYSTEM_INITIALIZE_H */
 

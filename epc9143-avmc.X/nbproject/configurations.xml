@@ -17,6 +17,7 @@
         </logicalFolder>
         <itemPath>sources/config/epc9143_r40_hwdescr.h</itemPath>
         <itemPath>sources/config/hal.h</itemPath>
+        <itemPath>sources/config/system_initialize.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
         <logicalFolder name="f4" displayName="fault_handler" projectFiles="true">
@@ -76,6 +77,7 @@
           <itemPath>sources/config/init/init_dac.c</itemPath>
         </logicalFolder>
         <itemPath>sources/config/config_bits.c</itemPath>
+        <itemPath>sources/config/system_initialize.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
         <logicalFolder name="f4" displayName="fault_handler" projectFiles="true">
