@@ -58,7 +58,7 @@ A single, high-speed type IV (4P4Z) voltage mode controller with enforced PWM st
 </p>
 
 ## Device Support:
-The following Microchip devices are used on the EPC9143 refrence design:
+The following Microchip devices are used on the EPC9143 reference design:
   - [dsPIC33CK32MP102](https://www.microchip.com/dsPIC33CK32MP102)
   - [MCP6C02 Shunt Amplifier](https://www.microchip.com/MCP6C02)
 
@@ -72,10 +72,10 @@ Available documents provided by EPC:
   - [EPC9531 Quick Start Guide (QSG)](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf)
   - [EPC9531 Test Fixture Schematics](https://epc-co.com/epc/documents/schematics/EPC9531_Schematic.pdf)
 
-The bard comes preogrammed and ready to be used when unpacked. No reprogramming of the target device is required to operate the board unless features or settings such as the nominal output voltage or start-up timimng need to be modified in which case the Microchip dsPIC33CK controller can be re-programmed using the in-circuit serial programming port (ICSP) available on the RJ-11 programming interface as well as the 5-pin header provided by the EPC9531 test fixture. These interfaces support all of Microchip’s in-circuit programmers/debuggers, such as MPLAB® ICD4, MPLAB® REAL ICE or MPLAB® PICkit4 and previous derivatives. See [EPC9531 Quick Start Guide](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf) for details.
+The bard comes programmed and ready to be used when unpacked. No reprogramming of the target device is required to operate the board unless features or settings such as the nominal output voltage or start-up timing need to be modified in which case the Microchip dsPIC33CK controller can be re-programmed using the in-circuit serial programming port (ICSP) available on the RJ-11 programming interface as well as the 5-pin header provided by the EPC9531 test fixture. These interfaces support all of Microchip’s in-circuit programmers/debuggers, such as MPLAB® ICD4, MPLAB® REAL ICE or MPLAB® PICkit4 and previous derivatives. See [EPC9531 Quick Start Guide](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf) for details.
 
 ## Operation
-The converter is starting up automatically when more than 10.5 V DC are applied across the input terminals of the EPC9531 test fixture. It is not recommended to operate the EPC9143 refrence design without proper decoupling capacitance at either input or output. The EPC9531 test fixture provides the best test environment for the converter. Pleease read the [EPC9531 Quick Start Guide](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf) to get detailed information about the requirements for setup and operation of this refrence design.
+The converter is starting up automatically when more than 10.5 V DC are applied across the input terminals of the EPC9531 test fixture. It is not recommended to operate the EPC9143 reference design without proper decoupling capacitance at either input or output. The EPC9531 test fixture provides the best test environment for the converter. Please read the [EPC9531 Quick Start Guide](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf) to get detailed information about the requirements for setup and operation of this reference design.
 
 ## Firmware Qick-Start Guide
 
@@ -100,7 +100,7 @@ e) Launch Voltage Ramp
 After the Power-On delay has expired, input and output voltage will be measured. In case the converter output is pre-biased (voltage = non-zero), the power controller will be 'pre-charged' with an artificial control history and PWM output to softly ramp up the output voltage from its most recent level. 
 
 f) Voltage Ramp-Up
-Now the digital feedback loop and PWM are enabled and the closed loop system reference value is incremented with every execution of the state machine (100usec interval). The control loop has been adjusted to operate with a cross-over frequency of >10 kHz matching the maximum perturbance frequency allowed to keep the control system stable.  
+Now the digital feedback loop and PWM are enabled and the closed loop system reference value is incremented with every execution of the state machine (100 µsec interval). The control loop has been adjusted to operate with a cross-over frequency of >10 kHz matching the maximum perturbation frequency allowed to keep the control system stable.  
 
 g) Power Good Delay
 After the reference voltage has been increased to the pre-defined nominal level, the state machine switches over into the Power Good Delay period. This is another, simple delay where the control loop is in steady state waiting for the delay period to expire.
@@ -113,7 +113,7 @@ If the power controller is shut down and reset by external commands (e.g. fault 
 
 ##### 2) Cycle-by-Cycle Voltage Control Loop
 
-This firmware uses a digital type IV controller to close the feedback loop in voltage mode control. This digital loop reads the most recent ADC sample of the output voltage and processes the derived value through a digital type IV (4P4Z) compensation filter. The numeric output is checked and, when necessary, clamped to user-defined minimum/maximum thresholds before being written to the PWM duty cycle register. As EPC9143 is a multiphase converter, a special PWM steering mode has been implemented supporting high-speed current balancing between the two phases. The voltage mode convtroller has been extended with a self-adapting loop gain tuing algorithm (AGC) stabilizing the frequency domain characteristic over input voltage, output voltage and load, always providing the exact same bandwidth of >25 kHz and stability margins across the entire operating range.
+This firmware uses a digital type IV controller to close the feedback loop in voltage mode control. This digital loop reads the most recent ADC sample of the output voltage and processes the derived value through a digital type IV (4P4Z) compensation filter. The numeric output is checked and, when necessary, clamped to user-defined minimum/maximum thresholds before being written to the PWM duty cycle register. As EPC9143 is a multiphase converter, a special PWM steering mode has been implemented supporting high-speed current balancing between the two phases. The voltage mode controller has been extended with a self-adapting loop gain tuning algorithm (AGC) stabilizing the frequency domain characteristic over input voltage, output voltage and load, always providing the exact same bandwidth of >25 kHz and stability margins across the entire operating range.
 
 This control loop can be turned on/off by using the ENABLE bit in the STATUS word of the cNPNZ_t controller data structure. The adaptive loop gain modulation is permanently active as soon as the control loop is enabled.
 
@@ -128,13 +128,13 @@ This additional design software is available for download by following this link
 
 Once installed, the controller configuration can be modified. The most recent configuration can be opened from within the MPLAB X® IDE by right-clicking on the file 'DPSK3_VMC.dcld' located in the Important Files folder of the Project Manager. When right-clicked, select 'Open In System' to open the configuration in DCLD. 
 
-Please refer to the user guide of DCLD whcih is included in the software and can be opened from the help menu of the application.
+Please refer to the user guide of DCLD which is included in the software and can be opened from the help menu of the application.
 
 ##### 4) User Control
 
 No user control interface has been added to the firmware. Any change to the firmware and fundamental operation of the reference design, including reprogramming of the nominal output voltage can be done by editing the hardware-specific values in the hardware description header file 'epc9143_r40_hwdescr.h' located in 'Project Manager => Header Files/Config'
 
-Converter settings in this file are defined as phasical values such as Volt, Ampere, Ohm, etc. Each defined value is converted into binary numbers by so-called macros, at compile time. Thus, users do not have to convert values manually.
+Converter settings in this file are defined as physical values such as Volt, Ampere, Ohm, etc. Each defined value is converted into binary numbers by so-called macros, at compile time. Thus, users do not have to convert values manually.
 
 ##### Example:
 To program the converter to provide a nominal output voltage different from the 12 V DC set by default, follow these steps:
@@ -146,11 +146,11 @@ To program the converter to provide a nominal output voltage different from the 
   - Build the program
   - Remove power from the input of the EPC9531 test fixture
   - Connect a valid ICSP programming device (e.g. MPLAB ICD4, MPLAB PICkit4) to the PC and the EPC9531 test fixture (see [EPC9531 Quick Start Guide](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf) for details)
-  - Program the device whith the target devicebeing powered by the debugger/programmer
+  - Program the device with the target device being powered by the debugger/programmer
   - Disconnect the ICSP programming device from the EPC9531 test fixture
-  - Apply valid input voltage across the input terminals of EPC9531 and observve the output of the EPC9143 reference design
+  - Apply valid input voltage across the input terminals of EPC9531 and observe the output of the EPC9143 reference design
 
-The setting for the nominal output votage is found in lines #324 through #326.
+The setting for the nominal output voltage is found in lines #324 through #326.
 
     #define BUCK_VOUT_NOMINAL           (float)12.000  // Nominal output voltage
     #define BUCK_VOUT_TOLERANCE_MAX     (float)0.500   // Output voltage tolerance [+/-]
