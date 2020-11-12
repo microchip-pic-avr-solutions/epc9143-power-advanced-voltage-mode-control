@@ -42,7 +42,7 @@
 
 // HARDWARE ABSTRACTION LAYER HEADER FILES
 #if defined (__EPC9143_R40__)
-    #include "config/epc9143_r40_hwdescr.h"
+    #include "config/hal/epc9143_r40_hwdescr.h"
 #else
     #pragma message "Error: Unknown or unsupported hardare selection."
 #endif

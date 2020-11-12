@@ -9,7 +9,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "config/epc9143_r40_hwdescr.h"
+#include "config/hal.h"
 #include "config/init/init_timer1.h"   
 
 volatile uint16_t init_timer1 (void)
