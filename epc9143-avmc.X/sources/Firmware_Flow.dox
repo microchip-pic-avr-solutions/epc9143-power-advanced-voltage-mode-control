@@ -128,7 +128,9 @@
  *		Success [label="Successful?"]
  *      yes1 [label = "YES"];
  *      no1 [label = "NO"];
-  *     label="Device Start-Up";
+ *      label="Device Start-Up";
+ *      fontname="Helvetica, Arial, Sans-Serif";
+ *      fontsize=12;
  *     }
  *     subgraph cluster1 {    
  *      rank=same; 
@@ -137,9 +139,11 @@
  *      no2 [label = "NO"]; 
  *		call_PCSM [label="Call Power Control State Machine"];
  *		call_FH [label="call Fault Handler"];
-  *     label="Main Loop";
+ *      label="Main Loop";
+ *      fontname="Helvetica, Arial, Sans-Serif";
+ *      fontsize=12;
  *      }
-*     subgraph cluster2 {    
+ *     subgraph cluster2 {    
  *      rank=same; 
  *		Power_Control_SM [label="Power Control State Machine"];
  *      State_Initialize [label="State Initialize" URL="@ref State_Initialize"];
@@ -149,7 +153,9 @@
  *      State_Online [label="State Online" URL="@ref State_Online"];
  *		State_Error [label="State Error" URL="@ref State_Error"];
  *      Fault_Handler [label="Fault Handler"];
-  *     label="Task Layer";
+ *      label="Task Layer";
+ *      fontname="Helvetica, Arial, Sans-Serif";
+ *      fontsize=12;
  *      }
  *		Reset -> init_Osc -> init_Timer -> init_PSAux -> enable_TMR -> config_procedure_check -> Success -> no1 -> Reset;
  *		Success -> yes1 -> timer_expired -> no2 -> timer_expired;

@@ -67,7 +67,7 @@
 #define ADC_REF             (float)3.300 ///< ADC reference voltage in V
 #define ADC_RES             (float)12.0  ///< ADC resolution in [bit]
 #define ADC_GRAN            (float)(ADC_REF / pow(2.0, ADC_RES)) ///< ADC granularity in [V/tick]
-#define ADC_VALUE_MAX       (uint16_t) (pow(2.0, ADC_RES) - 1.0)
+#define ADC_VALUE_MAX       (uint16_t) (pow(2.0, ADC_RES) - 1.0) // DO NOT CHANGE
     
 // PWM/ADC Clock Settings    
 #define PWM_CLOCK_FREQUENCY (float)4.0e+9   ///< PWM Clock Frequency in [Hz]
@@ -87,7 +87,7 @@
  * 
  **************************************************************************************************/
 #define MAIN_EXECUTION_PERIOD   (float)100.0e-6     ///< main state machine pace period in [sec]
-#define MAIN_EXEC_PER           (uint16_t)((CPU_FREQUENCY * MAIN_EXECUTION_PERIOD)-1)
+#define MAIN_EXEC_PER           (uint16_t)((CPU_FREQUENCY * MAIN_EXECUTION_PERIOD)-1) // DO NOT CHANGE
 /** @} */ // end of group
     
 /***************************************************************************************************
@@ -242,8 +242,8 @@
     
 // ~~~ conversion macros ~~~~~~~~~~~~~~~~~~~~~~~~~
 #define BUCK_SWITCHING_PERIOD   (float)(1.0/SWITCHING_FREQUENCY)   ///< Switching period in [sec]
-#define BUCK_PWM_PERIOD         (uint16_t)(float)(BUCK_SWITCHING_PERIOD / PWM_CLOCK_PERIOD)
-#define BUCK_PWM_PHASE_SHIFT    (uint16_t)((float)BUCK_PWM_PERIOD / (float)BUCK_NO_OF_PHASES)      
+#define BUCK_PWM_PERIOD         (uint16_t)(float)(BUCK_SWITCHING_PERIOD / PWM_CLOCK_PERIOD) ///< This sets the switching period of the converter
+#define BUCK_PWM_PHASE_SHIFT    (uint16_t)((float)BUCK_PWM_PERIOD / (float)BUCK_NO_OF_PHASES) ///< This sets the phase shift between phase #1 and #2
 #define BUCK_PWM_DC_MIN         (uint16_t)(BUCK_PWM_DUTY_CYCLE_MIN * (float)BUCK_PWM_PERIOD) ///< This sets the minimum duty cycle
 #define BUCK_PWM_DC_MAX         (uint16_t)(BUCK_PWM_DUTY_CYCLE_MAX * (float)BUCK_PWM_PERIOD) ///< This sets the maximum duty cycle
 #define BUCK_LEB_PERIOD         (uint16_t)(BUCK_LEADING_EDGE_BLANKING / (float)PWM_CLOCK_PERIOD) ///< Leading Edge Blanking = n x PWM resolution (here: 50 x 2ns = 100ns)
@@ -263,19 +263,19 @@
  * 
  * *************************************************************************************************/
     
-#define BUCK_VIN_MINIMUM        (float)18.000   ///< Minimum input voltage
-#define BUCK_VIN_NOMINAL        (float)48.000   ///< Nominal input voltage
-#define BUCK_VIN_MAXIMUM        (float)60.500   ///< Maximum input voltage
+#define BUCK_VIN_MINIMUM        (float)18.000   ///< Minimum input voltage in [V]
+#define BUCK_VIN_NOMINAL        (float)48.000   ///< Nominal input voltage in [V]
+#define BUCK_VIN_MAXIMUM        (float)60.500   ///< Maximum input voltage in [V]
 
-#define BUCK_VIN_UNDER_VOLTAGE  (float)17.50    ///< Under Voltage Lock Out Cut Off
-#define BUCK_VIN_OVER_VOLTAGE   (float)61.00    ///<ver Voltage Lock Out Cut Off
-#define BUCK_VIN_HYSTERESIS     (float)1.500    ///<VLO/OVLO Hysteresis
+#define BUCK_VIN_UNDER_VOLTAGE  (float)17.50    ///< Under Voltage Lock Out Cut Off in [V]
+#define BUCK_VIN_OVER_VOLTAGE   (float)61.00    ///< Over Voltage Lock Out Cut Off in [V]
+#define BUCK_VIN_HYSTERESIS     (float)1.500    ///< UVLO/OVLO Hysteresis in [V]
     
-#define BUCK_VIN_R1             (float)(110.0)  ///< Upper voltage divider resistor in kOhm
-#define BUCK_VIN_R2             (float)(4.870)  ///< Lower voltage divider resistor in kOhm
-#define BUCK_VIN_FEEDBACK_GAIN  (float)((BUCK_VIN_R2) / (BUCK_VIN_R1 + BUCK_VIN_R2))
+#define BUCK_VIN_R1             (float)(110.0)  ///< Upper voltage divider resistor in [kOhm]
+#define BUCK_VIN_R2             (float)(4.870)  ///< Lower voltage divider resistor in [kOhm]
+#define BUCK_VIN_FEEDBACK_GAIN  (float)((BUCK_VIN_R2) / (BUCK_VIN_R1 + BUCK_VIN_R2)) // DO NOT CHANGE
     
-#define BUCK_VIN_FEEDBACK_OFFSET    (float)(0.0)
+#define BUCK_VIN_FEEDBACK_OFFSET    (float)(0.0) ///< Physical, static signal offset in [V]
 #define BUCK_VIN_ADC_TRG_DELAY      (float)(120.0e-9) ///< ADC trigger delay in [sec]
     
 // ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
@@ -299,8 +299,8 @@
     
 // ~ conversion macros end ~~~~~~~~~~~~~~~~~
     
-#define _BUCK_VIN_ADCInterrupt  _ADCAN9Interrupt   
-#define _BUCK_VIN_ADCISR_IF     _ADCAN9IF
+#define _BUCK_VIN_ADCInterrupt  _ADCAN9Interrupt ///< ADC interrupt service routine function call of the input voltage feedback channel
+#define _BUCK_VIN_ADCISR_IF     _ADCAN9IF   ///< ADC interrupt flag bit of the input voltage feedback channel
 
 #define BUCK_VIN_ANSEL          _ANSELA2    ///< GPIO analog function mode enable bit
 #define BUCK_VIN_ADCCORE        8           ///< 0=Dedicated Core #0, 1=Dedicated Core #1, 8=Shared ADC Core
@@ -328,7 +328,7 @@
 #define BUCK_VOUT_DIV_R1            (float)(18.00) ///< Upper voltage divider resistor in kOhm
 #define BUCK_VOUT_DIV_R2            (float)(4.750) ///< Lower voltage divider resistor in kOhm
 #define BUCK_VOUT_FEEDBACK_GAIN     (float)((BUCK_VOUT_DIV_R2) / (BUCK_VOUT_DIV_R1 + BUCK_VOUT_DIV_R2))
-#define BUCK_VOUT_FEEDBACK_OFFSET   (float)(0.0)
+#define BUCK_VOUT_FEEDBACK_OFFSET   (float)(0.0)   ///< Physical, static signal offset in [V]
 #define BUCK_VOUT_ADC_TRG_DELAY     (float)(0.0e-9) ///< Trigger delay in [sec]
 
 // Peripheral Assignments
@@ -341,18 +341,18 @@
     
 // ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
 
-#define BUCK_VOUT_REF           (uint16_t)(BUCK_VOUT_NOMINAL * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRAN)
-#define BUCK_VOUT_NOM           BUCK_VOUT_REF
-#define BUCK_VOUT_DEV_TRIP      (uint16_t)(BUCK_VOUT_TOLERANCE_MAX * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRAN)
-#define BUCK_VOUT_DEV_RELEASE   (uint16_t)(BUCK_VOUT_TOLERANCE_MIN * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRAN)
-#define BUCK_VOUT_OFFSET        (uint16_t)(BUCK_VOUT_FEEDBACK_OFFSET / ADC_GRAN)
-#define BUCK_VOUT_ADC_TRGDLY    (uint16_t)(BUCK_VOUT_ADC_TRG_DELAY / PWM_CLOCK_PERIOD)
+#define BUCK_VOUT_REF           (uint16_t)(BUCK_VOUT_NOMINAL * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRAN) ///< Macro calculating the integer number equivalent of the output voltage reference given above in [V]
+#define BUCK_VOUT_NOM           BUCK_VOUT_REF ///< Alias macro of the integer number equivalent of the nominal output voltage given above in [V]
+#define BUCK_VOUT_DEV_TRIP      (uint16_t)(BUCK_VOUT_TOLERANCE_MAX * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRAN) ///< Macro calculating the integer number equivalent of the maximum allowed output voltage deviation given above in [V], which will lead to a converter shut down when exceeded.
+#define BUCK_VOUT_DEV_RELEASE   (uint16_t)(BUCK_VOUT_TOLERANCE_MIN * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRAN) ///< Macro calculating the integer number equivalent of the maximum allowed output voltage deviation given above in [V], which needs to be underrun before a shut-down converter can recover
+#define BUCK_VOUT_OFFSET        (uint16_t)(BUCK_VOUT_FEEDBACK_OFFSET / ADC_GRAN) ///< Macro calculating the integer number equivalent of the physical, static signal offset of this feedback channel
+#define BUCK_VOUT_ADC_TRGDLY    (uint16_t)(BUCK_VOUT_ADC_TRG_DELAY / PWM_CLOCK_PERIOD) ///< Macro calculating the integer number equivalent of the signal chain time delay between internal PWM timebase and effective switching edge of the leading FET
 
 #define BUCK_VOUT_NORM_INV_G    (float)(1.0/BUCK_VOUT_FEEDBACK_GAIN) ///< Inverted feedback gain required for value normalization
 #define BUCK_VOUT_NORM_SCALER   (int16_t)(ceil(log(BUCK_VOUT_NORM_INV_G)) + 1) ///< VOUT normalization  
 #define BUCK_VOUT_NORM_FACTOR   (int16_t)((BUCK_VOUT_NORM_INV_G / pow(2.0, BUCK_VOUT_NORM_SCALER)) * (pow(2.0, 15)-1)) ///< VOUT normalization factor scaled in Q15
 
-#define BUCK_VOUT_RANGE_MAX     (float)(ADC_REF * BUCK_VOUT_NORM_INV_G)
+#define BUCK_VOUT_RANGE_MAX     (float)(ADC_REF * BUCK_VOUT_NORM_INV_G) ///< Macro calculating the integer number equivalent of the total output voltage range defined by the settings given above in [V]]
     
 // ~ conversion macros end ~~~~~~~~~~~~~~~~~
 /** @} */ // end of group

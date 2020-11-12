@@ -1,5 +1,5 @@
 ; **********************************************************************************
-;  SDK Version: z-Domain Control Loop Designer  v0.9.12.642
+;  SDK Version: z-Domain Control Loop Designer v0.9.12.642
 ;  CGS Version: Code Generator Script v3.0.0 (09/07/2020)
 ;  Author:      M91406
 ;  Date/Time:   11/11/2020 13:58:58
@@ -18,7 +18,7 @@
     
 ;------------------------------------------------------------------------------
 ;include NPNZ16B_t data structure and global constants.
-    .include ".\sources\pwr_control\drivers\npnz16b.inc" ; include NPNZ16b_t object data structure value offsets and status flag labels
+    .include "sources/pwr_control/drivers/npnz16b.inc" ; include NPNZ16b_t object data structure value offsets and status flag labels
     
 ;------------------------------------------------------------------------------
 ;source code section.
