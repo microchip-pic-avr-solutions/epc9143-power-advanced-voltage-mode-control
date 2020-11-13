@@ -37,65 +37,6 @@
 #include <stdbool.h> // include standard boolean data types
 #include <stddef.h> // include standard definition data types
 
- /** 
- * @defgroup Firmware_Flow Firmware Flowchart
- * @ingroup Firmware_Flow
- * @dot
- * digraph Firmware{ 
- *      node [fontname = "Consolas, 'Courier New', Courier, Sans-Serif"];
- *      node [fontsize = 10];
- *      node [shape = box]; Power_Control_SM; State_Initialize; State_Reset; State_Standby; State_RampUp; State_Online;State_Error;    
- *		node [shape = box]; call_PCSM; call_FH; Fault_Handler;
- *		node [shape = box]; init_Osc; init_Timer; init_PSAux; enable_TMR; config_procedure_check;
- *      node [shape = box]; yes1;yes2;no1;no2;
- *      node [shape = diamond]; Success; Reset; timer_expired;
- * 
- *      graph [rankdir="TB"] {
- *     Reset [label="Reset"];
- *     subgraph cluster0 {      
- *      rank=same;      
- *		init_Osc [label="Initialize Oscillator + PLL"];
- *		init_Timer [label="Initialize Main Timer and GPIOs"];
- *		init_PSAux [label="Initialize Power supply Auxiliary Peripherals"]; 
- *		enable_TMR [label="Enable main Timer"];
- * 		config_procedure_check [label="Configuration procedure check"];
- *		Success [label="Successful?"]
- *      yes1 [label = "YES"];
- *      no1 [label = "NO"];
-  *     label="Device Start-Up";
- *     }
- *     subgraph cluster1 {    
- *      rank=same; 
- *		timer_expired [label="100usec Timer expired?"];
- *      yes2 [label = "YES"];
- *      no2 [label = "NO"]; 
- *		call_PCSM [label="Call Power Control State Machine"];
- *		call_FH [label="call Fault Handler"];
-  *     label="Main Loop";
- *      }
-*     subgraph cluster2 {    
- *      rank=same; 
- *		Power_Control_SM [label="Power Control State Machine"];
- *      State_Initialize [label="State Initialize" URL="@ref State_Initialize"];
- *      State_Reset [label="State Reset" URL="@ref State_Reset"];
- *      State_Standby [label="State Standby" URL="@ref State_Standby"]; 
- *      State_RampUp [label="State Ramp Up" URL="@ref State_RampUp"]; 
- *      State_Online [label="State Online" URL="@ref State_Online"];
- *		State_Error [label="State Error" URL="@ref State_Error"];
- *      Fault_Handler [label="Fault Handler"];
-  *     label="Task Layer";
- *      }
- *		Reset -> init_Osc -> init_Timer -> init_PSAux -> enable_TMR -> config_procedure_check -> Success -> no1 -> Reset;
- *		Success -> yes1 -> timer_expired -> no2 -> timer_expired;
- *		timer_expired -> yes2 -> call_PCSM -> call_FH -> timer_expired;
- *		call_PCSM -> Power_Control_SM -> State_Initialize->State_Reset->State_Standby->State_RampUp->State_Online;
- *		State_Error -> State_Reset;
- *		call_FH -> Fault_Handler -> State_Error;
- *     }
- * }
- * @enddot
- */
-
 // COMMON SOFTWARE MODULES
 #include "config/hal.h"
 #include "config/system_initialize.h"

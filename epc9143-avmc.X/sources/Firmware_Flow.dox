@@ -20,8 +20,8 @@
  *      yes1 [label = "YES"];
  *      no1 [label = "NO"];
  *      subgraph main_loop {
- *      call_PWR_SM [label="Call PWM State Machine"];
- *      call_FH [label="Call Fault Handler"]
+ *      call_PWR_SM [label="Call PWM State Machine" URL="@ref appPowerSupply_Execute"];
+ *      call_FH [label="Call Fault Handler" URL="@ref appFaultMonitor_Execute"]
  *      Fault_detected [label="Fault Detected?"];
  *      yes2 [label = "YES"];
  *      no2 [label = "NO"];
@@ -32,13 +32,13 @@
  *          subgraph cluster00{
  *          rankdir="TB"   
  *          label="Power Supply State Machine";
- *          FB_data [label="Publish FB Data"]; 
+ *          FB_data [label="Publish FeedBack Data" URL="@ref appPowerSupply_Execute"]; 
  *          fault_test [label="Fault Test"]; 
- *          exec_State_Machine [label="Execute State Machine"]; 
+ *          exec_State_Machine [label="Execute State Machine" URL="@ref drv_BuckConverter_Execute"]; 
  *          init [label="Initial"]; 
  *          run [label="Run"]; 
- *          current_cal [label="Current Calibration"]; 
- *          current_bal[label="Current Balancing"];
+ *          current_cal [label="Current Calibration" URL="@ref appPowerSupply_CurrentSenseCalibration"]; 
+ *          current_bal[label="Current Balancing" URL="@ref appPowerSupply_CurrentBalancing"];
  *          reg_test [label="Regulation Test ON/OFF"]; 
  *          exit[label="Exit"]; 
  *          }
@@ -52,7 +52,7 @@
  *          rankdir="TB";
  *          label="Buck Converter State Machine";
  *          enabled [label="Enabled?"]; 
- *          State_machine [label="State Machine"]; 
+ *          State_machine [label="State Machine" URL="@ref buck_state_machine"]; 
  *          exit1 [label="exit"]; 
  *          }
  *          subgraph cluster11 {
@@ -65,7 +65,7 @@
  *      }
  *      subgraph cluster2 {
  *      rankdir="TB";
- *      NPNZ_control [label="Independent NPNZ Real Time /nControl Driver/Library"];
+ *      NPNZ_control [label="Independent NPNZ Real Time /nControl Driver/Library" URL="@ref npnz16b.h"];
  *          subgraph cluster20{
  *          rankdir="TB";
  *          Suspend_PWM [label="Suspend PWM"]; 
@@ -112,7 +112,7 @@
  *      node [fontsize = 10];
  *      node [shape = box]; Power_Control_SM; State_Initialize; State_Reset; State_Standby; State_RampUp; State_Online;State_Error;    
  *		node [shape = box]; call_PCSM; call_FH; Fault_Handler;
- *		node [shape = box]; init_Osc; init_Timer; init_PSAux; enable_TMR; config_procedure_check;
+ *		node [shape = box]; system_init; appPS_Init; appFM_init; enable_TMR; config_procedure_check;
  *      node [shape = box]; yes1;yes2;no1;no2;
  *      node [shape = diamond]; Success; Reset; timer_expired;
  * 
@@ -120,9 +120,9 @@
  *     Reset [label="Reset"];
  *     subgraph cluster0 {      
  *      rank=same;      
- *		init_Osc [label="Initialize Oscillator + PLL"];
- *		init_Timer [label="Initialize Main Timer and GPIOs"];
- *		init_PSAux [label="Initialize Power supply Auxiliary Peripherals"]; 
+ *		system_init [label="System Initialize" URL="@ref SYSTEM_Initialize"]; 
+ *		appPS_Init [label="Initialize buck converter object /nand state machine " URL="@ref appPowerSupply_Initialize"];
+ *		appFM_init [label="Initialize fault object /nand fault handler task" URL="@ref appFaultMonitor_Initialize"];
  *		enable_TMR [label="Enable main Timer"];
  * 		config_procedure_check [label="Configuration procedure check"];
  *		Success [label="Successful?"]
@@ -137,8 +137,8 @@
  *		timer_expired [label="100usec Timer expired?"];
  *      yes2 [label = "YES"];
  *      no2 [label = "NO"]; 
- *		call_PCSM [label="Call Power Control State Machine"];
- *		call_FH [label="call Fault Handler"];
+ *		call_PCSM [label="Call Power Control State Machine" URL="@ref appPowerSupply_Execute"];
+ *		call_FH [label="call Fault Handler" URL="@ref appFaultMonitor_Execute"];
  *      label="Main Loop";
  *      fontname="Helvetica, Arial, Sans-Serif";
  *      fontsize=12;
@@ -157,7 +157,7 @@
  *      fontname="Helvetica, Arial, Sans-Serif";
  *      fontsize=12;
  *      }
- *		Reset -> init_Osc -> init_Timer -> init_PSAux -> enable_TMR -> config_procedure_check -> Success -> no1 -> Reset;
+ *		Reset -> system_init -> appPS_Init -> appFM_init -> enable_TMR -> config_procedure_check -> Success -> no1 -> Reset;
  *		Success -> yes1 -> timer_expired -> no2 -> timer_expired;
  *		timer_expired -> yes2 -> call_PCSM -> call_FH -> timer_expired;
  *		call_PCSM -> Power_Control_SM -> State_Initialize->State_Reset->State_Standby->State_RampUp->State_Online;

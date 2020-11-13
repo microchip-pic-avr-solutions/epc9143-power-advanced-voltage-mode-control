@@ -56,110 +56,6 @@
 /**
  * 
  * @defgroup power_handler Power Control Handler Reference  
- * @dot
- * digraph power_control_flowchart{ 
- *      compound=true;
- *      node [fontname = "Consolas, 'Courier New', Courier, Sans-Serif"];
- *      node [fontsize = 10];
- *      node [shape = box]; Main_function; call_PWR_SM; call_FH;
- *      node [shape = box]; FB_data; fault_test; exec_State_Machine; init; run; current_cal; current_bal; reg_test; exit; PWR_suspend; PWR_resume;
- *      node [shape = box]; enabled; State_machine; exit1; Buck_suspend; Buck_resume; 
- *      node [shape = box]; NPNZ_control; Suspend_PWM; Resume_PWM; PWM; ADC; cNPNZ;
- *      node [shape = box]; yes1; no1; yes2; no2;
- *      node [shape = diamond]; Success; Reset; Fault_detected;
- * 
- *      graph [rankdir="TB"] {
- *      
- *      Reset [label="Reset"];
- *      Main_function [label="Main Function"];
- *      Success [label="Successful?"]
- *      yes1 [label = "YES"];
- *      no1 [label = "NO"];
- *      subgraph main_loop {
- *      call_PWR_SM [label="Call PWM State Machine"];
- *      call_FH [label="Call Fault Handler"]
- *      Fault_detected [label="Fault Detected?"];
- *      yes2 [label = "YES"];
- *      no2 [label = "NO"];
- *      }
- * 
- *      subgraph cluster0 {
- *      rankdir="TB";         
- *          subgraph cluster00{
- *          rankdir="TB"   
- *          label="Power Supply State Machine";
- *          FB_data [label="Publish FB Data"]; 
- *          fault_test [label="Fault Test"]; 
- *          exec_State_Machine [label="Execute State Machine"]; 
- *          init [label="Initial"]; 
- *          run [label="Run"]; 
- *          current_cal [label="Current Calibration"]; 
- *          current_bal[label="Current Balancing"];
- *          reg_test [label="Regulation Test ON/OFF"]; 
- *          exit[label="Exit"]; 
- *          }
- *      PWR_suspend [label="PWR Suspend"]; 
- *      PWR_resume [label="PWM Resume"];
- *      label="Application Layer";
- *      }
- *      subgraph cluster1 {
- *      rankdir="TB"; 
- *          subgraph cluster10 {
- *          rankdir="TB";
- *          label="Buck Converter State Machine";
- *          enabled [label="Enabled?"]; 
- *          State_machine [label="State Machine"]; 
- *          exit1 [label="exit"]; 
- *          }
- *          subgraph cluster11 {
- *          rankdir="TB";
- *          label="Buck Controller Control";
- *          Buck_suspend [label="Buck Suspend"]; 
- *          Buck_resume [label="Buck Resume"];
- *          }    
- *      label="Device Layer";
- *      }
- *      subgraph cluster2 {
- *      rankdir="TB";
- *      NPNZ_control [label="Independent NPNZ Real Time /nControl Driver/Library"];
- *          subgraph cluster20{
- *          rankdir="TB";
- *          Suspend_PWM [label="Suspend PWM"]; 
- *          Resume_PWM [label="Resum PWM"]; 
- *          }
- *      label="Driver Layer";
- *      }
- * 
- *      PWM [label="PWM"];
- *      ADC [label="ADC"];
- *      cNPNZ [label="cNPNZ16b_t"];
- * 
- *      Reset -> Main_function -> Success -> yes1;
- *      yes1 -> call_PWR_SM [ltail=yes1 lhead=main_loop];
- *      Success -> no1 -> Reset;
- *      call_PWR_SM -> call_FH -> Fault_detected -> yes2;
- *      Fault_detected -> no2 -> call_PWR_SM [ltail=no2 lhead=main_loop];
- * 
- *      call_PWR_SM -> FB_data [ltail=call_PWR_SM lhead=cluster00];
- *      FB_data -> fault_test -> exec_State_Machine -> init -> current_cal -> exit;
- *      exec_State_Machine -> run -> current_bal -> reg_test -> exit;
- *      exit -> call_PWR_SM;
- *      yes2 -> PWR_suspend -> Buck_suspend -> Suspend_PWM;
- *      Buck_suspend -> State_machine;
- *      Buck_resume -> State_machine;
- *      no2 -> PWR_resume -> Buck_resume -> Resume_PWM;
- *      enabled -> State_machine -> exit1;
- *      
- *      PWM -> NPNZ_control;
- *      ADC -> NPNZ_control;
- *      cNPNZ -> NPNZ_control;
- * 
- *     }
- * }
- * @enddot
- 
- 
- 
  * @{
  * 
  */
@@ -192,16 +88,16 @@
 
 /****************************************************************************************************
  * @defgroup power_handler_enum Power Control Handler Enumerations
- * @ingroup power_handler
- * @{
- * 
- * This enumeration is listing all defined states supported by the power controller state-machine.
+ * @brief This enumeration is listing all defined states supported by the power controller state-machine.
  * The state machine handles the initialization of the power controller, stand-by, start up procedure
  * including Power-On-Delay, Ramp-Up and Power Good Delay until it ends up in a continuous operating
  * state. When reference values are changed while running, the state machine will tune into the new
  * reference values using the slew rates defined for the startup phase. 
  *
  * For more information on each state, please read the related sections.
+ * 
+ * @ingroup power_handler
+ * @{
  *  
  **************************************************************************************************** */
 
@@ -573,7 +469,7 @@ typedef struct BUCK_GPIO_SETTINGS_s {
  * 
  * <b>Description:</b>
  * 
- * *************************************************************************************************** */
+ *****************************************************************************************************/
 typedef struct BUCK_POWER_CONTROLLER_s 
 {
     volatile struct BUCK_CONVERTER_STATUS_s status;     ///< BUCK operation status bits 
