@@ -8,11 +8,16 @@
 #include "hal.h"
 #include "system_initialize.h"
 
+/**
+ * 
+ * @addtogroup power_handler_function 
+ * @{
+ */
 /***********************************************************************************
- * @fn DATA_TYPE FUNCTION_NAME
- * @brief  ADD_SHORT_DESCRIPTION/SUMMARY_HERE
- * @param  ADD_PARAMETER_HERE
- * @return DATA_TYPE SHORT_VALUE_DESCRIPTION
+ * @fn volatile uint16_t SYSTEM_Initialize(void) 
+ * @brief  
+ * @param  
+ * @return 
  * 
  * <b>Description</b>
  * ADD_DESCRIPTION_HERE
@@ -46,3 +51,4 @@ volatile uint16_t SYSTEM_Initialize(void)
 	return(retval);
 
 }
+/**@}*/
