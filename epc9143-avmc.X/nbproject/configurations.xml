@@ -8,6 +8,9 @@
         <itemPath>sources/common/p33c_pral/xc16_pral.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="config" projectFiles="true">
+        <logicalFolder name="f2" displayName="hal" projectFiles="true">
+          <itemPath>sources/config/hal/epc9143_r40_hwdescr.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="f1" displayName="init" projectFiles="true">
           <itemPath>sources/config/init/init_fosc.h</itemPath>
           <itemPath>sources/config/init/init_gpio.h</itemPath>
@@ -17,7 +20,6 @@
         </logicalFolder>
         <itemPath>sources/config/hal.h</itemPath>
         <itemPath>sources/config/system_initialize.h</itemPath>
-        <itemPath>sources/config/hal/epc9143_r40_hwdescr.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
         <logicalFolder name="f4" displayName="fault_handler" projectFiles="true">
