@@ -8,6 +8,19 @@
 #include "xc16_pral.h" // include peripehral register abstraction layer drivers
 #include "dev_buck_ptemp_pwm.h" // include peripheral register configuration values header
 
+/**
+ * @addtogroup power_handler_struct
+ * @{
+ */
+
+/****************************************************************************************************
+ * @struct P33C_PWM_MODULE_s buckPwmModuleConfig
+ * @brief 
+ * 
+ * <b>Description:</b>
+ * 
+ *****************************************************************************************************/
+
 // PWM module default configuration
 volatile struct P33C_PWM_MODULE_s buckPwmModuleConfig = 
 {
@@ -33,6 +46,15 @@ volatile struct P33C_PWM_MODULE_s buckPwmModuleConfig =
         .PWMEVT_E.value = REG_PWMEVTE,  // PWMEVTE: PWM EVENT OUTPUT CONTROL REGISTER E
         .PWMEVT_F.value = REG_PWMEVTF   // PWMEVTF: PWM EVENT OUTPUT CONTROL REGISTER F
     };
+
+
+/****************************************************************************************************
+ * @struct P33C_PWM_GENERATOR_s buckPwmGeneratorConfig
+ * @brief 
+ * 
+ * <b>Description:</b>
+ * 
+ *****************************************************************************************************/
 
 // PWM generator default configuration
 volatile struct P33C_PWM_GENERATOR_s buckPwmGeneratorConfig = 
