@@ -23,14 +23,14 @@
 ## Summary
 This code example demonstrates a closed loop voltage mode control implementation for dsPIC33CK. It has specifically been developed for the EPC9143 Rev4.0 1/16 brick converter.
 
-The board starts up the buck converter automatically when power is applied to the board, providing a regulated output voltage of 12 V at the output of the converter. The startup procedure is controlled and executed by the power controller state machine (PWRLIB_BUCK) and includes an configurable startup procedure with power-on delay, ramp up period and power good delay before dropping into constant regulation mode.
-An additional fault handler (FUNLIB_FAULT_HANDLER) shuts down the power supply if the input voltage is outside the defined range of 18V to 72.5V (UVLO/OVLO) or if the output voltage is more than 0.5V out of regulation for more than 10 milliseconds.
+The board starts up the buck converter automatically when power is applied to the board, providing a regulated output voltage of 12 V at the output of the converter. The startup procedure is controlled and executed by the power controller state machine and includes an configurable startup procedure with power-on delay, ramp up period and power good delay before dropping into constant regulation mode.
+An additional fault handler routine continuously monitors incoming ADC data and peripheral status bits and shuts down the power supply if the input voltage is outside the defined maximum range of 16.5 V to 62.5 V (UVLO/OVLO) or if the output voltage is more than 0.5 V out of regulation for more than 10 milliseconds.
 
 A single, high-speed type IV (4P4Z) voltage mode controller with enforced PWM steering is used to automatically create balanced phase currents in both phases of this interleaved converter. An underlying current balancing scheme compensates component tolerances and deviations over temperature. A built-in adaptive gain control algorithm stabilizes gain variations of the voltage loop controller during input- and output voltage transients, stabilizing cross-over frequency and output impedance, supporting control bandwidths of 25 kHz, for improved transient response, helping to minimize power distribution network (PDN) decoupling capacity.
 
 #### Product Features:
   - Input Voltage: 18 V to 61 V
-  - Output Voltage: 12 V DC (programmable from 5 V to 15.0 V)
+  - Output Voltage: 5 ... 15 V DC (12 V default setting)
   - Switching Frequency: 500 kHz
   - Control Frequency: 500 kHz
   - Cross-Over Frequency: ~25 kHz (depends on VIN and if AGC is on/off)
@@ -38,14 +38,24 @@ A single, high-speed type IV (4P4Z) voltage mode controller with enforced PWM st
   - Gain Margin: ~ 12 dB
 
 ## Related Documentation
+##### Firmware Documentation
+  - [EPC9143 Online Firmware Documentation](https://microchip-pic-avr-examples.github.io/epc9143-power-advanced-voltage-mode-control)
+
+##### Firmware Documentation
   - [EPC9143 300W 1/16th brick Power Module Reference Design Product Website](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EPC9143)
+  - [EPC9143 Reference Design Quick Start Guide (QSG)](https://epc-co.com/epc/documents/guides/EPC9143_qsg.pdf)
+  - [EPC9143 Reference Design Schematics](https://epc-co.com/epc/documents/schematics/EPC9143_Schematic.pdf)
+  - [EPC9531 Test Fixture Quick Start Guide (QSG)](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf)
+  - [EPC9531 Test Fixture Schematics](https://epc-co.com/epc/documents/schematics/EPC9531_Schematic.pdf)
 
 ## Software Used 
   - [MPLAB® X IDE v5.40](https://www.microchip.com/mplabx-ide-windows-installer)
   - [MPLAB® XC16 Compiler v1.50](https://www.microchip.com/mplabxc16windows)
-  - [DCLD - Digital Control Library Designer v0.9.12.642](https://areiter128.github.io/DCLD/)
+  - [PowerSmart&trade; - Digital Control Library Designer, v0.9.12.642 (Pre-Release Version)](https://areiter128.github.io/DCLD/)
 
 ## Hardware Used
+The EPC9143 1/16th brick power module is best tested when plugged into EPC9531 test fixture. This test fixture also provides all required interfaces to program and debug the dsPIC33CK32MP102 DSC as well as test points and banana jack connectors for easy and safe handling of the kit during bench tests. The EPC9531 QSG provides detailed operating procedure instructions.
+
   - EPC9143: EPC9143 16th Brick Non-Isolated Step Down Converter, Revision 4.0
   - EPC9531: EPC9531 test fixture for EPC9143 16th brick reference design
 
@@ -58,21 +68,39 @@ A single, high-speed type IV (4P4Z) voltage mode controller with enforced PWM st
 </p>
 
 ## Device Support:
-The following Microchip devices are used on the EPC9143 reference design:
+Microchip devices used in this reference design:
   - [dsPIC33CK32MP102](https://www.microchip.com/dsPIC33CK32MP102)
   - [MCP6C02 Shunt Amplifier](https://www.microchip.com/MCP6C02)
 
+EPC devices used in this reference design
+  - [EPC2053: 100 V, 246 A Enhancement-Mode GaN Power Transistor](https://epc-co.com/epc/Products/eGaNFETsandICs/EPC2053.aspx)
+
 ## Setup
-The EPC9143 1/16th brick module is best tested plugged into EPC9531 test fixture. The EPC9531 QSG provides detailed operating procedure instructions. 
+The board comes programmed and ready to be used when unpacked. No reprogramming of the target device is required to operate the board unless features or settings such as the nominal output voltage or start-up timing need to be modified. 
 
-Available documents provided by EPC:
+<p>
+  <center>
+    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
+      <img src="images/9531_9143_setup.png" alt="EPC9531 Test Fixture Connections - Top View" width="700">
+	</a>
+  <br>
+  EPC9531 Test Fixture Connections - Top View
+  </center>
+</p>
 
-  - [EPC9143 Quick Start Guide (QSG)](https://epc-co.com/epc/documents/guides/EPC9143_qsg.pdf)
-  - [EPC9143 Schematics](https://epc-co.com/epc/documents/schematics/EPC9143_Schematic.pdf)
-  - [EPC9531 Quick Start Guide (QSG)](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf)
-  - [EPC9531 Test Fixture Schematics](https://epc-co.com/epc/documents/schematics/EPC9531_Schematic.pdf)
+<p>
+  <center>
+    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
+      <img src="images/9531_bottom.png" alt="EPC9531 Test Fixture Connections - Bottom View" width="620">
+	</a>
+  <br>
+  EPC9531 Test Fixture Connections - Bottom View
+  </center>
+</p>
 
-The bard comes programmed and ready to be used when unpacked. No reprogramming of the target device is required to operate the board unless features or settings such as the nominal output voltage or start-up timing need to be modified in which case the Microchip dsPIC33CK controller can be re-programmed using the in-circuit serial programming port (ICSP) available on the RJ-11 programming interface as well as the 5-pin header provided by the EPC9531 test fixture. These interfaces support all of Microchip’s in-circuit programmers/debuggers, such as MPLAB® ICD4, MPLAB® REAL ICE or MPLAB® PICkit4 and previous derivatives. See [EPC9531 Quick Start Guide](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf) for details.
+
+In case firmware based features need to be changed, the Microchip dsPIC33CK controller can be re-programmed using the in-circuit serial programming port (ICSP) available on the RJ-11 programming interface as well as the 5-pin header provided by the EPC9531 test fixture. These interfaces support all of Microchip’s in-circuit programmers/debuggers, such as MPLAB® ICD4, MPLAB® REAL ICE or MPLAB® PICkit4 and previous derivatives. See [EPC9531 Quick Start Guide](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf) for details.
+
 
 ## Operation
 The converter is starting up automatically when more than 10.5 V DC are applied across the input terminals of the EPC9531 test fixture. It is not recommended to operate the EPC9143 reference design without proper decoupling capacitance at either input or output. The EPC9531 test fixture provides the best test environment for the converter. Please read the [EPC9531 Quick Start Guide](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf) to get detailed information about the requirements for setup and operation of this reference design.
@@ -119,16 +147,15 @@ This control loop can be turned on/off by using the ENABLE bit in the STATUS wor
 
 ##### 3) Digital Controller Design
 
-The control loop source code is configured and generated by using the 
-Digital Control Loop Designer (DCLD). 
+The control loop source code is configured and generated by the PowerSmart&trade; - Digital Control Library Designer (DCLD) software.
 
-This additional design software is available for download by following this link:
+This additional design software is available for download on Github Pages:
 
-[https://areiter128.github.io/DCLD](https://areiter128.github.io/DCLD)
+  - [PowerSmart&trade; Digital Control Library Designer Github Page](https://areiter128.github.io/DCLD)
 
-Once installed, the controller configuration can be modified. The most recent configuration can be opened from within the MPLAB X® IDE by right-clicking on the file 'DPSK3_VMC.dcld' located in the Important Files folder of the Project Manager. When right-clicked, select 'Open In System' to open the configuration in DCLD. 
+Once installed, the controller configuration can be modified. The most recent configuration can be opened from within the MPLAB X® IDE by right-clicking on the file 'DPSK3_VMC.dcld' located in the Important Files folder of the Project Manager. When right-clicked, select 'Open In System' to open the configuration in PowerSmart&trade; DCLD. 
 
-Please refer to the user guide of DCLD which is included in the software and can be opened from the help menu of the application.
+Please refer to the user guide of PowerSmart&trade; DCLD which is included in the software and can be opened from the help menu of the application.
 
 ##### 4) User Control
 
@@ -171,7 +198,7 @@ This code examples includes an alternative, proportional control loop which is c
 ###### PLEASE NOTE:
 PROPORTIONAL CONTROLLERS ARE BY DEFAULT UNSTABLE AND NOT SUITED TO REGULATE THE OUTPUT OF A POWER SUPPLY UNDER NORMAL OPERATING CONDITIONS. DURING A PLANT MEASUREMENT IT IS MANDATORY THAT INPUT VOLTAGE AND LOAD REMAIN STABLE AND DO NOT CHANGE. 
 
-FOR MORE INFORMATION ABOUT HOW TO CONDUCT A POWER PLANT MEASUREMENT, PLEASE READ THE SECTIONS IN THE DCLD USER GUIDE.
+FOR MORE INFORMATION ABOUT HOW TO CONDUCT A POWER PLANT MEASUREMENT, PLEASE READ THE SECTIONS IN THE PowerSmart&trade; DCLD USER GUIDE.
 
 _________________________________________________
 (c) 2020, Microchip Technology Inc.
