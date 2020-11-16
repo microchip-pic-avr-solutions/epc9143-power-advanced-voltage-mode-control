@@ -327,10 +327,10 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.sw_node[0].gpio_instance = BUCK_PWM1_GPIO_INSTANCE;
     buck.sw_node[0].gpio_high = BUCK_PWM1_GPIO_PORT_PINH;
     buck.sw_node[0].gpio_low = BUCK_PWM1_GPIO_PORT_PINL;
-    buck.sw_node[0].master_period_enable = true;
+    buck.sw_node[0].master_period_enable = false; ///< Master time base is disabled, synchronization is established among PWM generators
 	buck.sw_node[0].high_resolution_enable = true;
     buck.sw_node[0].period = BUCK_PWM_PERIOD;
-    buck.sw_node[0].phase = BUCK_PWM_PHASE_SHIFT; 
+    buck.sw_node[0].phase = 0; ///< Master phase starts at timebase counot of =0
     buck.sw_node[0].duty_ratio_min = BUCK_PWM_DC_MIN;
     buck.sw_node[0].duty_ratio_init = BUCK_PWM_DC_MIN;
     buck.sw_node[0].duty_ratio_max = BUCK_PWM_DC_MAX;
@@ -345,7 +345,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.sw_node[1].gpio_instance = BUCK_PWM2_GPIO_INSTANCE;
     buck.sw_node[1].gpio_high = BUCK_PWM2_GPIO_PORT_PINH;
     buck.sw_node[1].gpio_low = BUCK_PWM2_GPIO_PORT_PINL;
-    buck.sw_node[1].master_period_enable = true;
+    buck.sw_node[1].master_period_enable = false; ///< Master time base is disabled, synchronization is established among PWM generators
 	buck.sw_node[1].high_resolution_enable = true;
     buck.sw_node[1].period = BUCK_PWM_PERIOD;
     buck.sw_node[1].phase = BUCK_PWM_PHASE_SHIFT; 

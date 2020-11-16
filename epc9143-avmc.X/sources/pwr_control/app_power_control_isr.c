@@ -48,6 +48,8 @@ void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void
     #else
     v_loop_PTermUpdate(&v_loop);
     #endif
+    
+//    BUCK_PWM1_UPDREQ = 1;
 
     Nop(); // Debugging break point anchors
     Nop();
