@@ -43,8 +43,9 @@
 #include <stddef.h> // include standard definition data types
 
 #include "config/hal.h" // include hardware abstraction layer declarations
-#include "pwr_control/devices/dev_buck_converter.h" // include buck converter device
-#include "pwr_control/drivers/v_loop.h" // include voltage control loop object
+#include "app_power_control.h"
+#include "./devices/dev_buck_converter.h" // include buck converter device
+#include "./drivers/v_loop.h" // include voltage control loop object
 
 #include "fault_handler/app_faults_monitor.h" // include fault monitor application object declarations
 
@@ -135,6 +136,9 @@ volatile uint16_t appPowerSupply_Initialize(void)
     _BUCK_VLOOP_ISR_IP = 5;
     _BUCK_VLOOP_ISR_IF = 0;
     _BUCK_VLOOP_ISR_IE = 1;
+    
+    // Start power supply engine
+    retval &= appPowerSupply_Start();
     
     // Enable Buck Converter
     buck.status.bits.enabled = true;
@@ -229,6 +233,46 @@ volatile uint16_t appPowerSupply_Dispose(void)
     buck.data.temp = 0;  // Reset output temperature value
     buck.state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE; // Set state machine
     
+    return(retval); 
+}
+
+/*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_Start(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
+ * 
+ *********************************************************************************/
+
+volatile uint16_t appPowerSupply_Start(void)
+{
+    volatile uint16_t retval=1;
+
+    retval &= drv_BuckConverter_Start(&buck); // Start PWM with outputs disabled to start ADC triggering
+
+    return(retval); 
+}
+
+/*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_Stop(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
+ * 
+ *********************************************************************************/
+
+volatile uint16_t appPowerSupply_Stop(void)
+{
+    volatile uint16_t retval=1;
+
+    retval &= drv_BuckConverter_Stop(&buck); // Shut down all power supply peripherals and data objects
+
     return(retval); 
 }
 
