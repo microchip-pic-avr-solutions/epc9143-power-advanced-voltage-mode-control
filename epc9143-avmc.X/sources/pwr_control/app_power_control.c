@@ -518,6 +518,14 @@ volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
     retval &= drv_BuckConverter_Initialize(&buck); // Hand over peripheral configuration to driver
     
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // Write Custom Configuration of Remappable PWM Channel #4
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    retval &= PPS_UnlockIO();
+    retval &= PPS_RemapOutput(BUCK_PWM2H_RPx, PPSOUT_PWM4H);
+    retval &= PPS_RemapOutput(BUCK_PWM2L_RPx, PPSOUT_PWM4L);
+    retval &= PPS_LockIO();
+    
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Custom configurations
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
