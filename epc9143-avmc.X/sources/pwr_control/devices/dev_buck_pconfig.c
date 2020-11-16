@@ -124,24 +124,49 @@ volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLE
         pg->PGxDTH.value = buckInstance->sw_node[_i].dead_time_rising; // PGxDTH: PWM GENERATOR x DEAD-TIME REGISTER HIGH
         pg->PGxLEBL.value = buckInstance->sw_node[_i].leb_period; // PWM GENERATOR x LEADING-EDGE BLANKING REGISTER LOW 
         
-        // First switch-node object of array is used as master PWM
-        if( _i == 0) {
-            pg->PGxCONH.bits.MSTEN = 1; // Make first PWM of switch node objects MASTER
-            pg->PGxCONH.bits.UPDMOD = P33C_PGxCONH_UPDMOD_MSTR; // Master PWM updates PWM registers Immediately
-            pg->PGxCONH.bits.SOCS = 0b0000; // Master PWM is self-triggered
-            pg->PGxEVTL.bits.PGTRGSEL = 0b011; // Master PWM uses PGxTRIGC as master trigger output
-            pg->PGxTRIGC.bits.TRIG = buckInstance->sw_node[_i].phase; // Set phase shift of trigger
+        // ToDo: PWM Synchronization needs to be more universaL
+        // PWM synchronization only work within groups of 4 (PG1-PG4 or PG5-PG8)
+        // Multiphase boost converter auto PWM phase synchronization
+        if ((_i == 0) && (buckInstance->set_values.no_of_phases > 1))
+        { // First phase is always master phase
+            pg->PGxCONH.bits.MSTEN = 1; // Enable Master synchronization mode
+            pg->PGxCONH.bits.SOCS = 0b0000; // Master PWM always triggers itself
+            pg->PGxEVTL.bits.PGTRGSEL = 0b011; // PGxTRIGC is always used as PWM synchronization trigger output
+            pg->PGxTRIGC.value = buckInstance->sw_node[_i+1].phase; // Set phase shift between master phase and first synchronized phase
+            pg->PGxCONH.bits.UPDMOD = 0b001; // Immediate update
+            pg->PGxEVTL.bits.UPDTRG = 0b11; // A write of the PGxTRIGA register automatically sets the UPDATE bit
         }
-        else {
-            pg->PGxCONH.bits.MSTEN = 0; // Make all other PWMs of switch node objects SLAVES
-            pg->PGxCONH.bits.UPDMOD = P33C_PGxCONH_UPDMOD_SLV; // Slave PWMs update PWM registers Immediately at MASTER trigger
-            pg->PGxCONH.bits.SOCS = BUCK_PWM_MASTER_SOCS; // Slave PWMs are triggered by MASTER PWM
-            pg->PGxEVTL.bits.PGTRGSEL = 0b000; // Slave PWM does not have PWM trigger output 
-            pg->PGxTRIGC.bits.TRIG = buckInstance->sw_node[_i].phase; // Set phase shift of trigger
+        else if ((0 < _i) && (_i < (buckInstance->set_values.no_of_phases-1)))
+        { // Every synchronized phase is synchronized to previous phase while being master to following
+            pg->PGxCONH.bits.MSTEN = 1; // Enable Master synchronization mode
+            pg->PGxCONH.bits.SOCS = buckInstance->sw_node[_i-1].pwm_instance; // synchronized PWM is always triggered by previous generator while providing trigger for following
+            pg->PGxEVTL.bits.PGTRGSEL = 0b011; // PGxTRIGC is always used as PWM synchronization trigger output
+            pg->PGxTRIGC.value = buckInstance->sw_node[_i+1].phase; // Set phase shift between master phase and first synchronized phase
+            pg->PGxCONH.bits.UPDMOD = 0b011; // Sync immediate update
+            pg->PGxEVTL.bits.UPDTRG = 0; // User must set the UPDREQ bit (PGxSTAT[3]) manually
+        }
+        else if ((0 < _i) && (_i == (buckInstance->set_values.no_of_phases-1)))
+        { // Last phase does not provide any master trigger
+            pg->PGxCONH.bits.MSTEN = 0; // Disable Master synchronization mode
+            pg->PGxCONH.bits.SOCS = buckInstance->sw_node[_i-1].pwm_instance; // synchronized PWM is always triggered by previous generator while providing trigger for following
+            pg->PGxEVTL.bits.PGTRGSEL = 0b000; // EOC is the general trigger output
+            pg->PGxTRIGC.value = 0x0000; // Clear phase shift value 
+            pg->PGxCONH.bits.UPDMOD = 0b011; // Sync immediate update
+            pg->PGxEVTL.bits.UPDTRG = 0; // User must set the UPDREQ bit (PGxSTAT[3]) manually
+        }
+        else if (buckInstance->set_values.no_of_phases == 1)
+        { // This is only a single phase system (no PWM dependencies)
+            pg->PGxCONH.bits.MSTEN = 0; // Disable Master synchronization mode
+            pg->PGxCONH.bits.SOCS = 0b0000; // Master PWM always triggers itself
+            pg->PGxEVTL.bits.PGTRGSEL = 0b011; // PGxTRIGC is always used as PWM synchronization trigger output
+            pg->PGxTRIGC.value = 0x0000; // Clear phase shift between master phase and first synchronized phase
+            pg->PGxCONH.bits.UPDMOD = 0b001; // Immediate update
+            pg->PGxEVTL.bits.UPDTRG = 0b11; // A write of the PGxTRIGA register automatically sets the UPDATE bit
         }
         
         // Update PWM generator timing registers
-        pg->PGxSTAT.bits.UPDREQ = 1;
+        pg->PGxSTAT.bits.UPDREQ = 1; // Manually set the Update Request bit 
+        pg->PGxCONH.bits.TRGMOD = 1; // all PWM generators are in retriggerable mode
         
     }
         
