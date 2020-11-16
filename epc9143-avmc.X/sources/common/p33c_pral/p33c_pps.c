@@ -101,12 +101,12 @@ volatile uint16_t PPS_LockIO(void){
  *
  * Description:
  * This inline-assembly routine unlocks the Port Multiplexing Configuration registers by keeping
- * the required number of cycles during the unlock pocess. This function has to be called once 
- * after digital functions have been mapped to a specific pin, to prevent accidential changes. 
+ * the required number of cycles during the unlock process. This function has to be called once 
+ * after digital functions have been mapped to a specific pin, to prevent accidental changes. 
  * 
  * Note:
  * If bit IOL1WAY in the Oscillator Configuration Bits (FOSC) is set, only one pin assignment
- * operation wil be allowed. all following calls of Unlock() or Lock() will be ignored. 
+ * operation will be allowed. all following calls of Unlock() or Lock() will be ignored. 
  *
  * See Also:
  *	p33c_pps.h
@@ -258,7 +258,7 @@ volatile uint16_t PPS_UnmapOutput(volatile uint8_t pinno)
  *	p33c_pps.h
  * 
  * ***********************************************************************************************/
-volatile uint16_t PPS_UnmapInput(volatile uint8_t* peripheral)
+volatile uint16_t PPS_UnmapInput(volatile uint8_t *peripheral)
 {
     volatile uint16_t retval=0;
 
