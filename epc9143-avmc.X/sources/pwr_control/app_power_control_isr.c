@@ -40,7 +40,6 @@ void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void
 {
     
     DBGPIN_1_SET;
-//    PWRGOOD_SET;
     
     buck.status.bits.adc_active = true;
     #if (PLANT_MEASUREMENT == false)
@@ -49,8 +48,6 @@ void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void
     v_loop_PTermUpdate(&v_loop);
     #endif
     
-//    BUCK_PWM1_UPDREQ = 1;
-
     Nop(); // Debugging break point anchors
     Nop();
     Nop();
@@ -59,7 +56,6 @@ void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void
     _BUCK_VLOOP_ISR_IF = 0;  
     
     DBGPIN_1_CLEAR;
-//    PWRGOOD_CLEAR;
     
 }
 /**@}*/
