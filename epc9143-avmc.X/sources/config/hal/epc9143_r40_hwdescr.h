@@ -527,13 +527,13 @@
  *************************************************************************************************/
     
 #define BUCK_UVLO_TRIP_DELAY         (float) 5e-3   ///< under voltage lock out trip delay in [sec]
-#define BUCK_UVLO_RECOVERY_DELAY     (float) 250e-3 ///< under voltage lock out recovery delay in [sec]
+#define BUCK_UVLO_RECOVERY_DELAY     (float) 500e-3 ///< under voltage lock out recovery delay in [sec]
 #define BUCK_OVLO_TRIP_DELAY         (float) 5e-3   ///< over voltage lock out trip delay in [sec]
-#define BUCK_OVLO_RECOVERY_DELAY     (float) 250e-3 ///< over voltage lock out recovery delay in [sec]
+#define BUCK_OVLO_RECOVERY_DELAY     (float) 500e-3 ///< over voltage lock out recovery delay in [sec]
 #define BUCK_REGERR_TRIP_DELAY       (float) 25e-3  ///< regulation error trip delay in [sec]
-#define BUCK_REGERR_RECOVERY_DELAY   (float) 250e-3 ///< regulation error recovery delay in [sec]
+#define BUCK_REGERR_RECOVERY_DELAY   (float) 500e-3 ///< regulation error recovery delay in [sec]
 #define BUCK_OCP_TRIP_DELAY          (float) 2e-3   ///< over current proection trip delay in [sec]
-#define BUCK_OCP_RECOVERY_DELAY      (float) 250e-3 ///< over current proection recovery delay in [sec]
+#define BUCK_OCP_RECOVERY_DELAY      (float) 500e-3 ///< over current proection recovery delay in [sec]
 
 // ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
 
