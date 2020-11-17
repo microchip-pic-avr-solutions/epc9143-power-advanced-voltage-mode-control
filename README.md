@@ -105,7 +105,7 @@ In case firmware based features need to be changed, the Microchip dsPIC33CK cont
 ## Operation
 The converter is starting up automatically when more than 10.5 V DC are applied across the input terminals of the EPC9531 test fixture. It is not recommended to operate the EPC9143 reference design without proper decoupling capacitance at either input or output. The EPC9531 test fixture provides the best test environment for the converter. Please read the [EPC9531 Quick Start Guide](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf) to get detailed information about the requirements for setup and operation of this reference design.
 
-## Firmware Qick-Start Guide
+## Firmware Quick-Start Guide
 
 ##### 1) Buck Converter State Machine
 
