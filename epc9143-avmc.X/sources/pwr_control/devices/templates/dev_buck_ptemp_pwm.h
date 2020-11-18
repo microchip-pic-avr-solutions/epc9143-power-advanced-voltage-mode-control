@@ -48,7 +48,10 @@
 #include <stdbool.h> // include standard boolean data types
 #include <stddef.h> // include standard definition data types
 
-
+/**
+ * @addtogroup power_handler_variable
+ * @{
+ */
 /* ********************************************************************************
  * PWM MODULE BASE REGISTER CONFIGURATION
  * *******************************************************************************/
@@ -751,3 +754,4 @@
 
 #endif	/* BUCK_CONVERTER_PERIPHERAL_CONFIGURATION_PWM_H */
 
+/**@}*/

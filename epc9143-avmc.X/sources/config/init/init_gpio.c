@@ -29,10 +29,13 @@ volatile uint16_t init_gpio(void) {
     _LATB9 = 0;
     _TRISB9 = 0;
     
-    __builtin_write_RPCON(0x0000); // unlock PPS
-    _RP41R = 34; // Map PWM4H to RP44 (tied to RB9 Output)
-    _RP40R = 35; // Map PWM4L to RP45 (tied to RB8 Output)
-    __builtin_write_RPCON(0x0800); // lock PPS
+// ToDo: this section has been pushed to custom peripheral configuration    
+//       of the power controller
+    
+//    __builtin_write_RPCON(0x0000); // unlock PPS
+//    _RP41R = 34; // Map PWM4H to RP44 (tied to RB9 Output)
+//    _RP40R = 35; // Map PWM4L to RP45 (tied to RB8 Output)
+//    __builtin_write_RPCON(0x0800); // lock PPS
     
     return(retval);
 }

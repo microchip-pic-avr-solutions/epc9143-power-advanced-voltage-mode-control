@@ -698,8 +698,8 @@
     
 extern volatile uint16_t PPS_RemapOutput(volatile uint8_t pinno, volatile uint8_t peripheral);
 extern volatile uint16_t PPS_UnmapOutput(volatile uint8_t pinno);
-extern volatile uint16_t PPS_RemapInput(volatile uint8_t pinno, volatile uint8_t* peripheral);
-extern volatile uint16_t PPS_UnmapInput(volatile uint8_t* peripheral);
+extern volatile uint16_t PPS_RemapInput(volatile uint8_t pinno, volatile uint8_t *peripheral);
+extern volatile uint16_t PPS_UnmapInput(volatile uint8_t *peripheral);
 extern volatile uint16_t PPS_LockIO(void);
 extern volatile uint16_t PPS_UnlockIO(void);
 

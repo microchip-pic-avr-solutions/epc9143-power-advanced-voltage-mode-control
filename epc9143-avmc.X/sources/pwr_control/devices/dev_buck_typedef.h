@@ -55,8 +55,9 @@
 
 /**
  * 
- * @defgroup power_handler Power Control Handler Reference
+ * @defgroup power_handler Power Control Handler Reference  
  * @{
+ * 
  */
 
 /**
@@ -87,16 +88,16 @@
 
 /****************************************************************************************************
  * @defgroup power_handler_enum Power Control Handler Enumerations
- * @ingroup power_handler
- * @{
- * 
- * This enumeration is listing all defined states supported by the power controller state-machine.
+ * @brief This enumeration is listing all defined states supported by the power controller state-machine.
  * The state machine handles the initialization of the power controller, stand-by, start up procedure
  * including Power-On-Delay, Ramp-Up and Power Good Delay until it ends up in a continuous operating
  * state. When reference values are changed while running, the state machine will tune into the new
  * reference values using the slew rates defined for the startup phase. 
  *
  * For more information on each state, please read the related sections.
+ * 
+ * @ingroup power_handler
+ * @{
  *  
  **************************************************************************************************** */
 
@@ -468,7 +469,7 @@ typedef struct BUCK_GPIO_SETTINGS_s {
  * 
  * <b>Description:</b>
  * 
- * *************************************************************************************************** */
+ *****************************************************************************************************/
 typedef struct BUCK_POWER_CONTROLLER_s 
 {
     volatile struct BUCK_CONVERTER_STATUS_s status;     ///< BUCK operation status bits 

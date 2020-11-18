@@ -43,8 +43,9 @@
 #include <stddef.h> // include standard definition data types
 
 #include "config/hal.h" // include hardware abstraction layer declarations
-#include "pwr_control/devices/dev_buck_converter.h" // include buck converter device
-#include "pwr_control/drivers/v_loop.h" // include voltage control loop object
+#include "app_power_control.h"
+#include "./devices/dev_buck_converter.h" // include buck converter device
+#include "./drivers/v_loop.h" // include voltage control loop object
 
 #include "fault_handler/app_faults_monitor.h" // include fault monitor application object declarations
 
@@ -76,13 +77,13 @@ volatile struct BUCK_POWER_CONTROLLER_s  buck;
 /* CURRENT SENSE CALIBRATION */
 #define  CS_CALIB_STEPS         8
 
-/*******************************************************************************
+/***********************************************************************************
  * @struct	CS_CALIBRATION_s
  * @brief
  *  
  * <b>Description</b> 
  * 
- *********************************************************************************/
+ **********************************************************************************/
 typedef struct CS_CALIBRATION_s {
     
     volatile uint16_t cs_calib_cnt;
@@ -101,6 +102,7 @@ volatile uint16_t appPowerSupply_PeripheralsInitialize(void);
 
 void appPowerSupply_CurrentBalancing(void); 
 void appPowerSupply_CurrentSenseCalibration(void);
+
 
 /* *************************************************************************************************
  * PUBLIC FUNCTIONS
@@ -134,6 +136,9 @@ volatile uint16_t appPowerSupply_Initialize(void)
     _BUCK_VLOOP_ISR_IP = 5;
     _BUCK_VLOOP_ISR_IF = 0;
     _BUCK_VLOOP_ISR_IE = 1;
+    
+    // Start power supply engine
+    retval &= appPowerSupply_Start();
     
     // Enable Buck Converter
     buck.status.bits.enabled = true;
@@ -232,6 +237,46 @@ volatile uint16_t appPowerSupply_Dispose(void)
 }
 
 /*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_Start(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
+ * 
+ *********************************************************************************/
+
+volatile uint16_t appPowerSupply_Start(void)
+{
+    volatile uint16_t retval=1;
+
+    retval &= drv_BuckConverter_Start(&buck); // Start PWM with outputs disabled to start ADC triggering
+
+    return(retval); 
+}
+
+/*******************************************************************************
+ * @fn	volatile uint16_t appPowerSupply_Stop(void)
+ * @param	None
+ * @return  Unsigned Integer (0=failure, 1=success)
+ *
+ * @brief
+ *  
+ * <b>Description</b> 
+ * 
+ *********************************************************************************/
+
+volatile uint16_t appPowerSupply_Stop(void)
+{
+    volatile uint16_t retval=1;
+
+    retval &= drv_BuckConverter_Stop(&buck); // Shut down all power supply peripherals and data objects
+
+    return(retval); 
+}
+
+/*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Suspend(void)
  * @param	None
  * @return  Unsigned Integer (0=failure, 1=success)
@@ -326,10 +371,10 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.sw_node[0].gpio_instance = BUCK_PWM1_GPIO_INSTANCE;
     buck.sw_node[0].gpio_high = BUCK_PWM1_GPIO_PORT_PINH;
     buck.sw_node[0].gpio_low = BUCK_PWM1_GPIO_PORT_PINL;
-    buck.sw_node[0].master_period_enable = true;
+    buck.sw_node[0].master_period_enable = false; ///< Master time base is disabled, synchronization is established among PWM generators
 	buck.sw_node[0].high_resolution_enable = true;
     buck.sw_node[0].period = BUCK_PWM_PERIOD;
-    buck.sw_node[0].phase = BUCK_PWM_PHASE_SHIFT; 
+    buck.sw_node[0].phase = 0; ///< Master phase starts at timebase counot of =0
     buck.sw_node[0].duty_ratio_min = BUCK_PWM_DC_MIN;
     buck.sw_node[0].duty_ratio_init = BUCK_PWM_DC_MIN;
     buck.sw_node[0].duty_ratio_max = BUCK_PWM_DC_MAX;
@@ -344,7 +389,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.sw_node[1].gpio_instance = BUCK_PWM2_GPIO_INSTANCE;
     buck.sw_node[1].gpio_high = BUCK_PWM2_GPIO_PORT_PINH;
     buck.sw_node[1].gpio_low = BUCK_PWM2_GPIO_PORT_PINL;
-    buck.sw_node[1].master_period_enable = true;
+    buck.sw_node[1].master_period_enable = false; ///< Master time base is disabled, synchronization is established among PWM generators
 	buck.sw_node[1].high_resolution_enable = true;
     buck.sw_node[1].period = BUCK_PWM_PERIOD;
     buck.sw_node[1].phase = BUCK_PWM_PHASE_SHIFT; 
@@ -515,6 +560,14 @@ volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     retval &= drv_BuckConverter_Initialize(&buck); // Hand over peripheral configuration to driver
+    
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // Write Custom Configuration of Remappable PWM Channel #4
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    retval &= PPS_UnlockIO();
+    retval &= PPS_RemapOutput(BUCK_PWM2H_RPx, PPSOUT_PWM4H);
+    retval &= PPS_RemapOutput(BUCK_PWM2L_RPx, PPSOUT_PWM4L);
+    retval &= PPS_LockIO();
     
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Custom configurations

@@ -893,7 +893,9 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                =
+EXCLUDE                = ../../epc9143-avmc.X/sources/fault_handler/drivers/README.md \
+                         ../../epc9143-avmc.X/sources/pwr_control/devices/README.md \
+                         ../../epc9143-avmc.X/sources/common/p33c_pral/README.md
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -2316,7 +2318,7 @@ DOT_NUM_THREADS        = 10
 # The default value is: Helvetica.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-DOT_FONTNAME           =
+DOT_FONTNAME           = Helvetica
 
 # The DOT_FONTSIZE tag can be used to set the size (in points) of the font of
 # dot graphs.
@@ -2456,7 +2458,7 @@ DIRECTORY_GRAPH        = YES
 # The default value is: png.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-DOT_IMAGE_FORMAT       = png
+DOT_IMAGE_FORMAT       = svg
 
 # If DOT_IMAGE_FORMAT is set to svg, then this option can be set to YES to
 # enable generation of interactive SVG images that allow zooming and panning.

@@ -194,9 +194,11 @@
 #define BUCK_PWM1H_TRIS                 _TRISB12 ///< Device Port TRIS register
 #define BUCK_PWM1H_WR                   _LATB12  ///< Device Pin WRITE
 #define BUCK_PWM1H_RD                   _RB12    ///< Device Pin READ
+#define BUCK_PWM1H_RPx                  (uint8_t)44 ///< Device Pin output remappable pin number (RPx)
 #define BUCK_PWM1L_TRIS                 _TRISB13 ///< Device Port TRIS register
 #define BUCK_PWM1L_WR                   _LATB13  ///< Device Pin WRITE
 #define BUCK_PWM1L_RD                   _RB13    ///< Device Pin READ
+#define BUCK_PWM1L_RPx                  (uint8_t)45 ///< Device Pin output remappable pin number (RPx)
 
 #define _BUCK_PWM1_Interrupt            _PWM2Interrupt ///< PWM Interrupt Service Routine label
 #define BUCK_PWM1_IF                    _PWM2IF  ///< PWM Interrupt Flag Bit
@@ -211,6 +213,8 @@
 #define BUCK_PWM1_ADTR1OFS              0U ///< ADC Trigger 1 Offset:  0...31
 #define BUCK_PWM1_ADTR1PS               0U ///< ADC Trigger 1 Postscaler: 0...31
 
+#define BUCK_PWM1_UPDREQ                PG1STATbits.UPDREQ
+
 // PWM Phase #2 Configuration
 #define BUCK_PWM2_CHANNEL               4U    ///< PWM Instance Index (e.g. 1=PWM1, 2=PWM2, etc.)
 #define BUCK_PWM2_GPIO_INSTANCE         1U ///< Number indicating device port, where 0=A, 1=B, 2=C, etc.
@@ -221,10 +225,12 @@
 #define BUCK_PWM2H_TRIS                 _TRISB9  ///< Device Port TRIS register
 #define BUCK_PWM2H_WR                   _LATB9   ///< Device Pin WRITE
 #define BUCK_PWM2H_RD                   _RB9     ///< Device Pin READ
+#define BUCK_PWM2H_RPx                  (uint8_t)41 ///< Device Pin output remappable pin number (RPx)
 #define BUCK_PWM2L_TRIS                 _TRISB8  ///< Device Port TRIS register
 #define BUCK_PWM2L_WR                   _LATB8   ///< Device Pin WRITE
 #define BUCK_PWM2L_RD                   _RB8     ///< Device Pin READ
-    
+#define BUCK_PWM2L_RPx                  (uint8_t)40 ///< Device Pin output remappable pin number (RPx)
+
 #define _BUCK_PWM2_Interrupt            _PWM4Interrupt ///< PWM Interrupt Serivice Routine label
 #define BUCK_PWM2_IF                    _PWM4IF        ///< PWM Interrupt Flag Bit
 #define BUCK_PWM2_IE                    _PWM4IE        ///< PWM Interrupt Enable Bit
@@ -238,7 +244,8 @@
 #define BUCK_PWM2_ADTR1OFS              0 ///< ADC Trigger 1 Offset:  0...31
 #define BUCK_PWM2_ADTR1PS               0 ///< ADC Trigger 1 Postscaler: 0...31
     
-#define BUCK_PWM_MASTER_SOCS            0b0010  ///< PWM2 provides Master Trigger
+#define BUCK_PWM2_UPDREQ                PG1STATbits.UPDREQ
+//#define BUCK_PWM_MASTER_SOCS            0b0010  ///< PWM2 provides Master Trigger
     
 // ~~~ conversion macros ~~~~~~~~~~~~~~~~~~~~~~~~~
 #define BUCK_SWITCHING_PERIOD   (float)(1.0/SWITCHING_FREQUENCY)   ///< Switching period in [sec]
@@ -520,13 +527,13 @@
  *************************************************************************************************/
     
 #define BUCK_UVLO_TRIP_DELAY         (float) 5e-3   ///< under voltage lock out trip delay in [sec]
-#define BUCK_UVLO_RECOVERY_DELAY     (float) 250e-3 ///< under voltage lock out recovery delay in [sec]
+#define BUCK_UVLO_RECOVERY_DELAY     (float) 500e-3 ///< under voltage lock out recovery delay in [sec]
 #define BUCK_OVLO_TRIP_DELAY         (float) 5e-3   ///< over voltage lock out trip delay in [sec]
-#define BUCK_OVLO_RECOVERY_DELAY     (float) 250e-3 ///< over voltage lock out recovery delay in [sec]
+#define BUCK_OVLO_RECOVERY_DELAY     (float) 500e-3 ///< over voltage lock out recovery delay in [sec]
 #define BUCK_REGERR_TRIP_DELAY       (float) 25e-3  ///< regulation error trip delay in [sec]
-#define BUCK_REGERR_RECOVERY_DELAY   (float) 250e-3 ///< regulation error recovery delay in [sec]
+#define BUCK_REGERR_RECOVERY_DELAY   (float) 500e-3 ///< regulation error recovery delay in [sec]
 #define BUCK_OCP_TRIP_DELAY          (float) 2e-3   ///< over current proection trip delay in [sec]
-#define BUCK_OCP_RECOVERY_DELAY      (float) 250e-3 ///< over current proection recovery delay in [sec]
+#define BUCK_OCP_RECOVERY_DELAY      (float) 500e-3 ///< over current proection recovery delay in [sec]
 
 // ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
 

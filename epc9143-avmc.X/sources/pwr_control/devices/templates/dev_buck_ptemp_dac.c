@@ -8,6 +8,19 @@
 #include "xc16_pral.h" // include peripehral register abstraction layer drivers
 #include "dev_buck_ptemp_dac.h" // include peripheral register configuration values header
 
+/**
+ * @addtogroup power_handler_struct
+ * @{
+ */
+
+/****************************************************************************************************
+ * @struct P33C_DAC_MODULE_s buckDacModuleConfig
+ * @brief 
+ * 
+ * <b>Description:</b>
+ * 
+ *****************************************************************************************************/
+
 // DAC module default configuration
 volatile struct P33C_DAC_MODULE_s buckDacModuleConfig = 
 {
@@ -16,6 +29,14 @@ volatile struct P33C_DAC_MODULE_s buckDacModuleConfig =
     .DacModuleCtrl2H.value = 0x0000  // DACCTRL2H: DAC CONTROL 2 HIGH REGISTER
 };
 
+
+/****************************************************************************************************
+ * @struct P33C_DAC_INSTANCE_s buckDacInstanceConfig
+ * @brief 
+ * 
+ * <b>Description:</b>
+ * 
+ *****************************************************************************************************/
 // DAC generator default configuration
 volatile struct P33C_DAC_INSTANCE_s buckDacInstanceConfig = 
 {
@@ -28,3 +49,4 @@ volatile struct P33C_DAC_INSTANCE_s buckDacInstanceConfig =
     .SLPxDAT.value = 0x0000         // SLPxCONL: DACx SLOPE CONTROL LOW REGISTER
 };
 
+/** @} */

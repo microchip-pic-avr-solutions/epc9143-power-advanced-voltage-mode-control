@@ -67,6 +67,8 @@ extern volatile struct BUCK_POWER_CONTROLLER_s buck;
 extern volatile uint16_t appPowerSupply_Initialize(void);
 extern volatile uint16_t appPowerSupply_Dispose(void);
 extern volatile uint16_t appPowerSupply_Execute(void);
+extern volatile uint16_t appPowerSupply_Start(void);
+extern volatile uint16_t appPowerSupply_Stop(void);
 extern volatile uint16_t appPowerSupply_Suspend(void);
 extern volatile uint16_t appPowerSupply_Resume(void);
 

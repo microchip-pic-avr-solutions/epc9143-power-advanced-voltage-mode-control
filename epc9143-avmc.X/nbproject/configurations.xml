@@ -8,6 +8,9 @@
         <itemPath>sources/common/p33c_pral/xc16_pral.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="config" projectFiles="true">
+        <logicalFolder name="f2" displayName="hal" projectFiles="true">
+          <itemPath>sources/config/hal/epc9143_r40_hwdescr.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="f1" displayName="init" projectFiles="true">
           <itemPath>sources/config/init/init_fosc.h</itemPath>
           <itemPath>sources/config/init/init_gpio.h</itemPath>
@@ -15,8 +18,8 @@
           <itemPath>sources/config/init/init_opa.h</itemPath>
           <itemPath>sources/config/init/init_dac.h</itemPath>
         </logicalFolder>
-        <itemPath>sources/config/epc9143_r40_hwdescr.h</itemPath>
         <itemPath>sources/config/hal.h</itemPath>
+        <itemPath>sources/config/system_initialize.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
         <logicalFolder name="f4" displayName="fault_handler" projectFiles="true">
@@ -66,6 +69,7 @@
       <logicalFolder name="f1" displayName="common" projectFiles="true">
         <itemPath>sources/common/p33c_pral/p33c_gpio.c</itemPath>
         <itemPath>sources/common/p33c_pral/p33c_pwm.c</itemPath>
+        <itemPath>sources/common/p33c_pral/p33c_pps.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="init" projectFiles="true">
@@ -76,6 +80,7 @@
           <itemPath>sources/config/init/init_dac.c</itemPath>
         </logicalFolder>
         <itemPath>sources/config/config_bits.c</itemPath>
+        <itemPath>sources/config/system_initialize.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
         <logicalFolder name="f4" displayName="fault_handler" projectFiles="true">
@@ -137,7 +142,7 @@
         <targetDevice>dsPIC33CK32MP102</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>Simulator</platformTool>
+        <platformTool>ICD4Tool</platformTool>
         <languageToolchain>XC16</languageToolchain>
         <languageToolchainVersion>1.50</languageToolchainVersion>
         <platform>3</platform>
@@ -358,7 +363,7 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-aeff"/>
-        <property key="poweroptions.powerenable" value="true"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.ledbrightness" value="5"/>

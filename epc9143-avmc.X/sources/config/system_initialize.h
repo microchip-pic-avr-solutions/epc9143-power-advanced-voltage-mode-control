@@ -20,33 +20,30 @@
  */
 
 /* 
- * File:   globals.h
+ * File:   system_initialize.h
  * Author: M91406
- * Comments: global defines of this application
+ * Comments: Combines the fundamental MCU and peripheral initialization routines
  * Revision history: 
- * v1.0 initial version
+ *    1.0   initial release
  */
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef APPLICATION_GLOBALS_HEADER_H
-#define	APPLICATION_GLOBALS_HEADER_H
+#ifndef APPLICAITON_SYSTEM_INITIALIZE_H
+#define	APPLICAITON_SYSTEM_INITIALIZE_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-#include <stdint.h> // include standard integer data types
-#include <stdbool.h> // include standard boolean data types
-#include <stddef.h> // include standard definition data types
 
-// MICROCONTROLLER ABSTRACTION LAYER HEADER FILES
-#include "xc16_pral.h"
+#include "config/init/init_fosc.h"
+#include "config/init/init_timer1.h"
+#include "config/init/init_gpio.h"
 
-// HARDWARE ABSTRACTION LAYER HEADER FILES
-#if defined (__EPC9143_R40__)
-    #include "config/hal/epc9143_r40_hwdescr.h"
-#else
-    #pragma message "Error: Unknown or unsupported hardare selection."
-#endif
+#include "config/init/init_opa.h"
+#include "config/init/init_dac.h"
 
+/* PUCLIC FUNCTION CALL PROTOTYPES */
 
-#endif	/* APPLICATION_GLOBALS_HEADER_H */
+volatile uint16_t SYSTEM_Initialize(void);
+
+#endif	/* APPLICAITON_SYSTEM_INITIALIZE_H */
 

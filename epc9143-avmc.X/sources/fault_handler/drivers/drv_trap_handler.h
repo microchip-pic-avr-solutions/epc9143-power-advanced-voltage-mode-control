@@ -64,7 +64,7 @@
 
 /**
  * @defgroup THV Trap Handler Variable
- * @ingroup fault_handler
+ * @addtogroup fault_handler
  * @{
  */
 /**********************************************************************************
@@ -91,7 +91,7 @@
 
 /**
  * @defgroup THE Trap Handler Enumeration
- * @ingroup fault_handler
+ * @addtogroup fault_handler
  * @{
  */
 
@@ -134,7 +134,7 @@ typedef enum TRAP_ID_e
 
 /**
  * @defgroup THS Trap Handler Data Structure
- * @ingroup fault_handler
+ * @addtogroup fault_handler
  * @{
  */
 
