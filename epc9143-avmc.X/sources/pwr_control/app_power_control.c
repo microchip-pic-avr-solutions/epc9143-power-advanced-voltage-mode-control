@@ -155,7 +155,8 @@ volatile uint16_t appPowerSupply_Initialize(void)
  * @param	None
  * @return  Unsigned Integer (0=failure, 1=success)
  *
- * @brief This is the top-level function call calling the most recent state machine response
+ * @brief This is the top-level function call triggering the most recent state 
+ * machine of all associated power supply controllers
  * 
  * <b>Description</b> 
  * After initialization, the proprietary user code has to call this function 
