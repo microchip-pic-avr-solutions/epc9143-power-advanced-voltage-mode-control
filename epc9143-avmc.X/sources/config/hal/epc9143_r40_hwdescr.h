@@ -43,16 +43,11 @@
   #define __EPC9143_R40__
 #endif
 
-/**
- * @addtogroup AL
- * @{ 
- */
 
 /**************************************************************************************************
- * @defgroup MA Microcontroller Abstraction
- * @ingroup AL 
+ * @addtogroup MA
  * @{ 
- * @brief Global defines for device specific parameters
+ * 
  * 
  * <b>Description</b>
  * This section is used to define device specific parameters like ADC reference and
@@ -75,8 +70,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @defgroup SMS State Machine Settings
- * @ingroup AL 
+ * @addtogroup SMS
  * @{
  * @brief Global defines for state-machine specific parameters
  * 
@@ -91,8 +85,7 @@
 /** @} */ // end of group
     
 /***************************************************************************************************
- * @defgroup HA Hardware Abstraction
- * @ingroup AL 
+ * @addtogroup HA
  * @{
  * @brief Global defines for hardware specific parameters
  * 
@@ -135,8 +128,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @defgroup PCPD Power Control Parameter Declaration
- * @ingroup AL 
+ * @addtogroup PCPD
  * @{
  * @brief Global defines for Buck Converter Power Control parameters
  * 
@@ -161,8 +153,7 @@
 /** @} */ // end of group
     
 /**************************************************************************************************
- * @defgroup FPWMS Fundamental PWM Settings 
- * @ingroup AL  
+ * @addtogroup FPWMS
  * @{
  * @brief Global defines for PWM settings of DV330101
  * 
@@ -265,8 +256,7 @@
 
     
 /**************************************************************************************************
- * @defgroup IVF Input Voltage Feedback 
- * @ingroup AL 
+ * @addtogroup IVF
  * @{
  * @brief Declaration of input voltage limits, feedback gain and scaling and nominal operating points
  * 
@@ -322,8 +312,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @defgroup OVF Output Voltage Feedback
- * @ingroup AL 
+ * @addtogroup OVF
  * @{
  * @brief
  * 
@@ -369,8 +358,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @defgroup IDC Ideal Duty Cycle 
- * @ingroup AL 
+ * @addtogroup IDC
  * @{
  * @brief
  * 
@@ -383,8 +371,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @defgroup PCF Phase Current Feedback
- * @ingroup AL 
+ * @addtogroup PCF
  * @{
  * @brief
  * 
@@ -442,8 +429,7 @@
 /** @} */ // end of group
     
 /**************************************************************************************************
- * @defgroup AGCFF Adaptive Gain Control Feed Forward 
- * @ingroup AL  
+ * @addtogroup AGCFF
  * @{
  * @brief
  * 
@@ -477,8 +463,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @defgroup SB Startup Behavior  
- * @ingroup AL 
+ * @addtogroup SB
  * @{
  * @brief Global defines for soft-start specific parameters
  * 
@@ -519,8 +504,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @defgroup FOD Fault Object Declarations
- * @ingroup AL 
+ * @addtogroup FOD
  * @{
  * @brief Global defines for fault-monitor related parameters
  * 
@@ -555,8 +539,7 @@
 
     
 /**************************************************************************************************
- * @defgroup CD Controller Declarations
- * @ingroup AL  
+ * @addtogroup CD
  * @{
  * @brief
  * 
@@ -584,4 +567,3 @@
 #endif
 /** @} */ // end of group
 #endif	/* EPC9143_R40_HARDWARE_DESCRIPTOR_H */
-/** @} */ // end of group

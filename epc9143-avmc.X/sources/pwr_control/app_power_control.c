@@ -213,9 +213,7 @@ volatile uint16_t appPowerSupply_Execute(void)
 }
 /**@}*/
 /**
- * 
- * @defgroup power_handler_function Power Control Handler Functions
- * @ingroup power_handler
+ * @addtogroup power_handler_function
  * @{
  */
 /*******************************************************************************

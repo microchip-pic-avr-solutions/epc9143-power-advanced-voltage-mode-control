@@ -62,11 +62,6 @@
 volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog; 
 
 
-/**
- * @defgroup fault_trap_function Fault Trap Handler Functions
- * @ingroup fault_handler
- * @{ 
- */
 
 /**************************************************************************************************
  * @fn volatile uint16_t drv_TrapHandler_SoftTrapsInitialize(
@@ -203,7 +198,7 @@ void __attribute__((interrupt, no_auto_psv)) _StackError(void) {
 void __attribute__((interrupt, no_auto_psv)) _MathError(void) {
     DefaultTrapHandler(TRAP_MATH_ERROR);
 }
-/**@}*/
+
 #if (TRAP_DMA_SUPPORT == 1)
 #if defined (_DMACError)
 // =================================================================================================

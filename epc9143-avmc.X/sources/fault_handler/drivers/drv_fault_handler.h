@@ -50,8 +50,7 @@
 
 /**
  * 
- * @defgroup fault_handler_enum Fault Handler Enumeration
- * @ingroup fault_handler
+ * @addtogroup fault_handler_enum
  * @{
  */
 /***********************************************************************************
@@ -76,8 +75,7 @@ typedef enum FLT_COMPARE_TYPE_e {
 /** @} */ // end of group
 
 /**
- * @defgroup fault_handler_struct Fault Handler Data Structure
- * @ingroup fault_handler
+ * @addtogroup fault_handler_struct
  * @{
  */
 

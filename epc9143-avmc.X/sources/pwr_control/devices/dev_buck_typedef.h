@@ -55,8 +55,7 @@
 
 
 /**
- * @defgroup power_handler_variable Power Control Handler Variables
- * @ingroup power_handler
+ * @addtogroup power_handler_variable
  * @{
  */
 #define BUCK_MPHASE_COUNT                BUCK_NO_OF_PHASES
@@ -81,7 +80,7 @@
 /**@}*/
 
 /****************************************************************************************************
- * @defgroup power_handler_enum Power Control Handler Enumerations
+ * @addtogroup power_handler_enum
  * @brief This enumeration is listing all defined states supported by the power controller state-machine.
  * The state machine handles the initialization of the power controller, stand-by, start up procedure
  * including Power-On-Delay, Ramp-Up and Power Good Delay until it ends up in a continuous operating
@@ -90,7 +89,7 @@
  *
  * For more information on each state, please read the related sections.
  * 
- * @ingroup power_handler
+ * 
  * @{
  *  
  **************************************************************************************************** */
@@ -151,8 +150,7 @@ typedef enum {
 
 /**@}*/
 /**
- * @defgroup power_handler_struct Power Handler Data Structures
- * @ingroup power_handler
+ * @addtogroup power_handler_struct
  * @{
  */
 /*****************************************************************************************************

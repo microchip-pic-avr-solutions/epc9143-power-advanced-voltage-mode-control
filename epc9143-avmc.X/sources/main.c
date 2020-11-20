@@ -4,12 +4,6 @@
  *
  * Created on July 8, 2019, 1:52 PM
  */
-/**
- * 
- * @defgroup application EPC9143 Firmware
- * @ingroup  application
- * @{
- */
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h> // include standard integer types header file
@@ -23,9 +17,10 @@ volatile bool run_main = true; // Flag allowing to terminate the main loop and r
 volatile bool LOW_PRIORITY_GO = false;  // Flag allowing low priority tasks to be executed
 
 /**
- * \dotfile flowchart.gv
+ * @addtogroup Firmware_Flow
+ * @{
+ * @dotfile 
  */
-
 /*******************************************************************************
  * @fn int main(void)
  * @param	(none)
@@ -76,7 +71,6 @@ volatile bool LOW_PRIORITY_GO = false;  // Flag allowing low priority tasks to b
  * In each step both tasks are executed one after another in one sequence. 
  * 
  *********************************************************************************/
-
 int main(void) {
 
     volatile uint16_t retval=1;
@@ -84,6 +78,10 @@ int main(void) {
     
     // Initialize basic system configuration
     retval &= SYSTEM_Initialize();
+    
+    // Initialize software modules
+    retval &= appPowerSupply_Initialize(); // Initialize BUCK converter object and state machine
+    retval &= appFaultMonitor_Initialize(); // Initialize fault objects and fault handler task
     
     // Enable Timer1
     _T1IP = 0;  // Set interrupt priority to zero
@@ -108,7 +106,7 @@ int main(void) {
         DBGPIN_2_SET;               // Set the CPU debugging pin HIGH
 
         appPowerSupply_Execute();   // Execute power supply state machine
-        appFaultMonitor_Execute();  // Execute fault handler
+        appFaultMonitor_Execute();        // Execute fault handler
 
         DBGPIN_2_CLEAR;             // Clear the CPU debugging pin
         
