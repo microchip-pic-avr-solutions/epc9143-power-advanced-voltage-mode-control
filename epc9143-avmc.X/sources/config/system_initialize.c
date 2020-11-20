@@ -10,7 +10,7 @@
 
 /**
  * 
- * @addtogroup power_handler_function 
+ * @addtogroup device_start_up
  * @{
  */
 /***********************************************************************************

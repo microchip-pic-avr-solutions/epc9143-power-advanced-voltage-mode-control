@@ -40,7 +40,7 @@
 /** 
  * @file dev_buck_opstates.c
  * @brief Functions of the buck converter state machine operating states
- * @defgroup buck_state_machine Buck Converter State Machine 
+ * @addtogroup buck_state_machine 
  * @dot
  * digraph State_Machine  
  * {

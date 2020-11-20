@@ -143,6 +143,16 @@ If the power controller is shut down and reset by external commands (e.g. fault 
 
 This firmware uses a digital type IV controller to close the feedback loop in voltage mode control. This digital loop reads the most recent ADC sample of the output voltage and processes the derived value through a digital type IV (4P4Z) compensation filter. The numeric output is checked and, when necessary, clamped to user-defined minimum/maximum thresholds before being written to the PWM duty cycle register. As EPC9143 is a multiphase converter, a special PWM steering mode has been implemented supporting high-speed current balancing between the two phases. The voltage mode controller has been extended with a self-adapting loop gain tuning algorithm (AGC) stabilizing the frequency domain characteristic over input voltage, output voltage and load, always providing the exact same bandwidth of >25 kHz and stability margins across the entire operating range.
 
+<p>
+  <center>
+    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
+      <img src="images/type4-avmc.png" alt="EPC9143 type IV - Advanced Voltage Control Loop" width="800">
+	</a>
+  <br>
+  EPC9143 Type IV Controller - Advanced Voltage Control Loop
+  </center>
+</p>
+
 This control loop can be turned on/off by using the ENABLE bit in the STATUS word of the cNPNZ_t controller data structure. The adaptive loop gain modulation is permanently active as soon as the control loop is enabled.
 
 ##### 3) Digital Controller Design

@@ -109,8 +109,7 @@ void appPowerSupply_CurrentSenseCalibration(void);
  * ************************************************************************************************/
 /**
  * 
- * @defgroup power_handler_function Power Control Handler Functions
- * @ingroup power_handler
+ * @addtogroup device_start_up
  * @{
  */
 /*******************************************************************************
@@ -145,7 +144,12 @@ volatile uint16_t appPowerSupply_Initialize(void)
     
     return(retval); 
 }
+/**@}*/
 
+/**
+ * @addtogroup main_loop 
+ * @{ 
+ */
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Execute(void)
  * @param	None
@@ -206,7 +210,13 @@ volatile uint16_t appPowerSupply_Execute(void)
     
     return(retval); 
 }
-
+/**@}*/
+/**
+ * 
+ * @defgroup power_handler_function Power Control Handler Functions
+ * @ingroup power_handler
+ * @{
+ */
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Dispose(void)
  * @param	None

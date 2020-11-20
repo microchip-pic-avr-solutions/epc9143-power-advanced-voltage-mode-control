@@ -24,12 +24,12 @@ volatile uint16_t __attribute__((always_inline)) ovlo_FaultInitialize(void);
 volatile uint16_t __attribute__((always_inline)) ocp_FaultInitialize(void);
 volatile uint16_t __attribute__((always_inline)) regerr_FaultInitialize(void);
 
-/**
- * @addtogroup fault_handler
- * @addtogroup fault_handler_function
- * @{ 
- */
 
+/**
+ * 
+ * @addtogroup device_start_up
+ * @{
+ */
 /*********************************************************************************
  * @fn volatile uint16_t appFaultMonitor_Initialize(void)
  * @brief  Initialization of user-defined fault objects
@@ -52,31 +52,13 @@ volatile uint16_t appFaultMonitor_Initialize(void)
     
     return(retval);
 }
+/**@}*/
 
 
-/*********************************************************************************
- * @fn volatile uint16_t appFaultMonitor_Dispose(void) 
- * @brief Function clearing all fault object settings
- * @param (none)
- * @return unsigned integer   (0=failure, 1=success)
- * 
- * <b>Description</b>
- *   This function is used to clear all fault objects settings. Once cleared,
- *   the fault objects are detached from memory addresses and cannot be used
- *   for fault monitoring anymore until they have been re-initialized.
- * 
- *********************************************************************************/
-
-volatile uint16_t appFaultMonitor_Dispose(void) 
-{
-    fltobj_BuckUVLO = fltobjClear; // Delete Under Voltage Lock Out object
-    fltobj_BuckOVLO = fltobjClear; // Delete Over Voltage Lock Out object
-    fltobj_BuckRegErr = fltobjClear; // Delete Regulation Error object
-    fltobj_BuckOCP = fltobjClear; // Delete Over Current Protection object
-    
-    return(1);
-}
-
+/**
+ * @addtogroup main_loop 
+ * @{ 
+ */
 /*********************************************************************************
  * @fn volatile uint16_t appFaultMonitor_Execute(void)  
  * @brief Application wide fault object monitoring routine
@@ -122,6 +104,36 @@ volatile uint16_t appFaultMonitor_Execute(void)
     
     
     return (retval);
+}
+/**@}*/
+
+/**
+ * @addtogroup fault_handler
+ * @addtogroup fault_handler_function
+ * @{ 
+ */
+
+/*********************************************************************************
+ * @fn volatile uint16_t appFaultMonitor_Dispose(void) 
+ * @brief Function clearing all fault object settings
+ * @param (none)
+ * @return unsigned integer   (0=failure, 1=success)
+ * 
+ * <b>Description</b>
+ *   This function is used to clear all fault objects settings. Once cleared,
+ *   the fault objects are detached from memory addresses and cannot be used
+ *   for fault monitoring anymore until they have been re-initialized.
+ * 
+ *********************************************************************************/
+
+volatile uint16_t appFaultMonitor_Dispose(void) 
+{
+    fltobj_BuckUVLO = fltobjClear; // Delete Under Voltage Lock Out object
+    fltobj_BuckOVLO = fltobjClear; // Delete Over Voltage Lock Out object
+    fltobj_BuckRegErr = fltobjClear; // Delete Regulation Error object
+    fltobj_BuckOCP = fltobjClear; // Delete Over Current Protection object
+    
+    return(1);
 }
 
 

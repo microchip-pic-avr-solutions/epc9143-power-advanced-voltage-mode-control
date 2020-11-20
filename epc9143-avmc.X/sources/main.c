@@ -5,6 +5,20 @@
  * Created on July 8, 2019, 1:52 PM
  */
 
+/**
+ * @defgroup device_start_up Device Start Up
+ * @ingroup Firmware_Flow
+ */
+
+/**
+ * @defgroup main_loop Main Loop
+ * @ingroup Firmware_Flow
+ */
+
+/**
+ * @defgroup buck_state_machine Task Layer
+ * @ingroup Firmware_Flow
+ */
 
 #include <xc.h>
 #include <stdint.h>

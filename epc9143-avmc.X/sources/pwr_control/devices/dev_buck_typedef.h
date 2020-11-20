@@ -53,12 +53,6 @@
 #include "pwr_control/drivers/npnz16b.h"
 #include "config/hal.h"
 
-/**
- * 
- * @defgroup power_handler Power Control Handler Reference  
- * @{
- * 
- */
 
 /**
  * @defgroup power_handler_variable Power Control Handler Variables
@@ -492,6 +486,3 @@ typedef struct BUCK_POWER_CONTROLLER_s
 //#else
 //    #pragma message "Warning: dev_buck_typedef.h inclusion bypassed"
 #endif	/* BUCK_CONVERTER_TYPE_DEF_H */
-
-// END OF FILE
-/** @} */ // end of group
