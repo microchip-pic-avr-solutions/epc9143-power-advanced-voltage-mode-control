@@ -19,7 +19,7 @@ volatile bool LOW_PRIORITY_GO = false;  // Flag allowing low priority tasks to b
 /**
  * @addtogroup Firmware_Flow
  * @{
- * @dotfile 
+ * @dotfile flowchart.gv
  */
 /*******************************************************************************
  * @fn int main(void)
