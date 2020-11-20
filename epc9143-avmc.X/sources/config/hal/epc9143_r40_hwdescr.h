@@ -44,7 +44,7 @@
 #endif
 
 /**
- * @defgroup AL Abstraction Layer Defines
+ * @addtogroup AL
  * @{ 
  */
 

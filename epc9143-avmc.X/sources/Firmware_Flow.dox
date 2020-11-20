@@ -110,25 +110,24 @@
  */
  
  /** 
- * @defgroup Firmware_Flow Firmware Flowchart
- * @ingroup Firmware_Flow
+ * @addtogroup Firmware_Flow
  * @dot
  * digraph Firmware{ 
  *      node [fontname = "Consolas, 'Courier New', Courier, Sans-Serif"];
  *      node [fontsize = 10];
- *      node [shape = box]; Power_Control_SM; State_Initialize; State_Reset; State_Standby; State_RampUp; State_Online;State_Error;    
- *		node [shape = box]; call_PCSM; call_FH; Fault_Handler;
+ *      node [shape = box]; State_Initialize; State_Reset; State_Standby; State_RampUp; State_Online;State_Error;    
+ *		node [shape = box]; call_PCSM; call_FH; 
  *		node [shape = box]; system_init; appPS_Init; appFM_init; enable_TMR; config_procedure_check;
  *      node [shape = box]; yes1;yes2;no1;no2;
+ *		node [shape = oval]; Fault_Handler; Power_Control_SM;
  *      node [shape = diamond]; Success; Reset; timer_expired;
  * 
- *      graph [rankdir="TB"] {
+ *     graph [rankdir="TB"] {
  *     Reset [label="Reset"];
  *     subgraph cluster0 {      
- *      rank=same;      
  *		system_init [label="System Initialize" URL="@ref SYSTEM_Initialize"]; 
- *		appPS_Init [label="Initialize buck converter object /nand state machine " URL="@ref appPowerSupply_Initialize"];
- *		appFM_init [label="Initialize fault object /nand fault handler task" URL="@ref appFaultMonitor_Initialize"];
+ *		appPS_Init [label="Initialize buck converter object \nand state machine " URL="@ref appPowerSupply_Initialize"];
+ *		appFM_init [label="Initialize fault object \nand fault handler task" URL="@ref appFaultMonitor_Initialize"];
  *		enable_TMR [label="Enable main Timer"];
  * 		config_procedure_check [label="Configuration procedure check"];
  *		Success [label="Successful?"]
@@ -139,7 +138,6 @@
  *      fontsize=12;
  *     }
  *     subgraph cluster1 {    
- *      rank=same; 
  *		timer_expired [label="100usec Timer expired?"];
  *      yes2 [label = "YES"];
  *      no2 [label = "NO"]; 
@@ -150,8 +148,7 @@
  *      fontsize=12;
  *      }
  *     subgraph cluster2 {    
- *      rank=same; 
- *		Power_Control_SM [label="Power Control State Machine"];
+ *		Power_Control_SM [label="Power Control State Machine" URL="@ref buck_state_machine"];
  *      State_Initialize [label="State Initialize" URL="@ref State_Initialize"];
  *      State_Reset [label="State Reset" URL="@ref State_Reset"];
  *      State_Standby [label="State Standby" URL="@ref State_Standby"]; 
@@ -163,13 +160,16 @@
  *      fontname="Helvetica, Arial, Sans-Serif";
  *      fontsize=12;
  *      }
+ *
  *		Reset -> system_init -> appPS_Init -> appFM_init -> enable_TMR -> config_procedure_check -> Success -> no1 -> Reset;
  *		Success -> yes1 -> timer_expired -> no2 -> timer_expired;
  *		timer_expired -> yes2 -> call_PCSM -> call_FH -> timer_expired;
  *		call_PCSM -> Power_Control_SM -> State_Initialize->State_Reset->State_Standby->State_RampUp->State_Online;
  *		State_Error -> State_Reset;
  *		call_FH -> Fault_Handler -> State_Error;
+ *
  *     }
+ *
  * }
  * @enddot
  */
