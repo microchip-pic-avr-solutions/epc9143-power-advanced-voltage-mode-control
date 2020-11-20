@@ -105,19 +105,19 @@
 
 #ifdef __EPC9143_R40__
     
-    // Device Pin #1 on EPC9143
+    // Device Pin #1 on EPC9143 (not routed)
     #define DBGPIN_1_SET	{ _LATB14 = 1; }
     #define DBGPIN_1_CLEAR	{ _LATB14 = 0; }
     #define DBGPIN_1_TOGGLE	{ _LATB14 ^= 1; }
     #define DBGPIN_1_INIT	{ _LATB14 = 0; _TRISB14 = 0; }
 
-    // Device Pin #2 on EPC9143
+    // Device Pin #2 on EPC9143 (not routed)
     #define DBGPIN_2_SET	{ _LATB15 = 1; }
     #define DBGPIN_2_CLEAR	{ _LATB15 = 0; }
     #define DBGPIN_2_TOGGLE	{ _LATB15 ^= 1; }
     #define DBGPIN_2_INIT	{ _LATB15 = 0; _TRISB15 = 0; }
 
-    // Device Pin #25 on EPC9143
+    // Device Pin #25 on EPC9143 (not routed)
     #define DBGPIN_3_SET	{ _LATB10 = 1; }
     #define DBGPIN_3_CLEAR	{ _LATB10 = 0; }
     #define DBGPIN_3_TOGGLE	{ _LATB10 ^= 1; }
@@ -222,14 +222,18 @@
 #define BUCK_PWM2_GPIO_PORT_PINL        8U ///< Port Pin Number
 
 #define BUCK_PWM2_PDC                   PG4DC    ///< PWM Instance Duty Cycle Register
+
 #define BUCK_PWM2H_TRIS                 _TRISB9  ///< Device Port TRIS register
 #define BUCK_PWM2H_WR                   _LATB9   ///< Device Pin WRITE
 #define BUCK_PWM2H_RD                   _RB9     ///< Device Pin READ
 #define BUCK_PWM2H_RPx                  (uint8_t)41 ///< Device Pin output remappable pin number (RPx)
+#define BUCK_PWM2H_INIT                 { _LATB9 = 0; _TRISB9 = 0; }
+
 #define BUCK_PWM2L_TRIS                 _TRISB8  ///< Device Port TRIS register
 #define BUCK_PWM2L_WR                   _LATB8   ///< Device Pin WRITE
 #define BUCK_PWM2L_RD                   _RB8     ///< Device Pin READ
 #define BUCK_PWM2L_RPx                  (uint8_t)40 ///< Device Pin output remappable pin number (RPx)
+#define BUCK_PWM2L_INIT                 { _LATB8 = 0; _TRISB8 = 0; }
 
 #define _BUCK_PWM2_Interrupt            _PWM4Interrupt ///< PWM Interrupt Serivice Routine label
 #define BUCK_PWM2_IF                    _PWM4IF        ///< PWM Interrupt Flag Bit

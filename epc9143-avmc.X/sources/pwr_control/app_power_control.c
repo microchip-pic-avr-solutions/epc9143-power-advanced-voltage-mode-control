@@ -564,6 +564,9 @@ volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Write Custom Configuration of Remappable PWM Channel #4
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    BUCK_PWM2H_INIT;
+    BUCK_PWM2L_INIT;
+
     retval &= PPS_UnlockIO();
     retval &= PPS_RemapOutput(BUCK_PWM2H_RPx, PPSOUT_PWM4H);
     retval &= PPS_RemapOutput(BUCK_PWM2L_RPx, PPSOUT_PWM4L);
