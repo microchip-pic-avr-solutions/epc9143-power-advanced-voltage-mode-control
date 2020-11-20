@@ -1,5 +1,5 @@
+
 /**
- * @addtogroup power_handler
  * @dot
  * digraph power_control_flowchart{ 
  *      compound=true;
@@ -110,7 +110,6 @@
  */
  
  /** 
- * @addtogroup Firmware_Flow
  * @dot
  * digraph Firmware{ 
  *      node [fontname = "Consolas, 'Courier New', Courier, Sans-Serif"];
@@ -172,4 +171,5 @@
  *
  * }
  * @enddot
+ 
  */

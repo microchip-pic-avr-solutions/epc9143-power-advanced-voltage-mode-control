@@ -35,15 +35,6 @@
  * 
  * ***********************************************************************************************/
 
-/**
- * @defgroup Firmware_Flow Firmware Flowchart
- * @defgroup power_handler Power Control Handler Reference 
- * @defgroup fault_handler Fault Handler Reference
- * @defgroup AL Abstraction Layer Defines
- * 
- */
-
-
 
 #ifndef MCAL_P33C_SFR_ABSTRACTION_DRIVER_H
 #define MCAL_P33C_SFR_ABSTRACTION_DRIVER_H

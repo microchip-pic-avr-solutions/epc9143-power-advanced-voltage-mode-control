@@ -24,8 +24,7 @@ volatile uint16_t __attribute__((always_inline)) State_RampUp(volatile struct BU
 volatile uint16_t __attribute__((always_inline)) State_Online(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 
 /**
- * @defgroup buck_state_machine_struct Buck State Machine Data Structures
- * @ingroup buck_state_machine
+ * @addtogroup buck_state_machine_struct
  * @{
 */
 
@@ -56,8 +55,7 @@ volatile uint16_t BuckStateList_size = (sizeof(BuckConverterStateMachine)/sizeof
 /**@}*/
 
 /**
- * @defgroup buck_state_machine_function Buck State Machine Functions
- * @ingroup buck_state_machine
+ * @addtogroup buck_state_machine_function
  * @{
 */
 
