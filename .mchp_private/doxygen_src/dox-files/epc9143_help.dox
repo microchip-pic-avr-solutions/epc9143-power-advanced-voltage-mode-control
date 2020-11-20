@@ -1,9 +1,0 @@
-
-/* This is the first level of the search index */
-/**
-@defgroup Firmware_Flow Firmware Flowchart
-@defgroup power_handler Power Control Handler Reference 
-@defgroup fault_handler Fault Handler Reference
-@defgroup AL Abstraction Layer Defines
-
-*/
