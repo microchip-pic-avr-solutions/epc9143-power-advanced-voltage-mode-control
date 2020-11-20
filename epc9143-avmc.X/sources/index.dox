@@ -1,0 +1,111 @@
+//First layer
+/**
+ @defgroup Firmware_Flow Firmware Flowchart
+ @brief Firmware Flowchart 
+ 
+ @defgroup power_handler Power Control Handler Reference 
+ @brief Power Control Handler Reference
+ 
+ @defgroup fault_handler Fault Handler Reference
+ @brief Fault Handler Reference
+ 
+ @defgroup AL Abstraction Layer Defines
+ @brief Abstraction Layer Defines
+*/
+
+//Firmware Flowchart index
+/**
+ @defgroup device_start_up Device Start Up
+ @ingroup Firmware_Flow
+ @brief Device Start Up
+
+ @defgroup main_loop Main Loop
+ @ingroup Firmware_Flow
+ @brief Main Loop dfkdsnfkd
+
+ @defgroup buck_state_machine Task Layer
+ @ingroup Firmware_Flow
+ @brief Task Layer
+*/
+
+//Buck State Machine index
+/**
+ @defgroup buck_state_machine_function Buck State Machine Functions
+ @ingroup buck_state_machine
+ 
+ @defgroup buck_state_machine_struct Buck State Machine Data Structures
+ @ingroup buck_state_machine
+
+*/
+
+//Power Control Handler Reference index
+/**
+ @defgroup power_handler_function Power Control Handler Functions
+ @ingroup power_handler 
+ 
+ @defgroup power_handler_struct Power Handler Data Structures
+ @ingroup power_handler
+
+ @defgroup power_handler_enum Power Control Handler Enumerations
+ @ingroup power_handler
+ 
+ @defgroup power_handler_variable Power Control Handler Variables
+ @ingroup power_handler
+ 
+*/
+
+//Fault Handler Reference index
+/**
+ @defgroup fault_handler_enum Fault Handler Enumeration
+ @ingroup fault_handler
+ 
+ @defgroup fault_handler_struct Fault Handler Data Structure
+ @ingroup fault_handler
+ 
+ @defgroup fault_handler_function Fault Handler Functions
+ @ingroup fault_handler
+ 
+*/
+
+//Abstraction Layer Defines index
+/**
+ @defgroup MA Microcontroller Abstraction
+ @ingroup AL 
+ @brief 
+
+ @defgroup SMS State Machine Settings
+ @ingroup AL 
+	
+ @defgroup HA Hardware Abstraction
+ @ingroup AL 
+ 
+ @defgroup PCPD Power Control Parameter Declaration
+ @ingroup AL 
+
+ @defgroup FPWMS Fundamental PWM Settings 
+ @ingroup AL  
+ 
+ @defgroup IVF Input Voltage Feedback 
+ @ingroup AL 
+ 
+ @defgroup OVF Output Voltage Feedback
+ @ingroup AL 
+ 
+ @defgroup IDC Ideal Duty Cycle 
+ @ingroup AL 
+ 
+ @defgroup PCF Phase Current Feedback
+ @ingroup AL 
+ 
+ @defgroup AGCFF Adaptive Gain Control Feed Forward 
+ @ingroup AL  
+ 
+ @defgroup SB Startup Behavior  
+ @ingroup AL 
+ 
+ @defgroup FOD Fault Object Declarations
+ @ingroup AL 
+ 
+ @defgroup CD Controller Declarations
+ @ingroup AL  
+*/
