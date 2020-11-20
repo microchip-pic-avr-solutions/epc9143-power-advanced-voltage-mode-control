@@ -45,5 +45,8 @@
 #include "fault_handler/app_faults_monitor.h"
 #include "pwr_control/app_power_control.h"
 
+
+extern volatile bool run_main; ///< Flag allowing to terminate the main loop and restart the CPU
+
 #endif	/* APPLICATION_MAIN_HEADER_H */
 

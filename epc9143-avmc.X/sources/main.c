@@ -40,7 +40,7 @@ int main(void) {
         CPU_RESET();        // reset the CPU and try again
 
     // Main program execution
-    while (1) {
+    while (run_main) {
 
         // wait for timer1 to overrun
         while ((!_T1IF) && (timeout++ < TMR1_TIMEOUT));
