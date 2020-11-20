@@ -81,10 +81,6 @@ int main(void) {
     // Initialize basic system configuration
     retval &= SYSTEM_Initialize();
     
-    // Initialize software modules
-    retval &= appPowerSupply_Initialize(); // Initialize BUCK converter object and state machine
-    retval &= appFaultMonitor_Initialize(); // Initialize fault objects and fault handler task
-    
     // Enable Timer1
     _T1IP = 0;  // Set interrupt priority to zero
     _T1IF = 0;  // Reset interrupt flag bit

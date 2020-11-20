@@ -46,6 +46,10 @@ volatile uint16_t SYSTEM_Initialize(void)
     retval &= init_dac_module();  // Initialize DAC module
     retval &= init_dac_channel(1); // Initialize DAC #1 used to generate the reference voltage for current sense amplifiers
     retval &= init_dac_enable(); // Enable DAC setting the reference for current sense amplifiers
+
+    // Initialize software modules
+    retval &= appPowerSupply_Initialize(); // Initialize BUCK converter object and state machine
+    retval &= appFaultMonitor_Initialize(); // Initialize fault objects and fault handler task
     
     
 	return(retval);
