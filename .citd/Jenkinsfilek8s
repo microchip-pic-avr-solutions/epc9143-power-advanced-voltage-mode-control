@@ -10,33 +10,33 @@ pipeline {
     agent {
         kubernetes {
             label 'epc9143-pwr-avd-github_deployment'
-			defaultContainer 'xc16-mplabx-sonar-fmpp-python'
+            defaultContainer 'xc16-mplabx-sonar-fmpp-python'
             yamlFile '.citd/cloudprovider.yml'
         }
     }
    
-	environment {
+    environment {
         /*
             Common Information
         */
-	    NOTIFICATION_EMAIL = '1f1319de.microchip.com@amer.teams.ms'	
+        NOTIFICATION_EMAIL = '1f1319de.microchip.com@amer.teams.ms'    
         // GitHub production organization name
         GITHUB_PRODUCTION_ORGANIZATION = "microchip-pic-avr-solutions"
         
         /*
             GitHub Deploy Stage Information
         */
-		//This is the BitBucket source repo URL to be deployed
-		BITBUCKET_SOURCE_URL = 'https://bitbucket.microchip.com/scm/mcu16ce/epc9143-power-advanced-voltage-mode-control.git'	
+        //This is the BitBucket source repo URL to be deployed
+        BITBUCKET_SOURCE_URL = 'https://bitbucket.microchip.com/scm/mcu16ce/epc9143-power-advanced-voltage-mode-control.git'    
         //Files or folders to be excluded from deployment, if multiple files or folders use comma separator
-		DEPLOY_EXCLUDE_FOLDER_FILE_LIST = 'mchp_private'
-		//Branch(s) to be deployed, if multiple branches use comma separator. ${env.BRANCH_NAME} is the target branch of the PR.
-		DEPLOY_BRANCH_LIST = "${env.BRANCH_NAME}"
+        DEPLOY_EXCLUDE_FOLDER_FILE_LIST = 'mchp_private'
+        //Branch(s) to be deployed, if multiple branches use comma separator. ${env.BRANCH_NAME} is the target branch of the PR.
+        DEPLOY_BRANCH_LIST = "${env.BRANCH_NAME}"
         
         /*
             GitHub Release Stage Information
         */
-		CHANGE_LOG_PATH = 'changelog.md'
+        CHANGE_LOG_PATH = 'changelog.md'
         
         /*
             Bitbucket Tag Creation Stage Information
@@ -59,13 +59,12 @@ pipeline {
             Project Build Stage Information
         */
         MPLABX_PROJECT_SOURCE = "../"
-        PROJECT_BUILD_REPORT_FOLDER = "./output"
         
         /*
             Json Schema validator Stage Information
         */
         JSON_SCHEMA_FILE_PATH = "tool-github-deploy/tool-github-deploy/json/json_schema.json"
-	}
+    }
 
     options {
         timestamps()
@@ -79,7 +78,7 @@ pipeline {
                 checkout scm
             }
         }
-		
+        
         stage('project config update') {
             steps {
                 script {                    
@@ -94,15 +93,14 @@ pipeline {
             steps {
                 script {                   
                     mplabxProjectBuild(
-                        sourceFilePath: "${env.MPLABX_PROJECT_SOURCE}", 
-                        targetFilePath: "${env.PROJECT_BUILD_REPORT_FOLDER}"
+                        sourceFilePath: "${env.MPLABX_PROJECT_SOURCE}"
                     )
                }
             }
         }
-		
-	    // Validate main.json file
-	   	stage('Validate main.json'){            
+        
+        // Validate main.json file
+           stage('Validate main.json'){            
             steps{
                script{                    
                     validateMetaData(
@@ -111,9 +109,9 @@ pipeline {
                 }
             }
         } 
-		
-		// Creating tag in Bitbucket repo
-	   	stage('Bitbucket Tag Creation') {
+        
+        // Creating tag in Bitbucket repo
+           stage('Bitbucket Tag Creation') {
             when {
                     anyOf {
                         allOf {
@@ -131,9 +129,9 @@ pipeline {
                 }
             }
         }
-		
-	    // GitHub repo creation 
-	    stage('GitHub Repo Creation'){
+        
+        // GitHub repo creation 
+        stage('GitHub Repo Creation'){
             when {
                     anyOf {
                         allOf {
@@ -151,8 +149,8 @@ pipeline {
             }
         } 
 
-	    // Deploying the code to GitHub 
-		stage('GitHub Deploy Source'){
+        // Deploying the code to GitHub 
+        stage('GitHub Deploy Source'){
             when {
                     anyOf {
                         allOf {
@@ -173,9 +171,9 @@ pipeline {
                 }
             }
         }
-		
-		// Creating GitHub release  
-		stage('GitHub release'){
+        
+        // Creating GitHub release  
+        stage('GitHub release'){
             when {
                     anyOf {
                         allOf {
@@ -194,9 +192,9 @@ pipeline {
                 }
             }
         }
-		
-		// Creating GitHub Page  
-		stage('GitHub Page Create'){
+        
+        // Creating GitHub Page  
+        stage('GitHub Page Create'){
             when {
                     anyOf {
                         allOf {
@@ -215,24 +213,23 @@ pipeline {
                 }
             }
         }
-		
-		//Deploying the Github content to portal
-		stage('Portal-Deploy') {
+        
+        //Deploying the Github content to portal
+        stage('Portal-Deploy') {
             when {
-				allOf {
+                allOf {
                     not { changeRequest() }
                     anyOf {branch 'master';}
                 }
-			}
-			steps {
-				script {
-					portalDeploy(
+            }
+            steps {
+                script {
+                    portalDeploy(
                         githubOrgName: "${env.GITHUB_PRODUCTION_ORGANIZATION}"
                     )
-				}
-			}
-		}
-        
+                }
+            }
+        }
       }
 
     post {
@@ -241,8 +238,7 @@ pipeline {
                 sendMail(
                     mailId: "${env.NOTIFICATION_EMAIL}",
                     subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
-                    body: "Something is right with ${env.BUILD_URL}",
-                    artifactsPattern: "tool-mplabx-c-build/output/**"
+                    body: "Something is right with ${env.BUILD_URL}"
                 )
             }
         }
@@ -251,8 +247,7 @@ pipeline {
                 sendMail(
                     mailId: "${env.NOTIFICATION_EMAIL}",
                     subject: "Failure Pipeline: ${currentBuild.fullDisplayName}",
-                    body: "Something is right with ${env.BUILD_URL}",
-                    artifactsPattern: "tool-mplabx-c-build/output/**"
+                    body: "Something is right with ${env.BUILD_URL}"
                 )
             }
         }
