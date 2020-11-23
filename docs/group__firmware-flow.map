@@ -1,0 +1,6 @@
+<map id="Firmware Flowchart" name="Firmware Flowchart">
+<area shape="rect" id="node1" href="$group__main-loop.html" title="Main Loop." alt="" coords="203,5,285,31"/>
+<area shape="rect" id="node2" href="$group__buck-state-machine.html" title="Task Layer." alt="" coords="201,55,287,80"/>
+<area shape="rect" id="node3" title="Firmware Flowchart." alt="" coords="5,55,140,80"/>
+<area shape="rect" id="node4" href="$group__device-start-up.html" title="Device Start Up." alt="" coords="188,104,300,129"/>
+</map>

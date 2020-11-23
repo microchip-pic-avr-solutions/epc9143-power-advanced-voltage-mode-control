@@ -1,0 +1,5 @@
+<map id="State_Reset" name="State_Reset">
+<area shape="rect" id="node1" title="Description After successful initialization or after an externally triggered state machine reset,..." alt="" coords="5,5,100,32"/>
+<area shape="rect" id="node2" href="$group__power-handler-function.html#gadd0533ee810246f6b84c7c31d9372835" title="Description" alt="" coords="148,5,289,32"/>
+<area shape="rect" id="node3" href="$group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" title="Description" alt="" coords="337,5,456,32"/>
+</map>

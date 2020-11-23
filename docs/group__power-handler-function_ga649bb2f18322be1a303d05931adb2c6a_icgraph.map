@@ -1,0 +1,15 @@
+<map id="buckGPIO_Clear" name="buckGPIO_Clear">
+<area shape="rect" id="node1" title="Description" alt="" coords="1163,70,1281,97"/>
+<area shape="rect" id="node2" href="$group__power-handler-function.html#ga984f623275f9e1da2e11be2e9ff8221c" title="Description" alt="" coords="976,18,1112,45"/>
+<area shape="rect" id="node8" href="$group__power-handler-function.html#gaf5c603256fc12118fe63eb285676d95f" title="Description" alt="" coords="985,70,1103,97"/>
+<area shape="rect" id="node11" href="$group__power-handler-function.html#gadd0533ee810246f6b84c7c31d9372835" title="Description" alt="" coords="973,121,1115,147"/>
+<area shape="rect" id="node3" href="$group__power-handler-function.html#ga97eb8bdd17b9c2e169f0634ebabb5d19" title="This function initializes all peripheral modules and their instances used by the power controller." alt="" coords="743,14,925,41"/>
+<area shape="rect" id="node4" href="$group__power-handler-function.html#ga0b26acfec74d1804384b4ba1a3cffab4" title="Description" alt="" coords="504,5,695,47"/>
+<area shape="rect" id="node5" href="$group__device-start-up.html#ga7a4cf6371d09457539f96a74b2809ca0" title="Description" alt="" coords="283,13,456,39"/>
+<area shape="rect" id="node6" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,13,56,39"/>
+<area shape="rect" id="node7" href="$group__device-start-up.html#ga5630229f9308951b78658dc1af6b10e3" title=" " alt="" coords="104,38,235,65"/>
+<area shape="rect" id="node9" href="$group__power-handler-function.html#gaa865d025fb1e5ae1e16e0c519c6ba9a2" title="Description" alt="" coords="753,70,915,97"/>
+<area shape="rect" id="node10" href="$group__power-handler-function.html#gaa7d413f62f7b5f25d152cc12354241f0" title="Description" alt="" coords="523,71,676,98"/>
+<area shape="rect" id="node12" href="$group__buck-state-machine-function.html#ga7851b6ab25e86f56cb2056e4aac43c5c" title="Description This function is a default anchor in case task list index #0 is ever called...." alt="" coords="790,121,878,147"/>
+<area shape="rect" id="node13" href="$group__buck-state-machine-function.html#ga295e97e4e4330b73f398e98d889d229d" title="Description After successful initialization or after an externally triggered state machine reset,..." alt="" coords="787,171,881,198"/>
+</map>

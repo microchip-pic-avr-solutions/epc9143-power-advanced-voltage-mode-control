@@ -1,0 +1,6 @@
+<map id="appPowerSupply_Resume" name="appPowerSupply_Resume">
+<area shape="rect" id="node1" title="Description" alt="" coords="5,5,180,32"/>
+<area shape="rect" id="node2" href="$group__power-handler-function.html#gaf73787b6b72bc61786a39b9c7e47f6c6" title="Description" alt="" coords="228,5,412,32"/>
+<area shape="rect" id="node3" href="$group__power-handler-function.html#ga75498c59a10db0738113104a547d8d0d" title="This function is the main buck converter state machine executing the most recent state." alt="" coords="460,5,644,32"/>
+<area shape="rect" id="node4" href="$group__power-handler-function.html#gad4e9d780ae858d4417887f13b1619346" title="Description" alt="" coords="692,5,852,32"/>
+</map>

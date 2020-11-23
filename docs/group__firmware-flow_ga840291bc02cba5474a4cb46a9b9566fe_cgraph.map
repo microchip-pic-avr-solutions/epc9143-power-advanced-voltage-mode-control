@@ -1,0 +1,29 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title="Application main function executed after device comes out of RESET." alt="" coords="5,173,56,200"/>
+<area shape="rect" id="node2" href="$group__main-loop.html#ga8842f6a41fe23f932a8864fc140c4b5b" title="Application wide fault object monitoring routine." alt="" coords="106,56,277,83"/>
+<area shape="rect" id="node8" href="$group__device-start-up.html#ga830e5c7087a8e5ee8ea39b7e3df94b68" title="Initialization of user&#45;defined fault objects." alt="" coords="345,224,514,251"/>
+<area shape="rect" id="node9" href="$group__main-loop.html#ga13094235dd6cc123d9299925359ca178" title="This is the top&#45;level function call triggering the most recent state machine of all associated power ..." alt="" coords="104,123,279,149"/>
+<area shape="rect" id="node11" href="$group__device-start-up.html#ga7a4cf6371d09457539f96a74b2809ca0" title="Description" alt="" coords="343,275,516,301"/>
+<area shape="rect" id="node27" href="$group__device-start-up.html#ga5630229f9308951b78658dc1af6b10e3" title=" " alt="" coords="126,224,257,251"/>
+<area shape="rect" id="node3" href="$group__power-handler-function.html#ga3c7bf6b771bc1296401a270da4a95bff" title="Description" alt="" coords="342,5,517,32"/>
+<area shape="rect" id="node7" href="$group__fault-handler-function.html#ga47606594b5bc56b85a3ff49bd4f3d1ad" title="Check current fault status of a user&#45;defined fault object." alt="" coords="374,56,485,83"/>
+<area shape="rect" id="node4" href="$group__power-handler-function.html#gaf73787b6b72bc61786a39b9c7e47f6c6" title="Description" alt="" coords="583,5,767,32"/>
+<area shape="rect" id="node5" href="$group__power-handler-function.html#ga75498c59a10db0738113104a547d8d0d" title="This function is the main buck converter state machine executing the most recent state." alt="" coords="819,5,1003,32"/>
+<area shape="rect" id="node6" href="$group__power-handler-function.html#gad4e9d780ae858d4417887f13b1619346" title="Description" alt="" coords="1063,5,1223,32"/>
+<area shape="rect" id="node10" href="$group__power-handler-function.html#gab80ac65aae45f7f9d9fd4ef6f8c56111" title="Description" alt="" coords="327,158,532,199"/>
+<area shape="rect" id="node12" href="$group__power-handler-function.html#ga0b4cabdb02c8c9ea94ea1dfa39de3764" title="Description" alt="" coords="585,325,766,366"/>
+<area shape="rect" id="node13" href="$group__power-handler-function.html#gad0f6ff4894bf23722884c60bbcdcacd0" title="Description" alt="" coords="585,390,765,431"/>
+<area shape="rect" id="node14" href="$group__power-handler-function.html#ga0b26acfec74d1804384b4ba1a3cffab4" title="Description" alt="" coords="580,203,771,245"/>
+<area shape="rect" id="node23" href="$group__power-handler-function.html#ga9210070749c2ed49abd8a30b27f64151" title="Description" alt="" coords="598,273,753,300"/>
+<area shape="rect" id="node15" href="$group__power-handler-function.html#ga97eb8bdd17b9c2e169f0634ebabb5d19" title="This function initializes all peripheral modules and their instances used by the power controller." alt="" coords="819,184,1002,211"/>
+<area shape="rect" id="node16" href="$group__power-handler-function.html#gab889ae485e95010864ca04500457861a" title="Description" alt="" coords="1053,209,1232,236"/>
+<area shape="rect" id="node17" href="$group__power-handler-function.html#ga086bc1e4304b2ce7a435bf2a9799d078" title="Description" alt="" coords="1056,260,1229,287"/>
+<area shape="rect" id="node18" href="$group__power-handler-function.html#ga984f623275f9e1da2e11be2e9ff8221c" title="Description" alt="" coords="1075,57,1211,84"/>
+<area shape="rect" id="node21" href="$group__power-handler-function.html#ga283487111ea685224a2caf350540daad" title="Description" alt="" coords="1051,108,1235,135"/>
+<area shape="rect" id="node22" href="$group__power-handler-function.html#ga1dedc10502a96efea6da9207f3416219" title="Description" alt="" coords="1053,159,1232,185"/>
+<area shape="rect" id="node19" href="$group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" title="Description" alt="" coords="1311,32,1429,59"/>
+<area shape="rect" id="node20" href="$group__power-handler-function.html#ga3d3f91c0e40884874e7df3a67fff23f3" title="Description" alt="" coords="1283,83,1457,109"/>
+<area shape="rect" id="node24" href="$group__power-handler-function.html#ga8c05ea0ee077172e4025d8b7a36f5c9f" title="Description" alt="" coords="829,311,993,337"/>
+<area shape="rect" id="node25" href="$group__power-handler-function.html#gae12da3618a5d9e82920992df80b67b47" title="Description" alt="" coords="1087,311,1199,337"/>
+<area shape="rect" id="node26" href="$group__power-handler-function.html#gae6c3c54562df6c9d941bab2bc98b2bf2" title="Description" alt="" coords="1083,361,1202,388"/>
+</map>

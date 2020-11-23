@@ -1,0 +1,8 @@
+<map id="buckPWM_ChannelInitialize" name="buckPWM_ChannelInitialize">
+<area shape="rect" id="node1" title="Description" alt="" coords="973,13,1157,39"/>
+<area shape="rect" id="node2" href="$group__power-handler-function.html#ga97eb8bdd17b9c2e169f0634ebabb5d19" title="This function initializes all peripheral modules and their instances used by the power controller." alt="" coords="743,13,925,39"/>
+<area shape="rect" id="node3" href="$group__power-handler-function.html#ga0b26acfec74d1804384b4ba1a3cffab4" title="Description" alt="" coords="504,5,695,47"/>
+<area shape="rect" id="node4" href="$group__device-start-up.html#ga7a4cf6371d09457539f96a74b2809ca0" title="Description" alt="" coords="283,13,456,39"/>
+<area shape="rect" id="node5" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,13,56,39"/>
+<area shape="rect" id="node6" href="$group__device-start-up.html#ga5630229f9308951b78658dc1af6b10e3" title=" " alt="" coords="104,38,235,65"/>
+</map>

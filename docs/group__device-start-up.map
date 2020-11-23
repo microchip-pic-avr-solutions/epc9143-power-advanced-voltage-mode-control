@@ -1,0 +1,4 @@
+<map id="Device Start Up" name="Device Start Up">
+<area shape="rect" id="node1" href="$group__firmware-flow.html" title="Firmware Flowchart." alt="" coords="5,5,140,31"/>
+<area shape="rect" id="node2" title="Device Start Up." alt="" coords="188,5,300,31"/>
+</map>
