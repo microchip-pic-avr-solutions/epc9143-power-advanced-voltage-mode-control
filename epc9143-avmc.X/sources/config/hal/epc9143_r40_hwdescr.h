@@ -45,7 +45,7 @@
 
 
 /**************************************************************************************************
- * @addtogroup MA
+ * @addtogroup microcontroller-abstraction
  * @{ 
  * 
  * 
@@ -70,7 +70,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @addtogroup SMS
+ * @addtogroup state-machine-settings
  * @{
  * @brief Global defines for state-machine specific parameters
  * 
@@ -85,7 +85,7 @@
 /** @} */ // end of group
     
 /***************************************************************************************************
- * @addtogroup HA
+ * @addtogroup hardware-abstraction
  * @{
  * @brief Global defines for hardware specific parameters
  * 
@@ -128,7 +128,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @addtogroup PCPD
+ * @addtogroup power-parameter
  * @{
  * @brief Global defines for Buck Converter Power Control parameters
  * 
@@ -153,7 +153,7 @@
 /** @} */ // end of group
     
 /**************************************************************************************************
- * @addtogroup FPWMS
+ * @addtogroup fundamental-pwm-settings
  * @{
  * @brief Global defines for PWM settings of DV330101
  * 
@@ -256,7 +256,7 @@
 
     
 /**************************************************************************************************
- * @addtogroup IVF
+ * @addtogroup input-voltage-feedback
  * @{
  * @brief Declaration of input voltage limits, feedback gain and scaling and nominal operating points
  * 
@@ -312,7 +312,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @addtogroup OVF
+ * @addtogroup output-voltage-feedback
  * @{
  * @brief
  * 
@@ -358,7 +358,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @addtogroup IDC
+ * @addtogroup ideal-duty-cycle
  * @{
  * @brief
  * 
@@ -371,7 +371,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @addtogroup PCF
+ * @addtogroup phase-current-feedback
  * @{
  * @brief
  * 
@@ -429,7 +429,7 @@
 /** @} */ // end of group
     
 /**************************************************************************************************
- * @addtogroup AGCFF
+ * @addtogroup adaptive-control
  * @{
  * @brief
  * 
@@ -463,7 +463,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @addtogroup SB
+ * @addtogroup startup-behavior
  * @{
  * @brief Global defines for soft-start specific parameters
  * 
@@ -504,7 +504,7 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @addtogroup FOD
+ * @addtogroup fault-object-declarations
  * @{
  * @brief Global defines for fault-monitor related parameters
  * 
@@ -539,7 +539,7 @@
 
     
 /**************************************************************************************************
- * @addtogroup CD
+ * @addtogroup controller-declarations
  * @{
  * @brief
  * 

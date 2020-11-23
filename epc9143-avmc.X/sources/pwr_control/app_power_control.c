@@ -57,8 +57,7 @@ extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer
                                                 // Calls the AGC Factor Modulation Function (Assembly)
 
 /**
- * @addtogroup power_handler
- * @addtogroup power_handler_struct
+ * @addtogroup power-handler-struct
  * @{
  */
 /**************************************************************************************************
@@ -109,7 +108,7 @@ void appPowerSupply_CurrentSenseCalibration(void);
  * ************************************************************************************************/
 /**
  * 
- * @addtogroup device_start_up
+ * @addtogroup device-start-up
  * @{
  */
 /*******************************************************************************
@@ -147,7 +146,7 @@ volatile uint16_t appPowerSupply_Initialize(void)
 /**@}*/
 
 /**
- * @addtogroup main_loop 
+ * @addtogroup main-loop 
  * @{ 
  */
 /*******************************************************************************
@@ -213,7 +212,7 @@ volatile uint16_t appPowerSupply_Execute(void)
 }
 /**@}*/
 /**
- * @addtogroup power_handler_function
+ * @addtogroup power-handler-function
  * @{
  */
 /*******************************************************************************

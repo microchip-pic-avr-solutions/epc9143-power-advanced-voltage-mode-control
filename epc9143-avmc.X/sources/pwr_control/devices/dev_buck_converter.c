@@ -16,7 +16,7 @@
 
 /**
  * 
- * @addtogroup power_handler_function
+ * @addtogroup power-handler-function
  * @{
  */
 /*******************************************************************************

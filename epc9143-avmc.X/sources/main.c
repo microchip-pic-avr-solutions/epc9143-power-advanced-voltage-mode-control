@@ -17,9 +17,10 @@ volatile bool run_main = true; // Flag allowing to terminate the main loop and r
 volatile bool LOW_PRIORITY_GO = false;  // Flag allowing low priority tasks to be executed
 
 /**
- * @addtogroup Firmware_Flow
- * @{
+ * @addtogroup firmware-flow
  * @dotfile flowchart.gv
+ * @{
+ * 
  */
 /*******************************************************************************
  * @fn int main(void)

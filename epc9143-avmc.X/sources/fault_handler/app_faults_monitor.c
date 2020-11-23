@@ -27,7 +27,7 @@ volatile uint16_t __attribute__((always_inline)) regerr_FaultInitialize(void);
 
 /**
  * 
- * @addtogroup device_start_up
+ * @addtogroup device-start-up
  * @{
  */
 /*********************************************************************************
@@ -56,7 +56,7 @@ volatile uint16_t appFaultMonitor_Initialize(void)
 
 
 /**
- * @addtogroup main_loop 
+ * @addtogroup main-loop 
  * @{ 
  */
 /*********************************************************************************
@@ -108,8 +108,7 @@ volatile uint16_t appFaultMonitor_Execute(void)
 /**@}*/
 
 /**
- * @addtogroup fault_handler
- * @addtogroup fault_handler_function
+ * @addtogroup fault-handler-function
  * @{ 
  */
 

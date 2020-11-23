@@ -1,111 +1,135 @@
 //First layer
 /**
- @defgroup Firmware_Flow Firmware Flowchart
+ @defgroup firmware-flow Firmware Flowchart
  @brief Firmware Flowchart 
  
- @defgroup power_handler Power Control Handler Reference 
+ @defgroup power-handler Power Control Handler Reference 
  @brief Power Control Handler Reference
  
- @defgroup fault_handler Fault Handler Reference
+ @defgroup fault-handler Fault Handler Reference
  @brief Fault Handler Reference
  
- @defgroup AL Abstraction Layer Defines
+ @defgroup abstraction-layer Abstraction Layer Defines
  @brief Abstraction Layer Defines
 */
 
 //Firmware Flowchart index
 /**
- @defgroup device_start_up Device Start Up
- @ingroup Firmware_Flow
+ @defgroup device-start-up Device Start Up
+ @ingroup firmware-flow
  @brief Device Start Up
 
- @defgroup main_loop Main Loop
- @ingroup Firmware_Flow
- @brief Main Loop dfkdsnfkd
+ @defgroup main-loop Main Loop
+ @ingroup firmware-flow
+ @brief Main Loop 
 
- @defgroup buck_state_machine Task Layer
- @ingroup Firmware_Flow
+ @defgroup buck-state-machine Task Layer
+ @ingroup firmware-flow
  @brief Task Layer
 */
 
 //Buck State Machine index
 /**
- @defgroup buck_state_machine_function Buck State Machine Functions
- @ingroup buck_state_machine
+ @defgroup buck-state-machine-function Buck State Machine Functions
+ @ingroup buck-state-machine
+ @brief Buck State Machine Functions
  
- @defgroup buck_state_machine_struct Buck State Machine Data Structures
- @ingroup buck_state_machine
-
+ @defgroup buck-state-machine-struct Buck State Machine Data Structures
+ @ingroup buck-state-machine
+ @brief Buck State Machine Data Structures
 */
 
 //Power Control Handler Reference index
 /**
- @defgroup power_handler_function Power Control Handler Functions
- @ingroup power_handler 
+ @defgroup power-handler-function Power Control Handler Functions
+ @ingroup power-handler 
+ @brief Power Control Handler Functions
  
- @defgroup power_handler_struct Power Handler Data Structures
- @ingroup power_handler
-
- @defgroup power_handler_enum Power Control Handler Enumerations
- @ingroup power_handler
+ @defgroup power-handler-struct Power Handler Data Structures
+ @ingroup power-handler
+ @brief Power Handler Data Structures
  
- @defgroup power_handler_variable Power Control Handler Variables
- @ingroup power_handler
+ @defgroup power-handler-enum Power Control Handler Enumerations
+ @ingroup power-handler
+ @brief This enumeration is listing all defined states supported by the power controller state-machine.
+  The state machine handles the initialization of the power controller, stand-by, start up procedure
+  including Power-On-Delay, Ramp-Up and Power Good Delay until it ends up in a continuous operating
+  state. When reference values are changed while running, the state machine will tune into the new
+  reference values using the slew rates defined for the startup phase. 
  
+  For more information on each state, please read the related sections.
+ 
+ @defgroup power-handler-variable Power Control Handler Variables
+ @ingroup power-handler
+ @brief Power Control Handler Variables
 */
 
 //Fault Handler Reference index
 /**
- @defgroup fault_handler_enum Fault Handler Enumeration
- @ingroup fault_handler
+ @defgroup fault-handler-enum Fault Handler Enumeration
+ @ingroup fault-handler
+ @brief Fault Handler Enumeration
  
- @defgroup fault_handler_struct Fault Handler Data Structure
- @ingroup fault_handler
+ @defgroup fault-handler-struct Fault Handler Data Structure
+ @ingroup fault-handler
+ @brief 
  
- @defgroup fault_handler_function Fault Handler Functions
- @ingroup fault_handler
- 
+ @defgroup fault-handler-function Fault Handler Functions
+ @ingroup fault-handler
+ @brief Fault Handler Functions
 */
 
 //Abstraction Layer Defines index
 /**
- @defgroup MA Microcontroller Abstraction
- @ingroup AL 
+ @defgroup microcontroller-abstraction Microcontroller Abstraction
+ @ingroup abstraction-layer 
  @brief 
 
- @defgroup SMS State Machine Settings
- @ingroup AL 
-	
- @defgroup HA Hardware Abstraction
- @ingroup AL 
+ @defgroup state-machine-settings State Machine Settings
+ @ingroup abstraction-layer 
+ @brief 
  
- @defgroup PCPD Power Control Parameter Declaration
- @ingroup AL 
-
- @defgroup FPWMS Fundamental PWM Settings 
- @ingroup AL  
+ @defgroup hardware-abstraction Hardware Abstraction
+ @ingroup abstraction-layer 
+ @brief 
  
- @defgroup IVF Input Voltage Feedback 
- @ingroup AL 
+ @defgroup power-parameter Power Control Parameter Declaration
+ @ingroup abstraction-layer
+ @brief 
  
- @defgroup OVF Output Voltage Feedback
- @ingroup AL 
+ @defgroup fundamental-pwm-settings Fundamental PWM Settings 
+ @ingroup abstraction-layer 
+ @brief 
  
- @defgroup IDC Ideal Duty Cycle 
- @ingroup AL 
+ @defgroup input-voltage-feedback Input Voltage Feedback 
+ @ingroup abstraction-layer
+ @brief 
  
- @defgroup PCF Phase Current Feedback
- @ingroup AL 
+ @defgroup output-voltage-feedback Output Voltage Feedback
+ @ingroup abstraction-layer
+ @brief 
  
- @defgroup AGCFF Adaptive Gain Control Feed Forward 
- @ingroup AL  
+ @defgroup ideal-duty-cycle Ideal Duty Cycle 
+ @ingroup abstraction-layer
+ @brief 
  
- @defgroup SB Startup Behavior  
- @ingroup AL 
+ @defgroup phase-current-feedback Phase Current Feedback
+ @ingroup abstraction-layer
+ @brief 
  
- @defgroup FOD Fault Object Declarations
- @ingroup AL 
+ @defgroup adaptive-control Adaptive Gain Control Feed Forward 
+ @ingroup abstraction-layer
+ @brief 
  
- @defgroup CD Controller Declarations
- @ingroup AL  
+ @defgroup startup-behavior Startup Behavior  
+ @ingroup abstraction-layer
+ @brief 
+ 
+ @defgroup fault-object-declarations Fault Object Declarations
+ @ingroup abstraction-layer
+ @brief 
+ 
+ @defgroup controller-declarations Controller Declarations
+ @ingroup abstraction-layer
+ @brief 
 */

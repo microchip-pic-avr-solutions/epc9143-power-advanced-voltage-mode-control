@@ -38,7 +38,7 @@
 #include <stddef.h> // include standard definition data types
 
 /**
- * @addtogroup power_handler_variable 
+ * @addtogroup power-handler-variable 
  * @{
  */
 /* ********************************************************************************
