@@ -37,10 +37,30 @@
  *   10/09/20   1.0  initial version
  */
 
+// This is a guard condition so that contents of this file are not included
+// more than once.  
+#ifndef BUCK_CONVERTER_OPERATION_STATES_H
+#define	BUCK_CONVERTER_OPERATION_STATES_H
+
+#include <xc.h> // include processor files - each processor file is guarded.  
+#include <stdint.h> // include standard integer data types
+#include <stdbool.h> // include standard boolean data types
+
+// Buck converter state machine function pointer array
+extern volatile uint16_t (*BuckConverterStateMachine[])
+            (volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
+
+// Buck converter state machine function pointer array size
+extern volatile uint16_t BuckStateList_size;
+
+
+#endif	/* BUCK_CONVERTER_OPERATION_STATES_H */
+
+
 /** 
  * @file dev_buck_opstates.c
  * @brief Functions of the buck converter state machine operating states
- * @defgroup buck_state_machine Buck Converter State Machine 
+ * @addtogroup buck-state-machine 
  * @dot
  * digraph State_Machine  
  * {
@@ -88,24 +108,5 @@
  * }
  * @enddot
  */
-
-// This is a guard condition so that contents of this file are not included
-// more than once.  
-#ifndef BUCK_CONVERTER_OPERATION_STATES_H
-#define	BUCK_CONVERTER_OPERATION_STATES_H
-
-#include <xc.h> // include processor files - each processor file is guarded.  
-#include <stdint.h> // include standard integer data types
-#include <stdbool.h> // include standard boolean data types
-
-// Buck converter state machine function pointer array
-extern volatile uint16_t (*BuckConverterStateMachine[])
-            (volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
-
-// Buck converter state machine function pointer array size
-extern volatile uint16_t BuckStateList_size;
-
-
-#endif	/* BUCK_CONVERTER_OPERATION_STATES_H */
 
 // END OF FILE

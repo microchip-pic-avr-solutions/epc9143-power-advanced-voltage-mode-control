@@ -27,7 +27,7 @@
 
 #include "p33c_dac.h"
 
-/* @@p33c_DacModule__GetHandle
+/* @@p33c_DacModule_GetHandle
  * ********************************************************************************
  * Summary:
  *   Gets pointer to DAC Module SFR set
@@ -47,7 +47,7 @@
  * 
  * ********************************************************************************/
 
-volatile struct P33C_DAC_MODULE_s* p33c_DacModule__GetHandle(void)
+volatile struct P33C_DAC_MODULE_s* p33c_DacModule_GetHandle(void)
 {
     volatile struct P33C_DAC_MODULE_s* dac;
     
@@ -165,7 +165,7 @@ volatile uint16_t p33c_DacModule_ConfigWrite(
 /* ============================================================================== */
 
 
-/* @@p33c_DacInstance__GetHandle
+/* @@p33c_DacInstance_GetHandle
  * ********************************************************************************
  * Summary:
  *   Gets pointer to DAC Instance SFR set
@@ -185,7 +185,7 @@ volatile uint16_t p33c_DacModule_ConfigWrite(
  * 
  * ********************************************************************************/
 
-volatile struct P33C_DAC_INSTANCE_s* p33c_DacInstance__GetHandle(volatile uint16_t dac_Instance)
+volatile struct P33C_DAC_INSTANCE_s* p33c_DacInstance_GetHandle(volatile uint16_t dac_Instance)
 {
     volatile struct P33C_DAC_INSTANCE_s* dac;
     
@@ -309,7 +309,7 @@ volatile uint16_t p33c_DacInstance_ConfigWrite(
 /* @@dacModuleConfigClear
  * ********************************************************************************
  * Summary:
- *   Default RESET configuration of the DAC module channel SFRs
+ *   Default RESET configuration of the DAC module base SFRs
  * 
  * Data type:
  *   struct dacConfigClear:
@@ -329,6 +329,30 @@ volatile struct P33C_DAC_MODULE_s dacModuleConfigClear = {
     .DacModuleCtrl1L.value = 0x0000,
     .DacModuleCtrl2L.value = 0x0000,
     .DacModuleCtrl2H.value = 0x0000
+
+    };
+
+/* @@dacModuleConfigDefault
+ * ********************************************************************************
+ * Summary:
+ *   Default configuration of the DAC module base SFRs
+ * 
+ * Data type:
+ *   struct dacConfigClear:
+ *      DAC Module Special Function Register (SFR) set
+ *
+ * Description:
+ *   Default configuration of the DAC module SFRs with all its registers 
+ *   being reset to their default state when the device comes out of RESET.
+ *   Transition Mode Duration and Steady State Delay are both set =1.
+ * 
+ * *******************************************************************************/
+
+volatile struct P33C_DAC_MODULE_s dacModuleConfigDefault = {
+
+    .DacModuleCtrl1L.value = 0x0000,
+    .DacModuleCtrl2L.value = 0x008A,
+    .DacModuleCtrl2H.value = 0x0055
 
     };
 

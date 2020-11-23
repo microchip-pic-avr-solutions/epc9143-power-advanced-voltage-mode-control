@@ -16,8 +16,7 @@
 
 /**
  * 
- * @defgroup power_handler_function Power Control Handler Functions
- * @ingroup power_handler
+ * @addtogroup power-handler-function
  * @{
  */
 /*******************************************************************************
@@ -25,7 +24,7 @@
  * @param	
  * @return  Unsigned Integer (0=failure, 1=success)
  *
- * @brief
+ * @brief This function initializes all peripheral modules and their instances used by the power controller
  *  
  * <b>Description</b> 
  * 
@@ -71,7 +70,7 @@ volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_POWER_CONTRO
  * @param	
  * @return  Unsigned Integer (0=failure, 1=success)
  *
- * @brief
+ * @brief This function is the main buck converter state machine executing the most recent state 
  *  
  * <b>Description</b> 
  * 

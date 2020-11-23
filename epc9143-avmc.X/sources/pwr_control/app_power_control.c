@@ -57,8 +57,7 @@ extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer
                                                 // Calls the AGC Factor Modulation Function (Assembly)
 
 /**
- * @addtogroup power_handler
- * @addtogroup power_handler_struct
+ * @addtogroup power-handler-struct
  * @{
  */
 /**************************************************************************************************
@@ -109,8 +108,7 @@ void appPowerSupply_CurrentSenseCalibration(void);
  * ************************************************************************************************/
 /**
  * 
- * @defgroup power_handler_function Power Control Handler Functions
- * @ingroup power_handler
+ * @addtogroup device-start-up
  * @{
  */
 /*******************************************************************************
@@ -145,13 +143,19 @@ volatile uint16_t appPowerSupply_Initialize(void)
     
     return(retval); 
 }
+/**@}*/
 
+/**
+ * @addtogroup main-loop 
+ * @{ 
+ */
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Execute(void)
  * @param	None
  * @return  Unsigned Integer (0=failure, 1=success)
  *
- * @brief This is the top-level function call calling the most recent state machine response
+ * @brief This is the top-level function call triggering the most recent state 
+ * machine of all associated power supply controllers
  * 
  * <b>Description</b> 
  * After initialization, the proprietary user code has to call this function 
@@ -206,7 +210,11 @@ volatile uint16_t appPowerSupply_Execute(void)
     
     return(retval); 
 }
-
+/**@}*/
+/**
+ * @addtogroup power-handler-function
+ * @{
+ */
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Dispose(void)
  * @param	None
@@ -564,6 +572,9 @@ volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Write Custom Configuration of Remappable PWM Channel #4
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    BUCK_PWM2H_INIT;
+    BUCK_PWM2L_INIT;
+
     retval &= PPS_UnlockIO();
     retval &= PPS_RemapOutput(BUCK_PWM2H_RPx, PPSOUT_PWM4H);
     retval &= PPS_RemapOutput(BUCK_PWM2L_RPx, PPSOUT_PWM4L);

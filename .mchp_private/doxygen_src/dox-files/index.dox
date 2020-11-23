@@ -1,0 +1,135 @@
+//First layer
+/**
+ @defgroup firmware-flow Firmware Flowchart
+ @brief Firmware Flowchart 
+ 
+ @defgroup power-handler Power Control Handler Reference 
+ @brief Power Control Handler Reference
+ 
+ @defgroup fault-handler Fault Handler Reference
+ @brief Fault Handler Reference
+ 
+ @defgroup abstraction-layer Abstraction Layer Defines
+ @brief Abstraction Layer Defines
+*/
+
+//Firmware Flowchart index
+/**
+ @defgroup device-start-up Device Start Up
+ @ingroup firmware-flow
+ @brief Device Start Up
+
+ @defgroup main-loop Main Loop
+ @ingroup firmware-flow
+ @brief Main Loop 
+
+ @defgroup buck-state-machine Task Layer
+ @ingroup firmware-flow
+ @brief Task Layer
+*/
+
+//Buck State Machine index
+/**
+ @defgroup buck-state-machine-function Buck State Machine Functions
+ @ingroup buck-state-machine
+ @brief Buck State Machine Functions
+ 
+ @defgroup buck-state-machine-struct Buck State Machine Data Structures
+ @ingroup buck-state-machine
+ @brief Buck State Machine Data Structures
+*/
+
+//Power Control Handler Reference index
+/**
+ @defgroup power-handler-function Power Control Handler Functions
+ @ingroup power-handler 
+ @brief Power Control Handler Functions
+ 
+ @defgroup power-handler-struct Power Handler Data Structures
+ @ingroup power-handler
+ @brief Power Handler Data Structures
+ 
+ @defgroup power-handler-enum Power Control Handler Enumerations
+ @ingroup power-handler
+ @brief This enumeration is listing all defined states supported by the power controller state-machine.
+  The state machine handles the initialization of the power controller, stand-by, start up procedure
+  including Power-On-Delay, Ramp-Up and Power Good Delay until it ends up in a continuous operating
+  state. When reference values are changed while running, the state machine will tune into the new
+  reference values using the slew rates defined for the startup phase. 
+ 
+  For more information on each state, please read the related sections.
+ 
+ @defgroup power-handler-variable Power Control Handler Variables
+ @ingroup power-handler
+ @brief Power Control Handler Variables
+*/
+
+//Fault Handler Reference index
+/**
+ @defgroup fault-handler-enum Fault Handler Enumeration
+ @ingroup fault-handler
+ @brief Fault Handler Enumeration
+ 
+ @defgroup fault-handler-struct Fault Handler Data Structure
+ @ingroup fault-handler
+ @brief 
+ 
+ @defgroup fault-handler-function Fault Handler Functions
+ @ingroup fault-handler
+ @brief Fault Handler Functions
+*/
+
+//Abstraction Layer Defines index
+/**
+ @defgroup microcontroller-abstraction Microcontroller Abstraction
+ @ingroup abstraction-layer 
+ @brief 
+
+ @defgroup state-machine-settings State Machine Settings
+ @ingroup abstraction-layer 
+ @brief 
+ 
+ @defgroup hardware-abstraction Hardware Abstraction
+ @ingroup abstraction-layer 
+ @brief 
+ 
+ @defgroup power-parameter Power Control Parameter Declaration
+ @ingroup abstraction-layer
+ @brief 
+ 
+ @defgroup fundamental-pwm-settings Fundamental PWM Settings 
+ @ingroup abstraction-layer 
+ @brief 
+ 
+ @defgroup input-voltage-feedback Input Voltage Feedback 
+ @ingroup abstraction-layer
+ @brief 
+ 
+ @defgroup output-voltage-feedback Output Voltage Feedback
+ @ingroup abstraction-layer
+ @brief 
+ 
+ @defgroup ideal-duty-cycle Ideal Duty Cycle 
+ @ingroup abstraction-layer
+ @brief 
+ 
+ @defgroup phase-current-feedback Phase Current Feedback
+ @ingroup abstraction-layer
+ @brief 
+ 
+ @defgroup adaptive-control Adaptive Gain Control Feed Forward 
+ @ingroup abstraction-layer
+ @brief 
+ 
+ @defgroup startup-behavior Startup Behavior  
+ @ingroup abstraction-layer
+ @brief 
+ 
+ @defgroup fault-object-declarations Fault Object Declarations
+ @ingroup abstraction-layer
+ @brief 
+ 
+ @defgroup controller-declarations Controller Declarations
+ @ingroup abstraction-layer
+ @brief 
+*/

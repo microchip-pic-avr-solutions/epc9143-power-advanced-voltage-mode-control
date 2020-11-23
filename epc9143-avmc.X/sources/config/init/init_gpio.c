@@ -18,24 +18,9 @@ volatile uint16_t init_gpio(void) {
     ANSELB = 0x0000;
     
     // Initialize debugging Pins
-    DBGPIN_1_INIT;
-    DBGPIN_2_INIT;
-    DBGPIN_3_INIT;
+    DBGPIN_1_INIT; ///< Device pin #1  (not routed)
+    DBGPIN_2_INIT; ///< Device pin #2  (not routed)
+    DBGPIN_3_INIT; ///< Device pin #25 (not routed)
 
-    // Map PWM4H/L outputs to pins RB8/9
-    // ToDo: Move hard-coded peripheral and pin assignments to hardware abstraction layer files
-    _LATB8 = 0;
-    _TRISB8 = 0;
-    _LATB9 = 0;
-    _TRISB9 = 0;
-    
-// ToDo: this section has been pushed to custom peripheral configuration    
-//       of the power controller
-    
-//    __builtin_write_RPCON(0x0000); // unlock PPS
-//    _RP41R = 34; // Map PWM4H to RP44 (tied to RB9 Output)
-//    _RP40R = 35; // Map PWM4L to RP45 (tied to RB8 Output)
-//    __builtin_write_RPCON(0x0800); // lock PPS
-    
     return(retval);
 }

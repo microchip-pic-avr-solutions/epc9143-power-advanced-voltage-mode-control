@@ -53,16 +53,9 @@
 #include "pwr_control/drivers/npnz16b.h"
 #include "config/hal.h"
 
-/**
- * 
- * @defgroup power_handler Power Control Handler Reference  
- * @{
- * 
- */
 
 /**
- * @defgroup power_handler_variable Power Control Handler Variables
- * @ingroup power_handler
+ * @addtogroup power-handler-variable
  * @{
  */
 #define BUCK_MPHASE_COUNT                BUCK_NO_OF_PHASES
@@ -87,16 +80,7 @@
 /**@}*/
 
 /****************************************************************************************************
- * @defgroup power_handler_enum Power Control Handler Enumerations
- * @brief This enumeration is listing all defined states supported by the power controller state-machine.
- * The state machine handles the initialization of the power controller, stand-by, start up procedure
- * including Power-On-Delay, Ramp-Up and Power Good Delay until it ends up in a continuous operating
- * state. When reference values are changed while running, the state machine will tune into the new
- * reference values using the slew rates defined for the startup phase. 
- *
- * For more information on each state, please read the related sections.
- * 
- * @ingroup power_handler
+ * @addtogroup power-handler-enum
  * @{
  *  
  **************************************************************************************************** */
@@ -157,8 +141,7 @@ typedef enum {
 
 /**@}*/
 /**
- * @defgroup power_handler_struct Power Handler Data Structures
- * @ingroup power_handler
+ * @addtogroup power-handler-struct
  * @{
  */
 /*****************************************************************************************************
@@ -492,6 +475,3 @@ typedef struct BUCK_POWER_CONTROLLER_s
 //#else
 //    #pragma message "Warning: dev_buck_typedef.h inclusion bypassed"
 #endif	/* BUCK_CONVERTER_TYPE_DEF_H */
-
-// END OF FILE
-/** @} */ // end of group

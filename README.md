@@ -105,7 +105,7 @@ In case firmware based features need to be changed, the Microchip dsPIC33CK cont
 ## Operation
 The converter is starting up automatically when more than 10.5 V DC are applied across the input terminals of the EPC9531 test fixture. It is not recommended to operate the EPC9143 reference design without proper decoupling capacitance at either input or output. The EPC9531 test fixture provides the best test environment for the converter. Please read the [EPC9531 Quick Start Guide](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf) to get detailed information about the requirements for setup and operation of this reference design.
 
-## Firmware Qick-Start Guide
+## Firmware Quick-Start Guide
 
 ##### 1) Buck Converter State Machine
 
@@ -143,7 +143,25 @@ If the power controller is shut down and reset by external commands (e.g. fault 
 
 This firmware uses a digital type IV controller to close the feedback loop in voltage mode control. This digital loop reads the most recent ADC sample of the output voltage and processes the derived value through a digital type IV (4P4Z) compensation filter. The numeric output is checked and, when necessary, clamped to user-defined minimum/maximum thresholds before being written to the PWM duty cycle register. As EPC9143 is a multiphase converter, a special PWM steering mode has been implemented supporting high-speed current balancing between the two phases. The voltage mode controller has been extended with a self-adapting loop gain tuning algorithm (AGC) stabilizing the frequency domain characteristic over input voltage, output voltage and load, always providing the exact same bandwidth of >25 kHz and stability margins across the entire operating range.
 
+<p>
+  <center>
+    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
+      <img src="images/type4-avmc.png" alt="EPC9143 type IV - Advanced Voltage Control Loop" width="800">
+	</a>
+  <br>
+  EPC9143 Type IV Controller - Advanced Voltage Control Loop
+  </center>
+</p>
+
 This control loop can be turned on/off by using the ENABLE bit in the STATUS word of the cNPNZ_t controller data structure. The adaptive loop gain modulation is permanently active as soon as the control loop is enabled.
+
+<p>
+  <center>
+    <img src="images/type4-avmc.png" alt="Advanced Type IV Voltage Mode Control with PWM Steering and Adaptive Gain Control" width="620">
+  <br>
+  Advanced Type IV Voltage Mode Control Block Diagram
+  </center>
+</p>
 
 ##### 3) Digital Controller Design
 

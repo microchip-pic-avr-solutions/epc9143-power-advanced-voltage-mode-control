@@ -62,11 +62,6 @@
 #include <stdbool.h> // include standard boolean types header file
 
 
-/**
- * @defgroup THV Trap Handler Variable
- * @addtogroup fault_handler
- * @{
- */
 /**********************************************************************************
  * @var TRAP_DMA_SUPPORT
  * @brief defining trap-ID for primary and secondary vectors 
@@ -81,19 +76,12 @@
 #define FAULT_OBJECT_CPU_RESET_TRIGGER_BIT_MASK     0b0000000000000001
 #define CPU_RESET_TRIGGER_LOW_BIT_MASK 0b00000000000000011011101110000000 ///< This define is used to filter on critical fault conditions used to trigger a CPU reset
 
-/**@}*/
 
 // =================================================================================================
 //
 //	DEFINING TRAP-ID FOR PRIMARY AND SECONDARY EXCEPTION VECTORS
 //
 // =================================================================================================
-
-/**
- * @defgroup THE Trap Handler Enumeration
- * @addtogroup fault_handler
- * @{
- */
 
 /**********************************************************************************
  * @enum TRAP_ID_e
@@ -124,7 +112,6 @@ typedef enum TRAP_ID_e
 	TRAP_RESET_MSK				= 0x7F1F	///< Bit Mask to filter used bits only
 
 } TRAP_ID_t;
-/**@}*/
 
 // =================================================================================================
 //
@@ -132,11 +119,6 @@ typedef enum TRAP_ID_e
 //
 // =================================================================================================
 
-/**
- * @defgroup THS Trap Handler Data Structure
- * @addtogroup fault_handler
- * @{
- */
 
 /**********************************************************************************
  * @struct TRAP_FLAGS_s
@@ -305,8 +287,6 @@ typedef struct TRAP_LOGGER_s
     
 } TRAP_LOGGER_t; // Global data structure for trap event capturing
 
-/**@}*/
-/** @} */ // end of group 
 
 // Global data structure used as buffer for trap monitoring
 extern volatile struct TRAP_LOGGER_s __attribute__((__persistent__))traplog; 

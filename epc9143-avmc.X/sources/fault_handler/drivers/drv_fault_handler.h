@@ -50,14 +50,7 @@
 
 /**
  * 
- * @defgroup fault_handler Fault Handler Reference
- * @{
- */
-
-/**
- * 
- * @defgroup fault_handler_enum Fault Handler Enumeration
- * @ingroup fault_handler
+ * @addtogroup fault-handler-enum
  * @{
  */
 /***********************************************************************************
@@ -82,8 +75,7 @@ typedef enum FLT_COMPARE_TYPE_e {
 /** @} */ // end of group
 
 /**
- * @defgroup fault_handler_struct Fault Handler Data Structure
- * @ingroup fault_handler
+ * @addtogroup fault-handler-struct
  * @{
  */
 
@@ -158,7 +150,6 @@ typedef struct FAULT_OBJECT_s {
 
 } FAULT_OBJECT_t; // 
 
-/** @} */ // end of group
 /** @} */ // end of group
 // Public Fault Configuration Templates
 extern volatile struct FAULT_OBJECT_s fltobjClear;

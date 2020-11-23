@@ -24,8 +24,7 @@ volatile uint16_t __attribute__((always_inline)) SubState_IRampUp(volatile struc
 volatile uint16_t __attribute__((always_inline)) SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 
 /**
- * @defgroup buck_state_machine_struct Buck State Machine Data Structures
- * @ingroup buck_state_machine
+ * @addtogroup buck-state-machine-struct 
  * @{
 */
 // Function pointer array of buck converter startup sub-states
@@ -56,8 +55,7 @@ volatile uint16_t BuckRampUpSubStateList_size = (sizeof(BuckConverterRampUpSubSt
 
 
 /**
- * @defgroup buck_state_machine_function Buck State Machine Functions
- * @ingroup buck_state_machine
+ * @addtogroup buck-state-machine-function 
  * @{
 */
 

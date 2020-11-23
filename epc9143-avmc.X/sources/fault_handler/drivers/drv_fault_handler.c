@@ -44,8 +44,7 @@
 #include "drv_fault_handler.h" // 
 
 /**
- * @brief This contains driver fault handler APIs 
- * @ingroup fault_handler_struct
+ * @addtogroup fault-handler-struct
  */
 
 /**********************************************************************************
@@ -74,8 +73,7 @@ volatile struct FAULT_OBJECT_s fltobjClear =
     };
 
 /**
- * @defgroup fault_handler_function Fault Handler Functions
- * @ingroup fault_handler
+ * @addtogroup fault-handler-function
  * @{
  */
 /*******************************************************************************
