@@ -1,34 +1,70 @@
+/*
+    Jenkins Shared Library:
+    ----------------------
+    shared-library-mcu16ce - https://bitbucket.microchip.com/scm/citd/shared-library-mcu16ce.git
+    shared-library-common - https://bitbucket.microchip.com/scm/citd/shared-library-common.git    
+*/
+@Library(['shared-library-mcu16ce@develop', 'shared-library-common@develop']) _
+
 pipeline {
     agent {
         kubernetes {
-            label 'github_deployment'
-			defaultContainer 'xc16-mplabx-sonar-fmpp-python'
+            label 'epc9143-pwr-avd-github_deployment'
+            defaultContainer 'xc16-mplabx-sonar-fmpp-python'
             yamlFile '.citd/cloudprovider.yml'
         }
     }
    
+    environment {
+        /*
+            Common Information
+        */
+        NOTIFICATION_EMAIL = '1f1319de.microchip.com@amer.teams.ms'    
+        // GitHub production organization name
+        GITHUB_PRODUCTION_ORGANIZATION = "microchip-pic-avr-solutions"
+        
+        /*
+            GitHub Deploy Stage Information
+        */
+        //This is the BitBucket source repo URL to be deployed
+        BITBUCKET_SOURCE_URL = 'https://bitbucket.microchip.com/scm/mcu16ce/epc9143-power-advanced-voltage-mode-control.git'    
+        //Files or folders to be excluded from deployment, if multiple files or folders use comma separator
+        DEPLOY_EXCLUDE_FOLDER_FILE_LIST = 'mchp_private'
+        //Branch(s) to be deployed, if multiple branches use comma separator. ${env.BRANCH_NAME} is the target branch of the PR.
+        DEPLOY_BRANCH_LIST = "${env.BRANCH_NAME}"
+        
+        /*
+            GitHub Release Stage Information
+        */
+        CHANGE_LOG_PATH = 'changelog.md'
+        
+        /*
+            Bitbucket Tag Creation Stage Information
+        */
+        BITBUCKET_PROJECT_NAME = 'MCU16CE'
+        
+        /*
+            GitHub Page Stage Information
+            List of GitHub Page Options:
+            ----------------------------
+            1. GITHUB_PAGES_NONE         ( Branch: None, index file path: None )
+            2. GITHUB_PAGES_MASTER_ROOT  ( Branch: Master, index file path: /root )
+            3. GITHUB_PAGES_MASTER_DOCS  ( Branch: Develop, index file path: /Docs ) 
+            4. GITHUB_PAGES_DEVELOP_ROOT ( Branch: Master, index file path: /root )
+            5. GITHUB_PAGES_DEVELOP_DOCS ( Branch: Develop, index file path: /Docs )
+        */
+        GITHUB_PAGES = 'GITHUB_PAGES_MASTER_DOCS'    
 
-	environment {
-	    NOTIFICATION_EMAIL = '1f1319de.microchip.com@amer.teams.ms'	
-		//This is the BitBucket source repo URL to be deployed
-		BITBUCKET_SOURCE_URL = 'https://bitbucket.microchip.com/scm/mcu16ce/epc9143-power-advanced-voltage-mode-control.git'
-		BITBUCKET_CREDENTIAL_ID = 'BITBUCKET_INTERNAL_TOKEN'
-		GITHUB_PRODUCTION_DEPLOY_URL ='https://github.com/microchip-pic-avr-examples'
-		GITHUB_TEST_DEPLOY_URL ='https://github.com/mchpTestArea'
-		//Selects the deployment URL(production or test) based on the merge target branch, selects "microchip-pic-avr-examples" if target branch is "master" , if target branch is "test_deploy" selects "mchpTestArea" else null
-		GITHUB_URL = getGitHubUrl("${GITHUB_PRODUCTION_DEPLOY_URL}","${GITHUB_TEST_DEPLOY_URL}")
-		GITHUB_PRODUCTION_DEPLOY_CREDENTIAL_ID ='GITHUB_MICROCHIP_PIC_AVR_EXAMPLES_TOKEN'
-		GITHUB_TEST_DEPLOY_CREDENTIAL_ID ='GITHUB_PIC_AVR_TEST_TOKEN'
-		//Gets the Github credential id based on the deployment organization
-	    GITHUB_CREDENTIAL_ID = getGitHubCredentialId("${GITHUB_URL}","${GITHUB_PRODUCTION_DEPLOY_URL}","${GITHUB_TEST_DEPLOY_URL}","${GITHUB_PRODUCTION_DEPLOY_CREDENTIAL_ID}","${GITHUB_TEST_DEPLOY_CREDENTIAL_ID}")
-		//Files or folders to be excluded from deployment, if multiple files or folders use comma separator
-		DEPLOY_EXCLUDE_FOLDER_FILE_LIST = 'mchp_private, .mchp_private, sandbox, .sandbox'
-		//Branch(s) to be deployed, if multiple branches use comma separator. ${env.BRANCH_NAME} is the target branch of the PR.
-		DEPLOY_BRANCH_LIST = "${env.BRANCH_NAME}"
-		CHANGE_LOG_PATH = 'changelog.md'
-		SOURCE_PROJECT_META_DATA = '.main-meta/main.json'
-		DEPLOY_TOOL_URL = 'https://bitbucket.microchip.com/scm/citd/tool-github-deploy.git'
-	}
+        /*
+            Project Build Stage Information
+        */
+        MPLABX_PROJECT_SOURCE = "../"
+        
+        /*
+            Json Schema validator Stage Information
+        */
+        JSON_SCHEMA_FILE_PATH = "tool-github-deploy/tool-github-deploy/json/json_schema.json"
+    }
 
     options {
         timestamps()
@@ -42,60 +78,61 @@ pipeline {
                 checkout scm
             }
         }
-
+        
+        stage('project config update') {
+            steps {
+                script {                    
+                    mplabxProjectConfigUpdate(
+                        sourceFilePath: "${env.MPLABX_PROJECT_SOURCE}"
+                    )
+                }
+            }
+        }
+        
         stage('Build') {
             steps {
-                script {
-                   execute("git clone https://bitbucket.microchip.com/scm/citd/tool-mplabx-c-build.git")
-                   execute("cd ./tool-mplabx-c-build && node buildLauncher.js sp=../ rp=./output genMK=true")
+                script {                   
+                    mplabxProjectBuild(
+                        sourceFilePath: "${env.MPLABX_PROJECT_SOURCE}"
+                    )
                }
             }
         }
-	   
-	    // Cloning the tool used for GitHub deployment
-	   	stage('GitHub tool clone'){
+        
+        // Validate main.json file
+           stage('Validate main.json'){            
             steps{
-               script{
-                    execute("git clone https://bitbucket.microchip.com/scm/citd/tool-github-deploy.git")
-                    execute("chmod +x ./tool-github-deploy/tool-github-deploy/tool-github-deploy.py")                    
+               script{                    
+                    validateMetaData(
+                        jsonSchemaFilePath: "${env.JSON_SCHEMA_FILE_PATH}"
+                    )                   
                 }
             }
         } 
-		
-		
-	    // Validate main.json file
-	   	stage('Validate main.json'){
-            steps{
-               script{
-                    execute("python tool-github-deploy/tool-github-deploy/tool-github-deploy.py -vdo=true -vmf=${env.SOURCE_PROJECT_META_DATA} -vjsf=tool-github-deploy/tool-github-deploy/json/json_schema.json")                    
-                }
-            }
-        }
-		
-		// Creating tag in Bitbucket repo
-	   	stage('Bitbucket Tag Creation'){
-			when {
+        
+        // Creating tag in Bitbucket repo
+           stage('Bitbucket Tag Creation') {
+            when {
                     anyOf {
                         allOf {
                             not { changeRequest() }
-                            anyOf {branch 'master';}
+                            anyOf {branch 'master'; branch 'test_deploy';}
                         }
                     }
             }
             steps{
                script{
-                    def jsonObj = readJsonObject();
-                    
-                    withCredentials([usernamePassword(credentialsId: "${env.BITBUCKET_CREDENTIAL_ID}", passwordVariable: 'PASS', usernameVariable: 'USER_NAME')]) {
-                        execute("python tool-github-deploy/tool-github-deploy/tool-github-deploy.py -bto=true -rpn=\"${jsonObj.content.projectName}\" -bid=$USER_NAME -bpat=$PASS -bpn=MCU16CE -btv=\"${jsonObj.content.version}\" -bch=${env.GIT_COMMIT} -btd=\"${jsonObj.content.version}\"")
-                    }
+                    bitbucketTagCreation(
+                        projectName: "${env.BITBUCKET_PROJECT_NAME}",
+                        commitId: "${env.GIT_COMMIT}"
+                    )
                 }
             }
         }
-		
-	    // GitHub repo creation 
-	    stage('GitHub Repo Creation'){
-			when {
+        
+        // GitHub repo creation 
+        stage('GitHub Repo Creation'){
+            when {
                     anyOf {
                         allOf {
                             not { changeRequest() }
@@ -105,26 +142,16 @@ pipeline {
             }
             steps{
                 script{
-                    def jsonObj = readJsonObject();
-                    
-                    String [] topics = jsonObj.content.keywords
-                    def asString = topics.join(", ")
-					Boolean visibility =  true
-					if(env.GITHUB_URL == env.GITHUB_PRODUCTION_DEPLOY_URL)
-					{
-					   visibility = false
-					}
-                    
-                    withCredentials([usernamePassword(credentialsId: "${env.GITHUB_CREDENTIAL_ID}", passwordVariable: 'PASS', usernameVariable: 'USER_NAME')]) {
-                        execute("python tool-github-deploy/tool-github-deploy/tool-github-deploy.py -rpo=true -gpat=$PASS -rporg=${env.GITHUB_URL} -rpn=${jsonObj.content.projectName} -rpd=\"${jsonObj.content.shortDescription}\" -rpt=\"${asString}\" -rpp=${visibility}")
-                    }
+                    githubRepoCreate(
+                         githubOrgName : "${env.GITHUB_PRODUCTION_ORGANIZATION}"
+                    )
                 }
             }
         } 
-	
-	    // Deploying the code to GitHub 
-		stage('GitHub Deploy Source'){
-			when {
+
+        // Deploying the code to GitHub 
+        stage('GitHub Deploy Source'){
+            when {
                     anyOf {
                         allOf {
                             not { changeRequest() }
@@ -134,20 +161,20 @@ pipeline {
             }
             steps{
                 script{
-                    def jsonObj = readJsonObject();
-                    def gitHubUrl = "${env.GITHUB_URL}" + "/" + jsonObj.content.projectName
-                    gitHubUrl = gitHubUrl.replace(" ", "").replace("\n", "")
-                    
-                    withCredentials([usernamePassword(credentialsId: "${env.GITHUB_CREDENTIAL_ID}", passwordVariable: 'PASS', usernameVariable: 'USER_NAME')]) {
-                        execute("python tool-github-deploy/tool-github-deploy/tool-github-deploy.py -deploy=true -gpat=$PASS -dgid=$USER_NAME -dburl=${env.BITBUCKET_SOURCE_URL} -dgurl=${gitHubUrl}  -dbranch=${env.DEPLOY_BRANCH_LIST} -def=${env.DEPLOY_EXCLUDE_FOLDER_FILE_LIST}")
-                    }
+                
+                    githubDeploySource(
+                        bitbucketUrl: "${env.BITBUCKET_SOURCE_URL}",
+                        deployBranchList: "${env.DEPLOY_BRANCH_LIST}",
+                        deployExcludeFileList: "${env.DEPLOY_EXCLUDE_FOLDER_FILE_LIST}",
+                        githubOrgName: "${env.GITHUB_PRODUCTION_ORGANIZATION}"
+                    )
                 }
             }
         }
-		
-		// Creating GitHub release  
-		stage('GitHub release'){
-			when {
+        
+        // Creating GitHub release  
+        stage('GitHub release'){
+            when {
                     anyOf {
                         allOf {
                             not { changeRequest() }
@@ -155,109 +182,74 @@ pipeline {
                         }
                     }
             }
+            
             steps{
                script{
-                    def jsonObj = readJsonObject();
-                    
-                    withCredentials([usernamePassword(credentialsId: "${env.GITHUB_CREDENTIAL_ID}", passwordVariable: 'PASS', usernameVariable: 'USER_NAME')]) {
-                        execute("python tool-github-deploy/tool-github-deploy/tool-github-deploy.py -rlo=true -gpat=$PASS -rporg=${env.GITHUB_URL} -rpn=\"${jsonObj.content.projectName}\" -rltv=\"${jsonObj.content.version}\" -rltt=\"${jsonObj.content.version}\" -rlnp=${env.CHANGE_LOG_PATH}")
-                    }
+                    githubReleaseCreate(
+                        changeLogFilePath: "${env.CHANGE_LOG_PATH}",
+                        githubOrgName: "${env.GITHUB_PRODUCTION_ORGANIZATION}"                        
+                    )
                 }
             }
         }
-		
-		//Deploying the Github content to portal
-		stage('Portal-Deploy') {
-			when {
-				allOf {
+        
+        // Creating GitHub Page  
+        stage('GitHub Page Create'){
+            when {
+                    anyOf {
+                        allOf {
+                            not { changeRequest() }
+                            anyOf {branch 'master'; branch 'test_deploy';}
+                        }
+                    }
+            }
+            
+            steps{
+               script{
+                    githubPageCreate(
+                        githubPage: "${env.GITHUB_PAGES}",
+                        githubOrgName: "${env.GITHUB_PRODUCTION_ORGANIZATION}"
+                    )
+                }
+            }
+        }
+        
+        //Deploying the Github content to portal
+        stage('Portal-Deploy') {
+            when {
+                allOf {
                     not { changeRequest() }
                     anyOf {branch 'master';}
                 }
-			}
-			steps {
-				script {
-					def jsonObj = readJsonObject();			
-					def version = jsonObj.content.version
-					def project = jsonObj.content.projectName
-					
-                    String[] splitPreTag = "${env.GITHUB_URL}".split("/")
-                    def gitHubOrg = (splitPreTag[splitPreTag.size() - 1])
-
-					def cmdArgs = "'{\"repoOwnerName\":\"$gitHubOrg\",\"repoName\":\"$project\",\"tagName\":\"$version\"}'"
-					cmdArgs = cmdArgs.replaceAll("\"","\\\\\"")						
-					
-					execute("git clone https://bitbucket.microchip.com/scm/portal/bundles.git")
-					execute("cd bundles && chmod 755 ./portal-client-cli-linux")
-					execute("git clone https://bitbucket.microchip.com/scm/citd/tool-portal-client-launcher.git")
-					execute("cd tool-portal-client-launcher && node portalLauncher.js -app=../bundles/portal-client-cli-linux -cmd=\"uploadGitHub ${cmdArgs}\"")
-				}
-			}
-		}
-        
+            }
+            steps {
+                script {
+                    portalDeploy(
+                        githubOrgName: "${env.GITHUB_PRODUCTION_ORGANIZATION}"
+                    )
+                }
+            }
+        }
       }
 
     post {
         success{
             script {
-                if (!"${env.CHANGE_AUTHOR_EMAIL}".equalsIgnoreCase("null")) {
-				    archiveArtifacts artifacts: "tool-mplabx-c-build/output/**", fingerprint: true
-                    mail to: "${env.CHANGE_AUTHOR_EMAIL}, ${env.NOTIFICATION_EMAIL}",
+                sendMail(
+                    mailId: "${env.NOTIFICATION_EMAIL}",
                     subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
                     body: "Something is right with ${env.BUILD_URL}"
-                } else {
-				    archiveArtifacts artifacts: "tool-mplabx-c-build/output/**", fingerprint: true
-                    mail to: "${env.NOTIFICATION_EMAIL}",
-                    subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
-                    body: "Something is right with ${env.BUILD_URL}"
-                }
+                )
             }
         }
         failure {
             script {
-                if (!"${env.CHANGE_AUTHOR_EMAIL}".equalsIgnoreCase("null")) {
-				    archiveArtifacts artifacts: "tool-mplabx-c-build/output/**", fingerprint: true
-                    mail to: "${env.CHANGE_AUTHOR_EMAIL}, ${env.NOTIFICATION_EMAIL}",
-                    subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-                    body: "Pipeline failure. ${env.BUILD_URL}"
-                } else {
-				    archiveArtifacts artifacts: "tool-mplabx-c-build/output/**", fingerprint: true
-                    mail to: "${env.NOTIFICATION_EMAIL}",
-                    subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-                    body: "Pipeline failure. ${env.BUILD_URL}"
-                }
+                sendMail(
+                    mailId: "${env.NOTIFICATION_EMAIL}",
+                    subject: "Failure Pipeline: ${currentBuild.fullDisplayName}",
+                    body: "Something is right with ${env.BUILD_URL}"
+                )
             }
         }
-    }
-}
-
-def execute(String command) {
-    if (isUnix()) {
-        sh command
-    } else {
-        bat command
-    }
-}
-
-String readJsonObject() {
-    def jsonObj  = readJSON interpolate: true, file: "${env.SOURCE_PROJECT_META_DATA}"
-    return jsonObj
-}
-def getGitHubUrl(String productionUrl, String testDeployUrl) {
-    String branchName = "${env.BRANCH_NAME}";
-    if(branchName == 'master') {
-        return productionUrl;
-    } else if(branchName == 'test_deploy') {
-        return testDeployUrl;
-    } else {
-        return null
-    }
-}
-def getGitHubCredentialId(String deployUrl, String productionDeployUrl, String testDeployUrl, String githubProductionDeployCredential, String githubTestDeployCredential) {    
-    if(deployUrl == productionDeployUrl) {
-        return githubProductionDeployCredential;
-    } else if(deployUrl == testDeployUrl) {
-        return githubTestDeployCredential;
-    } else {
-        return null
     }
 }
