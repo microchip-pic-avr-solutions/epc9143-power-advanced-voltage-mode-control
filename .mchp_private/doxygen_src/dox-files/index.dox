@@ -9,8 +9,12 @@
  @defgroup fault-handler Fault Handler Reference
  @brief Fault Handler Reference
  
+ @defgroup peripheral Power Supply Peripherals
+ @brief Contains peripheral default settings and functions for power supply application
+ 
  @defgroup abstraction-layer Abstraction Layer Defines
  @brief Abstraction Layer Defines
+ 
 */
 
 //Firmware Flowchart index
@@ -78,6 +82,24 @@
  @ingroup fault-handler
  @brief Fault Handler Functions
 */
+
+//Power Supply Peripherals
+/**
+ @defgroup dac Digital-to-Analog Converter
+ @ingroup peripheral
+ @brief Digital-to-Analog Converter
+ 
+ @defgroup gpio General Purpose Input/Output 
+ @ingroup peripheral
+ @brief General Purpose Input/Output
+
+ @defgroup pps Peripheral Pin Select
+ @ingroup peripheral
+ @brief Peripheral Pin Select
+
+ @defgroup pwm Pulse Width Modulation
+ @ingroup peripheral
+ @brief Pulse Width Modulation
 
 //Abstraction Layer Defines index
 /**
