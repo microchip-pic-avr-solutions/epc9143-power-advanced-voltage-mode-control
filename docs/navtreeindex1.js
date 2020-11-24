@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"group__microcontroller-abstraction.html":[0,3,0],
 "group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff":[0,3,0,0],
 "group__microcontroller-abstraction.html#gaa5d1dacef95564076ecd32adb0774ac3":[0,3,0,3],
 "group__microcontroller-abstraction.html#gab298faea909e0aa62203195aa3d6ca80":[0,3,0,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "struct____attribute____.html#a92c7579fd36047b70932e339cd437879":[1,0,0,8],
 "struct____attribute____.html#aa9b19002b612af0e36c278c5e84fea5e":[1,0,0,2],
 "struct____attribute____.html#ab14ea9acf553cda3a0bf73736a5144ce":[1,0,0,6],
-"struct____attribute____.html#ac5a29678c913ac49a35c6139192479d5":[1,0,0,11],
-"struct____attribute____.html#ae822849ab73809dc1cec461fb1e6bf21":[1,0,0,1]
+"struct____attribute____.html#ac5a29678c913ac49a35c6139192479d5":[1,0,0,11]
 };

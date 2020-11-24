@@ -37,5 +37,6 @@ var searchData=
   ['switching_5ffrequency_726',['SWITCHING_FREQUENCY',['../group__power-parameter.html#gae6716088d9ed2ed4966b1a698d994812',1,'epc9143_r40_hwdescr.h']]],
   ['switching_5fperiod_727',['SWITCHING_PERIOD',['../group__power-parameter.html#gaabb70a504ca7ac860f5f3737ed4f01f9',1,'epc9143_r40_hwdescr.h']]],
   ['switching_5fphase_5fshift_728',['SWITCHING_PHASE_SHIFT',['../group__power-parameter.html#ga6a9b84a3883a3bdc8c2abfc1500091b4',1,'epc9143_r40_hwdescr.h']]],
-  ['system_5finitialize_729',['SYSTEM_Initialize',['../group__device-start-up.html#ga5630229f9308951b78658dc1af6b10e3',1,'SYSTEM_Initialize(void):&#160;system_initialize.c'],['../group__device-start-up.html#ga5630229f9308951b78658dc1af6b10e3',1,'SYSTEM_Initialize(void):&#160;system_initialize.c']]]
+  ['system_5finitialize_729',['SYSTEM_Initialize',['../group__device-start-up.html#ga5630229f9308951b78658dc1af6b10e3',1,'SYSTEM_Initialize(void):&#160;system.c'],['../group__device-start-up.html#ga5630229f9308951b78658dc1af6b10e3',1,'SYSTEM_Initialize(void):&#160;system.c']]],
+  ['sysusertasks_5finitialize_730',['sysUserTasks_Initialize',['../group__device-start-up.html#ga2be64f5f0b9a2c0c6713f5a69d793e05',1,'sysUserTasks_Initialize(void):&#160;system.c'],['../group__device-start-up.html#ga2be64f5f0b9a2c0c6713f5a69d793e05',1,'sysUserTasks_Initialize(void):&#160;system.c']]]
 ];

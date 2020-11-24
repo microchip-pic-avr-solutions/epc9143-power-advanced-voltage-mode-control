@@ -79,6 +79,7 @@ var NAVTREEINDEX0 =
 "group__controller-declarations.html#gaa46c260ebaea7e59a41e0c02c09b7012":[0,3,12,3],
 "group__controller-declarations.html#gac652105fed34fa1602688a30bbd8b227":[0,3,12,2],
 "group__device-start-up.html":[0,0,0],
+"group__device-start-up.html#ga2be64f5f0b9a2c0c6713f5a69d793e05":[0,0,0,3],
 "group__device-start-up.html#ga5630229f9308951b78658dc1af6b10e3":[0,0,0,2],
 "group__device-start-up.html#ga7a4cf6371d09457539f96a74b2809ca0":[0,0,0,1],
 "group__device-start-up.html#ga830e5c7087a8e5ee8ea39b7e3df94b68":[0,0,0,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "group__input-voltage-feedback.html#gaf593cd65bd5f4c5e89e53a2f18eee78f":[0,3,5,10],
 "group__main-loop.html":[0,0,1],
 "group__main-loop.html#ga13094235dd6cc123d9299925359ca178":[0,0,1,1],
-"group__main-loop.html#ga8842f6a41fe23f932a8864fc140c4b5b":[0,0,1,0],
-"group__microcontroller-abstraction.html":[0,3,0]
+"group__main-loop.html#ga8842f6a41fe23f932a8864fc140c4b5b":[0,0,1,0]
 };

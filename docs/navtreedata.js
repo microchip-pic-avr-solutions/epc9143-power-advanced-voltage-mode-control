@@ -40,9 +40,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff",
-"struct____attribute____.html#aee0f583cf940d5fe46fc7e2e395b3cb0",
-"struct_p33_c___c_c_p___i_n_s_t_a_n_c_e___s_f_r_s_e_t__s.html#a8f127c65d22850bda75c4f8e9a98886a"
+"group__microcontroller-abstraction.html",
+"struct____attribute____.html#ae822849ab73809dc1cec461fb1e6bf21",
+"struct_p33_c___c_c_p___i_n_s_t_a_n_c_e___s_f_r_s_e_t__s.html#a8dccd9e3c13f38b42beecd38f4e6e841"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
