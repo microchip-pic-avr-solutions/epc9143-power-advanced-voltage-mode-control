@@ -44,6 +44,7 @@
 /* PUCLIC FUNCTION CALL PROTOTYPES */
 
 volatile uint16_t SYSTEM_Initialize(void);
+volatile uint16_t sysUserTasks_Initialize(void);
 
 #endif	/* APPLICAITON_SYSTEM_INITIALIZE_H */
 
