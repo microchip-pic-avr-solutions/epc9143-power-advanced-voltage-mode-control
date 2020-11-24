@@ -14,19 +14,39 @@
 
 #define TIMEOUT_LIMIT   5000    // timeout counter maximum
 
-volatile uint16_t init_fosc(void) {
+/***********************************************************************************
+ * @fn uint16_t sysFosc_Initialize
+ * @brief  System oscillator initialization
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
+ * 
+ * <b>Description</b>
+ * ADD_DESCRIPTION_HERE
+ *
+ * <p><b>Example:</b></p>
+ *
+ * <code>
+ * ADD_CODE_EXAMPLE_HERE
+ * </code>
+ *
+ * <p><b>Remarks:</b></p>
+ * ADD_REMARKS_HERE
+ *
+ **********************************************************************************/
+
+volatile uint16_t sysFosc_Initialize(void) {
     
     volatile uint16_t timeout=0;
     
-    //Temporarily switch to FRC (without PLL), so we can safely change the PLL settings,
-    //in case we had previously been already running from the PLL.
+    // Temporarily switch to FRC (without PLL), so we can safely change the PLL settings,
+    // in case we had previously been already running from the PLL.
     if(OSCCONbits.COSC != 0b000)
     {
         // NOSC = 0b000 = FRC without divider or PLL
         __builtin_write_OSCCONH(0b000);  // Fast RC Oscillator, no PLL 
         // Clear CLKLOCK and assert OSWEN = 1 to initiate switch-over
         __builtin_write_OSCCONL((OSCCON & 0x7E) | 0x01); 
-        //Wait for switch over to complete.
+        // Wait for switch over to complete.
         while((OSCCONbits.COSC != OSCCONbits.NOSC) && (timeout++ < TIMEOUT_LIMIT)); 
         if (timeout >= TIMEOUT_LIMIT){ return(0); }
     }
@@ -36,7 +56,7 @@ volatile uint16_t init_fosc(void) {
     
     // Configure PLL prescaler, both PLL postscalers, and PLL feedback divider
     CLKDIVbits.PLLPRE = 1; // N1=1
-    PLLFBDbits.PLLFBDIV = 200; // M = 125
+    PLLFBDbits.PLLFBDIV = 200; // M = 200
     PLLDIVbits.POST1DIV = 4; // N2=5
     PLLDIVbits.POST2DIV = 1; // N3=1
     PLLDIVbits.VCODIV = 0; // VCO Output divider is set to Fvco/4
@@ -66,7 +86,27 @@ volatile uint16_t init_fosc(void) {
 
 }
 
-volatile uint16_t init_aclk(void) {
+/***********************************************************************************
+ * @fn uint16_t sysAclk_Initialize
+ * @brief  Initializes the auxiliary clock of the device
+ * @param  ADD_PARAMETER_HERE
+ * @return unsigned integer (0=failure, 1=success)
+ * 
+ * <b>Description</b>
+ * ADD_DESCRIPTION_HERE
+ *
+ * <p><b>Example:</b></p>
+ *
+ * <code>
+ * ADD_CODE_EXAMPLE_HERE
+ * </code>
+ *
+ * <p><b>Remarks:</b></p>
+ * ADD_REMARKS_HERE
+ *
+ **********************************************************************************/
+
+volatile uint16_t sysAclk_Initialize(void) {
 
     volatile uint16_t timeout=0;
 

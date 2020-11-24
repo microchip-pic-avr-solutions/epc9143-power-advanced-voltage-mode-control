@@ -39,7 +39,7 @@
 
 // COMMON SOFTWARE MODULES
 #include "config/hal.h"
-#include "config/system_initialize.h"
+#include "config/system.h"
 
 // APPLICATION LAYER HEADER FILES
 #include "fault_handler/app_faults_monitor.h"

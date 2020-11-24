@@ -19,7 +19,7 @@
           <itemPath>sources/config/init/init_dac.h</itemPath>
         </logicalFolder>
         <itemPath>sources/config/hal.h</itemPath>
-        <itemPath>sources/config/system_initialize.h</itemPath>
+        <itemPath>sources/config/system.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
         <logicalFolder name="f4" displayName="fault_handler" projectFiles="true">
@@ -81,7 +81,7 @@
           <itemPath>sources/config/init/init_dac.c</itemPath>
         </logicalFolder>
         <itemPath>sources/config/config_bits.c</itemPath>
-        <itemPath>sources/config/system_initialize.c</itemPath>
+        <itemPath>sources/config/system.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
         <logicalFolder name="f4" displayName="fault_handler" projectFiles="true">

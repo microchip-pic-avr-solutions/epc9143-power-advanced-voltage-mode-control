@@ -1,0 +1,7 @@
+<map id="Power Control Handler Reference" name="Power Control Handler Reference">
+<area shape="rect" id="node1" href="$group__power-handler-function.html" title="Power Control Handler Functions." alt="" coords="204,5,355,45"/>
+<area shape="rect" id="node2" href="$group__power-handler-struct.html" title="Power Handler Data Structures." alt="" coords="211,69,348,109"/>
+<area shape="rect" id="node3" title="Power Control Handler Reference." alt="" coords="5,101,156,141"/>
+<area shape="rect" id="node4" href="$group__power-handler-enum.html" title="This enumeration is listing all defined states supported by the power controller state&#45;machine...." alt="" coords="204,133,355,173"/>
+<area shape="rect" id="node5" href="$group__power-handler-variable.html" title="Power Control Handler Variables." alt="" coords="204,197,355,237"/>
+</map>
