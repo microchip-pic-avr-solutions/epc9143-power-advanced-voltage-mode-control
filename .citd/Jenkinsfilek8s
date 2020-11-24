@@ -29,7 +29,7 @@ pipeline {
         //This is the BitBucket source repo URL to be deployed
         BITBUCKET_SOURCE_URL = 'https://bitbucket.microchip.com/scm/mcu16ce/epc9143-power-advanced-voltage-mode-control.git'    
         //Files or folders to be excluded from deployment, if multiple files or folders use comma separator
-        DEPLOY_EXCLUDE_FOLDER_FILE_LIST = 'mchp_private', '.mchp_private', 'sandbox', '.sandbox'
+        DEPLOY_EXCLUDE_FOLDER_FILE_LIST = 'mchp_private, .mchp_private, sandbox, .sandbox'
         //Branch(s) to be deployed, if multiple branches use comma separator. ${env.BRANCH_NAME} is the target branch of the PR.
         DEPLOY_BRANCH_LIST = "${env.BRANCH_NAME}"
         
