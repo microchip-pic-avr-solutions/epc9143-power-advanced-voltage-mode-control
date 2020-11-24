@@ -29,15 +29,15 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef INITIALIZE_FRC_OSCILLATOR_H
-#define	INITIALIZE_FRC_OSCILLATOR_H
+#ifndef SYSTEM_INITIALIZE_FRC_OSCILLATOR_H
+#define	SYSTEM_INITIALIZE_FRC_OSCILLATOR_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
 #include <stdbool.h>
 
-extern volatile uint16_t init_fosc(void);
-extern volatile uint16_t init_aclk(void);
+extern volatile uint16_t sysFosc_Initialize(void);
+extern volatile uint16_t sysAclk_Initialize(void);
     
-#endif	/* INITIALIZE_FRC_OSCILLATOR_H */
+#endif	/* SYSTEM_INITIALIZE_FRC_OSCILLATOR_H */
 

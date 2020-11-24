@@ -29,8 +29,8 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef INITIALIZE_GPIO_H
-#define	INITIALIZE_GPIO_H
+#ifndef SYSTEM_INITIALIZE_GPIO_H
+#define	SYSTEM_INITIALIZE_GPIO_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
@@ -38,6 +38,6 @@
 
 #include "main.h"
 
-extern volatile uint16_t init_gpio(void);
+extern volatile uint16_t sysGpio_Initialize(void);
 
-#endif	/* INITIALIZE_GPIO_H */
+#endif	/* SYSTEM_INITIALIZE_GPIO_H */

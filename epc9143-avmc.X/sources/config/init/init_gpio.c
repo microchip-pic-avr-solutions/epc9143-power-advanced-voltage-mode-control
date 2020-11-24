@@ -9,7 +9,27 @@
 #include <xc.h>
 #include "config/init/init_gpio.h"
 
-volatile uint16_t init_gpio(void) {
+/***********************************************************************************
+ * @fn DATA_TYPE FUNCTION_NAME
+ * @brief  ADD_SHORT_DESCRIPTION/SUMMARY_HERE
+ * @param  ADD_PARAMETER_HERE
+ * @return DATA_TYPE SHORT_VALUE_DESCRIPTION
+ * 
+ * <b>Description</b>
+ * ADD_DESCRIPTION_HERE
+ *
+ * <p><b>Example:</b></p>
+ *
+ * <code>
+ * ADD_CODE_EXAMPLE_HERE
+ * </code>
+ *
+ * <p><b>Remarks:</b></p>
+ * ADD_REMARKS_HERE
+ *
+ **********************************************************************************/
+
+volatile uint16_t sysGpio_Initialize(void) {
     
     volatile uint16_t retval=1;
     
