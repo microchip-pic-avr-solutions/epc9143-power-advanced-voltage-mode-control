@@ -12,7 +12,7 @@
 #include "config/hal.h"
 #include "config/init/init_timer1.h"   
 
-volatile uint16_t init_timer1 (void)
+volatile uint16_t sysOsTimer_Initialize (void)
 {
 
     T1CONbits.TON = 0;  // Timer1 On: Stops 16-bit Timer1 during configuration

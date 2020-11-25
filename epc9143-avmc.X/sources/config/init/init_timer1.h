@@ -36,7 +36,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-extern volatile uint16_t init_timer1(void);
+extern volatile uint16_t sysOsTimer_Initialize(void);
 
 #endif	/* INITIALIZE_TIMER1_H */
 

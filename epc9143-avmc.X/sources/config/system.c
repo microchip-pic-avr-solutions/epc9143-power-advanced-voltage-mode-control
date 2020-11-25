@@ -43,7 +43,7 @@ volatile uint16_t SYSTEM_Initialize(void)
 	
     retval &= sysFosc_Initialize();        // Set up system oscillator for 100 MIPS operation
     retval &= sysAclk_Initialize();        // Set up Auxiliary PLL for 500 MHz (source clock to PWM module)
-    retval &= init_timer1();      // Set up Timer1 as scheduler time base
+    retval &= sysOsTimer_Initialize();     // Set up Timer1 as scheduler time base (see MAIN_EXECUTION_PERIOD for details)
     retval &= sysGpio_Initialize();        // Initialize common device GPIOs
     
 	return(retval);
