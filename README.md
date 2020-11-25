@@ -6,17 +6,13 @@
 <p>
   <center>
     Top View <br>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9143_r4.png" alt="EPC9143 Top View" width="300">
-	</a>	
+    <img src="images/9143_r4.png" alt="EPC9143 Top View" width="300">
   </center>
 </p>
 <p>
   <center>
     Bottom View <br>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9143_r4_back.png" alt="EPC9143 Top View" width="300">
-    </a>
+    <img src="images/9143_r4_back.png" alt="EPC9143 Top View" width="300">
   </center>
 </p>
 
@@ -61,9 +57,7 @@ The EPC9143 1/16th brick power module is best tested when plugged into EPC9531 t
 
 <p>
   <center>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9531_test_fixture.png" alt="EPC9143 mounted on EPC9531 Test Fixture" width="500">
-	</a>
+    <img src="images/9531_test_fixture.png" alt="EPC9143 mounted on EPC9531 Test Fixture" width="500">
   </center>
 </p>
 
@@ -80,21 +74,17 @@ The board comes programmed and ready to be used when unpacked. No reprogramming 
 
 <p>
   <center>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9531_9143_setup.png" alt="EPC9531 Test Fixture Connections - Top View" width="700">
-	</a>
-  <br>
-  EPC9531 Test Fixture Connections - Top View
+    <img src="images/9531_9143_setup.png" alt="EPC9531 Test Fixture Connections - Top View" width="700">
+    <br>
+    EPC9531 Test Fixture Connections - Top View
   </center>
 </p>
 
 <p>
   <center>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9531_bottom.png" alt="EPC9531 Test Fixture Connections - Bottom View" width="620">
-	</a>
-  <br>
-  EPC9531 Test Fixture Connections - Bottom View
+    <img src="images/9531_bottom.png" alt="EPC9531 Test Fixture Connections - Bottom View" width="620">
+    <br>
+    EPC9531 Test Fixture Connections - Bottom View
   </center>
 </p>
 
@@ -145,23 +135,13 @@ This firmware uses a digital type IV controller to close the feedback loop in vo
 
 <p>
   <center>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/type4-avmc.png" alt="EPC9143 type IV - Advanced Voltage Control Loop" width="800">
-	</a>
-  <br>
-  EPC9143 Type IV Controller - Advanced Voltage Control Loop
+    <img src="images/type4-avmc.png" alt="EPC9143 type IV - Advanced Voltage Control Loop" width="800">
+    <br>
+    EPC9143 Type IV Controller - Advanced Voltage Control Loop
   </center>
 </p>
 
 This control loop can be turned on/off by using the ENABLE bit in the STATUS word of the cNPNZ_t controller data structure. The adaptive loop gain modulation is permanently active as soon as the control loop is enabled.
-
-<p>
-  <center>
-    <img src="images/type4-avmc.png" alt="Advanced Type IV Voltage Mode Control with PWM Steering and Adaptive Gain Control" width="620">
-  <br>
-  Advanced Type IV Voltage Mode Control Block Diagram
-  </center>
-</p>
 
 ##### 3) Digital Controller Design
 
