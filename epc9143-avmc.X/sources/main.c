@@ -104,12 +104,12 @@ int main(void) {
         timeout = 0;    // Reset timeout counter
 
         // Execute main application tasks
-        DBGPIN_2_SET;               // Set the CPU debugging pin HIGH
+        DBGPIN2_Set();              // Set the CPU debugging pin HIGH
 
         appPowerSupply_Execute();   // Execute power supply state machine
-        appFaultMonitor_Execute();        // Execute fault handler
+        appFaultMonitor_Execute();  // Execute fault handler
 
-        DBGPIN_2_CLEAR;             // Clear the CPU debugging pin
+        DBGPIN2_Clear();            // Clear the CPU debugging pin
         
         Nop();                      // No-Operation instruction for placing breakpoints
     }

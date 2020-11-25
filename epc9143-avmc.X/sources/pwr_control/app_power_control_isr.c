@@ -36,7 +36,7 @@
 void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void)
 {
     
-    DBGPIN_1_SET;
+    DBGPIN1_Set();
     
     buck.status.bits.adc_active = true;
     #if (PLANT_MEASUREMENT == false)
@@ -52,7 +52,7 @@ void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void
     // Clear the ADCANx interrupt flag 
     _BUCK_VLOOP_ISR_IF = 0;  
     
-    DBGPIN_1_CLEAR;
+    DBGPIN1_Clear();
     
 }
 /**@}*/

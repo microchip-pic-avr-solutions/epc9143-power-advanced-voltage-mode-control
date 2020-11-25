@@ -38,9 +38,9 @@ volatile uint16_t sysGpio_Initialize(void) {
     ANSELB = 0x0000;
     
     // Initialize debugging Pins
-    DBGPIN_1_INIT; ///< Device pin #1  (not routed)
-    DBGPIN_2_INIT; ///< Device pin #2  (not routed)
-    DBGPIN_3_INIT; ///< Device pin #25 (not routed)
+    DBGPIN1_Init(); ///< Device pin #1  (not routed)
+    DBGPIN2_Init(); ///< Device pin #2  (not routed)
+    DBGPIN3_Init(); ///< Device pin #25 (not routed)
 
     return(retval);
 }

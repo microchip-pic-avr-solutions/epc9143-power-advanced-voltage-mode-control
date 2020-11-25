@@ -99,30 +99,30 @@
 #ifdef __EPC9143_R40__
     
     // Device Pin #1 on EPC9143 (not routed)
-    #define DBGPIN_1_SET	{ _LATB14 = 1; }
-    #define DBGPIN_1_CLEAR	{ _LATB14 = 0; }
-    #define DBGPIN_1_TOGGLE	{ _LATB14 ^= 1; }
-    #define DBGPIN_1_INIT	{ _LATB14 = 0; _TRISB14 = 0; }
+    #define DBGPIN1_Set()	    { _LATB14 = 1; }
+    #define DBGPIN1_Clear()	    { _LATB14 = 0; }
+    #define DBGPIN1_Toggle()    { _LATB14 ^= 1; }
+    #define DBGPIN1_Init()	    { _LATB14 = 0; _TRISB14 = 0; }
 
     // Device Pin #2 on EPC9143 (not routed)
-    #define DBGPIN_2_SET	{ _LATB15 = 1; }
-    #define DBGPIN_2_CLEAR	{ _LATB15 = 0; }
-    #define DBGPIN_2_TOGGLE	{ _LATB15 ^= 1; }
-    #define DBGPIN_2_INIT	{ _LATB15 = 0; _TRISB15 = 0; }
+    #define DBGPIN2_Set()       { _LATB15 = 1; }
+    #define DBGPIN2_Clear()     { _LATB15 = 0; }
+    #define DBGPIN2_Toggle()    { _LATB15 ^= 1; }
+    #define DBGPIN2_Init()      { _LATB15 = 0; _TRISB15 = 0; }
 
     // Device Pin #25 on EPC9143 (not routed)
-    #define DBGPIN_3_SET	{ _LATB10 = 1; }
-    #define DBGPIN_3_CLEAR	{ _LATB10 = 0; }
-    #define DBGPIN_3_TOGGLE	{ _LATB10 ^= 1; }
-    #define DBGPIN_3_INIT	{ _LATB10 = 0; _TRISB10 = 0; }
+    #define DBGPIN3_Set()	    { _LATB10 = 1; }
+    #define DBGPIN3_Clear()	    { _LATB10 = 0; }
+    #define DBGPIN3_Toggle()    { _LATB10 ^= 1; }
+    #define DBGPIN3_Init()      { _LATB10 = 0; _TRISB10 = 0; }
 
     // Device Pin #14 on EPC9243
     #define PWRGOOD_PORT    1   ///< GPIO port declaration where 0=A, 1=B, 2=C, etc.
     #define PWRGOOD_PIN     1   ///< GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.
-    #define PWRGOOD_SET     { _LATB1 = 1; }
-    #define PWRGOOD_CLEAR	{ _LATB1 = 0; }
-    #define PWRGOOD_TOGGLE	{ _LATB1 ^= 1; }
-    #define PWRGOOD_INIT	{ _ANSELB1 = 0; _LATB1 = 0; _TRISB1 = 0; }
+    #define PWRGOOD_Set()       { _LATB1 = 1; }
+    #define PWRGOOD_Clear()	    { _LATB1 = 0; }
+    #define PWRGOOD_Toggle()    { _LATB1 ^= 1; }
+    #define PWRGOOD_Init()      { _ANSELB1 = 0; _LATB1 = 0; _TRISB1 = 0; }
     
 #endif
 /** @} */ // end of group
