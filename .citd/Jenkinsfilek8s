@@ -208,8 +208,7 @@ pipeline {
                script{
                     githubPageCreate(
                         githubPage: "${env.GITHUB_PAGES}",
-                        githubOrgName: "${env.GITHUB_PRODUCTION_ORGANIZATION}",
-                        repoVisibilityPublic: "true"
+                        githubOrgName: "${env.GITHUB_PRODUCTION_ORGANIZATION}"
                     )
                 }
             }
