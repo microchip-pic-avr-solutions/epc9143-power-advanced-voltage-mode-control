@@ -419,7 +419,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     // ~~~ POWER GOOD OUTPUT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     buck.gpio.PowerGood.enabled = true; // This converter supports an additional POWER GOOD output
-    buck.gpio.PowerGood.port = PWRGOOD_PORT; // Number of the GPIO port (0=A, 1=B, 2=C, etc.)
+    buck.gpio.PowerGood.port = PWRGOOD_PORT; // Number of the GPIO port (0=Port RA, 0=Port RB, 0=Port RC, etc.)
     buck.gpio.PowerGood.pin = PWRGOOD_PIN; // Number of the GPIO port pin
     buck.gpio.PowerGood.polarity = 0;   // This pin is ACTIVE HIGH (only required if io_type = OUTPUT)
     buck.gpio.PowerGood.io_type = 0;    // This pin is configured as OUTPUT

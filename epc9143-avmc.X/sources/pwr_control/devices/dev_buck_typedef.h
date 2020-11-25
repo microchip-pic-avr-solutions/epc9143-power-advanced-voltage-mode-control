@@ -420,7 +420,7 @@ typedef struct BUCK_FEEDBACK_SETTINGS_s {
 typedef struct BUCK_GPIO_INSTANCE_s {
     
     volatile bool enabled;      ///< Specifies, if this IO is used or not
-    volatile uint16_t port;     ///< GPIO port instance number (0=A, 1=B, 2=C, etc.)
+    volatile uint16_t port;     ///< GPIO port instance number (0=Port RA, 0=Port RB, 0=Port RC, etc.)
     volatile uint16_t pin;      ///< GPIO port pin number
     volatile uint16_t polarity; ///< Output polarity, where 0=ACTIVE HIGH, 1=ACTIVE_LOW
     volatile uint16_t io_type;  ///< Input/Output definition (0=output, 1=input)
