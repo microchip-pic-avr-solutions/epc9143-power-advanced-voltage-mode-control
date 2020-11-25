@@ -111,10 +111,6 @@
  @ingroup abstraction-layer 
  @brief 
  
- @defgroup hardware-abstraction Hardware Abstraction
- @ingroup abstraction-layer 
- @brief 
- 
  @defgroup power-parameter Power Control Parameter Declaration
  @ingroup abstraction-layer
  @brief 
@@ -128,10 +124,6 @@
  @brief 
  
  @defgroup output-voltage-feedback Output Voltage Feedback
- @ingroup abstraction-layer
- @brief 
- 
- @defgroup ideal-duty-cycle Ideal Duty Cycle 
  @ingroup abstraction-layer
  @brief 
  
@@ -152,6 +144,10 @@
  @brief 
  
  @defgroup controller-declarations Controller Declarations
+ @ingroup abstraction-layer
+ @brief 
+ 
+ @defgroup custom-options Special Options
  @ingroup abstraction-layer
  @brief 
 */
