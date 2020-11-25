@@ -1,11 +1,29 @@
 var group__microcontroller_abstraction =
 [
-    [ "ADC_GRAN", "group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff", null ],
-    [ "ADC_REF", "group__microcontroller-abstraction.html#gabe7d90bd1e8c6c56e8a9f8542f80baa0", null ],
-    [ "ADC_RES", "group__microcontroller-abstraction.html#gab298faea909e0aa62203195aa3d6ca80", null ],
+    [ "ADC_GRANULARITY", "group__microcontroller-abstraction.html#gaa8be0a86b0847147a521dd1efec43d1c", null ],
+    [ "ADC_REFERENCE", "group__microcontroller-abstraction.html#ga317868c528ebe27fbca094a8bc2d910c", null ],
+    [ "ADC_RESOLUTION", "group__microcontroller-abstraction.html#ga00978ca9e8220475258dcbbbb7d29129", null ],
     [ "ADC_VALUE_MAX", "group__microcontroller-abstraction.html#gaa5d1dacef95564076ecd32adb0774ac3", null ],
     [ "CPU_FREQUENCY", "group__microcontroller-abstraction.html#gaf73acdf7fb3be35ff98322b7e827d349", null ],
     [ "CPU_TCY", "group__microcontroller-abstraction.html#gaf0b0f736eb24034cd2a3643b584c9f7e", null ],
+    [ "DBGPIN1_Clear", "group__microcontroller-abstraction.html#ga863f176172825140c1d4189f48e098bb", null ],
+    [ "DBGPIN1_Init", "group__microcontroller-abstraction.html#ga6c75ce713b6c317a532c901f1fee851f", null ],
+    [ "DBGPIN1_Set", "group__microcontroller-abstraction.html#ga68099f5c4f61be5720a1ff79998f5aa8", null ],
+    [ "DBGPIN1_Toggle", "group__microcontroller-abstraction.html#gae69ef331f5fadcc42dfcceb85eee082c", null ],
+    [ "DBGPIN2_Clear", "group__microcontroller-abstraction.html#ga8209ee25d31e6631f485b662d105fc8d", null ],
+    [ "DBGPIN2_Init", "group__microcontroller-abstraction.html#ga799967fceeeae22fbe97fab675ce49b2", null ],
+    [ "DBGPIN2_Set", "group__microcontroller-abstraction.html#ga81602741185030b94a63da995bebe9d7", null ],
+    [ "DBGPIN2_Toggle", "group__microcontroller-abstraction.html#ga76f1eb634a1181f09f98522c0854a55b", null ],
+    [ "DBGPIN3_Clear", "group__microcontroller-abstraction.html#ga1bfa9d60773de0ba2f9e91d3512e3d2d", null ],
+    [ "DBGPIN3_Init", "group__microcontroller-abstraction.html#ga510dd96da199244dcdb19ef8eedca007", null ],
+    [ "DBGPIN3_Set", "group__microcontroller-abstraction.html#gad47ae420ae83df02cd94495050550c35", null ],
+    [ "DBGPIN3_Toggle", "group__microcontroller-abstraction.html#ga47818dfc58ff533a50787111b0798f30", null ],
     [ "PWM_CLOCK_FREQUENCY", "group__microcontroller-abstraction.html#gaf4bf7a89bb59df42a846b9532dce8db9", null ],
-    [ "PWM_CLOCK_PERIOD", "group__microcontroller-abstraction.html#gafd17199da18b5a3321b37016464983b0", null ]
+    [ "PWM_CLOCK_PERIOD", "group__microcontroller-abstraction.html#gafd17199da18b5a3321b37016464983b0", null ],
+    [ "PWRGOOD_Clear", "group__microcontroller-abstraction.html#ga08788506e884eccb4282bf2bccd32982", null ],
+    [ "PWRGOOD_Init", "group__microcontroller-abstraction.html#ga5e1696c7e66145bba0cbc254e27b052c", null ],
+    [ "PWRGOOD_PIN", "group__microcontroller-abstraction.html#ga0931cbd53153018be31acf403544c3ab", null ],
+    [ "PWRGOOD_PORT", "group__microcontroller-abstraction.html#gaa41ac18d27256361be5d7ae39337f1ef", null ],
+    [ "PWRGOOD_Set", "group__microcontroller-abstraction.html#gaf8e24346d237b20f54c51230324f1057", null ],
+    [ "PWRGOOD_Toggle", "group__microcontroller-abstraction.html#gaae08a194e05086ee7428c3d4b6dfeef4", null ]
 ];

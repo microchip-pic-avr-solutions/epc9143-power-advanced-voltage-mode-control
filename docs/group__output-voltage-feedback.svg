@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="node2" class="node">
 <title>Node1</title>
-<g id="a_node2"><a xlink:title="Description">
+<g id="a_node2"><a xlink:title="Declaration of output voltage feedback properties.">
 <polygon fill="#bfbfbf" stroke="black" points="292,-19 164,-19 164,0 292,0 292,-19"/>
 <text text-anchor="middle" x="228" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Output Voltage Feedback</text>
 </a>

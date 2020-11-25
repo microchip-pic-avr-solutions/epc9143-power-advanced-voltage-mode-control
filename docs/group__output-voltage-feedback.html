@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('group__output-voltage-feedback.html','
 </div><!--header-->
 <div class="contents">
 
-<p><b>Description</b>  
+<p>Declaration of output voltage feedback properties.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Output Voltage Feedback:</div>
@@ -154,19 +154,19 @@ Macros</h2></td></tr>
 <tr class="memitem:ga582c1b8e723703fb75c4d14c766a6ce0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga582c1b8e723703fb75c4d14c766a6ce0">BUCK_VOUT_TRGSRC</a>&#160;&#160;&#160;<a class="el" href="group__fundamental-pwm-settings.html#gaf0bd1b3822a3571a72c0f9dcdc9dd35a">BUCK_PWM1_TRGSRC_TRG1</a></td></tr>
 <tr class="memdesc:ga582c1b8e723703fb75c4d14c766a6ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM1 (=PG2) Trigger 1 via PGxTRIGA.  <a href="group__output-voltage-feedback.html#ga582c1b8e723703fb75c4d14c766a6ce0">More...</a><br /></td></tr>
 <tr class="separator:ga582c1b8e723703fb75c4d14c766a6ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga42d8626bfa1f343d89033f82963fd2b5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga42d8626bfa1f343d89033f82963fd2b5">BUCK_VOUT_REF</a>&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga28660f68fd69aa1cf4c352f88634060c">BUCK_VOUT_NOMINAL</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff">ADC_GRAN</a>)</td></tr>
+<tr class="memitem:ga42d8626bfa1f343d89033f82963fd2b5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga42d8626bfa1f343d89033f82963fd2b5">BUCK_VOUT_REF</a>&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga28660f68fd69aa1cf4c352f88634060c">BUCK_VOUT_NOMINAL</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#gaa8be0a86b0847147a521dd1efec43d1c">ADC_GRANULARITY</a>)</td></tr>
 <tr class="memdesc:ga42d8626bfa1f343d89033f82963fd2b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro calculating the integer number equivalent of the output voltage reference given above in [V].  <a href="group__output-voltage-feedback.html#ga42d8626bfa1f343d89033f82963fd2b5">More...</a><br /></td></tr>
 <tr class="separator:ga42d8626bfa1f343d89033f82963fd2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2f6b12d2606761c0b8a9bfdb446d2543"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga2f6b12d2606761c0b8a9bfdb446d2543">BUCK_VOUT_NOM</a>&#160;&#160;&#160;<a class="el" href="group__output-voltage-feedback.html#ga42d8626bfa1f343d89033f82963fd2b5">BUCK_VOUT_REF</a></td></tr>
 <tr class="memdesc:ga2f6b12d2606761c0b8a9bfdb446d2543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias macro of the integer number equivalent of the nominal output voltage given above in [V].  <a href="group__output-voltage-feedback.html#ga2f6b12d2606761c0b8a9bfdb446d2543">More...</a><br /></td></tr>
 <tr class="separator:ga2f6b12d2606761c0b8a9bfdb446d2543"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9d5cfb44a2773e8854f007c13c65cfca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga9d5cfb44a2773e8854f007c13c65cfca">BUCK_VOUT_DEV_TRIP</a>&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#gaf67774fbccd9ee5ac60e5aed4cc7c5b4">BUCK_VOUT_TOLERANCE_MAX</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff">ADC_GRAN</a>)</td></tr>
+<tr class="memitem:ga9d5cfb44a2773e8854f007c13c65cfca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga9d5cfb44a2773e8854f007c13c65cfca">BUCK_VOUT_DEV_TRIP</a>&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#gaf67774fbccd9ee5ac60e5aed4cc7c5b4">BUCK_VOUT_TOLERANCE_MAX</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#gaa8be0a86b0847147a521dd1efec43d1c">ADC_GRANULARITY</a>)</td></tr>
 <tr class="memdesc:ga9d5cfb44a2773e8854f007c13c65cfca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro calculating the integer number equivalent of the maximum allowed output voltage deviation given above in [V], which will lead to a converter shut down when exceeded.  <a href="group__output-voltage-feedback.html#ga9d5cfb44a2773e8854f007c13c65cfca">More...</a><br /></td></tr>
 <tr class="separator:ga9d5cfb44a2773e8854f007c13c65cfca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga39f60f293aceb0c208718d11a7637487"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga39f60f293aceb0c208718d11a7637487">BUCK_VOUT_DEV_RELEASE</a>&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga31ccbf02b1090ae456771ab15c6b632b">BUCK_VOUT_TOLERANCE_MIN</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff">ADC_GRAN</a>)</td></tr>
+<tr class="memitem:ga39f60f293aceb0c208718d11a7637487"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga39f60f293aceb0c208718d11a7637487">BUCK_VOUT_DEV_RELEASE</a>&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga31ccbf02b1090ae456771ab15c6b632b">BUCK_VOUT_TOLERANCE_MIN</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#gaa8be0a86b0847147a521dd1efec43d1c">ADC_GRANULARITY</a>)</td></tr>
 <tr class="memdesc:ga39f60f293aceb0c208718d11a7637487"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro calculating the integer number equivalent of the maximum allowed output voltage deviation given above in [V], which needs to be underrun before a shut-down converter can recover.  <a href="group__output-voltage-feedback.html#ga39f60f293aceb0c208718d11a7637487">More...</a><br /></td></tr>
 <tr class="separator:ga39f60f293aceb0c208718d11a7637487"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga403bc23d113ac96de0317aed5b8ae747"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga403bc23d113ac96de0317aed5b8ae747">BUCK_VOUT_OFFSET</a>&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga48f54a116cb069cff526d482aa83fafd">BUCK_VOUT_FEEDBACK_OFFSET</a> / <a class="el" href="group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff">ADC_GRAN</a>)</td></tr>
+<tr class="memitem:ga403bc23d113ac96de0317aed5b8ae747"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga403bc23d113ac96de0317aed5b8ae747">BUCK_VOUT_OFFSET</a>&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga48f54a116cb069cff526d482aa83fafd">BUCK_VOUT_FEEDBACK_OFFSET</a> / <a class="el" href="group__microcontroller-abstraction.html#gaa8be0a86b0847147a521dd1efec43d1c">ADC_GRANULARITY</a>)</td></tr>
 <tr class="memdesc:ga403bc23d113ac96de0317aed5b8ae747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro calculating the integer number equivalent of the physical, static signal offset of this feedback channel.  <a href="group__output-voltage-feedback.html#ga403bc23d113ac96de0317aed5b8ae747">More...</a><br /></td></tr>
 <tr class="separator:ga403bc23d113ac96de0317aed5b8ae747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga62220308b2f2b302fbf9ef2cf0eefad4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga62220308b2f2b302fbf9ef2cf0eefad4">BUCK_VOUT_ADC_TRGDLY</a>&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#gae49c146c9868c9b950a541ebb1c3fcb6">BUCK_VOUT_ADC_TRG_DELAY</a> / <a class="el" href="group__microcontroller-abstraction.html#gafd17199da18b5a3321b37016464983b0">PWM_CLOCK_PERIOD</a>)</td></tr>
@@ -182,12 +182,13 @@ Macros</h2></td></tr>
 <tr class="memitem:ga3c2ee8d6fd16a7f81797411913942854"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga3c2ee8d6fd16a7f81797411913942854">BUCK_VOUT_NORM_FACTOR</a>&#160;&#160;&#160;(int16_t)((<a class="el" href="group__output-voltage-feedback.html#ga6f46102d2cb00d541e0cf6b3d7c3d46b">BUCK_VOUT_NORM_INV_G</a> / pow(2.0, <a class="el" href="group__output-voltage-feedback.html#ga2fb593feff154f722e2e42554df78218">BUCK_VOUT_NORM_SCALER</a>)) * (pow(2.0, 15)-1))</td></tr>
 <tr class="memdesc:ga3c2ee8d6fd16a7f81797411913942854"><td class="mdescLeft">&#160;</td><td class="mdescRight">VOUT normalization factor scaled in Q15.  <a href="group__output-voltage-feedback.html#ga3c2ee8d6fd16a7f81797411913942854">More...</a><br /></td></tr>
 <tr class="separator:ga3c2ee8d6fd16a7f81797411913942854"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8596a14d59666e7db30e52a5a3a39c8f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga8596a14d59666e7db30e52a5a3a39c8f">BUCK_VOUT_RANGE_MAX</a>&#160;&#160;&#160;(float)(<a class="el" href="group__microcontroller-abstraction.html#gabe7d90bd1e8c6c56e8a9f8542f80baa0">ADC_REF</a> * <a class="el" href="group__output-voltage-feedback.html#ga6f46102d2cb00d541e0cf6b3d7c3d46b">BUCK_VOUT_NORM_INV_G</a>)</td></tr>
+<tr class="memitem:ga8596a14d59666e7db30e52a5a3a39c8f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html#ga8596a14d59666e7db30e52a5a3a39c8f">BUCK_VOUT_RANGE_MAX</a>&#160;&#160;&#160;(float)(<a class="el" href="group__microcontroller-abstraction.html#ga317868c528ebe27fbca094a8bc2d910c">ADC_REFERENCE</a> * <a class="el" href="group__output-voltage-feedback.html#ga6f46102d2cb00d541e0cf6b3d7c3d46b">BUCK_VOUT_NORM_INV_G</a>)</td></tr>
 <tr class="memdesc:ga8596a14d59666e7db30e52a5a3a39c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro calculating the integer number equivalent of the total output voltage range defined by the settings given above in [V]].  <a href="group__output-voltage-feedback.html#ga8596a14d59666e7db30e52a5a3a39c8f">More...</a><br /></td></tr>
 <tr class="separator:ga8596a14d59666e7db30e52a5a3a39c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p><b>Description</b> </p>
+<p>Declaration of output voltage feedback properties. </p>
+<p><b>Description:</b> In this section the output voltage feedback signal scaling, gain, valid signal limits and nominal operating point is specified. Physical values are used to define values. Macros are used to convert given physical values into binary (integer) number to be written into SFRs and variables. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="gae49c146c9868c9b950a541ebb1c3fcb6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gae49c146c9868c9b950a541ebb1c3fcb6">&#9670;&nbsp;</a></span>BUCK_VOUT_ADC_TRG_DELAY</h2>
@@ -203,7 +204,7 @@ Macros</h2></td></tr>
 
 <p>Trigger delay in [sec]. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00332">332</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00339">339</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -221,7 +222,7 @@ Macros</h2></td></tr>
 
 <p>Macro calculating the integer number equivalent of the signal chain time delay between internal PWM timebase and effective switching edge of the leading FET. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00349">349</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00356">356</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -239,7 +240,7 @@ Macros</h2></td></tr>
 
 <p>ADC input buffer of this ADC channel. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00338">338</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00345">345</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -257,7 +258,7 @@ Macros</h2></td></tr>
 
 <p>0=Dedicated Core #0, 1=Dedicated Core #1, 8=Shared ADC Core </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00336">336</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00343">343</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -275,7 +276,7 @@ Macros</h2></td></tr>
 
 <p>Analog input number (e.g. '5' for 'AN5') </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00337">337</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00344">344</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -293,7 +294,7 @@ Macros</h2></td></tr>
 
 <p>Register used for trigger placement. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00339">339</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00346">346</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -311,7 +312,7 @@ Macros</h2></td></tr>
 
 <p>GPIO analog function mode enable bit. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00335">335</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00342">342</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -322,14 +323,14 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BUCK_VOUT_DEV_RELEASE&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga31ccbf02b1090ae456771ab15c6b632b">BUCK_VOUT_TOLERANCE_MIN</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff">ADC_GRAN</a>)</td>
+          <td class="memname">#define BUCK_VOUT_DEV_RELEASE&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga31ccbf02b1090ae456771ab15c6b632b">BUCK_VOUT_TOLERANCE_MIN</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#gaa8be0a86b0847147a521dd1efec43d1c">ADC_GRANULARITY</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Macro calculating the integer number equivalent of the maximum allowed output voltage deviation given above in [V], which needs to be underrun before a shut-down converter can recover. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00347">347</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00354">354</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -340,14 +341,14 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BUCK_VOUT_DEV_TRIP&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#gaf67774fbccd9ee5ac60e5aed4cc7c5b4">BUCK_VOUT_TOLERANCE_MAX</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff">ADC_GRAN</a>)</td>
+          <td class="memname">#define BUCK_VOUT_DEV_TRIP&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#gaf67774fbccd9ee5ac60e5aed4cc7c5b4">BUCK_VOUT_TOLERANCE_MAX</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#gaa8be0a86b0847147a521dd1efec43d1c">ADC_GRANULARITY</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Macro calculating the integer number equivalent of the maximum allowed output voltage deviation given above in [V], which will lead to a converter shut down when exceeded. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00346">346</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00353">353</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -365,7 +366,7 @@ Macros</h2></td></tr>
 
 <p>Upper voltage divider resistor in kOhm. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00328">328</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00335">335</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -383,7 +384,7 @@ Macros</h2></td></tr>
 
 <p>Lower voltage divider resistor in kOhm. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00329">329</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00336">336</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -399,7 +400,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00330">330</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00337">337</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -417,7 +418,7 @@ Macros</h2></td></tr>
 
 <p>Physical, static signal offset in [V]. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00331">331</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00338">338</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -435,7 +436,7 @@ Macros</h2></td></tr>
 
 <p>Alias macro of the integer number equivalent of the nominal output voltage given above in [V]. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00345">345</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00352">352</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -453,7 +454,7 @@ Macros</h2></td></tr>
 
 <p>Nominal output voltage. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00324">324</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00331">331</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -471,7 +472,7 @@ Macros</h2></td></tr>
 
 <p>VOUT normalization factor scaled in Q15. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00353">353</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00360">360</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -489,7 +490,7 @@ Macros</h2></td></tr>
 
 <p>Inverted feedback gain required for value normalization. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00351">351</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00358">358</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -508,7 +509,7 @@ Macros</h2></td></tr>
 <p>VOUT normalization <br  />
  </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00352">352</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00359">359</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -519,14 +520,14 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BUCK_VOUT_OFFSET&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga48f54a116cb069cff526d482aa83fafd">BUCK_VOUT_FEEDBACK_OFFSET</a> / <a class="el" href="group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff">ADC_GRAN</a>)</td>
+          <td class="memname">#define BUCK_VOUT_OFFSET&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga48f54a116cb069cff526d482aa83fafd">BUCK_VOUT_FEEDBACK_OFFSET</a> / <a class="el" href="group__microcontroller-abstraction.html#gaa8be0a86b0847147a521dd1efec43d1c">ADC_GRANULARITY</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Macro calculating the integer number equivalent of the physical, static signal offset of this feedback channel. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00348">348</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00355">355</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -537,14 +538,14 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BUCK_VOUT_RANGE_MAX&#160;&#160;&#160;(float)(<a class="el" href="group__microcontroller-abstraction.html#gabe7d90bd1e8c6c56e8a9f8542f80baa0">ADC_REF</a> * <a class="el" href="group__output-voltage-feedback.html#ga6f46102d2cb00d541e0cf6b3d7c3d46b">BUCK_VOUT_NORM_INV_G</a>)</td>
+          <td class="memname">#define BUCK_VOUT_RANGE_MAX&#160;&#160;&#160;(float)(<a class="el" href="group__microcontroller-abstraction.html#ga317868c528ebe27fbca094a8bc2d910c">ADC_REFERENCE</a> * <a class="el" href="group__output-voltage-feedback.html#ga6f46102d2cb00d541e0cf6b3d7c3d46b">BUCK_VOUT_NORM_INV_G</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Macro calculating the integer number equivalent of the total output voltage range defined by the settings given above in [V]]. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00355">355</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00362">362</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -555,14 +556,14 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BUCK_VOUT_REF&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga28660f68fd69aa1cf4c352f88634060c">BUCK_VOUT_NOMINAL</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff">ADC_GRAN</a>)</td>
+          <td class="memname">#define BUCK_VOUT_REF&#160;&#160;&#160;(uint16_t)(<a class="el" href="group__output-voltage-feedback.html#ga28660f68fd69aa1cf4c352f88634060c">BUCK_VOUT_NOMINAL</a> * <a class="el" href="group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718">BUCK_VOUT_FEEDBACK_GAIN</a> / <a class="el" href="group__microcontroller-abstraction.html#gaa8be0a86b0847147a521dd1efec43d1c">ADC_GRANULARITY</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Macro calculating the integer number equivalent of the output voltage reference given above in [V]. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00344">344</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00351">351</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -580,7 +581,7 @@ Macros</h2></td></tr>
 
 <p>Output voltage tolerance [+/-]. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00325">325</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00332">332</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -598,7 +599,7 @@ Macros</h2></td></tr>
 
 <p>Output voltage tolerance [+/-]. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00326">326</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00333">333</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -616,7 +617,7 @@ Macros</h2></td></tr>
 
 <p>PWM1 (=PG2) Trigger 1 via PGxTRIGA. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00340">340</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00347">347</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>

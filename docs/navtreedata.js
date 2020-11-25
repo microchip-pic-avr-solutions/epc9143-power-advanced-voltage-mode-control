@@ -40,9 +40,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group__microcontroller-abstraction.html",
-"struct____attribute____.html#ae822849ab73809dc1cec461fb1e6bf21",
-"struct_p33_c___c_c_p___i_n_s_t_a_n_c_e___s_f_r_s_e_t__s.html#a8dccd9e3c13f38b42beecd38f4e6e841"
+"group__input-voltage-feedback.html#ga7eea84f9319a9c04857d0061c8c8b332",
+"group__power-handler-variable.html#gaf59cdce02f7847878525ace87bcc58bd",
+"struct_n_p_n_z___a_d_c___t_r_g_c_t_r_l__s.html#a46f5604170f677e6036cacb5cfe51679",
+"struct_v___l_o_o_p___c_o_n_t_r_o_l___l_o_o_p___h_i_s_t_o_r_i_e_s__s.html#ac3dadde9f125d54e0238b02178a5812d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

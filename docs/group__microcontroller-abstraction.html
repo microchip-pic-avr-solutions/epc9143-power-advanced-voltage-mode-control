@@ -101,6 +101,9 @@ $(document).ready(function(){initNavTree('group__microcontroller-abstraction.htm
 <div class="title">Microcontroller Abstraction<div class="ingroups"><a class="el" href="group__abstraction-layer.html">Abstraction Layer Defines</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Global abstraction labels for device pin assignments of control signals.  
+<a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Microcontroller Abstraction:</div>
 <div class="dyncontent">
@@ -116,16 +119,16 @@ Macros</h2></td></tr>
 <tr class="memitem:gaf0b0f736eb24034cd2a3643b584c9f7e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gaf0b0f736eb24034cd2a3643b584c9f7e">CPU_TCY</a>&#160;&#160;&#160;(float)(1.0/<a class="el" href="group__microcontroller-abstraction.html#gaf73acdf7fb3be35ff98322b7e827d349">CPU_FREQUENCY</a>)</td></tr>
 <tr class="memdesc:gaf0b0f736eb24034cd2a3643b584c9f7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instruction period.  <a href="group__microcontroller-abstraction.html#gaf0b0f736eb24034cd2a3643b584c9f7e">More...</a><br /></td></tr>
 <tr class="separator:gaf0b0f736eb24034cd2a3643b584c9f7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabe7d90bd1e8c6c56e8a9f8542f80baa0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gabe7d90bd1e8c6c56e8a9f8542f80baa0">ADC_REF</a>&#160;&#160;&#160;(float)3.300</td></tr>
-<tr class="memdesc:gabe7d90bd1e8c6c56e8a9f8542f80baa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC reference voltage in V.  <a href="group__microcontroller-abstraction.html#gabe7d90bd1e8c6c56e8a9f8542f80baa0">More...</a><br /></td></tr>
-<tr class="separator:gabe7d90bd1e8c6c56e8a9f8542f80baa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab298faea909e0aa62203195aa3d6ca80"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gab298faea909e0aa62203195aa3d6ca80">ADC_RES</a>&#160;&#160;&#160;(float)12.0</td></tr>
-<tr class="memdesc:gab298faea909e0aa62203195aa3d6ca80"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC resolution in [bit].  <a href="group__microcontroller-abstraction.html#gab298faea909e0aa62203195aa3d6ca80">More...</a><br /></td></tr>
-<tr class="separator:gab298faea909e0aa62203195aa3d6ca80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2bdaa6e0e431499977cc29d724b9c1ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff">ADC_GRAN</a>&#160;&#160;&#160;(float)(<a class="el" href="group__microcontroller-abstraction.html#gabe7d90bd1e8c6c56e8a9f8542f80baa0">ADC_REF</a> / pow(2.0, <a class="el" href="group__microcontroller-abstraction.html#gab298faea909e0aa62203195aa3d6ca80">ADC_RES</a>))</td></tr>
-<tr class="memdesc:ga2bdaa6e0e431499977cc29d724b9c1ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC granularity in [V/tick].  <a href="group__microcontroller-abstraction.html#ga2bdaa6e0e431499977cc29d724b9c1ff">More...</a><br /></td></tr>
-<tr class="separator:ga2bdaa6e0e431499977cc29d724b9c1ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa5d1dacef95564076ecd32adb0774ac3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gaa5d1dacef95564076ecd32adb0774ac3">ADC_VALUE_MAX</a>&#160;&#160;&#160;(uint16_t) (pow(2.0, <a class="el" href="group__microcontroller-abstraction.html#gab298faea909e0aa62203195aa3d6ca80">ADC_RES</a>) - 1.0)</td></tr>
+<tr class="memitem:ga317868c528ebe27fbca094a8bc2d910c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga317868c528ebe27fbca094a8bc2d910c">ADC_REFERENCE</a>&#160;&#160;&#160;(float)3.300</td></tr>
+<tr class="memdesc:ga317868c528ebe27fbca094a8bc2d910c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC reference voltage in V.  <a href="group__microcontroller-abstraction.html#ga317868c528ebe27fbca094a8bc2d910c">More...</a><br /></td></tr>
+<tr class="separator:ga317868c528ebe27fbca094a8bc2d910c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga00978ca9e8220475258dcbbbb7d29129"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga00978ca9e8220475258dcbbbb7d29129">ADC_RESOLUTION</a>&#160;&#160;&#160;(float)12.0</td></tr>
+<tr class="memdesc:ga00978ca9e8220475258dcbbbb7d29129"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC resolution in [bit].  <a href="group__microcontroller-abstraction.html#ga00978ca9e8220475258dcbbbb7d29129">More...</a><br /></td></tr>
+<tr class="separator:ga00978ca9e8220475258dcbbbb7d29129"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8be0a86b0847147a521dd1efec43d1c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gaa8be0a86b0847147a521dd1efec43d1c">ADC_GRANULARITY</a>&#160;&#160;&#160;(float)(<a class="el" href="group__microcontroller-abstraction.html#ga317868c528ebe27fbca094a8bc2d910c">ADC_REFERENCE</a> / pow(2.0, <a class="el" href="group__microcontroller-abstraction.html#ga00978ca9e8220475258dcbbbb7d29129">ADC_RESOLUTION</a>))</td></tr>
+<tr class="memdesc:gaa8be0a86b0847147a521dd1efec43d1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC granularity in [V/tick].  <a href="group__microcontroller-abstraction.html#gaa8be0a86b0847147a521dd1efec43d1c">More...</a><br /></td></tr>
+<tr class="separator:gaa8be0a86b0847147a521dd1efec43d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa5d1dacef95564076ecd32adb0774ac3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gaa5d1dacef95564076ecd32adb0774ac3">ADC_VALUE_MAX</a>&#160;&#160;&#160;(uint16_t) (pow(2.0, <a class="el" href="group__microcontroller-abstraction.html#ga00978ca9e8220475258dcbbbb7d29129">ADC_RESOLUTION</a>) - 1.0)</td></tr>
 <tr class="separator:gaa5d1dacef95564076ecd32adb0774ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf4bf7a89bb59df42a846b9532dce8db9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gaf4bf7a89bb59df42a846b9532dce8db9">PWM_CLOCK_FREQUENCY</a>&#160;&#160;&#160;(float)4.0e+9</td></tr>
 <tr class="memdesc:gaf4bf7a89bb59df42a846b9532dce8db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM Clock Frequency in [Hz].  <a href="group__microcontroller-abstraction.html#gaf4bf7a89bb59df42a846b9532dce8db9">More...</a><br /></td></tr>
@@ -133,36 +136,76 @@ Macros</h2></td></tr>
 <tr class="memitem:gafd17199da18b5a3321b37016464983b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gafd17199da18b5a3321b37016464983b0">PWM_CLOCK_PERIOD</a>&#160;&#160;&#160;(float)(1.0/<a class="el" href="group__microcontroller-abstraction.html#gaf4bf7a89bb59df42a846b9532dce8db9">PWM_CLOCK_FREQUENCY</a>)</td></tr>
 <tr class="memdesc:gafd17199da18b5a3321b37016464983b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM Clock Period in [sec].  <a href="group__microcontroller-abstraction.html#gafd17199da18b5a3321b37016464983b0">More...</a><br /></td></tr>
 <tr class="separator:gafd17199da18b5a3321b37016464983b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga68099f5c4f61be5720a1ff79998f5aa8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga68099f5c4f61be5720a1ff79998f5aa8">DBGPIN1_Set</a>()&#160;&#160;&#160;{ _LATB14 = 1; }</td></tr>
+<tr class="separator:ga68099f5c4f61be5720a1ff79998f5aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga863f176172825140c1d4189f48e098bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga863f176172825140c1d4189f48e098bb">DBGPIN1_Clear</a>()&#160;&#160;&#160;{ _LATB14 = 0; }</td></tr>
+<tr class="separator:ga863f176172825140c1d4189f48e098bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae69ef331f5fadcc42dfcceb85eee082c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gae69ef331f5fadcc42dfcceb85eee082c">DBGPIN1_Toggle</a>()&#160;&#160;&#160;{ _LATB14 ^= 1; }</td></tr>
+<tr class="separator:gae69ef331f5fadcc42dfcceb85eee082c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6c75ce713b6c317a532c901f1fee851f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga6c75ce713b6c317a532c901f1fee851f">DBGPIN1_Init</a>()&#160;&#160;&#160;{ _LATB14 = 0; _TRISB14 = 0; }</td></tr>
+<tr class="separator:ga6c75ce713b6c317a532c901f1fee851f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga81602741185030b94a63da995bebe9d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga81602741185030b94a63da995bebe9d7">DBGPIN2_Set</a>()&#160;&#160;&#160;{ _LATB15 = 1; }</td></tr>
+<tr class="separator:ga81602741185030b94a63da995bebe9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8209ee25d31e6631f485b662d105fc8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga8209ee25d31e6631f485b662d105fc8d">DBGPIN2_Clear</a>()&#160;&#160;&#160;{ _LATB15 = 0; }</td></tr>
+<tr class="separator:ga8209ee25d31e6631f485b662d105fc8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76f1eb634a1181f09f98522c0854a55b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga76f1eb634a1181f09f98522c0854a55b">DBGPIN2_Toggle</a>()&#160;&#160;&#160;{ _LATB15 ^= 1; }</td></tr>
+<tr class="separator:ga76f1eb634a1181f09f98522c0854a55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga799967fceeeae22fbe97fab675ce49b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga799967fceeeae22fbe97fab675ce49b2">DBGPIN2_Init</a>()&#160;&#160;&#160;{ _LATB15 = 0; _TRISB15 = 0; }</td></tr>
+<tr class="separator:ga799967fceeeae22fbe97fab675ce49b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad47ae420ae83df02cd94495050550c35"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gad47ae420ae83df02cd94495050550c35">DBGPIN3_Set</a>()&#160;&#160;&#160;{ _LATB10 = 1; }</td></tr>
+<tr class="separator:gad47ae420ae83df02cd94495050550c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1bfa9d60773de0ba2f9e91d3512e3d2d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga1bfa9d60773de0ba2f9e91d3512e3d2d">DBGPIN3_Clear</a>()&#160;&#160;&#160;{ _LATB10 = 0; }</td></tr>
+<tr class="separator:ga1bfa9d60773de0ba2f9e91d3512e3d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga47818dfc58ff533a50787111b0798f30"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga47818dfc58ff533a50787111b0798f30">DBGPIN3_Toggle</a>()&#160;&#160;&#160;{ _LATB10 ^= 1; }</td></tr>
+<tr class="separator:ga47818dfc58ff533a50787111b0798f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga510dd96da199244dcdb19ef8eedca007"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga510dd96da199244dcdb19ef8eedca007">DBGPIN3_Init</a>()&#160;&#160;&#160;{ _LATB10 = 0; _TRISB10 = 0; }</td></tr>
+<tr class="separator:ga510dd96da199244dcdb19ef8eedca007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa41ac18d27256361be5d7ae39337f1ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gaa41ac18d27256361be5d7ae39337f1ef">PWRGOOD_PORT</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:gaa41ac18d27256361be5d7ae39337f1ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc.  <a href="group__microcontroller-abstraction.html#gaa41ac18d27256361be5d7ae39337f1ef">More...</a><br /></td></tr>
+<tr class="separator:gaa41ac18d27256361be5d7ae39337f1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0931cbd53153018be31acf403544c3ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga0931cbd53153018be31acf403544c3ab">PWRGOOD_PIN</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:ga0931cbd53153018be31acf403544c3ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.  <a href="group__microcontroller-abstraction.html#ga0931cbd53153018be31acf403544c3ab">More...</a><br /></td></tr>
+<tr class="separator:ga0931cbd53153018be31acf403544c3ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf8e24346d237b20f54c51230324f1057"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gaf8e24346d237b20f54c51230324f1057">PWRGOOD_Set</a>()&#160;&#160;&#160;{ _LATB1 = 1; }</td></tr>
+<tr class="separator:gaf8e24346d237b20f54c51230324f1057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga08788506e884eccb4282bf2bccd32982"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga08788506e884eccb4282bf2bccd32982">PWRGOOD_Clear</a>()&#160;&#160;&#160;{ _LATB1 = 0; }</td></tr>
+<tr class="separator:ga08788506e884eccb4282bf2bccd32982"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaae08a194e05086ee7428c3d4b6dfeef4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#gaae08a194e05086ee7428c3d4b6dfeef4">PWRGOOD_Toggle</a>()&#160;&#160;&#160;{ _LATB1 ^= 1; }</td></tr>
+<tr class="separator:gaae08a194e05086ee7428c3d4b6dfeef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5e1696c7e66145bba0cbc254e27b052c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html#ga5e1696c7e66145bba0cbc254e27b052c">PWRGOOD_Init</a>()&#160;&#160;&#160;{ _ANSELB1 = 0; _LATB1 = 0; _TRISB1 = 0; }</td></tr>
+<tr class="separator:ga5e1696c7e66145bba0cbc254e27b052c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p><b>Description</b> This section is used to define device specific parameters like ADC reference and resolution. Pre-compiler macros are used to translate physical values into binary (integer) numbers to be written to SFRs </p>
+<p>Global abstraction labels for device pin assignments of control signals. </p>
+<p><b>Description</b> This section is used to define device specific parameters like ADC reference and resolution. Pre-compiler macros are used to translate physical values into binary (integer) numbers to be written to SFRs</p>
+<p><b>Description:</b> This section is used to define labels of hardware specific signals, which are directly assigned to specific device pins. These labels will be used throughout the code and remain unchanged even if this firmware is migrated to another device or pin-out changes between hardware revisions. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ga2bdaa6e0e431499977cc29d724b9c1ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2bdaa6e0e431499977cc29d724b9c1ff">&#9670;&nbsp;</a></span>ADC_GRAN</h2>
+<a id="gaa8be0a86b0847147a521dd1efec43d1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa8be0a86b0847147a521dd1efec43d1c">&#9670;&nbsp;</a></span>ADC_GRANULARITY</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ADC_GRAN&#160;&#160;&#160;(float)(<a class="el" href="group__microcontroller-abstraction.html#gabe7d90bd1e8c6c56e8a9f8542f80baa0">ADC_REF</a> / pow(2.0, <a class="el" href="group__microcontroller-abstraction.html#gab298faea909e0aa62203195aa3d6ca80">ADC_RES</a>))</td>
+          <td class="memname">#define ADC_GRANULARITY&#160;&#160;&#160;(float)(<a class="el" href="group__microcontroller-abstraction.html#ga317868c528ebe27fbca094a8bc2d910c">ADC_REFERENCE</a> / pow(2.0, <a class="el" href="group__microcontroller-abstraction.html#ga00978ca9e8220475258dcbbbb7d29129">ADC_RESOLUTION</a>))</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>ADC granularity in [V/tick]. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00064">64</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00065">65</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
-<a id="gabe7d90bd1e8c6c56e8a9f8542f80baa0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabe7d90bd1e8c6c56e8a9f8542f80baa0">&#9670;&nbsp;</a></span>ADC_REF</h2>
+<a id="ga317868c528ebe27fbca094a8bc2d910c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga317868c528ebe27fbca094a8bc2d910c">&#9670;&nbsp;</a></span>ADC_REFERENCE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ADC_REF&#160;&#160;&#160;(float)3.300</td>
+          <td class="memname">#define ADC_REFERENCE&#160;&#160;&#160;(float)3.300</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -173,14 +216,14 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a id="gab298faea909e0aa62203195aa3d6ca80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab298faea909e0aa62203195aa3d6ca80">&#9670;&nbsp;</a></span>ADC_RES</h2>
+<a id="ga00978ca9e8220475258dcbbbb7d29129"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga00978ca9e8220475258dcbbbb7d29129">&#9670;&nbsp;</a></span>ADC_RESOLUTION</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ADC_RES&#160;&#160;&#160;(float)12.0</td>
+          <td class="memname">#define ADC_RESOLUTION&#160;&#160;&#160;(float)12.0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -198,12 +241,12 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ADC_VALUE_MAX&#160;&#160;&#160;(uint16_t) (pow(2.0, <a class="el" href="group__microcontroller-abstraction.html#gab298faea909e0aa62203195aa3d6ca80">ADC_RES</a>) - 1.0)</td>
+          <td class="memname">#define ADC_VALUE_MAX&#160;&#160;&#160;(uint16_t) (pow(2.0, <a class="el" href="group__microcontroller-abstraction.html#ga00978ca9e8220475258dcbbbb7d29129">ADC_RESOLUTION</a>) - 1.0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00065">65</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00066">66</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -243,6 +286,234 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a id="ga863f176172825140c1d4189f48e098bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga863f176172825140c1d4189f48e098bb">&#9670;&nbsp;</a></span>DBGPIN1_Clear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN1_Clear</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB14 = 0; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00106">106</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga6c75ce713b6c317a532c901f1fee851f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6c75ce713b6c317a532c901f1fee851f">&#9670;&nbsp;</a></span>DBGPIN1_Init</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN1_Init</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB14 = 0; _TRISB14 = 0; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00108">108</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga68099f5c4f61be5720a1ff79998f5aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga68099f5c4f61be5720a1ff79998f5aa8">&#9670;&nbsp;</a></span>DBGPIN1_Set</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN1_Set</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB14 = 1; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00105">105</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="gae69ef331f5fadcc42dfcceb85eee082c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae69ef331f5fadcc42dfcceb85eee082c">&#9670;&nbsp;</a></span>DBGPIN1_Toggle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN1_Toggle</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB14 ^= 1; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00107">107</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga8209ee25d31e6631f485b662d105fc8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8209ee25d31e6631f485b662d105fc8d">&#9670;&nbsp;</a></span>DBGPIN2_Clear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN2_Clear</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB15 = 0; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00112">112</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga799967fceeeae22fbe97fab675ce49b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga799967fceeeae22fbe97fab675ce49b2">&#9670;&nbsp;</a></span>DBGPIN2_Init</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN2_Init</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB15 = 0; _TRISB15 = 0; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00114">114</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga81602741185030b94a63da995bebe9d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga81602741185030b94a63da995bebe9d7">&#9670;&nbsp;</a></span>DBGPIN2_Set</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN2_Set</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB15 = 1; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00111">111</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga76f1eb634a1181f09f98522c0854a55b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga76f1eb634a1181f09f98522c0854a55b">&#9670;&nbsp;</a></span>DBGPIN2_Toggle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN2_Toggle</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB15 ^= 1; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00113">113</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga1bfa9d60773de0ba2f9e91d3512e3d2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1bfa9d60773de0ba2f9e91d3512e3d2d">&#9670;&nbsp;</a></span>DBGPIN3_Clear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN3_Clear</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB10 = 0; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00118">118</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga510dd96da199244dcdb19ef8eedca007"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga510dd96da199244dcdb19ef8eedca007">&#9670;&nbsp;</a></span>DBGPIN3_Init</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN3_Init</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB10 = 0; _TRISB10 = 0; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00120">120</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="gad47ae420ae83df02cd94495050550c35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad47ae420ae83df02cd94495050550c35">&#9670;&nbsp;</a></span>DBGPIN3_Set</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN3_Set</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB10 = 1; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00117">117</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga47818dfc58ff533a50787111b0798f30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga47818dfc58ff533a50787111b0798f30">&#9670;&nbsp;</a></span>DBGPIN3_Toggle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN3_Toggle</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB10 ^= 1; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00119">119</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
 <a id="gaf4bf7a89bb59df42a846b9532dce8db9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaf4bf7a89bb59df42a846b9532dce8db9">&#9670;&nbsp;</a></span>PWM_CLOCK_FREQUENCY</h2>
 
@@ -257,7 +528,7 @@ Macros</h2></td></tr>
 
 <p>PWM Clock Frequency in [Hz]. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00068">68</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00069">69</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -275,7 +546,119 @@ Macros</h2></td></tr>
 
 <p>PWM Clock Period in [sec]. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00069">69</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00070">70</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga08788506e884eccb4282bf2bccd32982"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga08788506e884eccb4282bf2bccd32982">&#9670;&nbsp;</a></span>PWRGOOD_Clear</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PWRGOOD_Clear</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB1 = 0; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00126">126</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga5e1696c7e66145bba0cbc254e27b052c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5e1696c7e66145bba0cbc254e27b052c">&#9670;&nbsp;</a></span>PWRGOOD_Init</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PWRGOOD_Init</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _ANSELB1 = 0; _LATB1 = 0; _TRISB1 = 0; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00128">128</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga0931cbd53153018be31acf403544c3ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0931cbd53153018be31acf403544c3ab">&#9670;&nbsp;</a></span>PWRGOOD_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PWRGOOD_PIN&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc. </p>
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00124">124</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="gaa41ac18d27256361be5d7ae39337f1ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa41ac18d27256361be5d7ae39337f1ef">&#9670;&nbsp;</a></span>PWRGOOD_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PWRGOOD_PORT&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc. </p>
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00123">123</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="gaf8e24346d237b20f54c51230324f1057"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf8e24346d237b20f54c51230324f1057">&#9670;&nbsp;</a></span>PWRGOOD_Set</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PWRGOOD_Set</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB1 = 1; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00125">125</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="gaae08a194e05086ee7428c3d4b6dfeef4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaae08a194e05086ee7428c3d4b6dfeef4">&#9670;&nbsp;</a></span>PWRGOOD_Toggle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PWRGOOD_Toggle</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{ _LATB1 ^= 1; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00127">127</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>

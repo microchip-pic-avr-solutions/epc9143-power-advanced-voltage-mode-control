@@ -2,12 +2,10 @@ var group__abstraction_layer =
 [
     [ "Microcontroller Abstraction", "group__microcontroller-abstraction.html", "group__microcontroller-abstraction" ],
     [ "State Machine Settings", "group__state-machine-settings.html", "group__state-machine-settings" ],
-    [ "Hardware Abstraction", "group__hardware-abstraction.html", "group__hardware-abstraction" ],
     [ "Power Control Parameter Declaration", "group__power-parameter.html", "group__power-parameter" ],
     [ "Fundamental PWM Settings", "group__fundamental-pwm-settings.html", "group__fundamental-pwm-settings" ],
     [ "Input Voltage Feedback", "group__input-voltage-feedback.html", "group__input-voltage-feedback" ],
     [ "Output Voltage Feedback", "group__output-voltage-feedback.html", "group__output-voltage-feedback" ],
-    [ "Ideal Duty Cycle", "group__ideal-duty-cycle.html", "group__ideal-duty-cycle" ],
     [ "Phase Current Feedback", "group__phase-current-feedback.html", "group__phase-current-feedback" ],
     [ "Adaptive Gain Control Feed Forward", "group__adaptive-control.html", "group__adaptive-control" ],
     [ "Startup Behavior", "group__startup-behavior.html", "group__startup-behavior" ],

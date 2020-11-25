@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['device_20start_20up_1215',['Device Start Up',['../group__device-start-up.html',1,'']]]
+  ['digital_2dto_2danalog_20converter_1306',['Digital-to-Analog Converter',['../group__dac.html',1,'']]],
+  ['device_20start_20up_1307',['Device Start Up',['../group__device-start-up.html',1,'']]]
 ];

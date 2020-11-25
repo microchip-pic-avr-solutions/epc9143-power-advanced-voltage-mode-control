@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="node2" class="node">
 <title>Node1</title>
-<g id="a_node2"><a xlink:title="Description">
+<g id="a_node2"><a xlink:title="Declaration of phase&#45;current feedback properties.">
 <polygon fill="#bfbfbf" stroke="black" points="289,-19 164,-19 164,0 289,0 289,-19"/>
 <text text-anchor="middle" x="226.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Phase Current Feedback</text>
 </a>

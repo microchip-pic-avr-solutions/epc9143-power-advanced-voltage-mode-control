@@ -1,4 +1,7 @@
 <map id="Adaptive Gain Control Feed Forward" name="Adaptive Gain Control Feed Forward">
-<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Abstraction Layer Defines." alt="" coords="5,13,176,38"/>
-<area shape="rect" id="node2" title="Description:" alt="" coords="224,5,371,45"/>
+<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Abstraction Layer Defines." alt="" coords="5,55,176,80"/>
+<area shape="rect" id="node3" title="Description:" alt="" coords="224,47,371,87"/>
+<area shape="rect" id="node2" href="$group__startup-behavior.html" title="Global defines for soft&#45;start specific parameters." alt="" coords="445,5,562,31"/>
+<area shape="rect" id="node4" href="$group__controller-declarations.html" title="Description" alt="" coords="427,55,580,80"/>
+<area shape="rect" id="node5" href="$group__fault-object-declarations.html" title="Global defines for fault&#45;monitor related parameters." alt="" coords="419,104,588,129"/>
 </map>

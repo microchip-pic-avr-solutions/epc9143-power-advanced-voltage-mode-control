@@ -1,5 +1,8 @@
 var group__adaptive_control =
 [
+    [ "Startup Behavior", "group__startup-behavior.html", "group__startup-behavior" ],
+    [ "Fault Object Declarations", "group__fault-object-declarations.html", "group__fault-object-declarations" ],
+    [ "Controller Declarations", "group__controller-declarations.html", "group__controller-declarations" ],
     [ "BUCK_AGC_FACTOR_MAX", "group__adaptive-control.html#ga30083345d8b122bce51aa372bc4ce148", null ],
     [ "BUCK_AGC_IO_NORM_FACTOR", "group__adaptive-control.html#gabdbb5d2baae550abbc0c8d5cfa515e05", null ],
     [ "BUCK_AGC_IO_NORM_SCALER", "group__adaptive-control.html#gafbaa80db67366c907a4dcc3a27e63ff1", null ],

@@ -1,5 +1,7 @@
 <map id="State_Reset" name="State_Reset">
-<area shape="rect" id="node1" title="Description After successful initialization or after an externally triggered state machine reset,..." alt="" coords="5,5,100,32"/>
-<area shape="rect" id="node2" href="$group__power-handler-function.html#gadd0533ee810246f6b84c7c31d9372835" title="Description" alt="" coords="148,5,289,32"/>
-<area shape="rect" id="node3" href="$group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" title="Description" alt="" coords="337,5,456,32"/>
+<area shape="rect" id="node1" title="Description After successful initialization or after an externally triggered state machine reset,..." alt="" coords="5,31,100,57"/>
+<area shape="rect" id="node2" href="$group__power-handler-function.html#gadd0533ee810246f6b84c7c31d9372835" title="Description" alt="" coords="148,31,289,57"/>
+<area shape="rect" id="node3" href="$group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" title="Description" alt="" coords="383,5,502,32"/>
+<area shape="rect" id="node5" href="$group__pwm.html#ga8aa18df01ada60e1faac049c5eb34700" title="Returns the PWM generator index." alt="" coords="337,56,548,83"/>
+<area shape="rect" id="node4" href="$group__gpio.html#gae1bc534f11ac7cf278865cb73b601055" title="Gets pointer to GPIO Instance SFR set." alt="" coords="596,5,797,32"/>
 </map>

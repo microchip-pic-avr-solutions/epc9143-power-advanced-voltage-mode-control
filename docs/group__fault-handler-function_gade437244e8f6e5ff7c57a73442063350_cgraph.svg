@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 778;
+var viewWidth = 965;
 var viewHeight = 28;
 var sectionId = 'dynsection-3';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-3';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>ovlo_FaultInitialize</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-24 774,-24 774,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-24 961,-24 961,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -123,6 +123,21 @@ var sectionId = 'dynsection-3';
 <title>Node4&#45;&gt;Node5</title>
 <path fill="none" stroke="midnightblue" d="M614.18,-10C622.62,-10 631.25,-10 639.7,-10"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="639.89,-13.5 649.89,-10 639.89,-6.5 639.89,-13.5"/>
+</g>
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="group__gpio.html#gae1bc534f11ac7cf278865cb73b601055" target="_top" xlink:title="Gets pointer to GPIO Instance SFR set.">
+<polygon fill="white" stroke="black" points="806,-0.5 806,-19.5 957,-19.5 957,-0.5 806,-0.5"/>
+<text text-anchor="middle" x="881.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">p33c_GpioInstance_GetHandle</text>
+</a>
+</g>
+</g>
+<!-- Node5&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node5&#45;&gt;Node6</title>
+<path fill="none" stroke="midnightblue" d="M770.28,-10C778.52,-10 787.1,-10 795.69,-10"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="795.75,-13.5 805.75,-10 795.75,-6.5 795.75,-13.5"/>
 </g>
 </g>
 </svg>

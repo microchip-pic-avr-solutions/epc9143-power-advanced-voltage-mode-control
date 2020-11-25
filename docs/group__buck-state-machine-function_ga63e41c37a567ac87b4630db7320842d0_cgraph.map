@@ -1,4 +1,5 @@
 <map id="SubState_PowerGoodDelay" name="SubState_PowerGoodDelay">
 <area shape="rect" id="node1" title="Description &#160;In this phase of the soft&#45;start procedure a counter is incremented until the power good ..." alt="" coords="5,5,188,32"/>
 <area shape="rect" id="node2" href="$group__power-handler-function.html#gaa3ea141de17bd86c94b1fda8187f9ce6" title="Description" alt="" coords="236,5,345,32"/>
+<area shape="rect" id="node3" href="$group__gpio.html#gae1bc534f11ac7cf278865cb73b601055" title="Gets pointer to GPIO Instance SFR set." alt="" coords="393,5,595,32"/>
 </map>

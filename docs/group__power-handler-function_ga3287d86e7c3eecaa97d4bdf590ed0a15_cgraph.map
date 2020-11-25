@@ -2,4 +2,5 @@
 <area shape="rect" id="node1" title="Description" alt="" coords="5,5,192,32"/>
 <area shape="rect" id="node2" href="$group__power-handler-function.html#ga75498c59a10db0738113104a547d8d0d" title="This function is the main buck converter state machine executing the most recent state." alt="" coords="240,5,424,32"/>
 <area shape="rect" id="node3" href="$group__power-handler-function.html#gad4e9d780ae858d4417887f13b1619346" title="Description" alt="" coords="472,5,632,32"/>
+<area shape="rect" id="node4" href="$group__gpio.html#gae1bc534f11ac7cf278865cb73b601055" title="Gets pointer to GPIO Instance SFR set." alt="" coords="680,5,881,32"/>
 </map>

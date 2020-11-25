@@ -1,4 +1,5 @@
 <map id="drv_BuckConverter_Execute" name="drv_BuckConverter_Execute">
 <area shape="rect" id="node1" title="This function is the main buck converter state machine executing the most recent state." alt="" coords="5,5,189,32"/>
 <area shape="rect" id="node2" href="$group__power-handler-function.html#gad4e9d780ae858d4417887f13b1619346" title="Description" alt="" coords="237,5,397,32"/>
+<area shape="rect" id="node3" href="$group__gpio.html#gae1bc534f11ac7cf278865cb73b601055" title="Gets pointer to GPIO Instance SFR set." alt="" coords="445,5,647,32"/>
 </map>
