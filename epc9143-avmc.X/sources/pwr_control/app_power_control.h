@@ -51,11 +51,11 @@
 #include "pwr_control/drivers/npnz16b.h" // include NPNZ control loop object declarations
 
 
-/*!BUCK_POWER_CONTROLLER_t
- * *************************************************************************************************
+/**************************************************************************************************
+ * @var volatile struct BUCK_POWER_CONTROLLER_s buck
  * @brief Global data object for the BUCK CONVERTER 
  * 
- * <b>Description:</b>
+ * <b>Description:</b><br>
  * the 'buck' data object holds all status, control and monitoring values of the BUCK power 
  * controller. The BUCK_POWER_CONTROLLER_t data structure is defined in drv_buck_typedef.h.
  * Please refer to the comments on top of this file for further information.

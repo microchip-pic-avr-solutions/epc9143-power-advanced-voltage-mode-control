@@ -140,7 +140,6 @@ This firmware uses a digital type IV controller to close the feedback loop in vo
     EPC9143 Type IV Controller - Advanced Voltage Control Loop
   </center>
 </p>
-
 This control loop can be turned on/off by using the ENABLE bit in the STATUS word of the cNPNZ_t controller data structure. The adaptive loop gain modulation is permanently active as soon as the control loop is enabled.
 
 ##### 3) Digital Controller Design

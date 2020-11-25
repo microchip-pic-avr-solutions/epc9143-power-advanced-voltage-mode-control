@@ -30,13 +30,9 @@ volatile uint16_t __attribute__((always_inline)) State_Online(volatile struct BU
 
 // Function pointer array defining the state machine execution sequence
 /*******************************************************************************
- * @struct	volatile uint16_t (*BuckConverterStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @param	
+ * @var	volatile uint16_t (*BuckConverterStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @brief 	
  *
- * @brief 
- * 
- * <b>Description</b> 
- * 
  *********************************************************************************/
 
 volatile uint16_t (*BuckConverterStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) = {
@@ -61,12 +57,12 @@ volatile uint16_t BuckStateList_size = (sizeof(BuckConverterStateMachine)/sizeof
 
 /*******************************************************************************
  * @fn volatile uint16_t State_Initialize(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief 
- * 
- * <b>Description</b> 
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0=failure
+ * @return  1=success
+ *
+ * <b>Description</b><br> 
  * If the controller has not been run yet, the POWER ON and POWER GOOD delay
  * counters are reset and all conditional flag bits are cleared. Status of 
  * power source, ADC and current sensor calibration have to be set during
@@ -111,12 +107,12 @@ volatile uint16_t State_Initialize(volatile struct BUCK_POWER_CONTROLLER_s *buck
 
 /*******************************************************************************
  * @fn volatile uint16_t State_Reset(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief 
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0=failure
+ * @return  1=success
  * 
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * After successful initialization or after an externally triggered state machine reset,
  * the state machine returns to this RESET mode, re-initiating control mode, references 
  * and status bits before switching further into STANDBY mode. 
@@ -166,12 +162,12 @@ volatile uint16_t State_Reset(volatile struct BUCK_POWER_CONTROLLER_s *buckInsta
                 
 /*******************************************************************************
  * @fn volatile uint16_t State_Standby(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief 
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0=failure
+ * @return  1=success
  * 
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * After a successful state machine reset, the state machine waits in  
  * STANDBY mode until all conditional flag bits are set/cleared allowing  
  * the converter to run.
@@ -206,12 +202,13 @@ volatile uint16_t State_Standby(volatile struct BUCK_POWER_CONTROLLER_s *buckIns
 
 /*******************************************************************************
  * @fn volatile uint16_t State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
- * @return  Unsigned Integer (0 = BUCK_OPSRET_REPEAT, 1 = BUCK_OPSRET_COMPLETE,2 = BUCK_OPSRET_REPEAT)
- *
  * @brief 
- * 
- * <b>Description</b> 
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0 = BUCK_OPSRET_REPEAT
+ * @return  1 = BUCK_OPSRET_COMPLETE
+ * @return  2 = BUCK_OPSRET_REPEAT
+ *
+ * <b>Description</b><br> 
  * After a successful state machine reset, the state machine waits in  
  * STANDBY mode until all conditional flag bits are set/cleared allowing  
  * the converter to run. 
@@ -288,12 +285,12 @@ volatile uint16_t State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
 
 /*******************************************************************************
  * @fn volatile uint16_t State_Online(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief 
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0=failure
+ * @return  1=success
  * 
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * After soft-start and when state POWER_GOOD_DELAY has expired, the converter 
  * enters normal operation.
  * 
@@ -346,12 +343,12 @@ volatile uint16_t State_Online(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
 
 /*******************************************************************************
  * @fn volatile uint16_t State_Error(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @brief
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief 
+ * @return  0=failure
+ * @return  1=success
  * 
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * This function is a default anchor in case task list index #0 is ever called.
  * This is the equivalent of a switch case "default".
  *********************************************************************************/
