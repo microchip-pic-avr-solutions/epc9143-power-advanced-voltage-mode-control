@@ -59,10 +59,11 @@
 #define CPU_TCY             (float)(1.0/CPU_FREQUENCY) ///< Instruction period
 
 // ADC(DAC Reference and Resolution Settings    
-#define ADC_REF             (float)3.300 ///< ADC reference voltage in V
-#define ADC_RES             (float)12.0  ///< ADC resolution in [bit]
-#define ADC_GRAN            (float)(ADC_REF / pow(2.0, ADC_RES)) ///< ADC granularity in [V/tick]
-#define ADC_VALUE_MAX       (uint16_t) (pow(2.0, ADC_RES) - 1.0) // DO NOT CHANGE
+#define ADC_REFERENCE       (float)3.300 ///< ADC reference voltage in V
+#define ADC_RESOLUTION      (float)12.0  ///< ADC resolution in [bit]
+
+#define ADC_GRANULARITY     (float)(ADC_REFERENCE / pow(2.0, ADC_RESOLUTION)) ///< ADC granularity in [V/tick]
+#define ADC_VALUE_MAX       (uint16_t) (pow(2.0, ADC_RESOLUTION) - 1.0) // DO NOT CHANGE
     
 // PWM/ADC Clock Settings    
 #define PWM_CLOCK_FREQUENCY (float)4.0e+9   ///< PWM Clock Frequency in [Hz]
@@ -82,17 +83,19 @@
  **************************************************************************************************/
 #define MAIN_EXECUTION_PERIOD   (float)100.0e-6     ///< main state machine pace period in [sec]
 #define MAIN_EXEC_PER           (uint16_t)((CPU_FREQUENCY * MAIN_EXECUTION_PERIOD)-1) // DO NOT CHANGE
+
 /** @} */ // end of group
     
 /***************************************************************************************************
- * @addtogroup hardware-abstraction
+ * @addtogroup microcontroller-abstraction
  * @{
- * @brief Global defines for hardware specific parameters
+ * @brief Global abstraction labels for device pin assignments of control signals
  * 
- * Description:
- * This section is used to define hardware specific parameters such as output voltage dividers,
- * reference levels or feedback gains. Pre-compiler macros are used to translate physical  
- * values into binary (integer) numbers to be written to SFRs
+ * <b>Description:</b>
+ * This section is used to define labels of hardware specific signals, which are directly 
+ * assigned to specific device pins. These labels will be used throughout the code and remain
+ * unchanged even if this firmware is migrated to another device or pin-out changes between
+ * hardware revisions.
  * 
  **************************************************************************************************/
 
@@ -118,7 +121,7 @@
 
     // Device Pin #14 on EPC9243
     #define PWRGOOD_PORT        1   ///< GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc.
-    #define PWRGOOD_PIN     1   ///< GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.
+    #define PWRGOOD_PIN         1   ///< GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.
     #define PWRGOOD_Set()       { _LATB1 = 1; }
     #define PWRGOOD_Clear()	    { _LATB1 = 0; }
     #define PWRGOOD_Toggle()    { _LATB1 ^= 1; }
@@ -134,7 +137,7 @@
  * 
  * <b>Description</b>
  * This section is used to define hardware specific parameters such as output voltage dividers,
- * reference levels or feedback gains. Pre-compiler macros are used to translate physical  
+ * reference levels or feedback gains. Pre-compiler macros are used to translate physical
  * values into binary (integer) numbers to be written to SFRs
  * 
  **************************************************************************************************/
@@ -143,23 +146,31 @@
 #define SWITCHING_PERIOD        (float)(1.0/SWITCHING_FREQUENCY)    ///< Switching period in [sec]
 #define SWITCHING_PHASE_SHIFT   (float)0.0        ///< Phase Shift of PWM output in [sec]
 
-// ToDo: Remove -> dead times are set below    
-//#define SWITCHING_LEB           (float)120.0e-9 ///< Leading Edge Blanking in [sec]
-//#define SWITCHING_DEAD_TIME_LE  (float)40.0e-9    ///< Leading Edge Dead Time in [sec]
-//#define SWITCHING_DEAD_TIME_FE  (float)20.0e-9    ///< Falling Edge Dead Time in [sec]
+/** @} */ // end of group
+
+/**************************************************************************************************
+ * @addtogroup power-parameter
+ * @{
+ * @brief Global defines for Buck Converter Power Control parameters
+ * 
+ * <b>Description</b>
+ * This section is used to define hardware specific parameters such as output voltage dividers,
+ * reference levels or feedback gains. Pre-compiler macros are used to translate physical
+ * values into binary (integer) numbers to be written to SFRs
+ * 
+ **************************************************************************************************/
 
 /* CUSTOM RUNTIME OPTIONS */
 #define PLANT_MEASUREMENT   false
-/** @} */ // end of group
-    
+
 /**************************************************************************************************
  * @addtogroup fundamental-pwm-settings
  * @{
  * @brief Global defines for PWM settings of DV330101
  * 
  * Description:
- * This section defines fundamental PWM settings required for the low-voltage interleaved buck
- * converter of the EPC9143 16th brick power module reference design. These settings are determined 
+ * This section defines fundamental PWM settings required for the interleaved buck converter
+ * of the EPC9143 300W 16th brick power module reference design. These settings are determined 
  * by hardware.
  * 
  * Pre-compiler macros are used to convert physical values into binary (integer) numbers to 
@@ -169,9 +180,9 @@
 
 #define BUCK_NO_OF_PHASES              2U     ///< Number of power converter phases of this design
     
-#define BUCK_PWM_DUTY_CYCLE_MIN        (float)0.010 ///< ~1.0% On Time 
-#define BUCK_PWM_DUTY_CYCLE_MAX        (float)0.600 ///< ~80% On Time 
-#define BUCK_LEADING_EDGE_BLANKING     (float)120.0e-9 ///< Leading Edge Blanking in [sec]
+#define BUCK_PWM_DUTY_CYCLE_MIN        (float)0.010 ///< ~1.0% On Time (~20 ns)
+#define BUCK_PWM_DUTY_CYCLE_MAX        (float)0.850 ///< ~85% On Time  (~1,700 ns)
+#define BUCK_LEADING_EDGE_BLANKING     (float)100.0e-9 ///< Leading Edge Blanking in [sec]
 #define BUCK_DEAD_TIME_LEADING_EDGE    (float)10.0e-9 ///< Leading Edge Dead Time in [sec]
 #define BUCK_DEAD_TIME_FALLING_EDGE    (float)10.0e-9 ///< Falling Edge Dead Time in [sec]
 
@@ -240,7 +251,6 @@
 #define BUCK_PWM2_ADTR1PS               0 ///< ADC Trigger 1 Postscaler: 0...31
     
 #define BUCK_PWM2_UPDREQ                PG1STATbits.UPDREQ
-//#define BUCK_PWM_MASTER_SOCS            0b0010  ///< PWM2 provides Master Trigger
     
 // ~~~ conversion macros ~~~~~~~~~~~~~~~~~~~~~~~~~
 #define BUCK_SWITCHING_PERIOD   (float)(1.0/SWITCHING_FREQUENCY)   ///< Switching period in [sec]
@@ -258,48 +268,50 @@
 /**************************************************************************************************
  * @addtogroup input-voltage-feedback
  * @{
- * @brief Declaration of input voltage limits, feedback gain and scaling and nominal operating points
+ * @brief Declaration of input voltage feedback properties
  * 
- * <b>Description</b>
- * 
+ * <b>Description:</b>
+ * In this section the input voltage feedback signal scaling, gain, valid signal limits and nominal
+ * operating point is specified. Physical values are used to define values. Macros are used to 
+ * convert given physical values into binary (integer) number to be written into SFRs and variables.
  * *************************************************************************************************/
     
-#define BUCK_VIN_MINIMUM        (float)18.000   ///< Minimum input voltage in [V]
-#define BUCK_VIN_NOMINAL        (float)48.000   ///< Nominal input voltage in [V]
-#define BUCK_VIN_MAXIMUM        (float)60.500   ///< Maximum input voltage in [V]
+#define BUCK_VIN_MINIMUM            (float)18.000   ///< Minimum input voltage in [V]
+#define BUCK_VIN_NOMINAL            (float)48.000   ///< Nominal input voltage in [V]
+#define BUCK_VIN_MAXIMUM            (float)60.500   ///< Maximum input voltage in [V]
 
-#define BUCK_VIN_UNDER_VOLTAGE  (float)17.50    ///< Under Voltage Lock Out Cut Off in [V]
-#define BUCK_VIN_OVER_VOLTAGE   (float)61.00    ///< Over Voltage Lock Out Cut Off in [V]
-#define BUCK_VIN_HYSTERESIS     (float)1.500    ///< UVLO/OVLO Hysteresis in [V]
+#define BUCK_VIN_UNDER_VOLTAGE      (float)17.50    ///< Under Voltage Lock Out Cut Off in [V]
+#define BUCK_VIN_OVER_VOLTAGE       (float)61.00    ///< Over Voltage Lock Out Cut Off in [V]
+#define BUCK_VIN_HYSTERESIS         (float)1.500    ///< UVLO/OVLO Hysteresis in [V]
     
-#define BUCK_VIN_R1             (float)(110.0)  ///< Upper voltage divider resistor in [kOhm]
-#define BUCK_VIN_R2             (float)(4.870)  ///< Lower voltage divider resistor in [kOhm]
-#define BUCK_VIN_FEEDBACK_GAIN  (float)((BUCK_VIN_R2) / (BUCK_VIN_R1 + BUCK_VIN_R2)) // DO NOT CHANGE
+#define BUCK_VIN_R1                 (float)(110.0)  ///< Upper voltage divider resistor in [kOhm]
+#define BUCK_VIN_R2                 (float)(4.870)  ///< Lower voltage divider resistor in [kOhm]
     
 #define BUCK_VIN_FEEDBACK_OFFSET    (float)(0.0) ///< Physical, static signal offset in [V]
 #define BUCK_VIN_ADC_TRG_DELAY      (float)(120.0e-9) ///< ADC trigger delay in [sec]
     
 // ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
     
-#define BUCK_VIN_MIN            (uint16_t)(BUCK_VIN_MINIMUM * BUCK_VIN_FEEDBACK_GAIN / ADC_GRAN)   ///< Minimum input voltage
-#define BUCK_VIN_NOM            (uint16_t)(BUCK_VIN_NOMINAL * BUCK_VIN_FEEDBACK_GAIN / ADC_GRAN)   ///< Nominal input voltage
-#define BUCK_VIN_MAX            (uint16_t)(BUCK_VIN_MAXIMUM * BUCK_VIN_FEEDBACK_GAIN / ADC_GRAN)   ///< Maximum input voltage
-#define BUCK_VIN_HYST           (uint16_t)(BUCK_VIN_HYSTERESIS * BUCK_VIN_FEEDBACK_GAIN / ADC_GRAN)  ///< Over Voltage LOck Out voltage    
-#define BUCK_VIN_UVLO_TRIP      (uint16_t)(BUCK_VIN_UNDER_VOLTAGE * BUCK_VIN_FEEDBACK_GAIN / ADC_GRAN) ///< Under Voltage LOck Out voltage
-#define BUCK_VIN_UVLO_RELEASE   (uint16_t)((BUCK_VIN_UNDER_VOLTAGE + BUCK_VIN_HYSTERESIS) * BUCK_VIN_FEEDBACK_GAIN / ADC_GRAN) ///< Under Voltage LOck Out voltage
-#define BUCK_VIN_OVLO_TRIP      (uint16_t)(BUCK_VIN_OVER_VOLTAGE * BUCK_VIN_FEEDBACK_GAIN / ADC_GRAN)  ///< Over Voltage LOck Out voltage
-#define BUCK_VIN_OVLO_RELEASE   (uint16_t)((BUCK_VIN_OVER_VOLTAGE - BUCK_VIN_HYSTERESIS) * BUCK_VIN_FEEDBACK_GAIN / ADC_GRAN)  ///< Over Voltage LOck Out voltage
+#define BUCK_VIN_FEEDBACK_GAIN  (float)((BUCK_VIN_R2) / (BUCK_VIN_R1 + BUCK_VIN_R2)) // DO NOT CHANGE
+#define BUCK_VIN_MIN            (uint16_t)(BUCK_VIN_MINIMUM * BUCK_VIN_FEEDBACK_GAIN / ADC_GRANULARITY)   ///< Minimum input voltage
+#define BUCK_VIN_NOM            (uint16_t)(BUCK_VIN_NOMINAL * BUCK_VIN_FEEDBACK_GAIN / ADC_GRANULARITY)   ///< Nominal input voltage
+#define BUCK_VIN_MAX            (uint16_t)(BUCK_VIN_MAXIMUM * BUCK_VIN_FEEDBACK_GAIN / ADC_GRANULARITY)   ///< Maximum input voltage
+#define BUCK_VIN_HYST           (uint16_t)(BUCK_VIN_HYSTERESIS * BUCK_VIN_FEEDBACK_GAIN / ADC_GRANULARITY)  ///< Over Voltage LOck Out voltage    
+#define BUCK_VIN_UVLO_TRIP      (uint16_t)(BUCK_VIN_UNDER_VOLTAGE * BUCK_VIN_FEEDBACK_GAIN / ADC_GRANULARITY) ///< Under Voltage LOck Out voltage
+#define BUCK_VIN_UVLO_RELEASE   (uint16_t)((BUCK_VIN_UNDER_VOLTAGE + BUCK_VIN_HYSTERESIS) * BUCK_VIN_FEEDBACK_GAIN / ADC_GRANULARITY) ///< Under Voltage LOck Out voltage
+#define BUCK_VIN_OVLO_TRIP      (uint16_t)(BUCK_VIN_OVER_VOLTAGE * BUCK_VIN_FEEDBACK_GAIN / ADC_GRANULARITY)  ///< Over Voltage LOck Out voltage
+#define BUCK_VIN_OVLO_RELEASE   (uint16_t)((BUCK_VIN_OVER_VOLTAGE - BUCK_VIN_HYSTERESIS) * BUCK_VIN_FEEDBACK_GAIN / ADC_GRANULARITY)  ///< Over Voltage LOck Out voltage
 #define BUCK_VIN_ADC_TRGDLY     (uint16_t)(BUCK_VIN_ADC_TRG_DELAY / PWM_CLOCK_PERIOD) ///< Input voltage ADC trigger delay
-#define BUCK_VIN_OFFSET         (uint16_t)(BUCK_VIN_FEEDBACK_OFFSET / ADC_GRAN) ///< Input voltage feedback offset
+#define BUCK_VIN_OFFSET         (uint16_t)(BUCK_VIN_FEEDBACK_OFFSET / ADC_GRANULARITY) ///< Input voltage feedback offset
 
 #define BUCK_VIN_NORM_INV_G     (float)(1.0/BUCK_VIN_FEEDBACK_GAIN) ///< Inverted feedback gain required for value normalization
 #define BUCK_VIN_NORM_SCALER    (int16_t)(ceil(log(BUCK_VIN_NORM_INV_G)) + 1) ///< VIN normalization  
 #define BUCK_VIN_NORM_FACTOR    (int16_t)((BUCK_VIN_NORM_INV_G / pow(2.0, BUCK_VIN_NORM_SCALER)) * (pow(2.0, 15)-1)) ///< VIN normalization factor scaled in Q15
 
-#define BUCK_VIN_RANGE_MAX      (float)(ADC_REF * BUCK_VIN_NORM_INV_G)
+#define BUCK_VIN_RANGE_MAX      (float)(ADC_REFERENCE * BUCK_VIN_NORM_INV_G)
     
 // ~ conversion macros end ~~~~~~~~~~~~~~~~~
-    
+
 #define _BUCK_VIN_ADCInterrupt  _ADCAN9Interrupt ///< ADC interrupt service routine function call of the input voltage feedback channel
 #define _BUCK_VIN_ADCISR_IF     _ADCAN9IF   ///< ADC interrupt flag bit of the input voltage feedback channel
 
@@ -309,15 +321,18 @@
 #define BUCK_VIN_ADCBUF         ADCBUF9     ///< ADC input buffer of this ADC channel
 #define BUCK_VIN_ADCTRIG        PG2TRIGA    ///< Register used for trigger placement
 #define BUCK_VIN_TRGSRC         BUCK_PWM1_TRGSRC_TRG1 ///< PWM1 (=PG2) Trigger 2 via PGxTRIGB
+
 /** @} */ // end of group
 
 /**************************************************************************************************
  * @addtogroup output-voltage-feedback
  * @{
- * @brief
+ * @brief Declaration of output voltage feedback properties
  * 
- * <b>Description</b>
- * 
+ * <b>Description:</b>
+ * In this section the output voltage feedback signal scaling, gain, valid signal limits and nominal
+ * operating point is specified. Physical values are used to define values. Macros are used to 
+ * convert given physical values into binary (integer) number to be written into SFRs and variables.
  * *************************************************************************************************/
 
 // Feedback Declarations
@@ -341,45 +356,36 @@
     
 // ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
 
-#define BUCK_VOUT_REF           (uint16_t)(BUCK_VOUT_NOMINAL * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRAN) ///< Macro calculating the integer number equivalent of the output voltage reference given above in [V]
+#define BUCK_VOUT_REF           (uint16_t)(BUCK_VOUT_NOMINAL * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRANULARITY) ///< Macro calculating the integer number equivalent of the output voltage reference given above in [V]
 #define BUCK_VOUT_NOM           BUCK_VOUT_REF ///< Alias macro of the integer number equivalent of the nominal output voltage given above in [V]
-#define BUCK_VOUT_DEV_TRIP      (uint16_t)(BUCK_VOUT_TOLERANCE_MAX * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRAN) ///< Macro calculating the integer number equivalent of the maximum allowed output voltage deviation given above in [V], which will lead to a converter shut down when exceeded.
-#define BUCK_VOUT_DEV_RELEASE   (uint16_t)(BUCK_VOUT_TOLERANCE_MIN * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRAN) ///< Macro calculating the integer number equivalent of the maximum allowed output voltage deviation given above in [V], which needs to be underrun before a shut-down converter can recover
-#define BUCK_VOUT_OFFSET        (uint16_t)(BUCK_VOUT_FEEDBACK_OFFSET / ADC_GRAN) ///< Macro calculating the integer number equivalent of the physical, static signal offset of this feedback channel
+#define BUCK_VOUT_DEV_TRIP      (uint16_t)(BUCK_VOUT_TOLERANCE_MAX * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRANULARITY) ///< Macro calculating the integer number equivalent of the maximum allowed output voltage deviation given above in [V], which will lead to a converter shut down when exceeded.
+#define BUCK_VOUT_DEV_RELEASE   (uint16_t)(BUCK_VOUT_TOLERANCE_MIN * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRANULARITY) ///< Macro calculating the integer number equivalent of the maximum allowed output voltage deviation given above in [V], which needs to be underrun before a shut-down converter can recover
+#define BUCK_VOUT_OFFSET        (uint16_t)(BUCK_VOUT_FEEDBACK_OFFSET / ADC_GRANULARITY) ///< Macro calculating the integer number equivalent of the physical, static signal offset of this feedback channel
 #define BUCK_VOUT_ADC_TRGDLY    (uint16_t)(BUCK_VOUT_ADC_TRG_DELAY / PWM_CLOCK_PERIOD) ///< Macro calculating the integer number equivalent of the signal chain time delay between internal PWM timebase and effective switching edge of the leading FET
 
 #define BUCK_VOUT_NORM_INV_G    (float)(1.0/BUCK_VOUT_FEEDBACK_GAIN) ///< Inverted feedback gain required for value normalization
 #define BUCK_VOUT_NORM_SCALER   (int16_t)(ceil(log(BUCK_VOUT_NORM_INV_G)) + 1) ///< VOUT normalization  
 #define BUCK_VOUT_NORM_FACTOR   (int16_t)((BUCK_VOUT_NORM_INV_G / pow(2.0, BUCK_VOUT_NORM_SCALER)) * (pow(2.0, 15)-1)) ///< VOUT normalization factor scaled in Q15
 
-#define BUCK_VOUT_RANGE_MAX     (float)(ADC_REF * BUCK_VOUT_NORM_INV_G) ///< Macro calculating the integer number equivalent of the total output voltage range defined by the settings given above in [V]]
+#define BUCK_VOUT_RANGE_MAX     (float)(ADC_REFERENCE * BUCK_VOUT_NORM_INV_G) ///< Macro calculating the integer number equivalent of the total output voltage range defined by the settings given above in [V]]
     
 // ~ conversion macros end ~~~~~~~~~~~~~~~~~
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @addtogroup ideal-duty-cycle
- * @{
- * @brief
- * 
- * <b>Description</b>
- * 
- **************************************************************************************************/
-#define BUCK_NORM_IDEAL_DC(vout, vin) (float)( ((float)vout/(float)vin) * \
-            (((float)BUCK_VOUT_NORM_FACTOR / (float)BUCK_VIN_NORM_FACTOR) * \
-            pow(2, (BUCK_VOUT_NORM_SCALER-BUCK_VIN_NORM_SCALER))))
-/** @} */ // end of group
-
-/**************************************************************************************************
  * @addtogroup phase-current-feedback
  * @{
- * @brief
+ * @brief Declaration of phase-current feedback properties
  * 
- * <b>Description<b>
- * 
- **************************************************************************************************/
+ * <b>Description:</b>
+ * In this section the phase-current feedback signal scaling, gain, valid signal limits and nominal
+ * operating point is specified. Physical values are used to define values. Macros are used to 
+ * convert given physical values into binary (integer) number to be written into SFRs and variables.
+ * *************************************************************************************************/
 
-#define BUCK_ISNS_NEED_CALIBRATION  false //true                ///< Flag indicating that current feedback needs calibration
+#define BUCK_ISNS_NEED_CALIBRATION  false //true        ///< Flag indicating if current feedback needs calibration \
+                                                        ///< the calibration procedure needs to added individually \
+                                                        ///< to the user code section of the power controller
     
 // Feedback Declarations
 #define BUCK_ISNS_FEEDBACK_GAIN     (float) 0.050       ///< Current Gain in V/A
@@ -414,11 +420,11 @@
 
 // ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
 
-#define BUCK_ISNS_OCL           (uint16_t)((BUCK_ISNS_MAXIMUM * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRAN)  ///< Over Current Limit
-#define BUCK_ISNS_OCL_RELEASE   (uint16_t)((BUCK_ISNS_RELEASE * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRAN)  ///< Over Current Release Level
-#define BUCK_ISNS_REF           (uint16_t)(BUCK_ISNS_REFERENCE * BUCK_ISNS_FEEDBACK_GAIN / ADC_GRAN)  ///< Output Current Reference
-#define BUCK_ISNS1_OFFFSET      (uint16_t)(BUCK_ISNS1_FEEDBACK_OFFSET / ADC_GRAN)
-#define BUCK_ISNS2_OFFFSET      (uint16_t)(BUCK_ISNS2_FEEDBACK_OFFSET / ADC_GRAN)
+#define BUCK_ISNS_OCL           (uint16_t)((BUCK_ISNS_MAXIMUM * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_ISNS_OCL_RELEASE   (uint16_t)((BUCK_ISNS_RELEASE * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRANULARITY)  ///< Over Current Release Level
+#define BUCK_ISNS_REF           (uint16_t)(BUCK_ISNS_REFERENCE * BUCK_ISNS_FEEDBACK_GAIN / ADC_GRANULARITY)  ///< Output Current Reference
+#define BUCK_ISNS1_OFFFSET      (uint16_t)(BUCK_ISNS1_FEEDBACK_OFFSET / ADC_GRANULARITY)
+#define BUCK_ISNS2_OFFFSET      (uint16_t)(BUCK_ISNS2_FEEDBACK_OFFSET / ADC_GRANULARITY)
 #define BUCK_ISNS_ADC_TRGDLY    (uint16_t)(BUCK_ISNS_ADC_TRG_DELAY / PWM_CLOCK_PERIOD)
 
 #define BUCK_ISNS_NORM_INV_G    (float)(1.0/BUCK_ISNS_FEEDBACK_GAIN) ///< Inverted feedback gain required for value normalization
@@ -436,7 +442,17 @@
  * Description:
  * 
  * *************************************************************************************************/
-    
+ /**************************************************************************************************
+ * @addtogroup adaptive-control
+ * @{
+ * @brief Declaration of additional hardware-specific defines required for adaptive gain control
+ * 
+ * <b>Description:</b>
+ * In this section the phase-current feedback signal scaling, gain, valid signal limits and nominal
+ * operating point is specified. Physical values are used to define values. Macros are used to 
+ * convert given physical values into binary (integer) number to be written into SFRs and variables.
+ * *************************************************************************************************/
+   
 #define BUCK_VL_MINIMUM         (float)(BUCK_VIN_UNDER_VOLTAGE - BUCK_VOUT_RANGE_MAX) ///< Minimum input voltage - maximum output voltate
 #define BUCK_VL_NOMINAL         (float)(BUCK_VIN_NOMINAL       - BUCK_VOUT_NOMINAL) ///< Nominal input voltage - nominal output voltate
 #define BUCK_VL_MAXIMUM         (float)(BUCK_VIN_RANGE_MAX     - 0) ///< Maximum input voltage - 0
@@ -525,14 +541,14 @@
 
 // ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
 
-#define BUCK_UVLO_TDLY   (uint16_t)(((float)      BUCK_UVLO_TRIP_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0)
-#define BUCK_UVLO_RDLY   (uint16_t)(((float)  BUCK_UVLO_RECOVERY_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0)
-#define BUCK_OVLO_TDLY   (uint16_t)(((float)      BUCK_OVLO_TRIP_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0)
-#define BUCK_OVLO_RDLY   (uint16_t)(((float)  BUCK_OVLO_RECOVERY_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0)
-#define BUCK_REGERR_TDLY (uint16_t)(((float)    BUCK_REGERR_TRIP_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0)
-#define BUCK_REGERR_RDLY (uint16_t)(((float)BUCK_REGERR_RECOVERY_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0)
-#define BUCK_OCP_TDLY    (uint16_t)(((float)       BUCK_OCP_TRIP_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0)
-#define BUCK_OCP_RDLY    (uint16_t)(((float)   BUCK_OCP_RECOVERY_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0)
+#define BUCK_UVLO_TDLY   (uint16_t)(((float)      BUCK_UVLO_TRIP_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< under voltage lock out trip delay conversion nacro
+#define BUCK_UVLO_RDLY   (uint16_t)(((float)  BUCK_UVLO_RECOVERY_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< under voltage lock out recovery delay conversion nacro
+#define BUCK_OVLO_TDLY   (uint16_t)(((float)      BUCK_OVLO_TRIP_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< over voltage lock out trip delay conversion nacro
+#define BUCK_OVLO_RDLY   (uint16_t)(((float)  BUCK_OVLO_RECOVERY_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< over voltage lock out recovery delay conversion nacro
+#define BUCK_REGERR_TDLY (uint16_t)(((float)    BUCK_REGERR_TRIP_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< regulation error trip delay conversion macro
+#define BUCK_REGERR_RDLY (uint16_t)(((float)BUCK_REGERR_RECOVERY_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< regulation error recovery delay conversion macro
+#define BUCK_OCP_TDLY    (uint16_t)(((float)       BUCK_OCP_TRIP_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< over current protection trip Delay conversion macro
+#define BUCK_OCP_RDLY    (uint16_t)(((float)   BUCK_OCP_RECOVERY_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< over current protection recovery delay conversion nacro
 
 // ~ conversion macros end ~~~~~~~~~~~~~~~~~
 /** @} */ // end of group

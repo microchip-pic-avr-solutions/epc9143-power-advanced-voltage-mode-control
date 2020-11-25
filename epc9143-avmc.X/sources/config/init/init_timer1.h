@@ -22,21 +22,21 @@
 /* 
  * File:   init_timer1.h
  * Author: M91406
- * Comments: header file of the Timer1 initialization
+ * Comments: header file of the operating system/main task scheduler timer initialization
  * Revision history: 
  * 1.0  initial version
  */
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef INITIALIZE_TIMER1_H
-#define	INITIALIZE_TIMER1_H
+#ifndef SYSTEM_INITIALIZE_OS_TIMER_H
+#define	SYSTEM_INITIALIZE_OS_TIMER_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-#include <stdint.h>
-#include <stdbool.h>
+#include <stdint.h> // include standard integer types header file
+#include <stdbool.h> // include standard boolean types header file
 
 extern volatile uint16_t sysOsTimer_Initialize(void);
 
-#endif	/* INITIALIZE_TIMER1_H */
+#endif	/* SYSTEM_INITIALIZE_OS_TIMER_H */
 

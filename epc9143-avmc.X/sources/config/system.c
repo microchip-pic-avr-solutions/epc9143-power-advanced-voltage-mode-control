@@ -24,9 +24,6 @@
  * resources such as main oscillator, auxiliary oscillator, watchdog timer and
  * general purpose I/Os (GPIO).
  * 
- * In addition to the essential device initialization this function calls
- * the initialization of application specific user-tasks
- *
  * <p><b>Example:</b></p>
  *
  * <code>
