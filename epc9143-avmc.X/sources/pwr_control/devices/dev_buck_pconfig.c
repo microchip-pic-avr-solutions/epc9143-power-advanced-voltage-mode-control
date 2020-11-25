@@ -26,12 +26,12 @@ volatile uint16_t adcore_diff_mask=0;
  */
 /*******************************************************************************
  * @fn	volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
@@ -74,12 +74,12 @@ volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
@@ -174,12 +174,12 @@ volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLE
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
@@ -223,12 +223,12 @@ volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckIns
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
@@ -266,12 +266,12 @@ volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInst
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
@@ -307,12 +307,12 @@ volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckI
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
@@ -343,12 +343,12 @@ volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckIn
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckADC_ModuleInitialize(void) 
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckADC_ModuleInitialize(void) 
@@ -436,12 +436,12 @@ volatile uint16_t buckADC_ModuleInitialize(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* adc_Instance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* adc_Instance) 
@@ -528,12 +528,12 @@ volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* 
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckADC_Start(void) 
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckADC_Start(void) 
@@ -558,12 +558,12 @@ volatile uint16_t buckADC_Start(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
@@ -592,12 +592,12 @@ volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOIns
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
@@ -628,12 +628,12 @@ volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOI
 
 /*******************************************************************************
  * @fn	volatile bool buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile bool buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
@@ -657,12 +657,12 @@ volatile bool buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPI
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
@@ -698,12 +698,12 @@ volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_
 
 /*******************************************************************************
  * @fn	volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)

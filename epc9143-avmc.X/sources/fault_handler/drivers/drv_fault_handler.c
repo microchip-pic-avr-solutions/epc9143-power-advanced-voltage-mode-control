@@ -48,7 +48,7 @@
  */
 
 /**********************************************************************************
- * @struct FAULT_OBJECT_s fltobjClear
+ * @var FAULT_OBJECT_s fltobjClear
  * @brief Pre-initialized data structure object of a default fault object 
  * 
  * ********************************************************************************/
@@ -83,7 +83,7 @@ volatile struct FAULT_OBJECT_s fltobjClear =
  *
  * @brief Check current fault status of a user-defined fault object
  *
- * <b>Description</b>
+ * <b>Description</b><br>
  * This routine compares the most recent value of a global variable or SFR
  * (SOURCE) against user-defined thresholds. If the value violates/exceeds
  * one or more of the user defined conditions, a fault counter is incremented. 
@@ -98,7 +98,7 @@ volatile struct FAULT_OBJECT_s fltobjClear =
  * has been RSTCNT_MAX times below the RECOVERY_LEVEL threshold, the fault 
  * will automatically be cleared.
  * 
- *      @note If the value is within normal operating conditions, the fault 
+ * @note If the value is within normal operating conditions, the fault 
  *      counter will be cleared. Thus fault events must occur successively 
  *      incrementing the fault event counter high enough to eventually 
  *      trip a fault event. Thus the fault event counter can be used to 

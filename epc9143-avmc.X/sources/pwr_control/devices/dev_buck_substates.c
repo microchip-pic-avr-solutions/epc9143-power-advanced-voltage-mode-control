@@ -30,9 +30,7 @@ volatile uint16_t __attribute__((always_inline)) SubState_PowerGoodDelay(volatil
 // Function pointer array of buck converter startup sub-states
 
 /*******************************************************************************
- * @struct	volatile uint16_t (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @param	
- *
+ * @var volatile uint16_t (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief 
  * 
  * <b>Description</b> 
@@ -61,12 +59,12 @@ volatile uint16_t BuckRampUpSubStateList_size = (sizeof(BuckConverterRampUpSubSt
 
 /*******************************************************************************
  * @fn volatile uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @brief
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
- * @return  Unsigned Integer (0=failure, 1=success)
+ * @return  0=failure
+ * @return  1=success
  *
- * @brief 
- * 
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * After the converter has been cleared to get started, the power-on 
  * delay counter until the defined power-on delay period has expired.  
  *********************************************************************************/
@@ -97,12 +95,12 @@ volatile uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s 
 
 /*******************************************************************************
  * @fn volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @brief
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief 
+ * @return  0=failure
+ * @return  1=success
  * 
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * After the POWER ON DELAY has expired, the ramp up starting point is determined  
  * by measuring the input and output voltage and calculates the ideal duty ratio 
  * of the PWM. This value is then programmed into the PWM module duty cycle register 
@@ -221,12 +219,12 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
 
 /*******************************************************************************
  * @fn volatile uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @brief
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief 
+ * @return  0=failure
+ * @return  1=success
  * 
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * This is the essential step in which the output voltage is ramped up by 
  * incrementing the outer control loop reference. In voltage mode the output  
  * voltage will ramp up to the nominal regulation point. 
@@ -301,12 +299,12 @@ volatile uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buck
 
 /*******************************************************************************
  * @fn volatile uint16_t SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @brief
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief 
+ * @return  0=failure
+ * @return  1=success
  * 
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * This phase of the soft-start ramp is only executed in average current mode and 
  * will only take effect when the current limit is hit before the nominal voltage 
  * regulation point. In this case the constant output current is ramped up to from 
@@ -351,10 +349,10 @@ volatile uint16_t SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buck
 
 /*******************************************************************************
  * @fn volatile uint16_t SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @brief
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief 
+ * @return  0=failure
+ * @return  1=success
  * 
  * <b>Description</b><br> 
  * In this phase of the soft-start procedure a counter is incremented until the 

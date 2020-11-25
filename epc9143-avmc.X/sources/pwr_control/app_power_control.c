@@ -64,7 +64,7 @@ extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer
  * @struct BUCK_POWER_CONTROLLER_s 
  * @brief Global data object for a BUCK CONVERTER 
  * 
- * <b>Description:</b>
+ * <b>Description:</b><br>
  * The 'buck' data object holds all status, control and monitoring values of the BUCK power 
  * controller. The BUCK_POWER_CONTROLLER_s data structure is defined in dev_buck_converter.h.
  * Please refer to the comments on top of this file for further information.
@@ -78,9 +78,7 @@ volatile struct BUCK_POWER_CONTROLLER_s  buck;
 
 /***********************************************************************************
  * @struct	CS_CALIBRATION_s
- * @brief
- *  
- * <b>Description</b> 
+ * @brief 
  * 
  **********************************************************************************/
 typedef struct CS_CALIBRATION_s {
@@ -113,12 +111,11 @@ void appPowerSupply_CurrentSenseCalibration(void);
  */
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Initialize(void)
+ * @brief
  * @param	None
  * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
- *  
- * <b>Description</b> 
+ * 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 volatile uint16_t appPowerSupply_Initialize(void)
@@ -151,13 +148,13 @@ volatile uint16_t appPowerSupply_Initialize(void)
  */
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Execute(void)
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief This is the top-level function call triggering the most recent state 
  * machine of all associated power supply controllers
+ * @param	None
+ * @return  0=failure
+ * @return 1=success
  * 
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * After initialization, the proprietary user code has to call this function 
  * on a deterministic, constant time base. In each execution step this function
  * will call the power control state machines of each supported/included power
@@ -217,12 +214,12 @@ volatile uint16_t appPowerSupply_Execute(void)
  */
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Dispose(void)
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	None
+ * @return  0=failure
+ * @return 1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 
@@ -246,12 +243,12 @@ volatile uint16_t appPowerSupply_Dispose(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Start(void)
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	None
+ * @return  0=failure
+ * @return 1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 
@@ -266,12 +263,12 @@ volatile uint16_t appPowerSupply_Start(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Stop(void)
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	None
+ * @return  0=failure
+ * @return 1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 
@@ -286,12 +283,12 @@ volatile uint16_t appPowerSupply_Stop(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Suspend(void)
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	None
+ * @return  0=failure
+ * @return 1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 
@@ -306,12 +303,12 @@ volatile uint16_t appPowerSupply_Suspend(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Resume(void)
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	None
+ * @return  0=failure
+ * @return 1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 
@@ -330,12 +327,12 @@ volatile uint16_t appPowerSupply_Resume(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	None
+ * @return  0=failure
+ * @return 1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 
@@ -550,12 +547,13 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	None
+ * @return  0=failure
+ * @return 1=success
+ * 
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 
@@ -597,12 +595,13 @@ volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_ControllerInitialize(void)
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	None
+ * @return  0=failure
+ * @return 1=success
+ * 
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 
@@ -707,12 +706,12 @@ volatile uint16_t appPowerSupply_ControllerInitialize(void)
 
 /*******************************************************************************
  * @fn	inline void appPowerSupply_CurrentBalancing(void) 
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	None
+ * @return  0=failure
+ * @return 1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 
@@ -740,12 +739,12 @@ inline void appPowerSupply_CurrentBalancing(void)
 
 /*******************************************************************************
  * @fn	inline void appPowerSupply_CurrentSenseCalibration(void) 
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- *
  * @brief
+ * @param	None
+ * @return  0=failure
+ * @return 1=success
  *  
- * <b>Description</b> 
+ * <b>Description</b><br> 
  * 
  *********************************************************************************/
 inline void appPowerSupply_CurrentSenseCalibration(void)

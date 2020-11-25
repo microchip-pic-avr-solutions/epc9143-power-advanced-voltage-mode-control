@@ -7,8 +7,10 @@
  @brief Power Control Handler Reference
  
  @defgroup fault-handler Fault Handler Reference
- @brief Fault Handler Reference
- 
+ @brief Generic fault handler supporting comparison of static and dynamic data with automated fault trip and release function
+ @details This generic fault handler driver declares a fault object data structure, which can be used in user code to create various different fault objects, which will get scanned and managed by the fault handler functions.
+     The main function of this fault handler is restricted to detecting fault conditions, differentiating between trip and release conditions. Fault conditions are defined in user code individually for each fault object.
+
  @defgroup peripheral Power Supply Peripherals
  @brief Contains peripheral default settings and functions for power supply application
  
@@ -78,9 +80,13 @@
  @ingroup fault-handler
  @brief 
  
- @defgroup fault-handler-function Fault Handler Functions
+ @defgroup fault-handler-function Fault Handler Function
  @ingroup fault-handler
  @brief Fault Handler Functions
+
+ @defgroup fault-handler-trap Fault Handler Traps
+ @ingroup fault-handler
+ @brief Fault Handler Traps
 */
 
 //Power Supply Peripherals

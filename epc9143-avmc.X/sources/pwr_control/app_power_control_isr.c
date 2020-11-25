@@ -9,11 +9,6 @@
 #include "config/hal.h"
 #include "app_power_control.h"
 
-/*!Power Converter Control Loop Interrupt
- * **************************************************************************************************
- * 
- * **************************************************************************************************/
-
 /**
  * @addtogroup power-handler-function
  * @{
@@ -26,7 +21,7 @@
  * 
  * @return NONE
  *   
- * <b>Description<b>
+ * <b>Description<b><br>
  * The control interrupt is calling the control loop. The point in time where
  * this interrupt is thrown is determined by selecting the BUCK_VOUT_TRIGGER_MODE
  * option. 
