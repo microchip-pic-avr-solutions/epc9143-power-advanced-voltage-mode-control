@@ -67,7 +67,7 @@ var sectionId = 'dynsection-40';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__power-handler-function.html#gab889ae485e95010864ca04500457861a" target="_top" xlink:title="Description">
+<g id="a_node2"><a xlink:href="group__power-handler-function.html#gab889ae485e95010864ca04500457861a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="175,-267.5 175,-286.5 309,-286.5 309,-267.5 175,-267.5"/>
 <text text-anchor="middle" x="242" y="-274.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckADC_ChannelInitialize</text>
 </a>
@@ -82,7 +82,7 @@ var sectionId = 'dynsection-40';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group__power-handler-function.html#ga086bc1e4304b2ce7a435bf2a9799d078" target="_top" xlink:title="Description">
+<g id="a_node3"><a xlink:href="group__power-handler-function.html#ga086bc1e4304b2ce7a435bf2a9799d078" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="177,-229.5 177,-248.5 307,-248.5 307,-229.5 177,-229.5"/>
 <text text-anchor="middle" x="242" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckADC_ModuleInitialize</text>
 </a>
@@ -97,7 +97,7 @@ var sectionId = 'dynsection-40';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group__power-handler-function.html#ga984f623275f9e1da2e11be2e9ff8221c" target="_top" xlink:title="Description">
+<g id="a_node4"><a xlink:href="group__power-handler-function.html#ga984f623275f9e1da2e11be2e9ff8221c" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="191,-191.5 191,-210.5 293,-210.5 293,-191.5 191,-191.5"/>
 <text text-anchor="middle" x="242" y="-198.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_Initialize</text>
 </a>
@@ -112,7 +112,7 @@ var sectionId = 'dynsection-40';
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="group__power-handler-function.html#ga283487111ea685224a2caf350540daad" target="_top" xlink:title="Description">
+<g id="a_node8"><a xlink:href="group__power-handler-function.html#ga283487111ea685224a2caf350540daad" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="173,-131.5 173,-150.5 311,-150.5 311,-131.5 173,-131.5"/>
 <text text-anchor="middle" x="242" y="-138.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_ChannelInitialize</text>
 </a>
@@ -127,7 +127,7 @@ var sectionId = 'dynsection-40';
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="group__power-handler-function.html#ga1dedc10502a96efea6da9207f3416219" target="_top" xlink:title="Description">
+<g id="a_node11"><a xlink:href="group__power-handler-function.html#ga1dedc10502a96efea6da9207f3416219" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="175,-38.5 175,-57.5 309,-57.5 309,-38.5 175,-38.5"/>
 <text text-anchor="middle" x="242" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_ModuleInitialize</text>
 </a>
@@ -142,7 +142,7 @@ var sectionId = 'dynsection-40';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" target="_top" xlink:title="Description">
+<g id="a_node5"><a xlink:href="group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="381.5,-240.5 381.5,-259.5 470.5,-259.5 470.5,-240.5 381.5,-240.5"/>
 <text text-anchor="middle" x="426" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_Clear</text>
 </a>
@@ -157,7 +157,7 @@ var sectionId = 'dynsection-40';
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="group__power-handler-function.html#ga3d3f91c0e40884874e7df3a67fff23f3" target="_top" xlink:title="Description">
+<g id="a_node7"><a xlink:href="group__power-handler-function.html#ga3d3f91c0e40884874e7df3a67fff23f3" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="360.5,-202.5 360.5,-221.5 491.5,-221.5 491.5,-202.5 360.5,-202.5"/>
 <text text-anchor="middle" x="426" y="-209.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_PrivateInitialize</text>
 </a>

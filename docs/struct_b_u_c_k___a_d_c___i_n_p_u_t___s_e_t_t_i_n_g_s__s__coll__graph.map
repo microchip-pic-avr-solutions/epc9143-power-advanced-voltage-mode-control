@@ -1,4 +1,4 @@
 <map id="BUCK_ADC_INPUT_SETTINGS_s" name="BUCK_ADC_INPUT_SETTINGS_s">
-<area shape="rect" id="node1" title="Generic power converter ADC input channel configuration." alt="" coords="5,307,225,399"/>
-<area shape="rect" id="node2" href="$structvolatile.html" title="Description" alt="" coords="85,5,146,83"/>
+<area shape="rect" id="node1" title="Generic power converter ADC input channel configuration." alt="" coords="5,175,225,399"/>
+<area shape="rect" id="node2" href="$struct_b_u_c_k___a_d_c___i_n_p_u_t___s_c_a_l_i_n_g__s.html" title="Generic power converter feedback specifications." alt="" coords="9,5,222,112"/>
 </map>

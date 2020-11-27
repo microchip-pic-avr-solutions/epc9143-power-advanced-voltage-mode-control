@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="Description">
+<g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="757,-152.5 757,-171.5 877,-171.5 877,-152.5 757,-152.5"/>
 <text text-anchor="middle" x="817" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_GetPinState</text>
 </a>
@@ -51,7 +51,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="group__power-handler-function.html#gaf73787b6b72bc61786a39b9c7e47f6c6" target="_top" xlink:title="Description">
+<g id="a_node5"><a xlink:href="group__power-handler-function.html#gaf73787b6b72bc61786a39b9c7e47f6c6" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="408,-152.5 408,-171.5 546,-171.5 546,-152.5 408,-152.5"/>
 <text text-anchor="middle" x="477" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">drv_BuckConverter_Resume</text>
 </a>
@@ -66,7 +66,7 @@
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="group__power-handler-function.html#ga3287d86e7c3eecaa97d4bdf590ed0a15" target="_top" xlink:title="Description">
+<g id="a_node8"><a xlink:href="group__power-handler-function.html#ga3287d86e7c3eecaa97d4bdf590ed0a15" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="407,-95.5 407,-114.5 547,-114.5 547,-95.5 407,-95.5"/>
 <text text-anchor="middle" x="477" y="-102.5" font-family="Helvetica,sans-Serif" font-size="10.00">drv_BuckConverter_Suspend</text>
 </a>
@@ -96,7 +96,7 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="group__power-handler-function.html#ga3c7bf6b771bc1296401a270da4a95bff" target="_top" xlink:title="Description">
+<g id="a_node6"><a xlink:href="group__power-handler-function.html#ga3c7bf6b771bc1296401a270da4a95bff" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="239,-152.5 239,-171.5 370,-171.5 370,-152.5 239,-152.5"/>
 <text text-anchor="middle" x="304.5" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Resume</text>
 </a>
@@ -132,7 +132,7 @@
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="group__power-handler-function.html#gafa4e90d260e60cf20f06acee067c39cd" target="_top" xlink:title="Description">
+<g id="a_node9"><a xlink:href="group__power-handler-function.html#gafa4e90d260e60cf20f06acee067c39cd" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="238,-76.5 238,-95.5 371,-95.5 371,-76.5 238,-76.5"/>
 <text text-anchor="middle" x="304.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Suspend</text>
 </a>
@@ -147,7 +147,7 @@
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="group__fault-handler-function.html#ga54f9db91ea0782b08aa16ee77a57c5e5" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="group__fault-handler-function.html#ga54f9db91ea0782b08aa16ee77a57c5e5" target="_top" xlink:title="Initializes the user&#45;defined fault objects for overcurrent protection.">
 <polygon fill="white" stroke="black" points="90.5,-114.5 90.5,-133.5 185.5,-133.5 185.5,-114.5 90.5,-114.5"/>
 <text text-anchor="middle" x="138" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">ocp_FaultInitialize</text>
 </a>
@@ -162,7 +162,7 @@
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="group__fault-handler-function.html#gade437244e8f6e5ff7c57a73442063350" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="group__fault-handler-function.html#gade437244e8f6e5ff7c57a73442063350" target="_top" xlink:title="Initializes the user&#45;defined fault objects for overvoltage lockout.">
 <polygon fill="white" stroke="black" points="90.5,-76.5 90.5,-95.5 185.5,-95.5 185.5,-76.5 90.5,-76.5"/>
 <text text-anchor="middle" x="138" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">ovlo_FaultInitialize</text>
 </a>
@@ -177,7 +177,7 @@
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="group__fault-handler-function.html#ga82dc317e3adac0308e5ac3f5ad321605" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="group__fault-handler-function.html#ga82dc317e3adac0308e5ac3f5ad321605" target="_top" xlink:title="Initializes the user&#45;defined fault objects for regulation error.">
 <polygon fill="white" stroke="black" points="86,-38.5 86,-57.5 190,-57.5 190,-38.5 86,-38.5"/>
 <text text-anchor="middle" x="138" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">regerr_FaultInitialize</text>
 </a>
@@ -192,7 +192,7 @@
 <!-- Node13 -->
 <g id="node13" class="node">
 <title>Node13</title>
-<g id="a_node13"><a xlink:href="group__fault-handler-function.html#ga9441220f8a7d4a6805467d04b734e6b5" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="group__fault-handler-function.html#ga9441220f8a7d4a6805467d04b734e6b5" target="_top" xlink:title="Initializes the user&#45;defined fault objects for undervoltage lockout.">
 <polygon fill="white" stroke="black" points="90.5,-0.5 90.5,-19.5 185.5,-19.5 185.5,-0.5 90.5,-0.5"/>
 <text text-anchor="middle" x="138" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">uvlo_FaultInitialize</text>
 </a>

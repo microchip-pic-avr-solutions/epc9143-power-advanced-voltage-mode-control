@@ -1,4 +1,7 @@
 <map id="Output Voltage Feedback" name="Output Voltage Feedback">
-<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Abstraction Layer Defines." alt="" coords="5,5,176,31"/>
-<area shape="rect" id="node2" title="Declaration of output voltage feedback properties." alt="" coords="224,5,395,31"/>
+<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Abstraction Layer Defines." alt="" coords="5,55,176,80"/>
+<area shape="rect" id="node5" title="Declaration of phase current feedback parameters." alt="" coords="224,55,395,80"/>
+<area shape="rect" id="node2" href="$group__output-voltage-feedback-mcal.html" title="Device analog input pin, register and interupt vector assignments of output voltage feedback signal(s..." alt="" coords="443,5,620,31"/>
+<area shape="rect" id="node3" href="$group__output-voltage-feedback-macros.html" title="Conversion macros for user&#45;declarations of output voltage feedback parameters." alt="" coords="465,55,597,80"/>
+<area shape="rect" id="node4" href="$group__output-voltage-feedback-settings.html" title="User&#45;declaration of output voltage feedback parameters using physical quantities." alt="" coords="481,104,582,129"/>
 </map>

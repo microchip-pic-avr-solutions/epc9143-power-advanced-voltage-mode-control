@@ -58,7 +58,7 @@ var sectionId = 'dynsection-10';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="Description">
+<g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="0,-19.5 0,-38.5 115,-38.5 115,-19.5 0,-19.5"/>
 <text text-anchor="middle" x="57.5" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Stop</text>
 </a>
@@ -67,7 +67,7 @@ var sectionId = 'dynsection-10';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__power-handler-function.html#gaa865d025fb1e5ae1e16e0c519c6ba9a2" target="_top" xlink:title="Description">
+<g id="a_node2"><a xlink:href="group__power-handler-function.html#gaa865d025fb1e5ae1e16e0c519c6ba9a2" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="151,-19.5 151,-38.5 273,-38.5 273,-19.5 151,-19.5"/>
 <text text-anchor="middle" x="212" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">drv_BuckConverter_Stop</text>
 </a>
@@ -82,7 +82,7 @@ var sectionId = 'dynsection-10';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group__power-handler-function.html#gaf5c603256fc12118fe63eb285676d95f" target="_top" xlink:title="Description">
+<g id="a_node3"><a xlink:href="group__power-handler-function.html#gaf5c603256fc12118fe63eb285676d95f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="309,-19.5 309,-38.5 397,-38.5 397,-19.5 309,-19.5"/>
 <text text-anchor="middle" x="353" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_Stop</text>
 </a>
@@ -97,7 +97,7 @@ var sectionId = 'dynsection-10';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" target="_top" xlink:title="Description">
+<g id="a_node4"><a xlink:href="group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="467.5,-38.5 467.5,-57.5 556.5,-57.5 556.5,-38.5 467.5,-38.5"/>
 <text text-anchor="middle" x="512" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_Clear</text>
 </a>

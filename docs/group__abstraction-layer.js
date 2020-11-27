@@ -8,7 +8,8 @@ var group__abstraction_layer =
     [ "Output Voltage Feedback", "group__output-voltage-feedback.html", "group__output-voltage-feedback" ],
     [ "Phase Current Feedback", "group__phase-current-feedback.html", "group__phase-current-feedback" ],
     [ "Adaptive Gain Control Feed Forward", "group__adaptive-control.html", "group__adaptive-control" ],
-    [ "Startup Behavior", "group__startup-behavior.html", "group__startup-behavior" ],
-    [ "Fault Object Declarations", "group__fault-object-declarations.html", "group__fault-object-declarations" ],
-    [ "Controller Declarations", "group__controller-declarations.html", "group__controller-declarations" ]
+    [ "Startup Timing Settings", "group__startup-timing.html", "group__startup-timing" ],
+    [ "Fault Object Settings", "group__fault-objects-settings.html", "group__fault-objects-settings" ],
+    [ "Controller Declarations", "group__controller-declarations.html", "group__controller-declarations" ],
+    [ "Special Options", "group__custom-options.html", null ]
 ];

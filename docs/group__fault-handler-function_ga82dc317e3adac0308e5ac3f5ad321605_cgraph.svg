@@ -58,7 +58,7 @@ var sectionId = 'dynsection-4';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Initializes the user&#45;defined fault objects for regulation error.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-19.5 104,-19.5 104,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="52" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">regerr_FaultInitialize</text>
 </a>
@@ -67,7 +67,7 @@ var sectionId = 'dynsection-4';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__power-handler-function.html#gafa4e90d260e60cf20f06acee067c39cd" target="_top" xlink:title="Description">
+<g id="a_node2"><a xlink:href="group__power-handler-function.html#gafa4e90d260e60cf20f06acee067c39cd" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="140,-0.5 140,-19.5 273,-19.5 273,-0.5 140,-0.5"/>
 <text text-anchor="middle" x="206.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Suspend</text>
 </a>
@@ -82,7 +82,7 @@ var sectionId = 'dynsection-4';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group__power-handler-function.html#ga3287d86e7c3eecaa97d4bdf590ed0a15" target="_top" xlink:title="Description">
+<g id="a_node3"><a xlink:href="group__power-handler-function.html#ga3287d86e7c3eecaa97d4bdf590ed0a15" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="309,-0.5 309,-19.5 449,-19.5 449,-0.5 309,-0.5"/>
 <text text-anchor="middle" x="379" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">drv_BuckConverter_Suspend</text>
 </a>
@@ -112,7 +112,7 @@ var sectionId = 'dynsection-4';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="group__power-handler-function.html#gad4e9d780ae858d4417887f13b1619346" target="_top" xlink:title="Description">
+<g id="a_node5"><a xlink:href="group__power-handler-function.html#gad4e9d780ae858d4417887f13b1619346" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="659,-0.5 659,-19.5 779,-19.5 779,-0.5 659,-0.5"/>
 <text text-anchor="middle" x="719" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_GetPinState</text>
 </a>

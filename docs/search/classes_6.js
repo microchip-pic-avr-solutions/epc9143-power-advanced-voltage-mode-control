@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['p33c_5fccp_5finstance_5fsfrset_5fs_847',['P33C_CCP_INSTANCE_SFRSET_s',['../struct_p33_c___c_c_p___i_n_s_t_a_n_c_e___s_f_r_s_e_t__s.html',1,'']]],
-  ['p33c_5fdac_5finstance_5fs_848',['P33C_DAC_INSTANCE_s',['../struct_p33_c___d_a_c___i_n_s_t_a_n_c_e__s.html',1,'']]],
-  ['p33c_5fdac_5fmodule_5fs_849',['P33C_DAC_MODULE_s',['../struct_p33_c___d_a_c___m_o_d_u_l_e__s.html',1,'']]],
-  ['p33c_5fgpio_5finstance_5fs_850',['P33C_GPIO_INSTANCE_s',['../struct_p33_c___g_p_i_o___i_n_s_t_a_n_c_e__s.html',1,'']]],
-  ['p33c_5fpwm_5fgenerator_5fs_851',['P33C_PWM_GENERATOR_s',['../struct_p33_c___p_w_m___g_e_n_e_r_a_t_o_r__s.html',1,'']]],
-  ['p33c_5fpwm_5fmodule_5fs_852',['P33C_PWM_MODULE_s',['../struct_p33_c___p_w_m___m_o_d_u_l_e__s.html',1,'']]]
+  ['task_5finfo_5fs_952',['TASK_INFO_s',['../struct_t_a_s_k___i_n_f_o__s.html',1,'']]],
+  ['trap_5fflags_5fs_953',['TRAP_FLAGS_s',['../struct_t_r_a_p___f_l_a_g_s__s.html',1,'']]],
+  ['trap_5flogger_5fs_954',['TRAP_LOGGER_s',['../struct_t_r_a_p___l_o_g_g_e_r__s.html',1,'']]],
+  ['traplog_5fstatus_5fs_955',['TRAPLOG_STATUS_s',['../struct_t_r_a_p_l_o_g___s_t_a_t_u_s__s.html',1,'']]]
 ];

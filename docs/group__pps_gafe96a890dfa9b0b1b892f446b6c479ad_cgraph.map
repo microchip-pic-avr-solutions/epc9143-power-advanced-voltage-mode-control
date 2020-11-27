@@ -1,0 +1,4 @@
+<map id="PPS_UnmapInput" name="PPS_UnmapInput">
+<area shape="rect" id="node1" title="Disconnects a pin from a digital function input." alt="" coords="5,5,131,32"/>
+<area shape="rect" id="node2" href="$group__pps.html#ga8ff1dc265c87a5b247fc28a41f9db009" title="Assigns a pin to a digital function input." alt="" coords="179,5,304,32"/>
+</map>

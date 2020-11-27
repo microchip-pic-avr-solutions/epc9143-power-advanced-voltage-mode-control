@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__fault-handler.html" target="_top" xlink:title="Fault Handler Reference.">
+<g id="a_node2"><a xlink:href="group__fault-handler.html" target="_top" xlink:title="Generic fault handler supporting comparison of static and dynamic data with automated fault trip and ...">
 <polygon fill="white" stroke="black" points="121,-19 0,-19 0,0 121,0 121,-19"/>
 <text text-anchor="middle" x="60.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Fault Handler Reference</text>
 </a>

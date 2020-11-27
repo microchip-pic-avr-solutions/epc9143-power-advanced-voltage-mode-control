@@ -67,7 +67,7 @@ var sectionId = 'dynsection-3';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__power-handler-function.html#gab80ac65aae45f7f9d9fd4ef6f8c56111" target="_top" xlink:title="Description">
+<g id="a_node2"><a xlink:href="group__power-handler-function.html#gab80ac65aae45f7f9d9fd4ef6f8c56111" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="167,-39 167,-69 321,-69 321,-39 167,-39"/>
 <text text-anchor="start" x="175" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_CurrentSense</text>
 <text text-anchor="middle" x="244" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">Calibration</text>
@@ -98,7 +98,7 @@ var sectionId = 'dynsection-3';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group__power-handler-function.html#gad4e9d780ae858d4417887f13b1619346" target="_top" xlink:title="Description">
+<g id="a_node4"><a xlink:href="group__power-handler-function.html#gad4e9d780ae858d4417887f13b1619346" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="357,-0.5 357,-19.5 477,-19.5 477,-0.5 357,-0.5"/>
 <text text-anchor="middle" x="417" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_GetPinState</text>
 </a>

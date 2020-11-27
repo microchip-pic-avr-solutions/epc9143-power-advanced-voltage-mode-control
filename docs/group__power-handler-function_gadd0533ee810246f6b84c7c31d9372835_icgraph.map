@@ -1,5 +1,5 @@
 <map id="buckPWM_Suspend" name="buckPWM_Suspend">
-<area shape="rect" id="node1" title="Description" alt="" coords="148,31,289,57"/>
-<area shape="rect" id="node2" href="$group__buck-state-machine-function.html#ga7851b6ab25e86f56cb2056e4aac43c5c" title="Description This function is a default anchor in case task list index #0 is ever called...." alt="" coords="9,5,97,32"/>
-<area shape="rect" id="node3" href="$group__buck-state-machine-function.html#ga295e97e4e4330b73f398e98d889d229d" title="Description After successful initialization or after an externally triggered state machine reset,..." alt="" coords="5,56,100,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="148,31,289,57"/>
+<area shape="rect" id="node2" href="$group__buck-state-machine-function.html#ga7851b6ab25e86f56cb2056e4aac43c5c" title=" " alt="" coords="9,5,97,32"/>
+<area shape="rect" id="node3" href="$group__buck-state-machine-function.html#ga295e97e4e4330b73f398e98d889d229d" title=" " alt="" coords="5,56,100,83"/>
 </map>

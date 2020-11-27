@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="Pre&#45;initialized data structure object of a default fault object.">
+<g id="a_node1"><a xlink:title="This data structure is a collection of data structures for fault handling.">
 <polygon fill="#bfbfbf" stroke="black" points="175,-160.5 175,-272.5 284,-272.5 284,-160.5 175,-160.5"/>
 <text text-anchor="middle" x="229.5" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00">FAULT_OBJECT_s</text>
 <polyline fill="none" stroke="black" points="175,-253.5 284,-253.5 "/>

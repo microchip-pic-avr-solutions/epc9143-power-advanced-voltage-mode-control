@@ -63,25 +63,20 @@ var viewHeight = 850;
 <title>cluster20</title>
 <polygon fill="none" stroke="black" points="783.8,-16 783.8,-140 873.8,-140 873.8,-16 783.8,-16"/>
 </g>
-<g id="clust1" class="cluster">
-<title>cluster_loop</title>
-<polygon fill="none" stroke="black" points="79.8,-171 79.8,-795 249.8,-795 249.8,-171 79.8,-171"/>
-<text text-anchor="middle" x="164.8" y="-779.8" font-family="Times New Roman,serif" font-size="14.00">main() loop</text>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster1</title>
 <polygon fill="none" stroke="black" points="563.8,-8 563.8,-720 767.8,-720 767.8,-8 563.8,-8"/>
 <text text-anchor="middle" x="665.8" y="-704.8" font-family="Times New Roman,serif" font-size="14.00">Device Layer</text>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster11</title>
-<polygon fill="none" stroke="black" points="607.8,-16 607.8,-163 759.8,-163 759.8,-16 607.8,-16"/>
-<text text-anchor="middle" x="683.8" y="-147.8" font-family="Times New Roman,serif" font-size="14.00">Buck Controller Control</text>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster10</title>
 <polygon fill="none" stroke="black" points="571.8,-172.5 571.8,-689 759.8,-689 759.8,-172.5 571.8,-172.5"/>
 <text text-anchor="middle" x="665.8" y="-673.8" font-family="Times New Roman,serif" font-size="14.00">Buck Converter State Machine</text>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster11</title>
+<polygon fill="none" stroke="black" points="607.8,-16 607.8,-163 759.8,-163 759.8,-16 607.8,-16"/>
+<text text-anchor="middle" x="683.8" y="-147.8" font-family="Times New Roman,serif" font-size="14.00">Buck Controller Control</text>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster0</title>
@@ -92,6 +87,11 @@ var viewHeight = 850;
 <title>cluster00</title>
 <polygon fill="none" stroke="black" points="265.8,-172.5 265.8,-689 547.8,-689 547.8,-172.5 265.8,-172.5"/>
 <text text-anchor="middle" x="406.8" y="-673.8" font-family="Times New Roman,serif" font-size="14.00">Power Supply State Machine</text>
+</g>
+<g id="clust1" class="cluster">
+<title>cluster_loop</title>
+<polygon fill="none" stroke="black" points="79.8,-171 79.8,-795 249.8,-795 249.8,-171 79.8,-171"/>
+<text text-anchor="middle" x="164.8" y="-779.8" font-family="Times New Roman,serif" font-size="14.00">main() loop</text>
 </g>
 <!-- call_PWR_SM -->
 <g id="node1" class="node">

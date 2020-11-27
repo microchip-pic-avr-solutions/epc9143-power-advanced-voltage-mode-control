@@ -1,6 +1,5 @@
 var hierarchy =
 [
-    [ "__attribute__", "struct____attribute____.html", null ],
     [ "BUCK_ADC_INPUT_SCALING_s", "struct_b_u_c_k___a_d_c___i_n_p_u_t___s_c_a_l_i_n_g__s.html", null ],
     [ "BUCK_ADC_INPUT_SETTINGS_s", "struct_b_u_c_k___a_d_c___i_n_p_u_t___s_e_t_t_i_n_g_s__s.html", null ],
     [ "BUCK_CONVERTER_CONTROL_s", "struct_b_u_c_k___c_o_n_v_e_r_t_e_r___c_o_n_t_r_o_l__s.html", null ],
@@ -17,6 +16,8 @@ var hierarchy =
     [ "BUCK_STARTUP_SETTINGS_s", "struct_b_u_c_k___s_t_a_r_t_u_p___s_e_t_t_i_n_g_s__s.html", null ],
     [ "BUCK_STATE_ID_s", "struct_b_u_c_k___s_t_a_t_e___i_d__s.html", null ],
     [ "BUCK_SWITCH_NODE_SETTINGS_s", "struct_b_u_c_k___s_w_i_t_c_h___n_o_d_e___s_e_t_t_i_n_g_s__s.html", null ],
+    [ "CPU_INTTREG_s", "struct_c_p_u___i_n_t_t_r_e_g__s.html", null ],
+    [ "CPU_RCON_s", "struct_c_p_u___r_c_o_n__s.html", null ],
     [ "CS_CALIBRATION_s", "struct_c_s___c_a_l_i_b_r_a_t_i_o_n__s.html", null ],
     [ "DSP_CONFIG_s", "struct_d_s_p___c_o_n_f_i_g__s.html", null ],
     [ "FAULT_OBJECT_s", "struct_f_a_u_l_t___o_b_j_e_c_t__s.html", [
@@ -41,7 +42,10 @@ var hierarchy =
     [ "P33C_GPIO_INSTANCE_s", "struct_p33_c___g_p_i_o___i_n_s_t_a_n_c_e__s.html", null ],
     [ "P33C_PWM_GENERATOR_s", "struct_p33_c___p_w_m___g_e_n_e_r_a_t_o_r__s.html", null ],
     [ "P33C_PWM_MODULE_s", "struct_p33_c___p_w_m___m_o_d_u_l_e__s.html", null ],
+    [ "TASK_INFO_s", "struct_t_a_s_k___i_n_f_o__s.html", null ],
+    [ "TRAP_FLAGS_s", "struct_t_r_a_p___f_l_a_g_s__s.html", null ],
+    [ "TRAP_LOGGER_s", "struct_t_r_a_p___l_o_g_g_e_r__s.html", null ],
+    [ "TRAPLOG_STATUS_s", "struct_t_r_a_p_l_o_g___s_t_a_t_u_s__s.html", null ],
     [ "V_LOOP_CONTROL_LOOP_COEFFICIENTS_s", "struct_v___l_o_o_p___c_o_n_t_r_o_l___l_o_o_p___c_o_e_f_f_i_c_i_e_n_t_s__s.html", null ],
-    [ "V_LOOP_CONTROL_LOOP_HISTORIES_s", "struct_v___l_o_o_p___c_o_n_t_r_o_l___l_o_o_p___h_i_s_t_o_r_i_e_s__s.html", null ],
-    [ "volatile", "structvolatile.html", null ]
+    [ "V_LOOP_CONTROL_LOOP_HISTORIES_s", "struct_v___l_o_o_p___c_o_n_t_r_o_l___l_o_o_p___h_i_s_t_o_r_i_e_s__s.html", null ]
 ];

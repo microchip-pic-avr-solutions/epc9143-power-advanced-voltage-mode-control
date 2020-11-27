@@ -1,0 +1,6 @@
+<map id="Startup Timing Settings" name="Startup Timing Settings">
+<area shape="rect" id="node1" title="Declaration of startup timing periods." alt="" coords="224,31,383,56"/>
+<area shape="rect" id="node3" href="$group__startup-timing-settings.html" title="User&#45;declaration of startup timing periods using physical quantities." alt="" coords="446,5,547,31"/>
+<area shape="rect" id="node4" href="$group__startup-timing-macros.html" title="Conversion macros for user&#45;declarations of startup timing periods." alt="" coords="431,55,563,80"/>
+<area shape="rect" id="node2" href="$group__abstraction-layer.html" title="Abstraction Layer Defines." alt="" coords="5,31,176,56"/>
+</map>

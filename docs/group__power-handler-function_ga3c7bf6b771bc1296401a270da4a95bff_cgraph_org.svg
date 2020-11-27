@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="Description">
+<g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-19.5 131,-19.5 131,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="65.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Resume</text>
 </a>
@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__power-handler-function.html#gaf73787b6b72bc61786a39b9c7e47f6c6" target="_top" xlink:title="Description">
+<g id="a_node2"><a xlink:href="group__power-handler-function.html#gaf73787b6b72bc61786a39b9c7e47f6c6" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="167,-0.5 167,-19.5 305,-19.5 305,-0.5 167,-0.5"/>
 <text text-anchor="middle" x="236" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">drv_BuckConverter_Resume</text>
 </a>
@@ -51,7 +51,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group__power-handler-function.html#gad4e9d780ae858d4417887f13b1619346" target="_top" xlink:title="Description">
+<g id="a_node4"><a xlink:href="group__power-handler-function.html#gad4e9d780ae858d4417887f13b1619346" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="515,-0.5 515,-19.5 635,-19.5 635,-0.5 515,-0.5"/>
 <text text-anchor="middle" x="575" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_GetPinState</text>
 </a>

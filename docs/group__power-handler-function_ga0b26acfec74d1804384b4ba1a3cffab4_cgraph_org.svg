@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="Description">
+<g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="0,-129 0,-159 143,-159 143,-129 0,-129"/>
 <text text-anchor="start" x="8" y="-147" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Peripherals</text>
 <text text-anchor="middle" x="71.5" y="-136" font-family="Helvetica,sans-Serif" font-size="10.00">Initialize</text>
@@ -82,7 +82,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group__power-handler-function.html#gab889ae485e95010864ca04500457861a" target="_top" xlink:title="Description">
+<g id="a_node3"><a xlink:href="group__power-handler-function.html#gab889ae485e95010864ca04500457861a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="354,-267.5 354,-286.5 488,-286.5 488,-267.5 354,-267.5"/>
 <text text-anchor="middle" x="421" y="-274.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckADC_ChannelInitialize</text>
 </a>
@@ -97,7 +97,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group__power-handler-function.html#ga086bc1e4304b2ce7a435bf2a9799d078" target="_top" xlink:title="Description">
+<g id="a_node4"><a xlink:href="group__power-handler-function.html#ga086bc1e4304b2ce7a435bf2a9799d078" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="356,-229.5 356,-248.5 486,-248.5 486,-229.5 356,-229.5"/>
 <text text-anchor="middle" x="421" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckADC_ModuleInitialize</text>
 </a>
@@ -112,7 +112,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="group__power-handler-function.html#ga984f623275f9e1da2e11be2e9ff8221c" target="_top" xlink:title="Description">
+<g id="a_node5"><a xlink:href="group__power-handler-function.html#ga984f623275f9e1da2e11be2e9ff8221c" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="370,-191.5 370,-210.5 472,-210.5 472,-191.5 370,-191.5"/>
 <text text-anchor="middle" x="421" y="-198.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_Initialize</text>
 </a>
@@ -127,7 +127,7 @@
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="group__power-handler-function.html#ga283487111ea685224a2caf350540daad" target="_top" xlink:title="Description">
+<g id="a_node9"><a xlink:href="group__power-handler-function.html#ga283487111ea685224a2caf350540daad" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="352,-131.5 352,-150.5 490,-150.5 490,-131.5 352,-131.5"/>
 <text text-anchor="middle" x="421" y="-138.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_ChannelInitialize</text>
 </a>
@@ -142,7 +142,7 @@
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="group__power-handler-function.html#ga1dedc10502a96efea6da9207f3416219" target="_top" xlink:title="Description">
+<g id="a_node12"><a xlink:href="group__power-handler-function.html#ga1dedc10502a96efea6da9207f3416219" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="354,-38.5 354,-57.5 488,-57.5 488,-38.5 354,-38.5"/>
 <text text-anchor="middle" x="421" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_ModuleInitialize</text>
 </a>
@@ -157,7 +157,7 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" target="_top" xlink:title="Description">
+<g id="a_node6"><a xlink:href="group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="560.5,-240.5 560.5,-259.5 649.5,-259.5 649.5,-240.5 560.5,-240.5"/>
 <text text-anchor="middle" x="605" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_Clear</text>
 </a>
@@ -172,7 +172,7 @@
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="group__power-handler-function.html#ga3d3f91c0e40884874e7df3a67fff23f3" target="_top" xlink:title="Description">
+<g id="a_node8"><a xlink:href="group__power-handler-function.html#ga3d3f91c0e40884874e7df3a67fff23f3" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="539.5,-202.5 539.5,-221.5 670.5,-221.5 670.5,-202.5 539.5,-202.5"/>
 <text text-anchor="middle" x="605" y="-209.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_PrivateInitialize</text>
 </a>

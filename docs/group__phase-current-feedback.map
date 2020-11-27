@@ -1,4 +1,7 @@
 <map id="Phase Current Feedback" name="Phase Current Feedback">
-<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Abstraction Layer Defines." alt="" coords="5,5,176,31"/>
-<area shape="rect" id="node2" title="Declaration of phase&#45;current feedback properties." alt="" coords="224,5,391,31"/>
+<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Abstraction Layer Defines." alt="" coords="5,55,176,80"/>
+<area shape="rect" id="node4" title="Declaration of phase current feedback parameters." alt="" coords="224,55,391,80"/>
+<area shape="rect" id="node2" href="$group__phase-current-feedback-macros.html" title="Conversion macros for user&#45;declarations of phase current feedback parameters." alt="" coords="461,5,593,31"/>
+<area shape="rect" id="node3" href="$group__phase-current-feedback-settings.html" title="User&#45;declaration of phase current feedback parameters using physical quantities." alt="" coords="477,55,578,80"/>
+<area shape="rect" id="node5" href="$group__phase-current-feedback-mcal.html" title="Device analog input pin, register and interupt vector assignments of phase current feedback signal(s)" alt="" coords="439,104,616,129"/>
 </map>

@@ -1,4 +1,4 @@
-<map id="Fault Handler Functions" name="Fault Handler Functions">
-<area shape="rect" id="node1" href="$group__fault-handler.html" title="Fault Handler Reference." alt="" coords="5,5,167,31"/>
-<area shape="rect" id="node2" title="Fault Handler Functions." alt="" coords="215,5,375,31"/>
+<map id="Fault Handler Function" name="Fault Handler Function">
+<area shape="rect" id="node1" href="$group__fault-handler.html" title="Generic fault handler supporting comparison of static and dynamic data with automated fault trip and ..." alt="" coords="5,5,167,31"/>
+<area shape="rect" id="node2" title="Fault Handler Functions." alt="" coords="215,5,368,31"/>
 </map>

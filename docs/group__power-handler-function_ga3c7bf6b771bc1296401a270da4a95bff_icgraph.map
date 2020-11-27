@@ -1,5 +1,5 @@
 <map id="appPowerSupply_Resume" name="appPowerSupply_Resume">
-<area shape="rect" id="node1" title="Description" alt="" coords="323,5,497,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="323,5,497,32"/>
 <area shape="rect" id="node2" href="$group__main-loop.html#ga8842f6a41fe23f932a8864fc140c4b5b" title="Application wide fault object monitoring routine." alt="" coords="104,5,275,32"/>
 <area shape="rect" id="node3" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,5,56,32"/>
 </map>

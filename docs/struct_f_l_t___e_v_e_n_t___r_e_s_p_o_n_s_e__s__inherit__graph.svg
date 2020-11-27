@@ -27,7 +27,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html" target="_top" xlink:title="Pre&#45;initialized data structure object of a default fault object.">
+<g id="a_node2"><a xlink:href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html" target="_top" xlink:title="This data structure is a collection of data structures for fault handling.">
 <polygon fill="white" stroke="black" points="16,-116.5 16,-228.5 125,-228.5 125,-116.5 16,-116.5"/>
 <text text-anchor="middle" x="70.5" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00">FAULT_OBJECT_s</text>
 <polyline fill="none" stroke="black" points="16,-209.5 125,-209.5 "/>

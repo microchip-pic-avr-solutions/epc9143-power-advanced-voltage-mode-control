@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="Description">
+<g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="107,-19.5 107,-38.5 213,-38.5 213,-19.5 107,-19.5"/>
 <text text-anchor="middle" x="160" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_Suspend</text>
 </a>
@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__buck-state-machine-function.html#ga7851b6ab25e86f56cb2056e4aac43c5c" target="_top" xlink:title="Description This function is a default anchor in case task list index #0 is ever called....">
+<g id="a_node2"><a xlink:href="group__buck-state-machine-function.html#ga7851b6ab25e86f56cb2056e4aac43c5c" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="2.5,-38.5 2.5,-57.5 68.5,-57.5 68.5,-38.5 2.5,-38.5"/>
 <text text-anchor="middle" x="35.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">State_Error</text>
 </a>
@@ -36,7 +36,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group__buck-state-machine-function.html#ga295e97e4e4330b73f398e98d889d229d" target="_top" xlink:title="Description After successful initialization or after an externally triggered state machine reset,...">
+<g id="a_node3"><a xlink:href="group__buck-state-machine-function.html#ga295e97e4e4330b73f398e98d889d229d" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-19.5 71,-19.5 71,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="35.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">State_Reset</text>
 </a>
