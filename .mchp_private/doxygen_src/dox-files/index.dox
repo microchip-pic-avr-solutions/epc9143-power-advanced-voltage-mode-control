@@ -34,6 +34,13 @@
  @brief Task Layer
 */
 
+//Device Start-Up Sub-Index
+/**
+ @defgroup system-initialization System Initialization
+ @ingroup device-start-up
+ @brief System Initialization Procedure
+*/
+
 //Buck State Machine index
 /**
  @defgroup buck-state-machine-function Buck State Machine Functions
@@ -128,27 +135,86 @@
  @defgroup input-voltage-feedback Input Voltage Feedback 
  @ingroup abstraction-layer
  @brief 
+ */
  
+//Output Voltage Feedback Declarations
+/**
  @defgroup output-voltage-feedback Output Voltage Feedback
  @ingroup abstraction-layer
- @brief 
+ @brief Declaration of phase current feedback parameters
  
+ @defgroup output-voltage-feedback-settings User Settings
+ @ingroup output-voltage-feedback
+ @brief User-declaration of output voltage feedback parameters using physical quantities
+
+ @defgroup output-voltage-feedback-macros Conversion Macros
+ @ingroup output-voltage-feedback
+ @brief Conversion macros for user-declarations of output voltage feedback parameters
+
+ @defgroup output-voltage-feedback-mcal Microcontroller Abstraction
+ @ingroup output-voltage-feedback
+ @brief Device analog input pin, register and interupt vector assignments of output voltage feedback signal(s)
+ 
+*/
+ 
+//Phase Current Feedback Declarations
+/**
  @defgroup phase-current-feedback Phase Current Feedback
  @ingroup abstraction-layer
- @brief 
+ @brief Declaration of phase current feedback parameters
  
+ @defgroup phase-current-feedback-settings User Settings
+ @ingroup phase-current-feedback
+ @brief User-declaration of phase current feedback parameters using physical quantities
+
+ @defgroup phase-current-feedback-macros Conversion Macros
+ @ingroup phase-current-feedback
+ @brief Conversion macros for user-declarations of phase current feedback parameters
+
+ @defgroup phase-current-feedback-mcal Microcontroller Abstraction
+ @ingroup phase-current-feedback
+ @brief Device analog input pin, register and interupt vector assignments of phase current feedback signal(s)
+*/
+ 
+//Adaptive Gain Control Declarations
+/**
  @defgroup adaptive-control Adaptive Gain Control Feed Forward 
  @ingroup abstraction-layer
- @brief 
+ @brief Declaration of macros calculating additional parameters for Adaptive Gain Modulation
+*/
  
- @defgroup startup-behavior Startup Behavior  
+//Startup Timing Declarations
+/**
+ @defgroup startup-timing Startup Timing Settings
  @ingroup abstraction-layer
- @brief 
+ @brief Declaration of startup timing periods
+
+ @defgroup startup-timing-settings User Settings
+ @ingroup startup-timing
+ @brief User-declaration of startup timing periods using physical quantities
+
+ @defgroup startup-timing-macros Conversion Macros
+ @ingroup startup-timing
+ @brief Conversion macros for user-declarations of startup timing periods
+*/
  
- @defgroup fault-object-declarations Fault Object Declarations
+//Fault Object Declarations
+/**
+ @defgroup fault-objects-settings Fault Object Settings
  @ingroup abstraction-layer
- @brief 
+ @brief Declaration of fault object trip and recovery delays
+
+ @defgroup fault-response-settings Fault Response User Settings
+ @ingroup fault-objects-settings
+ @brief User-declaration of fault object trip and recovery delays using physical quantities
  
+ @defgroup fault-response-macros Fault Response Conversion Macros
+ @ingroup fault-objects-settings
+ @brief Conversion macros for user declarations of fault object trip and recovery delays
+*/
+
+//Control Loop Interrupt Vector Settings
+/**
  @defgroup controller-declarations Controller Declarations
  @ingroup abstraction-layer
  @brief 

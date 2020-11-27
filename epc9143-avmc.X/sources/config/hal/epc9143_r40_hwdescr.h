@@ -43,7 +43,6 @@
   #define __EPC9143_R40__
 #endif
 
-
 /**************************************************************************************************
  * @addtogroup microcontroller-abstraction
  * @{ 
@@ -68,7 +67,8 @@
 // PWM/ADC Clock Settings    
 #define PWM_CLOCK_FREQUENCY (float)4.0e+9   ///< PWM Clock Frequency in [Hz]
 #define PWM_CLOCK_PERIOD    (float)(1.0/PWM_CLOCK_FREQUENCY) ///< PWM Clock Period in [sec]
-/** @} */ // end of group
+
+/** @} */ // end of group microcontroller-abstraction
 
 /**************************************************************************************************
  * @addtogroup state-machine-settings
@@ -84,7 +84,7 @@
 #define MAIN_EXECUTION_PERIOD   (float)100.0e-6     ///< main state machine pace period in [sec]
 #define MAIN_EXEC_PER           (uint16_t)((CPU_FREQUENCY * MAIN_EXECUTION_PERIOD)-1) // DO NOT CHANGE
 
-/** @} */ // end of group
+/** @} */ // end of group state-machine-settings
     
 /***************************************************************************************************
  * @addtogroup microcontroller-abstraction
@@ -128,7 +128,7 @@
     #define PWRGOOD_Init()      { _ANSELB1 = 0; _LATB1 = 0; _TRISB1 = 0; }
     
 #endif
-/** @} */ // end of group
+/** @} */ // end of group microcontroller-abstraction
 
 /**************************************************************************************************
  * @addtogroup power-parameter
@@ -146,7 +146,7 @@
 #define SWITCHING_PERIOD        (float)(1.0/SWITCHING_FREQUENCY)    ///< Switching period in [sec]
 #define SWITCHING_PHASE_SHIFT   (float)0.0        ///< Phase Shift of PWM output in [sec]
 
-/** @} */ // end of group
+/** @} */ // end of group power-parameter
 
 /**************************************************************************************************
  * @addtogroup power-parameter
@@ -162,6 +162,8 @@
 
 /* CUSTOM RUNTIME OPTIONS */
 #define PLANT_MEASUREMENT   false
+
+/** @} */ // end of group
 
 /**************************************************************************************************
  * @addtogroup fundamental-pwm-settings
@@ -325,11 +327,10 @@
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @addtogroup output-voltage-feedback
+ * @addtogroup output-voltage-feedback-settings
  * @{
  * @brief Declaration of output voltage feedback properties
  * 
- * <b>Description:</b>
  * In this section the output voltage feedback signal scaling, gain, valid signal limits and nominal
  * operating point is specified. Physical values are used to define values. Macros are used to 
  * convert given physical values into binary (integer) number to be written into SFRs and variables.
@@ -342,9 +343,23 @@
     
 #define BUCK_VOUT_DIV_R1            (float)(18.00) ///< Upper voltage divider resistor in kOhm
 #define BUCK_VOUT_DIV_R2            (float)(4.750) ///< Lower voltage divider resistor in kOhm
-#define BUCK_VOUT_FEEDBACK_GAIN     (float)((BUCK_VOUT_DIV_R2) / (BUCK_VOUT_DIV_R1 + BUCK_VOUT_DIV_R2))
 #define BUCK_VOUT_FEEDBACK_OFFSET   (float)(0.0)   ///< Physical, static signal offset in [V]
 #define BUCK_VOUT_ADC_TRG_DELAY     (float)(0.0e-9) ///< Trigger delay in [sec]
+
+#define BUCK_VOUT_FEEDBACK_GAIN     (float)((BUCK_VOUT_DIV_R2) / (BUCK_VOUT_DIV_R1 + BUCK_VOUT_DIV_R2))
+
+/** @} */ // end of group output-voltage-feedback-settings ~~~~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/** 
+ * @addtogroup output-voltage-feedback-mcal
+ * @{ 
+ * @brief ADC input assignments of output voltage feedback signals
+ * 
+ * In this section the ADC input channels, related ADC result buffers, trigger
+ * sources and interrupt vectors are defined. These settings allow the fast 
+ * re-assignments of feedback signals in case of hardware changes.
+ */
 
 // Peripheral Assignments
 #define BUCK_VOUT_ANSEL             _ANSELA0    ///< GPIO analog function mode enable bit
@@ -353,8 +368,19 @@
 #define BUCK_VOUT_ADCBUF            ADCBUF0     ///< ADC input buffer of this ADC channel
 #define BUCK_VOUT_ADCTRIG           PG2TRIGA    ///< Register used for trigger placement
 #define BUCK_VOUT_TRGSRC            BUCK_PWM1_TRGSRC_TRG1 ///< PWM1 (=PG2) Trigger 1 via PGxTRIGA
-    
-// ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
+
+/** @} */ // end of group phase-current-feedback-mcal ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/** 
+ * @addtogroup output-voltage-feedback-macros
+ * @{ 
+ * @brief Conversion macros of output voltage feedback parameters
+ * 
+ * These conversion macros are used to convert user settings defined as physical 
+ * quantities into binary (integer) numbers, which will be written to registers and
+ * variables and used in calculations throughout the firmware.
+ */
 
 #define BUCK_VOUT_REF           (uint16_t)(BUCK_VOUT_NOMINAL * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRANULARITY) ///< Macro calculating the integer number equivalent of the output voltage reference given above in [V]
 #define BUCK_VOUT_NOM           BUCK_VOUT_REF ///< Alias macro of the integer number equivalent of the nominal output voltage given above in [V]
@@ -369,23 +395,28 @@
 
 #define BUCK_VOUT_RANGE_MAX     (float)(ADC_REFERENCE * BUCK_VOUT_NORM_INV_G) ///< Macro calculating the integer number equivalent of the total output voltage range defined by the settings given above in [V]]
     
-// ~ conversion macros end ~~~~~~~~~~~~~~~~~
-/** @} */ // end of group
+/** @} */ // end of group output-voltage-feedback-macros ~~~~~~~~~~~~~~~~~~~~~~
 
 /**************************************************************************************************
- * @addtogroup phase-current-feedback
+ * @addtogroup phase-current-feedback-settings
  * @{
  * @brief Declaration of phase-current feedback properties
  * 
  * <b>Description:</b>
  * In this section the phase-current feedback signal scaling, gain, valid signal limits and nominal
- * operating point is specified. Physical values are used to define values. Macros are used to 
- * convert given physical values into binary (integer) number to be written into SFRs and variables.
+ * operating point is specified. Physical quantities are used to define parameter values to ease
+ * the system configuration. 
+ * 
+ * Macros are used to convert given physical values into binary (integer) number to be written
+ * into SFRs and variables and being used in runtime calculations.  
+ * (see \ref phase-current-feedback-macros for details)
  * *************************************************************************************************/
 
-#define BUCK_ISNS_NEED_CALIBRATION  false //true        ///< Flag indicating if current feedback needs calibration \
-                                                        ///< the calibration procedure needs to added individually \
-                                                        ///< to the user code section of the power controller
+/** Flag indicating if current feedback needs calibration 
+the calibration procedure needs to added individually 
+to the user code section of the power controller */
+
+#define BUCK_ISNS_NEED_CALIBRATION  false //true        
     
 // Feedback Declarations
 #define BUCK_ISNS_FEEDBACK_GAIN     (float) 0.050       ///< Current Gain in V/A
@@ -396,7 +427,46 @@
 
 #define BUCK_ISNS1_FEEDBACK_OFFSET  (float) 1.650       ///< current sense #1 feedback offset (average)
 #define BUCK_ISNS2_FEEDBACK_OFFSET  (float) 1.650       ///< current sense #2 feedback offset (average)
-    
+
+/** @} */ // end of group
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/** 
+ * @addtogroup phase-current-feedback-macros
+ * @{ 
+ * @brief Conversion macros of phase current feedback parameters
+ * 
+ * These conversion macros are used to convert user settings defined as physical 
+ * quantities into binary (integer) numbers, which will be written to registers and
+ * variables and used in calculations throughout the firmware.
+ */
+
+// Phase Current Feedback Settings Conversion Macros
+#define BUCK_ISNS_OCL           (uint16_t)((BUCK_ISNS_MAXIMUM * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_ISNS_OCL_RELEASE   (uint16_t)((BUCK_ISNS_RELEASE * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRANULARITY)  ///< Over Current Release Level
+#define BUCK_ISNS_REF           (uint16_t)(BUCK_ISNS_REFERENCE * BUCK_ISNS_FEEDBACK_GAIN / ADC_GRANULARITY)  ///< Output Current Reference
+#define BUCK_ISNS1_OFFFSET      (uint16_t)(BUCK_ISNS1_FEEDBACK_OFFSET / ADC_GRANULARITY)
+#define BUCK_ISNS2_OFFFSET      (uint16_t)(BUCK_ISNS2_FEEDBACK_OFFSET / ADC_GRANULARITY)
+#define BUCK_ISNS_ADC_TRGDLY    (uint16_t)(BUCK_ISNS_ADC_TRG_DELAY / PWM_CLOCK_PERIOD)
+
+#define BUCK_ISNS_NORM_INV_G    (float)(1.0/BUCK_ISNS_FEEDBACK_GAIN) ///< Inverted feedback gain required for value normalization
+#define BUCK_ISNS_NORM_SCALER   (int16_t)(ceil(log(BUCK_ISNS_NORM_INV_G)) + 1) ///< ISNS normalization  
+#define BUCK_ISNS_NORM_FACTOR   (int16_t)((BUCK_ISNS_NORM_INV_G / pow(2.0, BUCK_ISNS_NORM_SCALER)) * (pow(2.0, 15)-1)) ///< ISNS normalization factor scaled in Q15
+
+/** @} */ // end of group phase-current-feedback-macros ~~~~~~~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/** 
+ * @addtogroup phase-current-feedback-mcal
+ * @{ 
+ * @brief ADC input assignments of phase current feedback signals
+ * 
+ * <b>Description</b><br>
+ * In this section the ADC input channels, related ADC result buffers, trigger
+ * sources and interrupt vectors are defined. These settings allow the fast 
+ * re-assignments of feedback signals in case of hardware changes.
+ */
+ 
 // Peripheral Assignments
 #define _BUCK_ISNS1_ADCInterrupt    _ADCAN1Interrupt   
 #define _BUCK_ISNS1_ADCISR_IF       _ADCAN1IF
@@ -418,96 +488,91 @@
 #define BUCK_ISNS2_ADCTRIG          PG4TRIGB    ///< Register used for trigger placement
 #define BUCK_ISNS2_TRGSRC           BUCK_PWM2_TRGSRC_TRG2 ///< PWM2 (=PG4) Trigger 2 via PGxTRIGB
 
-// ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
+/** @} */ // end of group phase-current-feedback-mcal ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#define BUCK_ISNS_OCL           (uint16_t)((BUCK_ISNS_MAXIMUM * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRANULARITY)  ///< Over Current Limit
-#define BUCK_ISNS_OCL_RELEASE   (uint16_t)((BUCK_ISNS_RELEASE * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRANULARITY)  ///< Over Current Release Level
-#define BUCK_ISNS_REF           (uint16_t)(BUCK_ISNS_REFERENCE * BUCK_ISNS_FEEDBACK_GAIN / ADC_GRANULARITY)  ///< Output Current Reference
-#define BUCK_ISNS1_OFFFSET      (uint16_t)(BUCK_ISNS1_FEEDBACK_OFFSET / ADC_GRANULARITY)
-#define BUCK_ISNS2_OFFFSET      (uint16_t)(BUCK_ISNS2_FEEDBACK_OFFSET / ADC_GRANULARITY)
-#define BUCK_ISNS_ADC_TRGDLY    (uint16_t)(BUCK_ISNS_ADC_TRG_DELAY / PWM_CLOCK_PERIOD)
-
-#define BUCK_ISNS_NORM_INV_G    (float)(1.0/BUCK_ISNS_FEEDBACK_GAIN) ///< Inverted feedback gain required for value normalization
-#define BUCK_ISNS_NORM_SCALER   (int16_t)(ceil(log(BUCK_ISNS_NORM_INV_G)) + 1) ///< ISNS normalization  
-#define BUCK_ISNS_NORM_FACTOR   (int16_t)((BUCK_ISNS_NORM_INV_G / pow(2.0, BUCK_ISNS_NORM_SCALER)) * (pow(2.0, 15)-1)) ///< ISNS normalization factor scaled in Q15
     
-// ~ conversion macros end ~~~~~~~~~~~~~~~~~
-/** @} */ // end of group
-    
-/**************************************************************************************************
- * @addtogroup adaptive-control
- * @{
- * @brief
- * 
- * Description:
- * 
- * *************************************************************************************************/
  /**************************************************************************************************
  * @addtogroup adaptive-control
  * @{
  * @brief Declaration of additional hardware-specific defines required for adaptive gain control
  * 
  * <b>Description:</b>
- * In this section the phase-current feedback signal scaling, gain, valid signal limits and nominal
- * operating point is specified. Physical values are used to define values. Macros are used to 
- * convert given physical values into binary (integer) number to be written into SFRs and variables.
+ * In this section additional macros are defined to calculate constant parameters for the
+ * adaptive gain modulation algorithm using user defined settings declared in their respective
+ * sections. Any change of these parameters will also result in a change of the values of the 
+ * gain modulation parameters of this section.
  * *************************************************************************************************/
    
 #define BUCK_VL_MINIMUM         (float)(BUCK_VIN_UNDER_VOLTAGE - BUCK_VOUT_RANGE_MAX) ///< Minimum input voltage - maximum output voltate
 #define BUCK_VL_NOMINAL         (float)(BUCK_VIN_NOMINAL       - BUCK_VOUT_NOMINAL) ///< Nominal input voltage - nominal output voltate
 #define BUCK_VL_MAXIMUM         (float)(BUCK_VIN_RANGE_MAX     - 0) ///< Maximum input voltage - 0
 
-#define BUCK_VIN_NORM_FCT       (float)(BUCK_VOUT_FEEDBACK_GAIN / BUCK_VIN_FEEDBACK_GAIN)   ///< VIN-2-VOUT Normalization Factor
+#define BUCK_AGC_FACTOR_MAX     (float)(BUCK_VL_NOMINAL / BUCK_VL_MINIMUM) ///< Floating point number of the maximumm limit of the adaptive gain modulation factor (float)
 
-// ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
-    
+// To calculate the voltage across the inductor, input and output voltage ADC results need to be normalized. The normalization factor is determined here
+// Each input voltage sample has to be multiplied with this scaling factor to allow the calculation of the instantaneous voltage across the inductor
+#define BUCK_VIN_NORM_FCT       (float)(BUCK_VOUT_FEEDBACK_GAIN / BUCK_VIN_FEEDBACK_GAIN)   ///< VIN-2-VOUT Normalization Factor
 #define BUCK_AGC_IO_NORM_SCALER (int16_t)(ceil(log(BUCK_VIN_NORM_FCT)) + 1) ///< Nominal VL Q15 scaler  
 #define BUCK_AGC_IO_NORM_FACTOR (int16_t)((BUCK_VIN_NORM_FCT / pow(2.0, BUCK_AGC_IO_NORM_SCALER)) * (pow(2.0, 15)-1)) ///< Nominal VL Q15 factor 
 
-// The AGC compare value is defined at the lowest input voltage and highest output voltage 
-// (= lowest voltage across inductor)
-// ToDo: Remove - min VIN turned out to be too cumbersome when tuning coefficients to nominal conditions
-//#define BUCK_AGC_MEDIAN         (int16_t)((float)BUCK_VIN_UVLO_TRIP * BUCK_VIN_NORM_FCT)
-
 // The AGC compare value is defined at nominal input voltage and output voltage 
-#define BUCK_AGC_MEDIAN         (int16_t)(((float)BUCK_VIN_NOM * BUCK_VIN_NORM_FCT) - BUCK_VOUT_NOM)
+#define BUCK_AGC_MEDIAN         (int16_t)(((float)BUCK_VIN_NOM * BUCK_VIN_NORM_FCT) - BUCK_VOUT_NOM) ///< Adaptive gain modulation factor at nominal operating point
+#define BUCK_AGC_NOM_SCALER     (uint16_t)(ceil(log(BUCK_AGC_FACTOR_MAX)) + 1) ///< Bit-shift scaler of the floating point number of the maimum limit of the adaptive gain modulation factor
+#define BUCK_AGC_NOM_FACTOR     (uint16_t)(0x7FFF >> BUCK_AGC_NOM_SCALER) ///< Fractional of the floating point number of the maimum limit of the adaptive gain modulation factor
 
-#define BUCK_AGC_FACTOR_MAX     (float)(BUCK_VL_NOMINAL / BUCK_VL_MINIMUM)
-#define BUCK_AGC_NOM_SCALER     (uint16_t)(ceil(log(BUCK_AGC_FACTOR_MAX)) + 1)
-#define BUCK_AGC_NOM_FACTOR     (uint16_t)(0x7FFF >> BUCK_AGC_NOM_SCALER)
-// ~ conversion macros end ~~~~~~~~~~~~~~~~~
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @addtogroup startup-behavior
+ * @addtogroup startup-timing-settings
  * @{
  * @brief Global defines for soft-start specific parameters
  * 
- * <b>Description</b>
- * This section is used to define power supply startup timing setting. The soft-start sequence 
- * is part of the power controller. It allows to program specific timings for Power On Delay,
- * Ramp Period and Power Good Delay. After the startup has passed these three timing periods,
- * the power supply is ending up in "normal" operation, continuously regulating the output until 
- * a fault is detected or the operating state is changed for any other reason.
+ * <b>Description</b><br>
+ * This section is used to define power supply startup timing settings. The soft-start sequence 
+ * is part of the power controller. It allows to program specific timings for 
+ *   - Power On Delay
+ *   - Ramp Period 
+ *   - Power Good Delay
+ * 
+ * After the startup has passed these three timing periods, the power supply is ending up in 
+ * "normal" operation, continuously regulating the output until a fault is detected or the 
+ * operating state is changed for any other reason. When the output voltage reference is changed, 
+ * the power control state machine will use the voltage ramp slope defined here to tune from the 
+ * recent voltage reference to the new reference value. During this period the BUSY-bit of the 
+ * power controller (status word, bit #7) will be set. THis status bit will be cleared automatically
+ * by the power controller state machine once the new reference value has been applied and the 
+ * converter is back in constant regulation mode.
  * 
  * Pre-compiler macros are used to translate physical values into binary (integer) numbers to 
- * be written to SFRs and variables.
+ * be written to SFRs and variables.  
+ * (see \ref startup-timing-macros for details)
  * 
+ * <b>Please Note:</b><br>
+ * On EPC9143 Rev 4 it takes roughly 50 ms until the auxiliary power has been started
+ * and the controller completes self-test and peripheral configuration. After this period
+ * the controller starts to execute the power control state machine.
+ *  
+ * This additional startup delay of ~50 ms is not considered here and needs to be taken into 
+ * account when adjusting startup timing.
  **************************************************************************************************/
 
-// On EPC9143 Rev 4 it takes roughly 50 ms until the auxiliary power has been started
-// and the controller completes self-test and peripheral configuration. After this period
-// the controller starts to execute the power control state machine.
-    
-// This additional startup delay of ~50 ms is not considered here and needs to be taken into 
-// account when adjusting startup timing.
-    
 #define BUCK_POWER_ON_DELAY          (float) 200e-3 ///< power on delay in [sec]
-#define BUCK_VRAMP_PERIOD            (float) 100e-3 ///< ramp period in [sec]
-#define BUCK_IRAMP_PERIOD            (float) 100e-3 ///< ramp period in [sec]
-#define BUCK_POWER_GOOD_DELAY        (float) 200e-3 ///< power good in [sec]
+#define BUCK_VRAMP_PERIOD            (float) 100e-3 ///< voltage ramp-up period in [sec]
+#define BUCK_IRAMP_PERIOD            (float) 100e-3 ///< output current ramp-up period in [sec]
+#define BUCK_POWER_GOOD_DELAY        (float) 200e-3 ///< power good delay in [sec]
 
-// ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
+/** @} */ // end of group startup-timing-settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/** 
+ * @addtogroup startup-timing-macros
+ * @{ 
+ * @brief Conversion Macros of Startup Timing Settings
+ * 
+ * These conversion macros are used to convert user settings defined as physical 
+ * quantities into binary (integer) numbers, which will be written to registers and
+ * variables and used in calculations throughout the firmware.
+ */
 
 #define BUCK_POD       (uint16_t)(((float)BUCK_POWER_ON_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0)
 #define BUCK_VRAMP_PER (uint16_t)(((float)BUCK_VRAMP_PERIOD / (float)MAIN_EXECUTION_PERIOD)-1.0)
@@ -516,20 +581,29 @@
 #define BUCK_IREF_STEP (uint16_t)((float)BUCK_ISNS_REF / (float)(BUCK_VRAMP_PER + 1.0))
 #define BUCK_PGD       (uint16_t)(((float)BUCK_POWER_GOOD_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0)
 
-// ~ conversion macros end ~~~~~~~~~~~~~~~~~
-/** @} */ // end of group
+/** @} */ // end of group startup-timing-macros ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 /**************************************************************************************************
- * @addtogroup fault-object-declarations
+ * @addtogroup fault-response-settings
  * @{
  * @brief Global defines for fault-monitor related parameters
  * 
- * <b>Description</b>
- * This section is used to define power supply fault object timing setting. The fault monitor 
- * is 
+ * <b>Description</b><br>
+ * This section is used to define power supply fault object timing settings. The fault monitor 
+ * is continuously monitoring declared data objects at the high-priority task frequency defined by 
+ * \ref MAIN_EXECUTION_PERIOD. Based on this known interval, filtering delays for fault trip and 
+ * fault recovery events to allow users to adjust the fault detection sensitivity.
+ * 
+ * - Fault Trip Event Delay   
+ * This setting defines for how long a fault condition has to be continuously active before the 
+ * effective fault trip status/event will be triggered.
+ * 
+ * - Fault Recovery Event Delay   
+ * This setting defines for how long a fault condition has to be continuously cleared before the 
+ * effective fault recovery status/event will be triggered.
  * 
  *************************************************************************************************/
-    
+
 #define BUCK_UVLO_TRIP_DELAY         (float) 5e-3   ///< under voltage lock out trip delay in [sec]
 #define BUCK_UVLO_RECOVERY_DELAY     (float) 500e-3 ///< under voltage lock out recovery delay in [sec]
 #define BUCK_OVLO_TRIP_DELAY         (float) 5e-3   ///< over voltage lock out trip delay in [sec]
@@ -539,7 +613,18 @@
 #define BUCK_OCP_TRIP_DELAY          (float) 2e-3   ///< over current proection trip delay in [sec]
 #define BUCK_OCP_RECOVERY_DELAY      (float) 500e-3 ///< over current proection recovery delay in [sec]
 
-// ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
+/** @} */ // end of group fault-response-settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/** 
+ * @addtogroup fault-response-macros
+ * @{ 
+ * @brief Conversion Macros of Fault Response Timing Settings
+ * 
+ * These conversion macros are used to convert user settings defined as physical 
+ * quantities into binary (integer) numbers, which will be written to registers and
+ * variables and used in calculations throughout the firmware.
+ */
 
 #define BUCK_UVLO_TDLY   (uint16_t)(((float)      BUCK_UVLO_TRIP_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< under voltage lock out trip delay conversion nacro
 #define BUCK_UVLO_RDLY   (uint16_t)(((float)  BUCK_UVLO_RECOVERY_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< under voltage lock out recovery delay conversion nacro
@@ -550,9 +635,7 @@
 #define BUCK_OCP_TDLY    (uint16_t)(((float)       BUCK_OCP_TRIP_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< over current protection trip Delay conversion macro
 #define BUCK_OCP_RDLY    (uint16_t)(((float)   BUCK_OCP_RECOVERY_DELAY / (float)MAIN_EXECUTION_PERIOD)-1.0) ///< over current protection recovery delay conversion nacro
 
-// ~ conversion macros end ~~~~~~~~~~~~~~~~~
-/** @} */ // end of group
-
+/** @} */ // end of group fault-response-macros ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
 /**************************************************************************************************
  * @addtogroup controller-declarations
@@ -582,4 +665,5 @@
   #define _BUCK_VLOOP_ISR_IE        _PWM2IE
 #endif
 /** @} */ // end of group
+
 #endif	/* EPC9143_R40_HARDWARE_DESCRIPTOR_H */
