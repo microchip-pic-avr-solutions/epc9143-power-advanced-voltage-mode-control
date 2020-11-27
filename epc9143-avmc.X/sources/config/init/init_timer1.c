@@ -14,6 +14,7 @@
 
 volatile uint16_t sysOsTimer_Initialize (void)
 {
+    volatile uint16_t retval=1;
 
     T1CONbits.TON = 0;  // Timer1 On: Stops 16-bit Timer1 during configuration
     T1CONbits.TSIDL = 0; // Timer1 Stop in Idle Mode: Continues module operation in Idle mode
@@ -30,10 +31,25 @@ volatile uint16_t sysOsTimer_Initialize (void)
     TMR1 = 0x00;
     //Period = 0.0001 s; Frequency = 100000000 Hz; PR 9999; 
     PR1 = MAIN_EXEC_PER;
+    
     // Reset interrupt and interrupt flag bit
     _T1IP = 0;  // Set interrupt priority to zero
     _T1IF = 0;  // Reset interrupt flag bit
     _T1IE = 0;  // Disable Timer1 interrupt
    
-    return(1);
+    return(retval);
+}
+
+volatile uint16_t sysOsTimer_Enable (volatile bool interrupt_enable, volatile uint8_t interrupt_priority)
+{
+    volatile uint16_t retval=1;
+
+    // Enable Timer1
+    _T1IP = interrupt_priority;  // Set interrupt priority to zero
+    _T1IF = 0;  // Reset interrupt flag bit
+    _T1IE = interrupt_enable;  // Enable/Disable Timer1 interrupt
+    T1CONbits.TON = 1; // Turn on Timer1
+    retval &= T1CONbits.TON; // Add timer enable bit to list of checked bits
+    
+    return(retval);
 }

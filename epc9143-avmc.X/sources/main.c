@@ -80,18 +80,17 @@ int main(void) {
     // Initialize basic system configuration
     retval &= SYSTEM_Initialize();
     
+    // Initialize special, application-specific peripherals 
+    retval &= sysUserPeriperhals_Initialize();
+
     // Initialize software modules
-    retval &= appPowerSupply_Initialize(); // Initialize BUCK converter object and state machine
-    retval &= appFaultMonitor_Initialize(); // Initialize fault objects and fault handler task
+    retval &= sysUserTasks_Initialize();
+
+    // Enable OS Timer
+    retval &= sysOsTimer_Enable(false, 0);
     
-    // Enable Timer1
-    _T1IP = 0;  // Set interrupt priority to zero
-    _T1IF = 0;  // Reset interrupt flag bit
-    _T1IE = 0;  // Enable/Disable Timer1 interrupt
-    T1CONbits.TON = 1; // Turn on Timer1
-    retval &= T1CONbits.TON; // Add timer enable bit to list of checked bits
-    
-    // Last line of defense: when configuration of any block failed 
+    // Last line of defense:
+    // when configuration of any block failed...
     if (!retval)
         CPU_RESET();        // reset the CPU and try again
 
