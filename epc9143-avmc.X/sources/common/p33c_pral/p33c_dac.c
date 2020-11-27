@@ -274,7 +274,7 @@ volatile uint16_t p33c_DacInstance_ConfigWrite(
  *   Default configuration of the DAC module SFRs with all its registers 
  *   being reset to their default state when the device comes out of RESET.
  *   Programmers can use this template to reset (dispose) a previously used
- *   DAC module when it's not used anymore or to secure a known startup
+ *   DAC module when it's not used anymore or to ensure a known startup
  *   condition before writing individual configurations to its SFRs.
  * 
  ********************************************************************************/
@@ -288,24 +288,29 @@ volatile struct P33C_DAC_MODULE_s dacModuleConfigClear = {
     };
 
 /*********************************************************************************
- * @var dacModuleConfigDefault
- * @brief Default configuration of the DAC module base SFRs
- * @param dacConfigClear: DAC Module Special Function Register (SFR) set
+ * @var dacModuleDefault
+ * @brief Default configuration of DAC module running from 500 MHz input clock
+ * @param dacModuleDefault: DAC Module Special Function Register (SFR) set
  *
  * <b>Description:</b><br>
- *   Default configuration of the DAC module SFRs with all its registers 
- *   being reset to their default state when the device comes out of RESET.
- *   Transition Mode Duration and Steady State Delay are both set =1.
+ * Default configuration of the DAC module SFRs with all its registers 
+ * being reset to their default state when the device comes out of RESET.
+ * The timing settings for settling time and transition mode time of the 
+ * built-in Pulse-Density Modulator ramp generator are reset to their
+ * recommended default values when operated from a 500 MHz clock input.
+ * (Please read the device data sheet for details)
+ * 
+ * Programmers can use this template to reset a previously used
+ * DAC module when it's not used anymore or to ensure a known startup
+ * condition before writing individual configurations to its SFRs.
  * 
  ********************************************************************************/
-
-volatile struct P33C_DAC_MODULE_s dacModuleConfigDefault = {
-
-    .DacModuleCtrl1L.value = 0x0000,
-    .DacModuleCtrl2L.value = 0x008A,
-    .DacModuleCtrl2H.value = 0x0055
-
-    };
+/*  */
+volatile struct P33C_DAC_MODULE_s dacModuleDefault = {
+    .DacModuleCtrl1L.value = 0x0080, ///< DAC Module disabled, DAC Stop In Idle Mode=0, DAC Clock Source=AFPLLO, DAC Clock Divider=1:1, Filter Clock Divider=1:1
+    .DacModuleCtrl2H.bits.SSTIME = 0x008A, ///< Steady-state setting time is set to default of 0x8A
+    .DacModuleCtrl2L.bits.TMODTIME = 0x0055 ///< Transition mode duration is set to default of 0x55
+};
 
 /*********************************************************************************
  * @var dacConfigClear

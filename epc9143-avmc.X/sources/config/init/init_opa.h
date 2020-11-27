@@ -36,7 +36,7 @@
 #include <stdbool.h>
 
 //extern volatile uint16_t init_opa_module(void);
-extern volatile uint16_t init_opa(void);
+extern volatile uint16_t sysOpAmp_Initialize(void);
 //extern volatile uint16_t launch_opa_module(void);
 
 

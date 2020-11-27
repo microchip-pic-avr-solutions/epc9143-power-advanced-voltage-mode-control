@@ -9,7 +9,7 @@
 #include <xc.h>
 #include <p33CK32MP102.h>
 
-volatile uint16_t init_opa(void) {
+volatile uint16_t sysOpAmp_Initialize(void) {
     
     volatile uint16_t retval=1;
 
