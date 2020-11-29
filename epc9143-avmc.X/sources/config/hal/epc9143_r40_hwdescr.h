@@ -44,52 +44,97 @@
 #endif
 
 /**************************************************************************************************
- * @addtogroup microcontroller-abstraction
+ * @addtogroup special-options
+ * @{
+ * @brief Global defines used to enable/disable special firmware options
+ * 
+ * <b>Description</b><br>
+ * This section is used to enable/disable special options of the firmware. 
+ * 
+ **************************************************************************************************/
+
+/* CUSTOM RUNTIME OPTIONS */
+#define PLANT_MEASUREMENT   false ///< If enabled, replaces the common voltage control loop by a simple P-control loop to perform measurements of the plant transfer function.<br><b>DO NOT USE THIS OPTION FOR NORMAL OPERATION</b>
+
+/** @} */ // end of group
+
+/**************************************************************************************************
+ * @addtogroup device-abstraction-settings
  * @{ 
+ * @brief Fundamental microcontroller device settings
  * 
- * 
- * <b>Description</b>
+ * <b>Description</b><br>
  * This section is used to define device specific parameters like ADC reference and
- * resolution. Pre-compiler macros are used to translate physical values into binary 
- * (integer) numbers to be written to SFRs
+ * resolution, main execution clock frequency and peripheral time base settings. 
+ * All parameters are defined using physical quantities. 
  * 
  **************************************************************************************************/
 #define CPU_FREQUENCY       (float)100000000.0  ///< CPU frequency in [Hz]
-#define CPU_TCY             (float)(1.0/CPU_FREQUENCY) ///< Instruction period
 
 // ADC(DAC Reference and Resolution Settings    
 #define ADC_REFERENCE       (float)3.300 ///< ADC reference voltage in V
 #define ADC_RESOLUTION      (float)12.0  ///< ADC resolution in [bit]
 
-#define ADC_GRANULARITY     (float)(ADC_REFERENCE / pow(2.0, ADC_RESOLUTION)) ///< ADC granularity in [V/tick]
-#define ADC_VALUE_MAX       (uint16_t) (pow(2.0, ADC_RESOLUTION) - 1.0) // DO NOT CHANGE
-    
 // PWM/ADC Clock Settings    
 #define PWM_CLOCK_FREQUENCY (float)4.0e+9   ///< PWM Clock Frequency in [Hz]
+
+
+/** @} */ // end of group device-abstraction-settings
+
+/**
+ * @addtogroup device-abstraction-macros
+ * @{ 
+ * @brief Conversion macros of fundamental microcontroller device settings
+ * 
+ * <b>Description</b><br>
+ * This section is used to convert device specific parameters like ADC reference and
+ * resolution, main execution clock frequency and peripheral time base settings, declared 
+ * in physical quantities, into binary (integer) numbers to be written to variables and SFRs.
+ */
+
+#define CPU_TCY             (float)(1.0/CPU_FREQUENCY) ///< Instruction period
+#define ADC_GRANULARITY     (float)(ADC_REFERENCE / pow(2.0, ADC_RESOLUTION)) ///< ADC granularity in [V/tick]
+#define ADC_VALUE_MAX       (uint16_t) (pow(2.0, ADC_RESOLUTION) - 1.0) // DO NOT CHANGE
 #define PWM_CLOCK_PERIOD    (float)(1.0/PWM_CLOCK_FREQUENCY) ///< PWM Clock Period in [sec]
 
-/** @} */ // end of group microcontroller-abstraction
+/** @} */ // end of group device-abstraction-macros
 
 /**************************************************************************************************
  * @addtogroup state-machine-settings
  * @{
- * @brief Global defines for state-machine specific parameters
+ * @brief Global state-machine user-settings
  * 
  * <b>Description</b>
- * This section is used to define state-machine settings such as the main execution call interval. 
- * Pre-compiler macros are used to translate physical values into binary (integer) numbers to be 
- * written to SFRs and variables.
+ * This section is used to set, modify, enable or disable common state machine parameters
+ * and features. 
+ * 
+ * (Please see individual settings description for detail) 
  * 
  **************************************************************************************************/
-#define MAIN_EXECUTION_PERIOD   (float)100.0e-6     ///< main state machine pace period in [sec]
+
+#define MAIN_EXECUTION_PERIOD   (float)100.0e-6 ///< main state machine function call period in [sec]
+
+/** @} */ // end of group state-machine-settings ~~~~~~~~~~
+
+/**
+ * @addtogroup state-machine-macros
+ * @{
+ * @brief Global state-machine user-settings conversion macros
+ * 
+ * <b>Description</b>
+ * Conversion macros are used to convert user settings defined in physical quantities into 
+ * binary (integer) numbers, which will be written to registers and variables and/or used in 
+ * calculations throughout the firmware.
+ */
+
 #define MAIN_EXEC_PER           (uint16_t)((CPU_FREQUENCY * MAIN_EXECUTION_PERIOD)-1) // DO NOT CHANGE
 
-/** @} */ // end of group state-machine-settings
+/** @} */ // end of group state-machine-macros ~~~~~~~~~~
     
 /***************************************************************************************************
- * @addtogroup microcontroller-abstraction
+ * @addtogroup device-gpio-mcal
  * @{
- * @brief Global abstraction labels for device pin assignments of control signals
+ * @brief Global abstraction labels for device pin assignments
  * 
  * <b>Description:</b>
  * This section is used to define labels of hardware specific signals, which are directly 
@@ -99,96 +144,78 @@
  * 
  **************************************************************************************************/
 
-#ifdef __EPC9143_R40__
+// Device Pin #1 on EPC9143 (not routed)
+#define DBGPIN1_PORT        1   ///< GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc.
+#define DBGPIN1_PIN         14  ///< GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.
+#define DBGPIN1_Set()	    { _LATB14 = 1; } ///< Macro instruction to set a pin state to logic HIGH
+#define DBGPIN1_Clear()	    { _LATB14 = 0; } ///< Macro instruction to set a pin state to logic LOW
+#define DBGPIN1_Toggle()    { _LATB14 ^= 1; } ///< Macro instruction to toggle most recent pin state
+#define DBGPIN1_Init()	    { _LATB14 = 0; _TRISB14 = 0; } ///< Macro instruction initializing the specified GPIO as input or output
+
+// Device Pin #2 on EPC9143 (not routed)
+#define DBGPIN2_PORT        1   ///< GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc.
+#define DBGPIN2_PIN         15  ///< GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.
+#define DBGPIN2_Set()       { _LATB15 = 1; } ///< Macro instruction to set a pin state to logic HIGH
+#define DBGPIN2_Clear()     { _LATB15 = 0; } ///< Macro instruction to set a pin state to logic LOW
+#define DBGPIN2_Toggle()    { _LATB15 ^= 1; } ///< Macro instruction to toggle most recent pin state
+#define DBGPIN2_Init()      { _LATB15 = 0; _TRISB15 = 0; } ///< Macro instruction initializing the specified GPIO as input or output
+
+// Device Pin #25 on EPC9143 (not routed)
+#define DBGPIN3_PORT        1   ///< GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc.
+#define DBGPIN3_PIN         10  ///< GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.
+#define DBGPIN3_Set()	    { _LATB10 = 1; } ///< Macro instruction to set a pin state to logic HIGH
+#define DBGPIN3_Clear()	    { _LATB10 = 0; } ///< Macro instruction to set a pin state to logic LOW
+#define DBGPIN3_Toggle()    { _LATB10 ^= 1; } ///< Macro instruction to toggle most recent pin state
+#define DBGPIN3_Init()      { _LATB10 = 0; _TRISB10 = 0; } ///< Macro instruction initializing the specified GPIO as input or output
+
+// Device Pin #14 on EPC9243
+#define PWRGOOD_PORT        1   ///< GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc.
+#define PWRGOOD_PIN         1   ///< GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.
+#define PWRGOOD_Set()       { _LATB1 = 1; } ///< Macro instruction to set a pin state to logic HIGH
+#define PWRGOOD_Clear()	    { _LATB1 = 0; } ///< Macro instruction to set a pin state to logic LOW
+#define PWRGOOD_Toggle()    { _LATB1 ^= 1; } ///< Macro instruction to toggle most recent pin state
+#define PWRGOOD_Init()      { _ANSELB1 = 0; _LATB1 = 0; _TRISB1 = 0; } ///< Macro instruction initializing the specified GPIO as input or output
     
-    // Device Pin #1 on EPC9143 (not routed)
-    #define DBGPIN1_Set()	    { _LATB14 = 1; }
-    #define DBGPIN1_Clear()	    { _LATB14 = 0; }
-    #define DBGPIN1_Toggle()    { _LATB14 ^= 1; }
-    #define DBGPIN1_Init()	    { _LATB14 = 0; _TRISB14 = 0; }
-
-    // Device Pin #2 on EPC9143 (not routed)
-    #define DBGPIN2_Set()       { _LATB15 = 1; }
-    #define DBGPIN2_Clear()     { _LATB15 = 0; }
-    #define DBGPIN2_Toggle()    { _LATB15 ^= 1; }
-    #define DBGPIN2_Init()      { _LATB15 = 0; _TRISB15 = 0; }
-
-    // Device Pin #25 on EPC9143 (not routed)
-    #define DBGPIN3_Set()	    { _LATB10 = 1; }
-    #define DBGPIN3_Clear()	    { _LATB10 = 0; }
-    #define DBGPIN3_Toggle()    { _LATB10 ^= 1; }
-    #define DBGPIN3_Init()      { _LATB10 = 0; _TRISB10 = 0; }
-
-    // Device Pin #14 on EPC9243
-    #define PWRGOOD_PORT        1   ///< GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc.
-    #define PWRGOOD_PIN         1   ///< GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.
-    #define PWRGOOD_Set()       { _LATB1 = 1; }
-    #define PWRGOOD_Clear()	    { _LATB1 = 0; }
-    #define PWRGOOD_Toggle()    { _LATB1 ^= 1; }
-    #define PWRGOOD_Init()      { _ANSELB1 = 0; _LATB1 = 0; _TRISB1 = 0; }
-    
-#endif
-/** @} */ // end of group microcontroller-abstraction
+/** @} */ // end of group device-gpio-mcal
 
 /**************************************************************************************************
- * @addtogroup power-parameter
+ * @addtogroup pwm-settings
  * @{
- * @brief Global defines for Buck Converter Power Control parameters
+ * @brief User-declaration of global defines for PWM signal generator settings
  * 
- * <b>Description</b>
- * This section is used to define hardware specific parameters such as output voltage dividers,
- * reference levels or feedback gains. Pre-compiler macros are used to translate physical
- * values into binary (integer) numbers to be written to SFRs
- * 
- **************************************************************************************************/
-
-#define SWITCHING_FREQUENCY     (float)500.0e+3   ///< Switching frequency in [Hz]
-#define SWITCHING_PERIOD        (float)(1.0/SWITCHING_FREQUENCY)    ///< Switching period in [sec]
-#define SWITCHING_PHASE_SHIFT   (float)0.0        ///< Phase Shift of PWM output in [sec]
-
-/** @} */ // end of group power-parameter
-
-/**************************************************************************************************
- * @addtogroup power-parameter
- * @{
- * @brief Global defines for Buck Converter Power Control parameters
- * 
- * <b>Description</b>
- * This section is used to define hardware specific parameters such as output voltage dividers,
- * reference levels or feedback gains. Pre-compiler macros are used to translate physical
- * values into binary (integer) numbers to be written to SFRs
- * 
- **************************************************************************************************/
-
-/* CUSTOM RUNTIME OPTIONS */
-#define PLANT_MEASUREMENT   false
-
-/** @} */ // end of group
-
-/**************************************************************************************************
- * @addtogroup fundamental-pwm-settings
- * @{
- * @brief Global defines for PWM settings of DV330101
- * 
- * Description:
+ * <b>Description:</b><br>
  * This section defines fundamental PWM settings required for the interleaved buck converter
  * of the EPC9143 300W 16th brick power module reference design. These settings are determined 
- * by hardware.
- * 
- * Pre-compiler macros are used to convert physical values into binary (integer) numbers to 
- * be written to Special Function Registers (SFR).
+ * by hardware and defined using physical quantities. Pre-compiler macros are used to convert 
+ * physical values into binary (integer) numbers to be written to Special Function Registers (SFR).
  * 
  **************************************************************************************************/
 
 #define BUCK_NO_OF_PHASES              2U     ///< Number of power converter phases of this design
     
-#define BUCK_PWM_DUTY_CYCLE_MIN        (float)0.010 ///< ~1.0% On Time (~20 ns)
-#define BUCK_PWM_DUTY_CYCLE_MAX        (float)0.850 ///< ~85% On Time  (~1,700 ns)
-#define BUCK_LEADING_EDGE_BLANKING     (float)100.0e-9 ///< Leading Edge Blanking in [sec]
-#define BUCK_DEAD_TIME_LEADING_EDGE    (float)10.0e-9 ///< Leading Edge Dead Time in [sec]
-#define BUCK_DEAD_TIME_FALLING_EDGE    (float)10.0e-9 ///< Falling Edge Dead Time in [sec]
+#define BUCK_SWITCHING_FREQUENCY       (float)500.0e+3 ///< Fixed Switching frequency in [Hz]
+#define BUCK_PWM_DUTY_CYCLE_MIN        (float)0.010 ///< Minimum on/off-time ratio (duty ratio) in [%]
+#define BUCK_PWM_DUTY_CYCLE_MAX        (float)0.850 ///< Maximum on/off-time ratio (duty ratio) in [%]
+#define BUCK_LEADING_EDGE_BLANKING     (float)100.0e-9 ///< Leading Edge Blanking period in [sec]
+#define BUCK_DEAD_TIME_LEADING_EDGE    (float)10.0e-9 ///< Leading Edge Dead Time delay in [sec]
+#define BUCK_DEAD_TIME_FALLING_EDGE    (float)10.0e-9 ///< Falling Edge Dead Time delay in [sec]
 
-// PWM Phase #1 Configuration
+/** @} */ // end of group pwm-settings ~~~~~~~~~~~~~~~~~~~~
+
+/** 
+ * @addtogroup pwm-mcal-phase1
+ * @{ 
+ * @brief PWM peripheral output pins, control signals and register assignments of converter phase #1
+ * 
+ * <b>Description</b><br>
+ * Converter phase #1 uses a simple half-bridge to commutate the switch node. The signal source
+ * therefore only requires a single PWM generator instance to be configured in fixed frequency 
+ * complementary mode with dead times. Additional PWM peripheral features are used by the firmware
+ * to respond to interrupts, trigger ADC conversions, control device output pins during startup 
+ * and fault responses and to change timing settings on the fly. 
+ * 
+ * Please review the device data sheet for details about register names and settings.
+ */
 #define BUCK_PWM1_CHANNEL              2U ///< PWM Instance Index (e.g. 1=PWM1, 2=PWM2, etc.)
 #define BUCK_PWM1_GPIO_INSTANCE        1U ///< Number indicating device port, where 0=Port RA, 0=Port RB, 0=Port RC, etc.
 #define BUCK_PWM1_GPIO_PORT_PINH       12U ///< Port Pin Number
@@ -219,8 +246,25 @@
 
 #define BUCK_PWM1_UPDREQ                PG1STATbits.UPDREQ
 
+/** @} */ // end of group pwm-mcal-phase1 ~~~~~~~~~~~~~~~~~
+
+/** 
+ * @addtogroup pwm-mcal-phase2
+ * @{ 
+ * @brief PWM peripheral output pins, control signals and register assignments of converter phase #2
+ * 
+ * <b>Description</b><br>
+ * Converter phase #2 uses a simple half-bridge to commutate the switch node. The signal source
+ * therefore only requires a single PWM generator instance to be configured in fixed frequency 
+ * complementary mode with dead times. Additional PWM peripheral features are used by the firmware
+ * to respond to interrupts, trigger ADC conversions, control device output pins during startup 
+ * and fault responses and to change timing settings on the fly. 
+ * 
+ * Please review the device data sheet for details about register names and settings.
+ */
+
 // PWM Phase #2 Configuration
-#define BUCK_PWM2_CHANNEL               4U    ///< PWM Instance Index (e.g. 1=PWM1, 2=PWM2, etc.)
+#define BUCK_PWM2_CHANNEL               4U ///< PWM Instance Index (e.g. 1=PWM1, 2=PWM2, etc.)
 #define BUCK_PWM2_GPIO_INSTANCE         1U ///< Number indicating device port, where 0=Port RA, 0=Port RB, 0=Port RC, etc.
 #define BUCK_PWM2_GPIO_PORT_PINH        9U ///< Port Pin Number
 #define BUCK_PWM2_GPIO_PORT_PINL        8U ///< Port Pin Number
@@ -240,9 +284,9 @@
 #define BUCK_PWM2L_INIT                 { _LATB8 = 0; _TRISB8 = 0; }
 
 #define _BUCK_PWM2_Interrupt            _PWM4Interrupt ///< PWM Interrupt Serivice Routine label
-#define BUCK_PWM2_IF                    _PWM4IF        ///< PWM Interrupt Flag Bit
-#define BUCK_PWM2_IE                    _PWM4IE        ///< PWM Interrupt Enable Bit
-#define BUCK_PWM2_IP                    _PWM4IP        ///< PWM Interrupt Priority
+#define BUCK_PWM2_IF                    _PWM4IF  ///< PWM Interrupt Flag Bit
+#define BUCK_PWM2_IE                    _PWM4IE  ///< PWM Interrupt Enable Bit
+#define BUCK_PWM2_IP                    _PWM4IP  ///< PWM Interrupt Priority
 #define BUCK_PWM2_TRGSRC_TRG1           0b01010  ///< PWM2 Trigger #1 Trigger Source of this channel
 #define BUCK_PWM2_TRGSRC_TRG2           0b01011  ///< PWM2 Trigger #2 Trigger Source of this channel
 #define BUCK_PWM2_PGxTRIGA              PG4TRIGA ///< PWM2 trigger register A
@@ -253,9 +297,22 @@
 #define BUCK_PWM2_ADTR1PS               0 ///< ADC Trigger 1 Postscaler: 0...31
     
 #define BUCK_PWM2_UPDREQ                PG1STATbits.UPDREQ
-    
-// ~~~ conversion macros ~~~~~~~~~~~~~~~~~~~~~~~~~
-#define BUCK_SWITCHING_PERIOD   (float)(1.0/SWITCHING_FREQUENCY)   ///< Switching period in [sec]
+
+/** @} */ // end of group pwm-mcal-phase2 ~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/** 
+ * @addtogroup pwm-macros
+ * @{ 
+ * @brief Conversion macros for user-declarations of PWM parameters
+ * 
+ * These conversion macros are used to convert user settings defined as physical 
+ * quantities into binary (integer) numbers, which will be written to registers and
+ * variables and used in calculations throughout the firmware.
+ */
+
+// Conversion Macros
+#define BUCK_SWITCHING_PERIOD   (float)(1.0/BUCK_SWITCHING_FREQUENCY)   ///< Switching period in [sec]
 #define BUCK_PWM_PERIOD         (uint16_t)(float)(BUCK_SWITCHING_PERIOD / PWM_CLOCK_PERIOD) ///< This sets the switching period of the converter
 #define BUCK_PWM_PHASE_SHIFT    (uint16_t)((float)BUCK_PWM_PERIOD / (float)BUCK_NO_OF_PHASES) ///< This sets the phase shift between phase #1 and #2
 #define BUCK_PWM_DC_MIN         (uint16_t)(BUCK_PWM_DUTY_CYCLE_MIN * (float)BUCK_PWM_PERIOD) ///< This sets the minimum duty cycle
@@ -263,21 +320,21 @@
 #define BUCK_LEB_PERIOD         (uint16_t)(BUCK_LEADING_EDGE_BLANKING / (float)PWM_CLOCK_PERIOD) ///< Leading Edge Blanking = n x PWM resolution (here: 50 x 2ns = 100ns)
 #define BUCK_PWM_DEAD_TIME_LE   (uint16_t)(BUCK_DEAD_TIME_LEADING_EDGE / (float)PWM_CLOCK_PERIOD) ///< Rising edge dead time [tick = 250ps]
 #define BUCK_PWM_DEAD_TIME_FE   (uint16_t)(BUCK_DEAD_TIME_FALLING_EDGE / (float)PWM_CLOCK_PERIOD) ///< Falling edge dead time [tick = 250ps]
-// ~~~ conversion macros end ~~~~~~~~~~~~~~~~~~~~~
-/** @} */ // end of group
+
+/** @} */ // end of group pwm-macros ~~~~~~~~~~~~~~~~~~~~~~
 
     
 /**************************************************************************************************
- * @addtogroup input-voltage-feedback
+ * @addtogroup input-voltage-feedback-settings
  * @{
  * @brief Declaration of input voltage feedback properties
  * 
- * <b>Description:</b>
- * In this section the input voltage feedback signal scaling, gain, valid signal limits and nominal
- * operating point is specified. Physical values are used to define values. Macros are used to 
+ * In this section the output voltage feedback signal scaling, gain, valid signal limits and nominal
+ * operating point is specified. Physical quantities are used to define values. Macros are used to 
  * convert given physical values into binary (integer) number to be written into SFRs and variables.
  * *************************************************************************************************/
-    
+
+// Feedback Declarations
 #define BUCK_VIN_MINIMUM            (float)18.000   ///< Minimum input voltage in [V]
 #define BUCK_VIN_NOMINAL            (float)48.000   ///< Nominal input voltage in [V]
 #define BUCK_VIN_MAXIMUM            (float)60.500   ///< Maximum input voltage in [V]
@@ -291,8 +348,43 @@
     
 #define BUCK_VIN_FEEDBACK_OFFSET    (float)(0.0) ///< Physical, static signal offset in [V]
 #define BUCK_VIN_ADC_TRG_DELAY      (float)(120.0e-9) ///< ADC trigger delay in [sec]
-    
-// ~ conversion macros ~~~~~~~~~~~~~~~~~~~~~
+
+/** @} */ // end of group input-voltage-feedback-settings ~~~~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/** 
+ * @addtogroup input-voltage-feedback-mcal
+ * @{ 
+ * @brief ADC input assignments of input voltage feedback signals
+ * 
+ * In this section the ADC input channels, related ADC result buffers, trigger
+ * sources and interrupt vectors are defined. These settings allow the fast 
+ * re-assignments of feedback signals in case of hardware changes.
+ */
+
+// Peripheral Assignments
+#define _BUCK_VIN_ADCInterrupt  _ADCAN9Interrupt ///< ADC interrupt service routine function call of the input voltage feedback channel
+#define _BUCK_VIN_ADCISR_IF     _ADCAN9IF   ///< ADC interrupt flag bit of the input voltage feedback channel
+
+#define BUCK_VIN_ANSEL          _ANSELA2    ///< GPIO analog function mode enable bit
+#define BUCK_VIN_ADCCORE        8           ///< 0=Dedicated Core #0, 1=Dedicated Core #1, 8=Shared ADC Core
+#define BUCK_VIN_ADCIN          9           ///< Analog input number (e.g. '5' for 'AN5')
+#define BUCK_VIN_ADCBUF         ADCBUF9     ///< ADC input buffer of this ADC channel
+#define BUCK_VIN_ADCTRIG        PG2TRIGA    ///< Register used for trigger placement
+#define BUCK_VIN_TRGSRC         BUCK_PWM1_TRGSRC_TRG1 ///< PWM1 (=PG2) Trigger 2 via PGxTRIGB
+
+/** @} */ // end of group input-voltage-feedback-mcal ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/** 
+ * @addtogroup input-voltage-feedback-macros
+ * @{ 
+ * @brief Conversion macros of input voltage feedback parameters
+ * 
+ * These conversion macros are used to convert user settings defined as physical 
+ * quantities into binary (integer) numbers, which will be written to registers and
+ * variables and used in calculations throughout the firmware.
+ */
     
 #define BUCK_VIN_FEEDBACK_GAIN  (float)((BUCK_VIN_R2) / (BUCK_VIN_R1 + BUCK_VIN_R2)) // DO NOT CHANGE
 #define BUCK_VIN_MIN            (uint16_t)(BUCK_VIN_MINIMUM * BUCK_VIN_FEEDBACK_GAIN / ADC_GRANULARITY)   ///< Minimum input voltage
@@ -311,20 +403,8 @@
 #define BUCK_VIN_NORM_FACTOR    (int16_t)((BUCK_VIN_NORM_INV_G / pow(2.0, BUCK_VIN_NORM_SCALER)) * (pow(2.0, 15)-1)) ///< VIN normalization factor scaled in Q15
 
 #define BUCK_VIN_RANGE_MAX      (float)(ADC_REFERENCE * BUCK_VIN_NORM_INV_G)
-    
-// ~ conversion macros end ~~~~~~~~~~~~~~~~~
 
-#define _BUCK_VIN_ADCInterrupt  _ADCAN9Interrupt ///< ADC interrupt service routine function call of the input voltage feedback channel
-#define _BUCK_VIN_ADCISR_IF     _ADCAN9IF   ///< ADC interrupt flag bit of the input voltage feedback channel
-
-#define BUCK_VIN_ANSEL          _ANSELA2    ///< GPIO analog function mode enable bit
-#define BUCK_VIN_ADCCORE        8           ///< 0=Dedicated Core #0, 1=Dedicated Core #1, 8=Shared ADC Core
-#define BUCK_VIN_ADCIN          9           ///< Analog input number (e.g. '5' for 'AN5')
-#define BUCK_VIN_ADCBUF         ADCBUF9     ///< ADC input buffer of this ADC channel
-#define BUCK_VIN_ADCTRIG        PG2TRIGA    ///< Register used for trigger placement
-#define BUCK_VIN_TRGSRC         BUCK_PWM1_TRGSRC_TRG1 ///< PWM1 (=PG2) Trigger 2 via PGxTRIGB
-
-/** @} */ // end of group
+/** @} */ // end of group input-voltage-feedback-macros ~~~~~~~~~~~~~~~~~~~~~~
 
 /**************************************************************************************************
  * @addtogroup output-voltage-feedback-settings
@@ -332,7 +412,7 @@
  * @brief Declaration of output voltage feedback properties
  * 
  * In this section the output voltage feedback signal scaling, gain, valid signal limits and nominal
- * operating point is specified. Physical values are used to define values. Macros are used to 
+ * operating point is specified. Physical quantities are used to define values. Macros are used to 
  * convert given physical values into binary (integer) number to be written into SFRs and variables.
  * *************************************************************************************************/
 
@@ -369,7 +449,7 @@
 #define BUCK_VOUT_ADCTRIG           PG2TRIGA    ///< Register used for trigger placement
 #define BUCK_VOUT_TRGSRC            BUCK_PWM1_TRGSRC_TRG1 ///< PWM1 (=PG2) Trigger 1 via PGxTRIGA
 
-/** @} */ // end of group phase-current-feedback-mcal ~~~~~~~~~~~~~~~~~~~~~~~~~
+/** @} */ // end of group output-voltage-feedback-mcal ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /** 
@@ -539,7 +619,7 @@ to the user code section of the power controller */
  * operating state is changed for any other reason. When the output voltage reference is changed, 
  * the power control state machine will use the voltage ramp slope defined here to tune from the 
  * recent voltage reference to the new reference value. During this period the BUSY-bit of the 
- * power controller (status word, bit #7) will be set. THis status bit will be cleared automatically
+ * power controller (status word, bit #7) will be set. This status bit will be cleared automatically
  * by the power controller state machine once the new reference value has been applied and the 
  * converter is back in constant regulation mode.
  * 
@@ -638,12 +718,15 @@ to the user code section of the power controller */
 /** @} */ // end of group fault-response-macros ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
 /**************************************************************************************************
- * @addtogroup controller-declarations
+ * @addtogroup control-interrupt-vector-declarations
  * @{
- * @brief
+ * @brief Control loop Interrupt Vector Settings
  * 
  * <b>Description</b>
- * 
+ * Control loops are called in dedicated interrupt service routines of PWM events, ADC events
+ * or triggered by timers. This section allows users to set and modify the interrupt service 
+ * routine triggers and their priority to set up and optimize the control system interrupt 
+ * structure.
  * 
  * *************************************************************************************************/
     
@@ -651,18 +734,19 @@ to the user code section of the power controller */
 #define BUCK_VOUT_TRIG_PWM  0   ///< Buck VOUT control loop is called in PWM interrupt
 #define BUCK_VOUT_TRIG_ADC  1   ///< Buck VOUT control loop is called in ADC interrupt
 
-#define BUCK_VOUT_TRIGGER_MODE  BUCK_VOUT_TRIG_PWM
-    
+#define BUCK_VOUT_TRIGGER_MODE  BUCK_VOUT_TRIG_PWM ///< Currently selected voltage loop interrupt vector
+#define BUCK_VOUT_ISR_PRIORITY  5 ///< Voltage loop interrupt vector priority (valid settings between 0...6 with 6 being the highest priority)
+
 #if (BUCK_VOUT_TRIGGER_MODE == BUCK_VOUT_TRIG_ADC)    
-  #define _BUCK_VLOOP_Interrupt     _ADCAN0Interrupt   
-  #define _BUCK_VLOOP_ISR_IP        _ADCAN0IP
-  #define _BUCK_VLOOP_ISR_IF        _ADCAN0IF
-  #define _BUCK_VLOOP_ISR_IE        _ADCAN0IE
+  #define _BUCK_VLOOP_Interrupt     _ADCAN0Interrupt ///< Interrupt vector function call label
+  #define _BUCK_VLOOP_ISR_IP        _ADCAN0IP ///< Interupt vector priority register bits
+  #define _BUCK_VLOOP_ISR_IF        _ADCAN0IF ///< Interupt vector flag bit register bit
+  #define _BUCK_VLOOP_ISR_IE        _ADCAN0IE ///< Interupt vector enable bit register bit
 #elif (BUCK_VOUT_TRIGGER_MODE == BUCK_VOUT_TRIG_PWM)
-  #define _BUCK_VLOOP_Interrupt     _PWM2Interrupt   
-  #define _BUCK_VLOOP_ISR_IP        _PWM2IP
-  #define _BUCK_VLOOP_ISR_IF        _PWM2IF
-  #define _BUCK_VLOOP_ISR_IE        _PWM2IE
+  #define _BUCK_VLOOP_Interrupt     _PWM2Interrupt ///< Interrupt vector function call label
+  #define _BUCK_VLOOP_ISR_IP        _PWM2IP ///< Interupt vector priority register
+  #define _BUCK_VLOOP_ISR_IF        _PWM2IF ///< Interupt vector flag bit register bit
+  #define _BUCK_VLOOP_ISR_IE        _PWM2IE ///< Interupt vector enable bit register bit
 #endif
 /** @} */ // end of group
 
