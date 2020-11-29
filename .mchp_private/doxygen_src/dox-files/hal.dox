@@ -1,0 +1,205 @@
+
+//Abstraction Layer Defines index
+/**
+ @defgroup device-abstraction Microcontroller Device Abstraction
+ @ingroup abstraction-layer 
+ @brief Declarations of fundamental microcontroller device parameters
+
+ <b>Description</b><br>
+ This section is used to define device specific parameters like ADC reference and
+ resolution, main execution clock frequency and peripheral time base settings. 
+ All parameters are defined using physical quantities. Pre-compiler macros are used 
+ to convert physical values into binary (integer) numbers to be written to variables and 
+ SFRs.
+
+ @defgroup device-abstraction-settings User Settings
+ @ingroup device-abstraction
+ @brief 
+
+ @defgroup device-abstraction-macros Conversion Macros
+ @ingroup device-abstraction
+ @brief 
+*/
+
+// State Machine Parameter Declarations 
+/**
+ @defgroup state-machine State Machine Settings
+ @ingroup abstraction-layer 
+ @brief Declaration of global state-machine parameters
+
+ This section is used to set global state-machine settings such as the main execution call interval.
+ All parameters are declared using physical quantities. Pre-compiler macros are used to convert user 
+ settings into binary (integer) numbers to be written to SFRs and variables.
+
+ @defgroup state-machine-settings User Settings
+ @ingroup state-machine
+ @brief 
+
+ @defgroup state-machine-macros Conversion Macros
+ @ingroup state-machine
+ @brief 
+*/
+
+//Startup Timing Declarations
+/**
+ @defgroup startup-timing Startup Timing Settings
+ @ingroup abstraction-layer
+ @brief Declaration of startup timing periods
+
+ @defgroup startup-timing-settings User Settings
+ @ingroup startup-timing
+ @brief User-declaration of startup timing periods using physical quantities
+
+ @defgroup startup-timing-macros Conversion Macros
+ @ingroup startup-timing
+ @brief Conversion macros for user-declarations of startup timing periods
+*/
+ 
+//Fault Response Declarations
+/**
+ @defgroup fault-response Fault Response Settings
+ @ingroup abstraction-layer
+ @brief Declaration of fault object trip and recovery delays
+
+ @defgroup fault-response-settings User Settings
+ @ingroup fault-response
+ @brief User-declaration of fault object trip and recovery delays using physical quantities
+ 
+ @defgroup fault-response-macros Conversion Macros
+ @ingroup fault-response
+ @brief Conversion macros for user declarations of fault object trip and recovery delays
+*/
+
+// Device GPIO Assignment Declarations 
+/**
+ @defgroup device-gpio-mcal Device GPIO Assignments
+ @ingroup abstraction-layer
+ @brief 
+*/
+
+//PWM Declarations
+/**
+ @defgroup pwm-fundamentals PWM Settings
+ @ingroup abstraction-layer
+ @brief Declaration of fundamental PWM parameters
+ 
+ <b>Description:</b><br>
+ This section defines fundamental PWM settings required for the interleaved buck converter
+ of the EPC9143 300W 16th brick power module reference design. This design requires two PWM
+ generators, generating complementary, fixed frequency PWM waveforms operated 180° out of phase
+ to commutate the switching nodes of both phases of the interleaved synchronous buck converter
+ topology.
+ 
+ These settings are determined by the hardware pinout and the target device used. Users can modify 
+ high level parameters such as PWM switching frequency and dead times by using physical quantities. 
+ Pre-compiler macros are used to automatically convert physical values into binary (integer) numbers
+ at compile time to be written to variables and/or Special Function Registers (SFR) at runtime.
+ 
+ This section is also used to assign peripheral instances to the device pins used as PWM generator 
+ outputs. This includes timing parameter registers, interrupt sources, ADC trigger signals and 
+ output pin control registers.
+
+ @defgroup pwm-settings User Settings
+ @ingroup pwm-fundamentals
+ @brief 
+
+ @defgroup pwm-macros Conversion Macros
+ @ingroup pwm-fundamentals
+ @brief 
+
+ @defgroup pwm-mcal Microcontroller Abstraction
+ @ingroup pwm-fundamentals
+ @brief PWM peripheral output pins, control signals and register assignments
+ 
+ <b>Description</b><br>
+ In this section generic labels are assigned to dedicated device pins and peripheral 
+ registers of PWM generators used to commutate the power supply plant switching node. 
+ These settings allow the fast re-assignments of feedback signals in case of hardware 
+ changes and make the code more readable.
+ 
+ @defgroup pwm-mcal-phase1 Converter Phase #1
+ @ingroup pwm-mcal
+ @brief 
+ 
+ @defgroup pwm-mcal-phase2 Converter Phase #2
+ @ingroup pwm-mcal
+ @brief 
+*/
+ 
+//Input Voltage Feedback Declarations
+/**
+ @defgroup input-voltage-feedback Input Voltage Feedback
+ @ingroup abstraction-layer
+ @brief Declaration of input voltage feedback parameters
+ 
+ @defgroup input-voltage-feedback-settings User Settings
+ @ingroup input-voltage-feedback
+ @brief User-declaration of input voltage feedback parameters using physical quantities
+
+ @defgroup input-voltage-feedback-macros Conversion Macros
+ @ingroup input-voltage-feedback
+ @brief Conversion macros for user-declarations of input voltage feedback parameters
+
+ @defgroup input-voltage-feedback-mcal Microcontroller Abstraction
+ @ingroup input-voltage-feedback
+ @brief Device analog input pin, register and interrupt vector assignments of input voltage feedback signal(s)
+*/
+ 
+//Output Voltage Feedback Declarations
+/**
+ @defgroup output-voltage-feedback Output Voltage Feedback
+ @ingroup abstraction-layer
+ @brief Declaration of output voltage feedback parameters
+ 
+ @defgroup output-voltage-feedback-settings User Settings
+ @ingroup output-voltage-feedback
+ @brief User-declaration of output voltage feedback parameters using physical quantities
+
+ @defgroup output-voltage-feedback-macros Conversion Macros
+ @ingroup output-voltage-feedback
+ @brief Conversion macros for user-declarations of output voltage feedback parameters
+
+ @defgroup output-voltage-feedback-mcal Microcontroller Abstraction
+ @ingroup output-voltage-feedback
+ @brief Device analog input pin, register and interrupt vector assignments of output voltage feedback signal(s)
+ */
+ 
+//Phase Current Feedback Declarations
+/**
+ @defgroup phase-current-feedback Phase Current Feedback
+ @ingroup abstraction-layer
+ @brief Declaration of phase current feedback parameters
+ 
+ @defgroup phase-current-feedback-settings User Settings
+ @ingroup phase-current-feedback
+ @brief User-declaration of phase current feedback parameters using physical quantities
+
+ @defgroup phase-current-feedback-macros Conversion Macros
+ @ingroup phase-current-feedback
+ @brief Conversion macros for user-declarations of phase current feedback parameters
+
+ @defgroup phase-current-feedback-mcal Microcontroller Abstraction
+ @ingroup phase-current-feedback
+ @brief Device analog input pin, register and interrupt vector assignments of phase current feedback signal(s)
+*/
+ 
+//Adaptive Gain Control Declarations
+/**
+ @defgroup adaptive-control Adaptive Gain Control Feed Forward 
+ @ingroup abstraction-layer
+ @brief Declaration of macros calculating additional parameters for Adaptive Gain Modulation
+*/
+ 
+//Control Loop Interrupt Vector Settings
+/**
+ @defgroup control-interrupt-vector-declarations Control Interrutp Vector Declarations
+ @ingroup abstraction-layer
+ @brief 
+*/
+
+// Special Firmware Options
+/**
+ @defgroup special-options Special Firmware Options
+ @ingroup abstraction-layer
+ @brief 
+*/
