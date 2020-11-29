@@ -128,9 +128,9 @@ volatile uint16_t appPowerSupply_Initialize(void)
     retval &= appPowerSupply_PeripheralsInitialize();
 
     // Initialize Control Interrupt
-    _BUCK_VLOOP_ISR_IP = 5;
+    _BUCK_VLOOP_ISR_IP = BUCK_VOUT_ISR_PRIORITY;
     _BUCK_VLOOP_ISR_IF = 0;
-    _BUCK_VLOOP_ISR_IE = 1;
+    _BUCK_VLOOP_ISR_IE = true;
     
     // Start power supply engine
     retval &= appPowerSupply_Start();
