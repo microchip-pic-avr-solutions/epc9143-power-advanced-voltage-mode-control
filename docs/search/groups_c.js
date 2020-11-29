@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['user_20settings_1522',['User Settings',['../group__output-voltage-feedback-settings.html',1,'']]],
-  ['user_20settings_1523',['User Settings',['../group__phase-current-feedback-settings.html',1,'']]],
-  ['user_20settings_1524',['User Settings',['../group__startup-timing-settings.html',1,'']]]
+  ['task_20layer_1612',['Task Layer',['../group__buck-state-machine.html',1,'']]]
 ];

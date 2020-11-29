@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('group__startup-timing-settings.html','
   <div class="summary">
 <a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">User Settings<div class="ingroups"><a class="el" href="group__abstraction-layer.html">Abstraction Layer Defines</a> &raquo; <a class="el" href="group__startup-timing.html">Startup Timing Settings</a></div></div>  </div>
+<div class="title">User Settings<div class="ingroups"><a class="el" href="group__abstraction-layer.html">Hardware Abstraction Layer</a> &raquo; <a class="el" href="group__startup-timing.html">Startup Timing Settings</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -135,7 +135,7 @@ Macros</h2></td></tr>
 <li>Ramp Period</li>
 <li>Power Good Delay</li>
 </ul>
-<p>After the startup has passed these three timing periods, the power supply is ending up in "normal" operation, continuously regulating the output until a fault is detected or the operating state is changed for any other reason. When the output voltage reference is changed, the power control state machine will use the voltage ramp slope defined here to tune from the recent voltage reference to the new reference value. During this period the BUSY-bit of the power controller (status word, bit #7) will be set. THis status bit will be cleared automatically by the power controller state machine once the new reference value has been applied and the converter is back in constant regulation mode.</p>
+<p>After the startup has passed these three timing periods, the power supply is ending up in "normal" operation, continuously regulating the output until a fault is detected or the operating state is changed for any other reason. When the output voltage reference is changed, the power control state machine will use the voltage ramp slope defined here to tune from the recent voltage reference to the new reference value. During this period the BUSY-bit of the power controller (status word, bit #7) will be set. This status bit will be cleared automatically by the power controller state machine once the new reference value has been applied and the converter is back in constant regulation mode.</p>
 <p>Pre-compiler macros are used to translate physical values into binary (integer) numbers to be written to SFRs and variables. <br  />
  (see <a class="el" href="group__startup-timing-macros.html">Conversion Macros</a> for details)</p>
 <p><b>Please Note:</b><br  />
@@ -156,7 +156,7 @@ Macros</h2></td></tr>
 
 <p>output current ramp-up period in [sec] </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00561">561</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00641">641</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -174,7 +174,7 @@ Macros</h2></td></tr>
 
 <p>power good delay in [sec] </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00562">562</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00642">642</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -192,7 +192,7 @@ Macros</h2></td></tr>
 
 <p>power on delay in [sec] </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00559">559</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00639">639</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -210,7 +210,7 @@ Macros</h2></td></tr>
 
 <p>voltage ramp-up period in [sec] </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00560">560</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00640">640</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>

@@ -98,11 +98,11 @@ $(document).ready(function(){initNavTree('group__output-voltage-feedback-mcal.ht
   <div class="summary">
 <a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Microcontroller Abstraction<div class="ingroups"><a class="el" href="group__abstraction-layer.html">Abstraction Layer Defines</a> &raquo; <a class="el" href="group__output-voltage-feedback.html">Output Voltage Feedback</a></div></div>  </div>
+<div class="title">Microcontroller Abstraction<div class="ingroups"><a class="el" href="group__abstraction-layer.html">Hardware Abstraction Layer</a> &raquo; <a class="el" href="group__output-voltage-feedback.html">Output Voltage Feedback</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Device analog input pin, register and interupt vector assignments of output voltage feedback signal(s)  
+<p>Device analog input pin, register and interrupt vector assignments of output voltage feedback signal(s)  
 <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Microcontroller Abstraction:</div>
@@ -128,12 +128,12 @@ Macros</h2></td></tr>
 <tr class="memitem:ga4cc0051ef254bbf7167af02c30e9489d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback-mcal.html#ga4cc0051ef254bbf7167af02c30e9489d">BUCK_VOUT_ADCTRIG</a>&#160;&#160;&#160;PG2TRIGA</td></tr>
 <tr class="memdesc:ga4cc0051ef254bbf7167af02c30e9489d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register used for trigger placement.  <a href="group__output-voltage-feedback-mcal.html#ga4cc0051ef254bbf7167af02c30e9489d">More...</a><br /></td></tr>
 <tr class="separator:ga4cc0051ef254bbf7167af02c30e9489d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga582c1b8e723703fb75c4d14c766a6ce0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback-mcal.html#ga582c1b8e723703fb75c4d14c766a6ce0">BUCK_VOUT_TRGSRC</a>&#160;&#160;&#160;<a class="el" href="group__fundamental-pwm-settings.html#gaf0bd1b3822a3571a72c0f9dcdc9dd35a">BUCK_PWM1_TRGSRC_TRG1</a></td></tr>
+<tr class="memitem:ga582c1b8e723703fb75c4d14c766a6ce0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback-mcal.html#ga582c1b8e723703fb75c4d14c766a6ce0">BUCK_VOUT_TRGSRC</a>&#160;&#160;&#160;<a class="el" href="group__pwm-mcal-phase1.html#gaf0bd1b3822a3571a72c0f9dcdc9dd35a">BUCK_PWM1_TRGSRC_TRG1</a></td></tr>
 <tr class="memdesc:ga582c1b8e723703fb75c4d14c766a6ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM1 (=PG2) Trigger 1 via PGxTRIGA.  <a href="group__output-voltage-feedback-mcal.html#ga582c1b8e723703fb75c4d14c766a6ce0">More...</a><br /></td></tr>
 <tr class="separator:ga582c1b8e723703fb75c4d14c766a6ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Device analog input pin, register and interupt vector assignments of output voltage feedback signal(s) </p>
+<p>Device analog input pin, register and interrupt vector assignments of output voltage feedback signal(s) </p>
 <p>ADC input assignments of output voltage feedback signals.</p>
 <p>In this section the ADC input channels, related ADC result buffers, trigger sources and interrupt vectors are defined. These settings allow the fast re-assignments of feedback signals in case of hardware changes. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -151,7 +151,7 @@ Macros</h2></td></tr>
 
 <p>ADC input buffer of this ADC channel. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00368">368</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00448">448</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -169,7 +169,7 @@ Macros</h2></td></tr>
 
 <p>0=Dedicated Core #0, 1=Dedicated Core #1, 8=Shared ADC Core </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00366">366</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00446">446</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -187,7 +187,7 @@ Macros</h2></td></tr>
 
 <p>Analog input number (e.g. '5' for 'AN5') </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00367">367</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00447">447</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -205,7 +205,7 @@ Macros</h2></td></tr>
 
 <p>Register used for trigger placement. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00369">369</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00449">449</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -223,7 +223,7 @@ Macros</h2></td></tr>
 
 <p>GPIO analog function mode enable bit. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00365">365</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00445">445</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -234,14 +234,14 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BUCK_VOUT_TRGSRC&#160;&#160;&#160;<a class="el" href="group__fundamental-pwm-settings.html#gaf0bd1b3822a3571a72c0f9dcdc9dd35a">BUCK_PWM1_TRGSRC_TRG1</a></td>
+          <td class="memname">#define BUCK_VOUT_TRGSRC&#160;&#160;&#160;<a class="el" href="group__pwm-mcal-phase1.html#gaf0bd1b3822a3571a72c0f9dcdc9dd35a">BUCK_PWM1_TRGSRC_TRG1</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>PWM1 (=PG2) Trigger 1 via PGxTRIGA. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00370">370</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00450">450</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>

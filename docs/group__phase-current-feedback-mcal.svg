@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="node2" class="node">
 <title>Node1</title>
-<g id="a_node2"><a xlink:title="Device analog input pin, register and interupt vector assignments of phase current feedback signal(s)">
+<g id="a_node2"><a xlink:title="Device analog input pin, register and interrupt vector assignments of phase current feedback signal(s...">
 <polygon fill="#bfbfbf" stroke="black" points="294,-19 161,-19 161,0 294,0 294,-19"/>
 <text text-anchor="middle" x="227.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Microcontroller Abstraction</text>
 </a>

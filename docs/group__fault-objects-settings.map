@@ -1,6 +1,0 @@
-<map id="Fault Object Settings" name="Fault Object Settings">
-<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Abstraction Layer Defines." alt="" coords="5,45,176,70"/>
-<area shape="rect" id="node4" title="Declaration of fault object trip and recovery delays." alt="" coords="224,45,369,70"/>
-<area shape="rect" id="node2" href="$group__fault-response-settings.html" title="User&#45;declaration of fault object trip and recovery delays using physical quantities." alt="" coords="435,5,579,45"/>
-<area shape="rect" id="node3" href="$group__fault-response-macros.html" title="Conversion macros for user declarations of fault object trip and recovery delays." alt="" coords="417,69,597,109"/>
-</map>

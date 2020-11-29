@@ -115,7 +115,7 @@ Collaboration diagram for Power Control Handler Functions:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga4d26e0585523e4ab162ca9868517b878"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__power-handler-function.html#ga4d26e0585523e4ab162ca9868517b878">_BUCK_VLOOP_Interrupt</a>&#160;&#160;&#160;_PWM2Interrupt</td></tr>
-<tr class="memdesc:ga4d26e0585523e4ab162ca9868517b878"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main Control Interrupt.  <a href="group__power-handler-function.html#ga4d26e0585523e4ab162ca9868517b878">More...</a><br /></td></tr>
+<tr class="memdesc:ga4d26e0585523e4ab162ca9868517b878"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt vector function call label.  <a href="group__power-handler-function.html#ga4d26e0585523e4ab162ca9868517b878">More...</a><br /></td></tr>
 <tr class="separator:ga4d26e0585523e4ab162ca9868517b878"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -204,7 +204,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Main Control Interrupt. </p>
+<p>Interrupt vector function call label. </p>
+<p>Main Control Interrupt.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">NONE</td><td></td></tr>
@@ -215,7 +216,7 @@ Functions</h2></td></tr>
 <p><b>Description&lt;b&gt;<br  />
  The control interrupt is calling the control loop. The point in time where this interrupt is thrown is determined by selecting the BUCK_VOUT_TRIGGER_MODE option. </b></p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00662">662</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00746">746</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
@@ -227,7 +228,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void __attribute__ </td>
+          <td class="memname">void <a class="el" href="struct____attribute____.html">__attribute__</a> </td>
           <td>(</td>
           <td class="paramtype">(__interrupt__, auto_psv, context)&#160;</td>
           <td class="paramname"></td><td>)</td>
