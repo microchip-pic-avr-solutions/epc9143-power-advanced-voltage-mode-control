@@ -343,7 +343,7 @@ volatile uint16_t State_Online(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
 
 /*******************************************************************************
  * @fn volatile uint16_t State_Error(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @brief
+ * @brief  This function turns off the PWM output 
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
  * @return  0=failure
  * @return  1=success
