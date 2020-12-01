@@ -1,3 +1,22 @@
+// Generic dsPIC33C Peripheral Register Abstraction Layer Header File
+/**
+ @defgroup xc16-pral Peripheral Register Abstraction Layer Header File
+ @ingroup device-abstraction-pral
+ @brief Generic dsPIC33C Peripheral Register Abstraction Layer Header File
+*/
+
+// Generic dsPIC33C Abstraction Layer Files
+/**
+ @defgroup p33c-devices-pral Device Family Filter
+ @ingroup device-abstraction-pral
+ @brief Generic dsPIC33C Abstraction Layer Files
+
+ @defgroup p33c-macros-pral Device Macros 
+ @ingroup device-abstraction-pral
+ @brief Generic dsPIC33C CPU Instruction Macros 
+*/
+
+// Peripheral-Specific dsPIC33C Abstraction Layer Files
 /**
  @defgroup p33c-ccp-pral Capture Compare Module
  @ingroup device-abstraction-pral
