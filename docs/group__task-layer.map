@@ -1,7 +1,0 @@
-<map id="Task Layer" name="Task Layer">
-<area shape="rect" id="node1" href="$group__fault-handler.html" title="Generic fault handler supporting comparison of static and dynamic data with automated fault trip and ..." alt="" coords="327,5,489,31"/>
-<area shape="rect" id="node2" href="$group__buck-state-machine.html" title=" " alt="" coords="335,55,481,95"/>
-<area shape="rect" id="node3" title="Task Layer." alt="" coords="188,63,275,88"/>
-<area shape="rect" id="node5" href="$group__power-control-app-layer.html" title=" " alt="" coords="323,119,493,159"/>
-<area shape="rect" id="node4" href="$group__firmware-flow.html" title="Firmware Flowchart." alt="" coords="5,63,140,88"/>
-</map>

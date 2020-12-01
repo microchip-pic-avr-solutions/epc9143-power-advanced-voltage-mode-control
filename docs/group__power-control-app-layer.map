@@ -1,7 +1,0 @@
-<map id="Power Control Application Layer" name="Power Control Application Layer">
-<area shape="rect" id="node1" href="$group__power-control-app-layer-public.html" title="Public functions of the Power Control Application Layer." alt="" coords="361,5,479,31"/>
-<area shape="rect" id="node2" href="$group__task-layer.html" title="Task Layer." alt="" coords="5,55,92,80"/>
-<area shape="rect" id="node5" title=" " alt="" coords="140,47,311,87"/>
-<area shape="rect" id="node3" href="$group__power-control-app-layer-private-var.html" title="Private variables of the Power Control Application Layer." alt="" coords="361,55,479,80"/>
-<area shape="rect" id="node4" href="$group__power-control-app-layer-private.html" title="Private functions of the Power Control Application Layer." alt="" coords="359,104,481,129"/>
-</map>

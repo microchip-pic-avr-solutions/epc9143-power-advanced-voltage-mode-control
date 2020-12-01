@@ -1,6 +1,0 @@
-<map id="p33c_PwmGenerator_Initialize" name="p33c_PwmGenerator_Initialize">
-<area shape="rect" id="node1" title="Initializes a given PWM generator by resetting all its registers to default." alt="" coords="5,71,203,98"/>
-<area shape="rect" id="node2" href="$group__pwm.html#ga2de389951f418d4fcd9a5237f39a11a1" title="Disposes a given PWM generator by resetting all its registers to default." alt="" coords="263,5,449,47"/>
-<area shape="rect" id="node3" href="$group__pwm.html#ga877f0a808ca58b506a1eb7d3e09f1784" title="Disables a given PWM generator." alt="" coords="259,71,453,98"/>
-<area shape="rect" id="node4" href="$group__pwm.html#ga8aa18df01ada60e1faac049c5eb34700" title="Returns the PWM generator index." alt="" coords="251,122,461,149"/>
-</map>

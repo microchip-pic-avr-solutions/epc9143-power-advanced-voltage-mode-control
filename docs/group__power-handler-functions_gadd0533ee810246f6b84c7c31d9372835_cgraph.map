@@ -1,6 +1,0 @@
-<map id="buckPWM_Suspend" name="buckPWM_Suspend">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,147,57"/>
-<area shape="rect" id="node2" href="$group__power-handler-functions.html#ga649bb2f18322be1a303d05931adb2c6a" title=" " alt="" coords="241,5,359,32"/>
-<area shape="rect" id="node4" href="$group__pwm.html#ga8aa18df01ada60e1faac049c5eb34700" title="Returns the PWM generator index." alt="" coords="195,56,405,83"/>
-<area shape="rect" id="node3" href="$group__gpio.html#gae1bc534f11ac7cf278865cb73b601055" title="Gets pointer to GPIO Instance SFR set." alt="" coords="453,5,655,32"/>
-</map>

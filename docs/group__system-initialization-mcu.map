@@ -1,6 +1,0 @@
-<map id="Essential Chip Resources" name="Essential Chip Resources">
-<area shape="rect" id="node1" title=" " alt="" coords="165,31,337,56"/>
-<area shape="rect" id="node2" href="$group__clock-initialization.html" title=" " alt="" coords="385,5,567,31"/>
-<area shape="rect" id="node3" href="$group__gpio-initialization.html" title=" " alt="" coords="395,55,557,80"/>
-<area shape="rect" id="node4" href="$group__device-start-up.html" title="Device Start Up." alt="" coords="5,31,117,56"/>
-</map>
