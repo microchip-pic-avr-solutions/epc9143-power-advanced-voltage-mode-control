@@ -1,7 +1,0 @@
-<map id="PWM Settings" name="PWM Settings">
-<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Hardware Abstraction Layer Declarations." alt="" coords="5,47,152,87"/>
-<area shape="rect" id="node5" title="Declaration of fundamental PWM parameters." alt="" coords="200,55,307,80"/>
-<area shape="rect" id="node2" href="$group__pwm-mcal.html" title="PWM peripheral output pins, control signals and register assignments." alt="" coords="355,5,532,31"/>
-<area shape="rect" id="node3" href="$group__pwm-macros.html" title="Conversion macros for user&#45;declarations of PWM parameters." alt="" coords="377,55,509,80"/>
-<area shape="rect" id="node4" href="$group__pwm-settings.html" title="User&#45;declaration of global defines for PWM signal generator settings." alt="" coords="393,104,494,129"/>
-</map>

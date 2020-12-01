@@ -1,7 +1,0 @@
-<map id="Device Start Up" name="Device Start Up">
-<area shape="rect" id="node1" href="$group__system-initialization-mcu.html" title=" " alt="" coords="351,5,523,31"/>
-<area shape="rect" id="node2" href="$group__system-initialization-user-tasks.html" title=" " alt="" coords="348,55,527,80"/>
-<area shape="rect" id="node3" href="$group__system-initialization-user-peripherals.html" title=" " alt="" coords="359,105,515,145"/>
-<area shape="rect" id="node4" href="$group__firmware-flow.html" title="Firmware Flowchart." alt="" coords="5,55,140,80"/>
-<area shape="rect" id="node5" title="Device Start Up." alt="" coords="188,55,300,80"/>
-</map>

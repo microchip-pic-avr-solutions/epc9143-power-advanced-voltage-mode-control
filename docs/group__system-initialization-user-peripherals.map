@@ -1,6 +1,0 @@
-<map id="Hardware&#45;Specific Chip Resources" name="Hardware&#45;Specific Chip Resources">
-<area shape="rect" id="node1" href="$group__dac-initialization.html" title=" " alt="" coords="369,5,544,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="165,27,321,67"/>
-<area shape="rect" id="node3" href="$group__op-amp-initialization.html" title=" " alt="" coords="385,55,528,95"/>
-<area shape="rect" id="node4" href="$group__device-start-up.html" title="Device Start Up." alt="" coords="5,35,117,60"/>
-</map>

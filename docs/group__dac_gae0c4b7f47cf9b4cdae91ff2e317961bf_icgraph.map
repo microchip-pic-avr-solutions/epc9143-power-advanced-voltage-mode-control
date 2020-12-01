@@ -1,8 +1,0 @@
-<map id="p33c_DacInstance_GetHandle" name="p33c_DacInstance_GetHandle">
-<area shape="rect" id="node1" title="Gets pointer to DAC Instance SFR set." alt="" coords="493,56,691,83"/>
-<area shape="rect" id="node2" href="$group__dac-initialization.html#gae4c70ecb7b13f328f1458f5f2cfbe48a" title=" " alt="" coords="289,5,443,32"/>
-<area shape="rect" id="node3" href="$group__dac-initialization.html#ga2f97c3082e0d6f724cea482c10c2d08f" title=" " alt="" coords="290,56,442,83"/>
-<area shape="rect" id="node6" href="$group__dac-initialization.html#gab022a57f46162ce2bb840b556261133d" title=" " alt="" coords="287,107,445,133"/>
-<area shape="rect" id="node4" href="$group__system-initialization-user-peripherals.html#ga70c5cba054e38a4e8c8285a187ff61fa" title="Initializes the user&#45;defined chip resources." alt="" coords="104,74,239,115"/>
-<area shape="rect" id="node5" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,81,56,108"/>
-</map>

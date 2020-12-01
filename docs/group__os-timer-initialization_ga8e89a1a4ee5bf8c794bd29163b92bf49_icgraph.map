@@ -1,5 +1,0 @@
-<map id="sysOsTimer_Initialize" name="sysOsTimer_Initialize">
-<area shape="rect" id="node1" title="Initializes the timer used as timebase for the task scheduler." alt="" coords="311,5,457,32"/>
-<area shape="rect" id="node2" href="$group__system-initialization-user-tasks.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" title="Initializes the user&#45;defined tasks." alt="" coords="104,5,263,32"/>
-<area shape="rect" id="node3" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,5,56,32"/>
-</map>
