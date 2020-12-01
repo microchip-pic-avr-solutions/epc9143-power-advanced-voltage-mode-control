@@ -1,5 +1,8 @@
 var group__device_abstraction_pral =
 [
+    [ "Peripheral Register Abstraction Layer Header File", "group__xc16-pral.html", "group__xc16-pral" ],
+    [ "Device Family Filter", "group__p33c-devices-pral.html", null ],
+    [ "Device Macros", "group__p33c-macros-pral.html", null ],
     [ "Capture Compare Module", "group__p33c-ccp-pral.html", null ],
     [ "Digital-To-Analog Converter Module", "group__p33c-dac-pral.html", null ],
     [ "Digital Signal Processor Converter Module", "group__p33c-dsp-pral.html", null ],

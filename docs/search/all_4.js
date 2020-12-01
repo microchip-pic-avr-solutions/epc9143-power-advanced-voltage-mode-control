@@ -56,6 +56,8 @@ var searchData=
   ['duty_5fratio_5fmin_501',['duty_ratio_min',['../struct_b_u_c_k___s_w_i_t_c_h___n_o_d_e___s_e_t_t_i_n_g_s__s.html#a76412863b3c111042a9a7a06fb921868',1,'BUCK_SWITCH_NODE_SETTINGS_s']]],
   ['device_20pin_20configuration_502',['Device Pin Configuration',['../group__gpio-initialization.html',1,'']]],
   ['digital_2dto_2danalog_20converter_20module_503',['Digital-To-Analog Converter Module',['../group__p33c-dac-pral.html',1,'']]],
-  ['digital_20signal_20processor_20converter_20module_504',['Digital Signal Processor Converter Module',['../group__p33c-dsp-pral.html',1,'']]],
-  ['device_20peripheral_20assignments_505',['Device Peripheral Assignments',['../group__state-machine-mcal.html',1,'']]]
+  ['device_20family_20filter_504',['Device Family Filter',['../group__p33c-devices-pral.html',1,'']]],
+  ['digital_20signal_20processor_20converter_20module_505',['Digital Signal Processor Converter Module',['../group__p33c-dsp-pral.html',1,'']]],
+  ['device_20macros_506',['Device Macros',['../group__p33c-macros-pral.html',1,'']]],
+  ['device_20peripheral_20assignments_507',['Device Peripheral Assignments',['../group__state-machine-mcal.html',1,'']]]
 ];
