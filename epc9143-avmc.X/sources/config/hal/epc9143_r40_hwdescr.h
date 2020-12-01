@@ -39,22 +39,35 @@
 #include <stddef.h> // include standard definition data types
 #include <math.h> // include standard math functoins library
 
+/**************************************************************************************************
+ * @addtogroup hardware-id-macro
+ * @{
+ * @brief Global macro identifying the hardware version supported by 
+ * 
+ * @details
+ * This global macro is used to identify the hardware version supported by this hardware 
+ * abstraction layer header file. 
+ * 
+ **************************************************************************************************/
+
 #ifndef __EPC9143_R40__
   #define __EPC9143_R40__
 #endif
+
+/** @} */ // end of group hardware-id-macro
 
 /**************************************************************************************************
  * @addtogroup special-options
  * @{
  * @brief Global defines used to enable/disable special firmware options
  * 
- * <b>Description</b><br>
+ * @details
  * This section is used to enable/disable special options of the firmware. 
  * 
  **************************************************************************************************/
 
 /* CUSTOM RUNTIME OPTIONS */
-#define PLANT_MEASUREMENT   false ///< If enabled, replaces the common voltage control loop by a simple P-control loop to perform measurements of the plant transfer function.<br><b>DO NOT USE THIS OPTION FOR NORMAL OPERATION</b>
+#define PLANT_MEASUREMENT   false ///< If enabled, replaces the common voltage control loop by a simple P-control loop to perform measurements of the plant transfer function.
 
 #define DBGPIN1_ENABLE      false ///< Enables debug pin indicating control loop execution timing
 #define DBGPIN2_ENABLE      true ///< Enables debug pin indicating task scheduler execution timing
@@ -66,7 +79,7 @@
  * @{ 
  * @brief Fundamental microcontroller device settings
  * 
- * <b>Description</b><br>
+ * @details
  * This section is used to define device specific parameters like ADC reference and
  * resolution, main execution clock frequency and peripheral time base settings. 
  * All parameters are defined using physical quantities. 
@@ -89,7 +102,7 @@
  * @{ 
  * @brief Conversion macros of fundamental microcontroller device settings
  * 
- * <b>Description</b><br>
+ * @details
  * This section is used to convert device specific parameters like ADC reference and
  * resolution, main execution clock frequency and peripheral time base settings, declared 
  * in physical quantities, into binary (integer) numbers to be written to variables and SFRs.
@@ -107,7 +120,7 @@
  * @{
  * @brief Global state-machine user-settings
  * 
- * <b>Description</b>
+ * @details
  * This section is used to set, modify, enable or disable common state machine parameters
  * and features. 
  * 
@@ -124,7 +137,7 @@
  * @{
  * @brief Global state-machine user-settings conversion macros
  * 
- * <b>Description</b>
+ * @details
  * Conversion macros are used to convert user settings defined in physical quantities into 
  * binary (integer) numbers, which will be written to registers and variables and/or used in 
  * calculations throughout the firmware.
@@ -133,11 +146,28 @@
 #define MAIN_EXEC_PER           (uint16_t)((CPU_FREQUENCY * MAIN_EXECUTION_PERIOD)-1) // DO NOT CHANGE
 
 /** @} */ // end of group state-machine-macros ~~~~~~~~~~
-    
-/***************************************************************************************************
- * @addtogroup device-gpio-mcal
+
+/**
+ * @addtogroup state-machine-mcal
  * @{
- * @brief Global abstraction labels for device pin assignments
+ * @brief Global state-machine peripheral assignments
+ * 
+ * @details
+ * The main task scheduler time base required a timer interrupt to separate high-priority
+ * from low-priority tasks. The high priority task timer interrupt is configured here.
+ */
+
+#define _OsTimerInterrupt      _T1Interrupt ///< Interrupt serivce routine label 
+#define _OSTIMER_IP            _T1IP ///< interrupt priority register
+#define _OSTIMER_IE            _T1IE ///< interrupt enable bit
+#define _OSTIMER_IF            _T1IF ///< interrupt flag bit
+
+/** @} */ // end of group state-machine-mcal ~~~~~~~~~~
+
+/***************************************************************************************************
+ * @addtogroup circuit-gpio-mcal
+ * @{
+ * @brief Global abstraction labels of special circuit signal device pin assignments
  * 
  * <b>Description:</b>
  * This section is used to define labels of hardware specific signals, which are directly 
@@ -174,7 +204,25 @@
 #define PWRGOOD_Toggle()    { _LATB1 ^= 1; } ///< Macro instruction to toggle most recent pin state
 #define PWRGOOD_Init()      { _ANSELB1 = 0; _LATB1 = 0; _TRISB1 = 0; } ///< Macro instruction initializing the specified GPIO as input or output
     
-/** @} */ // end of group device-gpio-mcal
+/** @} */ // end of group circuit-gpio-mcal
+
+/**************************************************************************************************
+ * @addtogroup circuit-peripheral-mcal
+ * @{
+ * @brief User-declaration of global defines for PWM signal generator settings
+ * 
+ * <b>Description:</b><br>
+ * This section defines fundamental PWM settings required for the interleaved buck converter
+ * of the EPC9143 300W 16th brick power module reference design. These settings are determined 
+ * by hardware and defined using physical quantities. Pre-compiler macros are used to convert 
+ * physical values into binary (integer) numbers to be written to Special Function Registers (SFR).
+ * 
+ **************************************************************************************************/
+
+#define ISENSE_REF_DAC_INSTANCE         1U ///< Digital-To-Analog Converter instance used to generate current semse amplifier reference voltage
+#define ISENSE_REF_BUFFER_OPA_INSTANCE  2U ///< Operational amplifier instance used to generate current semse amplifier reference voltage
+
+/** @} */ // end of group circuit-peripheral-mcal
 
 /**************************************************************************************************
  * @addtogroup pwm-settings

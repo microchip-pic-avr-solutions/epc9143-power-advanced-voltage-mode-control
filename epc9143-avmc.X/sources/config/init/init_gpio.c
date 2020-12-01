@@ -9,6 +9,11 @@
 #include <xc.h>
 #include "config/init/init_gpio.h"
 
+/**
+ * @addtogroup gpio-initialization
+ * @{
+ */
+
 /***********************************************************************************
  * @fn DATA_TYPE FUNCTION_NAME
  * @brief  ADD_SHORT_DESCRIPTION/SUMMARY_HERE
@@ -38,9 +43,19 @@ volatile uint16_t sysGpio_Initialize(void) {
     ANSELB = 0x0000;
     
     // Initialize debugging Pins
+    #ifdef DBGPIN1_PIN
     DBGPIN1_Init(); ///< Device pin #1  (not routed)
+    #endif
+    #ifdef DBGPIN2_PIN
     DBGPIN2_Init(); ///< Device pin #2  (not routed)
+    #endif
+    #ifdef DBGPIN3_PIN
     DBGPIN3_Init(); ///< Device pin #25 (not routed)
+    #endif
 
     return(retval);
 }
+
+/** @}*/ // end of group gpio-initialization
+
+// end of file

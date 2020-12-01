@@ -14,11 +14,17 @@
 #include "init_dac.h"
 #include "pwr_control/devices/dev_buck_typedef.h"
 
+/**
+ * @addtogroup dac-initialization
+ * @{
+ */
 /***********************************************************************************
  * @fn uint16_t sysDacModule_Initialize
  * @brief  DAC Module Base Register Initialization
  * @param  (none)
- * @return unsigned integer (0=failure, 1=success)
+ * @return unsigned integer
+ * @return 0=failure
+ * @return 1=success
  * 
  * <b>Description</b>
  * This function initializes the DAC module base registers for being operated 
@@ -81,7 +87,6 @@ volatile uint16_t sysDacOutput_Initialize(volatile uint16_t dacInstance)
     
     return (retval);
 }
-
 
 /***********************************************************************************
  * @fn uint16_t sysDacOutput_Enable
@@ -153,5 +158,6 @@ volatile uint16_t sysDacOutput_Disable(volatile uint16_t dacInstance) {
 
     return (retval);
 }
+/** @}*/ // end of group dac-initialization
 
 // end of file

@@ -12,6 +12,29 @@
 #include "config/hal.h"
 #include "config/init/init_timer1.h"   
 
+/**
+ * @addtogroup os-timer-initialization
+ * @{
+ */
+/***********************************************************************************
+ * @fn uint16_t sysOsTimer_Initialize
+ * @brief  Initializes the timer used as timebase for the task scheduler
+ * @param  (none)
+ * @return unsigned integer
+ * @return 0=failure
+ * @return 1=success
+ * 
+ * @details
+ * The task scheduler runs on a specific, usually fixed time base specified 
+ * in the state machine section of the hardware abstraction layer (e.g. 100 usec).
+ * This routine initializes a decive timer exclusively used for that purpose
+ * which is not shared with other tasks/peripherals to ensure stable, deterministic
+ * behavior of the firmware. The timer does not use interrupts. The scheduler 
+ * task execution period is controlled by polling on the timer overrun bit, allowing
+ * some more relaxed timing while not putting additional burden on the CPU.
+ *
+ **********************************************************************************/
+
 volatile uint16_t sysOsTimer_Initialize (void)
 {
     volatile uint16_t retval=1;
@@ -33,23 +56,41 @@ volatile uint16_t sysOsTimer_Initialize (void)
     PR1 = MAIN_EXEC_PER;
     
     // Reset interrupt and interrupt flag bit
-    _T1IP = 0;  // Set interrupt priority to zero
-    _T1IF = 0;  // Reset interrupt flag bit
-    _T1IE = 0;  // Disable Timer1 interrupt
+    _OSTIMER_IP = 1;  // Set interrupt priority to zero
+    _OSTIMER_IF = 0;  // Reset interrupt flag bit
+    _OSTIMER_IE = 0;  // Disable Timer1 interrupt
    
     return(retval);
 }
+ 
+/***********************************************************************************
+ * @fn uint16_t sysOsTimer_Enable
+ * @brief  Enables the timer used as timebase for the task scheduler
+ * @param  (none)
+ * @return unsigned integer
+ * @return 0=failure
+ * @return 1=success
+ * 
+ * @details
+ * Once the task scheduler time base has been initialized, this function can be 
+ * used to enable the timer and start the scheduled task execution.
+ *
+ **********************************************************************************/
 
 volatile uint16_t sysOsTimer_Enable (volatile bool interrupt_enable, volatile uint8_t interrupt_priority)
 {
     volatile uint16_t retval=1;
 
     // Enable Timer1
-    _T1IP = interrupt_priority;  // Set interrupt priority to zero
-    _T1IF = 0;  // Reset interrupt flag bit
-    _T1IE = interrupt_enable;  // Enable/Disable Timer1 interrupt
+    _OSTIMER_IP= interrupt_priority;  // Set interrupt priority to zero
+    _OSTIMER_IF = 0;  // Reset interrupt flag bit
+    _OSTIMER_IE = interrupt_enable;  // Enable/Disable Timer1 interrupt
     T1CONbits.TON = 1; // Turn on Timer1
     retval &= T1CONbits.TON; // Add timer enable bit to list of checked bits
     
     return(retval);
 }
+
+/** @}*/ // end of group os-timer-initialization
+
+// end of file

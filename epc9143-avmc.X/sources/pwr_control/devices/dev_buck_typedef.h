@@ -55,7 +55,7 @@
 
 
 /**
- * @addtogroup power-handler-variable
+ * @addtogroup power-handler-variables
  * @{
  */
 #define BUCK_MPHASE_COUNT                BUCK_NO_OF_PHASES

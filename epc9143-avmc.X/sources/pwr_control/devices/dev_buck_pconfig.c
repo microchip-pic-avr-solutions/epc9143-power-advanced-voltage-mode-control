@@ -21,7 +21,7 @@ volatile uint16_t adcore_mask=0;
 volatile uint16_t adcore_diff_mask=0;
 
 /** 
- * @addtogroup power-handler-function 
+ * @addtogroup power-handler-functions 
  * @{
  */
 /*******************************************************************************

@@ -35,9 +35,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-//extern volatile uint16_t init_opa_module(void);
-extern volatile uint16_t sysOpAmp_Initialize(void);
-//extern volatile uint16_t launch_opa_module(void);
+#include "p33c_opa.h"
+
+extern volatile uint16_t sysOpAmp_Initialize(volatile uint16_t opaInstance, volatile bool disable_n_channel);
+extern volatile uint16_t sysOpAmp_ModuleEnable(void);
 
 
 #endif	/* INITIALIZE_OPERATIONAL_AMPLIFIER_H */

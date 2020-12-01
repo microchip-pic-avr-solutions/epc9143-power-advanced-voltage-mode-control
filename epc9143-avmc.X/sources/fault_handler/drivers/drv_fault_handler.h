@@ -49,7 +49,6 @@
 #include <stddef.h> // include standard definitions  
 
 /**
- * 
  * @addtogroup fault-handler-enum
  * @{
  */
@@ -151,9 +150,10 @@ typedef struct FAULT_OBJECT_s {
 } FAULT_OBJECT_t; // 
 
 /** @} */ // end of group
+
+
 // Public Fault Configuration Templates
 extern volatile struct FAULT_OBJECT_s fltobjClear;
-
 
 // Public Function Prototypes
 extern volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj);

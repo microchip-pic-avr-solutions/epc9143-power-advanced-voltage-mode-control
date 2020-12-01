@@ -10,7 +10,7 @@
 #include "app_power_control.h"
 
 /**
- * @addtogroup power-handler-function
+ * @addtogroup power-handler-functions
  * @{
  */
 /*********************************************************************************
