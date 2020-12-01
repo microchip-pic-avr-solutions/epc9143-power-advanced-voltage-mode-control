@@ -385,7 +385,7 @@ typedef struct BUCK_ADC_INPUT_SETTINGS_s {
     volatile bool level_trigger;            ///< input channel level trigger mode enable bit
     volatile struct BUCK_ADC_INPUT_SCALING_s scaling; ///< normalization scaling settings
 
-} BUCK_ADC_INPUT_SETTINGS_t; ///< ADC input channel configuration
+//} BUCK_ADC_INPUT_SETTINGS_t; ///< ADC input channel configuration
 
 
 /****************************************************************************************************

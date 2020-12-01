@@ -17,9 +17,9 @@
  * @fn void _BUCK_VLOOP_Interrupt(void)
  * @brief Main Control Interrupt
  * 
- * @param NONE
+ * @param None
  * 
- * @return NONE
+ * @return None
  *   
  * <b>Description<b><br>
  * The control interrupt is calling the control loop. The point in time where

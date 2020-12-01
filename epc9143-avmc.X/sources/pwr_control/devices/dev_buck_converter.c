@@ -27,7 +27,9 @@
  * @return  1=success
  *  
  * <b>Description</b><br> 
- * 
+ * This function initializes the PWM module, PWM channels, ADC channels for temperature,
+ *  input voltage, output voltage and phase current. The buck IO pins are also initialize
+ * while keeping the buck converter operation disabled. The state machine is set to Initialize. 
  *********************************************************************************/
 
 volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) 
@@ -69,11 +71,16 @@ volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_POWER_CONTRO
  * @fn	volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
  * @brief This function is the main buck converter state machine executing the most recent state 
  * @param	None
- * @return  0=failure
- * @return  1=success
+ * @return  0 = BUCK_OPSRET_REPEAT
+ * @return  1 = BUCK_OPSRET_COMPLETE
+ * @return  2 = BUCK_OPSRET_REPEAT
  *
  * <b>Description</b><br> 
- * 
+ * This function performs tasks in the state machine.  
+ *  - If state machine state returns ERROR, switch to ERROR state in next execution cycle
+ *  - If state machine state signals state completion, move on to next state in line
+ *  - When state machine state returns REPEAT, the recent state function will be called again
+ *  - When state machine state returns an unknown result, the state machine will be reset to INITIALIZE again 
  *********************************************************************************/
 
 volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) 
@@ -180,13 +187,14 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
 
 /*******************************************************************************
  * @fn	volatile uint16_t drv_BuckConverter_Start(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
- * @brief
+ * @brief   This function starts the buck converter
  * @param	None
  * @return  0=failure
  * @return  1=success
  *  
  * <b>Description</b><br> 
- * 
+ * This function starts the buck converter operation by enabling the the buck PWM and ADC peripherals, 
+ * enabling the buck converter and reseting the state machine to Initialize. 
  *********************************************************************************/
 
 volatile uint16_t drv_BuckConverter_Start(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) {
@@ -221,12 +229,14 @@ volatile uint16_t drv_BuckConverter_Start(volatile struct BUCK_POWER_CONTROLLER_
 
 /*******************************************************************************
  * @fn	volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
- * @brief
+ * @brief  This function stop the buck converter opration
  * @param  None	
  * @return 0=failure
  * @return 1=success
  * 
  * <b>Description</b><br> 
+ * This function stops the buck converter operation by shutting down the PWM generator, 
+ * disabling the voltage/current loop and reset the state machine to Initialize.
  * 
  *********************************************************************************/
 volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) {
@@ -252,13 +262,14 @@ volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s
 
 /*******************************************************************************
  * @fn	volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
- * @brief
+ * @brief This function suspends the operation of the buck converter
  * @param  None	
  * @return 0=failure
  * @return 1=success
  *
  * <b>Description</b><br> 
- * 
+ * This function sets the suspend bit terminating operation. This bit will be evaluated in the
+ * State machine tasks which eventually shuts down the operation of the buck converter.
  *********************************************************************************/
 volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) {
     
@@ -272,13 +283,13 @@ volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLE
 
 /*******************************************************************************
  * @fn	volatile uint16_t drv_BuckConverter_Resume(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
- * @brief
+ * @brief  This function resume the operation of the buck converter
  * @param	None 
  * @return  0=failure
- * @return 1=success
+ * @return  1=success
  * 
  * <b>Description</b><br> 
- * 
+ * This function executes the latest task in the state machine enforcing state switch immediately.
  *********************************************************************************/
 volatile uint16_t drv_BuckConverter_Resume(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) {
     

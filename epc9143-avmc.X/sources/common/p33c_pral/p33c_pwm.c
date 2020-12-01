@@ -622,7 +622,7 @@ volatile uint16_t p33c_PwmGenerator_GetGroup(volatile struct P33C_PWM_GENERATOR_
 }
 
 /*********************************************************************************
- * @function volatile uint16_t p33c_PwmGenerator_SyncGenerators(volatile struct P33C_PWM_GENERATOR_s* pgHandleMother, volatile uint16_t pgMotherTriggerOutput, volatile struct P33C_PWM_GENERATOR_s* pgHandleChild, volatile bool ChildImmediateUpdate)
+ * @fn volatile uint16_t p33c_PwmGenerator_SyncGenerators(volatile struct P33C_PWM_GENERATOR_s* pgHandleMother, volatile uint16_t pgMotherTriggerOutput, volatile struct P33C_PWM_GENERATOR_s* pgHandleChild, volatile bool ChildImmediateUpdate)
  * @brief Sets the synchronization triggers of two PWM generators, of which the Mother PWM generator is the trigger provider and the Child PWM generator is the synchronization trigger receiver.
  * @param P33C_PWM_GENERATOR_s pgHandleMother: PWM generator object of triggering PWM generator (sync trigger provider)
  * @param  pgMotherTriggerOutput: Trigger output selection of sync trigger provider PWM generator
