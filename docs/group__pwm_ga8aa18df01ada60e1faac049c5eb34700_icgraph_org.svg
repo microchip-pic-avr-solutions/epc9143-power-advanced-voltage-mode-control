@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__power-handler-function.html#ga283487111ea685224a2caf350540daad" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="group__power-handler-functions.html#ga283487111ea685224a2caf350540daad" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="752,-190.5 752,-209.5 890,-209.5 890,-190.5 752,-190.5"/>
 <text text-anchor="middle" x="821" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_ChannelInitialize</text>
 </a>
@@ -36,7 +36,7 @@
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="group__power-handler-function.html#ga474b1ea0d26dbfd268ec805a900c1c93" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="group__power-handler-functions.html#ga474b1ea0d26dbfd268ec805a900c1c93" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="769,-152.5 769,-171.5 873,-171.5 873,-152.5 769,-152.5"/>
 <text text-anchor="middle" x="821" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_Resume</text>
 </a>
@@ -51,7 +51,7 @@
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="group__power-handler-function.html#gae6c3c54562df6c9d941bab2bc98b2bf2" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="group__power-handler-functions.html#gae6c3c54562df6c9d941bab2bc98b2bf2" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="776.5,-114.5 776.5,-133.5 865.5,-133.5 865.5,-114.5 776.5,-114.5"/>
 <text text-anchor="middle" x="821" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_Start</text>
 </a>
@@ -66,7 +66,7 @@
 <!-- Node13 -->
 <g id="node13" class="node">
 <title>Node13</title>
-<g id="a_node13"><a xlink:href="group__power-handler-function.html#gaf5c603256fc12118fe63eb285676d95f" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="group__power-handler-functions.html#gaf5c603256fc12118fe63eb285676d95f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="777,-76.5 777,-95.5 865,-95.5 865,-76.5 777,-76.5"/>
 <text text-anchor="middle" x="821" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_Stop</text>
 </a>
@@ -81,7 +81,7 @@
 <!-- Node16 -->
 <g id="node16" class="node">
 <title>Node16</title>
-<g id="a_node16"><a xlink:href="group__power-handler-function.html#gadd0533ee810246f6b84c7c31d9372835" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="group__power-handler-functions.html#gadd0533ee810246f6b84c7c31d9372835" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="768,-38.5 768,-57.5 874,-57.5 874,-38.5 768,-38.5"/>
 <text text-anchor="middle" x="821" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_Suspend</text>
 </a>
@@ -111,7 +111,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group__power-handler-function.html#ga97eb8bdd17b9c2e169f0634ebabb5d19" target="_top" xlink:title="This function initializes all peripheral modules and their instances used by the power controller.">
+<g id="a_node3"><a xlink:href="group__power-handler-functions.html#ga97eb8bdd17b9c2e169f0634ebabb5d19" target="_top" xlink:title="This function initializes all peripheral modules and their instances used by the power controller.">
 <polygon fill="white" stroke="black" points="574,-190.5 574,-209.5 711,-209.5 711,-190.5 574,-190.5"/>
 <text text-anchor="middle" x="642.5" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">drv_BuckConverter_Initialize</text>
 </a>
@@ -126,7 +126,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group__power-handler-function.html#ga0b26acfec74d1804384b4ba1a3cffab4" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="group__power-control-app-layer-private.html#ga0b26acfec74d1804384b4ba1a3cffab4" target="_top" xlink:title="This function is used to load peripheral configuration templates from the power controller device dri...">
 <polygon fill="white" stroke="black" points="395,-177 395,-207 538,-207 538,-177 395,-177"/>
 <text text-anchor="start" x="403" y="-195" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Peripherals</text>
 <text text-anchor="middle" x="466.5" y="-184" font-family="Helvetica,sans-Serif" font-size="10.00">Initialize</text>
@@ -142,7 +142,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="group__device-start-up.html#ga7a4cf6371d09457539f96a74b2809ca0" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="group__power-control-app-layer-public.html#ga7a4cf6371d09457539f96a74b2809ca0" target="_top" xlink:title="Calls the application layer power controller initialization.">
 <polygon fill="white" stroke="black" points="229,-152.5 229,-171.5 359,-171.5 359,-152.5 229,-152.5"/>
 <text text-anchor="middle" x="294" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Initialize</text>
 </a>
@@ -157,7 +157,7 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="group__system-initialization.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" target="_top" xlink:title="Initializes the user&#45;defined tasks and chip resources.">
+<g id="a_node6"><a xlink:href="group__system-initialization-user-tasks.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" target="_top" xlink:title="Initializes the user&#45;defined tasks.">
 <polygon fill="white" stroke="black" points="74,-152.5 74,-171.5 193,-171.5 193,-152.5 74,-152.5"/>
 <text text-anchor="middle" x="133.5" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">sysUserTasks_Initialize</text>
 </a>
@@ -202,7 +202,7 @@
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="group__power-handler-function.html#ga8c05ea0ee077172e4025d8b7a36f5c9f" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="group__power-handler-functions.html#ga8c05ea0ee077172e4025d8b7a36f5c9f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="581,-114.5 581,-133.5 704,-133.5 704,-114.5 581,-114.5"/>
 <text text-anchor="middle" x="642.5" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">drv_BuckConverter_Start</text>
 </a>
@@ -217,7 +217,7 @@
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="group__power-handler-function.html#ga9210070749c2ed49abd8a30b27f64151" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="group__power-control-app-layer-public.html#ga9210070749c2ed49abd8a30b27f64151" target="_top" xlink:title="This function calls the buck converter device driver function starting the power supply.">
 <polygon fill="white" stroke="black" points="408.5,-122.5 408.5,-141.5 524.5,-141.5 524.5,-122.5 408.5,-122.5"/>
 <text text-anchor="middle" x="466.5" y="-129.5" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Start</text>
 </a>
@@ -238,7 +238,7 @@
 <!-- Node14 -->
 <g id="node14" class="node">
 <title>Node14</title>
-<g id="a_node14"><a xlink:href="group__power-handler-function.html#gaa865d025fb1e5ae1e16e0c519c6ba9a2" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="group__power-handler-functions.html#gaa865d025fb1e5ae1e16e0c519c6ba9a2" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="581.5,-76.5 581.5,-95.5 703.5,-95.5 703.5,-76.5 581.5,-76.5"/>
 <text text-anchor="middle" x="642.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">drv_BuckConverter_Stop</text>
 </a>
@@ -253,7 +253,7 @@
 <!-- Node15 -->
 <g id="node15" class="node">
 <title>Node15</title>
-<g id="a_node15"><a xlink:href="group__power-handler-function.html#gaa7d413f62f7b5f25d152cc12354241f0" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="group__power-control-app-layer-public.html#gaa7d413f62f7b5f25d152cc12354241f0" target="_top" xlink:title="This function calls the buck converter device driver function stopping the power supply.">
 <polygon fill="white" stroke="black" points="409,-76.5 409,-95.5 524,-95.5 524,-76.5 409,-76.5"/>
 <text text-anchor="middle" x="466.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Stop</text>
 </a>

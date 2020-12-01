@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__power-handler-function.html#ga0b26acfec74d1804384b4ba1a3cffab4" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="group__power-control-app-layer-private.html#ga0b26acfec74d1804384b4ba1a3cffab4" target="_top" xlink:title="This function is used to load peripheral configuration templates from the power controller device dri...">
 <polygon fill="white" stroke="black" points="395,-39 395,-69 538,-69 538,-39 395,-39"/>
 <text text-anchor="start" x="403" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Peripherals</text>
 <text text-anchor="middle" x="466.5" y="-46" font-family="Helvetica,sans-Serif" font-size="10.00">Initialize</text>
@@ -52,7 +52,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group__device-start-up.html#ga7a4cf6371d09457539f96a74b2809ca0" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="group__power-control-app-layer-public.html#ga7a4cf6371d09457539f96a74b2809ca0" target="_top" xlink:title="Calls the application layer power controller initialization.">
 <polygon fill="white" stroke="black" points="229,-44.5 229,-63.5 359,-63.5 359,-44.5 229,-44.5"/>
 <text text-anchor="middle" x="294" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">appPowerSupply_Initialize</text>
 </a>
@@ -67,7 +67,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="group__system-initialization.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" target="_top" xlink:title="Initializes the user&#45;defined tasks and chip resources.">
+<g id="a_node4"><a xlink:href="group__system-initialization-user-tasks.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" target="_top" xlink:title="Initializes the user&#45;defined tasks.">
 <polygon fill="white" stroke="black" points="74,-44.5 74,-63.5 193,-63.5 193,-44.5 74,-44.5"/>
 <text text-anchor="middle" x="133.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">sysUserTasks_Initialize</text>
 </a>

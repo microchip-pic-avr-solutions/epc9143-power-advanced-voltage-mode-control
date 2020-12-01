@@ -1,6 +1,7 @@
 <map id="State Machine Settings" name="State Machine Settings">
-<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Hardware Abstraction Layer Declarations." alt="" coords="5,23,152,63"/>
-<area shape="rect" id="node3" title="Declaration of global state&#45;machine parameters." alt="" coords="200,31,359,56"/>
-<area shape="rect" id="node2" href="$group__state-machine-settings.html" title="Global state&#45;machine user&#45;settings." alt="" coords="422,5,523,31"/>
-<area shape="rect" id="node4" href="$group__state-machine-macros.html" title="Global state&#45;machine user&#45;settings conversion macros." alt="" coords="407,55,539,80"/>
+<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Hardware Abstraction Layer Declarations." alt="" coords="5,47,152,87"/>
+<area shape="rect" id="node3" title="Declaration of global state&#45;machine parameters." alt="" coords="200,55,359,80"/>
+<area shape="rect" id="node2" href="$group__state-machine-settings.html" title="Global state&#45;machine user&#45;settings." alt="" coords="457,5,559,31"/>
+<area shape="rect" id="node4" href="$group__state-machine-macros.html" title="Global state&#45;machine user&#45;settings conversion macros." alt="" coords="442,55,574,80"/>
+<area shape="rect" id="node5" href="$group__state-machine-mcal.html" title="Global state&#45;machine peripheral assignments." alt="" coords="407,104,609,129"/>
 </map>

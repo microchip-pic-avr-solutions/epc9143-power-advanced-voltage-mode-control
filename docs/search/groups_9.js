@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['output_20voltage_20feedback_1597',['Output Voltage Feedback',['../group__output-voltage-feedback.html',1,'']]]
+  ['low_2dpriority_20task_20execution_1688',['Low-Priority Task Execution',['../group__main-loop-low-priority.html',1,'']]]
 ];

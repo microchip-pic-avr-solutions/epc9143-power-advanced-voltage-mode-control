@@ -113,6 +113,9 @@ Collaboration diagram for Hardware Abstraction Layer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
 Modules</h2></td></tr>
+<tr class="memitem:group__hardware-id-macro"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hardware-id-macro.html">Hardware Version ID</a></td></tr>
+<tr class="memdesc:group__hardware-id-macro"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global macro identifying the hardware version supported by. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__device-abstraction"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device-abstraction.html">Microcontroller Device Abstraction</a></td></tr>
 <tr class="memdesc:group__device-abstraction"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declarations of fundamental microcontroller device parameters. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,8 +128,7 @@ Modules</h2></td></tr>
 <tr class="memitem:group__fault-response"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fault-response.html">Fault Response Settings</a></td></tr>
 <tr class="memdesc:group__fault-response"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of fault object trip and recovery delays. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__device-gpio-mcal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device-gpio-mcal.html">Device GPIO Assignments</a></td></tr>
-<tr class="memdesc:group__device-gpio-mcal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global abstraction labels for device pin assignments. <br /></td></tr>
+<tr class="memitem:group__circuit-peripherals"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__circuit-peripherals.html">Circuit Special Circuit Signals</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__pwm-fundamentals"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pwm-fundamentals.html">PWM Settings</a></td></tr>
 <tr class="memdesc:group__pwm-fundamentals"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of fundamental PWM parameters. <br /></td></tr>
@@ -143,7 +145,7 @@ Modules</h2></td></tr>
 <tr class="memitem:group__adaptive-control"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__adaptive-control.html">Adaptive Gain Control Feed Forward</a></td></tr>
 <tr class="memdesc:group__adaptive-control"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of macros calculating additional parameters for Adaptive Gain Modulation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__control-interrupt-vector-declarations"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__control-interrupt-vector-declarations.html">Control Interrutp Vector Declarations</a></td></tr>
+<tr class="memitem:group__control-interrupt-vector-declarations"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__control-interrupt-vector-declarations.html">Control Interrupt Vector Declarations</a></td></tr>
 <tr class="memdesc:group__control-interrupt-vector-declarations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control loop Interrupt Vector Settings. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__special-options"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__special-options.html">Special Firmware Options</a></td></tr>
@@ -152,8 +154,7 @@ Modules</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Hardware Abstraction Layer Declarations. </p>
-<p><b>Description</b><br  />
- The hardware abstraction layer introduces global defines which can be used in the firmware section of the source code to reference hardware dependent parameters and device peripheral instances and features. This abstraction is essential to adapt to hardware changes including migration across microcontroller device families and hardware versions with minimum risk and time efforts. As the microcontroller used in this design is a fixed, irreplaceable board component, this particular Hardware Abstraction Layer (HAL) covers declarations of circuit control and feedback signals as well as associated microcontroller peripheral instances and features. </p>
+<p>The hardware abstraction layer introduces global defines which can be used in the firmware section of the source code to reference hardware dependent parameters and device peripheral instances and features. This abstraction is essential to adapt to hardware changes including migration across microcontroller device families and hardware versions with minimum risk and time efforts. As the microcontroller used in this design is a fixed, irreplaceable board component, this particular Hardware Abstraction Layer (HAL) covers declarations of circuit control and feedback signals as well as associated microcontroller peripheral instances and features. </p>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.20-->

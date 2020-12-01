@@ -114,15 +114,55 @@ Collaboration diagram for Special Firmware Options:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga0bec5510da2215eafb1e118d9dc786c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__special-options.html#ga0bec5510da2215eafb1e118d9dc786c7">PLANT_MEASUREMENT</a>&#160;&#160;&#160;false</td></tr>
-<tr class="memdesc:ga0bec5510da2215eafb1e118d9dc786c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">If enabled, replaces the common voltage control loop by a simple P-control loop to perform measurements of the plant transfer function.<br  />
-<b>DO NOT USE THIS OPTION FOR NORMAL OPERATION</b>  <a href="group__special-options.html#ga0bec5510da2215eafb1e118d9dc786c7">More...</a><br /></td></tr>
+<tr class="memdesc:ga0bec5510da2215eafb1e118d9dc786c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">If enabled, replaces the common voltage control loop by a simple P-control loop to perform measurements of the plant transfer function.  <a href="group__special-options.html#ga0bec5510da2215eafb1e118d9dc786c7">More...</a><br /></td></tr>
 <tr class="separator:ga0bec5510da2215eafb1e118d9dc786c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga558e9be0d6b69c99c432b0e34923921e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__special-options.html#ga558e9be0d6b69c99c432b0e34923921e">DBGPIN1_ENABLE</a>&#160;&#160;&#160;false</td></tr>
+<tr class="memdesc:ga558e9be0d6b69c99c432b0e34923921e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables debug pin indicating control loop execution timing.  <a href="group__special-options.html#ga558e9be0d6b69c99c432b0e34923921e">More...</a><br /></td></tr>
+<tr class="separator:ga558e9be0d6b69c99c432b0e34923921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga410c4fdcc59dde5886e61f88917c88e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__special-options.html#ga410c4fdcc59dde5886e61f88917c88e7">DBGPIN2_ENABLE</a>&#160;&#160;&#160;true</td></tr>
+<tr class="memdesc:ga410c4fdcc59dde5886e61f88917c88e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables debug pin indicating task scheduler execution timing.  <a href="group__special-options.html#ga410c4fdcc59dde5886e61f88917c88e7">More...</a><br /></td></tr>
+<tr class="separator:ga410c4fdcc59dde5886e61f88917c88e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Global defines used to enable/disable special firmware options. </p>
-<p><b>Description</b><br  />
- This section is used to enable/disable special options of the firmware. </p>
+<p>This section is used to enable/disable special options of the firmware. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ga558e9be0d6b69c99c432b0e34923921e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga558e9be0d6b69c99c432b0e34923921e">&#9670;&nbsp;</a></span>DBGPIN1_ENABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN1_ENABLE&#160;&#160;&#160;false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables debug pin indicating control loop execution timing. </p>
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00072">72</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
+<a id="ga410c4fdcc59dde5886e61f88917c88e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga410c4fdcc59dde5886e61f88917c88e7">&#9670;&nbsp;</a></span>DBGPIN2_ENABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBGPIN2_ENABLE&#160;&#160;&#160;true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables debug pin indicating task scheduler execution timing. </p>
+
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00073">73</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+
+</div>
+</div>
 <a id="ga0bec5510da2215eafb1e118d9dc786c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga0bec5510da2215eafb1e118d9dc786c7">&#9670;&nbsp;</a></span>PLANT_MEASUREMENT</h2>
 
@@ -135,10 +175,9 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>If enabled, replaces the common voltage control loop by a simple P-control loop to perform measurements of the plant transfer function.<br  />
-<b>DO NOT USE THIS OPTION FOR NORMAL OPERATION</b> </p>
+<p>If enabled, replaces the common voltage control loop by a simple P-control loop to perform measurements of the plant transfer function. </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00057">57</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00070">70</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>

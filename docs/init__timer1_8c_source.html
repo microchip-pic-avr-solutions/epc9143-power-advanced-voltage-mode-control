@@ -113,50 +113,60 @@ $(document).ready(function(){initNavTree('init__timer1_8c_source.html',''); init
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;config/hal.h&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;config/init/init_timer1.h&quot;</span>   </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">volatile</span> uint16_t sysOsTimer_Initialize (<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">volatile</span> uint16_t retval=1;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    T1CONbits.TON = 0;  <span class="comment">// Timer1 On: Stops 16-bit Timer1 during configuration</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    T1CONbits.TSIDL = 0; <span class="comment">// Timer1 Stop in Idle Mode: Continues module operation in Idle mode</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    T1CONbits.TMWDIS = 0; <span class="comment">// Asynchronous Timer1 Write Disable: Back-to-back writes are enabled in Asynchronous mode</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    T1CONbits.TMWIP = 0; <span class="comment">// Asynchronous Timer1 Write in Progress: Write to the timer in Asynchronous mode is complete</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    T1CONbits.PRWIP = 0; <span class="comment">// Asynchronous Period Write in Progress: Write to the Period register in Asynchronous mode is complete</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    T1CONbits.TECS = 0b11; <span class="comment">// Timer1 Extended Clock Select: FRC clock</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    T1CONbits.TGATE = 0; <span class="comment">// Timer1 Gated Time Accumulation Enable: Gated time accumulation is disabled when TCS = 0</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    T1CONbits.TCKPS = 0; <span class="comment">// Timer1 Input Clock Prescale Select: 1:1</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    T1CONbits.TSYNC = 0; <span class="comment">// Timer1 External Clock Input Synchronization Select: Does not synchronize the External Clock input</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    T1CONbits.TCS = 0; <span class="comment">// Timer1 Clock Source Select: Internal peripheral clock</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// Reset Timer Counter Register TMR to Zero; </span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    TMR1 = 0x00;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">//Period = 0.0001 s; Frequency = 100000000 Hz; PR 9999; </span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    PR1 = <a class="code" href="group__state-machine-macros.html#gaf9a1bbe132fcc0fd2dacac4cf1bb4f10">MAIN_EXEC_PER</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Reset interrupt and interrupt flag bit</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    _T1IP = 0;  <span class="comment">// Set interrupt priority to zero</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    _T1IF = 0;  <span class="comment">// Reset interrupt flag bit</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    _T1IE = 0;  <span class="comment">// Disable Timer1 interrupt</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;   </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span>(retval);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">volatile</span> uint16_t sysOsTimer_Enable (<span class="keyword">volatile</span> <span class="keywordtype">bool</span> interrupt_enable, <span class="keyword">volatile</span> uint8_t interrupt_priority)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">volatile</span> uint16_t retval=1;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// Enable Timer1</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    _T1IP = interrupt_priority;  <span class="comment">// Set interrupt priority to zero</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    _T1IF = 0;  <span class="comment">// Reset interrupt flag bit</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    _T1IE = interrupt_enable;  <span class="comment">// Enable/Disable Timer1 interrupt</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    T1CONbits.TON = 1; <span class="comment">// Turn on Timer1</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    retval &amp;= T1CONbits.TON; <span class="comment">// Add timer enable bit to list of checked bits</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span>(retval);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="group__os-timer-initialization.html#ga8e89a1a4ee5bf8c794bd29163b92bf49">   38</a></span>&#160;<span class="keyword">volatile</span> uint16_t <a class="code" href="group__os-timer-initialization.html#ga8e89a1a4ee5bf8c794bd29163b92bf49">sysOsTimer_Initialize</a> (<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">volatile</span> uint16_t retval=1;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    T1CONbits.TON = 0;  <span class="comment">// Timer1 On: Stops 16-bit Timer1 during configuration</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    T1CONbits.TSIDL = 0; <span class="comment">// Timer1 Stop in Idle Mode: Continues module operation in Idle mode</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    T1CONbits.TMWDIS = 0; <span class="comment">// Asynchronous Timer1 Write Disable: Back-to-back writes are enabled in Asynchronous mode</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    T1CONbits.TMWIP = 0; <span class="comment">// Asynchronous Timer1 Write in Progress: Write to the timer in Asynchronous mode is complete</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    T1CONbits.PRWIP = 0; <span class="comment">// Asynchronous Period Write in Progress: Write to the Period register in Asynchronous mode is complete</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    T1CONbits.TECS = 0b11; <span class="comment">// Timer1 Extended Clock Select: FRC clock</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    T1CONbits.TGATE = 0; <span class="comment">// Timer1 Gated Time Accumulation Enable: Gated time accumulation is disabled when TCS = 0</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    T1CONbits.TCKPS = 0; <span class="comment">// Timer1 Input Clock Prescale Select: 1:1</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    T1CONbits.TSYNC = 0; <span class="comment">// Timer1 External Clock Input Synchronization Select: Does not synchronize the External Clock input</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    T1CONbits.TCS = 0; <span class="comment">// Timer1 Clock Source Select: Internal peripheral clock</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Reset Timer Counter Register TMR to Zero; </span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    TMR1 = 0x00;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">//Period = 0.0001 s; Frequency = 100000000 Hz; PR 9999; </span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    PR1 = <a class="code" href="group__state-machine-macros.html#gaf9a1bbe132fcc0fd2dacac4cf1bb4f10">MAIN_EXEC_PER</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Reset interrupt and interrupt flag bit</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="group__state-machine-mcal.html#ga9e2f08edcbbe0b28c502b3b024572962">_OSTIMER_IP</a> = 1;  <span class="comment">// Set interrupt priority to zero</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="group__state-machine-mcal.html#gaf0c6fb4644dc461d279c70028eeb0e0a">_OSTIMER_IF</a> = 0;  <span class="comment">// Reset interrupt flag bit</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="group__state-machine-mcal.html#gaf169ca56f95334f16dd2bca15dc108d5">_OSTIMER_IE</a> = 0;  <span class="comment">// Disable Timer1 interrupt</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;   </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span>(retval);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="group__os-timer-initialization.html#ga4c811c3414a3785423f828be293562f0">   80</a></span>&#160;<span class="keyword">volatile</span> uint16_t <a class="code" href="group__os-timer-initialization.html#ga4c811c3414a3785423f828be293562f0">sysOsTimer_Enable</a> (<span class="keyword">volatile</span> <span class="keywordtype">bool</span> interrupt_enable, <span class="keyword">volatile</span> uint8_t interrupt_priority)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">volatile</span> uint16_t retval=1;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// Enable Timer1</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="group__state-machine-mcal.html#ga9e2f08edcbbe0b28c502b3b024572962">_OSTIMER_IP</a>= interrupt_priority;  <span class="comment">// Set interrupt priority to zero</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="group__state-machine-mcal.html#gaf0c6fb4644dc461d279c70028eeb0e0a">_OSTIMER_IF</a> = 0;  <span class="comment">// Reset interrupt flag bit</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="group__state-machine-mcal.html#gaf169ca56f95334f16dd2bca15dc108d5">_OSTIMER_IE</a> = interrupt_enable;  <span class="comment">// Enable/Disable Timer1 interrupt</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    T1CONbits.TON = 1; <span class="comment">// Turn on Timer1</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    retval &amp;= T1CONbits.TON; <span class="comment">// Add timer enable bit to list of checked bits</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span>(retval);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; <span class="comment">// end of group os-timer-initialization</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">// end of file</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="agroup__state-machine-macros_html_gaf9a1bbe132fcc0fd2dacac4cf1bb4f10"><div class="ttname"><a href="group__state-machine-macros.html#gaf9a1bbe132fcc0fd2dacac4cf1bb4f10">MAIN_EXEC_PER</a></div><div class="ttdeci">#define MAIN_EXEC_PER</div><div class="ttdef"><b>Definition:</b> <a href="epc9143__r40__hwdescr_8h_source.html#l00130">epc9143_r40_hwdescr.h:130</a></div></div>
+<div class="ttc" id="agroup__state-machine-mcal_html_gaf169ca56f95334f16dd2bca15dc108d5"><div class="ttname"><a href="group__state-machine-mcal.html#gaf169ca56f95334f16dd2bca15dc108d5">_OSTIMER_IE</a></div><div class="ttdeci">#define _OSTIMER_IE</div><div class="ttdoc">interrupt enable bit</div><div class="ttdef"><b>Definition:</b> <a href="epc9143__r40__hwdescr_8h_source.html#l00162">epc9143_r40_hwdescr.h:162</a></div></div>
+<div class="ttc" id="agroup__os-timer-initialization_html_ga8e89a1a4ee5bf8c794bd29163b92bf49"><div class="ttname"><a href="group__os-timer-initialization.html#ga8e89a1a4ee5bf8c794bd29163b92bf49">sysOsTimer_Initialize</a></div><div class="ttdeci">volatile uint16_t sysOsTimer_Initialize(void)</div><div class="ttdoc">Initializes the timer used as timebase for the task scheduler.</div><div class="ttdef"><b>Definition:</b> <a href="init__timer1_8c_source.html#l00038">init_timer1.c:38</a></div></div>
+<div class="ttc" id="agroup__state-machine-mcal_html_gaf0c6fb4644dc461d279c70028eeb0e0a"><div class="ttname"><a href="group__state-machine-mcal.html#gaf0c6fb4644dc461d279c70028eeb0e0a">_OSTIMER_IF</a></div><div class="ttdeci">#define _OSTIMER_IF</div><div class="ttdoc">interrupt flag bit</div><div class="ttdef"><b>Definition:</b> <a href="epc9143__r40__hwdescr_8h_source.html#l00163">epc9143_r40_hwdescr.h:163</a></div></div>
+<div class="ttc" id="agroup__state-machine-mcal_html_ga9e2f08edcbbe0b28c502b3b024572962"><div class="ttname"><a href="group__state-machine-mcal.html#ga9e2f08edcbbe0b28c502b3b024572962">_OSTIMER_IP</a></div><div class="ttdeci">#define _OSTIMER_IP</div><div class="ttdoc">interrupt priority register</div><div class="ttdef"><b>Definition:</b> <a href="epc9143__r40__hwdescr_8h_source.html#l00161">epc9143_r40_hwdescr.h:161</a></div></div>
+<div class="ttc" id="agroup__state-machine-macros_html_gaf9a1bbe132fcc0fd2dacac4cf1bb4f10"><div class="ttname"><a href="group__state-machine-macros.html#gaf9a1bbe132fcc0fd2dacac4cf1bb4f10">MAIN_EXEC_PER</a></div><div class="ttdeci">#define MAIN_EXEC_PER</div><div class="ttdef"><b>Definition:</b> <a href="epc9143__r40__hwdescr_8h_source.html#l00146">epc9143_r40_hwdescr.h:146</a></div></div>
+<div class="ttc" id="agroup__os-timer-initialization_html_ga4c811c3414a3785423f828be293562f0"><div class="ttname"><a href="group__os-timer-initialization.html#ga4c811c3414a3785423f828be293562f0">sysOsTimer_Enable</a></div><div class="ttdeci">volatile uint16_t sysOsTimer_Enable(volatile bool interrupt_enable, volatile uint8_t interrupt_priority)</div><div class="ttdef"><b>Definition:</b> <a href="init__timer1_8c_source.html#l00080">init_timer1.c:80</a></div></div>
 <!-- HTML footer for doxygen 1.8.20-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

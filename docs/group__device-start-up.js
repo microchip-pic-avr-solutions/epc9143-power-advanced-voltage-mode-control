@@ -1,6 +1,6 @@
 var group__device_start_up =
 [
-    [ "System Initialization", "group__system-initialization.html", "group__system-initialization" ],
-    [ "appFaultMonitor_Initialize", "group__device-start-up.html#ga830e5c7087a8e5ee8ea39b7e3df94b68", null ],
-    [ "appPowerSupply_Initialize", "group__device-start-up.html#ga7a4cf6371d09457539f96a74b2809ca0", null ]
+    [ "Essential Chip Resources", "group__system-initialization-mcu.html", "group__system-initialization-mcu" ],
+    [ "Hardware-Specific Chip Resources", "group__system-initialization-user-peripherals.html", "group__system-initialization-user-peripherals" ],
+    [ "Firmware Task Initialization", "group__system-initialization-user-tasks.html", "group__system-initialization-user-tasks" ]
 ];

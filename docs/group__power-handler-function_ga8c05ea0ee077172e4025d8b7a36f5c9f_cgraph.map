@@ -1,6 +1,0 @@
-<map id="drv_BuckConverter_Start" name="drv_BuckConverter_Start">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,169,57"/>
-<area shape="rect" id="node2" href="$group__power-handler-function.html#gae12da3618a5d9e82920992df80b67b47" title=" " alt="" coords="221,5,333,32"/>
-<area shape="rect" id="node3" href="$group__power-handler-function.html#gae6c3c54562df6c9d941bab2bc98b2bf2" title=" " alt="" coords="217,56,336,83"/>
-<area shape="rect" id="node4" href="$group__pwm.html#ga8aa18df01ada60e1faac049c5eb34700" title="Returns the PWM generator index." alt="" coords="384,56,595,83"/>
-</map>

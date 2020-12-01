@@ -1,7 +1,0 @@
-<map id="appPowerSupply_Start" name="appPowerSupply_Start">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,160,57"/>
-<area shape="rect" id="node2" href="$group__power-handler-function.html#ga8c05ea0ee077172e4025d8b7a36f5c9f" title=" " alt="" coords="208,31,372,57"/>
-<area shape="rect" id="node3" href="$group__power-handler-function.html#gae12da3618a5d9e82920992df80b67b47" title=" " alt="" coords="423,5,535,32"/>
-<area shape="rect" id="node4" href="$group__power-handler-function.html#gae6c3c54562df6c9d941bab2bc98b2bf2" title=" " alt="" coords="420,56,539,83"/>
-<area shape="rect" id="node5" href="$group__pwm.html#ga8aa18df01ada60e1faac049c5eb34700" title="Returns the PWM generator index." alt="" coords="587,56,797,83"/>
-</map>

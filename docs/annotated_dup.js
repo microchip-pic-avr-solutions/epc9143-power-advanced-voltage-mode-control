@@ -41,6 +41,7 @@ var annotated_dup =
     [ "P33C_DAC_INSTANCE_s", "struct_p33_c___d_a_c___i_n_s_t_a_n_c_e__s.html", "struct_p33_c___d_a_c___i_n_s_t_a_n_c_e__s" ],
     [ "P33C_DAC_MODULE_s", "struct_p33_c___d_a_c___m_o_d_u_l_e__s.html", "struct_p33_c___d_a_c___m_o_d_u_l_e__s" ],
     [ "P33C_GPIO_INSTANCE_s", "struct_p33_c___g_p_i_o___i_n_s_t_a_n_c_e__s.html", "struct_p33_c___g_p_i_o___i_n_s_t_a_n_c_e__s" ],
+    [ "P33C_OPA_MODULE_s", "struct_p33_c___o_p_a___m_o_d_u_l_e__s.html", "struct_p33_c___o_p_a___m_o_d_u_l_e__s" ],
     [ "P33C_PWM_GENERATOR_s", "struct_p33_c___p_w_m___g_e_n_e_r_a_t_o_r__s.html", "struct_p33_c___p_w_m___g_e_n_e_r_a_t_o_r__s" ],
     [ "P33C_PWM_MODULE_s", "struct_p33_c___p_w_m___m_o_d_u_l_e__s.html", "struct_p33_c___p_w_m___m_o_d_u_l_e__s" ],
     [ "REGBLK_CLKDIV_CONFIG_t", "union_r_e_g_b_l_k___c_l_k_d_i_v___c_o_n_f_i_g__t.html", "union_r_e_g_b_l_k___c_l_k_d_i_v___c_o_n_f_i_g__t" ],

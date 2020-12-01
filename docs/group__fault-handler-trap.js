@@ -104,5 +104,6 @@ var group__fault_handler_trap =
     [ "DefaultTrapHandler", "group__fault-handler-trap.html#ga0250f20caa12da59ca4f42c807cff152", null ],
     [ "drv_TrapHandler_SoftTrapsInitialize", "group__fault-handler-trap.html#ga7ae576940533f820cf173472ea907b96", null ],
     [ "__attribute__", "group__fault-handler-trap.html#ga4ba588dfade9afc7cd43690a9528d7c5", null ],
+    [ "bits", "group__fault-handler-trap.html#gac54e274d2ba78b497ad9e19ff8b118b1", null ],
     [ "value", "group__fault-handler-trap.html#ga3f0c55f449560b03ce0ac43270c26600", null ]
 ];

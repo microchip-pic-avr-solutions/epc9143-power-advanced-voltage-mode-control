@@ -1,9 +1,5 @@
 var group__power_handler_struct =
 [
-    [ "CS_CALIBRATION_s", "struct_c_s___c_a_l_i_b_r_a_t_i_o_n__s.html", [
-      [ "cs_calib_cnt", "struct_c_s___c_a_l_i_b_r_a_t_i_o_n__s.html#ab7b819fb869297cd74390c871f3606ff", null ],
-      [ "cs_calib_offset", "struct_c_s___c_a_l_i_b_r_a_t_i_o_n__s.html#adc1cf1555b6bf7ca29924b8d13bca8ab", null ]
-    ] ],
     [ "BUCK_CONVERTER_STATUS_s", "struct_b_u_c_k___c_o_n_v_e_r_t_e_r___s_t_a_t_u_s__s.html", [
       [ "adc_active", "struct_b_u_c_k___c_o_n_v_e_r_t_e_r___s_t_a_t_u_s__s.html#ae04b22175817e3ca9a061687c0d90786", null ],
       [ "autorun", "struct_b_u_c_k___c_o_n_v_e_r_t_e_r___s_t_a_t_u_s__s.html#ade0f0626b86d63fc4c2e05089a97a909", null ],
@@ -266,7 +262,6 @@ var group__power_handler_struct =
       [ "TRIG", "struct_p33_c___p_w_m___g_e_n_e_r_a_t_o_r__s.html#a408bbb1c8d08db1635283f8a34733d17", null ],
       [ "value", "struct_p33_c___p_w_m___g_e_n_e_r_a_t_o_r__s.html#a900b69af7d674b8db3bceae754b4955a", null ]
     ] ],
-    [ "CS_CALIB_STEPS", "group__power-handler-struct.html#gac3e84f17fbb5a9d23a0e089b210cb080", null ],
     [ "BUCK_ADC_INPUT_SCALING_t", "group__power-handler-struct.html#ga1a5093895449be09f35f00376b9cd44e", null ],
     [ "BUCK_ADC_INPUT_SETTINGS_t", "group__power-handler-struct.html#ga0819c37bfa6065a46b246ce34b5bf789", null ],
     [ "BUCK_CONVERTER_DATA_t", "group__power-handler-struct.html#gab7dae88469104e8765d6b1201dade8fd", null ],
@@ -281,12 +276,8 @@ var group__power_handler_struct =
     [ "BUCK_STARTUP_PERIOD_HANDLER_t", "group__power-handler-struct.html#gaba32b1c53944430e519abc1604763b15", null ],
     [ "BUCK_STATE_ID_t", "group__power-handler-struct.html#ga8a1760ccfbe31cbf96f828904d19f5b3", null ],
     [ "BUCK_SWITCH_NODE_SETTINGS_t", "group__power-handler-struct.html#ga1708202db72aeadad3e0beed66b08410", null ],
-    [ "CS_CALIBRATION_t", "group__power-handler-struct.html#ga5a9aec49414adfc8482213f62544cf74", null ],
-    [ "buck", "group__power-handler-struct.html#ga122cf508a90cd5d1bc4a3518beef8dc6", null ],
     [ "buckDacInstanceConfig", "group__power-handler-struct.html#gabb4f93137e10c48f7c175505ebfa2dbd", null ],
     [ "buckDacModuleConfig", "group__power-handler-struct.html#gaa14aa1146363299e8197e28355ee8852", null ],
     [ "buckPwmGeneratorConfig", "group__power-handler-struct.html#gab956329d624c39369fd54d5cf63cd533", null ],
-    [ "buckPwmModuleConfig", "group__power-handler-struct.html#gae29878195fbf1b400d2d9758edb58a51", null ],
-    [ "calib_cs1", "group__power-handler-struct.html#gae9bb3364674b0ff96ff151d2f062d60b", null ],
-    [ "calib_cs2", "group__power-handler-struct.html#ga143f11e4b0e66e6bcddc3582652267ce", null ]
+    [ "buckPwmModuleConfig", "group__power-handler-struct.html#gae29878195fbf1b400d2d9758edb58a51", null ]
 ];

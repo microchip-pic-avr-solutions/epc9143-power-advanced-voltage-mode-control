@@ -1,4 +1,7 @@
 <map id="p33c_DacInstance_ConfigWrite" name="p33c_DacInstance_ConfigWrite">
-<area shape="rect" id="node1" title="Writes a user&#45;defined configuration to the DAC instance registers." alt="" coords="236,5,439,32"/>
-<area shape="rect" id="node2" href="$group__dac.html#ga39037bccfba783fdd8c9a52cbe651ca4" title="Resets all DAC Instance registers to their RESET default values." alt="" coords="5,5,188,32"/>
+<area shape="rect" id="node1" title="Writes a user&#45;defined configuration to the DAC instance registers." alt="" coords="724,13,927,39"/>
+<area shape="rect" id="node2" href="$group__dac.html#ga39037bccfba783fdd8c9a52cbe651ca4" title="Resets all DAC Instance registers to their RESET default values." alt="" coords="493,13,676,39"/>
+<area shape="rect" id="node3" href="$group__dac-initialization.html#gab022a57f46162ce2bb840b556261133d" title=" " alt="" coords="287,13,445,39"/>
+<area shape="rect" id="node4" href="$group__system-initialization-user-peripherals.html#ga70c5cba054e38a4e8c8285a187ff61fa" title="Initializes the user&#45;defined chip resources." alt="" coords="104,5,239,47"/>
+<area shape="rect" id="node5" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,13,56,39"/>
 </map>

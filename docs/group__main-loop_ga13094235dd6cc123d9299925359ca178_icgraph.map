@@ -1,4 +1,0 @@
-<map id="appPowerSupply_Execute" name="appPowerSupply_Execute">
-<area shape="rect" id="node1" title="This is the top&#45;level function call triggering the most recent state machine of all associated power ..." alt="" coords="104,5,279,32"/>
-<area shape="rect" id="node2" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,5,56,32"/>
-</map>

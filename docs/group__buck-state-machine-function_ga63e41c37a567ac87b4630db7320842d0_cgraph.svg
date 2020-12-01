@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__power-handler-function.html#gaa3ea141de17bd86c94b1fda8187f9ce6" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="group__power-handler-functions.html#gaa3ea141de17bd86c94b1fda8187f9ce6" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="173,-0.5 173,-19.5 255,-19.5 255,-0.5 173,-0.5"/>
 <text text-anchor="middle" x="214" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_Set</text>
 </a>

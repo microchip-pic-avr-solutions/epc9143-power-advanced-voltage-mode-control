@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__power-handler-function.html#gadd0533ee810246f6b84c7c31d9372835" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="group__power-handler-functions.html#gadd0533ee810246f6b84c7c31d9372835" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="102,-19.5 102,-38.5 208,-38.5 208,-19.5 102,-19.5"/>
 <text text-anchor="middle" x="155" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_Suspend</text>
 </a>
@@ -36,7 +36,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="group__power-handler-functions.html#ga649bb2f18322be1a303d05931adb2c6a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="278.5,-38.5 278.5,-57.5 367.5,-57.5 367.5,-38.5 278.5,-38.5"/>
 <text text-anchor="middle" x="323" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_Clear</text>
 </a>

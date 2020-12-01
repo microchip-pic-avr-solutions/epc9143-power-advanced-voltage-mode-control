@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('p33c__osc_8c_source.html',''); initRes
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * ************************************************************************************************/</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// Include Header Files</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;p33SMPS_oscillator.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;p33c_osc.h&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/* ************************************************************************************************</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * PRIVATE DEFINES</span></div>
@@ -123,58 +123,59 @@ $(document).ready(function(){initNavTree('p33c__osc_8c_source.html',''); initRes
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * ************************************************************************************************/</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">volatile</span> <a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html">OSCILLATOR_SYSTEM_FREQUENCIES_t</a> system_frequencies;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">volatile</span> uint16_t smpsOSC_FRC_DefaultInitialize(<span class="keyword">volatile</span> CPU_SPEED_DEFAULTS_e cpu_speed)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">volatile</span> int16_t fres = 0;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">volatile</span> OSC_CONFIG_t osc;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    osc.osc_type = OSCCON_xOSC_FRCPLL;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    osc.N1 = CLKDIV_PLLDIV_N1_1;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">switch</span>(cpu_speed)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_20_MIPS:</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_20;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_30_MIPS:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_30;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_40_MIPS:</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_40;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_50_MIPS:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_50;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_60_MIPS:</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_60;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_70_MIPS:</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_70;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_80_MIPS:</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_80;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_90_MIPS:</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_90;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_100_MIPS:</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_100;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">return</span>(0);  </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    osc.N2 = PLLDIV_POST2DIV_N2N3_2;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    osc.N3 = PLLDIV_POST2DIV_N2N3_1; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    fres = smpsOSC_Initialize(osc);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span>(fres);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="group__p33c-osc-pral.html#ga40b19dfe32a3ebbb784dddd1ba1b31f9">   59</a></span>&#160;<span class="keyword">volatile</span> uint16_t <a class="code" href="group__p33c-osc-pral.html#ga40b19dfe32a3ebbb784dddd1ba1b31f9">p33c_OscFrc_DefaultInitialize</a>(<span class="keyword">volatile</span> CPU_SPEED_DEFAULTS_e cpu_speed)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">volatile</span> int16_t fres = 0;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">volatile</span> OSC_CONFIG_t osc;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    osc.osc_type = OSCCON_xOSC_FRCPLL;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    osc.N1 = CLKDIV_PLLDIV_N1_1;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">switch</span>(cpu_speed)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_20_MIPS:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_20;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_30_MIPS:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_30;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_40_MIPS:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_40;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_50_MIPS:</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_50;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_60_MIPS:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_60;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_70_MIPS:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_70;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_80_MIPS:</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_80;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_90_MIPS:</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_90;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">case</span> CPU_SPEED_100_MIPS:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            osc.M = PLLFBD_PLLFBDIV_M_100;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">return</span>(0);  </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    osc.N2 = PLLDIV_POST2DIV_N2N3_2;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    osc.N3 = PLLDIV_POST2DIV_N2N3_1; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    fres = <a class="code" href="group__p33c-osc-pral.html#ga61cf7c84efc865c104d5e292866131c4">p33c_Osc_Initialize</a>(osc);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">volatile</span> uint16_t smpsOSC_FRC_Initialize(<span class="keyword">volatile</span> CLKDIV_FRCDIVN_e frc_div, <span class="keyword">volatile</span> OSCTUN_TUN_e frc_tune)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">return</span>(fres);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="group__p33c-osc-pral.html#ga67011ec3564d8ed623511d5dc1db77f2">  133</a></span>&#160;<span class="keyword">volatile</span> uint16_t <a class="code" href="group__p33c-osc-pral.html#ga67011ec3564d8ed623511d5dc1db77f2">p33c_OscFrc_Initialize</a>(<span class="keyword">volatile</span> CLKDIV_FRCDIVN_e frc_div, <span class="keyword">volatile</span> OSCTUN_TUN_e frc_tune)</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;{</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#if defined (__P33SMPS_CH_MSTR__) || defined (__P33SMPS_CK__)</span></div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
@@ -202,7 +203,8 @@ $(document).ready(function(){initNavTree('p33c__osc_8c_source.html',''); initRes
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    </div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keyword">volatile</span> uint16_t smpsOSC_Initialize(<span class="keyword">volatile</span> OSC_CONFIG_t osc_config)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="group__p33c-osc-pral.html#ga61cf7c84efc865c104d5e292866131c4">  191</a></span>&#160;<span class="keyword">volatile</span> uint16_t <a class="code" href="group__p33c-osc-pral.html#ga61cf7c84efc865c104d5e292866131c4">p33c_Osc_Initialize</a>(<span class="keyword">volatile</span> OSC_CONFIG_t osc_config)</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;{</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;uint16_t _n=0, err=0;</div>
@@ -285,7 +287,8 @@ $(document).ready(function(){initNavTree('p33c__osc_8c_source.html',''); initRes
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;}</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="keyword">volatile</span> uint16_t smpsOSC_AUXCLK_Initialize(<span class="keyword">volatile</span> AUXOSC_CONFIG_t aux_clock_config)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno"><a class="line" href="group__p33c-osc-pral.html#ga800afc634cac0ccd87c0c74778f53e16">  299</a></span>&#160;<span class="keyword">volatile</span> uint16_t <a class="code" href="group__p33c-osc-pral.html#ga800afc634cac0ccd87c0c74778f53e16">p33c_OscAuxClk_Initialize</a>(<span class="keyword">volatile</span> AUXOSC_CONFIG_t aux_clock_config)</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;{</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    </div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="preprocessor">    #if defined (__P33SMPS_CH__) || defined (__P33SMPS_CK__)</span></div>
@@ -318,7 +321,8 @@ $(document).ready(function(){initNavTree('p33c__osc_8c_source.html',''); initRes
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    </div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;}</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; <span class="keyword">volatile</span> uint16_t smpsOSC_AUXCLK_DefaultInitialize(<span class="keyword">volatile</span> AUX_PLL_DEFAULTS_e afpllo_frequency)</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno"><a class="line" href="group__p33c-osc-pral.html#ga810a57935922e0256770d958616a896e">  357</a></span>&#160; <span class="keyword">volatile</span> uint16_t <a class="code" href="group__p33c-osc-pral.html#ga810a57935922e0256770d958616a896e">p33c_OscAuxClk_DefaultInitialize</a>(<span class="keyword">volatile</span> AUX_PLL_DEFAULTS_e afpllo_frequency)</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; {</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keyword">volatile</span> uint16_t fres = 1;</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keyword">volatile</span> AUXOSC_CONFIG_t aux_clock_config;</div>
@@ -345,190 +349,198 @@ $(document).ready(function(){initNavTree('p33c__osc_8c_source.html',''); initRes
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    aux_clock_config.APLLEN = ACLKCON_APLLEN_ENABLED;</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    </div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="comment">// Call auxiliary PLL configuration to apply new settings</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    fres &amp;= smpsOSC_AUXCLK_Initialize(aux_clock_config);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    fres &amp;= <a class="code" href="group__p33c-osc-pral.html#ga800afc634cac0ccd87c0c74778f53e16">p33c_OscAuxClk_Initialize</a>(aux_clock_config);</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    </div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keywordflow">return</span>(fres);</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; }</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="keyword">volatile</span> uint16_t smpsOSC_GetFrequencies(<span class="keyword">volatile</span> uint32_t main_osc_frequency) {</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    </div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <span class="keyword">volatile</span> int32_t freq=0;</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="keyword">volatile</span> uint16_t vbuf=0;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="keyword">volatile</span> OSCCON_xOSC_TYPE_e otype;</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    </div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="comment">// Copy oscillator frequency given as unsigned 32-bit integer into signed 32-bit variable</span></div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    freq = (<span class="keyword">volatile</span> int32_t)main_osc_frequency;</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160; </div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <span class="comment">// Capture external oscillator frequency</span></div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="keywordflow">if</span> (main_osc_frequency &gt; 0) {</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a9206b8af966b25abf4a7008af8f2a7b4">fpri</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    }</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    </div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="comment">// read currently selected oscillator</span></div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    otype = OSCCONbits.COSC; </div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    </div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    <span class="comment">// Copy Base FRC frequency into data structure</span></div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a93a4724319438d89cf737634191ac2a7">frc</a> = (<span class="keyword">volatile</span> int32_t)OSC_FRC_FREQ;   <span class="comment">// Set default FRC oscillator frequency </span></div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    </div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="comment">// Depending on detected oscillator type, set/override oscillator frequency</span></div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    </div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="comment">// For all modes using the internal Fast RC Oscillator (FRC), check input divider and tuning register</span></div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="keywordflow">if</span> ((otype == OSCCON_xOSC_FRC) || (otype == OSCCON_xOSC_BFRC) || (otype == OSCCON_xOSC_FRCPLL) || (otype == OSCCON_xOSC_FRCDIVN)) {</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        </div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        freq = (<span class="keyword">volatile</span> int32_t)OSC_FRC_FREQ;   <span class="comment">// Oscillator frequency is 8 MHz</span></div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        </div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="preprocessor">        #if defined (__P33SMPS_CK__) || defined (__P33SMPS_CH_MSTR__)</span></div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        <span class="comment">// FRC tuning register does not affect Backup FRC clock</span></div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        <span class="keywordflow">if</span>(otype != OSCCON_xOSC_BFRC) {</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            freq += OSC_TUN_STEP_FREQUENCY * (<span class="keyword">volatile</span> int32_t)(OSCTUNbits.TUN); <span class="comment">// Add oscillator tuning value (is singed)</span></div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a93a4724319438d89cf737634191ac2a7">frc</a> = freq;    <span class="comment">// Copy updated fast RC oscillator frequency after tuning</span></div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        }</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;<span class="preprocessor">        #endif</span></div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        </div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        <span class="comment">// Including FRC divider requires the FRCDIV oscillator to be selected</span></div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        <span class="keywordflow">if</span> (otype == OSCCON_xOSC_FRCDIVN) {        <span class="comment">// If oscillator is using internal divider...</span></div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            vbuf = (CLKDIVbits.FRCDIV &amp; 0x0003);    <span class="comment">// Copy divider SFR bits</span></div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            freq &gt;&gt;= vbuf; <span class="comment">// Right-shift oscillator frequency by divider bits (FRCDIV)</span></div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        }</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        </div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    }</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    </div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    <span class="comment">// Internal Low-Power RC Oscillator is always fixed to 32 kHz</span></div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (otype == OSCCON_xOSC_LPRC) {</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        freq = (<span class="keyword">volatile</span> int32_t)32000;        <span class="comment">// Oscillator frequency is 32 kHz</span></div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    }</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    </div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <span class="comment">// If external clock modes are set, check if given frequency is non-zero</span></div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="keywordflow">else</span> { <span class="comment">// If no oscillator frequency is given, it&#39;s assumed FRC oscillator is used</span></div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        <span class="keywordflow">if</span> (freq == 0) <span class="keywordflow">return</span>(0);   <span class="comment">// Error: no oscillator frequency given</span></div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    }</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    </div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="comment">// Capture system root clock</span></div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a445cb7dc89cde0b8cb430f9666e85b0a">fclk</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160; </div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    <span class="comment">// Check for PLL usage and calculate oscillator frequency based on recent settings</span></div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="keywordflow">if</span> ( (otype == OSCCON_xOSC_FRCPLL) || (otype == OSCCON_xOSC_PRIPLL) ) {</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        </div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        <span class="comment">// Check if PLL is locked in and stable</span></div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        <span class="keywordflow">if</span> (!OSCCONbits.LOCK) <span class="keywordflow">return</span>(0);    <span class="comment">// if incorrect/not valid, return error </span></div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        </div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        <span class="comment">// Check PLL divider N1 for valid value</span></div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        vbuf = (CLKDIVbits.PLLPRE &amp; 0x000F);</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N1</span></div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        </div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        <span class="comment">// Check PLL multiplier M</span></div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        vbuf = (PLLFBDbits.PLLFBDIV &amp; 0x00FF);</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 200) || (vbuf &lt; 3)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        freq *= vbuf; <span class="comment">// Multiply frequency by Multiplier M</span></div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        <span class="comment">// Capture VCO frequency</span></div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;        vbuf = (PLLDIVbits.VCODIV &amp; 0x0003);</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        <span class="keywordflow">if</span>(vbuf &gt; 3) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        vbuf = 4-vbuf;  <span class="comment">// Subtract value from 4 to get divider ratio</span></div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a80746275089fea05136dc21048ba5f11">fvco</a> = (<span class="keyword">volatile</span> uint32_t)(freq/vbuf);   <span class="comment">// Divide frequency by VCO divider</span></div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        </div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;        <span class="comment">// Check PLL divider N2 for valid value</span></div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        vbuf = (PLLDIVbits.POST1DIV &amp; 0x0007);</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N2</span></div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160; </div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        <span class="comment">// Check PLL divider N3 for valid value</span></div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;        vbuf = (PLLDIVbits.POST2DIV &amp; 0x0007);</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N3</span></div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        </div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    }</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    </div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    <span class="comment">// Capture PLL output frequency</span></div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ab7f9b796e83f2ccfde15f9db4dcb26ab">fpllo</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160; </div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    <span class="comment">// CPU Clock Divider</span></div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;    freq &gt;&gt;= 1;   <span class="comment">// Divide frequency by 2</span></div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a8b96548642980227defd30d56bc0d724">fosc</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    </div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    <span class="comment">// Peripheral Bus Divider</span></div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    freq &gt;&gt;= 1;   <span class="comment">// Divide frequency by 2</span></div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a132caf2823c5ecb187dfc9bf731cd183">fp</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; </div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    <span class="comment">// Reading DOZE setting</span></div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    <span class="keywordflow">if</span> (CLKDIVbits.DOZEN) {                 <span class="comment">// If DOZE divider is enabled</span></div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        vbuf = (CLKDIVbits.DOZE &amp; 0x0003);  <span class="comment">// Copy divider SFR bits</span></div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        freq &gt;&gt;= vbuf; <span class="comment">// Right-shift oscillator frequency by divider bits (DOZE)</span></div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    }</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ae3f1bd7d5e6ab1aa0ee0b05fd8f82e2a">fcy</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    </div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    <span class="comment">// Calculate CPU clock period</span></div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#aa38beb5366b4a2d91225176250d6b246">tcy</a> = 1.0/((float)system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ae3f1bd7d5e6ab1aa0ee0b05fd8f82e2a">fcy</a>);</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160; </div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    <span class="comment">// Calculate peripheral clock period</span></div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ae5226c81eac91af38215f3d99df6ac8b">tp</a> = 1.0/((float)system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a132caf2823c5ecb187dfc9bf731cd183">fp</a>);</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160; </div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    <span class="comment">// -----------------------------------------------</span></div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    <span class="comment">// Capture APLL frequencies</span></div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    <span class="comment">// -----------------------------------------------</span></div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    </div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    <span class="keywordflow">if</span> (ACLKCON1bits.APLLEN) {  <span class="comment">// APLL is enabled...</span></div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    </div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;        <span class="comment">// Select input frequency</span></div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        <span class="keywordflow">if</span>(ACLKCON1bits.FRCSEL) { freq = system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a93a4724319438d89cf737634191ac2a7">frc</a>; }</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;        <span class="keywordflow">else</span> { freq = system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a9206b8af966b25abf4a7008af8f2a7b4">fpri</a>; }</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        </div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;        <span class="comment">// Check APLL divider N1 for valid value</span></div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        vbuf = (ACLKCON1bits.APLLPRE &amp; 0x000F);</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N1</span></div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160; </div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        <span class="comment">// Check PLL multiplier M</span></div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        vbuf = (APLLFBD1bits.APLLFBDIV &amp; 0x00FF);</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 200) || (vbuf &lt; 3)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;        freq *= vbuf; <span class="comment">// Multiply frequency by Multiplier M</span></div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160; </div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        <span class="comment">// Capture VCO frequency</span></div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        vbuf = (APLLDIV1bits.AVCODIV &amp; 0x0003);</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        <span class="keywordflow">if</span>(vbuf &gt; 3) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        vbuf = 4-vbuf;  <span class="comment">// Subtract value from 4 to get divider ratio</span></div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a037a9c6449fdf2750adbc66db343d1dc">afvco</a> = (<span class="keyword">volatile</span> uint32_t)(freq/vbuf);   <span class="comment">// Divide frequency by VCO divider</span></div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160; </div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        <span class="comment">// Check PLL divider N2 for valid value</span></div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        vbuf = (APLLDIV1bits.APOST1DIV &amp; 0x0007);</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N2</span></div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        <span class="comment">// Check PLL divider N3 for valid value</span></div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        vbuf = (APLLDIV1bits.APOST2DIV &amp; 0x0007);</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N3</span></div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ab01979a45d5e2d606d8c5ea1b051899e">afpllo</a> = freq;    <span class="comment">// Capture auxiliary PLL output</span></div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        </div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    }</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    <span class="keywordflow">else</span> {  <span class="comment">// APLL is disabled...</span></div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ab01979a45d5e2d606d8c5ea1b051899e">afpllo</a> = 0;    <span class="comment">// Reset auxiliary PLL output</span></div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a037a9c6449fdf2750adbc66db343d1dc">afvco</a> = 0;     <span class="comment">// Reset auxiliary PLL VCO output</span></div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;    }</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        </div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    <span class="comment">// Return 1=Success, 0=Failure</span></div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;    <span class="keywordflow">return</span>(1);</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;}</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160; </div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;<span class="comment">// *****************************************************************************************************</span></div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160; </div>
+<div class="line"><a name="l00422"></a><span class="lineno"><a class="line" href="group__p33c-osc-pral.html#ga5aae9e22b336a4664e85d66dd943a59f">  422</a></span>&#160;<span class="keyword">volatile</span> uint16_t <a class="code" href="group__p33c-osc-pral.html#ga5aae9e22b336a4664e85d66dd943a59f">p33c_Osc_GetFrequencies</a>(<span class="keyword">volatile</span> uint32_t main_osc_frequency) {</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    </div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="keyword">volatile</span> int32_t freq=0;</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="keyword">volatile</span> uint16_t vbuf=0;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="keyword">volatile</span> OSCCON_xOSC_TYPE_e otype;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    </div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="comment">// Copy oscillator frequency given as unsigned 32-bit integer into signed 32-bit variable</span></div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    freq = (<span class="keyword">volatile</span> int32_t)main_osc_frequency;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160; </div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="comment">// Capture external oscillator frequency</span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="keywordflow">if</span> (main_osc_frequency &gt; 0) {</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a9206b8af966b25abf4a7008af8f2a7b4">fpri</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    }</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    </div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="comment">// read currently selected oscillator</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    otype = OSCCONbits.COSC; </div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    </div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="comment">// Copy Base FRC frequency into data structure</span></div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a93a4724319438d89cf737634191ac2a7">frc</a> = (<span class="keyword">volatile</span> int32_t)OSC_FRC_FREQ;   <span class="comment">// Set default FRC oscillator frequency </span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    <span class="comment">// Depending on detected oscillator type, set/override oscillator frequency</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    </div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="comment">// For all modes using the internal Fast RC Oscillator (FRC), check input divider and tuning register</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="keywordflow">if</span> ((otype == OSCCON_xOSC_FRC) || (otype == OSCCON_xOSC_BFRC) || (otype == OSCCON_xOSC_FRCPLL) || (otype == OSCCON_xOSC_FRCDIVN)) {</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        </div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        freq = (<span class="keyword">volatile</span> int32_t)OSC_FRC_FREQ;   <span class="comment">// Oscillator frequency is 8 MHz</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        </div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="preprocessor">        #if defined (__P33SMPS_CK__) || defined (__P33SMPS_CH_MSTR__)</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        <span class="comment">// FRC tuning register does not affect Backup FRC clock</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        <span class="keywordflow">if</span>(otype != OSCCON_xOSC_BFRC) {</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            freq += OSC_TUN_STEP_FREQUENCY * (<span class="keyword">volatile</span> int32_t)(OSCTUNbits.TUN); <span class="comment">// Add oscillator tuning value (is singed)</span></div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a93a4724319438d89cf737634191ac2a7">frc</a> = freq;    <span class="comment">// Copy updated fast RC oscillator frequency after tuning</span></div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        }</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        <span class="comment">// Including FRC divider requires the FRCDIV oscillator to be selected</span></div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        <span class="keywordflow">if</span> (otype == OSCCON_xOSC_FRCDIVN) {        <span class="comment">// If oscillator is using internal divider...</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            vbuf = (CLKDIVbits.FRCDIV &amp; 0x0003);    <span class="comment">// Copy divider SFR bits</span></div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            freq &gt;&gt;= vbuf; <span class="comment">// Right-shift oscillator frequency by divider bits (FRCDIV)</span></div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        }</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        </div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    }</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    </div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <span class="comment">// Internal Low-Power RC Oscillator is always fixed to 32 kHz</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (otype == OSCCON_xOSC_LPRC) {</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        freq = (<span class="keyword">volatile</span> int32_t)32000;        <span class="comment">// Oscillator frequency is 32 kHz</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    }</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    </div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="comment">// If external clock modes are set, check if given frequency is non-zero</span></div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    <span class="keywordflow">else</span> { <span class="comment">// If no oscillator frequency is given, it&#39;s assumed FRC oscillator is used</span></div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        <span class="keywordflow">if</span> (freq == 0) <span class="keywordflow">return</span>(0);   <span class="comment">// Error: no oscillator frequency given</span></div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    }</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    </div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="comment">// Capture system root clock</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a445cb7dc89cde0b8cb430f9666e85b0a">fclk</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="comment">// Check for PLL usage and calculate oscillator frequency based on recent settings</span></div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    <span class="keywordflow">if</span> ( (otype == OSCCON_xOSC_FRCPLL) || (otype == OSCCON_xOSC_PRIPLL) ) {</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        </div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        <span class="comment">// Check if PLL is locked in and stable</span></div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        <span class="keywordflow">if</span> (!OSCCONbits.LOCK) <span class="keywordflow">return</span>(0);    <span class="comment">// if incorrect/not valid, return error </span></div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        </div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        <span class="comment">// Check PLL divider N1 for valid value</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        vbuf = (CLKDIVbits.PLLPRE &amp; 0x000F);</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N1</span></div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        </div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        <span class="comment">// Check PLL multiplier M</span></div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        vbuf = (PLLFBDbits.PLLFBDIV &amp; 0x00FF);</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 200) || (vbuf &lt; 3)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        freq *= vbuf; <span class="comment">// Multiply frequency by Multiplier M</span></div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160; </div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;        <span class="comment">// Capture VCO frequency</span></div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        vbuf = (PLLDIVbits.VCODIV &amp; 0x0003);</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        <span class="keywordflow">if</span>(vbuf &gt; 3) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        vbuf = 4-vbuf;  <span class="comment">// Subtract value from 4 to get divider ratio</span></div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a80746275089fea05136dc21048ba5f11">fvco</a> = (<span class="keyword">volatile</span> uint32_t)(freq/vbuf);   <span class="comment">// Divide frequency by VCO divider</span></div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;        </div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        <span class="comment">// Check PLL divider N2 for valid value</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        vbuf = (PLLDIVbits.POST1DIV &amp; 0x0007);</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N2</span></div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160; </div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;        <span class="comment">// Check PLL divider N3 for valid value</span></div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        vbuf = (PLLDIVbits.POST2DIV &amp; 0x0007);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N3</span></div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;        </div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    }</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    </div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    <span class="comment">// Capture PLL output frequency</span></div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ab7f9b796e83f2ccfde15f9db4dcb26ab">fpllo</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160; </div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;    <span class="comment">// CPU Clock Divider</span></div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    freq &gt;&gt;= 1;   <span class="comment">// Divide frequency by 2</span></div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a8b96548642980227defd30d56bc0d724">fosc</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    </div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    <span class="comment">// Peripheral Bus Divider</span></div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    freq &gt;&gt;= 1;   <span class="comment">// Divide frequency by 2</span></div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a132caf2823c5ecb187dfc9bf731cd183">fp</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; </div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    <span class="comment">// Reading DOZE setting</span></div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    <span class="keywordflow">if</span> (CLKDIVbits.DOZEN) {                 <span class="comment">// If DOZE divider is enabled</span></div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        vbuf = (CLKDIVbits.DOZE &amp; 0x0003);  <span class="comment">// Copy divider SFR bits</span></div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        freq &gt;&gt;= vbuf; <span class="comment">// Right-shift oscillator frequency by divider bits (DOZE)</span></div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    }</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ae3f1bd7d5e6ab1aa0ee0b05fd8f82e2a">fcy</a> = (<span class="keyword">volatile</span> uint32_t)freq;</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    </div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    <span class="comment">// Calculate CPU clock period</span></div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#aa38beb5366b4a2d91225176250d6b246">tcy</a> = 1.0/((float)system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ae3f1bd7d5e6ab1aa0ee0b05fd8f82e2a">fcy</a>);</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    <span class="comment">// Calculate peripheral clock period</span></div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ae5226c81eac91af38215f3d99df6ac8b">tp</a> = 1.0/((float)system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a132caf2823c5ecb187dfc9bf731cd183">fp</a>);</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160; </div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    <span class="comment">// -----------------------------------------------</span></div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    <span class="comment">// Capture APLL frequencies</span></div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    <span class="comment">// -----------------------------------------------</span></div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    </div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    <span class="keywordflow">if</span> (ACLKCON1bits.APLLEN) {  <span class="comment">// APLL is enabled...</span></div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    </div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        <span class="comment">// Select input frequency</span></div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;        <span class="keywordflow">if</span>(ACLKCON1bits.FRCSEL) { freq = system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a93a4724319438d89cf737634191ac2a7">frc</a>; }</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        <span class="keywordflow">else</span> { freq = system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a9206b8af966b25abf4a7008af8f2a7b4">fpri</a>; }</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;        </div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        <span class="comment">// Check APLL divider N1 for valid value</span></div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        vbuf = (ACLKCON1bits.APLLPRE &amp; 0x000F);</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N1</span></div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        <span class="comment">// Check PLL multiplier M</span></div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        vbuf = (APLLFBD1bits.APLLFBDIV &amp; 0x00FF);</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 200) || (vbuf &lt; 3)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        freq *= vbuf; <span class="comment">// Multiply frequency by Multiplier M</span></div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160; </div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        <span class="comment">// Capture VCO frequency</span></div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        vbuf = (APLLDIV1bits.AVCODIV &amp; 0x0003);</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        <span class="keywordflow">if</span>(vbuf &gt; 3) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        vbuf = 4-vbuf;  <span class="comment">// Subtract value from 4 to get divider ratio</span></div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a037a9c6449fdf2750adbc66db343d1dc">afvco</a> = (<span class="keyword">volatile</span> uint32_t)(freq/vbuf);   <span class="comment">// Divide frequency by VCO divider</span></div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160; </div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        <span class="comment">// Check PLL divider N2 for valid value</span></div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        vbuf = (APLLDIV1bits.APOST1DIV &amp; 0x0007);</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N2</span></div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160; </div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        <span class="comment">// Check PLL divider N3 for valid value</span></div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        vbuf = (APLLDIV1bits.APOST2DIV &amp; 0x0007);</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        <span class="keywordflow">if</span>((vbuf &gt; 8) || (vbuf == 0)) <span class="keywordflow">return</span> (0);  <span class="comment">// if incorrect/not valid, return error</span></div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        freq /= vbuf;   <span class="comment">// Divide frequency by divider N3</span></div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ab01979a45d5e2d606d8c5ea1b051899e">afpllo</a> = freq;    <span class="comment">// Capture auxiliary PLL output</span></div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;        </div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    }</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    <span class="keywordflow">else</span> {  <span class="comment">// APLL is disabled...</span></div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ab01979a45d5e2d606d8c5ea1b051899e">afpllo</a> = 0;    <span class="comment">// Reset auxiliary PLL output</span></div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        system_frequencies.<a class="code" href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a037a9c6449fdf2750adbc66db343d1dc">afvco</a> = 0;     <span class="comment">// Reset auxiliary PLL VCO output</span></div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    }</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        </div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;    <span class="comment">// Return 1=Success, 0=Failure</span></div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    <span class="keywordflow">return</span>(1);</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;}</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160; </div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;<span class="comment">// ***************************************************************************************************** // end of group op-amp-initialization</span></div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160; </div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;<span class="comment">// end of file</span></div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_ae5226c81eac91af38215f3d99df6ac8b"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ae5226c81eac91af38215f3d99df6ac8b">OSCILLATOR_SYSTEM_FREQUENCIES_t::tp</a></div><div class="ttdeci">volatile float tp</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00134">p33c_osc.h:134</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_ae3f1bd7d5e6ab1aa0ee0b05fd8f82e2a"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ae3f1bd7d5e6ab1aa0ee0b05fd8f82e2a">OSCILLATOR_SYSTEM_FREQUENCIES_t::fcy</a></div><div class="ttdeci">volatile uint32_t fcy</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00130">p33c_osc.h:130</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_a80746275089fea05136dc21048ba5f11"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a80746275089fea05136dc21048ba5f11">OSCILLATOR_SYSTEM_FREQUENCIES_t::fvco</a></div><div class="ttdeci">volatile uint32_t fvco</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00133">p33c_osc.h:133</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_a93a4724319438d89cf737634191ac2a7"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a93a4724319438d89cf737634191ac2a7">OSCILLATOR_SYSTEM_FREQUENCIES_t::frc</a></div><div class="ttdeci">volatile uint32_t frc</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00126">p33c_osc.h:126</a></div></div>
+<div class="ttc" id="agroup__p33c-osc-pral_html_ga67011ec3564d8ed623511d5dc1db77f2"><div class="ttname"><a href="group__p33c-osc-pral.html#ga67011ec3564d8ed623511d5dc1db77f2">p33c_OscFrc_Initialize</a></div><div class="ttdeci">volatile uint16_t p33c_OscFrc_Initialize(volatile CLKDIV_FRCDIVN_e frc_div, volatile OSCTUN_TUN_e frc_tune)</div><div class="ttdoc">Initializes the internal RC oscillator divider and tuning register.</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8c_source.html#l00133">p33c_osc.c:133</a></div></div>
+<div class="ttc" id="agroup__p33c-osc-pral_html_ga40b19dfe32a3ebbb784dddd1ba1b31f9"><div class="ttname"><a href="group__p33c-osc-pral.html#ga40b19dfe32a3ebbb784dddd1ba1b31f9">p33c_OscFrc_DefaultInitialize</a></div><div class="ttdeci">volatile uint16_t p33c_OscFrc_DefaultInitialize(volatile CPU_SPEED_DEFAULTS_e cpu_speed)</div><div class="ttdoc">Initializes the major oscillator and the PLL module step by step by using clock switching in software...</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8c_source.html#l00059">p33c_osc.c:59</a></div></div>
+<div class="ttc" id="agroup__p33c-osc-pral_html_ga5aae9e22b336a4664e85d66dd943a59f"><div class="ttname"><a href="group__p33c-osc-pral.html#ga5aae9e22b336a4664e85d66dd943a59f">p33c_Osc_GetFrequencies</a></div><div class="ttdeci">volatile uint16_t p33c_Osc_GetFrequencies(volatile uint32_t main_osc_frequency)</div><div class="ttdoc">This routine reads all oscillator related SFRs recalculating the various frequencies across clock dom...</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8c_source.html#l00422">p33c_osc.c:422</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_a132caf2823c5ecb187dfc9bf731cd183"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a132caf2823c5ecb187dfc9bf731cd183">OSCILLATOR_SYSTEM_FREQUENCIES_t::fp</a></div><div class="ttdeci">volatile uint32_t fp</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00131">p33c_osc.h:131</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_ab01979a45d5e2d606d8c5ea1b051899e"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ab01979a45d5e2d606d8c5ea1b051899e">OSCILLATOR_SYSTEM_FREQUENCIES_t::afpllo</a></div><div class="ttdeci">volatile uint32_t afpllo</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00136">p33c_osc.h:136</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_a9206b8af966b25abf4a7008af8f2a7b4"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a9206b8af966b25abf4a7008af8f2a7b4">OSCILLATOR_SYSTEM_FREQUENCIES_t::fpri</a></div><div class="ttdeci">volatile uint32_t fpri</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00127">p33c_osc.h:127</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_aa38beb5366b4a2d91225176250d6b246"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#aa38beb5366b4a2d91225176250d6b246">OSCILLATOR_SYSTEM_FREQUENCIES_t::tcy</a></div><div class="ttdeci">volatile float tcy</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00135">p33c_osc.h:135</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_ab7f9b796e83f2ccfde15f9db4dcb26ab"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ab7f9b796e83f2ccfde15f9db4dcb26ab">OSCILLATOR_SYSTEM_FREQUENCIES_t::fpllo</a></div><div class="ttdeci">volatile uint32_t fpllo</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00132">p33c_osc.h:132</a></div></div>
+<div class="ttc" id="agroup__p33c-osc-pral_html_ga61cf7c84efc865c104d5e292866131c4"><div class="ttname"><a href="group__p33c-osc-pral.html#ga61cf7c84efc865c104d5e292866131c4">p33c_Osc_Initialize</a></div><div class="ttdeci">volatile uint16_t p33c_Osc_Initialize(volatile OSC_CONFIG_t osc_config)</div><div class="ttdoc">Initializes the major oscillator and the PLL module step by step by using clock switching in software...</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8c_source.html#l00191">p33c_osc.c:191</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_a8b96548642980227defd30d56bc0d724"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a8b96548642980227defd30d56bc0d724">OSCILLATOR_SYSTEM_FREQUENCIES_t::fosc</a></div><div class="ttdeci">volatile uint32_t fosc</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00129">p33c_osc.h:129</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_a445cb7dc89cde0b8cb430f9666e85b0a"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a445cb7dc89cde0b8cb430f9666e85b0a">OSCILLATOR_SYSTEM_FREQUENCIES_t::fclk</a></div><div class="ttdeci">volatile uint32_t fclk</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00128">p33c_osc.h:128</a></div></div>
+<div class="ttc" id="agroup__p33c-osc-pral_html_ga810a57935922e0256770d958616a896e"><div class="ttname"><a href="group__p33c-osc-pral.html#ga810a57935922e0256770d958616a896e">p33c_OscAuxClk_DefaultInitialize</a></div><div class="ttdeci">volatile uint16_t p33c_OscAuxClk_DefaultInitialize(volatile AUX_PLL_DEFAULTS_e afpllo_frequency)</div><div class="ttdoc">Initializes the auxiliary clock and its PLL module step by step in software. Each step is tested and ...</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8c_source.html#l00357">p33c_osc.c:357</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html">OSCILLATOR_SYSTEM_FREQUENCIES_t</a></div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00125">p33c_osc.h:125</a></div></div>
 <div class="ttc" id="astruct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t_html_a037a9c6449fdf2750adbc66db343d1dc"><div class="ttname"><a href="struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a037a9c6449fdf2750adbc66db343d1dc">OSCILLATOR_SYSTEM_FREQUENCIES_t::afvco</a></div><div class="ttdeci">volatile uint32_t afvco</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8h_source.html#l00137">p33c_osc.h:137</a></div></div>
+<div class="ttc" id="agroup__p33c-osc-pral_html_ga800afc634cac0ccd87c0c74778f53e16"><div class="ttname"><a href="group__p33c-osc-pral.html#ga800afc634cac0ccd87c0c74778f53e16">p33c_OscAuxClk_Initialize</a></div><div class="ttdeci">volatile uint16_t p33c_OscAuxClk_Initialize(volatile AUXOSC_CONFIG_t aux_clock_config)</div><div class="ttdoc">Initializes the auxiliary clock and its PLL module step by step in software. Each step is tested and ...</div><div class="ttdef"><b>Definition:</b> <a href="p33c__osc_8c_source.html#l00299">p33c_osc.c:299</a></div></div>
 <!-- HTML footer for doxygen 1.8.20-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

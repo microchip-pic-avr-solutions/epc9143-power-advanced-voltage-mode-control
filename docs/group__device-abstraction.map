@@ -1,6 +1,7 @@
 <map id="Microcontroller Device Abstraction" name="Microcontroller Device Abstraction">
-<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Hardware Abstraction Layer Declarations." alt="" coords="5,23,152,63"/>
-<area shape="rect" id="node4" title="Declarations of fundamental microcontroller device parameters." alt="" coords="200,23,349,63"/>
-<area shape="rect" id="node2" href="$group__device-abstraction-macros.html" title="Conversion macros of fundamental microcontroller device settings." alt="" coords="397,5,529,31"/>
-<area shape="rect" id="node3" href="$group__device-abstraction-settings.html" title="Fundamental microcontroller device settings." alt="" coords="413,55,514,80"/>
+<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Hardware Abstraction Layer Declarations." alt="" coords="5,47,152,87"/>
+<area shape="rect" id="node4" title="Declarations of fundamental microcontroller device parameters." alt="" coords="200,47,349,87"/>
+<area shape="rect" id="node2" href="$group__device-abstraction-macros.html" title="Conversion macros of fundamental microcontroller device settings." alt="" coords="431,5,563,31"/>
+<area shape="rect" id="node3" href="$group__device-abstraction-settings.html" title="Fundamental microcontroller device settings." alt="" coords="446,55,547,80"/>
+<area shape="rect" id="node5" href="$group__device-abstraction-pral.html" title=" " alt="" coords="397,104,596,159"/>
 </map>

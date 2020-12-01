@@ -1,0 +1,5 @@
+<map id="sysAclk_Initialize" name="sysAclk_Initialize">
+<area shape="rect" id="node1" title="Initializes the auxiliary clock of the device." alt="" coords="5,5,128,32"/>
+<area shape="rect" id="node2" href="$group__p33c-osc-pral.html#ga810a57935922e0256770d958616a896e" title="Initializes the auxiliary clock and its PLL module step by step in software. Each step is tested and ..." alt="" coords="176,5,393,32"/>
+<area shape="rect" id="node3" href="$group__p33c-osc-pral.html#ga800afc634cac0ccd87c0c74778f53e16" title="Initializes the auxiliary clock and its PLL module step by step in software. Each step is tested and ..." alt="" coords="441,5,619,32"/>
+</map>

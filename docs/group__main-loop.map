@@ -1,4 +1,6 @@
 <map id="Main Loop" name="Main Loop">
-<area shape="rect" id="node1" title="Main Loop." alt="" coords="188,5,271,31"/>
-<area shape="rect" id="node2" href="$group__firmware-flow.html" title="Firmware Flowchart." alt="" coords="5,5,140,31"/>
+<area shape="rect" id="node1" href="$group__main-loop-low-priority.html" title="Low priority task execution." alt="" coords="319,5,503,31"/>
+<area shape="rect" id="node2" title="Main Loop." alt="" coords="188,35,271,60"/>
+<area shape="rect" id="node4" href="$group__main-loop-high-priority.html" title="High priority task execution." alt="" coords="348,55,473,95"/>
+<area shape="rect" id="node3" href="$group__firmware-flow.html" title="Firmware Flowchart." alt="" coords="5,35,140,60"/>
 </map>

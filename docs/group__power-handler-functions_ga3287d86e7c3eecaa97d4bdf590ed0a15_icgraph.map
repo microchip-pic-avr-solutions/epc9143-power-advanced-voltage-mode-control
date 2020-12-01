@@ -1,0 +1,11 @@
+<map id="drv_BuckConverter_Suspend" name="drv_BuckConverter_Suspend">
+<area shape="rect" id="node1" title=" " alt="" coords="940,81,1127,108"/>
+<area shape="rect" id="node2" href="$group__power-control-app-layer-public.html#gafa4e90d260e60cf20f06acee067c39cd" title=" " alt="" coords="715,81,892,108"/>
+<area shape="rect" id="node3" href="$group__fault-handler-functions.html#ga54f9db91ea0782b08aa16ee77a57c5e5" title="Initializes the user&#45;defined fault objects for overcurrent protection." alt="" coords="534,5,661,32"/>
+<area shape="rect" id="node7" href="$group__fault-handler-functions.html#gade437244e8f6e5ff7c57a73442063350" title="Initializes the user&#45;defined fault objects for overvoltage lockout." alt="" coords="534,56,661,83"/>
+<area shape="rect" id="node8" href="$group__fault-handler-functions.html#ga82dc317e3adac0308e5ac3f5ad321605" title="Initializes the user&#45;defined fault objects for regulation error." alt="" coords="528,107,667,133"/>
+<area shape="rect" id="node9" href="$group__fault-handler-functions.html#ga9441220f8a7d4a6805467d04b734e6b5" title="Initializes the user&#45;defined fault objects for under&#45;voltage lockout." alt="" coords="534,157,661,184"/>
+<area shape="rect" id="node4" href="$group__fault-handler-functions.html#ga830e5c7087a8e5ee8ea39b7e3df94b68" title="Initialization of user&#45;defined fault objects." alt="" coords="311,81,480,108"/>
+<area shape="rect" id="node5" href="$group__system-initialization-user-tasks.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" title="Initializes the user&#45;defined tasks." alt="" coords="104,81,263,108"/>
+<area shape="rect" id="node6" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,81,56,108"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="appPowerSupply_Suspend" name="appPowerSupply_Suspend">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,183,32"/>
+<area shape="rect" id="node2" href="$group__power-handler-functions.html#ga3287d86e7c3eecaa97d4bdf590ed0a15" title=" " alt="" coords="231,5,417,32"/>
+<area shape="rect" id="node3" href="$group__power-handler-functions.html#ga75498c59a10db0738113104a547d8d0d" title="This function is the main buck converter state machine executing the most recent state." alt="" coords="465,5,649,32"/>
+<area shape="rect" id="node4" href="$group__power-handler-functions.html#gad4e9d780ae858d4417887f13b1619346" title=" " alt="" coords="697,5,857,32"/>
+<area shape="rect" id="node5" href="$group__gpio.html#gae1bc534f11ac7cf278865cb73b601055" title="Gets pointer to GPIO Instance SFR set." alt="" coords="905,5,1107,32"/>
+</map>

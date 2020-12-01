@@ -40,10 +40,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group__input-voltage-feedback-settings.html#gab95ae3ec4f9a91b3a65fbeedc2d5f3dd",
-"group__pwm-mcal-phase1.html#ga53f0bc93fabfc81c6123b0771b0beac9",
-"struct_c_p_u___r_c_o_n__s.html#a7f07a2e8a867dd37118fa2624121fe84",
-"struct_p33_c___p_w_m___g_e_n_e_r_a_t_o_r__s.html#a9d75e4edde0bb67e2f5087422db5b89b"
+"group__input-voltage-feedback-mcal.html#ga677e9cc4284911fb4b20198894b32478",
+"group__power-handler-variables.html#gab46aa5c2defa45795e640e87244dd0a9",
+"struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html#a17d0c1176b7be906e4e009e2cf10e3ff",
+"struct_p33_c___d_a_c___i_n_s_t_a_n_c_e__s.html#a8b02ffae1554826e02af0bacc8a03a60"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
