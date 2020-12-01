@@ -56,7 +56,10 @@
 /* CUSTOM RUNTIME OPTIONS */
 #define PLANT_MEASUREMENT   false ///< If enabled, replaces the common voltage control loop by a simple P-control loop to perform measurements of the plant transfer function.<br><b>DO NOT USE THIS OPTION FOR NORMAL OPERATION</b>
 
-/** @} */ // end of group
+#define DBGPIN1_ENABLE      false ///< Enables debug pin indicating control loop execution timing
+#define DBGPIN2_ENABLE      true ///< Enables debug pin indicating task scheduler execution timing
+
+/** @} */ // end of group special-options
 
 /**************************************************************************************************
  * @addtogroup device-abstraction-settings
@@ -144,29 +147,24 @@
  * 
  **************************************************************************************************/
 
-// Device Pin #1 on EPC9143 (not routed)
+#if (DBGPIN1_ENABLE == true)
 #define DBGPIN1_PORT        1   ///< GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc.
 #define DBGPIN1_PIN         14  ///< GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.
 #define DBGPIN1_Set()	    { _LATB14 = 1; } ///< Macro instruction to set a pin state to logic HIGH
 #define DBGPIN1_Clear()	    { _LATB14 = 0; } ///< Macro instruction to set a pin state to logic LOW
 #define DBGPIN1_Toggle()    { _LATB14 ^= 1; } ///< Macro instruction to toggle most recent pin state
 #define DBGPIN1_Init()	    { _LATB14 = 0; _TRISB14 = 0; } ///< Macro instruction initializing the specified GPIO as input or output
+#endif
 
 // Device Pin #2 on EPC9143 (not routed)
+#if (DBGPIN2_ENABLE == true)
 #define DBGPIN2_PORT        1   ///< GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc.
 #define DBGPIN2_PIN         15  ///< GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.
 #define DBGPIN2_Set()       { _LATB15 = 1; } ///< Macro instruction to set a pin state to logic HIGH
 #define DBGPIN2_Clear()     { _LATB15 = 0; } ///< Macro instruction to set a pin state to logic LOW
 #define DBGPIN2_Toggle()    { _LATB15 ^= 1; } ///< Macro instruction to toggle most recent pin state
 #define DBGPIN2_Init()      { _LATB15 = 0; _TRISB15 = 0; } ///< Macro instruction initializing the specified GPIO as input or output
-
-// Device Pin #25 on EPC9143 (not routed)
-#define DBGPIN3_PORT        1   ///< GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc.
-#define DBGPIN3_PIN         10  ///< GPIO port pin declaration where 0=Rx0, 1=Rx1, 2=Rx3, etc.
-#define DBGPIN3_Set()	    { _LATB10 = 1; } ///< Macro instruction to set a pin state to logic HIGH
-#define DBGPIN3_Clear()	    { _LATB10 = 0; } ///< Macro instruction to set a pin state to logic LOW
-#define DBGPIN3_Toggle()    { _LATB10 ^= 1; } ///< Macro instruction to toggle most recent pin state
-#define DBGPIN3_Init()      { _LATB10 = 0; _TRISB10 = 0; } ///< Macro instruction initializing the specified GPIO as input or output
+#endif
 
 // Device Pin #14 on EPC9243
 #define PWRGOOD_PORT        1   ///< GPIO port declaration where 0=Port RA, 0=Port RB, 0=Port RC, etc.
