@@ -61,7 +61,7 @@ extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer
  * @{
  */
 /**************************************************************************************************
- * @var BUCK_POWER_CONTROLLER_s 
+ * @struct BUCK_POWER_CONTROLLER_s 
  * @brief Global data object for a BUCK CONVERTER 
  * 
  * <b>Description:</b><br>
@@ -78,7 +78,7 @@ volatile struct BUCK_POWER_CONTROLLER_s  buck;
 
 /***********************************************************************************
  * @struct	CS_CALIBRATION_s
- * @brief This struct is used for the current sense calibration 
+ * @brief 
  * 
  **********************************************************************************/
 typedef struct CS_CALIBRATION_s {
@@ -111,14 +111,12 @@ void appPowerSupply_CurrentSenseCalibration(void);
  */
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Initialize(void)
- * @brief This function initializes the power supply converter objects, controllers
- * and peripherals.
+ * @brief
  * @param	None
- * @return 0=failure 
- * @return 1=success
+ * @return  Unsigned Integer (0=failure, 1=success)
  * 
  * <b>Description</b><br> 
- * This function initializes power supply objects 
+ * 
  *********************************************************************************/
 volatile uint16_t appPowerSupply_Initialize(void)
 { 
@@ -216,15 +214,13 @@ volatile uint16_t appPowerSupply_Execute(void)
  */
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Dispose(void)
- * @brief This function clears the data values stored in data objects 
+ * @brief
  * @param	None
  * @return  0=failure
- * @return  1=success
+ * @return 1=success
  *  
  * <b>Description</b><br> 
- * This function is called to clear and reset the data objects for output current, 
- * output voltage, input voltage, output temperature and phase current values. The
- * state machine is also set to initialize.
+ * 
  *********************************************************************************/
 
 volatile uint16_t appPowerSupply_Dispose(void)
@@ -247,17 +243,13 @@ volatile uint16_t appPowerSupply_Dispose(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Start(void)
- * @brief  This function enables the ADC triggering by starting the PWM operation 
- * while keeping its outputs disabled.
+ * @brief
  * @param	None
  * @return  0=failure
- * @return  1=success
+ * @return 1=success
  *  
  * <b>Description</b><br> 
- * This function enables the PWM Generator and adds delay before enabling  
- *     PWM output pins. After having successfully enabled the generator and the ADC,
- *     operation, user need to call function appPowerSupply_Resume to allow the PWM 
- *     generator output. 
+ * 
  *********************************************************************************/
 
 volatile uint16_t appPowerSupply_Start(void)
@@ -271,13 +263,13 @@ volatile uint16_t appPowerSupply_Start(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Stop(void)
- * @brief Shut down all power supply peripherals and data objects 
+ * @brief
  * @param	None
  * @return  0=failure
- * @return  1=success
+ * @return 1=success
  *  
  * <b>Description</b><br> 
- * This function shuts down all power supply peripherals and data objects.
+ * 
  *********************************************************************************/
 
 volatile uint16_t appPowerSupply_Stop(void)
@@ -291,14 +283,13 @@ volatile uint16_t appPowerSupply_Stop(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Suspend(void)
- * @brief  Shuts down the PWM to suspend the power supply operation
+ * @brief
  * @param	None
  * @return  0=failure
  * @return 1=success
  *  
  * <b>Description</b><br> 
- * This function suspends the operation of the power supply by immediately
- * shutting down the PWM operation. 
+ * 
  *********************************************************************************/
 
 volatile uint16_t appPowerSupply_Suspend(void)
@@ -312,13 +303,12 @@ volatile uint16_t appPowerSupply_Suspend(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Resume(void)
- * @brief  Resumes the operation of the power supply
+ * @brief
  * @param	None
  * @return  0=failure
  * @return 1=success
  *  
  * <b>Description</b><br> 
- * This function is use to resume the power supply operation. 
  * 
  *********************************************************************************/
 
@@ -326,7 +316,7 @@ volatile uint16_t appPowerSupply_Resume(void)
 { 
     volatile uint16_t retval=0;
 
-    retval &= drv_BuckConverter_Resume(&buck); 
+    retval &= drv_BuckConverter_Resume(&buck); // Shut down PWM immediately
     
     return(retval); 
 }
@@ -426,7 +416,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     // ~~~ POWER GOOD OUTPUT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     buck.gpio.PowerGood.enabled = true; // This converter supports an additional POWER GOOD output
-    buck.gpio.PowerGood.port = PWRGOOD_PORT; // Number of the GPIO port (0=A, 1=B, 2=C, etc.)
+    buck.gpio.PowerGood.port = PWRGOOD_PORT; // Number of the GPIO port (0=Port RA, 0=Port RB, 0=Port RC, etc.)
     buck.gpio.PowerGood.pin = PWRGOOD_PIN; // Number of the GPIO port pin
     buck.gpio.PowerGood.polarity = 0;   // This pin is ACTIVE HIGH (only required if io_type = OUTPUT)
     buck.gpio.PowerGood.io_type = 0;    // This pin is configured as OUTPUT
