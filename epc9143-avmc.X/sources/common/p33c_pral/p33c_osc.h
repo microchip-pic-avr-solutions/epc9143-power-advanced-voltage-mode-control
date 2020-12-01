@@ -22,7 +22,7 @@
 /*!p33SMPS_oscillator.h
  * ***************************************************************************
  *
- * File:    p33SMPS_oscillator.h
+ * File:    p33c_osc.h
  * Author:  M91406
  * Created: October 27, 2017, 11:24 AM
  * 
@@ -42,7 +42,7 @@
 #include <stdint.h> // include standard integer types header file
 #include <stdbool.h> // include standard boolean types header file
 
-#include "../p33SMPS_devices.h" // DEVICES header to derive device-dependent properties
+#include "p33smps_devices.h" // DEVICES header to derive device-dependent properties
 
 /*!System Frequencies
  * ************************************************************************************************
@@ -1050,7 +1050,7 @@ typedef union {
 
 #if defined (__P33SMPS_CH__) ||  defined (__P33SMPS_CK__)
 
-typedef struct {
+typedef struct P33C_OSC_CONFIG_s {
     volatile OSCCON_xOSC_TYPE_e osc_type;
     volatile CLKDIV_FRCDIVN_e frc_div;
     volatile OSCTUN_TUN_e frc_tune;
@@ -1096,12 +1096,12 @@ typedef enum {
  *	Prototypes
  * **************************************************************************************/
 
-extern volatile uint16_t smpsOSC_Initialize(volatile OSC_CONFIG_t osc_config);
-extern volatile uint16_t smpsOSC_FRC_Initialize(volatile CLKDIV_FRCDIVN_e frc_div, volatile OSCTUN_TUN_e frc_tun);
-extern volatile uint16_t smpsOSC_AUXCLK_Initialize(volatile AUXOSC_CONFIG_t aux_clock_config);
+extern volatile uint16_t p33c_Osc_Initialize(volatile OSC_CONFIG_t osc_config);
+extern volatile uint16_t p33c_OscFrc_Initialize(volatile CLKDIV_FRCDIVN_e frc_div, volatile OSCTUN_TUN_e frc_tun);
+extern volatile uint16_t p33c_OscAuxClk_Initialize(volatile AUXOSC_CONFIG_t aux_clock_config);
 
-extern volatile uint16_t smpsOSC_FRC_DefaultInitialize(volatile CPU_SPEED_DEFAULTS_e cpu_speed);
-extern volatile uint16_t smpsOSC_AUXCLK_DefaultInitialize(volatile AUX_PLL_DEFAULTS_e afpllo_frequency);
-extern volatile uint16_t smpsOSC_GetFrequencies(volatile uint32_t main_osc_frequency);
+extern volatile uint16_t p33c_OscFrc_DefaultInitialize(volatile CPU_SPEED_DEFAULTS_e cpu_speed);
+extern volatile uint16_t p33c_OscAuxClk_DefaultInitialize(volatile AUX_PLL_DEFAULTS_e afpllo_frequency);
+extern volatile uint16_t p33c_Osc_GetFrequencies(volatile uint32_t main_osc_frequency);
 
 #endif  /* MCAL_P33SMPS_OSCILLATOR_H */

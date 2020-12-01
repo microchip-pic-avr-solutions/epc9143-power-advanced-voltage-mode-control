@@ -10,7 +10,7 @@
  * ************************************************************************************************/
 
 // Include Header Files
-#include "p33SMPS_oscillator.h"
+#include "p33c_osc.h"
 
 /* ************************************************************************************************
  * PRIVATE DEFINES
@@ -22,8 +22,12 @@
  * ************************************************************************************************/
 volatile OSCILLATOR_SYSTEM_FREQUENCIES_t system_frequencies;
 
+/**
+ * @addtogroup p33c-osc-pral
+ * @{ 
+ */
 /*************************************************************************************************
- * @fn volatile uint16_t smpsOSC_FRC_DefaultInitialize(volatile CPU_SPEED_DEFAULTS_e cpu_speed)
+ * @fn volatile uint16_t p33c_OscFrc_DefaultInitialize(volatile CPU_SPEED_DEFAULTS_e cpu_speed)
  * @param 
  * OSCCON_xOSC_e osc_type: allows selection of internal and/or external clocks
  * CLKDIV_FRCDIVN_e frc_div: allows using the FCR divider
@@ -38,7 +42,7 @@ volatile OSCILLATOR_SYSTEM_FREQUENCIES_t system_frequencies;
  * in software. Each step is tested and verified. PLL settings here are pulled from pre-defined
  * settings set for default CPU speeds from 40 MIPS to 100 MIPS
  *
- * <b>Description:</b><br>
+ * @details
  * Microchip's 16-Bit devices offer a safe 2-step start-up mode, using the internal FRC during power up, 
  * followed by a user defined switch-over to the desired oscillator. 
  * Though this can also be done in hardware automatically, this software-version of the switch-over offers
@@ -47,12 +51,12 @@ volatile OSCILLATOR_SYSTEM_FREQUENCIES_t system_frequencies;
  * This function can be used to select a new oscillator at runtime. Each configuration step
  * will be verified before the next step is performed.
  *
- * Please Note:
+ * @note
  * If a oscillator switch-over is performed, additional settings in the _FOSCSEL and _FOSC
  * registers of the configuration bits may be required
  * ************************************************************************************************/
 
-volatile uint16_t smpsOSC_FRC_DefaultInitialize(volatile CPU_SPEED_DEFAULTS_e cpu_speed)
+volatile uint16_t p33c_OscFrc_DefaultInitialize(volatile CPU_SPEED_DEFAULTS_e cpu_speed)
 {
     volatile int16_t fres = 0;
     volatile OSC_CONFIG_t osc;
@@ -96,28 +100,24 @@ volatile uint16_t smpsOSC_FRC_DefaultInitialize(volatile CPU_SPEED_DEFAULTS_e cp
     osc.N2 = PLLDIV_POST2DIV_N2N3_2;
     osc.N3 = PLLDIV_POST2DIV_N2N3_1; 
     
-    fres = smpsOSC_Initialize(osc);
+    fres = p33c_Osc_Initialize(osc);
 
     return(fres);
 }
 
 
-/*!smpsOSC_FRC_Initialize()
- * ************************************************************************************************
- * Summary:
- * Initializes the internal RC oscillator divider and tuning register
- *
- * Parameters:
- *	OSC_CONFIG_t osc_config (includes oscillator type and PLL configuration)
- *
- * Returns:
+/*************************************************************************************************
+ * @fn uint16_t p33c_OscFrc_Initialize(volatile CLKDIV_FRCDIVN_e frc_div, volatile OSCTUN_TUN_e frc_tune)
+ * @brief Initializes the internal RC oscillator divider and tuning register
+ * @param OSC_CONFIG_t osc_config (includes oscillator type and PLL configuration)
+ * @return
  *  0 = unspecified clock failure detected
  *  1 = clock switch successful
  *  2 = clock switch failed
  *  4 = currently selected clock differs from selected clock source
  *  8 = PLL didn't lock in within given time frame
  *
- * Description:
+ * @details
  * Microchip's 16-Bit devices offer a safe 2-step start-up mode, using the internal FRC during power up, 
  * followed by a user defined switch-over to the desired oscillator. 
  * Though this can also be done in hardware automatically, this software-version of the switch-over offers
@@ -126,11 +126,11 @@ volatile uint16_t smpsOSC_FRC_DefaultInitialize(volatile CPU_SPEED_DEFAULTS_e cp
  * This function can be used to select a new oscillator at runtime. Each configuration step
  * will be verified before the next step is performed.
  *
- * Please Note:
+ * @note
  * If a oscillator switch-over is performed, additional settings in the _FOSCSEL and _FOSC
  * registers of the configuration bits may be required
- * ************************************************************************************************/
-volatile uint16_t smpsOSC_FRC_Initialize(volatile CLKDIV_FRCDIVN_e frc_div, volatile OSCTUN_TUN_e frc_tune)
+ *************************************************************************************************/
+volatile uint16_t p33c_OscFrc_Initialize(volatile CLKDIV_FRCDIVN_e frc_div, volatile OSCTUN_TUN_e frc_tune)
 {
 #if defined (__P33SMPS_CH_MSTR__) || defined (__P33SMPS_CK__)
 
@@ -158,23 +158,23 @@ volatile uint16_t smpsOSC_FRC_Initialize(volatile CLKDIV_FRCDIVN_e frc_div, vola
     
 }
 
-/*!smpsOSC_Initialize()
- * ************************************************************************************************
- * Summary:
+/*************************************************************************************************
+ * @fn uint16_t p33c_Osc_Initialize(volatile OSC_CONFIG_t osc_config)
+ * @brief
  * Initializes the major oscillator and the PLL module step by step by using clock switching
  * in software. Each step is tested and verified
  *
- * Parameters:
+ * @param
  *	OSC_CONFIG_t osc_config (includes oscillator type and PLL configuration)
  *
- * Returns:
+ * @return
  *  0 = unspecified clock failure detected
  *  1 = clock switch successful
  *  2 = clock switch failed
  *  4 = currently selected clock differs from selected clock source
  *  8 = PLL didn't lock in within given time frame
  *
- * Description:
+ * @details
  * Microchip's 16-Bit devices offer a safe 2-step start-up mode, using the internal FRC during power up, 
  * followed by a user defined switch-over to the desired oscillator. 
  * Though this can also be done in hardware automatically, this software-version of the switch-over offers
@@ -183,12 +183,12 @@ volatile uint16_t smpsOSC_FRC_Initialize(volatile CLKDIV_FRCDIVN_e frc_div, vola
  * This function can be used to select a new oscillator at runtime. Each configuration step
  * will be verified before the next step is performed.
  *
- * Please Note:
+ * @note
  * If a oscillator switch-over is performed, additional settings in the _FOSCSEL and _FOSC
  * registers of the configuration bits may be required
- * ************************************************************************************************/
+ *************************************************************************************************/
 
-volatile uint16_t smpsOSC_Initialize(volatile OSC_CONFIG_t osc_config)
+volatile uint16_t p33c_Osc_Initialize(volatile OSC_CONFIG_t osc_config)
 {
 
 uint16_t _n=0, err=0;
@@ -271,32 +271,32 @@ uint16_t _n=0, err=0;
 
 }
 
-/*!smpsOSC_AUXCLK_Initialize()
- * ************************************************************************************************
- * Summary:
+/*************************************************************************************************
+ * @fn uint16_t p33c_OscAuxClk_Initialize(volatile AUXOSC_CONFIG_t aux_clock_config)
+ * @brief
  * Initializes the auxiliary clock and its PLL module step by step 
  * in software. Each step is tested and verified
  *
- * Parameters:
+ * @param
  *	AUXOSC_CONFIG_t aux_clock_config (includes oscillator settings and PLL configuration)
  *
- * Returns:
+ * @return
  *  0 = unspecified clock failure detected
  *  1 = clock switch successful
  *  2 = clock switch failed
  *  4 = currently selected clock differs from selected clock source
  *  8 = PLL didn't lock in within given time frame
  *
- * Description:
+ * @details
  * The auxiliary clock is generated by a separate PLL module, which is driven
  * from one of the main clock signals or PLL outputs. This auxiliary clock can
  * be used to drive ADCs, PWM, DACs and other peripherals. Each of them might
  * have individual requirements. Please refer to the specific peripheral sections
  * in the device data sheet to learn how to configure the auxiliary clock.
  *
- * ************************************************************************************************/
+ *************************************************************************************************/
 
-volatile uint16_t smpsOSC_AUXCLK_Initialize(volatile AUXOSC_CONFIG_t aux_clock_config)
+volatile uint16_t p33c_OscAuxClk_Initialize(volatile AUXOSC_CONFIG_t aux_clock_config)
 {
     
 	#if defined (__P33SMPS_CH__) || defined (__P33SMPS_CK__)
@@ -329,32 +329,32 @@ volatile uint16_t smpsOSC_AUXCLK_Initialize(volatile AUXOSC_CONFIG_t aux_clock_c
     
 }
  
-/*!smpsOSC_AUXCLK_DefaultInitialize()
- * ************************************************************************************************
- * Summary:
+/*************************************************************************************************
+ * @fn uint16_t p33c_OscAuxClk_DefaultInitialize(volatile AUX_PLL_DEFAULTS_e afpllo_frequency)
+ * @brief
  * Initializes the auxiliary clock and its PLL module step by step 
  * in software. Each step is tested and verified
  *
- * Parameters:
+ * @param
  *	AUXOSC_CONFIG_t aux_clock_config (includes oscillator settings and PLL configuration)
  *
- * Returns:
+ * @return
  *  0 = unspecified clock failure detected
  *  1 = clock switch successful
  *  2 = clock switch failed
  *  4 = currently selected clock differs from selected clock source
  *  8 = PLL didn't lock in within given time frame
  *
- * Description:
+ * @details
  * The auxiliary clock is generated by a separate PLL module, which is driven
  * from one of the main clock signals or PLL outputs. This auxiliary clock can
  * be used to drive ADCs, PWM, DACs and other peripherals. Each of them might
  * have individual requirements. Please refer to the specific peripheral sections
  * in the device data sheet to learn how to configure the auxiliary clock.
  *
- * ************************************************************************************************/
+ *************************************************************************************************/
 
- volatile uint16_t smpsOSC_AUXCLK_DefaultInitialize(volatile AUX_PLL_DEFAULTS_e afpllo_frequency)
+ volatile uint16_t p33c_OscAuxClk_DefaultInitialize(volatile AUX_PLL_DEFAULTS_e afpllo_frequency)
  {
     volatile uint16_t fres = 1;
     volatile AUXOSC_CONFIG_t aux_clock_config;
@@ -381,7 +381,7 @@ volatile uint16_t smpsOSC_AUXCLK_Initialize(volatile AUXOSC_CONFIG_t aux_clock_c
     aux_clock_config.APLLEN = ACLKCON_APLLEN_ENABLED;
     
     // Call auxiliary PLL configuration to apply new settings
-    fres &= smpsOSC_AUXCLK_Initialize(aux_clock_config);
+    fres &= p33c_OscAuxClk_Initialize(aux_clock_config);
     
     return(fres);
  }
@@ -389,20 +389,21 @@ volatile uint16_t smpsOSC_AUXCLK_Initialize(volatile AUXOSC_CONFIG_t aux_clock_c
 
 /*!smpsOSC_GetFrequencies()
  * ************************************************************************************************
- * Summary:
+ * @fn uint16_t p33c_Osc_GetFrequencies(volatile uint32_t main_osc_frequency)
+ * @brief
  * This routine reads all oscillator related SFRs recalculating the various frequencies
  * across clock domains. These frequencies are broadcasted in the global data structure 
  * 'system_frequencies'.
  *
- * Parameters:
+ * @param
  *	uint32_t pri_osc_frequency: external oscillator frequency in [Hz] as 32-bit number
  *                              Set to 0 if no external oscillator is used
  *
- * Returns:
+ * @return
  *  0 = reading oscillator settings failed
  *  1 = reading oscillator settings successfully
  *
- * Description:
+ * @details
  * Microchip's 16-Bit devices offer multiple clock sources to clock the CPU. This routine 
  * reads the most recent, oscillator related Special Function Registers (SFR) and determines
  * the recently active main clock and its frequency and calculates the resulting clock frequencies
@@ -418,7 +419,7 @@ volatile uint16_t smpsOSC_AUXCLK_Initialize(volatile AUXOSC_CONFIG_t aux_clock_c
  * clock settings have been modified. 
  *
  * ************************************************************************************************/
-volatile uint16_t smpsOSC_GetFrequencies(volatile uint32_t main_osc_frequency) {
+volatile uint16_t p33c_Osc_GetFrequencies(volatile uint32_t main_osc_frequency) {
     
     volatile int32_t freq=0;
     volatile uint16_t vbuf=0;
@@ -580,4 +581,7 @@ volatile uint16_t smpsOSC_GetFrequencies(volatile uint32_t main_osc_frequency) {
 }
 
 // *****************************************************************************************************
+/** @}*/ // end of group op-amp-initialization
+
+// end of file
 
