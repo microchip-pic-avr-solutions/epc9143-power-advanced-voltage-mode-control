@@ -456,8 +456,8 @@ typedef struct BUCK_POWER_CONTROLLER_s
     volatile struct BUCK_CONVERTER_STARTUP_s startup;   ///< BUCK startup timing settings 
     volatile struct BUCK_CONVERTER_SETTINGS_s set_values;///< Control field for global access to references
     volatile struct BUCK_CONVERTER_DATA_s data;         ///< BUCK runtime data
+    
     volatile struct BUCK_FEEDBACK_SETTINGS_s feedback;  ///< BUCK converter feedback settings
-
     volatile struct BUCK_SWITCH_NODE_SETTINGS_s sw_node[BUCK_MPHASE_COUNT]; ///< BUCK converter switch node settings
     volatile struct BUCK_GPIO_SETTINGS_s gpio;          ///< BUCK converter additional GPIO specification
     
