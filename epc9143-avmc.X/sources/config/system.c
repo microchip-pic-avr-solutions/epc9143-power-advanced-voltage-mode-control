@@ -31,10 +31,9 @@ volatile uint16_t SYSTEM_Initialize(void)
 {
     volatile uint16_t retval=1;
 	
-    retval &= sysFosc_Initialize();        // Set up system oscillator for 100 MIPS operation
-    retval &= sysAclk_Initialize();        // Set up Auxiliary PLL for 500 MHz (source clock to PWM module)
-    retval &= sysGpio_Initialize();        // Initialize common device GPIOs
-    retval &= sysOsTimer_Initialize();     // Set up Timer1 as scheduler time base (see MAIN_EXECUTION_PERIOD for details)
+    retval &= sysFosc_Initialize(); ///< Set up system oscillator for 100 MIPS operation
+    retval &= sysAclk_Initialize(); ///< Set up Auxiliary PLL for 500 MHz (source clock to PWM module)
+    retval &= sysGpio_Initialize(); ///< Initialize common device GPIOs
     
 	return(retval);
 
@@ -96,6 +95,9 @@ volatile uint16_t sysUserTasks_Initialize(void) {
 
     volatile uint16_t retval=1;
 	
+    // Initialize task scheduler time base
+    retval &= sysOsTimer_Initialize();     // Set up Timer1 as scheduler time base (see MAIN_EXECUTION_PERIOD for details)
+
     // Initialize software modules
     retval &= appPowerSupply_Initialize(); // Initialize BUCK converter object and state machine
     retval &= appFaultMonitor_Initialize(); // Initialize fault objects and fault handler task
