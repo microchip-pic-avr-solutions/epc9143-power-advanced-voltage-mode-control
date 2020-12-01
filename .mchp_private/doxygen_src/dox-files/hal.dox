@@ -1,4 +1,10 @@
 
+/**
+ @defgroup hardware-id-macro Hardware Version ID
+ @ingroup abstraction-layer
+ @brief
+*/
+
 //Abstraction Layer Defines index
 /**
  @defgroup device-abstraction Microcontroller Device Abstraction
@@ -19,6 +25,11 @@
  @defgroup device-abstraction-macros Conversion Macros
  @ingroup device-abstraction
  @brief 
+
+ @defgroup device-abstraction-pral Peripheral Special Function Register Abstraction Drivers
+ @ingroup device-abstraction
+ @brief 
+
 */
 
 // State Machine Parameter Declarations 
@@ -38,6 +49,11 @@
  @defgroup state-machine-macros Conversion Macros
  @ingroup state-machine
  @brief 
+ 
+ @defgroup state-machine-mcal Device Peripheral Assignments
+ @ingroup state-machine
+ @brief 
+ 
 */
 
 //Startup Timing Declarations
@@ -72,9 +88,18 @@
 
 // Device GPIO Assignment Declarations 
 /**
- @defgroup device-gpio-mcal Device GPIO Assignments
+ @defgroup circuit-peripherals Circuit Special Circuit Signals
  @ingroup abstraction-layer
  @brief 
+
+ @defgroup circuit-gpio-mcal Device GPIO Assignments
+ @ingroup circuit-peripherals
+ @brief 
+ 
+ @defgroup circuit-peripheral-mcal Device Peripheral Assignments
+ @ingroup circuit-peripherals
+ @brief 
+ 
 */
 
 //PWM Declarations
@@ -192,7 +217,7 @@
  
 //Control Loop Interrupt Vector Settings
 /**
- @defgroup control-interrupt-vector-declarations Control Interrutp Vector Declarations
+ @defgroup control-interrupt-vector-declarations Control Interrupt Vector Declarations
  @ingroup abstraction-layer
  @brief 
 */

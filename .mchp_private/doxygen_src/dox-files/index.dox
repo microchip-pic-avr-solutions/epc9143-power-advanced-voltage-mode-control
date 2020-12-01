@@ -2,10 +2,37 @@
 /**
  @defgroup firmware-flow Firmware Flowchart
  @brief Firmware Flowchart 
+*/
+
+// Power Controller Application Layer
+/**
+ @defgroup power-control-app-layer Power Control Application Layer 
+ @ingroup task-layer
  
- @defgroup power-handler Power Control Handler Reference 
- @brief Power Control Handler Reference
+ @defgroup power-control-app-layer-public Public Functions
+ @ingroup power-control-app-layer
+ @brief Public functions of the Power Control Application Layer
+ @details The power control application layer is the proprietary user code used to configure the generic
+  power controller device driver defined in dev_buck_typedef.h. This applicaiton layer further provides
+  a subset of function calls allowing external software functions to control and monitor the processes
+  of the power control device driver, such as the system-wide fault monitor or communication drivers.
  
+ @defgroup power-control-app-layer-private Private Functions
+ @ingroup power-control-app-layer
+ @brief Private functions of the Power Control Application Layer
+ @details The private functions of the power control application layer are used to configure the generic
+  power controller device driver defined in dev_buck_typedef.h as well as to provide additional functions
+  required by the specific hardware design.
+
+ @defgroup power-control-app-layer-private-var Private Variables
+ @ingroup power-control-app-layer
+ @brief Private variables of the Power Control Application Layer
+ @details The private variables of the power control application layer are used for internal process control
+  which is not exposed to external formware modules. 
+
+*/
+
+/**
  @defgroup fault-handler Fault Handler Reference
  @brief Generic fault handler supporting comparison of static and dynamic data with automated fault trip and release function
  @details This generic fault handler driver declares a fault object data structure, which can be used in user code to create various different fault objects, which will get scanned and managed by the fault handler functions.
@@ -24,17 +51,71 @@
  @defgroup main-loop Main Loop
  @ingroup firmware-flow
  @brief Main Loop 
+ 
+ @defgroup main-loop-low-priority Low-Priority Task Execution
+ @ingroup main-loop
+ @brief Low priority task execution
 
- @defgroup buck-state-machine Task Layer
+ @defgroup main-loop-high-priority High-Priority Task Execution
+ @ingroup main-loop
+ @brief High priority task execution
+
+ @defgroup task-layer Task Layer
  @ingroup firmware-flow
  @brief Task Layer
+
+ @defgroup buck-state-machine Buck Converter State Machine
+ @ingroup task-layer
+ @brief 
+
+ @defgroup fault-handler Fault Monitor State Machine
+ @ingroup task-layer
+ @brief 
+
 */
 
 //Device Start-Up Sub-Index
 /**
- @defgroup system-initialization System Initialization
+ @defgroup system-initialization-mcu Essential Chip Resources
  @ingroup device-start-up
- @brief System Initialization Procedure
+ @brief 
+ @details
+ 
+ @defgroup clock-initialization Main Oscillator Initialization
+ @ingroup system-initialization-mcu
+ @brief 
+ @details
+ 
+ @defgroup gpio-initialization Device Pin Configuration
+ @ingroup system-initialization-mcu
+ @brief 
+ @details
+
+ @defgroup system-initialization-user-peripherals Hardware-Specific Chip Resources
+ @ingroup device-start-up
+ @brief 
+ @details
+ 
+ @defgroup dac-initialization Digital-to-Analog Converter
+ @ingroup system-initialization-user-peripherals
+ @brief 
+ @details
+ 
+ @defgroup op-amp-initialization Operational Amplifier Configuration
+ @ingroup system-initialization-user-peripherals
+ @brief 
+ @details
+
+ @defgroup system-initialization-user-tasks Firmware Task Initialization
+ @ingroup device-start-up
+ @brief 
+ @details
+ 
+ @defgroup os-timer-initialization Operating System Time Base
+ @ingroup system-initialization-user-tasks
+ @brief 
+ @details
+ 
 */
 
 //Buck State Machine index
@@ -50,7 +131,7 @@
 
 //Power Control Handler Reference index
 /**
- @defgroup power-handler-function Power Control Handler Functions
+ @defgroup power-handler-functions Power Control Handler Functions
  @ingroup power-handler 
  @brief Power Control Handler Functions
  
@@ -68,13 +149,21 @@
  
   For more information on each state, please read the related sections.
  
- @defgroup power-handler-variable Power Control Handler Variables
+ @defgroup power-handler-variables Power Control Handler Variables
  @ingroup power-handler
  @brief Power Control Handler Variables
 */
 
 //Fault Handler Reference index
 /**
+ @defgroup fault-handler-functions Fault Handler Functions
+ @ingroup fault-handler
+ @brief Fault Handler Functions
+
+ @defgroup fault-handler-trap Fault Handler Traps
+ @ingroup fault-handler
+ @brief Fault Handler Traps
+
  @defgroup fault-handler-enum Fault Handler Enumeration
  @ingroup fault-handler
  @brief Fault Handler Enumeration
@@ -82,14 +171,6 @@
  @defgroup fault-handler-struct Fault Handler Data Structure
  @ingroup fault-handler
  @brief 
- 
- @defgroup fault-handler-function Fault Handler Function
- @ingroup fault-handler
- @brief Fault Handler Functions
-
- @defgroup fault-handler-trap Fault Handler Traps
- @ingroup fault-handler
- @brief Fault Handler Traps
 */
 
 //Power Supply Peripherals
@@ -116,9 +197,9 @@
 /**
  @defgroup abstraction-layer Hardware Abstraction Layer
  @brief Hardware Abstraction Layer Declarations
- 
- <b>Description</b><br>
- The hardware abstraction layer introduces global defines which can be used in the firmware section of the source code to reference hardware dependent parameters and device peripheral instances and features.
- This abstraction is essential to adapt to hardware changes including migration across microcontroller device families and hardware versions with minimum risk and time efforts.
- As the microcontroller used in this design is a fixed, irreplaceable board component, this particular Hardware Abstraction Layer (HAL) covers declarations of circuit control and feedback signals as well as associated microcontroller peripheral instances and features.
+ @details
+  The hardware abstraction layer introduces global defines which can be used in the firmware section of the source code to reference hardware dependent parameters and device peripheral instances and features.
+  This abstraction is essential to adapt to hardware changes including migration across microcontroller device families and hardware versions with minimum risk and time efforts.
+  As the microcontroller used in this design is a fixed, irreplaceable board component, this particular Hardware Abstraction Layer (HAL) covers declarations of circuit control and feedback signals as well as
+  associated microcontroller peripheral instances and features.
 */
