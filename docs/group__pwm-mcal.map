@@ -1,0 +1,6 @@
+<map id="Microcontroller Abstraction" name="Microcontroller Abstraction">
+<area shape="rect" id="node1" title="PWM peripheral output pins, control signals and register assignments." alt="" coords="160,31,337,56"/>
+<area shape="rect" id="node2" href="$group__pwm-mcal-phase1.html" title="PWM peripheral output pins, control signals and register assignments of converter phase #1." alt="" coords="385,5,520,31"/>
+<area shape="rect" id="node3" href="$group__pwm-mcal-phase2.html" title="PWM peripheral output pins, control signals and register assignments of converter phase #2." alt="" coords="385,55,520,80"/>
+<area shape="rect" id="node4" href="$group__pwm-fundamentals.html" title="Declaration of fundamental PWM parameters." alt="" coords="5,31,112,56"/>
+</map>

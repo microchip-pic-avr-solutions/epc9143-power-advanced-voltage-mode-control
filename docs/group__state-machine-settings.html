@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EPC9143 300 W 1/16 th Brick Evaluation Module Software Documentation: State Machine Settings</title>
+<title>EPC9143 300 W 1/16 th Brick Evaluation Module Software Documentation: User Settings</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -98,47 +98,30 @@ $(document).ready(function(){initNavTree('group__state-machine-settings.html',''
   <div class="summary">
 <a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">State Machine Settings<div class="ingroups"><a class="el" href="group__abstraction-layer.html">Abstraction Layer Defines</a></div></div>  </div>
+<div class="title">User Settings<div class="ingroups"><a class="el" href="group__abstraction-layer.html">Hardware Abstraction Layer</a> &raquo; <a class="el" href="group__state-machine.html">State Machine Settings</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Global defines for state-machine specific parameters.  
+<p>Global state-machine user-settings.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
-Collaboration diagram for State Machine Settings:</div>
+Collaboration diagram for User Settings:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__state-machine-settings.svg" width="388" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__state-machine-settings.svg" width="319" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:gac8489c3fb9bb5db0d15a2e870c3e5def"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__state-machine-settings.html#gac8489c3fb9bb5db0d15a2e870c3e5def">MAIN_EXECUTION_PERIOD</a>&#160;&#160;&#160;(float)100.0e-6</td></tr>
-<tr class="memdesc:gac8489c3fb9bb5db0d15a2e870c3e5def"><td class="mdescLeft">&#160;</td><td class="mdescRight">main state machine pace period in [sec]  <a href="group__state-machine-settings.html#gac8489c3fb9bb5db0d15a2e870c3e5def">More...</a><br /></td></tr>
+<tr class="memdesc:gac8489c3fb9bb5db0d15a2e870c3e5def"><td class="mdescLeft">&#160;</td><td class="mdescRight">main state machine function call period in [sec]  <a href="group__state-machine-settings.html#gac8489c3fb9bb5db0d15a2e870c3e5def">More...</a><br /></td></tr>
 <tr class="separator:gac8489c3fb9bb5db0d15a2e870c3e5def"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf9a1bbe132fcc0fd2dacac4cf1bb4f10"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__state-machine-settings.html#gaf9a1bbe132fcc0fd2dacac4cf1bb4f10">MAIN_EXEC_PER</a>&#160;&#160;&#160;(uint16_t)((<a class="el" href="group__microcontroller-abstraction.html#gaf73acdf7fb3be35ff98322b7e827d349">CPU_FREQUENCY</a> * <a class="el" href="group__state-machine-settings.html#gac8489c3fb9bb5db0d15a2e870c3e5def">MAIN_EXECUTION_PERIOD</a>)-1)</td></tr>
-<tr class="separator:gaf9a1bbe132fcc0fd2dacac4cf1bb4f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Global defines for state-machine specific parameters. </p>
-<p><b>Description</b> This section is used to define state-machine settings such as the main execution call interval. Pre-compiler macros are used to translate physical values into binary (integer) numbers to be written to SFRs and variables. </p>
+<p>Global state-machine user-settings. </p>
+<p>This section is used to set, modify, enable or disable common state machine parameters and features.</p>
+<p>(Please see individual settings description for detail) </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="gaf9a1bbe132fcc0fd2dacac4cf1bb4f10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf9a1bbe132fcc0fd2dacac4cf1bb4f10">&#9670;&nbsp;</a></span>MAIN_EXEC_PER</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAIN_EXEC_PER&#160;&#160;&#160;(uint16_t)((<a class="el" href="group__microcontroller-abstraction.html#gaf73acdf7fb3be35ff98322b7e827d349">CPU_FREQUENCY</a> * <a class="el" href="group__state-machine-settings.html#gac8489c3fb9bb5db0d15a2e870c3e5def">MAIN_EXECUTION_PERIOD</a>)-1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00085">85</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
-
-</div>
-</div>
 <a id="gac8489c3fb9bb5db0d15a2e870c3e5def"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gac8489c3fb9bb5db0d15a2e870c3e5def">&#9670;&nbsp;</a></span>MAIN_EXECUTION_PERIOD</h2>
 
@@ -151,9 +134,9 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>main state machine pace period in [sec] </p>
+<p>main state machine function call period in [sec] </p>
 
-<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00084">84</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="epc9143__r40__hwdescr_8h_source.html#l00131">131</a> of file <a class="el" href="epc9143__r40__hwdescr_8h_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>

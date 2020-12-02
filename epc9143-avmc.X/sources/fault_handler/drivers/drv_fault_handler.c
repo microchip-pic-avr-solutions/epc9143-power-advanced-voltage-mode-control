@@ -43,15 +43,6 @@
 
 #include "drv_fault_handler.h" // 
 
-/**
- * @addtogroup fault-handler-struct
- */
-
-/**********************************************************************************
- * @var FAULT_OBJECT_s fltobjClear
- * @brief Pre-initialized data structure object of a default fault object 
- * 
- * ********************************************************************************/
 
 volatile struct FAULT_OBJECT_s fltobjClear = 
 {
@@ -73,7 +64,7 @@ volatile struct FAULT_OBJECT_s fltobjClear =
     };
 
 /**
- * @addtogroup fault-handler-function
+ * @addtogroup fault-handler-functions
  * @{
  */
 /*******************************************************************************
@@ -173,7 +164,6 @@ volatile struct FAULT_OBJECT_s fltobjClear =
  * See also:
  * -
  *****************************************************************************/
-
 
 volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj) {
 

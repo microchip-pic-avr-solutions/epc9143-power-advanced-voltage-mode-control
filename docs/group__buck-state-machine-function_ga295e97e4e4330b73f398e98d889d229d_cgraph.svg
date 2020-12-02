@@ -58,7 +58,7 @@ var sectionId = 'dynsection-2';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="Description After successful initialization or after an externally triggered state machine reset,...">
+<g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="0,-19.5 0,-38.5 71,-38.5 71,-19.5 0,-19.5"/>
 <text text-anchor="middle" x="35.5" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">State_Reset</text>
 </a>
@@ -67,7 +67,7 @@ var sectionId = 'dynsection-2';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="group__power-handler-function.html#gadd0533ee810246f6b84c7c31d9372835" target="_top" xlink:title="Description">
+<g id="a_node2"><a xlink:href="group__power-handler-functions.html#gadd0533ee810246f6b84c7c31d9372835" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="107,-19.5 107,-38.5 213,-38.5 213,-19.5 107,-19.5"/>
 <text text-anchor="middle" x="160" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckPWM_Suspend</text>
 </a>
@@ -82,7 +82,7 @@ var sectionId = 'dynsection-2';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="group__power-handler-function.html#ga649bb2f18322be1a303d05931adb2c6a" target="_top" xlink:title="Description">
+<g id="a_node3"><a xlink:href="group__power-handler-functions.html#ga649bb2f18322be1a303d05931adb2c6a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="283.5,-38.5 283.5,-57.5 372.5,-57.5 372.5,-38.5 283.5,-38.5"/>
 <text text-anchor="middle" x="328" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">buckGPIO_Clear</text>
 </a>

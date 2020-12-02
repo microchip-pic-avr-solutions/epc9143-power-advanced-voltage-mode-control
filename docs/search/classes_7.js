@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['v_5floop_5fcontrol_5floop_5fcoefficients_5fs_853',['V_LOOP_CONTROL_LOOP_COEFFICIENTS_s',['../struct_v___l_o_o_p___c_o_n_t_r_o_l___l_o_o_p___c_o_e_f_f_i_c_i_e_n_t_s__s.html',1,'']]],
-  ['v_5floop_5fcontrol_5floop_5fhistories_5fs_854',['V_LOOP_CONTROL_LOOP_HISTORIES_s',['../struct_v___l_o_o_p___c_o_n_t_r_o_l___l_o_o_p___h_i_s_t_o_r_i_e_s__s.html',1,'']]],
-  ['volatile_855',['volatile',['../structvolatile.html',1,'']]]
+  ['p33c_5fccp_5finstance_5fsfrset_5fs_1053',['P33C_CCP_INSTANCE_SFRSET_s',['../struct_p33_c___c_c_p___i_n_s_t_a_n_c_e___s_f_r_s_e_t__s.html',1,'']]],
+  ['p33c_5fdac_5finstance_5fs_1054',['P33C_DAC_INSTANCE_s',['../struct_p33_c___d_a_c___i_n_s_t_a_n_c_e__s.html',1,'']]],
+  ['p33c_5fdac_5fmodule_5fs_1055',['P33C_DAC_MODULE_s',['../struct_p33_c___d_a_c___m_o_d_u_l_e__s.html',1,'']]],
+  ['p33c_5fgpio_5finstance_5fs_1056',['P33C_GPIO_INSTANCE_s',['../struct_p33_c___g_p_i_o___i_n_s_t_a_n_c_e__s.html',1,'']]],
+  ['p33c_5fopa_5fmodule_5fs_1057',['P33C_OPA_MODULE_s',['../struct_p33_c___o_p_a___m_o_d_u_l_e__s.html',1,'']]],
+  ['p33c_5fpwm_5fgenerator_5fs_1058',['P33C_PWM_GENERATOR_s',['../struct_p33_c___p_w_m___g_e_n_e_r_a_t_o_r__s.html',1,'']]],
+  ['p33c_5fpwm_5fmodule_5fs_1059',['P33C_PWM_MODULE_s',['../struct_p33_c___p_w_m___m_o_d_u_l_e__s.html',1,'']]]
 ];

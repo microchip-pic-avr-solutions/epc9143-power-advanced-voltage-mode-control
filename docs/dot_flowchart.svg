@@ -68,6 +68,16 @@ var viewHeight = 850;
 <polygon fill="none" stroke="black" points="79.8,-171 79.8,-795 249.8,-795 249.8,-171 79.8,-171"/>
 <text text-anchor="middle" x="164.8" y="-779.8" font-family="Times New Roman,serif" font-size="14.00">main() loop</text>
 </g>
+<g id="clust2" class="cluster">
+<title>cluster0</title>
+<polygon fill="none" stroke="black" points="257.8,-16 257.8,-720 555.8,-720 555.8,-16 257.8,-16"/>
+<text text-anchor="middle" x="406.8" y="-704.8" font-family="Times New Roman,serif" font-size="14.00">Application Layer</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster00</title>
+<polygon fill="none" stroke="black" points="265.8,-172.5 265.8,-689 547.8,-689 547.8,-172.5 265.8,-172.5"/>
+<text text-anchor="middle" x="406.8" y="-673.8" font-family="Times New Roman,serif" font-size="14.00">Power Supply State Machine</text>
+</g>
 <g id="clust4" class="cluster">
 <title>cluster1</title>
 <polygon fill="none" stroke="black" points="563.8,-8 563.8,-720 767.8,-720 767.8,-8 563.8,-8"/>
@@ -83,20 +93,10 @@ var viewHeight = 850;
 <polygon fill="none" stroke="black" points="571.8,-172.5 571.8,-689 759.8,-689 759.8,-172.5 571.8,-172.5"/>
 <text text-anchor="middle" x="665.8" y="-673.8" font-family="Times New Roman,serif" font-size="14.00">Buck Converter State Machine</text>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster0</title>
-<polygon fill="none" stroke="black" points="257.8,-16 257.8,-720 555.8,-720 555.8,-16 257.8,-16"/>
-<text text-anchor="middle" x="406.8" y="-704.8" font-family="Times New Roman,serif" font-size="14.00">Application Layer</text>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster00</title>
-<polygon fill="none" stroke="black" points="265.8,-172.5 265.8,-689 547.8,-689 547.8,-172.5 265.8,-172.5"/>
-<text text-anchor="middle" x="406.8" y="-673.8" font-family="Times New Roman,serif" font-size="14.00">Power Supply State Machine</text>
-</g>
 <!-- call_PWR_SM -->
 <g id="node1" class="node">
 <title>call_PWR_SM</title>
-<g id="a_node1"><a xlink:href="group__main-loop.html#ga13094235dd6cc123d9299925359ca178" target="_top" xlink:title="Call PWR State Machine">
+<g id="a_node1"><a xlink:href="group__power-control-app-layer-public.html#ga13094235dd6cc123d9299925359ca178" target="_top" xlink:title="Call PWR State Machine">
 <polygon fill="none" stroke="black" points="238.8,-764 106.8,-764 106.8,-728 238.8,-728 238.8,-764"/>
 <text text-anchor="middle" x="172.8" y="-743.5" font-family="Consolas, 'Courier New', Courier, Sans-Serif" font-size="10.00">Call PWR State Machine</text>
 </a>
@@ -105,7 +105,7 @@ var viewHeight = 850;
 <!-- FB_data -->
 <g id="node4" class="node">
 <title>FB_data</title>
-<g id="a_node4"><a xlink:href="group__main-loop.html#ga13094235dd6cc123d9299925359ca178" target="_top" xlink:title="Publish FeedBack Data">
+<g id="a_node4"><a xlink:href="group__power-control-app-layer-public.html#ga13094235dd6cc123d9299925359ca178" target="_top" xlink:title="Publish FeedBack Data">
 <polygon fill="none" stroke="black" points="434.3,-658 307.3,-658 307.3,-622 434.3,-622 434.3,-658"/>
 <text text-anchor="middle" x="370.8" y="-637.5" font-family="Consolas, 'Courier New', Courier, Sans-Serif" font-size="10.00">Publish FeedBack Data</text>
 </a>
@@ -128,7 +128,7 @@ var viewHeight = 850;
 <!-- Fault_detected -->
 <g id="node25" class="node">
 <title>Fault_detected</title>
-<g id="a_node25"><a xlink:href="group__main-loop.html#ga8842f6a41fe23f932a8864fc140c4b5b" target="_top" xlink:title="{Call Fault Handler |{&lt;f0&gt; NO|&lt;f1&gt; Fault Detected?|&lt;f2&gt; YES}}">
+<g id="a_node25"><a xlink:href="group__fault-handler-functions.html#ga8842f6a41fe23f932a8864fc140c4b5b" target="_top" xlink:title="{Call Fault Handler |{&lt;f0&gt; NO|&lt;f1&gt; Fault Detected?|&lt;f2&gt; YES}}">
 <polygon fill="none" stroke="black" points="87.8,-179.5 87.8,-217.5 241.8,-217.5 241.8,-179.5 87.8,-179.5"/>
 <text text-anchor="middle" x="164.8" y="-205.5" font-family="Consolas, 'Courier New', Courier, Sans-Serif" font-size="10.00">Call Fault Handler</text>
 <polyline fill="none" stroke="black" points="87.8,-198.5 241.8,-198.5 "/>
@@ -155,7 +155,7 @@ var viewHeight = 850;
 <!-- current_cal -->
 <g id="node7" class="node">
 <title>current_cal</title>
-<g id="a_node7"><a xlink:href="group__power-handler-function.html#gab80ac65aae45f7f9d9fd4ef6f8c56111" target="_top" xlink:title="Current Calibration">
+<g id="a_node7"><a xlink:href="group__power-control-app-layer-private.html#gab80ac65aae45f7f9d9fd4ef6f8c56111" target="_top" xlink:title="Current Calibration">
 <polygon fill="none" stroke="black" points="389.8,-290 273.8,-290 273.8,-254 389.8,-254 389.8,-290"/>
 <text text-anchor="middle" x="331.8" y="-269.5" font-family="Consolas, 'Courier New', Courier, Sans-Serif" font-size="10.00">Current Calibration</text>
 </a>
@@ -176,7 +176,7 @@ var viewHeight = 850;
 <!-- current_bal -->
 <g id="node8" class="node">
 <title>current_bal</title>
-<g id="a_node8"><a xlink:href="group__power-handler-function.html#ga213716a49f67b0e46a7fbb7665214e4f" target="_top" xlink:title="Current Balancing">
+<g id="a_node8"><a xlink:href="group__power-control-app-layer-private.html#ga213716a49f67b0e46a7fbb7665214e4f" target="_top" xlink:title="Current Balancing">
 <polygon fill="none" stroke="black" points="508.8,-362 402.8,-362 402.8,-326 508.8,-326 508.8,-362"/>
 <text text-anchor="middle" x="455.8" y="-341.5" font-family="Consolas, 'Courier New', Courier, Sans-Serif" font-size="10.00">Current Balancing</text>
 </a>
@@ -204,7 +204,7 @@ var viewHeight = 850;
 <!-- exec_State_Machine -->
 <g id="node6" class="node">
 <title>exec_State_Machine</title>
-<g id="a_node6"><a xlink:href="group__power-handler-function.html#ga75498c59a10db0738113104a547d8d0d" target="_top" xlink:title="Execute State Machine">
+<g id="a_node6"><a xlink:href="group__power-handler-functions.html#ga75498c59a10db0738113104a547d8d0d" target="_top" xlink:title="Execute State Machine">
 <polygon fill="none" stroke="black" points="475.3,-506 348.3,-506 348.3,-470 475.3,-470 475.3,-506"/>
 <text text-anchor="middle" x="411.8" y="-485.5" font-family="Consolas, 'Courier New', Courier, Sans-Serif" font-size="10.00">Execute State Machine</text>
 </a>

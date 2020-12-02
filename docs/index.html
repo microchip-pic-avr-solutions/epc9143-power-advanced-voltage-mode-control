@@ -104,9 +104,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 EPC9143 300W 16th Brick Non-Isolated Step Down Converter Advanced Voltage Mode Control Firmware</h2>
 <p><b>2-Phase Synchronous Buck Converter with Advanced Voltage Mode Control and Current Balancing</b></p>
 <center> Top View <br  />
- <a href="https://www.microchip.com/EPC9143" rel="nofollow"><img src="images/9143_r4.png" alt="EPC9143 Top View" width="300" class="inline"/> </a> <br  />
- </center> <center> Bottom View <br  />
- <a href="https://www.microchip.com/EPC9143" rel="nofollow"><img src="images/9143_r4_back.png" alt="EPC9143 Top View" width="300" class="inline"/> </a> </center> <h2><a class="anchor" id="autotoc_md1"></a>
+ <img src="images/9143_r4.png" alt="EPC9143 Top View" width="300" class="inline"/> </center> <center> Bottom View <br  />
+ <img src="images/9143_r4_back.png" alt="EPC9143 Top View" width="300" class="inline"/> </center> <h2><a class="anchor" id="autotoc_md1"></a>
 Summary</h2>
 <p>This code example demonstrates a closed loop voltage mode control implementation for dsPIC33CK. It has specifically been developed for the EPC9143 Rev4.0 1/16 brick converter.</p>
 <p>The board starts up the buck converter automatically when power is applied to the board, providing a regulated output voltage of 12 V at the output of the converter. The startup procedure is controlled and executed by the power controller state machine and includes an configurable startup procedure with power-on delay, ramp up period and power good delay before dropping into constant regulation mode. An additional fault handler routine continuously monitors incoming ADC data and peripheral status bits and shuts down the power supply if the input voltage is outside the defined maximum range of 16.5 V to 62.5 V (UVLO/OVLO) or if the output voltage is more than 0.5 V out of regulation for more than 10 milliseconds.</p>
@@ -150,7 +149,7 @@ Hardware Used</h2>
 <li>EPC9143: EPC9143 16th Brick Non-Isolated Step Down Converter, Revision 4.0</li>
 <li>EPC9531: EPC9531 test fixture for EPC9143 16th brick reference design</li>
 </ul>
-<center> <a href="https://www.microchip.com/EPC9143" rel="nofollow"><img src="images/9531_test_fixture.png" alt="EPC9143 mounted on EPC9531 Test Fixture" width="500" class="inline"/> </a> </center> <h2><a class="anchor" id="autotoc_md8"></a>
+<center> <img src="images/9531_test_fixture.png" alt="EPC9143 mounted on EPC9531 Test Fixture" width="500" class="inline"/> </center> <h2><a class="anchor" id="autotoc_md8"></a>
 Device Support:</h2>
 <p>Microchip devices used in this reference design:</p><ul>
 <li><a href="https://www.microchip.com/dsPIC33CK32MP102">dsPIC33CK32MP102</a></li>
@@ -162,8 +161,8 @@ Device Support:</h2>
 <h2><a class="anchor" id="autotoc_md9"></a>
 Setup</h2>
 <p>The board comes programmed and ready to be used when unpacked. No reprogramming of the target device is required to operate the board unless features or settings such as the nominal output voltage or start-up timing need to be modified.</p>
-<center> <a href="https://www.microchip.com/EPC9143" rel="nofollow"><img src="images/9531_9143_setup.png" alt="EPC9531 Test Fixture Connections - Top View" width="700" class="inline"/> </a> <br  />
- EPC9531 Test Fixture Connections - Top View </center> <center> <a href="https://www.microchip.com/EPC9143" rel="nofollow"><img src="images/9531_bottom.png" alt="EPC9531 Test Fixture Connections - Bottom View" width="620" class="inline"/> </a> <br  />
+<center> <img src="images/9531_9143_setup.png" alt="EPC9531 Test Fixture Connections - Top View" width="700" class="inline"/> <br  />
+ EPC9531 Test Fixture Connections - Top View </center> <center> <img src="images/9531_bottom.png" alt="EPC9531 Test Fixture Connections - Bottom View" width="620" class="inline"/> <br  />
  EPC9531 Test Fixture Connections - Bottom View </center> <p>In case firmware based features need to be changed, the Microchip dsPIC33CK controller can be re-programmed using the in-circuit serial programming port (ICSP) available on the RJ-11 programming interface as well as the 5-pin header provided by the EPC9531 test fixture. These interfaces support all of Microchip’s in-circuit programmers/debuggers, such as MPLAB® ICD4, MPLAB® REAL ICE or MPLAB® PICkit4 and previous derivatives. See <a href="https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf">EPC9531 Quick Start Guide</a> for details.</p>
 <h2><a class="anchor" id="autotoc_md10"></a>
 Operation</h2>
@@ -185,10 +184,9 @@ Firmware Quick-Start Guide</h2>
 <p>i) Suspend/Error If the power controller is shut down and reset by external commands (e.g. fault handler detecting a fault condition or through user-interaction), the state machine is switching into the SUSPEND state, which disables the PWM outputs and control loop execution, clears the control histories and resets the state machine back to RESET</p>
 <p><a class="anchor" id="autotoc_md13"></a></p><h5>2) Cycle-by-Cycle Voltage Control Loop</h5>
 <p>This firmware uses a digital type IV controller to close the feedback loop in voltage mode control. This digital loop reads the most recent ADC sample of the output voltage and processes the derived value through a digital type IV (4P4Z) compensation filter. The numeric output is checked and, when necessary, clamped to user-defined minimum/maximum thresholds before being written to the PWM duty cycle register. As EPC9143 is a multiphase converter, a special PWM steering mode has been implemented supporting high-speed current balancing between the two phases. The voltage mode controller has been extended with a self-adapting loop gain tuning algorithm (AGC) stabilizing the frequency domain characteristic over input voltage, output voltage and load, always providing the exact same bandwidth of &gt;25 kHz and stability margins across the entire operating range.</p>
-<center> <a href="https://www.microchip.com/EPC9143" rel="nofollow"><img src="images/type4-avmc.png" alt="EPC9143 type IV - Advanced Voltage Control Loop" width="800" class="inline"/> </a> <br  />
+<center> <img src="images/type4-avmc.png" alt="EPC9143 type IV - Advanced Voltage Control Loop" width="800" class="inline"/> <br  />
  EPC9143 Type IV Controller - Advanced Voltage Control Loop </center> <p>This control loop can be turned on/off by using the ENABLE bit in the STATUS word of the cNPNZ_t controller data structure. The adaptive loop gain modulation is permanently active as soon as the control loop is enabled.</p>
-<center> <img src="images/type4-avmc.png" alt="Advanced Type IV Voltage Mode Control with PWM Steering and Adaptive Gain Control" width="620" class="inline"/> <br  />
- Advanced Type IV Voltage Mode Control Block Diagram </center> <p><a class="anchor" id="autotoc_md14"></a></p><h5>3) Digital Controller Design</h5>
+<p><a class="anchor" id="autotoc_md14"></a></p><h5>3) Digital Controller Design</h5>
 <p>The control loop source code is configured and generated by the PowerSmart&trade; - Digital Control Library Designer (DCLD) software.</p>
 <p>This additional design software is available for download on Github Pages:</p>
 <ul>

@@ -1,8 +1,10 @@
 var modules =
 [
     [ "Firmware Flowchart", "group__firmware-flow.html", "group__firmware-flow" ],
-    [ "Power Control Handler Reference", "group__power-handler.html", "group__power-handler" ],
-    [ "Fault Handler Reference", "group__fault-handler.html", "group__fault-handler" ],
     [ "Power Supply Peripherals", "group__peripheral.html", "group__peripheral" ],
-    [ "Abstraction Layer Defines", "group__abstraction-layer.html", "group__abstraction-layer" ]
+    [ "Power Control Handler Functions", "group__power-handler-functions.html", "group__power-handler-functions" ],
+    [ "Power Handler Data Structures", "group__power-handler-struct.html", "group__power-handler-struct" ],
+    [ "Power Control Handler Enumerations", "group__power-handler-enum.html", "group__power-handler-enum" ],
+    [ "Power Control Handler Variables", "group__power-handler-variables.html", "group__power-handler-variables" ],
+    [ "Hardware Abstraction Layer", "group__abstraction-layer.html", "group__abstraction-layer" ]
 ];

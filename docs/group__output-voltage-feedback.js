@@ -1,27 +1,6 @@
 var group__output_voltage_feedback =
 [
-    [ "BUCK_VOUT_ADC_TRG_DELAY", "group__output-voltage-feedback.html#gae49c146c9868c9b950a541ebb1c3fcb6", null ],
-    [ "BUCK_VOUT_ADC_TRGDLY", "group__output-voltage-feedback.html#ga62220308b2f2b302fbf9ef2cf0eefad4", null ],
-    [ "BUCK_VOUT_ADCBUF", "group__output-voltage-feedback.html#gab5a66db522e36f4df6c1261ac6f169f7", null ],
-    [ "BUCK_VOUT_ADCCORE", "group__output-voltage-feedback.html#gadca72f2007af7bbcfeabea3f088417c1", null ],
-    [ "BUCK_VOUT_ADCIN", "group__output-voltage-feedback.html#ga0f65d536bafa774db983f1654d9c0fb1", null ],
-    [ "BUCK_VOUT_ADCTRIG", "group__output-voltage-feedback.html#ga4cc0051ef254bbf7167af02c30e9489d", null ],
-    [ "BUCK_VOUT_ANSEL", "group__output-voltage-feedback.html#gac90fa2099f502ddf5210bcbae94b5cc0", null ],
-    [ "BUCK_VOUT_DEV_RELEASE", "group__output-voltage-feedback.html#ga39f60f293aceb0c208718d11a7637487", null ],
-    [ "BUCK_VOUT_DEV_TRIP", "group__output-voltage-feedback.html#ga9d5cfb44a2773e8854f007c13c65cfca", null ],
-    [ "BUCK_VOUT_DIV_R1", "group__output-voltage-feedback.html#gaf247595693964a16cab1ca49e91d0825", null ],
-    [ "BUCK_VOUT_DIV_R2", "group__output-voltage-feedback.html#ga4a6f31de7c3a357b3747d872b39a33e1", null ],
-    [ "BUCK_VOUT_FEEDBACK_GAIN", "group__output-voltage-feedback.html#ga78e303e825ebbb38c8f61ddcb0a0d718", null ],
-    [ "BUCK_VOUT_FEEDBACK_OFFSET", "group__output-voltage-feedback.html#ga48f54a116cb069cff526d482aa83fafd", null ],
-    [ "BUCK_VOUT_NOM", "group__output-voltage-feedback.html#ga2f6b12d2606761c0b8a9bfdb446d2543", null ],
-    [ "BUCK_VOUT_NOMINAL", "group__output-voltage-feedback.html#ga28660f68fd69aa1cf4c352f88634060c", null ],
-    [ "BUCK_VOUT_NORM_FACTOR", "group__output-voltage-feedback.html#ga3c2ee8d6fd16a7f81797411913942854", null ],
-    [ "BUCK_VOUT_NORM_INV_G", "group__output-voltage-feedback.html#ga6f46102d2cb00d541e0cf6b3d7c3d46b", null ],
-    [ "BUCK_VOUT_NORM_SCALER", "group__output-voltage-feedback.html#ga2fb593feff154f722e2e42554df78218", null ],
-    [ "BUCK_VOUT_OFFSET", "group__output-voltage-feedback.html#ga403bc23d113ac96de0317aed5b8ae747", null ],
-    [ "BUCK_VOUT_RANGE_MAX", "group__output-voltage-feedback.html#ga8596a14d59666e7db30e52a5a3a39c8f", null ],
-    [ "BUCK_VOUT_REF", "group__output-voltage-feedback.html#ga42d8626bfa1f343d89033f82963fd2b5", null ],
-    [ "BUCK_VOUT_TOLERANCE_MAX", "group__output-voltage-feedback.html#gaf67774fbccd9ee5ac60e5aed4cc7c5b4", null ],
-    [ "BUCK_VOUT_TOLERANCE_MIN", "group__output-voltage-feedback.html#ga31ccbf02b1090ae456771ab15c6b632b", null ],
-    [ "BUCK_VOUT_TRGSRC", "group__output-voltage-feedback.html#ga582c1b8e723703fb75c4d14c766a6ce0", null ]
+    [ "User Settings", "group__output-voltage-feedback-settings.html", "group__output-voltage-feedback-settings" ],
+    [ "Conversion Macros", "group__output-voltage-feedback-macros.html", "group__output-voltage-feedback-macros" ],
+    [ "Microcontroller Abstraction", "group__output-voltage-feedback-mcal.html", "group__output-voltage-feedback-mcal" ]
 ];

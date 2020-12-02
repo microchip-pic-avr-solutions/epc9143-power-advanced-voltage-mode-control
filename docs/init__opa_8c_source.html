@@ -108,27 +108,54 @@ $(document).ready(function(){initNavTree('init__opa_8c_source.html',''); initRes
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;xc.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;p33CK32MP102.h&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">volatile</span> uint16_t init_opa(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">volatile</span> uint16_t retval=1;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    AMPCON1Lbits.AMPON = 0; <span class="comment">// Disable Op-Amp module</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    AMPCON1Lbits.AMPEN1 = 0; <span class="comment">// Disable OPA1</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    AMPCON1Lbits.AMPEN2 = 1; <span class="comment">// Enable OPA2</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    AMPCON1Hbits.NCHDIS1 = 1; <span class="comment">// Disables Op Amp #1 N channel input stage</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    AMPCON1Hbits.NCHDIS2 = 1; <span class="comment">// Enable Op Amp #2 N channel input stage</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    AMPCON1Hbits.NCHDIS3 = 1; <span class="comment">// Disables Op Amp #3 N channel input stage</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    AMPCON1Lbits.AMPON = 1; <span class="comment">// Enable Op-Amp module</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> (retval);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;init_opa.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="group__op-amp-initialization.html#gabd454dd5908ee930957e91e5c5bf42ff">   35</a></span>&#160;<span class="keyword">volatile</span> uint16_t <a class="code" href="group__op-amp-initialization.html#gabd454dd5908ee930957e91e5c5bf42ff">sysOpAmp_Initialize</a>(<span class="keyword">volatile</span> uint16_t opaInstance, <span class="keyword">volatile</span> <span class="keywordtype">bool</span> disable_n_channel) </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">volatile</span> uint16_t retval=1;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">volatile</span> uint16_t idum=0;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">volatile</span> <span class="keyword">struct </span><a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html">P33C_OPA_MODULE_s</a>* opa = <a class="code" href="group__p33c-opa-pral.html#gabd9cfd420bfce742a354ce84fb682bcc">p33c_OpaModule_GetHandle</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// Disable and reset op-amp module</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    *opa = <a class="code" href="group__p33c-opa-pral.html#ga9bc264645744090c68ed4e6b0dd2fa7b">opaModuleDefault</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    opa-&gt;<a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#a919a72f43d5d4c75d7f074419dbc997a">AmpCon1L</a>.<a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#a3f0c55f449560b03ce0ac43270c26600">value</a> = 0; <span class="comment">// Disable and reset Op-Amp module</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// Enable op-amp instance</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    idum = (0x0001 &lt;&lt; (opaInstance - 1));</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    opa-&gt;<a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#a919a72f43d5d4c75d7f074419dbc997a">AmpCon1L</a>.<a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#a3f0c55f449560b03ce0ac43270c26600">value</a> |= idum;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;     <span class="comment">// Disables Op Amp #1 N channel input stage</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    idum = (((uint16_t)disable_n_channel) &lt;&lt; (opaInstance - 1));</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    opa-&gt;<a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#a08d9796a84a4f16a26fe1ac0547f2a6b">AmpCon1H</a>.<a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#a3f0c55f449560b03ce0ac43270c26600">value</a> |= idum;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> (retval);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="group__op-amp-initialization.html#ga3cd080c9a48a5d74d8b2f89fdec161da">   71</a></span>&#160;<span class="keyword">volatile</span> uint16_t <a class="code" href="group__op-amp-initialization.html#ga3cd080c9a48a5d74d8b2f89fdec161da">sysOpAmp_ModuleEnable</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">volatile</span> <span class="keyword">struct </span><a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html">P33C_OPA_MODULE_s</a>* opa = <a class="code" href="group__p33c-opa-pral.html#gabd9cfd420bfce742a354ce84fb682bcc">p33c_OpaModule_GetHandle</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    opa-&gt;<a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#a919a72f43d5d4c75d7f074419dbc997a">AmpCon1L</a>.<a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#ac54e274d2ba78b497ad9e19ff8b118b1">bits</a>.AMPON = <span class="keyword">true</span>; <span class="comment">// Enable Op-Amp module</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> (opa-&gt;<a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#a919a72f43d5d4c75d7f074419dbc997a">AmpCon1L</a>.<a class="code" href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#ac54e274d2ba78b497ad9e19ff8b118b1">bits</a>.AMPON);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; <span class="comment">// end of group op-amp-initialization</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">// end of file</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="astruct_p33_c___o_p_a___m_o_d_u_l_e__s_html_a08d9796a84a4f16a26fe1ac0547f2a6b"><div class="ttname"><a href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#a08d9796a84a4f16a26fe1ac0547f2a6b">P33C_OPA_MODULE_s::AmpCon1H</a></div><div class="ttdeci">union P33C_OPA_MODULE_s::@1 AmpCon1H</div></div>
+<div class="ttc" id="agroup__p33c-opa-pral_html_ga9bc264645744090c68ed4e6b0dd2fa7b"><div class="ttname"><a href="group__p33c-opa-pral.html#ga9bc264645744090c68ed4e6b0dd2fa7b">opaModuleDefault</a></div><div class="ttdeci">volatile struct P33C_OPA_MODULE_s opaModuleDefault</div><div class="ttdoc">Default configuration of op-amp module running from 500 MHz input clock.</div><div class="ttdef"><b>Definition:</b> <a href="p33c__opa_8c_source.html#l00128">p33c_opa.c:179</a></div></div>
+<div class="ttc" id="agroup__p33c-opa-pral_html_gabd9cfd420bfce742a354ce84fb682bcc"><div class="ttname"><a href="group__p33c-opa-pral.html#gabd9cfd420bfce742a354ce84fb682bcc">p33c_OpaModule_GetHandle</a></div><div class="ttdeci">volatile struct P33C_OPA_MODULE_s * p33c_OpaModule_GetHandle(void)</div><div class="ttdoc">Gets pointer to op-amp Module SFR set.</div><div class="ttdef"><b>Definition:</b> <a href="p33c__opa_8c_source.html#l00045">p33c_opa.c:45</a></div></div>
+<div class="ttc" id="astruct_p33_c___o_p_a___m_o_d_u_l_e__s_html_a919a72f43d5d4c75d7f074419dbc997a"><div class="ttname"><a href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#a919a72f43d5d4c75d7f074419dbc997a">P33C_OPA_MODULE_s::AmpCon1L</a></div><div class="ttdeci">union P33C_OPA_MODULE_s::@0 AmpCon1L</div></div>
+<div class="ttc" id="agroup__op-amp-initialization_html_ga3cd080c9a48a5d74d8b2f89fdec161da"><div class="ttname"><a href="group__op-amp-initialization.html#ga3cd080c9a48a5d74d8b2f89fdec161da">sysOpAmp_ModuleEnable</a></div><div class="ttdeci">volatile uint16_t sysOpAmp_ModuleEnable(void)</div><div class="ttdoc">Enables the on-chip operational amplifier module.</div><div class="ttdef"><b>Definition:</b> <a href="init__opa_8c_source.html#l00071">init_opa.c:71</a></div></div>
+<div class="ttc" id="agroup__op-amp-initialization_html_gabd454dd5908ee930957e91e5c5bf42ff"><div class="ttname"><a href="group__op-amp-initialization.html#gabd454dd5908ee930957e91e5c5bf42ff">sysOpAmp_Initialize</a></div><div class="ttdeci">volatile uint16_t sysOpAmp_Initialize(volatile uint16_t opaInstance, volatile bool disable_n_channel)</div><div class="ttdef"><b>Definition:</b> <a href="init__opa_8c_source.html#l00035">init_opa.c:35</a></div></div>
+<div class="ttc" id="astruct_p33_c___o_p_a___m_o_d_u_l_e__s_html_a3f0c55f449560b03ce0ac43270c26600"><div class="ttname"><a href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#a3f0c55f449560b03ce0ac43270c26600">P33C_OPA_MODULE_s::value</a></div><div class="ttdeci">volatile uint16_t value</div><div class="ttdef"><b>Definition:</b> <a href="p33c__opa_8h_source.html#l00054">p33c_opa.h:54</a></div></div>
+<div class="ttc" id="astruct_p33_c___o_p_a___m_o_d_u_l_e__s_html"><div class="ttname"><a href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html">P33C_OPA_MODULE_s</a></div><div class="ttdef"><b>Definition:</b> <a href="p33c__opa_8h_source.html#l00051">p33c_opa.h:51</a></div></div>
+<div class="ttc" id="astruct_p33_c___o_p_a___m_o_d_u_l_e__s_html_ac54e274d2ba78b497ad9e19ff8b118b1"><div class="ttname"><a href="struct_p33_c___o_p_a___m_o_d_u_l_e__s.html#ac54e274d2ba78b497ad9e19ff8b118b1">P33C_OPA_MODULE_s::bits</a></div><div class="ttdeci">volatile struct tagAMPCON1LBITS bits</div><div class="ttdef"><b>Definition:</b> <a href="p33c__opa_8h_source.html#l00074">p33c_opa.h:53</a></div></div>
 <!-- HTML footer for doxygen 1.8.20-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

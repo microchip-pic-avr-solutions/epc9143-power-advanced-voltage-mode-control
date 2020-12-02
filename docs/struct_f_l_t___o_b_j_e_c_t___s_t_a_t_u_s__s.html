@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">FLT_OBJECT_STATUS_s Struct Reference<div class="ingroups"><a class="el" href="group__fault-handler.html">Fault Handler Reference</a> &raquo; <a class="el" href="group__fault-handler-struct.html">Fault Handler Data Structure</a></div></div>  </div>
+<div class="title">FLT_OBJECT_STATUS_s Struct Reference<div class="ingroups"><a class="el" href="group__firmware-flow.html">Firmware Flowchart</a> &raquo; <a class="el" href="group__task-layer.html">Task Layer</a> &raquo; <a class="el" href="group__fault-handler.html">Fault Handler Reference</a> &raquo; <a class="el" href="group__fault-handler-struct.html">Fault Handler Data Structure</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -115,56 +115,56 @@ Inheritance diagram for FLT_OBJECT_STATUS_s:</div>
 <div class="dynheader">
 Collaboration diagram for FLT_OBJECT_STATUS_s:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s__coll__graph.svg" width="291" height="443"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s__coll__graph.svg" width="422" height="500"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a8c8fccc5fbee4168d96cf59a0c22d656"><td class="memItemLeft" >union {</td></tr>
-<tr class="memitem:a3f0c55f449560b03ce0ac43270c26600"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;&#160;&#160;<a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a3f0c55f449560b03ce0ac43270c26600">value</a></td></tr>
+<tr class="memitem:a3f0c55f449560b03ce0ac43270c26600"><td class="memItemLeft" >&#160;&#160;&#160;volatile uint16_t&#160;&#160;&#160;<a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a3f0c55f449560b03ce0ac43270c26600">value</a></td></tr>
 <tr class="separator:a3f0c55f449560b03ce0ac43270c26600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c8fccc5fbee4168d96cf59a0c22d656"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
 <tr class="separator:a8c8fccc5fbee4168d96cf59a0c22d656"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a028f8fd8c38c1a2669efbf670ee1d222"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a028f8fd8c38c1a2669efbf670ee1d222">FaultStatus</a>: 1</td></tr>
+<tr class="memitem:a028f8fd8c38c1a2669efbf670ee1d222"><td class="memItemLeft" align="right" valign="top">volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a028f8fd8c38c1a2669efbf670ee1d222">FaultStatus</a>: 1</td></tr>
 <tr class="memdesc:a028f8fd8c38c1a2669efbf670ee1d222"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bit 0: Flag bit indicating if FAULT has been tripped.  <a href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a028f8fd8c38c1a2669efbf670ee1d222">More...</a><br /></td></tr>
 <tr class="separator:a028f8fd8c38c1a2669efbf670ee1d222"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bc02388766479b8ec8ac2dfcd4d83b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a1bc02388766479b8ec8ac2dfcd4d83b2">FaultActive</a>: 1</td></tr>
+<tr class="memitem:a1bc02388766479b8ec8ac2dfcd4d83b2"><td class="memItemLeft" align="right" valign="top">volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a1bc02388766479b8ec8ac2dfcd4d83b2">FaultActive</a>: 1</td></tr>
 <tr class="memdesc:a1bc02388766479b8ec8ac2dfcd4d83b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bit 1: Flag bit indicating if fault condition has been detected but FAULT has not been tripped yet.  <a href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a1bc02388766479b8ec8ac2dfcd4d83b2">More...</a><br /></td></tr>
 <tr class="separator:a1bc02388766479b8ec8ac2dfcd4d83b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32e93b068e309da5a319a7a69f3b3ff5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a32e93b068e309da5a319a7a69f3b3ff5">unsigned</a>: 6</td></tr>
+<tr class="memitem:a32e93b068e309da5a319a7a69f3b3ff5"><td class="memItemLeft" align="right" valign="top">volatile&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a32e93b068e309da5a319a7a69f3b3ff5">unsigned</a>: 6</td></tr>
 <tr class="memdesc:a32e93b068e309da5a319a7a69f3b3ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bit &lt;7:2&gt;: (reserved)  <a href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a32e93b068e309da5a319a7a69f3b3ff5">More...</a><br /></td></tr>
 <tr class="separator:a32e93b068e309da5a319a7a69f3b3ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac50da7114724506e8c99fd332aca7385"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__fault-handler-enum.html#gaf2ad9a5fdf9209fef85bd09bbe4be777">FLT_COMPARE_TYPE_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#ac50da7114724506e8c99fd332aca7385">CompareType</a>: 3</td></tr>
 <tr class="memdesc:ac50da7114724506e8c99fd332aca7385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bit &lt;10:8&gt;: Fault check comparison type control bits.  <a href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#ac50da7114724506e8c99fd332aca7385">More...</a><br /></td></tr>
 <tr class="separator:ac50da7114724506e8c99fd332aca7385"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91f07b208b80c8fe7aa98a8db60eb0da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a91f07b208b80c8fe7aa98a8db60eb0da">Enabled</a>: 1</td></tr>
+<tr class="memitem:a91f07b208b80c8fe7aa98a8db60eb0da"><td class="memItemLeft" align="right" valign="top">volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a91f07b208b80c8fe7aa98a8db60eb0da">Enabled</a>: 1</td></tr>
 <tr class="memdesc:a91f07b208b80c8fe7aa98a8db60eb0da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bit 15: Control bit enabling/disabling monitoring of the fault object.  <a href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a91f07b208b80c8fe7aa98a8db60eb0da">More...</a><br /></td></tr>
 <tr class="separator:a91f07b208b80c8fe7aa98a8db60eb0da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s')"><img src="closed.png" alt="-"/>&#160;Data Fields inherited from <a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html">FAULT_OBJECT_s</a></td></tr>
-<tr class="memitem:a5682be08ea825740d924680de9b7af60 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html">FLT_OBJECT_STATUS_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#a5682be08ea825740d924680de9b7af60">Status</a></td></tr>
+<tr class="memitem:a5682be08ea825740d924680de9b7af60 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top">volatile struct <a class="el" href="struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html">FLT_OBJECT_STATUS_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#a5682be08ea825740d924680de9b7af60">Status</a></td></tr>
 <tr class="memdesc:a5682be08ea825740d924680de9b7af60 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status word of this fault object.  <a href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#a5682be08ea825740d924680de9b7af60">More...</a><br /></td></tr>
 <tr class="separator:a5682be08ea825740d924680de9b7af60 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e9b3f9102ce573dc6ac2e1058140322 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#a9e9b3f9102ce573dc6ac2e1058140322">Counter</a></td></tr>
+<tr class="memitem:a9e9b3f9102ce573dc6ac2e1058140322 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#a9e9b3f9102ce573dc6ac2e1058140322">Counter</a></td></tr>
 <tr class="memdesc:a9e9b3f9102ce573dc6ac2e1058140322 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fault event counter (controlled by FAULT HANDLER)  <a href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#a9e9b3f9102ce573dc6ac2e1058140322">More...</a><br /></td></tr>
 <tr class="separator:a9e9b3f9102ce573dc6ac2e1058140322 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5f1eb31220187b74ffb14a15e10ce54 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_f_l_t___c_o_m_p_a_r_e___o_b_j_e_c_t__s.html">FLT_COMPARE_OBJECT_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#ab5f1eb31220187b74ffb14a15e10ce54">SourceObject</a></td></tr>
+<tr class="memitem:ab5f1eb31220187b74ffb14a15e10ce54 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top">volatile struct <a class="el" href="struct_f_l_t___c_o_m_p_a_r_e___o_b_j_e_c_t__s.html">FLT_COMPARE_OBJECT_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#ab5f1eb31220187b74ffb14a15e10ce54">SourceObject</a></td></tr>
 <tr class="memdesc:ab5f1eb31220187b74ffb14a15e10ce54 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="mdescLeft">&#160;</td><td class="mdescRight">Object which should be monitored.  <a href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#ab5f1eb31220187b74ffb14a15e10ce54">More...</a><br /></td></tr>
 <tr class="separator:ab5f1eb31220187b74ffb14a15e10ce54 inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e234a289ec2e7de63ab9095222086eb inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_f_l_t___c_o_m_p_a_r_e___o_b_j_e_c_t__s.html">FLT_COMPARE_OBJECT_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#a9e234a289ec2e7de63ab9095222086eb">ReferenceObject</a></td></tr>
+<tr class="memitem:a9e234a289ec2e7de63ab9095222086eb inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top">volatile struct <a class="el" href="struct_f_l_t___c_o_m_p_a_r_e___o_b_j_e_c_t__s.html">FLT_COMPARE_OBJECT_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#a9e234a289ec2e7de63ab9095222086eb">ReferenceObject</a></td></tr>
 <tr class="memdesc:a9e234a289ec2e7de63ab9095222086eb inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference object the source should be compared with.  <a href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#a9e234a289ec2e7de63ab9095222086eb">More...</a><br /></td></tr>
 <tr class="separator:a9e234a289ec2e7de63ab9095222086eb inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa749f7fba8875502ddb95b0235f7264b inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_f_l_t___e_v_e_n_t___r_e_s_p_o_n_s_e__s.html">FLT_EVENT_RESPONSE_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#aa749f7fba8875502ddb95b0235f7264b">TripResponse</a></td></tr>
+<tr class="memitem:aa749f7fba8875502ddb95b0235f7264b inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top">volatile struct <a class="el" href="struct_f_l_t___e_v_e_n_t___r_e_s_p_o_n_s_e__s.html">FLT_EVENT_RESPONSE_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#aa749f7fba8875502ddb95b0235f7264b">TripResponse</a></td></tr>
 <tr class="memdesc:aa749f7fba8875502ddb95b0235f7264b inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="mdescLeft">&#160;</td><td class="mdescRight">Settings defining the fault trip event.  <a href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#aa749f7fba8875502ddb95b0235f7264b">More...</a><br /></td></tr>
 <tr class="separator:aa749f7fba8875502ddb95b0235f7264b inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9e053ccdb2ca7c1cff5fcbe4596bf9c inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_f_l_t___e_v_e_n_t___r_e_s_p_o_n_s_e__s.html">FLT_EVENT_RESPONSE_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#af9e053ccdb2ca7c1cff5fcbe4596bf9c">RecoveryResponse</a></td></tr>
+<tr class="memitem:af9e053ccdb2ca7c1cff5fcbe4596bf9c inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memItemLeft" align="right" valign="top">volatile struct <a class="el" href="struct_f_l_t___e_v_e_n_t___r_e_s_p_o_n_s_e__s.html">FLT_EVENT_RESPONSE_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#af9e053ccdb2ca7c1cff5fcbe4596bf9c">RecoveryResponse</a></td></tr>
 <tr class="memdesc:af9e053ccdb2ca7c1cff5fcbe4596bf9c inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="mdescLeft">&#160;</td><td class="mdescRight">Settings defining the fault recovery event.  <a href="struct_f_a_u_l_t___o_b_j_e_c_t__s.html#af9e053ccdb2ca7c1cff5fcbe4596bf9c">More...</a><br /></td></tr>
 <tr class="separator:af9e053ccdb2ca7c1cff5fcbe4596bf9c inherit pub_attribs_struct_f_a_u_l_t___o_b_j_e_c_t__s"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This data structure defines the fault object status. </p>
 
-<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00089">89</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00088">88</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a8c8fccc5fbee4168d96cf59a0c22d656"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c8fccc5fbee4168d96cf59a0c22d656">&#9670;&nbsp;</a></span>@1</h2>
@@ -194,7 +194,7 @@ Data Fields</h2></td></tr>
 
 <p>Bit &lt;10:8&gt;: Fault check comparison type control bits. </p>
 
-<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00095">95</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00094">94</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
 
 </div>
 </div>
@@ -205,14 +205,14 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> bool Enabled</td>
+          <td class="memname">volatile bool Enabled</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Bit 15: Control bit enabling/disabling monitoring of the fault object. </p>
 
-<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00098">98</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00097">97</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
 
 </div>
 </div>
@@ -223,14 +223,14 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> bool FaultActive</td>
+          <td class="memname">volatile bool FaultActive</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Bit 1: Flag bit indicating if fault condition has been detected but FAULT has not been tripped yet. </p>
 
-<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00094">94</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00093">93</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
 
 </div>
 </div>
@@ -241,14 +241,14 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> bool FaultStatus</td>
+          <td class="memname">volatile bool FaultStatus</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Bit 0: Flag bit indicating if FAULT has been tripped. </p>
 
-<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00093">93</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00092">92</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
 
 </div>
 </div>
@@ -259,7 +259,7 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> unsigned</td>
+          <td class="memname">volatile unsigned</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -267,7 +267,7 @@ Data Fields</h2></td></tr>
 <p>Bit &lt;7:2&gt;: (reserved) </p>
 <p>Bit 14: (reserved) </p>
 
-<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00095">95</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00094">94</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
 
 </div>
 </div>
@@ -278,12 +278,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t value</td>
+          <td class="memname">volatile uint16_t value</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00101">101</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="drv__fault__handler_8h_source.html#l00100">100</a> of file <a class="el" href="drv__fault__handler_8h_source.html">drv_fault_handler.h</a>.</p>
 
 </div>
 </div>

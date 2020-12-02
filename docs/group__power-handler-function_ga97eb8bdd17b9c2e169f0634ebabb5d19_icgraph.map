@@ -1,7 +1,0 @@
-<map id="drv_BuckConverter_Initialize" name="drv_BuckConverter_Initialize">
-<area shape="rect" id="node1" title="This function initializes all peripheral modules and their instances used by the power controller." alt="" coords="672,31,855,57"/>
-<area shape="rect" id="node2" href="$group__power-handler-function.html#ga0b26acfec74d1804384b4ba1a3cffab4" title="Description" alt="" coords="433,23,624,65"/>
-<area shape="rect" id="node3" href="$group__device-start-up.html#ga7a4cf6371d09457539f96a74b2809ca0" title="Description" alt="" coords="212,31,385,57"/>
-<area shape="rect" id="node4" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="59,5,110,32"/>
-<area shape="rect" id="node5" href="$group__device-start-up.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" title="Initializes the user&#45;defined tasks and chip resources." alt="" coords="5,56,164,83"/>
-</map>

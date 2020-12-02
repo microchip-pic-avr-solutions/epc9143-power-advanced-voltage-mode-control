@@ -1,4 +1,3 @@
 <map id="CS_CALIBRATION_s" name="CS_CALIBRATION_s">
-<area shape="rect" id="node1" title="Description" alt="" coords="5,160,151,237"/>
-<area shape="rect" id="node2" href="$structvolatile.html" title="Description" alt="" coords="47,5,109,83"/>
+<area shape="rect" id="node1" title="Current sense calibration data structure." alt="" coords="5,5,151,97"/>
 </map>

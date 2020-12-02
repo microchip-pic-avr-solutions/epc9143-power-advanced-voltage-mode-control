@@ -1,0 +1,6 @@
+<map id="p33c_OscAuxClk_DefaultInitialize" name="p33c_OscAuxClk_DefaultInitialize">
+<area shape="rect" id="node1" title="Initializes the auxiliary clock and its PLL module step by step in software. Each step is tested and ..." alt="" coords="453,5,671,32"/>
+<area shape="rect" id="node2" href="$group__clock-initialization.html#ga3f3f3c22c6c2b95518271fae8f58b03f" title="Initializes the auxiliary clock of the device." alt="" coords="283,5,405,32"/>
+<area shape="rect" id="node3" href="$group__system-initialization-mcu.html#ga5630229f9308951b78658dc1af6b10e3" title="Initializes essential chip resources." alt="" coords="104,5,235,32"/>
+<area shape="rect" id="node4" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,5,56,32"/>
+</map>

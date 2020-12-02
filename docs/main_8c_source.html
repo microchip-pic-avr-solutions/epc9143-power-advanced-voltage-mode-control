@@ -117,70 +117,109 @@ $(document).ready(function(){initNavTree('main_8c_source.html',''); initResizabl
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define  TMR1_TIMEOUT 30000   // Timeout protection for Timer1 interrupt flag bit</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">volatile</span> <span class="keywordtype">bool</span> LOW_PRIORITY_GO = <span class="keyword">false</span>;  <span class="comment">// Flag allowing low priority tasks to be executed</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe">   75</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe">main</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">volatile</span> uint16_t retval=1;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">volatile</span> uint16_t timeout = 0;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// Initialize basic system configuration</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    retval &amp;= <a class="code" href="group__device-start-up.html#ga5630229f9308951b78658dc1af6b10e3">SYSTEM_Initialize</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/* PRIVATE FUNCTION CALL PROTOTYPES */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">volatile</span> uint16_t <a class="code" href="group__main-loop-low-priority.html#gaa1ec8154dbf983b02b3b2dc186c5079d">sysLowPriorityTasks_Execute</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe">   78</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe">main</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">volatile</span> uint16_t retval=1;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">volatile</span> uint16_t timeout = 0;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// Initialize software modules</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    retval &amp;= <a class="code" href="group__device-start-up.html#ga7a4cf6371d09457539f96a74b2809ca0">appPowerSupply_Initialize</a>(); <span class="comment">// Initialize BUCK converter object and state machine</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    retval &amp;= <a class="code" href="group__device-start-up.html#ga830e5c7087a8e5ee8ea39b7e3df94b68">appFaultMonitor_Initialize</a>(); <span class="comment">// Initialize fault objects and fault handler task</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// Enable Timer1</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    _T1IP = 0;  <span class="comment">// Set interrupt priority to zero</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    _T1IF = 0;  <span class="comment">// Reset interrupt flag bit</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    _T1IE = 0;  <span class="comment">// Enable/Disable Timer1 interrupt</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    T1CONbits.TON = 1; <span class="comment">// Turn on Timer1</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    retval &amp;= T1CONbits.TON; <span class="comment">// Add timer enable bit to list of checked bits</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">// Last line of defense: when configuration of any block failed </span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span> (!retval)</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        CPU_RESET();        <span class="comment">// reset the CPU and try again</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Main program execution</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">while</span> (run_main) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">// wait for timer1 to overrun</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">while</span> ((!_T1IF) &amp;&amp; (timeout++ &lt; TMR1_TIMEOUT));</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        _T1IF = 0;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        timeout = 0;    <span class="comment">// Reset timeout counter</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">// Execute main application tasks</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="group__microcontroller-abstraction.html#ga81602741185030b94a63da995bebe9d7">DBGPIN2_Set</a>();              <span class="comment">// Set the CPU debugging pin HIGH</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// Initialize basic system configuration</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    retval &amp;= <a class="code" href="group__system-initialization-mcu.html#ga5630229f9308951b78658dc1af6b10e3">SYSTEM_Initialize</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// Initialize special, application-specific peripherals </span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    retval &amp;= <a class="code" href="group__system-initialization-user-peripherals.html#ga70c5cba054e38a4e8c8285a187ff61fa">sysUserPeriperhals_Initialize</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// Initialize software modules</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    retval &amp;= <a class="code" href="group__system-initialization-user-tasks.html#ga2be64f5f0b9a2c0c6713f5a69d793e05">sysUserTasks_Initialize</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">// Enable OS Timer</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    retval &amp;= <a class="code" href="group__os-timer-initialization.html#ga4c811c3414a3785423f828be293562f0">sysOsTimer_Enable</a>(<span class="keyword">true</span>, 1);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// Last line of defense:</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// when configuration of any block failed...</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (!retval)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        CPU_RESET();        <span class="comment">// reset the CPU and try again</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">// Main program execution</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">while</span> (run_main) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">// wait for Timer1 to overrun and the high-priority task interrupt to </span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="comment">// be executed</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">while</span> ((!LOW_PRIORITY_GO) &amp;&amp; (timeout++ &lt; TMR1_TIMEOUT));</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        LOW_PRIORITY_GO = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        timeout = 0;    <span class="comment">// Reset timeout counter</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="group__main-loop.html#ga13094235dd6cc123d9299925359ca178">appPowerSupply_Execute</a>();   <span class="comment">// Execute power supply state machine</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="group__main-loop.html#ga8842f6a41fe23f932a8864fc140c4b5b">appFaultMonitor_Execute</a>();  <span class="comment">// Execute fault handler</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="group__microcontroller-abstraction.html#ga8209ee25d31e6631f485b662d105fc8d">DBGPIN2_Clear</a>();            <span class="comment">// Clear the CPU debugging pin</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        Nop();                      <span class="comment">// No-Operation instruction for placing breakpoints</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    CPU_RESET();    <span class="comment">// if the firmware ever ends up here, reset the CPU</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">return</span> (0);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">// ______________________________________</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">// END OF FILE</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="comment">// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">// Execute non-time critical, low-priority tasks</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        retval &amp;= <a class="code" href="group__main-loop-low-priority.html#gaa1ec8154dbf983b02b3b2dc186c5079d">sysLowPriorityTasks_Execute</a>();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="comment">// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    CPU_RESET();    <span class="comment">// if the firmware ever ends up here, reset the CPU</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">return</span> (0);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; <span class="comment">// end of group firmware-flow</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="group__main-loop-low-priority.html#gaa1ec8154dbf983b02b3b2dc186c5079d">  143</a></span>&#160;<span class="keyword">volatile</span> uint16_t <a class="code" href="group__main-loop-low-priority.html#gaa1ec8154dbf983b02b3b2dc186c5079d">sysLowPriorityTasks_Execute</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;{</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keyword">volatile</span> uint16_t retval=1;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">// (no low priority tasks)</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">return</span>(retval);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; <span class="comment">// end of group main-loop-low-priority</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="group__main-loop-high-priority.html#ga8fea79e3fd6f1b7c5ad6100560dc1536">  173</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__main-loop-high-priority.html#ga8fea79e3fd6f1b7c5ad6100560dc1536">__attribute__</a>((__interrupt__, context, no_auto_psv)) <a class="code" href="group__main-loop-high-priority.html#ga197f587a79697441cb15f08ffe527e56">_OsTimerInterrupt</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;{</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">    #ifdef DBGPIN2_Set</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <a class="code" href="group__circuit-gpio-mcal.html#ga81602741185030b94a63da995bebe9d7">DBGPIN2_Set</a>();              <span class="comment">// Set the CPU debugging pin HIGH</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="comment">// Execute high priority, time critical tasks</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <a class="code" href="group__power-control-app-layer-public.html#ga13094235dd6cc123d9299925359ca178">appPowerSupply_Execute</a>();   <span class="comment">// Execute power supply state machine</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <a class="code" href="group__fault-handler-functions.html#ga8842f6a41fe23f932a8864fc140c4b5b">appFaultMonitor_Execute</a>();  <span class="comment">// Execute fault handler</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    LOW_PRIORITY_GO = <span class="keyword">true</span>; <span class="comment">// Set GO trigger for low priority tasks</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <a class="code" href="group__state-machine-mcal.html#gaf0c6fb4644dc461d279c70028eeb0e0a">_OSTIMER_IF</a> = 0; <span class="comment">// Reset the interrupt flag bit</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">    #ifdef DBGPIN2_Set</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <a class="code" href="group__circuit-gpio-mcal.html#ga8209ee25d31e6631f485b662d105fc8d">DBGPIN2_Clear</a>();            <span class="comment">// Clear the CPU debugging pin</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;}</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; <span class="comment">// end of group main-loop-high-priority</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">// ______________________________________</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">// END OF FILE</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="agroup__device-start-up_html_ga7a4cf6371d09457539f96a74b2809ca0"><div class="ttname"><a href="group__device-start-up.html#ga7a4cf6371d09457539f96a74b2809ca0">appPowerSupply_Initialize</a></div><div class="ttdeci">volatile uint16_t appPowerSupply_Initialize(void)</div><div class="ttdoc">Description</div><div class="ttdef"><b>Definition:</b> <a href="app__power__control_8c_source.html#l00124">app_power_control.c:124</a></div></div>
-<div class="ttc" id="agroup__microcontroller-abstraction_html_ga8209ee25d31e6631f485b662d105fc8d"><div class="ttname"><a href="group__microcontroller-abstraction.html#ga8209ee25d31e6631f485b662d105fc8d">DBGPIN2_Clear</a></div><div class="ttdeci">#define DBGPIN2_Clear()</div><div class="ttdef"><b>Definition:</b> <a href="epc9143__r40__hwdescr_8h_source.html#l00112">epc9143_r40_hwdescr.h:112</a></div></div>
-<div class="ttc" id="agroup__main-loop_html_ga8842f6a41fe23f932a8864fc140c4b5b"><div class="ttname"><a href="group__main-loop.html#ga8842f6a41fe23f932a8864fc140c4b5b">appFaultMonitor_Execute</a></div><div class="ttdeci">volatile uint16_t appFaultMonitor_Execute(void)</div><div class="ttdoc">Application wide fault object monitoring routine.</div><div class="ttdef"><b>Definition:</b> <a href="app__faults__monitor_8c_source.html#l00078">app_faults_monitor.c:78</a></div></div>
-<div class="ttc" id="agroup__firmware-flow_html_ga840291bc02cba5474a4cb46a9b9566fe"><div class="ttname"><a href="group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe">main</a></div><div class="ttdeci">int main(void)</div><div class="ttdoc">Application main function executed after device comes out of RESET.</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00075">main.c:75</a></div></div>
-<div class="ttc" id="agroup__main-loop_html_ga13094235dd6cc123d9299925359ca178"><div class="ttname"><a href="group__main-loop.html#ga13094235dd6cc123d9299925359ca178">appPowerSupply_Execute</a></div><div class="ttdeci">volatile uint16_t appPowerSupply_Execute(void)</div><div class="ttdoc">This is the top-level function call triggering the most recent state machine of all associated power ...</div><div class="ttdef"><b>Definition:</b> <a href="app__power__control_8c_source.html#l00168">app_power_control.c:168</a></div></div>
-<div class="ttc" id="agroup__microcontroller-abstraction_html_ga81602741185030b94a63da995bebe9d7"><div class="ttname"><a href="group__microcontroller-abstraction.html#ga81602741185030b94a63da995bebe9d7">DBGPIN2_Set</a></div><div class="ttdeci">#define DBGPIN2_Set()</div><div class="ttdef"><b>Definition:</b> <a href="epc9143__r40__hwdescr_8h_source.html#l00111">epc9143_r40_hwdescr.h:111</a></div></div>
-<div class="ttc" id="agroup__device-start-up_html_ga830e5c7087a8e5ee8ea39b7e3df94b68"><div class="ttname"><a href="group__device-start-up.html#ga830e5c7087a8e5ee8ea39b7e3df94b68">appFaultMonitor_Initialize</a></div><div class="ttdeci">volatile uint16_t appFaultMonitor_Initialize(void)</div><div class="ttdoc">Initialization of user-defined fault objects.</div></div>
-<div class="ttc" id="agroup__device-start-up_html_ga5630229f9308951b78658dc1af6b10e3"><div class="ttname"><a href="group__device-start-up.html#ga5630229f9308951b78658dc1af6b10e3">SYSTEM_Initialize</a></div><div class="ttdeci">volatile uint16_t SYSTEM_Initialize(void)</div><div class="ttdoc">Initializes essential chip resources and application task.</div><div class="ttdef"><b>Definition:</b> <a href="system_8c_source.html#l00037">system.c:37</a></div></div>
+<div class="ttc" id="agroup__state-machine-mcal_html_gaf0c6fb4644dc461d279c70028eeb0e0a"><div class="ttname"><a href="group__state-machine-mcal.html#gaf0c6fb4644dc461d279c70028eeb0e0a">_OSTIMER_IF</a></div><div class="ttdeci">#define _OSTIMER_IF</div><div class="ttdoc">interrupt flag bit</div><div class="ttdef"><b>Definition:</b> <a href="epc9143__r40__hwdescr_8h_source.html#l00163">epc9143_r40_hwdescr.h:163</a></div></div>
+<div class="ttc" id="agroup__main-loop-high-priority_html_ga8fea79e3fd6f1b7c5ad6100560dc1536"><div class="ttname"><a href="group__main-loop-high-priority.html#ga8fea79e3fd6f1b7c5ad6100560dc1536">__attribute__</a></div><div class="ttdeci">void __attribute__((__interrupt__, context, no_auto_psv))</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00173">main.c:173</a></div></div>
+<div class="ttc" id="agroup__fault-handler-functions_html_ga8842f6a41fe23f932a8864fc140c4b5b"><div class="ttname"><a href="group__fault-handler-functions.html#ga8842f6a41fe23f932a8864fc140c4b5b">appFaultMonitor_Execute</a></div><div class="ttdeci">volatile uint16_t appFaultMonitor_Execute(void)</div><div class="ttdoc">Application wide fault object monitoring routine.</div></div>
+<div class="ttc" id="agroup__circuit-gpio-mcal_html_ga8209ee25d31e6631f485b662d105fc8d"><div class="ttname"><a href="group__circuit-gpio-mcal.html#ga8209ee25d31e6631f485b662d105fc8d">DBGPIN2_Clear</a></div><div class="ttdeci">#define DBGPIN2_Clear()</div><div class="ttdoc">Macro instruction to set a pin state to logic LOW.</div><div class="ttdef"><b>Definition:</b> <a href="epc9143__r40__hwdescr_8h_source.html#l00194">epc9143_r40_hwdescr.h:194</a></div></div>
+<div class="ttc" id="agroup__main-loop-low-priority_html_gaa1ec8154dbf983b02b3b2dc186c5079d"><div class="ttname"><a href="group__main-loop-low-priority.html#gaa1ec8154dbf983b02b3b2dc186c5079d">sysLowPriorityTasks_Execute</a></div><div class="ttdeci">volatile uint16_t sysLowPriorityTasks_Execute(void)</div><div class="ttdoc">Low priority task sequence executed after the high priority task sequence execution is complete.</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00143">main.c:143</a></div></div>
+<div class="ttc" id="agroup__circuit-gpio-mcal_html_ga81602741185030b94a63da995bebe9d7"><div class="ttname"><a href="group__circuit-gpio-mcal.html#ga81602741185030b94a63da995bebe9d7">DBGPIN2_Set</a></div><div class="ttdeci">#define DBGPIN2_Set()</div><div class="ttdoc">Macro instruction to set a pin state to logic HIGH.</div><div class="ttdef"><b>Definition:</b> <a href="epc9143__r40__hwdescr_8h_source.html#l00193">epc9143_r40_hwdescr.h:193</a></div></div>
+<div class="ttc" id="agroup__system-initialization-user-tasks_html_ga2be64f5f0b9a2c0c6713f5a69d793e05"><div class="ttname"><a href="group__system-initialization-user-tasks.html#ga2be64f5f0b9a2c0c6713f5a69d793e05">sysUserTasks_Initialize</a></div><div class="ttdeci">volatile uint16_t sysUserTasks_Initialize(void)</div><div class="ttdoc">Initializes the user-defined tasks.</div><div class="ttdef"><b>Definition:</b> <a href="system_8c_source.html#l00096">system.c:96</a></div></div>
+<div class="ttc" id="agroup__firmware-flow_html_ga840291bc02cba5474a4cb46a9b9566fe"><div class="ttname"><a href="group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe">main</a></div><div class="ttdeci">int main(void)</div><div class="ttdoc">Application main function executed after device comes out of RESET.</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00078">main.c:78</a></div></div>
+<div class="ttc" id="agroup__os-timer-initialization_html_ga4c811c3414a3785423f828be293562f0"><div class="ttname"><a href="group__os-timer-initialization.html#ga4c811c3414a3785423f828be293562f0">sysOsTimer_Enable</a></div><div class="ttdeci">volatile uint16_t sysOsTimer_Enable(volatile bool interrupt_enable, volatile uint8_t interrupt_priority)</div><div class="ttdef"><b>Definition:</b> <a href="init__timer1_8c_source.html#l00080">init_timer1.c:80</a></div></div>
+<div class="ttc" id="agroup__system-initialization-mcu_html_ga5630229f9308951b78658dc1af6b10e3"><div class="ttname"><a href="group__system-initialization-mcu.html#ga5630229f9308951b78658dc1af6b10e3">SYSTEM_Initialize</a></div><div class="ttdeci">volatile uint16_t SYSTEM_Initialize(void)</div><div class="ttdoc">Initializes essential chip resources.</div><div class="ttdef"><b>Definition:</b> <a href="system_8c_source.html#l00031">system.c:31</a></div></div>
+<div class="ttc" id="agroup__system-initialization-user-peripherals_html_ga70c5cba054e38a4e8c8285a187ff61fa"><div class="ttname"><a href="group__system-initialization-user-peripherals.html#ga70c5cba054e38a4e8c8285a187ff61fa">sysUserPeriperhals_Initialize</a></div><div class="ttdeci">volatile uint16_t sysUserPeriperhals_Initialize(void)</div><div class="ttdoc">Initializes the user-defined chip resources.</div><div class="ttdef"><b>Definition:</b> <a href="system_8c_source.html#l00061">system.c:61</a></div></div>
+<div class="ttc" id="agroup__power-control-app-layer-public_html_ga13094235dd6cc123d9299925359ca178"><div class="ttname"><a href="group__power-control-app-layer-public.html#ga13094235dd6cc123d9299925359ca178">appPowerSupply_Execute</a></div><div class="ttdeci">volatile uint16_t appPowerSupply_Execute(void)</div><div class="ttdoc">This is the top-level function call triggering the most recent state machine of all associated power ...</div></div>
+<div class="ttc" id="agroup__main-loop-high-priority_html_ga197f587a79697441cb15f08ffe527e56"><div class="ttname"><a href="group__main-loop-high-priority.html#ga197f587a79697441cb15f08ffe527e56">_OsTimerInterrupt</a></div><div class="ttdeci">#define _OsTimerInterrupt</div><div class="ttdoc">Interrupt serivce routine label.</div><div class="ttdef"><b>Definition:</b> <a href="epc9143__r40__hwdescr_8h_source.html#l00160">epc9143_r40_hwdescr.h:160</a></div></div>
 <!-- HTML footer for doxygen 1.8.20-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

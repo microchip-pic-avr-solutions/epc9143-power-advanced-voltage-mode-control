@@ -1,0 +1,6 @@
+<map id="buckPWM_ChannelInitialize" name="buckPWM_ChannelInitialize">
+<area shape="rect" id="node1" title=" " alt="" coords="5,64,189,91"/>
+<area shape="rect" id="node2" href="$group__gpio.html#gae1bc534f11ac7cf278865cb73b601055" title="Gets pointer to GPIO Instance SFR set." alt="" coords="242,5,443,32"/>
+<area shape="rect" id="node3" href="$group__pwm.html#ga2de389951f418d4fcd9a5237f39a11a1" title="Disposes a given PWM generator by resetting all its registers to default." alt="" coords="249,57,436,98"/>
+<area shape="rect" id="node4" href="$group__pwm.html#ga8aa18df01ada60e1faac049c5eb34700" title="Returns the PWM generator index." alt="" coords="237,123,448,149"/>
+</map>

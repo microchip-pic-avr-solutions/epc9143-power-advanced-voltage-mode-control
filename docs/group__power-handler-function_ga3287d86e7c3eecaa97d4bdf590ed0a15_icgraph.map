@@ -1,8 +1,0 @@
-<map id="drv_BuckConverter_Suspend" name="drv_BuckConverter_Suspend">
-<area shape="rect" id="node1" title="Description" alt="" coords="417,81,604,108"/>
-<area shape="rect" id="node2" href="$group__power-handler-function.html#gafa4e90d260e60cf20f06acee067c39cd" title="Description" alt="" coords="192,81,369,108"/>
-<area shape="rect" id="node3" href="$group__fault-handler-function.html#ga54f9db91ea0782b08aa16ee77a57c5e5" title=" " alt="" coords="11,5,138,32"/>
-<area shape="rect" id="node4" href="$group__fault-handler-function.html#gade437244e8f6e5ff7c57a73442063350" title=" " alt="" coords="11,56,138,83"/>
-<area shape="rect" id="node5" href="$group__fault-handler-function.html#ga82dc317e3adac0308e5ac3f5ad321605" title=" " alt="" coords="5,107,144,133"/>
-<area shape="rect" id="node6" href="$group__fault-handler-function.html#ga9441220f8a7d4a6805467d04b734e6b5" title=" " alt="" coords="11,157,138,184"/>
-</map>

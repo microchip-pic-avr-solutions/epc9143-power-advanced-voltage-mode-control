@@ -1,0 +1,4 @@
+<map id="p33c_OpaModule_ConfigWrite" name="p33c_OpaModule_ConfigWrite">
+<area shape="rect" id="node1" title="Writes a user&#45;defined configuration to the op&#45;amp module base registers." alt="" coords="231,5,428,32"/>
+<area shape="rect" id="node2" href="$group__p33c-opa-pral.html#ga45904169cf0c51fc0db66e820fdfdd2d" title="Resets all Op&#45;Amp Module registers to their RESET default values." alt="" coords="5,5,183,32"/>
+</map>

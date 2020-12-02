@@ -98,32 +98,36 @@ $(document).ready(function(){initNavTree('group__fault-handler.html',''); initRe
   <div class="summary">
 <a href="#groups">Modules</a>  </div>
   <div class="headertitle">
-<div class="title">Fault Handler Reference</div>  </div>
+<div class="title">Fault Handler Reference<div class="ingroups"><a class="el" href="group__firmware-flow.html">Firmware Flowchart</a> &raquo; <a class="el" href="group__task-layer.html">Task Layer</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Fault Handler Reference.  
+<p>Generic fault handler supporting comparison of static and dynamic data with automated fault trip and release function.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Fault Handler Reference:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__fault-handler.svg" width="396" height="151"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__fault-handler.svg" width="531" height="200"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
 Modules</h2></td></tr>
+<tr class="memitem:group__fault-handler-functions"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fault-handler-functions.html">Fault Handler Functions</a></td></tr>
+<tr class="memdesc:group__fault-handler-functions"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fault Handler Functions. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__fault-handler-trap"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fault-handler-trap.html">Fault Handler Traps</a></td></tr>
+<tr class="memdesc:group__fault-handler-trap"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fault Handler Traps. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__fault-handler-enum"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fault-handler-enum.html">Fault Handler Enumeration</a></td></tr>
 <tr class="memdesc:group__fault-handler-enum"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fault Handler Enumeration. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__fault-handler-struct"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fault-handler-struct.html">Fault Handler Data Structure</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__fault-handler-function"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fault-handler-function.html">Fault Handler Functions</a></td></tr>
-<tr class="memdesc:group__fault-handler-function"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fault Handler Functions. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Fault Handler Reference. </p>
+<p>Generic fault handler supporting comparison of static and dynamic data with automated fault trip and release function. </p>
+<p>This generic fault handler driver declares a fault object data structure, which can be used in user code to create various different fault objects, which will get scanned and managed by the fault handler functions. The main function of this fault handler is restricted to detecting fault conditions, differentiating between trip and release conditions. Fault conditions are defined in user code individually for each fault object. </p>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.20-->

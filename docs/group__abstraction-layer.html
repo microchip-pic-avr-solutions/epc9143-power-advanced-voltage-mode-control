@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EPC9143 300 W 1/16 th Brick Evaluation Module Software Documentation: Abstraction Layer Defines</title>
+<title>EPC9143 300 W 1/16 th Brick Evaluation Module Software Documentation: Hardware Abstraction Layer</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -98,57 +98,63 @@ $(document).ready(function(){initNavTree('group__abstraction-layer.html',''); in
   <div class="summary">
 <a href="#groups">Modules</a>  </div>
   <div class="headertitle">
-<div class="title">Abstraction Layer Defines</div>  </div>
+<div class="title">Hardware Abstraction Layer</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Abstraction Layer Defines.  
+<p>Hardware Abstraction Layer Declarations.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
-Collaboration diagram for Abstraction Layer Defines:</div>
+Collaboration diagram for Hardware Abstraction Layer:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__abstraction-layer.svg" width="416" height="562"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="group__abstraction-layer.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
 Modules</h2></td></tr>
-<tr class="memitem:group__microcontroller-abstraction"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__microcontroller-abstraction.html">Microcontroller Abstraction</a></td></tr>
-<tr class="memdesc:group__microcontroller-abstraction"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global abstraction labels for device pin assignments of control signals. <br /></td></tr>
+<tr class="memitem:group__hardware-id-macro"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hardware-id-macro.html">Hardware Version ID</a></td></tr>
+<tr class="memdesc:group__hardware-id-macro"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global macro identifying the hardware version supported by. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__state-machine-settings"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__state-machine-settings.html">State Machine Settings</a></td></tr>
-<tr class="memdesc:group__state-machine-settings"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global defines for state-machine specific parameters. <br /></td></tr>
+<tr class="memitem:group__device-abstraction"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device-abstraction.html">Microcontroller Device Abstraction</a></td></tr>
+<tr class="memdesc:group__device-abstraction"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declarations of fundamental microcontroller device parameters. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__power-parameter"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__power-parameter.html">Power Control Parameter Declaration</a></td></tr>
-<tr class="memdesc:group__power-parameter"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global defines for Buck Converter Power Control parameters. <br /></td></tr>
+<tr class="memitem:group__state-machine"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__state-machine.html">State Machine Settings</a></td></tr>
+<tr class="memdesc:group__state-machine"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of global state-machine parameters. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__fundamental-pwm-settings"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fundamental-pwm-settings.html">Fundamental PWM Settings</a></td></tr>
-<tr class="memdesc:group__fundamental-pwm-settings"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global defines for PWM settings of DV330101. <br /></td></tr>
+<tr class="memitem:group__startup-timing"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__startup-timing.html">Startup Timing Settings</a></td></tr>
+<tr class="memdesc:group__startup-timing"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of startup timing periods. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__fault-response"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fault-response.html">Fault Response Settings</a></td></tr>
+<tr class="memdesc:group__fault-response"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of fault object trip and recovery delays. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__circuit-peripherals"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__circuit-peripherals.html">Circuit Special Circuit Signals</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__pwm-fundamentals"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pwm-fundamentals.html">PWM Settings</a></td></tr>
+<tr class="memdesc:group__pwm-fundamentals"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of fundamental PWM parameters. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__input-voltage-feedback"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__input-voltage-feedback.html">Input Voltage Feedback</a></td></tr>
-<tr class="memdesc:group__input-voltage-feedback"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of input voltage feedback properties. <br /></td></tr>
+<tr class="memdesc:group__input-voltage-feedback"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of input voltage feedback parameters. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__output-voltage-feedback"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__output-voltage-feedback.html">Output Voltage Feedback</a></td></tr>
-<tr class="memdesc:group__output-voltage-feedback"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of output voltage feedback properties. <br /></td></tr>
+<tr class="memdesc:group__output-voltage-feedback"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of output voltage feedback parameters. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__phase-current-feedback"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__phase-current-feedback.html">Phase Current Feedback</a></td></tr>
-<tr class="memdesc:group__phase-current-feedback"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of phase-current feedback properties. <br /></td></tr>
+<tr class="memdesc:group__phase-current-feedback"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of phase current feedback parameters. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__adaptive-control"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__adaptive-control.html">Adaptive Gain Control Feed Forward</a></td></tr>
-<tr class="memdesc:group__adaptive-control"><td class="mdescLeft">&#160;</td><td class="mdescRight">Description: <br /></td></tr>
+<tr class="memdesc:group__adaptive-control"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of macros calculating additional parameters for Adaptive Gain Modulation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__startup-behavior"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__startup-behavior.html">Startup Behavior</a></td></tr>
-<tr class="memdesc:group__startup-behavior"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global defines for soft-start specific parameters. <br /></td></tr>
+<tr class="memitem:group__control-interrupt-vector-declarations"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__control-interrupt-vector-declarations.html">Control Interrupt Vector Declarations</a></td></tr>
+<tr class="memdesc:group__control-interrupt-vector-declarations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control loop Interrupt Vector Settings. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__fault-object-declarations"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fault-object-declarations.html">Fault Object Declarations</a></td></tr>
-<tr class="memdesc:group__fault-object-declarations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global defines for fault-monitor related parameters. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__controller-declarations"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__controller-declarations.html">Controller Declarations</a></td></tr>
-<tr class="memdesc:group__controller-declarations"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b> <br /></td></tr>
+<tr class="memitem:group__special-options"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__special-options.html">Special Firmware Options</a></td></tr>
+<tr class="memdesc:group__special-options"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global defines used to enable/disable special firmware options. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Abstraction Layer Defines. </p>
+<p>Hardware Abstraction Layer Declarations. </p>
+<p>The hardware abstraction layer introduces global defines which can be used in the firmware section of the source code to reference hardware dependent parameters and device peripheral instances and features. This abstraction is essential to adapt to hardware changes including migration across microcontroller device families and hardware versions with minimum risk and time efforts. As the microcontroller used in this design is a fixed, irreplaceable board component, this particular Hardware Abstraction Layer (HAL) covers declarations of circuit control and feedback signals as well as associated microcontroller peripheral instances and features. </p>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.20-->

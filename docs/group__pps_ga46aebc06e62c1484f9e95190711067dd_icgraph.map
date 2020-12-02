@@ -1,0 +1,7 @@
+<map id="PPS_LockIO" name="PPS_LockIO">
+<area shape="rect" id="node1" title="Locks the Peripheral Pin Select Configuration registers against accidental changes." alt="" coords="771,13,868,39"/>
+<area shape="rect" id="node2" href="$group__power-control-app-layer-private.html#ga0b26acfec74d1804384b4ba1a3cffab4" title="This function is used to load peripheral configuration templates from the power controller device dri..." alt="" coords="532,5,723,47"/>
+<area shape="rect" id="node3" href="$group__power-control-app-layer-public.html#ga7a4cf6371d09457539f96a74b2809ca0" title="Calls the application layer power controller initialization." alt="" coords="311,13,484,39"/>
+<area shape="rect" id="node4" href="$group__system-initialization-user-tasks.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" title="Initializes the user&#45;defined tasks." alt="" coords="104,13,263,39"/>
+<area shape="rect" id="node5" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,13,56,39"/>
+</map>

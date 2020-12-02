@@ -1,0 +1,8 @@
+<map id="regerr_FaultInitialize" name="regerr_FaultInitialize">
+<area shape="rect" id="node1" title="Initializes the user&#45;defined fault objects for regulation error." alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node2" href="$group__power-control-app-layer-public.html#gafa4e90d260e60cf20f06acee067c39cd" title=" " alt="" coords="192,5,369,32"/>
+<area shape="rect" id="node3" href="$group__power-handler-functions.html#ga3287d86e7c3eecaa97d4bdf590ed0a15" title=" " alt="" coords="417,5,604,32"/>
+<area shape="rect" id="node4" href="$group__power-handler-functions.html#ga75498c59a10db0738113104a547d8d0d" title="This function is the main buck converter state machine executing the most recent state." alt="" coords="652,5,836,32"/>
+<area shape="rect" id="node5" href="$group__power-handler-functions.html#gad4e9d780ae858d4417887f13b1619346" title=" " alt="" coords="884,5,1044,32"/>
+<area shape="rect" id="node6" href="$group__gpio.html#gae1bc534f11ac7cf278865cb73b601055" title="Gets pointer to GPIO Instance SFR set." alt="" coords="1092,5,1293,32"/>
+</map>

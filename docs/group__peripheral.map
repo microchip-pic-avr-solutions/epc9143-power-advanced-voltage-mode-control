@@ -1,0 +1,7 @@
+<map id="Power Supply Peripherals" name="Power Supply Peripherals">
+<area shape="rect" id="node1" href="$group__dac.html" title="Digital&#45;to&#45;Analog Converter." alt="" coords="224,5,399,31"/>
+<area shape="rect" id="node2" href="$group__pps.html" title="Peripheral Pin Select." alt="" coords="239,55,383,80"/>
+<area shape="rect" id="node3" href="$group__gpio.html" title="General Purpose Input/Output." alt="" coords="236,105,387,145"/>
+<area shape="rect" id="node4" href="$group__pwm.html" title="Pulse Width Modulation." alt="" coords="231,169,391,195"/>
+<area shape="rect" id="node5" title="Contains peripheral default settings and functions for power supply application." alt="" coords="5,84,176,109"/>
+</map>

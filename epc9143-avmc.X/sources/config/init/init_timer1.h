@@ -37,6 +37,8 @@
 #include <stdbool.h> // include standard boolean types header file
 
 extern volatile uint16_t sysOsTimer_Initialize(void);
+extern volatile uint16_t sysOsTimer_Enable (
+        volatile bool interrupt_enable, volatile uint8_t interrupt_priority );
 
 #endif	/* SYSTEM_INITIALIZE_OS_TIMER_H */
 

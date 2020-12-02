@@ -30,7 +30,7 @@
  *
  */
 /*
- * File:   pwr_control.c
+ * File:   app_power_control.c
  * Author: M91406
  *
  * Created on March 12, 2020, 11:55 AM
@@ -57,7 +57,7 @@ extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer
                                                 // Calls the AGC Factor Modulation Function (Assembly)
 
 /**
- * @addtogroup power-handler-struct
+ * @addtogroup power-control-app-layer-private-var
  * @{
  */
 /**************************************************************************************************
@@ -77,8 +77,8 @@ volatile struct BUCK_POWER_CONTROLLER_s  buck;
 #define  CS_CALIB_STEPS         8
 
 /***********************************************************************************
- * @struct	CS_CALIBRATION_s
- * @brief 
+ * @struct CS_CALIBRATION_s
+ * @brief  Current sense calibration data structure
  * 
  **********************************************************************************/
 typedef struct CS_CALIBRATION_s {
@@ -90,71 +90,34 @@ typedef struct CS_CALIBRATION_s {
 
 volatile struct CS_CALIBRATION_s calib_cs1;
 volatile struct CS_CALIBRATION_s calib_cs2;
-/** @} */ // end of group
+
+/** @} */ // end of group power-control-app-layer-private-var
 
 /* PRIVATE FUNCTION PROTOTYPES */
 volatile uint16_t appPowerSupply_ConverterObjectInitialize(void);
 volatile uint16_t appPowerSupply_ControllerInitialize(void);
 volatile uint16_t appPowerSupply_PeripheralsInitialize(void);
 
-void appPowerSupply_CurrentBalancing(void); 
-void appPowerSupply_CurrentSenseCalibration(void);
+void __attribute__((always_inline)) appPowerSupply_CurrentBalancing(void); 
+void __attribute__((always_inline)) appPowerSupply_CurrentSenseCalibration(void);
 
 
 /* *************************************************************************************************
  * PUBLIC FUNCTIONS
  * ************************************************************************************************/
-/**
- * 
- * @addtogroup device-start-up
- * @{
- */
-/*******************************************************************************
- * @fn	volatile uint16_t appPowerSupply_Initialize(void)
- * @brief
- * @param	None
- * @return  Unsigned Integer (0=failure, 1=success)
- * 
- * <b>Description</b><br> 
- * 
- *********************************************************************************/
-volatile uint16_t appPowerSupply_Initialize(void)
-{ 
-    volatile uint16_t retval=1;
-
-    // Run initialization sequence
-    retval &= appPowerSupply_ConverterObjectInitialize();
-    retval &= appPowerSupply_ControllerInitialize();
-    retval &= appPowerSupply_PeripheralsInitialize();
-
-    // Initialize Control Interrupt
-    _BUCK_VLOOP_ISR_IP = 5;
-    _BUCK_VLOOP_ISR_IF = 0;
-    _BUCK_VLOOP_ISR_IE = 1;
-    
-    // Start power supply engine
-    retval &= appPowerSupply_Start();
-    
-    // Enable Buck Converter
-    buck.status.bits.enabled = true;
-    
-    return(retval); 
-}
-/**@}*/
 
 /**
- * @addtogroup main-loop 
+ * @addtogroup power-control-app-layer-public 
  * @{ 
  */
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Execute(void)
  * @brief This is the top-level function call triggering the most recent state 
  * machine of all associated power supply controllers
- * @param	None
- * @return  0=failure
- * @return 1=success
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
  * 
- * <b>Description</b><br> 
+ * @details 
  * After initialization, the proprietary user code has to call this function 
  * on a deterministic, constant time base. In each execution step this function
  * will call the power control state machines of each supported/included power
@@ -178,11 +141,6 @@ volatile uint16_t appPowerSupply_Execute(void)
     { i_dummy += buck.data.i_sns[_i]; }
     buck.data.i_out = i_dummy; // Set output current value
 
-    // Check conditional parameters and fault flags
-    // ToDo: remove - flag has been replaced by fault handler function
-//    buck.status.bits.power_source_detected = (bool)
-//        ((BUCK_VIN_UVLO_TRIP < buck.data.v_in) && (buck.data.v_in<BUCK_VIN_OVLO_TRIP));
-    
     // Execute buck converter state machine
     retval &= drv_BuckConverter_Execute(&buck);
     
@@ -207,48 +165,61 @@ volatile uint16_t appPowerSupply_Execute(void)
     
     return(retval); 
 }
-/**@}*/
-/**
- * @addtogroup power-handler-function
- * @{
- */
+
 /*******************************************************************************
- * @fn	volatile uint16_t appPowerSupply_Dispose(void)
- * @brief
- * @param	None
- * @return  0=failure
- * @return 1=success
- *  
- * <b>Description</b><br> 
+ * @fn	volatile uint16_t appPowerSupply_Initialize(void)
+ * @brief  Calls the application layer power controller initialization
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
+ * 
+ * @details 
+ * The power control application layer is the proprietary user code layer
+ * used to tailor the generic power converter device driver to the specific 
+ * hardware of this design. The initialization routine covers three levels
+ * 
+ * - Converter Object Configuration
+ * - Controller Configuration
+ * - Peripheral Set Configuration
+ * - Interrupt Vector Configuration
+ * 
+ * Once all modules have been configured successfully, the power converter 
+ * object is started with control loops and PWM outputs disabled. However, 
+ * the PWM module will start triggering the ADC to allow the standby monitoring
+ * of system conditions to allow the firmware to decide if it is safe to start
+ * up the power converter.
  * 
  *********************************************************************************/
 
-volatile uint16_t appPowerSupply_Dispose(void)
+volatile uint16_t appPowerSupply_Initialize(void)
 { 
     volatile uint16_t retval=1;
-    volatile uint16_t _i=0;
 
-    buck.status.value = 0;
+    // Run initialization sequence
+    retval &= appPowerSupply_ConverterObjectInitialize();
+    retval &= appPowerSupply_ControllerInitialize();
+    retval &= appPowerSupply_PeripheralsInitialize();
+
+    // Initialize Control Interrupt
+    _BUCK_VLOOP_ISR_IP = BUCK_VOUT_ISR_PRIORITY;
+    _BUCK_VLOOP_ISR_IF = 0;
+    _BUCK_VLOOP_ISR_IE = true;
     
-    for (_i=0; _i<buck.set_values.no_of_phases; _i++) // Reset phase current values
-    { buck.data.i_sns[0] = 0; }
-    buck.data.i_out = 0; // Reset output current value
-    buck.data.v_out = 0; // Reset output voltage value
-    buck.data.v_in = 0;  // Reset input voltage value
-    buck.data.temp = 0;  // Reset output temperature value
-    buck.state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE; // Set state machine
+    // Start power supply engine
+    retval &= appPowerSupply_Start();
+    
+    // Enable Buck Converter
+    buck.status.bits.enabled = true;
     
     return(retval); 
 }
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Start(void)
- * @brief
- * @param	None
- * @return  0=failure
- * @return 1=success
+ * @brief  This function calls the buck converter device driver function starting the power supply 
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
  *  
- * <b>Description</b><br> 
+ * @details 
  * 
  *********************************************************************************/
 
@@ -263,12 +234,18 @@ volatile uint16_t appPowerSupply_Start(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Stop(void)
- * @brief
- * @param	None
- * @return  0=failure
- * @return 1=success
+ * @brief This function calls the buck converter device driver function stopping the power supply 
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
  *  
- * <b>Description</b><br> 
+ * @details
+ * 
+ * @note
+ * The STOP function terminates the state machine and all peripherals used by
+ * the power controller. This includes the PWM and ADC peripheral modules and 
+ * will therefore also stop all data acquisition. 
+ * If you are trying to stop the power supply but keep its state machine and
+ * data acquisition running, use the SUSPEND function instead
  * 
  *********************************************************************************/
 
@@ -283,7 +260,7 @@ volatile uint16_t appPowerSupply_Stop(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Suspend(void)
- * @brief
+ * @brief 
  * @param	None
  * @return  0=failure
  * @return 1=success
@@ -304,11 +281,12 @@ volatile uint16_t appPowerSupply_Suspend(void)
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_Resume(void)
  * @brief
- * @param	None
- * @return  0=failure
- * @return 1=success
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
  *  
- * <b>Description</b><br> 
+ * @details
+ * This function calls the buck converter device driver function recovering
+ * the power supply operation from a previously initiated shut-down.
  * 
  *********************************************************************************/
 
@@ -321,18 +299,23 @@ volatile uint16_t appPowerSupply_Resume(void)
     return(retval); 
 }
 
+/** @} */ // end of group power-control-app-layer-public
+
+
 /* *************************************************************************************************
  * PRIVATE FUNCTIONS
  * ************************************************************************************************/
-
+/**
+ * @addtogroup power-control-app-layer-private 
+ * @{ 
+ */
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
- * @brief
- * @param	None
- * @return  0=failure
- * @return 1=success
+ * @brief  This function initializes the buck converter device driver instance
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
  *  
- * <b>Description</b><br> 
+ * @details
  * 
  *********************************************************************************/
 
@@ -547,13 +530,11 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
- * @brief
- * @param	None
- * @return  0=failure
- * @return 1=success
+ * @brief  This function is used to load peripheral configuration templates from the power controller device driver
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
  * 
- *  
- * <b>Description</b><br> 
+ * @details
  * 
  *********************************************************************************/
 
@@ -595,13 +576,11 @@ volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
 
 /*******************************************************************************
  * @fn	volatile uint16_t appPowerSupply_ControllerInitialize(void)
- * @brief
- * @param	None
- * @return  0=failure
- * @return 1=success
+ * @brief  This function initializes the control system feedback loop objects
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
  * 
- *  
- * <b>Description</b><br> 
+ * @details
  * 
  *********************************************************************************/
 
@@ -705,13 +684,33 @@ volatile uint16_t appPowerSupply_ControllerInitialize(void)
 
 
 /*******************************************************************************
- * @fn	inline void appPowerSupply_CurrentBalancing(void) 
- * @brief
- * @param	None
- * @return  0=failure
- * @return 1=success
+ * @fn	void appPowerSupply_CurrentBalancing(void) 
+ * @brief This function performs current balancing between the power supply phases
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
  *  
- * <b>Description</b><br> 
+ * @details 
+ * Current balancing in this design is performed on a 10 kHz frequency, triggered
+ * by the general state machine execution period. In each step the current sense
+ * feedback signals of each phase are compared. Phase #1 is considered to be the 
+ * leading phase while all others are power multipliers. 
+ * 
+ * If the current sense feedback signal of phase #2 is lower than that of 
+ * phase #1, a static duty ratio offset of one PWM time-base tick is added to 
+ * the duty ratio of phase #2 forcing more current flowing through phase #2, 
+ * effectively shifting current from phase #1 to phase #2. 
+ * 
+ * If the current sense feedback signal of phase #2 is higher than that of 
+ * phase #1, the static duty ratio offset of phase #2 is reduced by one PWM 
+ * time-base tick to force less current flowing through phase #2, effectively 
+ * shifting current from phase #2 to phase #1. 
+ * 
+ * Over several current balancing cycles this offset will accumulate until the 
+ * phase currents are balanced.
+ * 
+ * Additional noise-floor signal filters are used to ensure the current 
+ * balancing does not respond to small differences in immediate ADC samples.
+ * 
  * 
  *********************************************************************************/
 
@@ -738,16 +737,22 @@ inline void appPowerSupply_CurrentBalancing(void)
 }
 
 /*******************************************************************************
- * @fn	inline void appPowerSupply_CurrentSenseCalibration(void) 
- * @brief
- * @param	None
- * @return  0=failure
- * @return 1=success
+ * @fn	void appPowerSupply_CurrentSenseCalibration(void) 
+ * @brief This function executes the current sense feedback calibration
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
  *  
- * <b>Description</b><br> 
- * 
+ * @details
+ * This function performs a current sense feedback channel zero-offset 
+ * calibration. The calibration is executed when the reference voltage is 
+ * applied to the current sense shunt amplifiers but the power supply is still
+ * turned off. The offset value is determined by a 4x oversampling of each of
+ * the feedback signals to eliminate high-frequency noise. 
+ * Once the calibration is complete, the 'cs_calib_complete' status bit in 
+ * the buck converter power controller object status word is set, allowing 
+ * the state machine to run.
  *********************************************************************************/
-inline void appPowerSupply_CurrentSenseCalibration(void)
+void appPowerSupply_CurrentSenseCalibration(void)
 {
     // Current Calibration Procedure
     if ((buck.state_id.bits.opstate_id != BUCK_OPSTATE_STANDBY) || 
@@ -775,5 +780,6 @@ inline void appPowerSupply_CurrentSenseCalibration(void)
     return;
     
 }
-/** @} */ // end of group
-// END OF FILE
+/** @} */ // end of group power-control-app-layer-private 
+
+// end of file

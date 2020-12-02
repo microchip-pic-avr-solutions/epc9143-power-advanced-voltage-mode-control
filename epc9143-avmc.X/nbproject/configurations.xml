@@ -71,6 +71,8 @@
         <itemPath>sources/common/p33c_pral/p33c_pwm.c</itemPath>
         <itemPath>sources/common/p33c_pral/p33c_pps.c</itemPath>
         <itemPath>sources/common/p33c_pral/p33c_dac.c</itemPath>
+        <itemPath>sources/common/p33c_pral/p33c_opa.c</itemPath>
+        <itemPath>sources/common/p33c_pral/p33c_osc.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="init" projectFiles="true">
@@ -210,7 +212,7 @@
         <property key="oXC16gcc-sfr-warn" value="false"/>
         <property key="oXC16gcc-smar-io-lvl" value="1"/>
         <property key="oXC16gcc-smart-io-fmt" value=""/>
-        <property key="optimization-level" value="1"/>
+        <property key="optimization-level" value="0"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros" value=""/>

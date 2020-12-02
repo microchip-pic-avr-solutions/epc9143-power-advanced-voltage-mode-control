@@ -137,12 +137,16 @@ $(document).ready(function(){initNavTree('init__timer1_8h_source.html',''); init
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span> <span class="comment">// include standard integer types header file</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span> <span class="comment">// include standard boolean types header file</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">extern</span> <span class="keyword">volatile</span> uint16_t sysOsTimer_Initialize(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* SYSTEM_INITIALIZE_OS_TIMER_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">extern</span> <span class="keyword">volatile</span> uint16_t <a class="code" href="group__os-timer-initialization.html#ga8e89a1a4ee5bf8c794bd29163b92bf49">sysOsTimer_Initialize</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">extern</span> <span class="keyword">volatile</span> uint16_t <a class="code" href="group__os-timer-initialization.html#ga4c811c3414a3785423f828be293562f0">sysOsTimer_Enable</a> (</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">volatile</span> <span class="keywordtype">bool</span> interrupt_enable, <span class="keyword">volatile</span> uint8_t interrupt_priority );</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* SYSTEM_INITIALIZE_OS_TIMER_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="agroup__os-timer-initialization_html_ga8e89a1a4ee5bf8c794bd29163b92bf49"><div class="ttname"><a href="group__os-timer-initialization.html#ga8e89a1a4ee5bf8c794bd29163b92bf49">sysOsTimer_Initialize</a></div><div class="ttdeci">volatile uint16_t sysOsTimer_Initialize(void)</div><div class="ttdoc">Initializes the timer used as timebase for the task scheduler.</div><div class="ttdef"><b>Definition:</b> <a href="init__timer1_8c_source.html#l00038">init_timer1.c:38</a></div></div>
+<div class="ttc" id="agroup__os-timer-initialization_html_ga4c811c3414a3785423f828be293562f0"><div class="ttname"><a href="group__os-timer-initialization.html#ga4c811c3414a3785423f828be293562f0">sysOsTimer_Enable</a></div><div class="ttdeci">volatile uint16_t sysOsTimer_Enable(volatile bool interrupt_enable, volatile uint8_t interrupt_priority)</div><div class="ttdef"><b>Definition:</b> <a href="init__timer1_8c_source.html#l00080">init_timer1.c:80</a></div></div>
 <!-- HTML footer for doxygen 1.8.20-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

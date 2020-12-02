@@ -136,15 +136,18 @@ $(document).ready(function(){initNavTree('init__opa_8h_source.html',''); initRes
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">//extern volatile uint16_t init_opa_module(void);</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">extern</span> <span class="keyword">volatile</span> uint16_t init_opa(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">//extern volatile uint16_t launch_opa_module(void);</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;p33c_opa.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">extern</span> <span class="keyword">volatile</span> uint16_t <a class="code" href="group__op-amp-initialization.html#gabd454dd5908ee930957e91e5c5bf42ff">sysOpAmp_Initialize</a>(<span class="keyword">volatile</span> uint16_t opaInstance, <span class="keyword">volatile</span> <span class="keywordtype">bool</span> disable_n_channel);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">extern</span> <span class="keyword">volatile</span> uint16_t <a class="code" href="group__op-amp-initialization.html#ga3cd080c9a48a5d74d8b2f89fdec161da">sysOpAmp_ModuleEnable</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* INITIALIZE_OPERATIONAL_AMPLIFIER_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* INITIALIZE_OPERATIONAL_AMPLIFIER_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="agroup__op-amp-initialization_html_ga3cd080c9a48a5d74d8b2f89fdec161da"><div class="ttname"><a href="group__op-amp-initialization.html#ga3cd080c9a48a5d74d8b2f89fdec161da">sysOpAmp_ModuleEnable</a></div><div class="ttdeci">volatile uint16_t sysOpAmp_ModuleEnable(void)</div><div class="ttdoc">Enables the on-chip operational amplifier module.</div><div class="ttdef"><b>Definition:</b> <a href="init__opa_8c_source.html#l00071">init_opa.c:71</a></div></div>
+<div class="ttc" id="agroup__op-amp-initialization_html_gabd454dd5908ee930957e91e5c5bf42ff"><div class="ttname"><a href="group__op-amp-initialization.html#gabd454dd5908ee930957e91e5c5bf42ff">sysOpAmp_Initialize</a></div><div class="ttdeci">volatile uint16_t sysOpAmp_Initialize(volatile uint16_t opaInstance, volatile bool disable_n_channel)</div><div class="ttdef"><b>Definition:</b> <a href="init__opa_8c_source.html#l00035">init_opa.c:35</a></div></div>
 <!-- HTML footer for doxygen 1.8.20-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

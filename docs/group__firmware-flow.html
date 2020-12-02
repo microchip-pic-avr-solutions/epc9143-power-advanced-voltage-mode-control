@@ -120,8 +120,8 @@ Modules</h2></td></tr>
 <tr class="memitem:group__main-loop"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__main-loop.html">Main Loop</a></td></tr>
 <tr class="memdesc:group__main-loop"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main Loop. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__buck-state-machine"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine.html">Task Layer</a></td></tr>
-<tr class="memdesc:group__buck-state-machine"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task Layer. <br /></td></tr>
+<tr class="memitem:group__task-layer"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__task-layer.html">Task Layer</a></td></tr>
+<tr class="memdesc:group__task-layer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task Layer. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -160,7 +160,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Signed Integer (0=failure, 1=success)</dd></dl>
-<p><b>Description</b> This function is the starting point of the firmware. It is called after the device is coming out of RESET, starting to execute code. The startup sequence is as follows:</p>
+<p><b>Description</b><br  />
+ This function is the starting point of the firmware. It is called after the device is coming out of RESET, starting to execute code. The startup sequence is as follows:</p>
 <p>1) SYSTEM_Initialize:</p>
 <p>a) Configures the fundamental system components such as</p>
 <p>Fundamental components are peripherals which are essential for the CPU to run, such as</p>
@@ -168,7 +169,6 @@ Functions</h2></td></tr>
 <li>system oscillator</li>
 <li>auxiliary oscillator</li>
 <li>general purpose input/output configuration</li>
-<li>task timer (used as time base for task control)</li>
 </ul>
 <p>b) User-defined Peripheral Module Configurations</p>
 <p>This hardware requires some specific peripheral modules to support circuit functions, such as</p>
@@ -179,12 +179,13 @@ Functions</h2></td></tr>
 <p>2) Software Modules Initialization</p>
 <p>This application runs two major tasks:</p>
 <ul>
+<li>Operating System Timer</li>
 <li>Power Supply State Machine &amp; Control</li>
 <li>System Fault Handler &amp; Diagnostics</li>
 </ul>
 <p>Each 'Task' is an independent process which is called with a fixed execution frequency. The default frequency set in this code version is 100 usec (= 10 kHz). In each step both tasks are executed one after another in one sequence. </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00075">75</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00078">78</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

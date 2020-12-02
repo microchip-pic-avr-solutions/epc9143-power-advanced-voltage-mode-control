@@ -1,0 +1,31 @@
+<map id="p33c_GpioInstance_GetHandle" name="p33c_GpioInstance_GetHandle">
+<area shape="rect" id="node1" title="Gets pointer to GPIO Instance SFR set." alt="" coords="1656,157,1857,184"/>
+<area shape="rect" id="node2" href="$group__power-handler-functions.html#ga649bb2f18322be1a303d05931adb2c6a" title=" " alt="" coords="1457,56,1575,83"/>
+<area shape="rect" id="node15" href="$group__power-handler-functions.html#gad4e9d780ae858d4417887f13b1619346" title=" " alt="" coords="1436,259,1596,285"/>
+<area shape="rect" id="node26" href="$group__power-handler-functions.html#ga3d3f91c0e40884874e7df3a67fff23f3" title=" " alt="" coords="1429,107,1603,133"/>
+<area shape="rect" id="node27" href="$group__power-handler-functions.html#gaa3ea141de17bd86c94b1fda8187f9ce6" title=" " alt="" coords="1461,208,1571,235"/>
+<area shape="rect" id="node29" href="$group__power-handler-functions.html#ga283487111ea685224a2caf350540daad" title=" " alt="" coords="1424,157,1608,184"/>
+<area shape="rect" id="node3" href="$group__power-handler-functions.html#ga984f623275f9e1da2e11be2e9ff8221c" title=" " alt="" coords="1216,107,1352,133"/>
+<area shape="rect" id="node9" href="$group__power-handler-functions.html#gaf5c603256fc12118fe63eb285676d95f" title=" " alt="" coords="1225,5,1343,32"/>
+<area shape="rect" id="node12" href="$group__power-handler-functions.html#gadd0533ee810246f6b84c7c31d9372835" title=" " alt="" coords="1213,56,1355,83"/>
+<area shape="rect" id="node4" href="$group__power-handler-functions.html#ga97eb8bdd17b9c2e169f0634ebabb5d19" title="This function initializes all peripheral modules and their instances used by the power controller." alt="" coords="959,157,1142,184"/>
+<area shape="rect" id="node5" href="$group__power-control-app-layer-private.html#ga0b26acfec74d1804384b4ba1a3cffab4" title="This function is used to load peripheral configuration templates from the power controller device dri..." alt="" coords="719,150,909,191"/>
+<area shape="rect" id="node6" href="$group__power-control-app-layer-public.html#ga7a4cf6371d09457539f96a74b2809ca0" title="Calls the application layer power controller initialization." alt="" coords="311,183,484,209"/>
+<area shape="rect" id="node7" href="$group__system-initialization-user-tasks.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" title="Initializes the user&#45;defined tasks." alt="" coords="104,233,263,260"/>
+<area shape="rect" id="node8" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,233,56,260"/>
+<area shape="rect" id="node10" href="$group__power-handler-functions.html#gaa865d025fb1e5ae1e16e0c519c6ba9a2" title=" " alt="" coords="969,5,1132,32"/>
+<area shape="rect" id="node11" href="$group__power-control-app-layer-public.html#gaa7d413f62f7b5f25d152cc12354241f0" title="This function calls the buck converter device driver function stopping the power supply." alt="" coords="737,5,891,32"/>
+<area shape="rect" id="node13" href="$group__buck-state-machine-function.html#ga7851b6ab25e86f56cb2056e4aac43c5c" title=" " alt="" coords="1007,56,1095,83"/>
+<area shape="rect" id="node14" href="$group__buck-state-machine-function.html#ga295e97e4e4330b73f398e98d889d229d" title=" " alt="" coords="1003,107,1098,133"/>
+<area shape="rect" id="node16" href="$group__power-handler-functions.html#ga75498c59a10db0738113104a547d8d0d" title="This function is the main buck converter state machine executing the most recent state." alt="" coords="1192,259,1376,285"/>
+<area shape="rect" id="node17" href="$group__power-handler-functions.html#gaf73787b6b72bc61786a39b9c7e47f6c6" title=" " alt="" coords="959,237,1143,264"/>
+<area shape="rect" id="node19" href="$group__power-handler-functions.html#ga3287d86e7c3eecaa97d4bdf590ed0a15" title=" " alt="" coords="957,288,1144,315"/>
+<area shape="rect" id="node18" href="$group__power-control-app-layer-public.html#ga3c7bf6b771bc1296401a270da4a95bff" title=" " alt="" coords="727,237,901,264"/>
+<area shape="rect" id="node20" href="$group__power-control-app-layer-public.html#gafa4e90d260e60cf20f06acee067c39cd" title=" " alt="" coords="725,288,903,315"/>
+<area shape="rect" id="node21" href="$group__fault-handler-functions.html#ga54f9db91ea0782b08aa16ee77a57c5e5" title="Initializes the user&#45;defined fault objects for overcurrent protection." alt="" coords="538,309,665,336"/>
+<area shape="rect" id="node23" href="$group__fault-handler-functions.html#gade437244e8f6e5ff7c57a73442063350" title="Initializes the user&#45;defined fault objects for overvoltage lockout." alt="" coords="538,360,665,387"/>
+<area shape="rect" id="node24" href="$group__fault-handler-functions.html#ga82dc317e3adac0308e5ac3f5ad321605" title="Initializes the user&#45;defined fault objects for regulation error." alt="" coords="532,208,671,235"/>
+<area shape="rect" id="node25" href="$group__fault-handler-functions.html#ga9441220f8a7d4a6805467d04b734e6b5" title="Initializes the user&#45;defined fault objects for under&#45;voltage lockout." alt="" coords="538,259,665,285"/>
+<area shape="rect" id="node22" href="$group__fault-handler-functions.html#ga830e5c7087a8e5ee8ea39b7e3df94b68" title="Initialization of user&#45;defined fault objects." alt="" coords="313,259,482,285"/>
+<area shape="rect" id="node28" href="$group__buck-state-machine-function.html#ga63e41c37a567ac87b4630db7320842d0" title=" " alt="" coords="1193,208,1375,235"/>
+</map>

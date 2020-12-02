@@ -1,0 +1,26 @@
+<map id="appPowerSupply_Initialize" name="appPowerSupply_Initialize">
+<area shape="rect" id="node1" title="Calls the application layer power controller initialization." alt="" coords="5,192,179,219"/>
+<area shape="rect" id="node2" href="$group__power-control-app-layer-private.html#ga0b4cabdb02c8c9ea94ea1dfa39de3764" title="This function initializes the control system feedback loop objects." alt="" coords="231,86,413,127"/>
+<area shape="rect" id="node3" href="$group__power-control-app-layer-private.html#gad0f6ff4894bf23722884c60bbcdcacd0" title="This function initializes the buck converter device driver instance." alt="" coords="232,151,412,193"/>
+<area shape="rect" id="node4" href="$group__power-control-app-layer-private.html#ga0b26acfec74d1804384b4ba1a3cffab4" title="This function is used to load peripheral configuration templates from the power controller device dri..." alt="" coords="227,217,417,258"/>
+<area shape="rect" id="node21" href="$group__power-control-app-layer-public.html#ga9210070749c2ed49abd8a30b27f64151" title="This function calls the buck converter device driver function starting the power supply." alt="" coords="245,304,399,331"/>
+<area shape="rect" id="node5" href="$group__power-handler-functions.html#ga97eb8bdd17b9c2e169f0634ebabb5d19" title="This function initializes all peripheral modules and their instances used by the power controller." alt="" coords="465,173,648,200"/>
+<area shape="rect" id="node18" href="$group__pps.html#ga46aebc06e62c1484f9e95190711067dd" title="Locks the Peripheral Pin Select Configuration registers against accidental changes." alt="" coords="508,224,605,251"/>
+<area shape="rect" id="node19" href="$group__pps.html#ga1ac2bc53484e4e452fd3b4c027037ebf" title="Assigns a digital function output to a pin." alt="" coords="489,275,625,301"/>
+<area shape="rect" id="node20" href="$group__pps.html#ga3fa51d1be870c73331607df4455a30f8" title="Unlocks the Peripheral Pin Select Configuration registers to enable changes." alt="" coords="502,123,611,149"/>
+<area shape="rect" id="node6" href="$group__power-handler-functions.html#gab889ae485e95010864ca04500457861a" title=" " alt="" coords="699,173,877,200"/>
+<area shape="rect" id="node7" href="$group__power-handler-functions.html#ga086bc1e4304b2ce7a435bf2a9799d078" title=" " alt="" coords="701,224,875,251"/>
+<area shape="rect" id="node8" href="$group__power-handler-functions.html#ga984f623275f9e1da2e11be2e9ff8221c" title=" " alt="" coords="720,123,856,149"/>
+<area shape="rect" id="node12" href="$group__power-handler-functions.html#ga283487111ea685224a2caf350540daad" title=" " alt="" coords="696,275,880,301"/>
+<area shape="rect" id="node15" href="$group__power-handler-functions.html#ga1dedc10502a96efea6da9207f3416219" title=" " alt="" coords="699,56,877,83"/>
+<area shape="rect" id="node9" href="$group__power-handler-functions.html#ga649bb2f18322be1a303d05931adb2c6a" title=" " alt="" coords="974,157,1093,184"/>
+<area shape="rect" id="node11" href="$group__power-handler-functions.html#ga3d3f91c0e40884874e7df3a67fff23f3" title=" " alt="" coords="946,107,1121,133"/>
+<area shape="rect" id="node10" href="$group__gpio.html#gae1bc534f11ac7cf278865cb73b601055" title="Gets pointer to GPIO Instance SFR set." alt="" coords="1187,157,1388,184"/>
+<area shape="rect" id="node13" href="$group__pwm.html#ga2de389951f418d4fcd9a5237f39a11a1" title="Disposes a given PWM generator by resetting all its registers to default." alt="" coords="940,209,1127,250"/>
+<area shape="rect" id="node14" href="$group__pwm.html#ga8aa18df01ada60e1faac049c5eb34700" title="Returns the PWM generator index." alt="" coords="928,325,1139,352"/>
+<area shape="rect" id="node16" href="$group__pwm.html#ga68493af214377a7329daa5f60825fac5" title="Writes a user&#45;defined configuration to the PWM base module registers." alt="" coords="932,56,1135,83"/>
+<area shape="rect" id="node17" href="$group__pwm.html#ga02fe57798710b1b54904a4920c181453" title="Gets pointer to PWM module SFR set." alt="" coords="935,5,1131,32"/>
+<area shape="rect" id="node22" href="$group__power-handler-functions.html#ga8c05ea0ee077172e4025d8b7a36f5c9f" title=" " alt="" coords="475,325,639,352"/>
+<area shape="rect" id="node23" href="$group__power-handler-functions.html#gae12da3618a5d9e82920992df80b67b47" title=" " alt="" coords="732,376,844,403"/>
+<area shape="rect" id="node24" href="$group__power-handler-functions.html#gae6c3c54562df6c9d941bab2bc98b2bf2" title=" " alt="" coords="729,325,847,352"/>
+</map>

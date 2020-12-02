@@ -1,12 +1,22 @@
 var searchData=
 [
-  ['factor_1067',['factor',['../struct_b_u_c_k___a_d_c___i_n_p_u_t___s_c_a_l_i_n_g__s.html#aa9a9b14569ac48dc290e2df6162fb42f',1,'BUCK_ADC_INPUT_SCALING_s']]],
-  ['fault_5factive_1068',['fault_active',['../struct_b_u_c_k___c_o_n_v_e_r_t_e_r___s_t_a_t_u_s__s.html#ac1c13a249f66fa45797ad435bf8ee402',1,'BUCK_CONVERTER_STATUS_s']]],
-  ['faultactive_1069',['FaultActive',['../struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a1bc02388766479b8ec8ac2dfcd4d83b2',1,'FLT_OBJECT_STATUS_s']]],
-  ['faultstatus_1070',['FaultStatus',['../struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a028f8fd8c38c1a2669efbf670ee1d222',1,'FLT_OBJECT_STATUS_s']]],
-  ['feedback_1071',['feedback',['../struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html#a4bdf290e23328593c3529fc00cb5d988',1,'BUCK_POWER_CONTROLLER_s']]],
-  ['feedback_5foffset_1072',['feedback_offset',['../struct_b_u_c_k___l_o_o_p___s_e_t_t_i_n_g_s__s.html#a81d3656451b3c24b602aa60c01cd88f6',1,'BUCK_LOOP_SETTINGS_s']]],
-  ['filter_1073',['Filter',['../struct_n_p_n_z16b__s.html#aa98db9224dce165f72d861acc8558419',1,'NPNZ16b_s']]],
-  ['fscl_1074',['FSCL',['../struct_p33_c___p_w_m___m_o_d_u_l_e__s.html#ad4fe524a7d599b4e17cefc99e5adcbd3',1,'P33C_PWM_MODULE_s']]],
-  ['fsminper_1075',['FSMINPER',['../struct_p33_c___p_w_m___m_o_d_u_l_e__s.html#a2e1cfa508822c2f9b81a2d4c729afa90',1,'P33C_PWM_MODULE_s']]]
+  ['factor_1331',['factor',['../struct_b_u_c_k___a_d_c___i_n_p_u_t___s_c_a_l_i_n_g__s.html#aa9a9b14569ac48dc290e2df6162fb42f',1,'BUCK_ADC_INPUT_SCALING_s']]],
+  ['fault_5factive_1332',['fault_active',['../struct_b_u_c_k___c_o_n_v_e_r_t_e_r___s_t_a_t_u_s__s.html#ac1c13a249f66fa45797ad435bf8ee402',1,'BUCK_CONVERTER_STATUS_s']]],
+  ['fault_5fid_1333',['fault_id',['../struct_t_a_s_k___i_n_f_o__s.html#adaa58bcfb27a91d5b05c91eb859c8dbd',1,'TASK_INFO_s']]],
+  ['faultactive_1334',['FaultActive',['../struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a1bc02388766479b8ec8ac2dfcd4d83b2',1,'FLT_OBJECT_STATUS_s']]],
+  ['faultstatus_1335',['FaultStatus',['../struct_f_l_t___o_b_j_e_c_t___s_t_a_t_u_s__s.html#a028f8fd8c38c1a2669efbf670ee1d222',1,'FLT_OBJECT_STATUS_s']]],
+  ['fclk_1336',['fclk',['../struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a445cb7dc89cde0b8cb430f9666e85b0a',1,'OSCILLATOR_SYSTEM_FREQUENCIES_t']]],
+  ['fcy_1337',['fcy',['../struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ae3f1bd7d5e6ab1aa0ee0b05fd8f82e2a',1,'OSCILLATOR_SYSTEM_FREQUENCIES_t']]],
+  ['feedback_1338',['feedback',['../struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html#a4bdf290e23328593c3529fc00cb5d988',1,'BUCK_POWER_CONTROLLER_s']]],
+  ['feedback_5foffset_1339',['feedback_offset',['../struct_b_u_c_k___l_o_o_p___s_e_t_t_i_n_g_s__s.html#a81d3656451b3c24b602aa60c01cd88f6',1,'BUCK_LOOP_SETTINGS_s']]],
+  ['filter_1340',['Filter',['../struct_n_p_n_z16b__s.html#aa98db9224dce165f72d861acc8558419',1,'NPNZ16b_s']]],
+  ['fosc_1341',['fosc',['../struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a8b96548642980227defd30d56bc0d724',1,'OSCILLATOR_SYSTEM_FREQUENCIES_t']]],
+  ['fp_1342',['fp',['../struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a132caf2823c5ecb187dfc9bf731cd183',1,'OSCILLATOR_SYSTEM_FREQUENCIES_t']]],
+  ['fpllo_1343',['fpllo',['../struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#ab7f9b796e83f2ccfde15f9db4dcb26ab',1,'OSCILLATOR_SYSTEM_FREQUENCIES_t']]],
+  ['fpri_1344',['fpri',['../struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a9206b8af966b25abf4a7008af8f2a7b4',1,'OSCILLATOR_SYSTEM_FREQUENCIES_t']]],
+  ['frc_1345',['frc',['../struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a93a4724319438d89cf737634191ac2a7',1,'OSCILLATOR_SYSTEM_FREQUENCIES_t']]],
+  ['frcdiv_1346',['FRCDIV',['../struct____attribute____.html#a63cf658792b92773564678ccdefb104d',1,'__attribute__']]],
+  ['fscl_1347',['FSCL',['../struct_p33_c___p_w_m___m_o_d_u_l_e__s.html#ad4fe524a7d599b4e17cefc99e5adcbd3',1,'P33C_PWM_MODULE_s']]],
+  ['fsminper_1348',['FSMINPER',['../struct_p33_c___p_w_m___m_o_d_u_l_e__s.html#a2e1cfa508822c2f9b81a2d4c729afa90',1,'P33C_PWM_MODULE_s']]],
+  ['fvco_1349',['fvco',['../struct_o_s_c_i_l_l_a_t_o_r___s_y_s_t_e_m___f_r_e_q_u_e_n_c_i_e_s__t.html#a80746275089fea05136dc21048ba5f11',1,'OSCILLATOR_SYSTEM_FREQUENCIES_t']]]
 ];

@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('group__buck-state-machine-function.htm
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Buck State Machine Functions<div class="ingroups"><a class="el" href="group__firmware-flow.html">Firmware Flowchart</a> &raquo; <a class="el" href="group__buck-state-machine.html">Task Layer</a></div></div>  </div>
+<div class="title">Buck State Machine Functions<div class="ingroups"><a class="el" href="group__firmware-flow.html">Firmware Flowchart</a> &raquo; <a class="el" href="group__task-layer.html">Task Layer</a> &raquo; <a class="el" href="group__buck-state-machine.html">Buck Converter State Machine</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -107,52 +107,33 @@ $(document).ready(function(){initNavTree('group__buck-state-machine-function.htm
 <div class="dynheader">
 Collaboration diagram for Buck State Machine Functions:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__buck-state-machine-function.svg" width="286" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__buck-state-machine-function.svg" width="344" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga33c46f2d0713382476afa8ba44faa7ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga33c46f2d0713382476afa8ba44faa7ae">State_Initialize</a> (<a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
-<tr class="memdesc:ga33c46f2d0713382476afa8ba44faa7ae"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b> If the controller has not been run yet, the POWER ON and POWER GOOD delay counters are reset and all conditional flag bits are cleared. Status of power source, ADC and current sensor calibration have to be set during runtime by system check routines.  <a href="group__buck-state-machine-function.html#ga33c46f2d0713382476afa8ba44faa7ae">More...</a><br /></td></tr>
+<tr class="memitem:ga33c46f2d0713382476afa8ba44faa7ae"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga33c46f2d0713382476afa8ba44faa7ae">State_Initialize</a> (volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
 <tr class="separator:ga33c46f2d0713382476afa8ba44faa7ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga295e97e4e4330b73f398e98d889d229d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga295e97e4e4330b73f398e98d889d229d">State_Reset</a> (<a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
-<tr class="memdesc:ga295e97e4e4330b73f398e98d889d229d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b> After successful initialization or after an externally triggered state machine reset, the state machine returns to this RESET mode, re-initiating control mode, references and status bits before switching further into STANDBY mode.  <a href="group__buck-state-machine-function.html#ga295e97e4e4330b73f398e98d889d229d">More...</a><br /></td></tr>
+<tr class="memitem:ga295e97e4e4330b73f398e98d889d229d"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga295e97e4e4330b73f398e98d889d229d">State_Reset</a> (volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
 <tr class="separator:ga295e97e4e4330b73f398e98d889d229d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga86f5f9d38aea68451e443a8b6ae9cf9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga86f5f9d38aea68451e443a8b6ae9cf9b">State_Standby</a> (<a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
-<tr class="memdesc:ga86f5f9d38aea68451e443a8b6ae9cf9b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b> After a successful state machine reset, the state machine waits in <br  />
- STANDBY mode until all conditional flag bits are set/cleared allowing <br  />
- the converter to run.  <a href="group__buck-state-machine-function.html#ga86f5f9d38aea68451e443a8b6ae9cf9b">More...</a><br /></td></tr>
+<tr class="memitem:ga86f5f9d38aea68451e443a8b6ae9cf9b"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga86f5f9d38aea68451e443a8b6ae9cf9b">State_Standby</a> (volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
 <tr class="separator:ga86f5f9d38aea68451e443a8b6ae9cf9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3a607678272d7f0b771a3db30e12dbbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga3a607678272d7f0b771a3db30e12dbbe">State_RampUp</a> (<a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
-<tr class="memdesc:ga3a607678272d7f0b771a3db30e12dbbe"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b> After a successful state machine reset, the state machine waits in <br  />
- STANDBY mode until all conditional flag bits are set/cleared allowing <br  />
- the converter to run.  <a href="group__buck-state-machine-function.html#ga3a607678272d7f0b771a3db30e12dbbe">More...</a><br /></td></tr>
+<tr class="memitem:ga3a607678272d7f0b771a3db30e12dbbe"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga3a607678272d7f0b771a3db30e12dbbe">State_RampUp</a> (volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
 <tr class="separator:ga3a607678272d7f0b771a3db30e12dbbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6319cad3980d2669e7e804252e99f281"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga6319cad3980d2669e7e804252e99f281">State_Online</a> (<a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
-<tr class="memdesc:ga6319cad3980d2669e7e804252e99f281"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b> After soft-start and when state POWER_GOOD_DELAY has expired, the converter enters normal operation.  <a href="group__buck-state-machine-function.html#ga6319cad3980d2669e7e804252e99f281">More...</a><br /></td></tr>
+<tr class="memitem:ga6319cad3980d2669e7e804252e99f281"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga6319cad3980d2669e7e804252e99f281">State_Online</a> (volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
 <tr class="separator:ga6319cad3980d2669e7e804252e99f281"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7851b6ab25e86f56cb2056e4aac43c5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga7851b6ab25e86f56cb2056e4aac43c5c">State_Error</a> (<a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
-<tr class="memdesc:ga7851b6ab25e86f56cb2056e4aac43c5c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b> This function is a default anchor in case task list index #0 is ever called. This is the equivalent of a switch case "default".  <a href="group__buck-state-machine-function.html#ga7851b6ab25e86f56cb2056e4aac43c5c">More...</a><br /></td></tr>
+<tr class="memitem:ga7851b6ab25e86f56cb2056e4aac43c5c"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga7851b6ab25e86f56cb2056e4aac43c5c">State_Error</a> (volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
 <tr class="separator:ga7851b6ab25e86f56cb2056e4aac43c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5e8eb99be9c174e5df73c60ffe567de9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga5e8eb99be9c174e5df73c60ffe567de9">SubState_PowerOnDelay</a> (<a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
-<tr class="memdesc:ga5e8eb99be9c174e5df73c60ffe567de9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b> After the converter has been cleared to get started, the power-on delay counter until the defined power-on delay period has expired. <br  />
-  <a href="group__buck-state-machine-function.html#ga5e8eb99be9c174e5df73c60ffe567de9">More...</a><br /></td></tr>
+<tr class="memitem:ga5e8eb99be9c174e5df73c60ffe567de9"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga5e8eb99be9c174e5df73c60ffe567de9">SubState_PowerOnDelay</a> (volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
 <tr class="separator:ga5e8eb99be9c174e5df73c60ffe567de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabb4f7f04fa96a0683831f79cd0076660"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#gabb4f7f04fa96a0683831f79cd0076660">SubState_PrepareVRampUp</a> (<a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
-<tr class="memdesc:gabb4f7f04fa96a0683831f79cd0076660"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b> After the POWER ON DELAY has expired, the ramp up starting point is determined <br  />
- by measuring the input and output voltage and calculates the ideal duty ratio of the PWM. This value is then programmed into the PWM module duty cycle register and is also used to pre-charge the control loop output history. In addition the measured output voltage also set as reference to ensure the loop starts without jerks and jumps.  <a href="group__buck-state-machine-function.html#gabb4f7f04fa96a0683831f79cd0076660">More...</a><br /></td></tr>
+<tr class="memitem:gabb4f7f04fa96a0683831f79cd0076660"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#gabb4f7f04fa96a0683831f79cd0076660">SubState_PrepareVRampUp</a> (volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
 <tr class="separator:gabb4f7f04fa96a0683831f79cd0076660"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga132e8fe1f0e549608e16efb026cc8124"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga132e8fe1f0e549608e16efb026cc8124">SubState_VRampUp</a> (<a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
-<tr class="memdesc:ga132e8fe1f0e549608e16efb026cc8124"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b> This is the essential step in which the output voltage is ramped up by incrementing the outer control loop reference. In voltage mode the output <br  />
- voltage will ramp up to the nominal regulation point. In average current mode the inner loop will limit the voltage as soon as the current reference limit is hit and the output is switched to constant current mode.  <a href="group__buck-state-machine-function.html#ga132e8fe1f0e549608e16efb026cc8124">More...</a><br /></td></tr>
+<tr class="memitem:ga132e8fe1f0e549608e16efb026cc8124"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga132e8fe1f0e549608e16efb026cc8124">SubState_VRampUp</a> (volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
 <tr class="separator:ga132e8fe1f0e549608e16efb026cc8124"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacd595d9322d1c13b26be51ca541c77d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#gacd595d9322d1c13b26be51ca541c77d9">SubState_IRampUp</a> (<a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
-<tr class="memdesc:gacd595d9322d1c13b26be51ca541c77d9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b> This phase of the soft-start ramp is only executed in average current mode and will only take effect when the current limit is hit before the nominal voltage regulation point. In this case the constant output current is ramped up to from the startup current to the nominal constant charging current.  <a href="group__buck-state-machine-function.html#gacd595d9322d1c13b26be51ca541c77d9">More...</a><br /></td></tr>
+<tr class="memitem:gacd595d9322d1c13b26be51ca541c77d9"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#gacd595d9322d1c13b26be51ca541c77d9">SubState_IRampUp</a> (volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
 <tr class="separator:gacd595d9322d1c13b26be51ca541c77d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga63e41c37a567ac87b4630db7320842d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvolatile.html">volatile</a> uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga63e41c37a567ac87b4630db7320842d0">SubState_PowerGoodDelay</a> (<a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
-<tr class="memdesc:ga63e41c37a567ac87b4630db7320842d0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Description</b><br  />
- In this phase of the soft-start procedure a counter is incremented until the power good delay has expired before the soft-start process is marked as COMPLETED. If option for driving a user-defined general purpose output (PG output) is enabled in proprietary user code, this pin will be set automatically.  <a href="group__buck-state-machine-function.html#ga63e41c37a567ac87b4630db7320842d0">More...</a><br /></td></tr>
+<tr class="memitem:ga63e41c37a567ac87b4630db7320842d0"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__buck-state-machine-function.html#ga63e41c37a567ac87b4630db7320842d0">SubState_PowerGoodDelay</a> (volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *buckInstance)</td></tr>
 <tr class="separator:ga63e41c37a567ac87b4630db7320842d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -165,25 +146,27 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t State_Error </td>
+          <td class="memname">volatile uint16_t State_Error </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
+          <td class="paramtype">volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
           <td class="paramname"><em>buckInstance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><b>Description</b> This function is a default anchor in case task list index #0 is ever called. This is the equivalent of a switch case "default". </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html" title="Global data object for a BUCK CONVERTER.">BUCK_POWER_CONTROLLER_s</a></td><td>pointer to buck converter data structure </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Unsigned Integer (0=failure, 1=success) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0=failure </dd>
+<dd>
+1=success</dd></dl>
+<p><b>Description</b><br  />
+ This function is a default anchor in case task list index #0 is ever called. This is the equivalent of a switch case "default". </p>
 
-<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00358">358</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00355">355</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -200,25 +183,27 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t State_Initialize </td>
+          <td class="memname">volatile uint16_t State_Initialize </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
+          <td class="paramtype">volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
           <td class="paramname"><em>buckInstance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><b>Description</b> If the controller has not been run yet, the POWER ON and POWER GOOD delay counters are reset and all conditional flag bits are cleared. Status of power source, ADC and current sensor calibration have to be set during runtime by system check routines. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html" title="Global data object for a BUCK CONVERTER.">BUCK_POWER_CONTROLLER_s</a></td><td>pointer to buck converter data structure </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Unsigned Integer (0=failure, 1=success) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0=failure </dd>
+<dd>
+1=success</dd></dl>
+<p><b>Description</b><br  />
+ If the controller has not been run yet, the POWER ON and POWER GOOD delay counters are reset and all conditional flag bits are cleared. Status of power source, ADC and current sensor calibration have to be set during runtime by system check routines. </p>
 
-<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00075">75</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00071">71</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
 
 </div>
 </div>
@@ -229,27 +214,29 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t State_Online </td>
+          <td class="memname">volatile uint16_t State_Online </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
+          <td class="paramtype">volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
           <td class="paramname"><em>buckInstance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><b>Description</b> After soft-start and when state POWER_GOOD_DELAY has expired, the converter enters normal operation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html" title="Global data object for a BUCK CONVERTER.">BUCK_POWER_CONTROLLER_s</a></td><td>pointer to buck converter data structure </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Unsigned Integer (0=failure, 1=success)</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0=failure </dd>
+<dd>
+1=success</dd></dl>
+<p><b>Description</b><br  />
+ After soft-start and when state POWER_GOOD_DELAY has expired, the converter enters normal operation.</p>
 <p>During normal operation the state machine scans the user reference setting. Once a change between the user reference setting and the most recent controller reference has been detected, the state machine will tune the controller reference to the new user control reference level in incremental steps, applying the same ramp slope as during soft-start.</p>
 <p>While ramping the output voltage up or down, the BUSY bit will be set and any new changes to the reference will be ignored until the ramp up/down is complete. </p>
 
-<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00310">310</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00307">307</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
 
 </div>
 </div>
@@ -260,27 +247,31 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t State_RampUp </td>
+          <td class="memname">volatile uint16_t State_RampUp </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
+          <td class="paramtype">volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
           <td class="paramname"><em>buckInstance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><b>Description</b> After a successful state machine reset, the state machine waits in <br  />
- STANDBY mode until all conditional flag bits are set/cleared allowing <br  />
- the converter to run. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html" title="Global data object for a BUCK CONVERTER.">BUCK_POWER_CONTROLLER_s</a></td><td>pointer to buck converter data structure </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Unsigned Integer (0 = BUCK_OPSRET_REPEAT, 1 = BUCK_OPSRET_COMPLETE,2 = BUCK_OPSRET_REPEAT) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 = BUCK_OPSRET_REPEAT </dd>
+<dd>
+1 = BUCK_OPSRET_COMPLETE </dd>
+<dd>
+2 = BUCK_OPSRET_REPEAT</dd></dl>
+<p><b>Description</b><br  />
+ After a successful state machine reset, the state machine waits in <br  />
+ STANDBY mode until all conditional flag bits are set/cleared allowing <br  />
+ the converter to run. </p>
 
-<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00220">220</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00217">217</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
 
 </div>
 </div>
@@ -291,25 +282,27 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t State_Reset </td>
+          <td class="memname">volatile uint16_t State_Reset </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
+          <td class="paramtype">volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
           <td class="paramname"><em>buckInstance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><b>Description</b> After successful initialization or after an externally triggered state machine reset, the state machine returns to this RESET mode, re-initiating control mode, references and status bits before switching further into STANDBY mode. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html" title="Global data object for a BUCK CONVERTER.">BUCK_POWER_CONTROLLER_s</a></td><td>pointer to buck converter data structure </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Unsigned Integer (0=failure, 1=success) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0=failure </dd>
+<dd>
+1=success</dd></dl>
+<p><b>Description</b><br  />
+ After successful initialization or after an externally triggered state machine reset, the state machine returns to this RESET mode, re-initiating control mode, references and status bits before switching further into STANDBY mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00124">124</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00120">120</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -326,27 +319,29 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t State_Standby </td>
+          <td class="memname">volatile uint16_t State_Standby </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
+          <td class="paramtype">volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
           <td class="paramname"><em>buckInstance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><b>Description</b> After a successful state machine reset, the state machine waits in <br  />
- STANDBY mode until all conditional flag bits are set/cleared allowing <br  />
- the converter to run. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html" title="Global data object for a BUCK CONVERTER.">BUCK_POWER_CONTROLLER_s</a></td><td>pointer to buck converter data structure </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Unsigned Integer (0=failure, 1=success) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0=failure </dd>
+<dd>
+1=success</dd></dl>
+<p><b>Description</b><br  />
+ After a successful state machine reset, the state machine waits in <br  />
+ STANDBY mode until all conditional flag bits are set/cleared allowing <br  />
+ the converter to run. </p>
 
-<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00179">179</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dev__buck__opstates_8c_source.html#l00175">175</a> of file <a class="el" href="dev__buck__opstates_8c_source.html">dev_buck_opstates.c</a>.</p>
 
 </div>
 </div>
@@ -357,25 +352,27 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t SubState_IRampUp </td>
+          <td class="memname">volatile uint16_t SubState_IRampUp </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
+          <td class="paramtype">volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
           <td class="paramname"><em>buckInstance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><b>Description</b> This phase of the soft-start ramp is only executed in average current mode and will only take effect when the current limit is hit before the nominal voltage regulation point. In this case the constant output current is ramped up to from the startup current to the nominal constant charging current. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html" title="Global data object for a BUCK CONVERTER.">BUCK_POWER_CONTROLLER_s</a></td><td>pointer to buck converter data structure </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Unsigned Integer (0=failure, 1=success) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0=failure </dd>
+<dd>
+1=success</dd></dl>
+<p><b>Description</b><br  />
+ This phase of the soft-start ramp is only executed in average current mode and will only take effect when the current limit is hit before the nominal voltage regulation point. In this case the constant output current is ramped up to from the startup current to the nominal constant charging current. </p>
 
-<p class="definition">Definition at line <a class="el" href="dev__buck__substates_8c_source.html#l00315">315</a> of file <a class="el" href="dev__buck__substates_8c_source.html">dev_buck_substates.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dev__buck__substates_8c_source.html#l00313">313</a> of file <a class="el" href="dev__buck__substates_8c_source.html">dev_buck_substates.c</a>.</p>
 
 </div>
 </div>
@@ -386,26 +383,27 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t SubState_PowerGoodDelay </td>
+          <td class="memname">volatile uint16_t SubState_PowerGoodDelay </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
+          <td class="paramtype">volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
           <td class="paramname"><em>buckInstance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><b>Description</b><br  />
- In this phase of the soft-start procedure a counter is incremented until the power good delay has expired before the soft-start process is marked as COMPLETED. If option for driving a user-defined general purpose output (PG output) is enabled in proprietary user code, this pin will be set automatically. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html" title="Global data object for a BUCK CONVERTER.">BUCK_POWER_CONTROLLER_s</a></td><td>pointer to buck converter data structure </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Unsigned Integer (0=failure, 1=success) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0=failure </dd>
+<dd>
+1=success</dd></dl>
+<p><b>Description</b><br  />
+ In this phase of the soft-start procedure a counter is incremented until the power good delay has expired before the soft-start process is marked as COMPLETED. If option for driving a user-defined general purpose output (PG output) is enabled in proprietary user code, this pin will be set automatically. </p>
 
-<p class="definition">Definition at line <a class="el" href="dev__buck__substates_8c_source.html#l00365">365</a> of file <a class="el" href="dev__buck__substates_8c_source.html">dev_buck_substates.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dev__buck__substates_8c_source.html#l00363">363</a> of file <a class="el" href="dev__buck__substates_8c_source.html">dev_buck_substates.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -422,26 +420,28 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t SubState_PowerOnDelay </td>
+          <td class="memname">volatile uint16_t SubState_PowerOnDelay </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
+          <td class="paramtype">volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
           <td class="paramname"><em>buckInstance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><b>Description</b> After the converter has been cleared to get started, the power-on delay counter until the defined power-on delay period has expired. <br  />
- </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html" title="Global data object for a BUCK CONVERTER.">BUCK_POWER_CONTROLLER_s</a></td><td>pointer to buck converter data structure </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Unsigned Integer (0=failure, 1=success) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0=failure </dd>
+<dd>
+1=success</dd></dl>
+<p><b>Description</b><br  />
+ After the converter has been cleared to get started, the power-on delay counter until the defined power-on delay period has expired. <br  />
+ </p>
 
-<p class="definition">Definition at line <a class="el" href="dev__buck__substates_8c_source.html#l00073">73</a> of file <a class="el" href="dev__buck__substates_8c_source.html">dev_buck_substates.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dev__buck__substates_8c_source.html#l00071">71</a> of file <a class="el" href="dev__buck__substates_8c_source.html">dev_buck_substates.c</a>.</p>
 
 </div>
 </div>
@@ -452,27 +452,29 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t SubState_PrepareVRampUp </td>
+          <td class="memname">volatile uint16_t SubState_PrepareVRampUp </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
+          <td class="paramtype">volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
           <td class="paramname"><em>buckInstance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><b>Description</b> After the POWER ON DELAY has expired, the ramp up starting point is determined <br  />
- by measuring the input and output voltage and calculates the ideal duty ratio of the PWM. This value is then programmed into the PWM module duty cycle register and is also used to pre-charge the control loop output history. In addition the measured output voltage also set as reference to ensure the loop starts without jerks and jumps. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html" title="Global data object for a BUCK CONVERTER.">BUCK_POWER_CONTROLLER_s</a></td><td>pointer to buck converter data structure </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Unsigned Integer (0=failure, 1=success)</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0=failure </dd>
+<dd>
+1=success</dd></dl>
+<p><b>Description</b><br  />
+ After the POWER ON DELAY has expired, the ramp up starting point is determined <br  />
+ by measuring the input and output voltage and calculates the ideal duty ratio of the PWM. This value is then programmed into the PWM module duty cycle register and is also used to pre-charge the control loop output history. In addition the measured output voltage also set as reference to ensure the loop starts without jerks and jumps.</p>
 <p>When voltage mode control is enabled, the voltage loop control history is charged, when average current mode control is enabled, the current loop control history is charged. </p>
 
-<p class="definition">Definition at line <a class="el" href="dev__buck__substates_8c_source.html#l00117">117</a> of file <a class="el" href="dev__buck__substates_8c_source.html">dev_buck_substates.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dev__buck__substates_8c_source.html#l00115">115</a> of file <a class="el" href="dev__buck__substates_8c_source.html">dev_buck_substates.c</a>.</p>
 
 </div>
 </div>
@@ -483,26 +485,28 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvolatile.html">volatile</a> uint16_t SubState_VRampUp </td>
+          <td class="memname">volatile uint16_t SubState_VRampUp </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structvolatile.html">volatile</a> struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
+          <td class="paramtype">volatile struct <a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html">BUCK_POWER_CONTROLLER_s</a> *&#160;</td>
           <td class="paramname"><em>buckInstance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><b>Description</b> This is the essential step in which the output voltage is ramped up by incrementing the outer control loop reference. In voltage mode the output <br  />
- voltage will ramp up to the nominal regulation point. In average current mode the inner loop will limit the voltage as soon as the current reference limit is hit and the output is switched to constant current mode. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="struct_b_u_c_k___p_o_w_e_r___c_o_n_t_r_o_l_l_e_r__s.html" title="Global data object for a BUCK CONVERTER.">BUCK_POWER_CONTROLLER_s</a></td><td>pointer to buck converter data structure </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Unsigned Integer (0=failure, 1=success) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0=failure </dd>
+<dd>
+1=success</dd></dl>
+<p><b>Description</b><br  />
+ This is the essential step in which the output voltage is ramped up by incrementing the outer control loop reference. In voltage mode the output <br  />
+ voltage will ramp up to the nominal regulation point. In average current mode the inner loop will limit the voltage as soon as the current reference limit is hit and the output is switched to constant current mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="dev__buck__substates_8c_source.html#l00238">238</a> of file <a class="el" href="dev__buck__substates_8c_source.html">dev_buck_substates.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dev__buck__substates_8c_source.html#l00236">236</a> of file <a class="el" href="dev__buck__substates_8c_source.html">dev_buck_substates.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

@@ -16,20 +16,22 @@ volatile bool run_main = true; // Flag allowing to terminate the main loop and r
 #define  TMR1_TIMEOUT 30000   // Timeout protection for Timer1 interrupt flag bit
 volatile bool LOW_PRIORITY_GO = false;  // Flag allowing low priority tasks to be executed
 
+/* PRIVATE FUNCTION CALL PROTOTYPES */
+volatile uint16_t sysLowPriorityTasks_Execute(void);
+
 /**
  * @addtogroup firmware-flow
  * @dotfile flowchart.gv
  * @{
- * 
  */
 /*******************************************************************************
  * @fn int main(void)
- * @param	(none)
- * @return  Signed Integer (0=failure, 1=success)
+ * @param  (none)
+ * @return Signed Integer (0=failure, 1=success)
  *
- * @brief   Application main function executed after device comes out of RESET
+ * @brief  Application main function executed after device comes out of RESET
  * 
- * <b>Description</b> 
+ * <b>Description</b><br>
  * This function is the starting point of the firmware. It is called after the
  * device is coming out of RESET, starting to execute code. The startup sequence 
  * is as follows:
@@ -44,7 +46,6 @@ volatile bool LOW_PRIORITY_GO = false;  // Flag allowing low priority tasks to b
  * - system oscillator
  * - auxiliary oscillator
  * - general purpose input/output configuration
- * - task timer (used as time base for task control)
  *      
  * b) User-defined Peripheral Module Configurations
  * 
@@ -64,6 +65,7 @@ volatile bool LOW_PRIORITY_GO = false;  // Flag allowing low priority tasks to b
  * 
  * This application runs two major tasks:
  * 
+ * - Operating System Timer
  * - Power Supply State Machine & Control 
  * - System Fault Handler & Diagnostics
  * 
@@ -72,6 +74,7 @@ volatile bool LOW_PRIORITY_GO = false;  // Flag allowing low priority tasks to b
  * In each step both tasks are executed one after another in one sequence. 
  * 
  *********************************************************************************/
+
 int main(void) {
 
     volatile uint16_t retval=1;
@@ -80,38 +83,36 @@ int main(void) {
     // Initialize basic system configuration
     retval &= SYSTEM_Initialize();
     
+    // Initialize special, application-specific peripherals 
+    retval &= sysUserPeriperhals_Initialize();
+
     // Initialize software modules
-    retval &= appPowerSupply_Initialize(); // Initialize BUCK converter object and state machine
-    retval &= appFaultMonitor_Initialize(); // Initialize fault objects and fault handler task
+    retval &= sysUserTasks_Initialize();
+
+    // Enable OS Timer
+    retval &= sysOsTimer_Enable(true, 1);
     
-    // Enable Timer1
-    _T1IP = 0;  // Set interrupt priority to zero
-    _T1IF = 0;  // Reset interrupt flag bit
-    _T1IE = 0;  // Enable/Disable Timer1 interrupt
-    T1CONbits.TON = 1; // Turn on Timer1
-    retval &= T1CONbits.TON; // Add timer enable bit to list of checked bits
-    
-    // Last line of defense: when configuration of any block failed 
+    // Last line of defense:
+    // when configuration of any block failed...
     if (!retval)
         CPU_RESET();        // reset the CPU and try again
 
     // Main program execution
     while (run_main) {
 
-        // wait for timer1 to overrun
-        while ((!_T1IF) && (timeout++ < TMR1_TIMEOUT));
-        _T1IF = 0;
+        // wait for Timer1 to overrun and the high-priority task interrupt to 
+        // be executed
+        while ((!LOW_PRIORITY_GO) && (timeout++ < TMR1_TIMEOUT));
+        LOW_PRIORITY_GO = false;
         timeout = 0;    // Reset timeout counter
 
-        // Execute main application tasks
-        DBGPIN2_Set();              // Set the CPU debugging pin HIGH
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Execute non-time critical, low-priority tasks
+            
+        retval &= sysLowPriorityTasks_Execute();
+            
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        appPowerSupply_Execute();   // Execute power supply state machine
-        appFaultMonitor_Execute();  // Execute fault handler
-
-        DBGPIN2_Clear();            // Clear the CPU debugging pin
-        
-        Nop();                      // No-Operation instruction for placing breakpoints
     }
 
     CPU_RESET();    // if the firmware ever ends up here, reset the CPU
@@ -119,7 +120,77 @@ int main(void) {
     return (0);
 }
 
-/**@}*/
+/**@}*/ // end of group firmware-flow
+
+/**
+ * @addtogroup main-loop-low-priority
+ * @{
+ */
+/**********************************************************************************
+ * @fn     void sysLowPriorityTasks_Execute(void)
+ * @brief  Low priority task sequence executed after the high priority task sequence execution is complete
+ * @param  (none)
+ * @return unsigned integer (0=failure, 1=success)
+ * 
+ * @details
+ * This application executes different tasks of which some are time 
+ * critical while others are insensitive against execution time
+ * jitter. The following function is called after the execution 
+ * of the time critical tasks is complete. 
+ * 
+ * ********************************************************************************/
+
+volatile uint16_t sysLowPriorityTasks_Execute(void)
+{
+    volatile uint16_t retval=1;
+    
+    // (no low priority tasks)
+    
+    return(retval);
+}
+
+/**@}*/ // end of group main-loop-low-priority
+
+/**
+ * @addtogroup main-loop-high-priority
+ * @{
+ */
+/**********************************************************************************
+ * @fn     void _OsTimerInterrupt(void)
+ * @brief  High priority task sequence executed on a fixed 100 usec pace
+ * @param  (none)
+ * @return (none)
+ * 
+ * @details
+ * This application executes different tasks of which some are time 
+ * critical while others are insensitive against execution time
+ * jitter. The following interrupt is used to enforce the execution 
+ * of the time critical tasks over the execution of non-time critical
+ * tasks.
+ * 
+ * ********************************************************************************/
+
+void __attribute__((__interrupt__, context, no_auto_psv)) _OsTimerInterrupt(void)
+{
+    #ifdef DBGPIN2_Set
+    DBGPIN2_Set();              // Set the CPU debugging pin HIGH
+    #endif
+
+    // Execute high priority, time critical tasks
+    appPowerSupply_Execute();   // Execute power supply state machine
+    appFaultMonitor_Execute();  // Execute fault handler
+    
+    LOW_PRIORITY_GO = true; // Set GO trigger for low priority tasks
+    _OSTIMER_IF = 0; // Reset the interrupt flag bit
+
+    #ifdef DBGPIN2_Set
+    DBGPIN2_Clear();            // Clear the CPU debugging pin
+    #endif
+    
+    return;
+}
+
+/**@}*/ // end of group main-loop-high-priority
 // ______________________________________
 // END OF FILE
 

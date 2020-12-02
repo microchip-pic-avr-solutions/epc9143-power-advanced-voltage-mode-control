@@ -1,4 +1,0 @@
-<map id="SYSTEM_Initialize" name="SYSTEM_Initialize">
-<area shape="rect" id="node1" title="Initializes essential chip resources and application task." alt="" coords="104,5,235,32"/>
-<area shape="rect" id="node2" href="$group__firmware-flow.html#ga840291bc02cba5474a4cb46a9b9566fe" title="Application main function executed after device comes out of RESET." alt="" coords="5,5,56,32"/>
-</map>
