@@ -73,24 +73,6 @@ extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer
 volatile struct BUCK_POWER_CONTROLLER_s  buck;
 
 
-/* CURRENT SENSE CALIBRATION */
-#define  CS_CALIB_STEPS         8
-
-/***********************************************************************************
- * @struct CS_CALIBRATION_s
- * @brief  Current sense calibration data structure
- * 
- **********************************************************************************/
-typedef struct CS_CALIBRATION_s {
-    
-    volatile uint16_t cs_calib_cnt;
-    volatile uint16_t cs_calib_offset;
-    
-} CS_CALIBRATION_t;
-
-volatile struct CS_CALIBRATION_s calib_cs1;
-volatile struct CS_CALIBRATION_s calib_cs2;
-
 /** @} */ // end of group power-control-app-layer-private-var
 
 /* PRIVATE FUNCTION PROTOTYPES */
