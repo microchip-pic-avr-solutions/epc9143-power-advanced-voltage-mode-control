@@ -49,7 +49,7 @@
             <itemPath>sources/pwr_control/devices/dev_buck_typedef.h</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_substates.h</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_templates.h</itemPath>
-            <itemPath>sources/pwr_control/devices/drv_buck_special_functions.h</itemPath>
+            <itemPath>sources/pwr_control/devices/dev_buck_special_functions.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="drivers" projectFiles="true">
             <itemPath>sources/pwr_control/drivers/npnz16b.h</itemPath>
@@ -147,7 +147,7 @@
         <targetDevice>dsPIC33CK32MP102</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>Simulator</platformTool>
+        <platformTool>ICD4Tool</platformTool>
         <languageToolchain>XC16</languageToolchain>
         <languageToolchainVersion>1.50</languageToolchainVersion>
         <platform>3</platform>
