@@ -36,7 +36,20 @@
 #include <stdbool.h> // include standard boolean data types
 #include <stddef.h> // include standard definition data types
 
+/****************************************************************************************************
+ * @enum BUCK_SPECIAL_FUNCTIONS_e
+ * @brief Enumeration of special function sub-states
+ **************************************************************************************************** */
+typedef enum BUCK_SPECIAL_FUNCTIONS_e // Enumeration of special function sub-states
+{
+    CS_OFSET_CALIBRATION    ///< Special Function Index of Current Sense Feedback Offset Calibration
+        
+} BUCK_SPECIAL_FUNCTIONS_t; // Enumeration of special function sub-states
 
+/* PUBLIC FUNCTION CALL PROTOTYPES */
+extern volatile uint16_t drv_BuckConverter_SpecialFunctionExecute (
+                volatile struct BUCK_POWER_CONTROLLER_s * buckInstance, 
+                volatile enum BUCK_SPECIAL_FUNCTIONS_e specialFunction);
 
 #endif	/* BUCK_CONVERTER_SPECIAL_FUNCTIONS_H */
 
