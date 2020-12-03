@@ -1,10 +1,79 @@
-//First layer
+//First Index Layer
+// Firmware Architecture Index
 /**
- @defgroup firmware-flow Firmware Flowchart
- @brief Firmware Flowchart 
+ @defgroup firmware-flow Firmware Architecture
+ @brief Firmware Architecture Overview 
+
+	 @defgroup device-start-up Device Start Up
+	 @ingroup firmware-flow
+	 @brief Device Start Up
+
+		 @defgroup system-initialization-mcu Essential Chip Resources
+		 @ingroup device-start-up
+		 @brief 
+		 @details
+		 
+		 @defgroup system-initialization-user-peripherals Hardware-Specific Chip Resources
+		 @ingroup device-start-up
+		 @brief 
+		 @details
+
+		 @defgroup system-initialization-user-tasks Firmware Task Initialization
+		 @ingroup device-start-up
+		 @brief 
+		 @details
+
+	 @defgroup main-loop Main Loop
+	 @ingroup firmware-flow
+	 @brief Main Loop 
+
+		 @defgroup main-loop-low-priority Low-Priority Task Execution
+		 @ingroup main-loop
+		 @brief Low priority task execution
+
+		 @defgroup main-loop-high-priority High-Priority Task Execution
+		 @ingroup main-loop
+		 @brief High priority task execution
+	 
+	 @defgroup task-layer Task Layer
+	 @ingroup firmware-flow
+	 @brief Task Layer
 */
 
-// Power Controller Application Layer
+// DEVICE STARTUP:
+//Device Start-Up Sub-Index
+/**
+
+ @defgroup clock-initialization Main Oscillator Initialization
+ @ingroup system-initialization-mcu
+ @brief 
+ @details
+
+ @defgroup gpio-initialization Device Pin Configuration
+ @ingroup system-initialization-mcu
+ @brief 
+ @details
+ 
+ @defgroup dac-initialization Digital-to-Analog Converter
+ @ingroup system-initialization-user-peripherals
+ @brief 
+ @details
+ 
+ @defgroup op-amp-initialization Operational Amplifier Configuration
+ @ingroup system-initialization-user-peripherals
+ @brief 
+ @details
+ 
+ @defgroup os-timer-initialization Operating System Time Base
+ @ingroup system-initialization-user-tasks
+ @brief 
+ @details
+ 
+*/
+
+// MAIN LOOP: 
+
+// TASK LAYER: Power Controller Application Layer
 /**
  @defgroup power-control-app-layer Power Control Application Layer 
  @ingroup task-layer
@@ -13,7 +82,7 @@
  @ingroup power-control-app-layer
  @brief Public functions of the Power Control Application Layer
  @details The power control application layer is the proprietary user code used to configure the generic
-  power controller device driver defined in dev_buck_typedef.h. This applicaiton layer further provides
+  power controller device driver defined in dev_buck_typedef.h. This application layer further provides
   a subset of function calls allowing external software functions to control and monitor the processes
   of the power control device driver, such as the system-wide fault monitor or communication drivers.
  
@@ -28,11 +97,11 @@
  @ingroup power-control-app-layer
  @brief Private variables of the Power Control Application Layer
  @details The private variables of the power control application layer are used for internal process control
-  which is not exposed to external formware modules. 
+  which is not exposed to external firmware modules. 
 
 */
 
-/**
+/* *
  @defgroup fault-handler Fault Handler Reference
  @brief Generic fault handler supporting comparison of static and dynamic data with automated fault trip and release function
  @details This generic fault handler driver declares a fault object data structure, which can be used in user code to create various different fault objects, which will get scanned and managed by the fault handler functions.
@@ -42,84 +111,12 @@
  @brief Contains peripheral default settings and functions for power supply application
 */
 
-//Firmware Flowchart index
 /**
- @defgroup device-start-up Device Start Up
- @ingroup firmware-flow
- @brief Device Start Up
-
- @defgroup main-loop Main Loop
- @ingroup firmware-flow
- @brief Main Loop 
- 
- @defgroup main-loop-low-priority Low-Priority Task Execution
- @ingroup main-loop
- @brief Low priority task execution
-
- @defgroup main-loop-high-priority High-Priority Task Execution
- @ingroup main-loop
- @brief High priority task execution
-
- @defgroup task-layer Task Layer
- @ingroup firmware-flow
- @brief Task Layer
-
- @defgroup buck-state-machine Buck Converter State Machine
- @ingroup task-layer
- @brief 
-
- @defgroup fault-handler Fault Monitor State Machine
- @ingroup task-layer
- @brief 
-
-*/
-
-//Device Start-Up Sub-Index
-/**
- @defgroup system-initialization-mcu Essential Chip Resources
- @ingroup device-start-up
- @brief 
- @details
- 
- @defgroup clock-initialization Main Oscillator Initialization
- @ingroup system-initialization-mcu
- @brief 
- @details
- 
- @defgroup gpio-initialization Device Pin Configuration
- @ingroup system-initialization-mcu
- @brief 
- @details
-
- @defgroup system-initialization-user-peripherals Hardware-Specific Chip Resources
- @ingroup device-start-up
- @brief 
- @details
- 
- @defgroup dac-initialization Digital-to-Analog Converter
- @ingroup system-initialization-user-peripherals
- @brief 
- @details
- 
- @defgroup op-amp-initialization Operational Amplifier Configuration
- @ingroup system-initialization-user-peripherals
- @brief 
- @details
-
- @defgroup system-initialization-user-tasks Firmware Task Initialization
- @ingroup device-start-up
- @brief 
- @details
- 
- @defgroup os-timer-initialization Operating System Time Base
- @ingroup system-initialization-user-tasks
- @brief 
- @details
- 
+ @defgroup power-controller-reference TEST-NODE
 */
 
 //Buck State Machine index
-/**
+/* *
  @defgroup buck-state-machine-function Buck State Machine Functions
  @ingroup buck-state-machine
  @brief Buck State Machine Functions
@@ -130,7 +127,7 @@
 */
 
 //Power Control Handler Reference index
-/**
+/* *
  @defgroup power-handler-functions Power Control Handler Functions
  @ingroup power-handler 
  @brief Power Control Handler Functions
@@ -155,7 +152,7 @@
 */
 
 //Fault Handler Reference index
-/**
+/* *
  @defgroup fault-handler-functions Fault Handler Functions
  @ingroup fault-handler
  @brief Fault Handler Functions

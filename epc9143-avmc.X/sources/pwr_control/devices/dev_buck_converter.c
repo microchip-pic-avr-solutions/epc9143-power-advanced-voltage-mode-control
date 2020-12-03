@@ -5,28 +5,21 @@
  * Created on July 9, 2019, 1:10 PM
  */
 
-
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h> // include standard integer types header file
 #include <stdbool.h> // include standard boolean types header file
 
-#include "dev_buck_typedef.h"
+#include "dev_buck_typedef.h" 
 #include "dev_buck_opstates.h"
 #include "dev_buck_pconfig.h"
 
-/**
- * 
- * @addtogroup power-handler-functions
- * @{
- */
 /*******************************************************************************
- * @fn	volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @fn	volatile uint16_t drv_BuckConverter_Initialize()
  * @brief This function initializes all peripheral modules and their instances used by the power controller
- * @param	None
- * @return  0=failure
- * @return  1=success
+ * @param	volatile struct BUCK_POWER_CONTROLLER_s *buckInstance
+ * @return  unsigned integer (0=failure, 1=success)
  *  
- * <b>Description</b><br> 
+ * @details 
  * 
  *********************************************************************************/
 
@@ -68,11 +61,10 @@ volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_POWER_CONTRO
 /*******************************************************************************
  * @fn	volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
  * @brief This function is the main buck converter state machine executing the most recent state 
- * @param	None
- * @return  0=failure
- * @return  1=success
+ * @param	(none)
+ * @return  unsigned integer (0=failure, 1=success)
  *
- * <b>Description</b><br> 
+ * @details 
  * 
  *********************************************************************************/
 
@@ -181,11 +173,10 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
 /*******************************************************************************
  * @fn	volatile uint16_t drv_BuckConverter_Start(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
  * @brief
- * @param	None
- * @return  0=failure
- * @return  1=success
+ * @param	(none)
+ * @return  unsigned integer (0=failure, 1=success)
  *  
- * <b>Description</b><br> 
+ * @details 
  * 
  *********************************************************************************/
 
@@ -222,11 +213,10 @@ volatile uint16_t drv_BuckConverter_Start(volatile struct BUCK_POWER_CONTROLLER_
 /*******************************************************************************
  * @fn	volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
  * @brief
- * @param  None	
- * @return 0=failure
- * @return 1=success
+ * @param  (none)	
+ * @return  unsigned integer (0=failure, 1=success)
  * 
- * <b>Description</b><br> 
+ * @details 
  * 
  *********************************************************************************/
 volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) {
@@ -253,11 +243,10 @@ volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s
 /*******************************************************************************
  * @fn	volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
  * @brief
- * @param  None	
- * @return 0=failure
- * @return 1=success
+ * @param  (none)	
+ * @return  unsigned integer (0=failure, 1=success)
  *
- * <b>Description</b><br> 
+ * @details 
  * 
  *********************************************************************************/
 volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) {
@@ -273,11 +262,10 @@ volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLE
 /*******************************************************************************
  * @fn	volatile uint16_t drv_BuckConverter_Resume(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
  * @brief
- * @param	None 
- * @return  0=failure
- * @return 1=success
+ * @param	(none) 
+ * @return  unsigned integer (0=failure, 1=success)
  * 
- * <b>Description</b><br> 
+ * @details 
  * 
  *********************************************************************************/
 volatile uint16_t drv_BuckConverter_Resume(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) {
@@ -290,5 +278,5 @@ volatile uint16_t drv_BuckConverter_Resume(volatile struct BUCK_POWER_CONTROLLER
     return(retval);
 }
 
-/**@}*/
-// END OF FILE
+
+// end of file

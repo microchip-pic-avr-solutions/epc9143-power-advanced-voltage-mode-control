@@ -54,10 +54,6 @@
 #include "config/hal.h"
 
 
-/**
- * @addtogroup power-handler-variables
- * @{
- */
 #define BUCK_MPHASE_COUNT                BUCK_NO_OF_PHASES
 
 // Controller Status Bits
@@ -77,10 +73,9 @@
 
 #define BUCK_STAT_ENABLED                0b1000000000000000
 #define BUCK_STAT_DISABLED               0b0000000000000000
-/**@}*/
 
 /**
- * @addtogroup power-handler-enum
+ * @addtogroup buck-converter-public-enum
  * @{  
  */
 
@@ -138,14 +133,14 @@ typedef enum {
         
 } BUCK_CONTROL_MODE_e;
 
-/**@}*/
-/**
- * @addtogroup power-handler-struct
- * @{
- */
+/**@}*/ // buck-converter-public-enum
+
+/** @addtogroup buck-converter-public-struct
+ *  @{
+ */ 
 /*****************************************************************************************************
- *  @struct BUCK_CONVERTER_STATUS_s
- *  @brief Generic power controller status word
+ * @struct BUCK_CONVERTER_STATUS_s
+ * @brief Generic power controller status word
  * 
  * <b>Description: </b><br>
  * The power controller status/control word contains status (low-byte) and control bits (high-byte). 
@@ -425,29 +420,35 @@ typedef struct BUCK_GPIO_INSTANCE_s {
 
 /****************************************************************************************************
  * @struct BUCK_GPIO_SETTINGS_s
+ * @extends BUCK_POWER_CONTROLLER_t
  * @brief Generic power converter GPIO specifications
- * 
- * <b>Description:</b><br>
+ * @details
  * 
  * *************************************************************************************************** */
-typedef struct BUCK_GPIO_SETTINGS_s {
-    
+typedef struct BUCK_GPIO_SETTINGS_s  ///< GPIO instance of the converter control GPIO
+{    
     volatile struct BUCK_GPIO_INSTANCE_s EnableInput; ///< External ENABLE input
     volatile struct BUCK_GPIO_INSTANCE_s PowerGood; ///< Power Good Output
 
-} BUCK_GPIO_SETTINGS_t; ///< GPIO instance of the converter control GPIO
+} BUCK_GPIO_SETTINGS_t;
+
+/**@}*/ // end of group buck-converter-public-struct
 
 // ==============================================================================================
-// BUCK converter state machine data structure and defines
-
+// BUCK converter state machine data structure
 // ==============================================================================================
 
+/** @addtogroup buck-converter-public-struct
+ *  @{
+ */ 
 /****************************************************************************************************
  * @struct BUCK_POWER_CONTROLLER_s
- * @brief 
- * 
- * <b>Description:</b><br>
- * 
+ * @brief Buck converter data object
+ * @details
+ *  Objects of type BUCK_POWER_CONTROLLER_s are holding all configuration and runtime
+ *  data of the buck converter device driver. Multiple objects of this type can coexist
+ *  in the same firmware project being used to drive and control multiple, independent 
+ *  power converters of type 'buck'
  *****************************************************************************************************/
 typedef struct BUCK_POWER_CONTROLLER_s 
 {
@@ -464,10 +465,10 @@ typedef struct BUCK_POWER_CONTROLLER_s
     volatile struct BUCK_LOOP_SETTINGS_s v_loop;        ///< BUCK voltage control loop object
     volatile struct BUCK_LOOP_SETTINGS_s i_loop[BUCK_MPHASE_COUNT]; ///< BUCK Current control loop objects
     
-} BUCK_POWER_CONTROLLER_t; ///< BUCK control & monitoring data structure
+} BUCK_POWER_CONTROLLER_t; ///< Buck converter control & monitoring data structure
 
-/**@}*/
-/**@}*/
-//#else
-//    #pragma message "Warning: dev_buck_typedef.h inclusion bypassed"
+/**@}*/ // end of group buck-converter-public-struct
+
 #endif	/* BUCK_CONVERTER_TYPE_DEF_H */
+
+// end of file

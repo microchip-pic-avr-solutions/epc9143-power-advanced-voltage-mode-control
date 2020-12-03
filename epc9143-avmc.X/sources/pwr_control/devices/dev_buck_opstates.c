@@ -48,13 +48,12 @@ volatile uint16_t (*BuckConverterStateMachine[])(volatile struct BUCK_POWER_CONT
 
 // buck converter state machine function pointer array size
 volatile uint16_t BuckStateList_size = (sizeof(BuckConverterStateMachine)/sizeof(BuckConverterStateMachine[0])); 
+
 /**@}*/
 
-/**
- * @addtogroup buck-state-machine-function
- * @{
-*/
-
+/** @addtogroup buck-converter-state-machine-opstates
+ *  @{
+ */ 
 /*******************************************************************************
  * @fn volatile uint16_t State_Initialize(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief 
@@ -106,6 +105,7 @@ volatile uint16_t State_Initialize(volatile struct BUCK_POWER_CONTROLLER_s *buck
 }
 
 /*******************************************************************************
+ * @ingroup buck-converter-state-machine-opstates
  * @fn volatile uint16_t State_Reset(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief 
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
@@ -161,6 +161,7 @@ volatile uint16_t State_Reset(volatile struct BUCK_POWER_CONTROLLER_s *buckInsta
 }
                 
 /*******************************************************************************
+ * @ingroup buck-converter-state-machine-opstates
  * @fn volatile uint16_t State_Standby(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief 
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
@@ -201,6 +202,7 @@ volatile uint16_t State_Standby(volatile struct BUCK_POWER_CONTROLLER_s *buckIns
 }
 
 /*******************************************************************************
+ * @ingroup buck-converter-state-machine-opstates
  * @fn volatile uint16_t State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief 
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
@@ -284,6 +286,7 @@ volatile uint16_t State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
 }
 
 /*******************************************************************************
+ * @ingroup buck-converter-state-machine-opstates
  * @fn volatile uint16_t State_Online(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief 
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
@@ -342,6 +345,7 @@ volatile uint16_t State_Online(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
 }
 
 /*******************************************************************************
+ * @ingroup buck-converter-state-machine-opstates
  * @fn volatile uint16_t State_Error(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
@@ -371,6 +375,6 @@ volatile uint16_t State_Error(volatile struct BUCK_POWER_CONTROLLER_s *buckInsta
     return(retval);
 }
 
-/**@}*/
+
 // ______________________________________
 // END OF FILE
