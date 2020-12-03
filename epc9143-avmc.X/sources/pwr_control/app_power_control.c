@@ -50,7 +50,6 @@
 #include "fault_handler/app_faults_monitor.h" // include fault monitor application object declarations
 
 
-
 // ADVANCED CONTROL FUNCTION DECLARATIONS
 
 extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer to nPnZ data type object
@@ -81,7 +80,8 @@ volatile uint16_t appPowerSupply_ControllerInitialize(void);
 volatile uint16_t appPowerSupply_PeripheralsInitialize(void);
 
 void __attribute__((always_inline)) appPowerSupply_CurrentBalancing(void); 
-void __attribute__((always_inline)) appPowerSupply_CurrentSenseCalibration(void);
+// ToDo: remove
+//void __attribute__((always_inline)) appPowerSupply_CurrentSenseCalibration(void);
 
 
 /* *************************************************************************************************
@@ -127,7 +127,8 @@ volatile uint16_t appPowerSupply_Execute(void)
     retval &= drv_BuckConverter_Execute(&buck);
     
     // Execute slower, advanced control options
-    appPowerSupply_CurrentSenseCalibration();
+    // ToDo: previous current calibration function call location
+//    appPowerSupply_CurrentSenseCalibration();
 //    appPowerSupply_CurrentBalancing();
 
     // Buck regulation error is only active while controller is running
@@ -664,7 +665,6 @@ volatile uint16_t appPowerSupply_ControllerInitialize(void)
     return(retval);
 }
 
-
 /*******************************************************************************
  * @fn	void appPowerSupply_CurrentBalancing(void) 
  * @brief This function performs current balancing between the power supply phases
@@ -718,50 +718,6 @@ inline void appPowerSupply_CurrentBalancing(void)
 
 }
 
-/*******************************************************************************
- * @fn	void appPowerSupply_CurrentSenseCalibration(void) 
- * @brief This function executes the current sense feedback calibration
- * @param  (none)
- * @return unsigned integer (0=failure, 1=success)
- *  
- * @details
- * This function performs a current sense feedback channel zero-offset 
- * calibration. The calibration is executed when the reference voltage is 
- * applied to the current sense shunt amplifiers but the power supply is still
- * turned off. The offset value is determined by a 4x oversampling of each of
- * the feedback signals to eliminate high-frequency noise. 
- * Once the calibration is complete, the 'cs_calib_complete' status bit in 
- * the buck converter power controller object status word is set, allowing 
- * the state machine to run.
- *********************************************************************************/
-void appPowerSupply_CurrentSenseCalibration(void)
-{
-    // Current Calibration Procedure
-    if ((buck.state_id.bits.opstate_id != BUCK_OPSTATE_STANDBY) || 
-        (buck.status.bits.cs_calib_complete) || 
-        (!buck.status.bits.adc_active)
-       )
-    { return; }
-        
-    if (++calib_cs1.cs_calib_cnt < CS_CALIB_STEPS)
-    {
-        calib_cs1.cs_calib_offset += buck.data.i_sns[0]; // Read ADC offset value
-        calib_cs2.cs_calib_offset += buck.data.i_sns[1]; // Read ADC offset value
-    }
-    else
-    {
-        calib_cs1.cs_calib_offset += buck.data.i_sns[0]; // Read ADC offset value
-        calib_cs2.cs_calib_offset += buck.data.i_sns[1]; // Read ADC offset value
-
-        calib_cs1.cs_calib_offset >>= 3;             // Divide accumulated ADC samples (calculate average)
-        calib_cs2.cs_calib_offset >>= 3;             // Divide accumulated ADC samples (calculate average)
-
-        buck.status.bits.cs_calib_complete = true;   // Set CALIB_DONE flag
-    }
-
-    return;
-    
-}
 /** @} */ // end of group power-control-app-layer-private 
-
+// ____________________________
 // end of file
