@@ -12,7 +12,7 @@
 #include "dev_buck_pconfig.h" // include buck converter
 #include "dev_buck_typedef.h" // include buck converter data object declarations
 #include "dev_buck_substates.h" // include state machine sub-state declarations
-
+#include "dev_buck_special_functions.h" // include buck converter special function declarations
 
 // Private function prototypes of state functions
 
@@ -77,7 +77,7 @@ volatile uint16_t State_Initialize(volatile struct BUCK_POWER_CONTROLLER_s *buck
     // Reset all status bits
     buckInstance->status.bits.adc_active = false;
 
-    // Initiate current sensor calibration flag bit
+    // Initiate current sense offset calibration if enabled
     if (buckInstance->set_values.control_mode == BUCK_CONTROL_MODE_VMC)
         buckInstance->status.bits.cs_calib_complete = true; 
     else if (buckInstance->status.bits.cs_calib_enable)
@@ -175,11 +175,35 @@ volatile uint16_t State_Reset(volatile struct BUCK_POWER_CONTROLLER_s *buckInsta
  *********************************************************************************/
 volatile uint16_t State_Standby(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
 {
+    volatile uint16_t retval=0;
+    
     // if the 'autorun' option is set, automatically set the GO bit when the 
     // converter is enabled
     if ((buckInstance->status.bits.enabled) && (buckInstance->status.bits.autorun))
     { buckInstance->status.bits.GO = true; }
 
+    // If current sense feedback offset calibration is enabled, 
+    // call calibration sub-state routine
+    retval = drv_BuckConverter_SpecialFunctionExecute(buckInstance, CS_OFSET_CALIBRATION);
+        
+    switch (retval)
+    {
+        case BUCK_OPSRET_COMPLETE:
+            buckInstance->status.bits.cs_calib_complete = true; // Set CS Calibration Flag to COMPLETE
+            buckInstance->status.bits.busy = false; // Clear BUSY bit indicating on-going activity
+            break;
+        case BUCK_OPSRET_REPEAT:
+            buckInstance->status.bits.cs_calib_complete = false; // Set CS Calibration Flag to COMPLETE
+            buckInstance->status.bits.busy = true; // Set BUSY bit indicating on-going activity
+            return(BUCK_OPSRET_REPEAT);
+            break;
+        default:
+            buckInstance->status.bits.cs_calib_complete = false; // Set CS Calibration Flag to COMPLETE
+            buckInstance->status.bits.busy = false; // Clear BUSY bit indicating on-going activity
+            return(BUCK_OPSRET_ERROR);
+            break;
+    }
+        
     // Wait for all startup conditions to be met
     if ((buckInstance->status.bits.enabled) &&          // state machine needs to be enabled
         (buckInstance->status.bits.GO) &&               // GO-bit needs to be set
