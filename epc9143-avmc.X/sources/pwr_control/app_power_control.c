@@ -56,7 +56,7 @@ extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer
                                                 // Calls the AGC Factor Modulation Function (Assembly)
 
 /**
- * @addtogroup power-control-app-layer-private-var
+ * @ingroup app-layer-power-control-functions-private
  * @{
  */
 /**************************************************************************************************
@@ -89,7 +89,7 @@ void __attribute__((always_inline)) appPowerSupply_CurrentBalancing(void);
  * ************************************************************************************************/
 
 /**
- * @addtogroup power-control-app-layer-public 
+ * @ingroup app-layer-power-control-functions-public
  * @{ 
  */
 /*******************************************************************************
@@ -248,7 +248,7 @@ volatile uint16_t appPowerSupply_Stop(void)
  * @return  0=failure
  * @return 1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * 
  *********************************************************************************/
 
@@ -289,7 +289,7 @@ volatile uint16_t appPowerSupply_Resume(void)
  * PRIVATE FUNCTIONS
  * ************************************************************************************************/
 /**
- * @addtogroup power-control-app-layer-private 
+ * @ingroup app-layer-power-control-functions-private
  * @{ 
  */
 /*******************************************************************************

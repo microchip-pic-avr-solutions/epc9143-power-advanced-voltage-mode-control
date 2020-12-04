@@ -27,7 +27,7 @@
 
 #include "p33c_opa.h"
 /**
- * @addtogroup p33c-opa-pral
+ * @ingroup lib-layer-pral-functions-public-opa
  * @{ 
  */
 /*********************************************************************************

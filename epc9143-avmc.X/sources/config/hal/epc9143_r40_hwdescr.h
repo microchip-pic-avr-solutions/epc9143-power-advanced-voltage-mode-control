@@ -40,7 +40,7 @@
 #include <math.h> // include standard math functoins library
 
 /**************************************************************************************************
- * @addtogroup hardware-id-macro
+ * @ingroup hardware-id-macro
  * @{
  * @brief Global macro identifying the hardware version supported by 
  * 
@@ -57,7 +57,7 @@
 /** @} */ // end of group hardware-id-macro
 
 /**************************************************************************************************
- * @addtogroup special-options
+ * @ingroup special-options
  * @{
  * @brief Global defines used to enable/disable special firmware options
  * 
@@ -75,7 +75,7 @@
 /** @} */ // end of group special-options
 
 /**************************************************************************************************
- * @addtogroup device-abstraction-settings
+ * @ingroup device-abstraction-settings
  * @{ 
  * @brief Fundamental microcontroller device settings
  * 
@@ -98,7 +98,7 @@
 /** @} */ // end of group device-abstraction-settings
 
 /**
- * @addtogroup device-abstraction-macros
+ * @ingroup device-abstraction-macros
  * @{ 
  * @brief Conversion macros of fundamental microcontroller device settings
  * 
@@ -116,7 +116,7 @@
 /** @} */ // end of group device-abstraction-macros
 
 /**************************************************************************************************
- * @addtogroup state-machine-settings
+ * @ingroup state-machine-settings
  * @{
  * @brief Global state-machine user-settings
  * 
@@ -133,7 +133,7 @@
 /** @} */ // end of group state-machine-settings ~~~~~~~~~~
 
 /**
- * @addtogroup state-machine-macros
+ * @ingroup state-machine-macros
  * @{
  * @brief Global state-machine user-settings conversion macros
  * 
@@ -148,7 +148,7 @@
 /** @} */ // end of group state-machine-macros ~~~~~~~~~~
 
 /**
- * @addtogroup state-machine-mcal
+ * @ingroup state-machine-mcal
  * @{
  * @brief Global state-machine peripheral assignments
  * 
@@ -165,7 +165,7 @@
 /** @} */ // end of group state-machine-mcal ~~~~~~~~~~
 
 /***************************************************************************************************
- * @addtogroup circuit-gpio-mcal
+ * @ingroup circuit-gpio-mcal
  * @{
  * @brief Global abstraction labels of special circuit signal device pin assignments
  * 
@@ -207,7 +207,7 @@
 /** @} */ // end of group circuit-gpio-mcal
 
 /**************************************************************************************************
- * @addtogroup circuit-peripheral-mcal
+ * @ingroup circuit-peripheral-mcal
  * @{
  * @brief User-declaration of global defines for PWM signal generator settings
  * 
@@ -225,7 +225,7 @@
 /** @} */ // end of group circuit-peripheral-mcal
 
 /**************************************************************************************************
- * @addtogroup pwm-settings
+ * @ingroup pwm-settings
  * @{
  * @brief User-declaration of global defines for PWM signal generator settings
  * 
@@ -249,11 +249,11 @@
 /** @} */ // end of group pwm-settings ~~~~~~~~~~~~~~~~~~~~
 
 /** 
- * @addtogroup pwm-mcal-phase1
+ * @ingroup pwm-mcal-phase1
  * @{ 
  * @brief PWM peripheral output pins, control signals and register assignments of converter phase #1
  * 
- * <b>Description</b><br>
+ * @details
  * Converter phase #1 uses a simple half-bridge to commutate the switch node. The signal source
  * therefore only requires a single PWM generator instance to be configured in fixed frequency 
  * complementary mode with dead times. Additional PWM peripheral features are used by the firmware
@@ -295,11 +295,11 @@
 /** @} */ // end of group pwm-mcal-phase1 ~~~~~~~~~~~~~~~~~
 
 /** 
- * @addtogroup pwm-mcal-phase2
+ * @ingroup pwm-mcal-phase2
  * @{ 
  * @brief PWM peripheral output pins, control signals and register assignments of converter phase #2
  * 
- * <b>Description</b><br>
+ * @details
  * Converter phase #2 uses a simple half-bridge to commutate the switch node. The signal source
  * therefore only requires a single PWM generator instance to be configured in fixed frequency 
  * complementary mode with dead times. Additional PWM peripheral features are used by the firmware
@@ -348,7 +348,7 @@
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /** 
- * @addtogroup pwm-macros
+ * @ingroup pwm-macros
  * @{ 
  * @brief Conversion macros for user-declarations of PWM parameters
  * 
@@ -371,7 +371,7 @@
 
     
 /**************************************************************************************************
- * @addtogroup input-voltage-feedback-settings
+ * @ingroup input-voltage-feedback-settings
  * @{
  * @brief Declaration of input voltage feedback properties
  * 
@@ -399,7 +399,7 @@
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /** 
- * @addtogroup input-voltage-feedback-mcal
+ * @ingroup input-voltage-feedback-mcal
  * @{ 
  * @brief ADC input assignments of input voltage feedback signals
  * 
@@ -423,7 +423,7 @@
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /** 
- * @addtogroup input-voltage-feedback-macros
+ * @ingroup input-voltage-feedback-macros
  * @{ 
  * @brief Conversion macros of input voltage feedback parameters
  * 
@@ -453,7 +453,7 @@
 /** @} */ // end of group input-voltage-feedback-macros ~~~~~~~~~~~~~~~~~~~~~~
 
 /**************************************************************************************************
- * @addtogroup output-voltage-feedback-settings
+ * @ingroup output-voltage-feedback-settings
  * @{
  * @brief Declaration of output voltage feedback properties
  * 
@@ -478,7 +478,7 @@
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /** 
- * @addtogroup output-voltage-feedback-mcal
+ * @ingroup output-voltage-feedback-mcal
  * @{ 
  * @brief ADC input assignments of output voltage feedback signals
  * 
@@ -499,7 +499,7 @@
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /** 
- * @addtogroup output-voltage-feedback-macros
+ * @ingroup output-voltage-feedback-macros
  * @{ 
  * @brief Conversion macros of output voltage feedback parameters
  * 
@@ -524,7 +524,7 @@
 /** @} */ // end of group output-voltage-feedback-macros ~~~~~~~~~~~~~~~~~~~~~~
 
 /**************************************************************************************************
- * @addtogroup phase-current-feedback-settings
+ * @ingroup phase-current-feedback-settings
  * @{
  * @brief Declaration of phase-current feedback properties
  * 
@@ -558,7 +558,7 @@ to the user code section of the power controller */
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /** 
- * @addtogroup phase-current-feedback-macros
+ * @ingroup phase-current-feedback-macros
  * @{ 
  * @brief Conversion macros of phase current feedback parameters
  * 
@@ -583,11 +583,11 @@ to the user code section of the power controller */
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /** 
- * @addtogroup phase-current-feedback-mcal
+ * @ingroup phase-current-feedback-mcal
  * @{ 
  * @brief ADC input assignments of phase current feedback signals
  * 
- * <b>Description</b><br>
+ * @details
  * In this section the ADC input channels, related ADC result buffers, trigger
  * sources and interrupt vectors are defined. These settings allow the fast 
  * re-assignments of feedback signals in case of hardware changes.
@@ -618,7 +618,7 @@ to the user code section of the power controller */
 
     
  /**************************************************************************************************
- * @addtogroup adaptive-control
+ * @ingroup adaptive-control
  * @{
  * @brief Declaration of additional hardware-specific defines required for adaptive gain control
  * 
@@ -649,11 +649,11 @@ to the user code section of the power controller */
 /** @} */ // end of group
 
 /**************************************************************************************************
- * @addtogroup startup-timing-settings
+ * @ingroup startup-timing-settings
  * @{
  * @brief Global defines for soft-start specific parameters
  * 
- * <b>Description</b><br>
+ * @details
  * This section is used to define power supply startup timing settings. The soft-start sequence 
  * is part of the power controller. It allows to program specific timings for 
  *   - Power On Delay
@@ -691,7 +691,7 @@ to the user code section of the power controller */
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /** 
- * @addtogroup startup-timing-macros
+ * @ingroup startup-timing-macros
  * @{ 
  * @brief Conversion Macros of Startup Timing Settings
  * 
@@ -710,11 +710,11 @@ to the user code section of the power controller */
 /** @} */ // end of group startup-timing-macros ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 /**************************************************************************************************
- * @addtogroup fault-response-settings
+ * @ingroup fault-response-settings
  * @{
  * @brief Global defines for fault-monitor related parameters
  * 
- * <b>Description</b><br>
+ * @details
  * This section is used to define power supply fault object timing settings. The fault monitor 
  * is continuously monitoring declared data objects at the high-priority task frequency defined by 
  * \ref MAIN_EXECUTION_PERIOD. Based on this known interval, filtering delays for fault trip and 
@@ -743,7 +743,7 @@ to the user code section of the power controller */
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /** 
- * @addtogroup fault-response-macros
+ * @ingroup fault-response-macros
  * @{ 
  * @brief Conversion Macros of Fault Response Timing Settings
  * 
@@ -764,7 +764,7 @@ to the user code section of the power controller */
 /** @} */ // end of group fault-response-macros ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
 /**************************************************************************************************
- * @addtogroup control-interrupt-vector-declarations
+ * @ingroup control-interrupt-vector-declarations
  * @{
  * @brief Control loop Interrupt Vector Settings
  * 

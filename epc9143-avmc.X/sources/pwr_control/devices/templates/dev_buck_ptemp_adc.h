@@ -38,7 +38,7 @@
 #include <stddef.h> // include standard definition data types
 
 /**
- * @ingroup lib-layer-buck-properties-public 
+ * @ingroup lib-layer-buck-properties-public-defines 
  * @{
  */
 /* ********************************************************************************

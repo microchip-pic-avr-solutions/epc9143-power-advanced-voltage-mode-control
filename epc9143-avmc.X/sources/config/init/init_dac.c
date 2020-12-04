@@ -15,7 +15,7 @@
 #include "pwr_control/devices/dev_buck_typedef.h"
 
 /**
- * @addtogroup dac-initialization
+ * @ingroup dac-initialization
  * @{
  */
 /***********************************************************************************
@@ -26,7 +26,7 @@
  * @return 0=failure
  * @return 1=success
  * 
- * <b>Description</b>
+ * @details
  * This function initializes the DAC module base registers for being operated 
  * by the auxiliary oscillator at an input clock frequency of 500 MHz. 
  * 
@@ -59,7 +59,7 @@ volatile uint16_t sysDacModule_Initialize(void)
  * @param  unsigned integer dacInstance
  * @return unsigned integer (0=failure, 1=success)
  * 
- * <b>Description</b>
+ * @details
  * ADD_DESCRIPTION_HERE
  *
  * <p><b>Example:</b></p>
@@ -94,7 +94,7 @@ volatile uint16_t sysDacOutput_Initialize(volatile uint16_t dacInstance)
  * @param  unsigned integer dacInstance
  * @return unsigned integer (0=failure, 1=success)
  * 
- * <b>Description</b>
+ * @details
  * ADD_DESCRIPTION_HERE
  *
  * <p><b>Example:</b></p>
@@ -132,7 +132,7 @@ volatile uint16_t sysDacOutput_Enable(volatile uint16_t dacInstance) {
  * @param  unsigned integer dacInstance
  * @return unsigned integer (0=failure, 1=success)
  * 
- * <b>Description</b>
+ * @details
  * ADD_DESCRIPTION_HERE
  *
  * <p><b>Example:</b></p>

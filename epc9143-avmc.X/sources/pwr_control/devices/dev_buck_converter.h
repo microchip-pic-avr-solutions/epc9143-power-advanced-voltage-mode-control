@@ -52,7 +52,7 @@
  // ==============================================================================================
  // BUCK CONVERTER PUBLIC API FUNCTION CALL PROTOTYPES
  // ==============================================================================================
-/** @addtogroup buck-converter-public-functions
+/** @ingroup buck-converter-public-functions
  * @{
  */
 

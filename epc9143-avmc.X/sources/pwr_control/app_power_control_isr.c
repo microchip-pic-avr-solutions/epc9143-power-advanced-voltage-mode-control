@@ -10,7 +10,7 @@
 #include "app_power_control.h"
 
 /**
- * @addtogroup power-handler-functions
+ * @ingroup app-layer-power-control-events
  * @{
  */
 /*********************************************************************************
@@ -21,7 +21,7 @@
  * 
  * @return None
  *   
- * <b>Description<b><br>
+ * @details
  * The control interrupt is calling the control loop. The point in time where
  * this interrupt is thrown is determined by selecting the BUCK_VOUT_TRIGGER_MODE
  * option. 

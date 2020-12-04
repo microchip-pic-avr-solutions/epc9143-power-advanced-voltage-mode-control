@@ -10,7 +10,7 @@
 #include "config/init/init_gpio.h"
 
 /**
- * @addtogroup gpio-initialization
+ * @ingroup gpio-initialization
  * @{
  */
 
@@ -20,7 +20,7 @@
  * @param  ADD_PARAMETER_HERE
  * @return DATA_TYPE SHORT_VALUE_DESCRIPTION
  * 
- * <b>Description</b>
+ * @details
  * ADD_DESCRIPTION_HERE
  *
  * <p><b>Example:</b></p>

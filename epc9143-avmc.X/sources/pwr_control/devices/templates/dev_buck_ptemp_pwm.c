@@ -9,7 +9,7 @@
 #include "dev_buck_ptemp_pwm.h" // include peripheral register configuration values header
 
 /**
- * @ingroup lib-layer-buck-properties-private
+ * @ingroup lib-layer-buck-properties-private-var
  * @{
  */
 /****************************************************************************************************

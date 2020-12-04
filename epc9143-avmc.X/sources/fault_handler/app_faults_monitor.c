@@ -26,7 +26,7 @@ volatile uint16_t __attribute__((always_inline)) regerr_FaultInitialize(void);
 
 
 /**
- * @addtogroup fault-handler-functions
+ * @ingroup app-layer-fault-handler-functions-public
  * @{ 
  */
 /*********************************************************************************
@@ -37,7 +37,7 @@ volatile uint16_t __attribute__((always_inline)) regerr_FaultInitialize(void);
  * @return 0=failure 
  * @return 1=success
  * 
- * <b>Description</b>
+ * @details
  *   In this function all user-defined fault objects are monitored for 
  *   threshold violations. While fault responses are triggered by each 
  *   fault object individually, system recovery from a fault condition is 
@@ -129,13 +129,16 @@ volatile uint16_t appFaultMonitor_Dispose(void)
     
     return(1);
 }
-
+/**@}*/
 
 /* *********************************************************************************
  * PRIVATE FUNCTIONS
  * ********************************************************************************/
 
-
+/**
+ * @ingroup app-layer-fault-handler-functions-private
+ * @{ 
+ */
 /*********************************************************************************
  * @fn volatile uint16_t uvlo_FaultInitialize(void)
  * @brief Initializes the user-defined fault objects for under-voltage lockout

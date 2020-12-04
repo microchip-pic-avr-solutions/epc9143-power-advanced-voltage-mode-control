@@ -13,7 +13,7 @@
 #include "config/init/init_timer1.h"   
 
 /**
- * @addtogroup os-timer-initialization
+ * @ingroup os-timer-initialization
  * @{
  */
 /***********************************************************************************
