@@ -15,7 +15,9 @@
 /* ************************************************************************************************
  * PRIVATE DEFINES
  * ************************************************************************************************/
-#define OSC_CLKSW_TIMEOUT	50000	// value to set the timeout for clock switching operations
+
+/**@ingroup lib-layer-pral-proterties-privatec-osc */
+#define OSC_CLKSW_TIMEOUT	50000	///< value to set the timeout for clock switching operations
 
 /* ************************************************************************************************
  * PRIVATE VARIABLES
@@ -23,7 +25,7 @@
 volatile OSCILLATOR_SYSTEM_FREQUENCIES_t system_frequencies;
 
 /**
- * @addtogroup p33c-osc-pral
+ * @ingroup lib-layer-pral-functions-public-osc
  * @{ 
  */
 /*************************************************************************************************
@@ -581,7 +583,7 @@ volatile uint16_t p33c_Osc_GetFrequencies(volatile uint32_t main_osc_frequency) 
 }
 
 // *****************************************************************************************************
-/** @}*/ // end of group op-amp-initialization
+/** @}*/ // end of group osc-initialization
 
 // end of file
 

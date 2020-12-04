@@ -145,7 +145,7 @@ volatile uint16_t p33c_OpaModule_ConfigWrite(
  * @brief Default RESET configuration of the op-amp module base SFRs
  * @param opaacConfigClear: Op-Amp Module Special Function Register (SFR) set
  *
- * <b>Description:</b><br>
+ * @details
  *   Default configuration of the op-amp module SFRs with all its registers 
  *   being reset to their default state when the device comes out of RESET.
  *   Programmers can use this template to reset (dispose) a previously used
@@ -166,7 +166,7 @@ volatile struct P33C_OPA_MODULE_s opaModuleConfigClear = {
  * @brief Default configuration of op-amp module running from 500 MHz input clock
  * @param opaModuleDefault: Op-Amp Module Special Function Register (SFR) set
  *
- * <b>Description:</b><br>
+ * @details
  * Default configuration of the op-amp module SFRs with all its registers 
  * being reset to their default state when the device comes out of RESET.
  * 

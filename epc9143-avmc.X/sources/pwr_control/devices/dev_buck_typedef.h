@@ -55,7 +55,7 @@
 
 
 /**
- * @addtogroup power-handler-variables
+ * @ingroup lib-layer-buck-properties-public-defines
  * @{
  */
 #define BUCK_MPHASE_COUNT                BUCK_NO_OF_PHASES
@@ -80,15 +80,14 @@
 /**@}*/
 
 /**
- * @addtogroup power-handler-enum
- * @{  
+ * @ingroup lib-layer-buck-properties-public-data-types
+ * @{
  */
-
 /****************************************************************************************************
  * @enum BUCK_OPSTATES_e
  * @brief  Enumeration of state machine operating states 
  **************************************************************************************************** */
-typedef enum BUCK_OPSTATES_e {  // Enumeration of state machine operating states 
+typedef enum BUCK_OPSTATES_e {  
     
     BUCK_OPSTATE_ERROR          = 0x00,  ///< power converter control state #0: in case of an error, state machine will reset to RESET
     BUCK_OPSTATE_INITIALIZE     = 0x01,  ///< power converter control state #1: initialize variables and hijack controller reference
@@ -138,16 +137,11 @@ typedef enum {
         
 } BUCK_CONTROL_MODE_e;
 
-/**@}*/
-/**
- * @addtogroup power-handler-struct
- * @{
- */
 /*****************************************************************************************************
  *  @struct BUCK_CONVERTER_STATUS_s
  *  @brief Generic power controller status word
  * 
- * <b>Description: </b><br>
+ * @details
  * The power controller status/control word contains status (low-byte) and control bits (high-byte). 
  * -# Status Bits:
  *      - ADC_ACTIVE: ADC is active and running (read only)
@@ -317,7 +311,7 @@ typedef struct BUCK_LOOP_SETTINGS_s {
  * @struct BUCK_SWITCH_NODE_SETTINGS_s
  * @brief Generic power converter switch-node specifications
  * 
- * <b>Description: </b><br>
+ * @details
  * This data structure is used to set the converter switch-node specifications declaring which
  * PWM channel is used as well as its switching frequency, phase-shift, dead times and duty ratio
  * limits.
@@ -467,7 +461,7 @@ typedef struct BUCK_POWER_CONTROLLER_s
 } BUCK_POWER_CONTROLLER_t; ///< BUCK control & monitoring data structure
 
 /**@}*/
-/**@}*/
+
 //#else
 //    #pragma message "Warning: dev_buck_typedef.h inclusion bypassed"
 #endif	/* BUCK_CONVERTER_TYPE_DEF_H */

@@ -49,7 +49,7 @@
 #include <stddef.h> // include standard definitions  
 
 /**
- * @addtogroup fault-handler-enum
+ * @ingroup lib-layer-lib1-properties-public
  * @{
  */
 /***********************************************************************************
@@ -71,12 +71,6 @@ typedef enum FLT_COMPARE_TYPE_e {
         
 } FLT_COMPARE_TYPE_t;
 
-/** @} */ // end of group
-
-/**
- * @addtogroup fault-handler-struct
- * @{
- */
 
 /**********************************************************************************
  * @struct FLT_OBJECT_STATUS_s

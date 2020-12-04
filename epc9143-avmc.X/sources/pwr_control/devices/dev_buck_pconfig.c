@@ -17,11 +17,16 @@
 #include "dev_buck_templates.h"
 
 /* PRIVATE VARIABLES */
-volatile uint16_t adcore_mask=0;
-volatile uint16_t adcore_diff_mask=0;
+/**
+ * @ingroup lib-layer-buck-properties-private
+ * @{
+ */
+volatile uint16_t adcore_mask=0;        ///< TODO: set the ADC core mask to default 
+volatile uint16_t adcore_diff_mask=0;   
+/**@}*/
 
 /** 
- * @addtogroup power-handler-functions 
+ * @ingroup lib-layer-buck-functions-public
  * @{
  */
 /*******************************************************************************
@@ -32,7 +37,7 @@ volatile uint16_t adcore_diff_mask=0;
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  *    This function initializes the buck PWM module base registers with default
  *     values for maximum performance. 
  * 
@@ -86,7 +91,7 @@ volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  *    This function initializes the buck PWM channel with default values for maximum performance. 
  * 
  *     Default configuration:
@@ -191,7 +196,7 @@ volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLE
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * This function starts the operation of the buck PWM by enabling the PWM 
  * generator and its output pins.
  *********************************************************************************/
@@ -241,7 +246,7 @@ volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckIns
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * This function shuts down the PWM output by disabling all PWM channels of the recent buck
  * converter configuration, overriding the output pins and resetting the buck PWM
  * duty cycle to its minimum duty ratio. 
@@ -286,7 +291,7 @@ volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInst
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * This function suspends the buck PWM operation by disbaling all PWM outputsof the recent 
  * buck converter configuration, overriding the PWM output pins and setting the 
  * duty cycle to 0.
@@ -329,7 +334,7 @@ volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckI
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * THis function updates the PWM timing bit and the PWM output pins are enabled.
  *********************************************************************************/
 volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
@@ -365,7 +370,7 @@ volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckIn
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * The ADC initialization covers basic configurations like data format, clock sources and dividers
  * as well as specific configurations for ADC cores. These settings are general, basic settings
  * and not related to specific analog inputs. The standard configuration set here sets up the 
@@ -461,7 +466,7 @@ volatile uint16_t buckADC_ModuleInitialize(void)
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * This function initializes the ADC input registers based on the selected ADC channel. 
  * This function sets the input channel trigger source, input mode, and the ADC core 
  * connected to the selected channel. 
@@ -555,7 +560,7 @@ volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* 
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * This function enables the ADC module, powers-up and enables the ADC cores used and waits 
  * until ADC cores are ready.
  *********************************************************************************/
@@ -586,7 +591,7 @@ volatile uint16_t buckADC_Start(void)
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * This function captures the user selected pin to be activated through LAT register.
  *********************************************************************************/
 volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
@@ -620,7 +625,7 @@ volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOIns
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * This function captures the pin that the use desired to be put in inactive state. 
  *********************************************************************************/
 volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
@@ -656,7 +661,7 @@ volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOI
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * This function captures the selected pin and read its state.
  *********************************************************************************/
 volatile bool buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
@@ -685,7 +690,7 @@ volatile bool buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPI
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * This function captures the user selected pin then set the pin to inactive and
  * set it as digital input or output pin. 
  *********************************************************************************/
@@ -727,7 +732,7 @@ volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_
  * @return  0=failure
  * @return  1=success
  *  
- * <b>Description</b><br> 
+ * @details
  * This function initializes the ENABLE input pin and POWER GOOD output pin using the 
  * buck GPIO_PrivateInitialize (URL = @ref buckGPIO_PrivateInitialize).
  *********************************************************************************/

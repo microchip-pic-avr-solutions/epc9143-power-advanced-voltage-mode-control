@@ -49,7 +49,7 @@
 #include <stddef.h> // include standard definition data types
 
 /**
- * @addtogroup power-handler-variables
+ * @ingroup lib-layer-buck-properties-public 
  * @{
  */
 /* ********************************************************************************
@@ -74,7 +74,7 @@
                           |||||||||||||| __ BIT  1: MCLKSEL[1:0]: PWM Master Clock Selection bits
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
-#define REG_PCLKCON     0b0000000000000011
+#define REG_PCLKCON     0b0000000000000011  ///< PCLKCON: PWM CLOCK CONTROL REGISTER
 
 /* CMBTRIGL: COMBINATIONAL TRIGGER REGISTER LOW
 
@@ -95,7 +95,7 @@
                           |||||||||||||| __ BIT  1: CTA2EN: Enable Trigger Output from PWM Generator #2 as Source for Combinational Trigger A bit
                           ||||||||||||||| _ BIT  0: CTA1EN: Enable Trigger Output from PWM Generator #1 as Source for Combinational Trigger A bit
                           ||||||||||||||||  */
-#define REG_CMBTRIGL    0b0000000000000000
+#define REG_CMBTRIGL    0b0000000000000000      ///< CMBTRIGL: COMBINATIONAL TRIGGER REGISTER LOW
 
 /* CMBTRIGH: COMBINATIONAL TRIGGER REGISTER HIGH
 
@@ -116,7 +116,7 @@
                           |||||||||||||| __ BIT  1: CTB2EN: Enable Trigger Output from PWM Generator #2 as Source for Combinational Trigger B bit
                           ||||||||||||||| _ BIT  0: CTB1EN: Enable Trigger Output from PWM Generator #1 as Source for Combinational Trigger B bit
                           ||||||||||||||||  */
-#define REG_CMBTRIGH    0b0000000000000000
+#define REG_CMBTRIGH    0b0000000000000000  ///< CMBTRIGH: COMBINATIONAL TRIGGER REGISTER HIGH
 
 /* LOGCONA: COMBINATORIAL PWM LOGIC CONTROL REGISTER A
 
@@ -137,7 +137,7 @@
                           |||||||||||||| __ BIT  1: 
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
-#define REG_LOGCONA     0b0000000000000000
+#define REG_LOGCONA     0b0000000000000000  ///< LOGCONA: COMBINATORIAL PWM LOGIC CONTROL REGISTER A
 
 /* LOGCONB: COMBINATORIAL PWM LOGIC CONTROL REGISTER B
 
@@ -374,15 +374,15 @@
  * PWM GENERATOR CONFIGURATION
  * *******************************************************************************/
     
-#define P33C_PGxCONL_PWM_ON     0x8000  // control bit in PGxCONL enabling/disabling the PWM generator
-#define P33C_PGxCONL_HRES_EN    0x0080  // control bit in PGxCONL enabling/disabling High Resolution Mode
-#define P33C_PGxIOCONL_OVREN    0x3000  // control bits in PGxIOCONL enabling/disabling the PWM output override
-#define P33C_PGxIOCONH_PEN      0x000C  // control bits in PGxIOCONH enabling/disabling the PWM outputs
-#define P33C_PGxSTAT_UPDREQ     0x0008  // Control bit in PGxSTAT setting the Update Request bit
-#define P33C_PGxCONH_MPERSEL    0x4000  // Control bit in PGxCONH seting the PERIOD register source
+#define P33C_PGxCONL_PWM_ON     0x8000  ///< control bit in PGxCONL enabling/disabling the PWM generator
+#define P33C_PGxCONL_HRES_EN    0x0080  ///< control bit in PGxCONL enabling/disabling High Resolution Mode
+#define P33C_PGxIOCONL_OVREN    0x3000  ///< control bits in PGxIOCONL enabling/disabling the PWM output override
+#define P33C_PGxIOCONH_PEN      0x000C  ///< control bits in PGxIOCONH enabling/disabling the PWM outputs
+#define P33C_PGxSTAT_UPDREQ     0x0008  ///< Control bit in PGxSTAT setting the Update Request bit
+#define P33C_PGxCONH_MPERSEL    0x4000  ///< Control bit in PGxCONH seting the PERIOD register source
     
-#define P33C_PGxCONH_UPDMOD_MSTR 0b001  // Master Immediate Update
-#define P33C_PGxCONH_UPDMOD_SLV  0b011  // Slaved immediate Update
+#define P33C_PGxCONH_UPDMOD_MSTR 0b001  ///< Master Immediate Update
+#define P33C_PGxCONH_UPDMOD_SLV  0b011  ///< Slaved immediate Update
 
 // ==============================================================================================
 // BUCK converter Peripheral Configuration for Voltage and Average Current Mode Control

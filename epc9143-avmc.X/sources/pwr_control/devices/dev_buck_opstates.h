@@ -57,9 +57,8 @@ extern volatile uint16_t BuckStateList_size; ///< Buck converter state machine f
 
 
 /** 
- * @file dev_buck_opstates.c
- * @brief Functions of the buck converter state machine operating states
- * @addtogroup buck-state-machine 
+ * @ingroup lib-layer-buck
+ * @details
  * @dot
  * digraph State_Machine  
  * {
@@ -107,5 +106,4 @@ extern volatile uint16_t BuckStateList_size; ///< Buck converter state machine f
  * }
  * @enddot
  */
-
 // END OF FILE

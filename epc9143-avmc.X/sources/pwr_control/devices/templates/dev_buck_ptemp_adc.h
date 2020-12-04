@@ -38,7 +38,7 @@
 #include <stddef.h> // include standard definition data types
 
 /**
- * @addtogroup power-handler-variables 
+ * @ingroup lib-layer-buck-properties-public 
  * @{
  */
 /* ********************************************************************************

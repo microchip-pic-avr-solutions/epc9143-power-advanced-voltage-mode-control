@@ -25,17 +25,13 @@
 // Include Header Files
 #include "p33c_pps.h"
 
-/**
- * @addtogroup pps
- * @{ 
- */
 
 /* ************************************************************************************************
  * @file p33c_pps.c
  * @brief Generic Peripheral Pin Select (PPS) Driver Module
  * @see p33c_pps.h
  *
- * <b>Description:</b><br>
+ * @details
  * Some low-pin count devices have the capability to assign digital functions to a range of 
  * free configurable pins (RPx). This driver module offers functions to read from and write to
  * the configuration registers, which will connect a digital peripheral bock with a selected 
@@ -55,6 +51,10 @@
  *  10/14/2020  Removed support for dsPIC33F and dsPIC33E
  * ***********************************************************************************************/
 
+/**
+ * @ingroup lib-layer-pral-functions-public
+ * @{ 
+ */
 /*************************************************************************************************
  * @fn volatile uint16_t PPS_LockIO(void)
  * @brief Locks the Peripheral Pin Select Configuration registers against accidental changes
@@ -62,7 +62,7 @@
  * @return 1: Success
  * @return 0: Error
  *
- * <b>Description:</b><br>
+ * @details
  * This inline-assembly routine locks the Port Multiplexing Configuration registers by keeping
  * the required number of cycles during the Lock pocess. This function has to be called once 
  * before digital functions are mapped to a specific pin. Once called, a series of assignments
@@ -88,7 +88,7 @@ volatile uint16_t PPS_LockIO(void){
  * @return 1: Success
  * @return 0: Error
  *
- * <b>Description:</b><br>
+ * @details
  * This inline-assembly routine unlocks the Port Multiplexing Configuration registers by keeping
  * the required number of cycles during the unlock process. This function has to be called once 
  * after digital functions have been mapped to a specific pin, to prevent accidental changes. 
@@ -114,7 +114,7 @@ volatile uint16_t PPS_UnlockIO(void){
  * @return 1: Success
  * @return 0: Error
  *
- * <b>Description:</b><br>
+ * @details
  * Any supported digital function output (e.g. UART TxD) can be assigned to one of the RPx pins
  * of the MCU/DSC. To assign a function output to a pin, call 
  *
@@ -150,7 +150,7 @@ volatile uint16_t PPS_RemapOutput(volatile uint8_t pinno, volatile uint8_t perip
  * @return 1: Success
  * @return 0: Error
  *
- * <b>Description:</b><br>
+ * @details
  * Any RPx pin can be assigned to a supported digital function input (e.g. UART RxD). To assign 
  * a pin to a function input, call 
  *
@@ -180,7 +180,7 @@ volatile uint16_t PPS_RemapInput(volatile uint8_t pinno, volatile uint8_t *perip
  * @return 1: Success
  * @return 0: Error
  *
- * <b>Description:</b><br>
+ * @details
  * An existing assignment between any RPx pin and a supported digital function output will be
  * dissolved.
  *
@@ -209,7 +209,7 @@ volatile uint16_t PPS_UnmapOutput(volatile uint8_t pinno)
  * @return 1: Success
  * @return 0: Error
  *
- * <b>Description:</b><br>
+ * @details
  * An existing assignment between any RPx pin and a supported digital function input will be
  * dissolved.
  *

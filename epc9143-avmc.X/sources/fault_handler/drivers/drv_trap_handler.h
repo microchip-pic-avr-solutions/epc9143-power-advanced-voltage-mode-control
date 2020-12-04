@@ -62,7 +62,7 @@
 #include <stdbool.h> // include standard boolean types header file
 
 /**
- * @addtogroup fault-handler-trap
+ * @ingroup lib-layer-fault-properties-public-defines
  * @{ 
  */
 
@@ -79,7 +79,7 @@
 
 #define FAULT_OBJECT_CPU_RESET_TRIGGER_BIT_MASK     0b0000000000000001 ///< This define is used to filter the fault object CPU reset trigger
 #define CPU_RESET_TRIGGER_LOW_BIT_MASK 0b00000000000000011011101110000000 ///< This define is used to filter on critical fault conditions used to trigger a CPU reset
-
+/**@}*/
 
 // =================================================================================================
 //
@@ -87,7 +87,10 @@
 //
 // =================================================================================================
 
-
+/**
+ * @ingroup lib-layer-fault-properties-public-data-types
+ * @{ 
+ */
 /**********************************************************************************
  * @enum TRAP_ID_e
  * @brief defining trap-ID for primary and secondary vectors 
@@ -309,6 +312,10 @@ extern void __attribute__((__interrupt__)) _AddressError(void);
 extern void __attribute__((__interrupt__)) _StackError(void);
 extern void __attribute__((__interrupt__)) _MathError(void);
 
+/**
+ * @ingroup lib-layer-fault-properties-public-defines
+ * @{ 
+ */
 #if (TRAP_DMA_SUPPORT == 1)
   #if defined (_DMACError)
     extern void __attribute__((__interrupt__)) _DMACError(void);
@@ -336,3 +343,4 @@ extern void __attribute__((__interrupt__)) _AltMathError(void);
   
 #endif
   
+/**@}*/  
