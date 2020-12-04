@@ -1,0 +1,56 @@
+/* LIBRARY LAYER: Fault Handler Layer Documentation */
+/**
+@defgroup lib-layer-fault Fault Handler Library
+@ingroup lib-layer
+
+@defgroup lib-layer-fault-functions-public Public Functions
+@ingroup lib-layer-fault
+@brief Public functions of the fault handler library layer
+@details This is the detailed description of public functions of the
+library layer of fault handler.
+
+@defgroup lib-layer-fault-properties-public Public Properties
+@ingroup lib-layer-fault
+@brief Public properties of the fault handler library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+fault handler.
+
+@defgroup lib-layer-fault-functions-private Private Functions
+@ingroup lib-layer-fault
+@brief Private functions of the fault handler library layer
+@details This is the detailed description of public functions of the
+library layer of fault handler.
+
+@defgroup lib-layer-fault-properties-private Private Properties
+@ingroup lib-layer-fault
+@brief Public properties of the fault handler library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+fault handler.
+
+*/
+
+/*Public Properties*/
+/**
+@defgroup lib-layer-fault-properties-public-variables Variables
+@ingroup lib-layer-fault-properties-public
+
+@defgroup lib-layer-fault-properties-public-data-types Data Types
+@ingroup lib-layer-fault-properties-public
+
+@defgroup lib-layer-fault-properties-public-defines Defines and Macros
+@ingroup lib-layer-fault-properties-public
+*/
+
+/*Private Properties*/
+/**
+@defgroup lib-layer-fault-properties-private-variables Variables
+@ingroup lib-layer-fault-properties-private
+
+@defgroup lib-layer-fault-properties-private-data-types Data Types
+@ingroup lib-layer-fault-properties-private
+
+@defgroup lib-layer-fault-properties-private-defines Defines and Macros
+@ingroup lib-layer-fault-properties-private
+*/

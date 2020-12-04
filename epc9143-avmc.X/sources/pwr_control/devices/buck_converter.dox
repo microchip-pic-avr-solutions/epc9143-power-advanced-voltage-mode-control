@@ -1,0 +1,55 @@
+/* LIBRARY LAYER: Buck Converter Library Layer Documentation */
+/**
+@defgroup lib-layer-buck Buck Converter Library
+@ingroup lib-layer
+
+@defgroup lib-layer-buck-functions-public Public Functions
+@ingroup lib-layer-buck
+@brief Public functions of the second library layer
+@details This is the detailed description of public functions of the
+library layer of buck converter.
+
+@defgroup lib-layer-buck-properties-public Public Properties
+@ingroup lib-layer-buck
+@brief Public properties of the second library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+buck converter.
+
+@defgroup lib-layer-buck-functions-private Private Functions
+@ingroup lib-layer-buck
+@brief Private functions of the second library layer
+@details This is the detailed description of public functions of the
+library layer of buck converter.
+
+@defgroup lib-layer-buck-properties-private Private Properties
+@ingroup lib-layer-buck
+@brief Public properties of the second library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+buck converter.
+*/
+
+/*Public Properties*/
+/**
+@defgroup lib-layer-buck-properties-public-variables Variables
+@ingroup lib-layer-buck-properties-public
+
+@defgroup lib-layer-buck-properties-public-data-types Data Types
+@ingroup lib-layer-buck-properties-public
+
+@defgroup lib-layer-buck-properties-public-defines Defines and Macros
+@ingroup lib-layer-buck-properties-public
+*/
+
+/*Private Properties*/
+/**
+@defgroup lib-layer-buck-properties-private-variables Variables
+@ingroup lib-layer-buck-properties-private
+
+@defgroup lib-layer-buck-properties-public-data-types Data Types
+@ingroup lib-layer-buck-properties-private
+
+@defgroup lib-layer-buck-properties-public-defines Defines and Macros
+@ingroup lib-layer-buck-properties-private
+*/

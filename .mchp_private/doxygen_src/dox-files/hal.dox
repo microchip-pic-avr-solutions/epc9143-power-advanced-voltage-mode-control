@@ -11,7 +11,7 @@
  @ingroup abstraction-layer 
  @brief Declarations of fundamental microcontroller device parameters
 
- <b>Description</b><br>
+ @details
  This section is used to define device specific parameters like ADC reference and
  resolution, main execution clock frequency and peripheral time base settings. 
  All parameters are defined using physical quantities. Pre-compiler macros are used 
@@ -136,7 +136,7 @@
  @ingroup pwm-fundamentals
  @brief PWM peripheral output pins, control signals and register assignments
  
- <b>Description</b><br>
+ @details
  In this section generic labels are assigned to dedicated device pins and peripheral 
  registers of PWM generators used to commutate the power supply plant switching node. 
  These settings allow the fast re-assignments of feedback signals in case of hardware 

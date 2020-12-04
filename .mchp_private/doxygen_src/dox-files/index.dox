@@ -1,45 +1,7 @@
 //First layer
 /**
- @defgroup firmware-flow Firmware Flowchart
+ @defgroup firmware-flow Firmware Architecture
  @brief Firmware Flowchart 
-*/
-
-// Power Controller Application Layer
-/**
- @defgroup power-control-app-layer Power Control Application Layer 
- @ingroup task-layer
- 
- @defgroup power-control-app-layer-public Public Functions
- @ingroup power-control-app-layer
- @brief Public functions of the Power Control Application Layer
- @details The power control application layer is the proprietary user code used to configure the generic
-  power controller device driver defined in dev_buck_typedef.h. This applicaiton layer further provides
-  a subset of function calls allowing external software functions to control and monitor the processes
-  of the power control device driver, such as the system-wide fault monitor or communication drivers.
- 
- @defgroup power-control-app-layer-private Private Functions
- @ingroup power-control-app-layer
- @brief Private functions of the Power Control Application Layer
- @details The private functions of the power control application layer are used to configure the generic
-  power controller device driver defined in dev_buck_typedef.h as well as to provide additional functions
-  required by the specific hardware design.
-
- @defgroup power-control-app-layer-private-var Private Variables
- @ingroup power-control-app-layer
- @brief Private variables of the Power Control Application Layer
- @details The private variables of the power control application layer are used for internal process control
-  which is not exposed to external formware modules. 
-
-*/
-
-/**
- @defgroup fault-handler Fault Handler Reference
- @brief Generic fault handler supporting comparison of static and dynamic data with automated fault trip and release function
- @details This generic fault handler driver declares a fault object data structure, which can be used in user code to create various different fault objects, which will get scanned and managed by the fault handler functions.
-     The main function of this fault handler is restricted to detecting fault conditions, differentiating between trip and release conditions. Fault conditions are defined in user code individually for each fault object.
-
- @defgroup peripheral Power Supply Peripherals
- @brief Contains peripheral default settings and functions for power supply application
 */
 
 //Firmware Flowchart index
@@ -63,14 +25,6 @@
  @defgroup task-layer Task Layer
  @ingroup firmware-flow
  @brief Task Layer
-
- @defgroup buck-state-machine Buck Converter State Machine
- @ingroup task-layer
- @brief 
-
- @defgroup fault-handler Fault Monitor State Machine
- @ingroup task-layer
- @brief 
 
 */
 
@@ -118,81 +72,6 @@
  
 */
 
-//Buck State Machine index
-/**
- @defgroup buck-state-machine-function Buck State Machine Functions
- @ingroup buck-state-machine
- @brief Buck State Machine Functions
- 
- @defgroup buck-state-machine-struct Buck State Machine Data Structures
- @ingroup buck-state-machine
- @brief Buck State Machine Data Structures
-*/
-
-//Power Control Handler Reference index
-/**
- @defgroup power-handler-functions Power Control Handler Functions
- @ingroup power-handler 
- @brief Power Control Handler Functions
- 
- @defgroup power-handler-struct Power Handler Data Structures
- @ingroup power-handler
- @brief Power Handler Data Structures
- 
- @defgroup power-handler-enum Power Control Handler Enumerations
- @ingroup power-handler
- @brief This enumeration is listing all defined states supported by the power controller state-machine.
-  The state machine handles the initialization of the power controller, stand-by, start up procedure
-  including Power-On-Delay, Ramp-Up and Power Good Delay until it ends up in a continuous operating
-  state. When reference values are changed while running, the state machine will tune into the new
-  reference values using the slew rates defined for the startup phase. 
- 
-  For more information on each state, please read the related sections.
- 
- @defgroup power-handler-variables Power Control Handler Variables
- @ingroup power-handler
- @brief Power Control Handler Variables
-*/
-
-//Fault Handler Reference index
-/**
- @defgroup fault-handler-functions Fault Handler Functions
- @ingroup fault-handler
- @brief Fault Handler Functions
-
- @defgroup fault-handler-trap Fault Handler Traps
- @ingroup fault-handler
- @brief Fault Handler Traps
-
- @defgroup fault-handler-enum Fault Handler Enumeration
- @ingroup fault-handler
- @brief Fault Handler Enumeration
- 
- @defgroup fault-handler-struct Fault Handler Data Structure
- @ingroup fault-handler
- @brief 
-*/
-
-//Power Supply Peripherals
-/**
- @defgroup dac Digital-to-Analog Converter
- @ingroup peripheral
- @brief Digital-to-Analog Converter
- 
- @defgroup gpio General Purpose Input/Output 
- @ingroup peripheral
- @brief General Purpose Input/Output
-
- @defgroup pps Peripheral Pin Select
- @ingroup peripheral
- @brief Peripheral Pin Select
-
- @defgroup pwm Pulse Width Modulation
- @ingroup peripheral
- @brief Pulse Width Modulation
-*/
-
-
 // Hardware Abstraction Layer Title
 /**
  @defgroup abstraction-layer Hardware Abstraction Layer
@@ -203,3 +82,11 @@
   As the microcontroller used in this design is a fixed, irreplaceable board component, this particular Hardware Abstraction Layer (HAL) covers declarations of circuit control and feedback signals as well as
   associated microcontroller peripheral instances and features.
 */
+
+
+// Library Layer
+/**
+ @defgroup lib-layer Library Layer 
+ @brief
+ @details
+*/ 
