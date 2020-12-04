@@ -49,11 +49,12 @@
 
 #include "dev_buck_typedef.h"
 
-// ==============================================================================================
-// BUCK converter public function prototypes
-// ==============================================================================================
-
-// POWER CONVERTER FUNCTION API
+ // ==============================================================================================
+ // BUCK CONVERTER PUBLIC API FUNCTION CALL PROTOTYPES
+ // ==============================================================================================
+/** @addtogroup buck-converter-public-functions
+ * @{
+ */
 
 extern volatile uint16_t drv_BuckConverter_Initialize(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
 extern volatile uint16_t drv_BuckConverter_Execute(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
@@ -62,6 +63,7 @@ extern volatile uint16_t drv_BuckConverter_Stop(volatile BUCK_POWER_CONTROLLER_t
 extern volatile uint16_t drv_BuckConverter_Suspend(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
 extern volatile uint16_t drv_BuckConverter_Resume(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
 
+/**@}*/ // buck-converter-public-functions
 
 #endif	/* BUCK_CONVERTER_STATE_MACHINE_H */
 

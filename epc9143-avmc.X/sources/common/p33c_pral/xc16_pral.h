@@ -1,7 +1,5 @@
-/*!Software License Agreement
- * ************************************************************************************************
- *
- * Software License Agreement
+/*************************************************************************************************
+ * <b>Software License Agreement</b>
  *
  * Copyright © 2020 Microchip Technology Inc.  All rights reserved. Microchip licenses to you the
  * right to use, modify, copy and distribute Software only when embedded on a Microchip 
@@ -20,12 +18,15 @@
  * OR LOST DATA, COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY  
  * THIRD PARTIES (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
  *
- * ***********************************************************************************************/
+ ************************************************************************************************/
 /*************************************************************************************************
- * @file xc16_pral.h
- * @brief Generic Peripheral Special Function Register Abstraction Layer Header Files
+ * @addtogroup xc16-pral
+ * @{
+ *************************************************************************************************
+ * @file
+ * @brief Includes generic peripheral special function register abstraction layer header files
  *
- * <b>Description</b>
+ * @details
  * This additional header file contains include paths to header files providing additional 
  * peripheral special function register abstraction drivers. These PRAL drivers provide 
  * abstracted data structures of peripheral module and instance register sets used as virtual
@@ -33,8 +34,7 @@
  * register manipulation operations by abstracted versions, which are mapped to a specific 
  * module or instance at runtime.
  * 
- * ***********************************************************************************************/
-
+ ************************************************************************************************/
 
 #ifndef MCAL_P33C_SFR_ABSTRACTION_DRIVER_H
 #define MCAL_P33C_SFR_ABSTRACTION_DRIVER_H
@@ -49,18 +49,22 @@
 
 #if defined (__P33SMPS_CK__) || defined (__P33SMPS_CH__)
 
-#include "p33c_ccp.h"  ///< include capture/compare instance SFR abstraction driver file
-#include "p33c_dac.h"  ///< include digital-to-analog converter module & instance SFR abstraction driver file
-#include "p33c_dsp.h"  ///< include DSP configuration SFR abstraction driver file
+#include "p33c_ccp.h"  ///< include Capture/Compare instance SFR abstraction driver file
+#include "p33c_dac.h"  ///< include Digital-to-Analog Converter module & instance SFR abstraction driver file
+#include "p33c_dsp.h"  ///< include Digital Signal Processor configuration SFR abstraction driver file
 #include "p33c_gpio.h" ///< include GPIO instance SFR abstraction driver file
-#include "p33c_pps.h"  ///< include peripheral pin select SFR abstraction driver file
-#include "p33c_pwm.h"  ///< include high-speed pwm module & instance SFR abstraction driver file
+#include "p33c_opa.h"  ///< include Operational Amplifier SFR abstraction driver file
+#include "p33c_osc.h"  ///< include Oscillator module SFR abstraction driver file
+#include "p33c_pps.h"  ///< include Peripheral Pin Select SFR abstraction driver file
+#include "p33c_pwm.h"  ///< include high-speed PWM module & instance SFR abstraction driver file
 
-#include "p33c_macros.h"  ///< include dsPIC33C CPU macros
+#include "p33c_macros.h"  ///< include generic dsPIC33C CPU instruction macros
 
 #else
     #pragma message "warning: currently selected device is not supported by XC16 Periperhal Register Abstraction Layer (PRAL) drivers"
 #endif
 
 #endif // End of MCAL_P33C_SFR_ABSTRACTION_DRIVER_H
-// END OF FILE
+
+/** @}*/ // end of group xc16-pral
+// end of file

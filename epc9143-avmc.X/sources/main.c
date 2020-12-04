@@ -123,7 +123,7 @@ int main(void) {
 /**@}*/ // end of group firmware-flow
 
 /**
- * @addtogroup main-loop-low-priority
+ * @ingroup main-loop-low-priority
  * @{
  */
 /**********************************************************************************
@@ -134,9 +134,9 @@ int main(void) {
  * 
  * @details
  * This application executes different tasks of which some are time 
- * critical while others are insensitive against execution time
- * jitter. The following function is called after the execution 
- * of the time critical tasks is complete. 
+ * critical while others are insensitive to execution time jitter. 
+ * This function is calling all non-time critical tasks. it is called
+ * after all high-priority tasks have been executed. 
  * 
  * ********************************************************************************/
 
@@ -152,7 +152,7 @@ volatile uint16_t sysLowPriorityTasks_Execute(void)
 /**@}*/ // end of group main-loop-low-priority
 
 /**
- * @addtogroup main-loop-high-priority
+ * @ingroup main-loop-high-priority
  * @{
  */
 /**********************************************************************************

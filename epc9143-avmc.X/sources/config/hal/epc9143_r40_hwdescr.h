@@ -542,7 +542,7 @@
 the calibration procedure needs to added individually 
 to the user code section of the power controller */
 
-#define BUCK_ISNS_NEED_CALIBRATION  false //true        
+#define BUCK_ISNS_NEED_CALIBRATION  true        
     
 // Feedback Declarations
 #define BUCK_ISNS_FEEDBACK_GAIN     (float) 0.050       ///< Current Gain in V/A

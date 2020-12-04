@@ -155,7 +155,7 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
     else
     // If there is no input voltage or no output voltage, start with minimum duty ratio
     {
-        for (_i=0; _i<BUCK_NO_OF_PHASES; _i++) {
+        for (_i=0; _i<buckInstance->set_values.no_of_phases; _i++) {
             _start_dc = (uint16_t)buckInstance->sw_node[_i].duty_ratio_min;
         }
     }
@@ -177,7 +177,7 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
     else if (buckInstance->set_values.control_mode == BUCK_CONTROL_MODE_ACMC) 
     {   
         // Limit startup duty cycle to largest minimum/smallest maximum
-        for (_i=0; _i<BUCK_NO_OF_PHASES; _i++) {
+        for (_i=0; _i<buckInstance->set_values.no_of_phases; _i++) {
             
             if(_start_dc < buckInstance->i_loop[_i].minimum) 
             { _start_dc = buckInstance->i_loop[_i].minimum; }
@@ -186,7 +186,7 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
         }
         
         // Set initial duty cycle
-        for (_i=0; _i<BUCK_NO_OF_PHASES; _i++) 
+        for (_i=0; _i<buckInstance->set_values.no_of_phases; _i++) 
         {
             // pre-charge current loop control histories with ideal duty cycle
             buckInstance->i_loop[_i].ctrl_Precharge(
@@ -250,7 +250,7 @@ volatile uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buck
             buckInstance->v_loop.controller->status.bits.enabled = true; 
             
             // enable all phase current loop controllers
-            for (_i=0; _i<BUCK_NO_OF_PHASES; _i++) {
+            for (_i=0; _i<buckInstance->set_values.no_of_phases; _i++) {
                 buckInstance->i_loop[_i].controller->status.bits.enabled = true; 
             }
         }
