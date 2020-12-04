@@ -26,10 +26,19 @@ echo Preparing Output Generation...
 echo. 
 rem Checking if the output directory already exists or needs to be created
 echo Checking Output Directory
-set /P docs_exists=exist "..\..\docs" 
-if ("%docs_exists%" echo docs directory exists ) else ( mkdir "..\..\docs" && echo docs directory created)
+if exist "..\..\docs" goto docs_present
+:create_docs
+mkdir "..\..\docs"
+echo created new output directory 'docs'
+set /A new_docs=1
+goto switch_to_docs
+:docs_present
+set /A new_docs=0
+echo found output directory 'docs'
+echo. 
+:switch_to_docs
 cd ..\..\docs
-rem if not "%docs_exists%" goto skip_delete_output
+if "%new_docs%"=="1" goto skip_delete_images
 :get_options
 set /P yesno="Clear the output directory before generating new content (recommended) (Y/N)? "
 if "%yesno%"=="Y" goto delete_output
