@@ -1,4 +1,5 @@
-/* Microchip Technology Inc. and its subsidiaries.  You may use this software 
+/*LICENSE ********************************************************************
+ * Microchip Technology Inc. and its subsidiaries.  You may use this software 
  * and any derivatives exclusively with Microchip products. 
  * 
  * THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS".  NO WARRANTIES, WHETHER 
@@ -17,36 +18,25 @@
  *
  * MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE 
  * TERMS. 
- */
+ * ***************************************************************************/
+/*!init_dsp.h
+ * *************************************************************************** 
+ * File:   init_dsp.h
+ * Author: c14029
+ *
+ * Created on March 8, 2019
+ * ***************************************************************************/
 
-/* 
- * File:   system_initialize.h
- * Author: M91406
- * Comments: Combines the fundamental MCU and peripheral initialization routines
- * Revision history: 
- *    1.0   initial release
- */
-
-// This is a guard condition so that contents of this file are not included
-// more than once.  
-#ifndef APPLICAITON_SYSTEM_INITIALIZE_H
-#define	APPLICAITON_SYSTEM_INITIALIZE_H
+#ifndef SYSTEM_INITIALIZE_MCAL_DSP_INITIALIZATION_H
+#define	SYSTEM_INITIALIZE_MCAL_DSP_INITIALIZATION_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
+#include <stdint.h> // include standard integer types header file
 
-#include "config/init/init_fosc.h"
-#include "config/init/init_dsp.h"
-#include "config/init/init_timer1.h"
-#include "config/init/init_gpio.h"
+/* ***********************************************************************************************
+ * PROTOTYPES
+ * ***********************************************************************************************/
+extern volatile uint16_t sysDsp_Initialize(void); 
 
-#include "config/init/init_opa.h"
-#include "config/init/init_dac.h"
-
-/* PUCLIC FUNCTION CALL PROTOTYPES */
-
-extern volatile uint16_t SYSTEM_Initialize(void);
-extern volatile uint16_t sysUserTasks_Initialize(void);
-extern volatile uint16_t sysUserPeriperhals_Initialize(void);
-
-#endif	/* APPLICAITON_SYSTEM_INITIALIZE_H */
+#endif	/* SYSTEM_INITIALIZE_MCAL_DSP_INITIALIZATION_H */
 

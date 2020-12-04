@@ -35,6 +35,7 @@ volatile uint16_t SYSTEM_Initialize(void)
     retval &= sysFosc_Initialize(); ///< Set up system oscillator for 100 MIPS operation
     retval &= sysAclk_Initialize(); ///< Set up Auxiliary PLL for 500 MHz (source clock to PWM module)
     retval &= sysGpio_Initialize(); ///< Initialize common device GPIOs
+    retval &= sysDsp_Initialize(); ///< Initialize the DSP engine for fractional multiplication with saturation
     
 	return(retval);
 

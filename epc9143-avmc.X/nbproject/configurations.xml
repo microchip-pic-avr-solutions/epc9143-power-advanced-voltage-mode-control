@@ -17,6 +17,7 @@
           <itemPath>sources/config/init/init_timer1.h</itemPath>
           <itemPath>sources/config/init/init_opa.h</itemPath>
           <itemPath>sources/config/init/init_dac.h</itemPath>
+          <itemPath>sources/config/init/init_dsp.h</itemPath>
         </logicalFolder>
         <itemPath>sources/config/hal.h</itemPath>
         <itemPath>sources/config/system.h</itemPath>
@@ -82,6 +83,7 @@
           <itemPath>sources/config/init/init_timer1.c</itemPath>
           <itemPath>sources/config/init/init_opa.c</itemPath>
           <itemPath>sources/config/init/init_dac.c</itemPath>
+          <itemPath>sources/config/init/init_dsp.c</itemPath>
         </logicalFolder>
         <itemPath>sources/config/config_bits.c</itemPath>
         <itemPath>sources/config/system.c</itemPath>
