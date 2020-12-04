@@ -1,4 +1,0 @@
-<map id="p33c_OscFrc_DefaultInitialize" name="p33c_OscFrc_DefaultInitialize">
-<area shape="rect" id="node1" title="Initializes the major oscillator and the PLL module step by step by using clock switching in software..." alt="" coords="5,5,200,32"/>
-<area shape="rect" id="node2" href="$group__p33c-osc-pral.html#ga61cf7c84efc865c104d5e292866131c4" title="Initializes the major oscillator and the PLL module step by step by using clock switching in software..." alt="" coords="248,5,383,32"/>
-</map>

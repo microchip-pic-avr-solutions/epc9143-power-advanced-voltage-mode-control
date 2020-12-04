@@ -1,4 +1,0 @@
-<map id="buckGPIO_Clear" name="buckGPIO_Clear">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,124,32"/>
-<area shape="rect" id="node2" href="$group__gpio.html#gae1bc534f11ac7cf278865cb73b601055" title="Gets pointer to GPIO Instance SFR set." alt="" coords="172,5,373,32"/>
-</map>

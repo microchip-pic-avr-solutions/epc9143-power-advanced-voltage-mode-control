@@ -1,5 +1,0 @@
-<map id="SubState_VRampUp" name="SubState_VRampUp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,148,32"/>
-<area shape="rect" id="node2" href="$group__power-handler-functions.html#ga474b1ea0d26dbfd268ec805a900c1c93" title=" " alt="" coords="196,5,335,32"/>
-<area shape="rect" id="node3" href="$group__pwm.html#ga8aa18df01ada60e1faac049c5eb34700" title="Returns the PWM generator index." alt="" coords="383,5,593,32"/>
-</map>

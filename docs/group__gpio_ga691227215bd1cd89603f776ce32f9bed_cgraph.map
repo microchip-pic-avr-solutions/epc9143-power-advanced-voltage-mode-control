@@ -1,4 +1,0 @@
-<map id="p33c_GpioInstance_Dispose" name="p33c_GpioInstance_Dispose">
-<area shape="rect" id="node1" title="Resets all GPIO Instance registers to their RESET default values." alt="" coords="5,13,192,39"/>
-<area shape="rect" id="node2" href="$group__gpio.html#ga7e29e5ec5e6b24499aa69daf71f46951" title="Writes a user&#45;defined configuration to the GPIO instance registers." alt="" coords="240,5,416,47"/>
-</map>
