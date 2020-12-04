@@ -43,7 +43,11 @@
 
 #include "drv_fault_handler.h" // 
 
-
+/**@ingroup lib-layer-fault-properties-private-data-types */
+/*******************************************************************************
+ * @struct	FAULT_OBJECT_s fltobjClear
+ * @brief
+*****************************************************************************/
 volatile struct FAULT_OBJECT_s fltobjClear = 
 {
         .Status.bits.CompareType = FLTCMP_NONE,     ///< Clear fault object comparison type
@@ -63,10 +67,7 @@ volatile struct FAULT_OBJECT_s fltobjClear =
         .RecoveryResponse.ptrResponseFunction = NULL,  ///< Clear fault recovery response function pointer
     };
 
-/**
- * @addtogroup fault-handler-functions
- * @{
- */
+/** @ingroup lib-layer-fault-functions-public */
 /*******************************************************************************
  * @fn	uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj)
  * @param	FAULT_OBJECT_t* fltobj
@@ -74,7 +75,7 @@ volatile struct FAULT_OBJECT_s fltobjClear =
  *
  * @brief Check current fault status of a user-defined fault object
  *
- * <b>Description</b><br>
+ * @details
  * This routine compares the most recent value of a global variable or SFR
  * (SOURCE) against user-defined thresholds. If the value violates/exceeds
  * one or more of the user defined conditions, a fault counter is incremented. 
@@ -293,4 +294,4 @@ volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj) {
     return (fres); // Fault handler executed successfully
 }
 
-/** @} */ // end of group
+

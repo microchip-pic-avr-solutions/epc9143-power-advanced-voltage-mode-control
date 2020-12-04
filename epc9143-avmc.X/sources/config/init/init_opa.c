@@ -13,7 +13,7 @@
 #include "init_opa.h"
 
 /**
- * @addtogroup op-amp-initialization
+ * @ingroup op-amp-initialization
  * @{
  */
 /***********************************************************************************

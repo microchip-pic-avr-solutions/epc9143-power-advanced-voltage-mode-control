@@ -20,7 +20,7 @@ volatile bool LOW_PRIORITY_GO = false;  // Flag allowing low priority tasks to b
 volatile uint16_t sysLowPriorityTasks_Execute(void);
 
 /**
- * @addtogroup firmware-flow
+ * @ingroup firmware-flow
  * @dotfile flowchart.gv
  * @{
  */
@@ -31,7 +31,7 @@ volatile uint16_t sysLowPriorityTasks_Execute(void);
  *
  * @brief  Application main function executed after device comes out of RESET
  * 
- * <b>Description</b><br>
+ * @details
  * This function is the starting point of the firmware. It is called after the
  * device is coming out of RESET, starting to execute code. The startup sequence 
  * is as follows:

@@ -16,7 +16,7 @@
 #define TIMEOUT_LIMIT   5000    // timeout counter maximum
 
 /**
- * @addtogroup clock-initialization
+ * @ingroup clock-initialization
  * @{
  */
 /***********************************************************************************

@@ -18,7 +18,7 @@
 
 /* PRIVATE VARIABLES */
 /**
- * @ingroup lib-layer-buck-properties-private
+ * @ingroup lib-layer-buck-properties-private-var
  * @{
  */
 volatile uint16_t adcore_mask=0;        ///< TODO: set the ADC core mask to default 

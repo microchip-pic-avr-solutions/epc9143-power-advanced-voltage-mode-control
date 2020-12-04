@@ -27,7 +27,7 @@
 
 #include "p33c_gpio.h"
 /**
- * @ingroup lib-layer-pral-functions-public
+ * @ingroup lib-layer-pral-functions-public-gpio
  * @{ 
  */
 /*********************************************************************************
@@ -151,7 +151,7 @@ volatile uint16_t p33c_GpioInstance_ConfigWrite(
 /* ============================================================================== */
 
 /**
- * @ingroup lib-layer-pral-properties-private
+ * @ingroup lib-layer-pral-properties-private-gpio
  * @{ 
  */
 /*********************************************************************************

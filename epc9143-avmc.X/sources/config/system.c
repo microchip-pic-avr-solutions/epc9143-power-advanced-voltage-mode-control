@@ -9,7 +9,7 @@
 #include "system.h"
 
 /**
- * @addtogroup system-initialization-mcu
+ * @ingroup system-initialization-mcu
  * @{
  */
 /***********************************************************************************
@@ -43,7 +43,7 @@ volatile uint16_t SYSTEM_Initialize(void)
 /** @}*/ // end of group system-initialization-mcu
 
 /**
- * @addtogroup system-initialization-user-peripherals
+ * @ingroup system-initialization-user-peripherals
  * @{
  */
 /***********************************************************************************
@@ -77,7 +77,7 @@ volatile uint16_t sysUserPeriperhals_Initialize(void) {
 /** @}*/ // end of group system-initialization-user-peripherals
 
 /**
- * @addtogroup system-initialization-user-tasks User Task Initialization
+ * @ingroup system-initialization-user-tasks User Task Initialization
  * @{
  */
 /***********************************************************************************

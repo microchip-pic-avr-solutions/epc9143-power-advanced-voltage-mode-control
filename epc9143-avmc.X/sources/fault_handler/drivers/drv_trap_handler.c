@@ -58,22 +58,21 @@
 #include <stdbool.h>
 #include "drv_trap_handler.h"
 
-// data structure used as buffer for trap monitoring
-volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog; 
+/**@ingroup lib-layer-fault-properties-private-data-types */
+
+volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog; ///< data structure used as buffer for trap monitoring 
 
 
-/**
- * @addtogroup fault-handler-trap
- * @{ 
- */
 /**************************************************************************************************
+ * @ingroup lib-layer-fault-functions-public
+ * @{
  * @fn volatile uint16_t drv_TrapHandler_SoftTrapsInitialize(bool accumulator_a_overflow_trap_enable, bool accumulator_b_overflow_trap_enable, bool accumulator_catastrophic_overflow_trap_enable)
  * @brief Configures the software-configurable traps
  * @param bool accumulator_a_overflow_trap_enable
  * @param bool accumulator_b_overflow_trap_enable
  * @param bool accumulator_catastrophic_overflow_trap_enable
  * 
- * <b>Description</b>
+ * @details
  * This routine sets the DSP-specific traps for overflow-events of accumulator A and B. 
  * 
  *************************************************************************************************/
@@ -94,7 +93,7 @@ volatile uint16_t drv_TrapHandler_SoftTrapsInitialize(
  * @fn void DefaultTrapHandler(enum TRAP_ID_e trap_id)
  * @brief Centralized trap handler routine
  * 
- * <b>Description</b><br>
+ * @details
  * This routine is used as centralized trap handler for all traps. Each trap is identified 
  * and logged by a unique trap ID and the status bits of traps and interrupt vectors are 
  * captured
@@ -136,10 +135,10 @@ void DefaultTrapHandler(enum TRAP_ID_e trap_id) {
 // =================================================================================================
 
 /**************************************************************************************************
- * @fn void __attribute__((interrupt, no_auto_psv)) _ReservedTrap5(void)
+ * @fn void _ReservedTrap5(void)
  * @brief basic framework for trap handler routine
  * 
- * <b>Description</b><br>
+ * @details
  * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
  * simply ensure that device continuously executes code within the trap service routine. 
  *
@@ -150,10 +149,10 @@ void __attribute__((interrupt, no_auto_psv)) _ReservedTrap5(void) {
 }
 
 /**************************************************************************************************
- * @fn void __attribute__((interrupt, no_auto_psv)) _ReservedTrap7(void)
+ * @fn void _ReservedTrap7(void)
  * @brief basic framework for trap handler routine
  * 
- * <b>Description</b><br>
+ * @details
  * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
  * simply ensure that device continuously executes code within the trap service routine. 
  *
@@ -164,10 +163,10 @@ void __attribute__((interrupt, no_auto_psv)) _ReservedTrap7(void) {
 }
 
 /**************************************************************************************************
- * @fn void __attribute__((interrupt, no_auto_psv)) _HardTrapError(void)
+ * @fn void _HardTrapError(void)
  * @brief basic framework for capturing Hard Trap Error
  * 
- * <b>Description</b><br>
+ * @details
  * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
  * simply ensure that device continuously executes code within the trap service routine. 
  *
@@ -178,10 +177,10 @@ void __attribute__((interrupt, no_auto_psv)) _HardTrapError(void) {
 }
 
 /**************************************************************************************************
- * @fn void __attribute__((interrupt, no_auto_psv)) _SoftTrapError(void)
+ * @fn void _SoftTrapError(void)
  * @brief basic framework for capturing Soft Trap Error
  * 
- * <b>Description</b><br>
+ * @details
  * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
  * simply ensure that device continuously executes code within the trap service routine. 
  *
@@ -192,10 +191,10 @@ void __attribute__((interrupt, no_auto_psv)) _SoftTrapError(void) {
 }
 
 /**************************************************************************************************
- * @fn void __attribute__((interrupt, no_auto_psv)) _OscillatorFail(void)
+ * @fn void _OscillatorFail(void)
  * @brief captures Oscillator failure
  * 
- * <b>Description</b><br>
+ * @details
  * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
  * simply ensure that device continuously executes code within the trap service routine. 
  *
@@ -206,10 +205,10 @@ void __attribute__((interrupt, no_auto_psv)) _OscillatorFail(void) {
 }
 
 /**************************************************************************************************
- * @fn void __attribute__((interrupt, no_auto_psv)) _AddressError(void)
+ * @fn void _AddressError(void)
  * @brief captures Address error 
  * 
- * <b>Description</b><br>
+ * @details
  * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
  * simply ensure that device continuously executes code within the trap service routine. 
  *
@@ -220,10 +219,10 @@ void __attribute__((interrupt, no_auto_psv)) _AddressError(void) {
     DefaultTrapHandler(TRAP_ADDRESS_ERROR);
 }
 /**************************************************************************************************
- * @fn void __attribute__((interrupt, no_auto_psv)) _StackError(void)
+ * @fn void _StackError(void)
  * @brief captures Stack error 
  * 
- * <b>Description</b><br>
+ * @details
  * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
  * simply ensure that device continuously executes code within the trap service routine. 
  *
@@ -234,10 +233,10 @@ void __attribute__((interrupt, no_auto_psv)) _StackError(void) {
 }
 
 /**************************************************************************************************
- * @fn void __attribute__((interrupt, no_auto_psv)) _MathError(void)
+ * @fn void  _MathError(void)
  * @brief captures Math error 
  * 
- * <b>Description</b><br>
+ * @details
  * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
  * simply ensure that device continuously executes code within the trap service routine. 
  *
@@ -248,7 +247,6 @@ void __attribute__((interrupt, no_auto_psv)) _MathError(void) {
 }
 
 /**@}*/
-
 #if (TRAP_DMA_SUPPORT == 1)
 #if defined (_DMACError)
 // =================================================================================================
