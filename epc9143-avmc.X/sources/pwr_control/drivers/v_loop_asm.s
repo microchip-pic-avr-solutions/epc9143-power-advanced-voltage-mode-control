@@ -1,8 +1,8 @@
 ; **********************************************************************************
-;  SDK Version: z-Domain Control Loop Designer v0.9.12.642
+;  SDK Version: z-Domain Control Loop Designer  v0.9.12.642
 ;  CGS Version: Code Generator Script v3.0.0 (09/07/2020)
 ;  Author:      M91406
-;  Date/Time:   11/11/2020 13:58:58
+;  Date/Time:   12/06/2020 15:02:37
 ; **********************************************************************************
 ;  4P4Z Control Library File (Dual Bitshift-Scaling Mode)
 ; **********************************************************************************

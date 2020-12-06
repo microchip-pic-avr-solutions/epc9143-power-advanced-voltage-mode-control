@@ -1,16 +1,16 @@
 [GUI]
 CreateDate=03/02/2020 10:13:13 PM
-SaveDate=11/12/2020 00:13:26
+SaveDate=12/06/2020 15:03:04
 Name=z-Domain Control Loop Designer
 Version=0.9.12.642
 AGS Version=2.0.15
 CGS Version=3.0.0
-WindoWState=0
-Top=108
-Left=126
-Height=930
-Width=1384
-TabHeight=288
+WindoWState=2
+Top=-8
+Left=-8
+Height=1066
+Width=1936
+TabHeight=346
 VersionKey=912
 [ControlSetup]
 ControlType=3
