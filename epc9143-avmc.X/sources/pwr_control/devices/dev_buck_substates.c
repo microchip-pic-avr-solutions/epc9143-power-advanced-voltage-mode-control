@@ -144,13 +144,18 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
         _vin >>= (16 - buckInstance->feedback.ad_vin.scaling.scaler);
 
         // Protect against negative duty cycle results
-        if (_vout < _vin) _vout = _vin;
+        if (_vout > _vin) _vout = _vin;
         
         // CALCULATE BUCK CONVERTER STARTUP DUTY RATIO 
-        // DC = (VOUT-VIN) / VOUT, where DC = D * PERIOD
+        // DC = VOUT / VIN, where DC = D * PERIOD
         
-        _start_dc = __builtin_muluu((_vout-_vin), buckInstance->sw_node[0].period);
-        _start_dc = __builtin_divud(_start_dc, (uint16_t)_vout);
+        if(_vin > 0)
+        {
+            _start_dc = __builtin_muluu((_vout), buckInstance->sw_node[0].period);
+            _start_dc = __builtin_divud(_start_dc, (uint16_t)_vin);
+        }
+        else
+        { _start_dc = (uint16_t)buckInstance->sw_node[_i].duty_ratio_min; }
     }
     else
     // If there is no input voltage or no output voltage, start with minimum duty ratio

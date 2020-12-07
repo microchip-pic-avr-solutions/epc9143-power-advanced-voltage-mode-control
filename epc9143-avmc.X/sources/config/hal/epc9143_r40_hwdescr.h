@@ -74,6 +74,23 @@
 
 /** @} */ // end of group special-options
 
+/*********************************************************************************
+ * @ingroup special-options
+ * @def BUCK_ISNS_OFFSET_CALIBRATION_ENABLE
+ * @brief  Enables/Disables Current Sense Offset Calibration
+ * @details
+ * Flag indicating if the signal offset of the current sense feedback needs to be calibrated.
+ * The calibration procedure is available as Special Function of the power controller and will be 
+ * called automatically when the option BUCK_ISNS_NEED_CALIBRATION is set to 'true' 
+ * @note
+ * Standby current sense feedback offset calibration is not supported by the MCP6C02 shunt amplifier
+ * device used in EPC9143 due to its limited common mode range, which starts above 2.5 V DC. However,
+ * the common reference voltage of both devices, auto-zero self tuning and high sensing precision
+ * makes calibration negligible.
+ **********************************************************************************/
+
+#define BUCK_ISNS_OFFSET_CALIBRATION_ENABLE  false ///< Current Sense Offset Calibration is disabled (see notes)
+
 /**************************************************************************************************
  * @ingroup device-abstraction-settings
  * @{ 
@@ -538,12 +555,6 @@
  * (see \ref phase-current-feedback-macros for details)
  * *************************************************************************************************/
 
-/** Flag indicating if current feedback needs calibration 
-the calibration procedure needs to added individually 
-to the user code section of the power controller */
-
-#define BUCK_ISNS_NEED_CALIBRATION  true        
-    
 // Feedback Declarations
 #define BUCK_ISNS_FEEDBACK_GAIN     (float) 0.050       ///< Current Gain in V/A
 #define BUCK_ISNS_MAXIMUM           (float) 26.50       ///< absolute total maximum output current (average)

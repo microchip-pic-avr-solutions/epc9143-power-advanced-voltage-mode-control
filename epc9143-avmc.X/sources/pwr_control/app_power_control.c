@@ -315,7 +315,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
 //    buck.status.bits.power_source_detected = false; // Clear POWER SOURCE DETECTED flag // ToDo: remove
     buck.status.bits.cs_calib_complete = false; // Clear Current Sense Calibration flag
     buck.status.bits.fault_active = true; // Set global FAULT flag
-    buck.status.bits.cs_calib_enable = BUCK_ISNS_NEED_CALIBRATION; // Topology current sensors need to be calibrated
+    buck.status.bits.cs_calib_enable = BUCK_ISNS_OFFSET_CALIBRATION_ENABLE; // Topology current sensors need to be calibrated
     buck.status.bits.autorun = true;  // Allow the buck converter to run when cleared of faults
     buck.status.bits.enabled = false; // Disable buck converter
     buck.status.bits.suspend = true; // Set SUSPEND flag bit to keep power supply on hold until startup conditions are cleared

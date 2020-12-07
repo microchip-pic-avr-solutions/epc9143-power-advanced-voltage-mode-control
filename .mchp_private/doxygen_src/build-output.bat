@@ -1,4 +1,9 @@
 @echo off
+rem if exist "output.log" del "output.log"
+rem set logfile=output.log
+rem call :start
+rem exit /b 0
+
 :start
 echo ##############  DOXYGEN OUTPUT GENERATION  ##############
 echo. 
@@ -19,7 +24,22 @@ rem "C:\Program Files\Graphviz 2.44.1\bin\dot.exe" -c
 echo. 
 echo Preparing Output Generation...
 echo. 
+rem Checking if the output directory already exists or needs to be created
+echo Checking Output Directory
+if exist "..\..\docs" goto docs_present
+:create_docs
+mkdir "..\..\docs"
+echo created new output directory 'docs'
+set /A new_docs=1
+goto switch_to_docs
+:docs_present
+set /A new_docs=0
+echo found output directory 'docs'
+echo. 
+:switch_to_docs
 cd ..\..\docs
+if "%new_docs%"=="1" goto skip_delete_images
+:get_options
 set /P yesno="Clear the output directory before generating new content (recommended) (Y/N)? "
 if "%yesno%"=="Y" goto delete_output
 if "%yesno%"=="y" goto delete_output
@@ -67,4 +87,4 @@ goto end
 echo Open output (%yesno%)
 ..\..\docs\index.html
 :end
-timeout 10
+@timeout 10
