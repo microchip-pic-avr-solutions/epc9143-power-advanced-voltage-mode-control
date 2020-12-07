@@ -21,9 +21,9 @@ volatile uint16_t __attribute__((always_inline)) SubState_VRampUp(volatile struc
 volatile uint16_t __attribute__((always_inline)) SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 volatile uint16_t __attribute__((always_inline)) SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 
-/** @ingroup lib-layer-buck-functions-public*/
 /*******************************************************************************
- * @fn volatile uint16_t (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @ingroup lib-layer-buck-states-properties-public-variables
+ * @var (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief Function pointer array of buck converter startup sub-states
  *********************************************************************************/
 volatile uint16_t (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) = {
@@ -36,16 +36,16 @@ volatile uint16_t (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_P
 
 };
 
-/**@ingroup lib-layer-buck-properties-public*/
+/**@ingroup lib-layer-buck-states-properties-public-variables */
 /*******************************************************************************
- * @var volatile uint16_t (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @var BuckRampUpSubStateList_size
  * @brief buck converter sub-state machine function pointer array size
  *********************************************************************************/
 volatile uint16_t BuckRampUpSubStateList_size = (sizeof(BuckConverterRampUpSubStateMachine)/sizeof(BuckConverterRampUpSubStateMachine[0])); 
 
 
 /**
- * @ingroup lib-layer-buck-functions-private
+ * @ingroup lib-layer-buck-states-functions-private
  * @{
 */
 /*******************************************************************************

@@ -15,7 +15,7 @@
 #include "dev_buck_pconfig.h"
 
 /**
- * @ingroup lib-layer-buck-functions-public
+ * @ingroup lib-layer-buck-converter-functions-public
  * @{
  */
 /*******************************************************************************

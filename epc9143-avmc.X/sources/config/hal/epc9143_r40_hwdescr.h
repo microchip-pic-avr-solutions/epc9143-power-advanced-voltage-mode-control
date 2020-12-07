@@ -228,7 +228,7 @@
  * @{
  * @brief User-declaration of global defines for PWM signal generator settings
  * 
- * <b>Description:</b><br>
+ * @details
  * This section defines fundamental PWM settings required for the interleaved buck converter
  * of the EPC9143 300W 16th brick power module reference design. These settings are determined 
  * by hardware and defined using physical quantities. Pre-compiler macros are used to convert 
@@ -246,7 +246,7 @@
  * @{
  * @brief User-declaration of global defines for PWM signal generator settings
  * 
- * <b>Description:</b><br>
+ * @details
  * This section defines fundamental PWM settings required for the interleaved buck converter
  * of the EPC9143 300W 16th brick power module reference design. These settings are determined 
  * by hardware and defined using physical quantities. Pre-compiler macros are used to convert 

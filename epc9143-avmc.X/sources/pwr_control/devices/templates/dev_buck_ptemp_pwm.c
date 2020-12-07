@@ -8,11 +8,8 @@
 #include "xc16_pral.h" // include peripehral register abstraction layer drivers
 #include "dev_buck_ptemp_pwm.h" // include peripheral register configuration values header
 
-/**
- * @ingroup lib-layer-buck-properties-private-var
- * @{
- */
 /****************************************************************************************************
+ * @ingroup lib-layer-buck-ptemplate-properties-private-variables
  * @var buckPwmModuleConfig
  * @brief PWM module default configuration
  *****************************************************************************************************/
@@ -43,6 +40,7 @@ volatile struct P33C_PWM_MODULE_s buckPwmModuleConfig =
 
 
 /****************************************************************************************************
+ * @ingroup lib-layer-buck-ptemplate-properties-private-variables
  * @var buckPwmGeneratorConfig
  * @brief PWM generator default configuration
  *****************************************************************************************************/

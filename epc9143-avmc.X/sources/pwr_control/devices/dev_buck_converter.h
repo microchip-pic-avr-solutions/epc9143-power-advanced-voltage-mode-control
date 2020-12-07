@@ -52,9 +52,6 @@
  // ==============================================================================================
  // BUCK CONVERTER PUBLIC API FUNCTION CALL PROTOTYPES
  // ==============================================================================================
-/** @ingroup buck-converter-public-functions
- * @{
- */
 
 extern volatile uint16_t drv_BuckConverter_Initialize(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
 extern volatile uint16_t drv_BuckConverter_Execute(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
@@ -62,8 +59,6 @@ extern volatile uint16_t drv_BuckConverter_Start(volatile BUCK_POWER_CONTROLLER_
 extern volatile uint16_t drv_BuckConverter_Stop(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
 extern volatile uint16_t drv_BuckConverter_Suspend(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
 extern volatile uint16_t drv_BuckConverter_Resume(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-
-/**@}*/ // buck-converter-public-functions
 
 #endif	/* BUCK_CONVERTER_STATE_MACHINE_H */
 

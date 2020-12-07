@@ -24,9 +24,9 @@ volatile uint16_t __attribute__((always_inline)) State_Standby(volatile struct B
 volatile uint16_t __attribute__((always_inline)) State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 volatile uint16_t __attribute__((always_inline)) State_Online(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 
-/**@ingroup lib-layer-buck-functions-public*/
+/**@ingroup lib-layer-buck-states-properties-public-variables */
 /*******************************************************************************
- * @fn	volatile uint16_t (*BuckConverterStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @var	volatile uint16_t (*BuckConverterStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief Function pointer array defining the state machine execution sequence	
  *********************************************************************************/
 
@@ -40,7 +40,7 @@ volatile uint16_t (*BuckConverterStateMachine[])(volatile struct BUCK_POWER_CONT
     State_Online        ///< State #5: During normal operation the converter responds to changes in reference
 
 };
-/**@ingroup lib-layer-buck-properties-public*/
+/**@ingroup lib-layer-buck-states-properties-public-variables */
 /*******************************************************************************
  * @var	volatile uint16_t BuckStateList_size
  * @brief  buck converter state machine function pointer array size	
@@ -49,7 +49,7 @@ volatile uint16_t (*BuckConverterStateMachine[])(volatile struct BUCK_POWER_CONT
 volatile uint16_t BuckStateList_size = (sizeof(BuckConverterStateMachine)/sizeof(BuckConverterStateMachine[0])); 
 
 /**
- * @ingroup lib-layer-buck-functions-private
+ * @ingroup lib-layer-buck-states-functions-private
  * @{
 */
 /*******************************************************************************

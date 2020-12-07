@@ -15,7 +15,7 @@
 #include "dev_buck_special_functions.h" // include buck converter special function defiition
 
 /***********************************************************************************
- * @ingroup 
+ * @ingroup lib-layer-buck-specialfn-properties-private-data-types
  * @struct CS_CALIBRATION_s
  * @brief  Current sense calibration data structure
  **********************************************************************************/
@@ -28,7 +28,7 @@ typedef struct CS_CALIBRATION_s
 } CS_CALIBRATION_t;
 
 /*********************************************************************************
- * @ingroup 
+ * @ingroup lib-layer-buck-specialfn-properties-private-variables
  * @var struct CS_CALIBRATION_s calib_cs[BUCK_MPHASE_COUNT]
  * @brief  Array of current sense calibration data objects of type CS_CALIBRATION_t
  * @details
@@ -44,7 +44,7 @@ typedef struct CS_CALIBRATION_s
 volatile struct CS_CALIBRATION_s calib_cs[BUCK_MPHASE_COUNT];
 
 /*********************************************************************************
- * @ingroup 
+ * @ingroup lib-layer-buck-specialfn-properties-private-defines
  * @def CS_CALIB_STEPS
  * @brief  Number of signal oversampling steps used to determine the calibration value
  *  
@@ -58,7 +58,7 @@ volatile struct CS_CALIBRATION_s calib_cs[BUCK_MPHASE_COUNT];
 volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 
 /*******************************************************************************
- * @ingroup buck-converter-special-functions
+ * @ingroup lib-layer-buck-specialfn-properties-private-variables
  * @var *BuckConverterRampUpSubStateMachine[](volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief Function pointer list of all special function sub-state functions
  * @details
@@ -92,7 +92,7 @@ volatile uint16_t (*BuckConverterSpecialFunctions[])(volatile struct BUCK_POWER_
 
 
 /*********************************************************************************
- * @ingroup buck-converter-special-functions
+ * @ingroup lib-layer-buck-specialfn-functions-public
  * @fn drv_BuckConverter_SpecialFunctionExecute
  * @brief  This is the public function call access point to call dedicated special sub-functions
  * @param  struct BUCK_POWER_CONTROLLER_s * buckInstance
@@ -139,7 +139,7 @@ volatile uint16_t drv_BuckConverter_SpecialFunctionExecute(
  ******************************************************************************/
 
 /*******************************************************************************
- * @ingroup buck-converter-special-functions-current-calibration-functions
+ * @ingroup lib-layer-buck-specialfn-functions-private
  * @{
  * @fn	volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) 
  * @brief Performs an offset calibration of the current sense feedback signal(s)

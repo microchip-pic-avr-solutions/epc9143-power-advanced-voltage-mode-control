@@ -9,11 +9,8 @@
 #include "config/hal.h"
 #include "app_power_control.h"
 
-/**
- * @ingroup app-layer-power-control-events
- * @{
- */
 /*********************************************************************************
+ * @ingroup app-layer-power-control-events
  * @fn void _BUCK_VLOOP_Interrupt(void)
  * @brief Main Control Interrupt
  * 

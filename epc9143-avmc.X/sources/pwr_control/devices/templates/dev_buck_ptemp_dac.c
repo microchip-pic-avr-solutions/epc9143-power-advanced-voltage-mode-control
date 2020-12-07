@@ -8,11 +8,8 @@
 #include "xc16_pral.h" // include peripehral register abstraction layer drivers
 #include "dev_buck_ptemp_dac.h" // include peripheral register configuration values header
 
-/**
- * @ingroup lib-layer-buck-properties-public
- * @{
- */
 /****************************************************************************************************
+ * @ingroup lib-layer-buck-ptemplate-properties-private-variables
  * @var buckDacModuleConfig
  * @brief DAC module default configuration
  *****************************************************************************************************/
@@ -25,6 +22,7 @@ volatile struct P33C_DAC_MODULE_s buckDacModuleConfig =
 
 
 /****************************************************************************************************
+ * @ingroup lib-layer-buck-ptemplate-properties-private-variables
  * @var buckDacInstanceConfig
  * @brief DAC generator default configuration
  *****************************************************************************************************/

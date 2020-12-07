@@ -33,7 +33,6 @@ volatile uint16_t __attribute__((always_inline)) regerr_FaultInitialize(void);
  * @fn volatile uint16_t appFaultMonitor_Execute(void)  
  * @brief Application wide fault object monitoring routine
  * @param (none)
- * @return unsigned integer
  * @return 0=failure 
  * @return 1=success
  * 
@@ -82,9 +81,8 @@ volatile uint16_t appFaultMonitor_Execute(void)
  * @fn volatile uint16_t appFaultMonitor_Initialize(void)
  * @brief  Initialization of user-defined fault objects
  * @param (none)
- * @return unsigned integer
- * 0=failure 
- * 1=success
+ * @return 0=failure 
+ * @return 1=success
  * 
  * @details
  * This function initializes the user-defined fault objects like the setpoints, 
@@ -109,7 +107,6 @@ volatile uint16_t appFaultMonitor_Initialize(void)
  * @fn volatile uint16_t appFaultMonitor_Dispose(void) 
  * @brief Function clearing all fault object settings
  * @param (none)
- * @return unsigned integer
  * @return 0=failure 
  * @return 1=success
  * 
@@ -143,7 +140,6 @@ volatile uint16_t appFaultMonitor_Dispose(void)
  * @fn volatile uint16_t uvlo_FaultInitialize(void)
  * @brief Initializes the user-defined fault objects for under-voltage lockout
  * @param (none)
- * @return unsigned integer
  * @return 0=failure
  * @return 1=success
  * 
@@ -189,7 +185,6 @@ volatile uint16_t uvlo_FaultInitialize(void)
  * @fn volatile uint16_t ovlo_FaultInitialize(void)
  * @brief Initializes the user-defined fault objects for overvoltage lockout
  * @param (none)
- * @return unsigned integer
  * @return 0=failure
  * @return 1=success
  * 
@@ -234,7 +229,6 @@ volatile uint16_t ovlo_FaultInitialize(void)
  * @fn volatile uint16_t regerr_FaultInitialize(void)
  * @brief Initializes the user-defined fault objects for regulation error
  * @param (none)
- * @return unsigned integer
  * @return 0=failure
  * @return 1=success
  * 
@@ -278,7 +272,6 @@ volatile uint16_t regerr_FaultInitialize(void)
  * @fn volatile uint16_t ocp_FaultInitialize(void)
  * @brief Initializes the user-defined fault objects for overcurrent protection
  * @param (none)
- * @return unsigned integer
  * @return 0=failure
  * @return 1=success
  * 

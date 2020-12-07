@@ -55,7 +55,7 @@
  * @var volatile struct BUCK_POWER_CONTROLLER_s buck
  * @brief Global data object for the BUCK CONVERTER 
  * 
- * <b>Description:</b><br>
+ * @details
  * the 'buck' data object holds all status, control and monitoring values of the BUCK power 
  * controller. The BUCK_POWER_CONTROLLER_t data structure is defined in drv_buck_typedef.h.
  * Please refer to the comments on top of this file for further information.

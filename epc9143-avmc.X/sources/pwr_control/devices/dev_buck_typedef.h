@@ -55,7 +55,7 @@
 
 
 /**
- * @ingroup lib-layer-buck-properties-public-defines
+ * @ingroup lib-layer-buck-converter-properties-public-defines
  * @{
  */
 #define BUCK_MPHASE_COUNT                BUCK_NO_OF_PHASES
@@ -80,7 +80,7 @@
 /**@}*/
 
 /**
- * @ingroup lib-layer-buck-properties-public-data-types
+ * @ingroup lib-layer-buck-converter-properties-public-data-types
  * @{
  */
 /****************************************************************************************************
@@ -205,7 +205,7 @@ typedef struct BUCK_STATE_ID_s
  * @struct BUCK_STARTUP_SETTINGS_s
  * @brief Generic power controller startup settings
  * 
- * <b>Description:</b><br>
+ * @details
  * This data structure is used to set the startup settings such as power on delay, power good delay
  * and ramp up time. It further covers private values like startup counters and reference values
  * for voltage and current, which are used internally by the controller (read only) but are still
@@ -264,7 +264,7 @@ typedef struct BUCK_CONVERTER_DATA_s {
  * @struct BUCK_CONVERTER_CONTROL_s
  * @brief Generic power controller control settings
  * 
- * <b>Description:</b><br>
+ * @details
  * This data structure is used to set the overall settings to allow external software instances 
  * to control the power control object, such as voltage and current references.
  *  
@@ -283,7 +283,7 @@ typedef struct BUCK_CONVERTER_SETTINGS_s {
  * @struct BUCK_LOOP_SETTINGS_s
  * @brief Generic power control loop settings
  * 
- * <b>Description:</b><br>
+ * @details
  * This data structure is used to set the control loop settings such as pointers to controller 
  * objects and its function calls as well as basic user settings such as reference, feedback
  * signal offsets, trigger delays and minimum/maximum output clamping values.
@@ -342,7 +342,7 @@ typedef struct BUCK_SWITCH_NODE_SETTINGS_s {
  * @struct BUCK_ADC_INPUT_SCALING_s 
  * @brief Generic power converter feedback specifications
  * 
- * <b>Description:</b><br>
+ * @details
  * This data structure is used to set the converter feedback specifications declaring which
  * ADC channels are used including the individual AD input configuration such as trigger mode,
  * input mode, result format and value normalization.
@@ -360,8 +360,6 @@ typedef struct BUCK_ADC_INPUT_SCALING_s {
 /****************************************************************************************************
  * @struct BUCK_ADC_INPUT_SETTINGS_s
  * @brief Generic power converter ADC input channel configuration
- * 
- * <b>Description:</b><br>
  * 
  * *************************************************************************************************** */
 typedef struct BUCK_ADC_INPUT_SETTINGS_s {
@@ -386,8 +384,6 @@ typedef struct BUCK_ADC_INPUT_SETTINGS_s {
  * @struct BUCK_FEEDBACK_SETTINGS_s
  * @brief 
  * 
- * <b>Description:</b><br>
- * 
  * *************************************************************************************************** */
 typedef struct BUCK_FEEDBACK_SETTINGS_s {
     
@@ -402,7 +398,7 @@ typedef struct BUCK_FEEDBACK_SETTINGS_s {
  * @struct BUCK_GPIO_SETTINGS_s
  * @brief Generic power converter GPIO specifications
  * 
- * <b>Description:</b><br>
+ * @details
  * This data structure is used to set the converter GPIO specifications declaring which
  * if and which additional GPIOs are used by the converter controller, such as POWER_GOOD.
  * 
@@ -420,9 +416,7 @@ typedef struct BUCK_GPIO_INSTANCE_s {
 /****************************************************************************************************
  * @struct BUCK_GPIO_SETTINGS_s
  * @brief Generic power converter GPIO specifications
- * 
- * <b>Description:</b><br>
- * 
+ *
  * *************************************************************************************************** */
 typedef struct BUCK_GPIO_SETTINGS_s {
     
@@ -439,9 +433,6 @@ typedef struct BUCK_GPIO_SETTINGS_s {
 /****************************************************************************************************
  * @struct BUCK_POWER_CONTROLLER_s
  * @brief 
- * 
- * <b>Description:</b><br>
- * 
  *****************************************************************************************************/
 typedef struct BUCK_POWER_CONTROLLER_s 
 {

@@ -43,10 +43,10 @@
 
 #include "drv_fault_handler.h" // 
 
-/**@ingroup lib-layer-fault-properties-private-data-types */
+/**@ingroup lib-layer-fault-properties-private-variables */
 /*******************************************************************************
- * @struct	FAULT_OBJECT_s fltobjClear
- * @brief
+ * @var	FAULT_OBJECT_s fltobjClear
+ * @brief Clears the fault objects
 *****************************************************************************/
 volatile struct FAULT_OBJECT_s fltobjClear = 
 {
@@ -72,7 +72,8 @@ volatile struct FAULT_OBJECT_s fltobjClear =
 /*******************************************************************************
  * @fn	uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj)
  * @param	FAULT_OBJECT_t* fltobj
- * @return  Unsigned Integer
+ * @return 0=failure 
+ * @return 1=success
  *
  * @brief Check current fault status of a user-defined fault object
  *

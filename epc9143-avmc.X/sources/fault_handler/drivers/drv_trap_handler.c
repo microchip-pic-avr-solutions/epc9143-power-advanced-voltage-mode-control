@@ -135,7 +135,8 @@ void DefaultTrapHandler(enum TRAP_ID_e trap_id) {
 // =================================================================================================
 
 /**************************************************************************************************
- * @addtogroup lib-layer-fault-functions-public
+ * @ingroup lib-layer-fault-functions-public
+ * @{
  * @fn void __attribute__((interrupt, no_auto_psv)) _ReservedTrap5(void)
  * @brief basic framework for trap handler routine
  * 

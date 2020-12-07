@@ -18,15 +18,23 @@
 
 /* PRIVATE VARIABLES */
 /**
- * @ingroup lib-layer-buck-properties-private-var
+ * @ingroup lib-layer-buck-config-properties-private-variables
  * @{
  */
-volatile uint16_t adcore_mask=0;        ///< TODO: set the ADC core mask to default 
+/**
+ * @var adcore_mask
+ * @brief This variable is use to set the ADC core mask
+ */
+volatile uint16_t adcore_mask=0;        
+/**
+ * @var adcore_diff_mask
+ * @brief This variable is use to set the ADC core mask
+ */
 volatile uint16_t adcore_diff_mask=0;   
 /**@}*/
 
 /** 
- * @ingroup lib-layer-buck-functions-public
+ * @ingroup lib-layer-buck-config-functions-public
  * @{
  */
 /*******************************************************************************

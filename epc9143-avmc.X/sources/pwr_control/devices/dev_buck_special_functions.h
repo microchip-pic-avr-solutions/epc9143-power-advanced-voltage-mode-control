@@ -37,10 +37,11 @@
 #include <stddef.h> // include standard definition data types
 
 /****************************************************************************************************
+ * @ingroup lib-layer-buck-specialfn-properties-public-data-types
  * @enum BUCK_SPECIAL_FUNCTIONS_e
  * @brief Enumeration of special function sub-states
  **************************************************************************************************** */
-typedef enum BUCK_SPECIAL_FUNCTIONS_e // Enumeration of special function sub-states
+typedef enum BUCK_SPECIAL_FUNCTIONS_e 
 {
     CS_OFSET_CALIBRATION    ///< Special Function Index of Current Sense Feedback Offset Calibration
         
