@@ -88,11 +88,9 @@ void __attribute__((always_inline)) appPowerSupply_CurrentBalancing(void);
  * PUBLIC FUNCTIONS
  * ************************************************************************************************/
 
-/**
- * @ingroup app-layer-power-control-functions-public
- * @{ 
- */
+
 /*******************************************************************************
+ * @ingroup app-layer-power-control-functions-public
  * @fn	volatile uint16_t appPowerSupply_Execute(void)
  * @brief This is the top-level function call triggering the most recent state 
  * machine of all associated power supply controllers
@@ -151,6 +149,7 @@ volatile uint16_t appPowerSupply_Execute(void)
 }
 
 /*******************************************************************************
+ * @ingroup app-layer-power-control-functions-public
  * @fn	volatile uint16_t appPowerSupply_Initialize(void)
  * @brief  Calls the application layer power controller initialization
  * @param  (none)
@@ -199,6 +198,7 @@ volatile uint16_t appPowerSupply_Initialize(void)
 }
 
 /*******************************************************************************
+ * @ingroup app-layer-power-control-functions-public
  * @fn	volatile uint16_t appPowerSupply_Start(void)
  * @brief  This function calls the buck converter device driver function starting the power supply 
  * @param  (none)
@@ -219,6 +219,7 @@ volatile uint16_t appPowerSupply_Start(void)
 }
 
 /*******************************************************************************
+ * @ingroup app-layer-power-control-functions-public
  * @fn	volatile uint16_t appPowerSupply_Stop(void)
  * @brief This function calls the buck converter device driver function stopping the power supply 
  * @param  (none)
@@ -245,6 +246,7 @@ volatile uint16_t appPowerSupply_Stop(void)
 }
 
 /*******************************************************************************
+ * @ingroup app-layer-power-control-functions-public
  * @fn	volatile uint16_t appPowerSupply_Suspend(void)
  * @brief This function stops the power supply operation
  * @param	None
@@ -266,6 +268,7 @@ volatile uint16_t appPowerSupply_Suspend(void)
 }
 
 /*******************************************************************************
+ * @ingroup app-layer-power-control-functions-public
  * @fn	volatile uint16_t appPowerSupply_Resume(void)
  * @brief This function resumes the power supply operation
  * @param  (none)
@@ -286,7 +289,6 @@ volatile uint16_t appPowerSupply_Resume(void)
     return(retval); 
 }
 
-/** @} */ // end of group power-control-app-layer-public
 
 
 /* *************************************************************************************************
