@@ -35,18 +35,22 @@
          }
       },
       "peripherals":[
-         "GPIO",
+         "PORT",
          "PWM",
 		 "ADC",
 		 "Timer"
       ],
+	"subcategories": [
+		"Power"
+	];
 	"keywords": [
 		"dsc",
 		"dspic",
 		"power",
 		"power-conversion",
 		"power-supply",
-		"smps"
+		"smps",
+		"Digital Power"
 	]
    }
 }
