@@ -40,17 +40,18 @@
 		 "ADC",
 		 "Timer"
       ],
-	"subcategories": [
-		"Power"
-	];
-	"keywords": [
-		"dsc",
-		"dspic",
-		"power",
-		"power-conversion",
-		"power-supply",
-		"smps",
-		"Digital Power"
-	]
+	  "subcategories": [
+		 "Power"
+	  ],
+	  "keywords": [
+		 "dsc",
+		 "dspic",
+		 "power",
+		 "power-conversion",
+		 "power-supply",
+		 "smps",
+		 "Digital Power",
+		 "Digital Signal Processing/ Filters"
+	  ]
    }
 }
