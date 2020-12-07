@@ -5,19 +5,20 @@
 
 #include "p33c_ccp.h"
 
-/* @@ccpConfigDefault
- * ********************************************************************************
- * Summary:
- *     CCP Register Set reset state template
+/*********************************************************************************
+ * @ingroup lib-layer-pral-properties-private-ccp
+ * @var ccpConfigDefault
+ * @brief CCP Register Set reset state template
  * 
- * Description:
+ * @details
  *     This P33C_CCP_MODULE_SFRSET_s data object provides a template of register 
  *     configuration values for a CCP peripheral instance. 
  * 
  *     Default configuration:
  *         - all options are reset to their default state
  * 
- * ********************************************************************************/
+ *********************************************************************************/
+/**@ingroup lib-layer-pral-properties-private-ccp */
 
 volatile struct P33C_CCP_INSTANCE_SFRSET_s ccpConfigDefault = { 
     
@@ -41,25 +42,21 @@ volatile struct P33C_CCP_INSTANCE_SFRSET_s ccpConfigDefault = {
 /* PRIVATE FUNCTION CALL PROTOTYPES*/
 //    (none)
 
-/* @@p33c_CcpInstance_GetHandle
- * ********************************************************************************
- * Summary:
- *   Gets pointer to CCP instance SFR set
- * 
- * Parameters:
- *   (none)
- * 
- * Returns:
- *   struct P33C_CCP_MODULE_SFRSET_s:
- *      Pointer to CCP instance special function register set object 
+/*********************************************************************************
+ * @ingroup lib-layer-pral-functions-public-ccp
+ * @{
+ * @fn volatile struct P33C_CCP_INSTANCE_SFRSET_s* p33c_CcpInstance_GetHandle(volatile uint16_t ccpInstance)
+ * @brief Gets pointer to CCP instance SFR set
+ * @param None
+ * @return P33C_CCP_MODULE_SFRSET_s: Pointer to CCP instance special function register set object 
  *  
- * Description:
+ * @details
  *      This function returns the pointer to a CCP module register set
  *    Special Function Register memory space. This pointer can be used to 
  *    directly write to/read from the Special Function Registers of the 
  *    CCP peripheral module configuration.
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile struct P33C_CCP_INSTANCE_SFRSET_s* p33c_CcpInstance_GetHandle(volatile uint16_t ccpInstance){
 
@@ -72,25 +69,20 @@ volatile struct P33C_CCP_INSTANCE_SFRSET_s* p33c_CcpInstance_GetHandle(volatile 
     return(ccp);
 }
 
-/* @@p33c_CcpInstance_ConfigRead
- * ********************************************************************************
- * Summary:
- *     Read the current configuration from the CCP instance registers
+/*********************************************************************************
+ * @fn volatile struct P33C_CCP_INSTANCE_SFRSET_s p33c_CcpInstance_ConfigRead(volatile uint16_t ccpInstance)
+ * @brief    Read the current configuration from the CCP instance registers
+ * @param None
+ * @return 0 = failure, reading from CCP instance was not successful
+ * @return 1 = success, reading from CCP instance was successful
  * 
- * Parameters:
- *     (none)
- * 
- * Returns:
- *     0 = failure, reading from CCP instance was not successful
- *     1 = success, reading from CCP instance was successful
- * 
- * Description:
+ * @details
  *     This function reads all registers with their current configuration into
  *     a data structure of type P33C_CCP_MODULE_SFRSET_s. Users can read and 
  *     verify of modify the configuration to write it back to any other CCP 
  *     peripheral instance.
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile struct P33C_CCP_INSTANCE_SFRSET_s p33c_CcpInstance_ConfigRead(volatile uint16_t ccpInstance){
 
@@ -103,19 +95,14 @@ volatile struct P33C_CCP_INSTANCE_SFRSET_s p33c_CcpInstance_ConfigRead(volatile 
     return(*ccp);
 }
 
-/* @@p33c_PwmModule_ConfigWrite
- * ********************************************************************************
- * Summary:
- *     Writes a user-defined configuration to the CCP instance registers
+/********************************************************************************
+ * @fn volatile uint16_t p33c_CcpInstance_ConfigWrite(volatile uint16_t ccpInstance, volatile struct P33C_CCP_INSTANCE_SFRSET_s ccpConfig)
+ * @brief    Writes a user-defined configuration to the CCP instance registers
+ * @param None
+ * @return 0 = failure, writing to CCP instance was not successful
+ * @return 1 = success, writing to CCP instance was successful
  * 
- * Parameters:
- *     (none)
- * 
- * Returns:
- *     0 = failure, writing to CCP instance was not successful
- *     1 = success, writing to CCP instance was successful
- * 
- * Description:
+ * @details
  *     This function writes a user-defined CCP instance configuration of type 
  *     P33C_CCP_MODULE_SFRSET_s to the CCP instance registers. The 
  *     individual register configurations have to be set in user-code 
@@ -123,7 +110,7 @@ volatile struct P33C_CCP_INSTANCE_SFRSET_s p33c_CcpInstance_ConfigRead(volatile 
  *     of standard functions, this driver provides templates, which can be 
  *     loaded and written directly 
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t p33c_CcpInstance_ConfigWrite(volatile uint16_t ccpInstance, 
                                 volatile struct P33C_CCP_INSTANCE_SFRSET_s ccpConfig)
@@ -139,5 +126,5 @@ volatile uint16_t p33c_CcpInstance_ConfigWrite(volatile uint16_t ccpInstance,
     return(retval);
     
 }
-
+ /**@}*/
 // END OF FILE

@@ -67,7 +67,8 @@ volatile struct FAULT_OBJECT_s fltobjClear =
         .RecoveryResponse.ptrResponseFunction = NULL,  ///< Clear fault recovery response function pointer
     };
 
-/** @ingroup lib-layer-fault-functions-public */
+/** 
+ * @ingroup lib-layer-fault-functions-public */
 /*******************************************************************************
  * @fn	uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj)
  * @param	FAULT_OBJECT_t* fltobj

@@ -26,9 +26,6 @@
  @ingroup device-abstraction
  @brief 
 
- @defgroup device-abstraction-pral Peripheral Special Function Register Abstraction Drivers
- @ingroup device-abstraction
- @brief 
 
 */
 

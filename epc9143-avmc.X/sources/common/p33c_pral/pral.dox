@@ -40,8 +40,20 @@
 
 /*Public Functions*/
 /**
+@defgroup lib-layer-pral-functions-public-ccp Public Functions
+@ingroup p33c-ccp-pral
+@brief Public functions of the PRAL library layer
+@details This is the detailed description of public functions of the
+library layer of PRAL
+
 @defgroup lib-layer-pral-functions-public-dac Public Functions
 @ingroup p33c-dac-pral
+@brief Public functions of the PRAL library layer
+@details This is the detailed description of public functions of the
+library layer of PRAL
+
+@defgroup lib-layer-pral-functions-public-dsp Public Functions
+@ingroup p33c-dsp-pral
 @brief Public functions of the PRAL library layer
 @details This is the detailed description of public functions of the
 library layer of PRAL
@@ -79,8 +91,22 @@ library layer of PRAL
 
 /*Private Properties*/
 /**
+@defgroup lib-layer-pral-properties-private-ccp Private Properties
+@ingroup p33c-ccp-pral
+@brief Public properties of the PRAL library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+PRAL
+
 @defgroup lib-layer-pral-properties-private-dac Private Properties
 @ingroup p33c-dac-pral
+@brief Public properties of the PRAL library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+PRAL
+
+@defgroup lib-layer-pral-properties-private-dsp Private Properties
+@ingroup p33c-dsp-pral
 @brief Public properties of the PRAL library layer
 @details This is the detailed description of public variables, data types,
 enumerations, defines and macros of the library layer of

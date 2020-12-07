@@ -58,14 +58,14 @@
 #include <stdbool.h>
 #include "drv_trap_handler.h"
 
-/**@ingroup lib-layer-fault-properties-private-data-types */
+/**
+ * @ingroup lib-layer-fault-properties-private-data-types */
 
 volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog; ///< data structure used as buffer for trap monitoring 
 
 
 /**************************************************************************************************
  * @ingroup lib-layer-fault-functions-public
- * @{
  * @fn volatile uint16_t drv_TrapHandler_SoftTrapsInitialize(bool accumulator_a_overflow_trap_enable, bool accumulator_b_overflow_trap_enable, bool accumulator_catastrophic_overflow_trap_enable)
  * @brief Configures the software-configurable traps
  * @param bool accumulator_a_overflow_trap_enable
@@ -90,6 +90,7 @@ volatile uint16_t drv_TrapHandler_SoftTrapsInitialize(
 
 
 /**************************************************************************************************
+ * @ingroup lib-layer-fault-functions-public
  * @fn void DefaultTrapHandler(enum TRAP_ID_e trap_id)
  * @brief Centralized trap handler routine
  * 
@@ -127,7 +128,6 @@ void DefaultTrapHandler(enum TRAP_ID_e trap_id) {
     return;
 }
 
-
 // =================================================================================================
 //
 // PRIMARY EXCEPTION VECTOR HANDLERS
@@ -135,7 +135,8 @@ void DefaultTrapHandler(enum TRAP_ID_e trap_id) {
 // =================================================================================================
 
 /**************************************************************************************************
- * @fn void _ReservedTrap5(void)
+ * @addtogroup lib-layer-fault-functions-public
+ * @fn void __attribute__((interrupt, no_auto_psv)) _ReservedTrap5(void)
  * @brief basic framework for trap handler routine
  * 
  * @details
