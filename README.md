@@ -44,6 +44,16 @@ A single, high-speed type IV (4P4Z) voltage mode controller with enforced PWM st
   - [EPC9531 Test Fixture Quick Start Guide (QSG)](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf)
   - [EPC9531 Test Fixture Schematics](https://epc-co.com/epc/documents/schematics/EPC9531_Schematic.pdf)
 
+##### Device Support
+  - [dsPIC33CK32MP102 Product Website](https://www.microchip.com/dsPIC33CK32MP102)
+  - [dsPIC33CKxxMP10x Device Family Data Sheet](https://www.microchip.com/DS70005363)
+  - [dsPIC33CKxxMP10x Device Family Silicon Errata and Data Sheet Clarification](https://www.microchip.com/DS80000809)
+  - [MCP6C02 Shunt Amplifier Product Website](https://www.microchip.com/MCP6C02)
+  - [MCP6C02 Zero-Drift, High-Side Current Sense Amplifier](https://www.microchip.com/DS20006129)
+
+  - [EPC2053 100 V, 48/246 A Enhancement-Mode GaN Power Transistor](https://epc-co.com/epc/Products/eGaNFETsandICs/EPC2053.aspx)
+  - [EPC2053 Data Sheet](https://epc-co.com/epc/Portals/0/epc/documents/datasheets/EPC2053_datasheet.pdf)
+
 ## Software Used 
   - [MPLAB® X IDE v5.40](https://www.microchip.com/mplabx-ide-windows-installer)
   - [MPLAB® XC16 Compiler v1.50](https://www.microchip.com/mplabxc16windows)
@@ -60,14 +70,6 @@ The EPC9143 1/16th brick power module is best tested when plugged into EPC9531 t
     <img src="images/9531_test_fixture.png" alt="EPC9143 mounted on EPC9531 Test Fixture" width="500">
   </center>
 </p>
-
-## Device Support:
-Microchip devices used in this reference design:
-  - [dsPIC33CK32MP102](https://www.microchip.com/dsPIC33CK32MP102)
-  - [MCP6C02 Shunt Amplifier](https://www.microchip.com/MCP6C02)
-
-EPC devices used in this reference design
-  - [EPC2053: 100 V, 246 A Enhancement-Mode GaN Power Transistor](https://epc-co.com/epc/Products/eGaNFETsandICs/EPC2053.aspx)
 
 ## Setup
 The board comes programmed and ready to be used when unpacked. No reprogramming of the target device is required to operate the board unless features or settings such as the nominal output voltage or start-up timing need to be modified. 
@@ -196,6 +198,7 @@ This code examples includes an alternative, proportional control loop which is c
 PROPORTIONAL CONTROLLERS ARE BY DEFAULT UNSTABLE AND NOT SUITED TO REGULATE THE OUTPUT OF A POWER SUPPLY UNDER NORMAL OPERATING CONDITIONS. DURING A PLANT MEASUREMENT IT IS MANDATORY THAT INPUT VOLTAGE AND LOAD REMAIN STABLE AND DO NOT CHANGE. 
 
 FOR MORE INFORMATION ABOUT HOW TO CONDUCT A POWER PLANT MEASUREMENT, PLEASE READ THE SECTIONS IN THE PowerSmart&trade; DCLD USER GUIDE.
+
 
 _________________________________________________
 (c) 2020, Microchip Technology Inc.
