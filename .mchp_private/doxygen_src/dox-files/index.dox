@@ -2,11 +2,17 @@
 /**
  @defgroup firmware-flow Firmware Architecture
  @brief Firmware Flowchart 
+ @details
+  The firmware is divided into three major section:
+  - Configuration
+  - Task Management
+  - Task Execution
 */
 
 //Firmware Flowchart index
 /**
  @defgroup device-start-up Device Start Up
+ @dotfile dev-startup.gv
  @ingroup firmware-flow
  @brief Device Start Up
 
