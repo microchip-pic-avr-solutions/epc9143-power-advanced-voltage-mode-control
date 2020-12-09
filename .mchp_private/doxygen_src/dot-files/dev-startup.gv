@@ -32,11 +32,11 @@ digraph dev_startup
             width = 2.2
         ]; 
             
-        sys_init[label="System\nInitialization", fillcolor=white];
-        usrper_init[label="User Peripheral\nInitialization", fillcolor=white];
-        usrtsk_init[label="User Task\nInitialization", fillcolor=white];
-        ostim_init[label="OS Timer\nInitialization", fillcolor=white];
-        main_loop[label="Main Loop", fillcolor=grey];
+        sys_init[label="System\nInitialization", fillcolor=white, URL="SYSTEM_Initialize"];
+        usrper_init[label="User Peripheral\nInitialization", fillcolor=white, URL="sysUserPeriperhals_Initialize"];
+        usrtsk_init[label="User Task\nInitialization", fillcolor=white, URL="sysUserTasks_Initialize"];
+        ostim_init[label="OS Timer\nInitialization", fillcolor=white, URL="sysOsTimer_Enable"];
+        main_loop[label="Main Loop", fillcolor=grey, URL="main"];
 
     }
 
