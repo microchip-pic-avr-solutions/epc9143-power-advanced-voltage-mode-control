@@ -36,4 +36,5 @@ volatile struct P33C_DAC_INSTANCE_s buckDacInstanceConfig =
     .SLPxCONH.value = REG_SLPxCONH, ///< SLPxCONH: DACx SLOPE CONTROL HIGH REGISTE
     .SLPxDAT.value = 0x0000         ///< SLPxCONL: DACx SLOPE CONTROL LOW REGISTER
 };
-/** @} */
+
+// end of file

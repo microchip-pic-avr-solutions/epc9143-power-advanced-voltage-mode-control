@@ -26,7 +26,6 @@ volatile uint16_t sysLowPriorityTasks_Execute(void);
  */
 /*******************************************************************************
  * @fn int main(void)
- * @param  (none)
  * @return Signed Integer (0=failure, 1=success)
  *
  * @brief  Application main function executed after device comes out of RESET
@@ -129,7 +128,6 @@ int main(void) {
 /**********************************************************************************
  * @fn     void sysLowPriorityTasks_Execute(void)
  * @brief  Low priority task sequence executed after the high priority task sequence execution is complete
- * @param  (none)
  * @return unsigned integer (0=failure, 1=success)
  * 
  * @details
@@ -158,8 +156,6 @@ volatile uint16_t sysLowPriorityTasks_Execute(void)
 /**********************************************************************************
  * @fn     void _OsTimerInterrupt(void)
  * @brief  High priority task sequence executed on a fixed 100 usec pace
- * @param  (none)
- * @return (none)
  * 
  * @details
  * This application executes different tasks of which some are time 

@@ -19,7 +19,6 @@
 /***********************************************************************************
  * @fn uint16_t sysOpAmp_Initialize
  * @brief  Initializes the on-chip operational amplifier module
- * @param  (none)
  * @return unsigned integer
  * @return 0=failure
  * @return 1=success
@@ -56,7 +55,6 @@ volatile uint16_t sysOpAmp_Initialize(volatile uint16_t opaInstance, volatile bo
 /***********************************************************************************
  * @fn uint16_t sysOpAmp_ModuleEnable
  * @brief  Enables the on-chip operational amplifier module
- * @param  (none)
  * @return unsigned integer
  * @return 0=failure
  * @return 1=success

@@ -31,7 +31,7 @@ volatile uint16_t adcore_mask=0;
  * @brief This variable is use to set the ADC core mask
  */
 volatile uint16_t adcore_diff_mask=0;   
-/**@}*/
+/** @} */
 
 /* PRIVATE FUNCTION CALL PROTOTYPES */
 
@@ -42,7 +42,7 @@ volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_
  * @{
  * @fn	volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
  * @brief Initializes the buck PWM module by resetting its registers to default
- * @param none
+ * @param void
  * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
  * @return  0=failure
  * @return  1=success
@@ -393,7 +393,7 @@ volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckIn
  * @{
  * @fn	volatile uint16_t buckADC_ModuleInitialize(void) 
  * @brief  This fucntion initializes the buck by resetting all its registers to default
- * @param	None
+ * @param	void
  * @return  0=failure
  * @return  1=success
  *  
@@ -589,7 +589,7 @@ volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* 
  * @{
  * @fn	volatile uint16_t buckADC_Start(void) 
  * @brief   This function enables the ADC module and starts the ADC cores analog inputs for the required input signals 
- * @param	None
+ * @param	void
  * @return  0=failure
  * @return  1=success
  *  
@@ -755,7 +755,7 @@ volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* b
 
     return(retval);
     
-} /**}*/
+} /** @} */
 
 
 /*******************************************************************************
@@ -799,6 +799,6 @@ volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_
 
     return(retval);
 }
-/**}*/
+/** @} */
 
 // END OF FILE

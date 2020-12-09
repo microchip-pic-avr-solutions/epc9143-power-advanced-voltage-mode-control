@@ -80,8 +80,6 @@ volatile uint16_t appPowerSupply_ControllerInitialize(void);
 volatile uint16_t appPowerSupply_PeripheralsInitialize(void);
 
 void __attribute__((always_inline)) appPowerSupply_CurrentBalancing(void); 
-// ToDo: remove
-//void __attribute__((always_inline)) appPowerSupply_CurrentSenseCalibration(void);
 
 
 /* *************************************************************************************************
@@ -94,7 +92,6 @@ void __attribute__((always_inline)) appPowerSupply_CurrentBalancing(void);
  * @fn	volatile uint16_t appPowerSupply_Execute(void)
  * @brief This is the top-level function call triggering the most recent state 
  * machine of all associated power supply controllers
- * @param  (none)
  * @return 0=failure
  * @return 1=success
  * 
@@ -126,8 +123,6 @@ volatile uint16_t appPowerSupply_Execute(void)
     retval &= drv_BuckConverter_Execute(&buck);
     
     // Execute slower, advanced control options
-    // ToDo: previous current calibration function call location
-//    appPowerSupply_CurrentSenseCalibration();
 //    appPowerSupply_CurrentBalancing();
 
     // Buck regulation error is only active while controller is running
@@ -152,7 +147,6 @@ volatile uint16_t appPowerSupply_Execute(void)
  * @ingroup app-layer-power-control-functions-public
  * @fn	volatile uint16_t appPowerSupply_Initialize(void)
  * @brief  Calls the application layer power controller initialization
- * @param  (none)
  * @return 0=failure
  * @return 1=success
  * 
@@ -201,12 +195,11 @@ volatile uint16_t appPowerSupply_Initialize(void)
  * @ingroup app-layer-power-control-functions-public
  * @fn	volatile uint16_t appPowerSupply_Start(void)
  * @brief  This function calls the buck converter device driver function starting the power supply 
- * @param  (none)
  * @return 0=failure
  * @return 1=success
  *  
  * @details 
- * 
+ *  This function exposes the Power Converter Start function of the device driver.
  *********************************************************************************/
 
 volatile uint16_t appPowerSupply_Start(void)
@@ -222,17 +215,18 @@ volatile uint16_t appPowerSupply_Start(void)
  * @ingroup app-layer-power-control-functions-public
  * @fn	volatile uint16_t appPowerSupply_Stop(void)
  * @brief This function calls the buck converter device driver function stopping the power supply 
- * @param  (none)
  * @return 0=failure
  * @return 1=success
  *  
  * @details
+ *  This function exposes the Power Converter Stop function of the device driver.
+ * 
  * @note
- * The STOP function terminates the state machine and all peripherals used by
- * the power controller. This includes the PWM and ADC peripheral modules and 
- * will therefore also stop all data acquisition. 
- * If you are trying to stop the power supply but keep its state machine and
- * data acquisition running, use the SUSPEND function instead
+ *  The STOP function terminates the state machine and all peripherals used by
+ *  the power controller. This includes the PWM and ADC peripheral modules and 
+ *  will therefore also stop all data acquisition. 
+ *  If you are trying to stop the power supply but keep its state machine and
+ *  data acquisition running, use the SUSPEND function instead
  * 
  *********************************************************************************/
 
@@ -247,15 +241,14 @@ volatile uint16_t appPowerSupply_Stop(void)
 
 /*******************************************************************************
  * @ingroup app-layer-power-control-functions-public
- * @fn	volatile uint16_t appPowerSupply_Suspend(void)
- * @brief This function stops the power supply operation
- * @param	None
- * @return  0=failure
+ * @fn	   volatile uint16_t appPowerSupply_Suspend(void)
+ * @brief  This function stops the power supply operation
+ * @return 0=failure
  * @return 1=success
  *  
  * @details
- * The SUSPEND function stops the power supply operation but keep its state machine
- * and data acquisition running.
+ *  The SUSPEND function stops the power supply operation but keep its state machine
+ *  and data acquisition running.
  *********************************************************************************/
 
 volatile uint16_t appPowerSupply_Suspend(void)
@@ -269,14 +262,13 @@ volatile uint16_t appPowerSupply_Suspend(void)
 
 /*******************************************************************************
  * @ingroup app-layer-power-control-functions-public
- * @fn	volatile uint16_t appPowerSupply_Resume(void)
- * @brief This function resumes the power supply operation
- * @param  (none)
+ * @fn	   volatile uint16_t appPowerSupply_Resume(void)
+ * @brief  This function resumes the power supply operation
  * @return unsigned integer (0=failure, 1=success)
  *  
  * @details
- * This function calls the buck converter device driver function recovering
- * the power supply operation from a previously initiated shut-down.
+ *  This function calls the buck converter device driver function recovering
+ *  the power supply operation from a previously initiated shut-down.
  * 
  *********************************************************************************/
 
@@ -294,20 +286,16 @@ volatile uint16_t appPowerSupply_Resume(void)
 /* *************************************************************************************************
  * PRIVATE FUNCTIONS
  * ************************************************************************************************/
-/**
- * @ingroup app-layer-power-control-functions-private
- * @{ 
- */
 /*******************************************************************************
+ * @ingroup app-layer-power-control-functions-private
  * @fn	volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
  * @brief  This function initializes the buck converter device driver instance
- * @param  (none)
  * @return unsigned integer (0=failure, 1=success)
  *  
  * @details
- * This function initialize the buck converter object status, reset the buck state 
- * machine, set reference values, clear the runtime data, initialize the switch node,
- * and setup the feedback channels and start-up settings.
+ *  This function initialize the buck converter object status, reset the buck state 
+ *  machine, set reference values, clear the runtime data, initialize the switch node,
+ *  and setup the feedback channels and start-up settings.
  *********************************************************************************/
 
 volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
@@ -520,9 +508,9 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
 
 
 /*******************************************************************************
+ * @ingroup app-layer-power-control-functions-private
  * @fn	volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
  * @brief  This function is used to load peripheral configuration templates from the power controller device driver
- * @param  (none)
  * @return 0=failure
  * @return 1=success
  * 
@@ -567,9 +555,9 @@ volatile uint16_t appPowerSupply_PeripheralsInitialize(void)
 }
 
 /*******************************************************************************
+ * @ingroup app-layer-power-control-functions-private
  * @fn	volatile uint16_t appPowerSupply_ControllerInitialize(void)
  * @brief  This function initializes the control system feedback loop objects
- * @param  (none)
  * @return 0=failure
  * @return 1=success
  * 
@@ -687,9 +675,9 @@ volatile uint16_t appPowerSupply_ControllerInitialize(void)
 }
 
 /*******************************************************************************
+ * @ingroup app-layer-power-control-functions-private
  * @fn	void appPowerSupply_CurrentBalancing(void) 
  * @brief This function performs current balancing between the power supply phases
- * @param  (none)
  * @return unsigned integer (0=failure, 1=success)
  *  
  * @details 
@@ -739,6 +727,5 @@ inline void appPowerSupply_CurrentBalancing(void)
 
 }
 
-/** @} */ // end of group power-control-app-layer-private 
 // ____________________________
 // end of file

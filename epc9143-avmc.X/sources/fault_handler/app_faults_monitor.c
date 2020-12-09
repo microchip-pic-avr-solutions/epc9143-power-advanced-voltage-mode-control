@@ -1,5 +1,5 @@
 /*
- * File:   faults.c
+ * File:   app_faults_monitor.c
  * Author: M91406
  *
  * Created on March 12, 2020, 11:38 AM
@@ -25,14 +25,10 @@ volatile uint16_t __attribute__((always_inline)) ocp_FaultInitialize(void);
 volatile uint16_t __attribute__((always_inline)) regerr_FaultInitialize(void);
 
 
-/**
- * @ingroup app-layer-fault-handler-functions-public
- * @{ 
- */
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-public
  * @fn volatile uint16_t appFaultMonitor_Execute(void)  
  * @brief Application wide fault object monitoring routine
- * @param (none)
  * @return 0=failure 
  * @return 1=success
  * 
@@ -78,9 +74,9 @@ volatile uint16_t appFaultMonitor_Execute(void)
 }
 
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-public
  * @fn volatile uint16_t appFaultMonitor_Initialize(void)
  * @brief  Initialization of user-defined fault objects
- * @param (none)
  * @return 0=failure 
  * @return 1=success
  * 
@@ -104,9 +100,9 @@ volatile uint16_t appFaultMonitor_Initialize(void)
 }
 
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-public
  * @fn volatile uint16_t appFaultMonitor_Dispose(void) 
  * @brief Function clearing all fault object settings
- * @param (none)
  * @return 0=failure 
  * @return 1=success
  * 
@@ -126,20 +122,16 @@ volatile uint16_t appFaultMonitor_Dispose(void)
     
     return(1);
 }
-/**@}*/
+
 
 /* *********************************************************************************
  * PRIVATE FUNCTIONS
  * ********************************************************************************/
 
-/**
- * @ingroup app-layer-fault-handler-functions-private
- * @{ 
- */
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-private
  * @fn volatile uint16_t uvlo_FaultInitialize(void)
  * @brief Initializes the user-defined fault objects for under-voltage lockout
- * @param (none)
  * @return 0=failure
  * @return 1=success
  * 
@@ -182,9 +174,9 @@ volatile uint16_t uvlo_FaultInitialize(void)
 }
 
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-private
  * @fn volatile uint16_t ovlo_FaultInitialize(void)
  * @brief Initializes the user-defined fault objects for overvoltage lockout
- * @param (none)
  * @return 0=failure
  * @return 1=success
  * 
@@ -226,9 +218,9 @@ volatile uint16_t ovlo_FaultInitialize(void)
 }
     
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-private
  * @fn volatile uint16_t regerr_FaultInitialize(void)
  * @brief Initializes the user-defined fault objects for regulation error
- * @param (none)
  * @return 0=failure
  * @return 1=success
  * 
@@ -269,9 +261,9 @@ volatile uint16_t regerr_FaultInitialize(void)
 }
     
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-private
  * @fn volatile uint16_t ocp_FaultInitialize(void)
  * @brief Initializes the user-defined fault objects for overcurrent protection
- * @param (none)
  * @return 0=failure
  * @return 1=success
  * 
@@ -310,5 +302,5 @@ volatile uint16_t ocp_FaultInitialize(void)
     return(retval);
     
 }
-/**@}*/    
-// END OF FILE
+
+// end of file

@@ -21,7 +21,6 @@
 /***********************************************************************************
  * @fn uint16_t sysDacModule_Initialize
  * @brief  DAC Module Base Register Initialization
- * @param  (none)
  * @return unsigned integer
  * @return 0=failure
  * @return 1=success

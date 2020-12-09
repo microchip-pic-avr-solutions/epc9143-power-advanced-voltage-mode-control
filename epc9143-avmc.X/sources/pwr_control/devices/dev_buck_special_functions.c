@@ -140,7 +140,6 @@ volatile uint16_t drv_BuckConverter_SpecialFunctionExecute(
 
 /*******************************************************************************
  * @ingroup lib-layer-buck-specialfn-functions-private
- * @{
  * @fn	volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) 
  * @brief Performs an offset calibration of the current sense feedback signal(s)
  * @param  volatile struct BUCK_POWER_CONTROLLER_s *buckInstance
@@ -222,6 +221,6 @@ volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTR
     
     return(retval);
     
-} /** @} */ 
+}  
 
 // end of file

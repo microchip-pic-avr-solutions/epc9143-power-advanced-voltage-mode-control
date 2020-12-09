@@ -15,7 +15,6 @@
 /***********************************************************************************
  * @fn volatile uint16_t SYSTEM_Initialize(void) 
  * @brief  Initializes essential chip resources
- * @param  (none)
  * @return unsigned integer 
  * 0=failure
  * 1=success
@@ -50,7 +49,6 @@ volatile uint16_t SYSTEM_Initialize(void)
 /***********************************************************************************
  * @fn uint16_t sysUserPeriperhals_Initialize
  * @brief  Initializes the user-defined chip resources
- * @param  (none)
  * @return unsigned integer (0=failure, 1=success)
  * 
  * @details
@@ -84,7 +82,6 @@ volatile uint16_t sysUserPeriperhals_Initialize(void) {
 /***********************************************************************************
  * @fn uint16_t sysUserTasks_Initialize
  * @brief  Initializes the user-defined tasks
- * @param  (none)
  * @return unsigned integer (0=failure, 1=success)
  * 
  * @details

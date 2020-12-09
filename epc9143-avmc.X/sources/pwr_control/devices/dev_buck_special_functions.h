@@ -47,7 +47,9 @@ typedef enum BUCK_SPECIAL_FUNCTIONS_e
         
 } BUCK_SPECIAL_FUNCTIONS_t; // Enumeration of special function sub-states
 
+
 /* PUBLIC FUNCTION CALL PROTOTYPES */
+
 extern volatile uint16_t drv_BuckConverter_SpecialFunctionExecute (
                 volatile struct BUCK_POWER_CONTROLLER_s * buckInstance, 
                 volatile enum BUCK_SPECIAL_FUNCTIONS_e specialFunction);

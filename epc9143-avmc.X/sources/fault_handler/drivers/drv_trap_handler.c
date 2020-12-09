@@ -58,8 +58,7 @@
 #include <stdbool.h>
 #include "drv_trap_handler.h"
 
-/**
- * @ingroup lib-layer-fault-properties-private-data-types */
+
 
 volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog; ///< data structure used as buffer for trap monitoring 
 

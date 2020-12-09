@@ -55,7 +55,7 @@ volatile struct P33C_OPA_MODULE_s* p33c_OpaModule_GetHandle(void)
 /*********************************************************************************
  * @fn volatile uint16_t p33c_OpaModule_Dispose(void)
  * @brief Resets all Op-Amp Module registers to their RESET default values
- * @param none
+ * @param void
  * @return unsigned integer
  * @return 0 = failure, disposing OP-Amp module was not successful
  * @return 1 = success, disposing OP-Amp module was successful
@@ -83,7 +83,7 @@ volatile uint16_t p33c_OpaModule_Dispose(void)
 /*********************************************************************************
  * @fn volatile struct P33C_OPA_MODULE_s p33c_OpaModule_ConfigRead(void)
  * @brief Read the current configuration from the op-amp module base registers
- * @param none
+ * @param void
  * @return unsigned integer
  * @return 0 = failure, reading op-amp module was not successful (returns NULL)
  * @return n = success, reading op-amp module was successful (returns 16-bit wide pointer)
@@ -110,7 +110,7 @@ volatile struct P33C_OPA_MODULE_s p33c_OpaModule_ConfigRead(void)
 /*********************************************************************************
  * @fn volatile uint16_t p33c_OpaModule_ConfigWrite(volatile struct P33C_OPA_MODULE_s opaModuleConfig)
  * @brief Writes a user-defined configuration to the op-amp module base registers
- * @param none
+ * @param void
  * @return unsigned integer
  * @return 0 = failure, writing op-amp module was not successful
  * @return 1 = success, writing op-amp module was successful

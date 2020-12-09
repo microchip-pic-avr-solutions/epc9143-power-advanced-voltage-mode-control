@@ -3,8 +3,8 @@
 @defgroup device-abstraction-pral PRAL Library
 @ingroup lib-layer
 @details
-
 */
+
 /**
  @defgroup p33c-ccp-pral Capture Compare Module
  @ingroup device-abstraction-pral
@@ -37,6 +37,7 @@
  @defgroup p33c-pwm-pral High-Speed PWM Module
  @ingroup device-abstraction-pral
  @brief High-Speed PWM Module Special Function Register Abstraction Driver
+*/
 
 /*Public Functions*/
 /**

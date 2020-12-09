@@ -19,7 +19,7 @@
  *  CLAIMS RELATED TO THE SOFTWARE WILL NOT EXCEED AMOUNT OF FEES, IF ANY,
  *  YOU PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
  *
- *  @file    app_buck_converter.h
+ *  @file    dev_buck_converter.h
  *  @brief   This file contains APIs to for the power control
  *
  *  @note

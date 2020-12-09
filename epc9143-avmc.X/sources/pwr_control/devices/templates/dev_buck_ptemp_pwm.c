@@ -74,5 +74,6 @@ volatile struct P33C_PWM_GENERATOR_s buckPwmGeneratorConfig =
         .PGxDTH.value = 0x0000,             ///< PGxDTH: PWM GENERATOR x DEAD TIME REGISTER HIGH
         .PGxCAP.value = 0x0000              ///< PGxCAP: PWM GENERATOR x CAPTURE REGISTER
 };
-/**@}*/
+
+// end of file
 

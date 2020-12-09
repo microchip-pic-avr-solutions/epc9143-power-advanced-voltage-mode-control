@@ -28,15 +28,13 @@
 
 #include "p33c_dsp.h"
 
-/*@@p33c_dsp.c
- * ************************************************************************************************
- * Summary:
- * Driver file for dsPIC33C DSP Configuration SFRs
- *
- * Description:
+/*************************************************************************************************
+ * @file p33c_dsp.c
+ * @brief Driver file for dsPIC33C DSP Configuration SFRs
+ * @details
  * The DSP engine of dsPIC33 offers several options to optimize data processing for integer 
  * and fixed-point algorithmic, which can be defined and enabled using this library.
- * ***********************************************************************************************/
+ ************************************************************************************************/
 
 
 /******************************************************************************************************
@@ -68,7 +66,7 @@ volatile uint16_t Dsp_SetConfig(volatile struct DSP_CONFIG_s dsp_cfg)
 /******************************************************************************************************
  * @fn volatile struct DSP_CONFIG_s Dsp_GetConfig(void)
  * @brief Reads the DSP engine configuration 
- * @param None 
+ * @param void 
  * @return 16-bit wide DSP configuration data structure DSP_CONFIG_s
  *
  * @details
@@ -89,5 +87,6 @@ volatile struct DSP_CONFIG_s Dsp_GetConfig(void)
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
- /**@}/
-// EOF
+/** @} */
+
+// end of file

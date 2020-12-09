@@ -22,7 +22,6 @@
 /***********************************************************************************
  * @fn uint16_t sysFosc_Initialize
  * @brief  System oscillator initialization
- * @param  (none)
  * @return unsigned integer 
  * 0=failure
  * 1=success
@@ -95,7 +94,6 @@ volatile uint16_t sysFosc_Initialize(void)
 /***********************************************************************************
  * @fn uint16_t sysAclk_Initialize
  * @brief  Initializes the auxiliary clock of the device
- * @param  ADD_PARAMETER_HERE
  * @return unsigned integer (0=failure, 1=success)
  * 
  * @details

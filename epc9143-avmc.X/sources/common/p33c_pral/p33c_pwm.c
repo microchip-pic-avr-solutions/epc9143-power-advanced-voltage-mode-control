@@ -34,7 +34,7 @@
 /*********************************************************************************
  * @fn volatile uint16_t p33c_PwmModule_Initialize(void)
  * @brief Initializes the PWM base module by resetting all its registers to default
- * @param none
+ * @param void
  * @return 0 = failure, disposing PWM generator was not successful
  * @return 1 = success, disposing PWM generator was successful
  * 
@@ -88,7 +88,7 @@ volatile struct P33C_PWM_MODULE_s* p33c_PwmModule_GetHandle(void)
 /*********************************************************************************
  * @fn volatile uint16_t p33c_PwmModule_Dispose(void)
  * @brief Resets all PWM base module registers to their RESET default values
- * @param none
+ * @param void
  * @return  0 = failure, disposing PWM generator was not successful
  * @return  1 = success, disposing PWM generator was successful
  * 
@@ -117,7 +117,7 @@ volatile uint16_t p33c_PwmModule_Dispose(void)
 /*********************************************************************************
  * @fn volatile struct P33C_PWM_MODULE_s p33c_PwmModule_ConfigRead(void)
  * @brief Read the current configuration from the PWM base module registers
- * @param none
+ * @param void
  * @return 0 = failure, disposing PWM generator was not successful
  * @return 1 = success, disposing PWM generator was successful
  * 
@@ -144,7 +144,7 @@ volatile struct P33C_PWM_MODULE_s p33c_PwmModule_ConfigRead(void)
 /*********************************************************************************
  * @fn volatile uint16_t p33c_PwmModule_ConfigWrite(volatile struct P33C_PWM_MODULE_s pwmConfig)
  * @brief Writes a user-defined configuration to the PWM base module registers
- * @param none
+ * @param void
  * @return 0 = failure, disposing PWM generator was not successful
  * @return 1 = success, disposing PWM generator was successful
  * 

@@ -58,7 +58,7 @@ volatile struct P33C_GPIO_INSTANCE_s* p33c_GpioInstance_GetHandle(volatile uint1
 /*********************************************************************************
  * @fn volatile uint16_t p33c_GpioInstance_Dispose(volatile uint16_t gpioInstance)
  * @brief Resets all GPIO Instance registers to their RESET default values
- * @param none
+ * @param void
  * @return 0 = failure, disposing GPIO instance was not successful
  * @return 1 = success, disposing GPIO instance was successful
  * 
@@ -87,7 +87,7 @@ volatile uint16_t p33c_GpioInstance_Dispose(volatile uint16_t gpioInstance)
 /*********************************************************************************
  * @fn volatile struct P33C_GPIO_INSTANCE_s p33c_GpioInstance_ConfigRead(volatile uint16_t gpioInstance)
  * @brief Read the current configuration from the GPIO instance registers  
- * @param none
+ * @param void
  * @return 0 = failure, reading GPIO instance was not successful (returns NULL)
  * @return n = success, reading GPIO instance was successful (returns 16-bit wide pointer)
  * 
@@ -114,7 +114,7 @@ volatile struct P33C_GPIO_INSTANCE_s p33c_GpioInstance_ConfigRead(volatile uint1
 /*********************************************************************************
  * @fn volatile uint16_t p33c_GpioInstance_ConfigWrite(volatile uint16_t gpioInstance,volatile struct P33C_GPIO_INSTANCE_s gpioConfig)
  * @brief Writes a user-defined configuration to the GPIO instance registers
- * @param none
+ * @param void
  * @return 0 = failure, writing GPIO instance was not successful
  * @return 1 = success, writing GPIO instance was successful
  * 

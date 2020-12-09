@@ -58,7 +58,7 @@
 /*************************************************************************************************
  * @fn volatile uint16_t PPS_LockIO(void)
  * @brief Locks the Peripheral Pin Select Configuration registers against accidental changes
- * @param none
+ * @param void
  * @return 1: Success
  * @return 0: Error
  *
@@ -84,7 +84,7 @@ volatile uint16_t PPS_LockIO(void){
 /*************************************************************************************************
  * @fn volatile uint16_t PPS_UnlockIO(void)
  * @brief Unlocks the Peripheral Pin Select Configuration registers to enable changes
- * @param none
+ * @param void
  * @return 1: Success
  * @return 0: Error
  *

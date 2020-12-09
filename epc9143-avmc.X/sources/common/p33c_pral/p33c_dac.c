@@ -55,7 +55,7 @@ volatile struct P33C_DAC_MODULE_s* p33c_DacModule_GetHandle(void)
 /*********************************************************************************
  * @fn volatile uint16_t p33c_DacModule_Dispose(void)
  * @brief Resets all DAC Module registers to their RESET default values
- * @param none
+ * @param void
  * @return 0 = failure, disposing DAC module was not successful
  * @return 1 = success, disposing DAC module was successful
  * 
@@ -84,7 +84,7 @@ volatile uint16_t p33c_DacModule_Dispose(void)
 /*********************************************************************************
  * @fn volatile struct P33C_DAC_MODULE_s p33c_DacModule_ConfigRead(void)
  * @brief Read the current configuration from the DAC module base registers
- * @param none
+ * @param void
  * @return 0 = failure, reading DAC module was not successful (returns NULL)
  * @return n = success, reading DAC module was successful (returns 16-bit wide pointer)
  * 
@@ -110,7 +110,7 @@ volatile struct P33C_DAC_MODULE_s p33c_DacModule_ConfigRead(void)
 /*********************************************************************************
  * @fn volatile uint16_t p33c_DacModule_ConfigWrite(volatile struct P33C_DAC_MODULE_s dacModuleConfig)
  * @brief Writes a user-defined configuration to the DAC module base registers
- * @param none
+ * @param void
  * @return 0 = failure, writing DAC module was not successful
  * @return 1 = success, writing DAC module was successful
  * 
@@ -173,7 +173,7 @@ volatile struct P33C_DAC_INSTANCE_s* p33c_DacInstance_GetHandle(volatile uint16_
 /*********************************************************************************
  * @fn volatile uint16_t p33c_DacInstance_Dispose(volatile uint16_t dacInstance)
  * @brief Resets all DAC Instance registers to their RESET default values
- * @param none
+ * @param void
  * @return 0 = failure, disposing DAC instance was not successful
  * @return 1 = success, disposing DAC instance was successful
  * 
@@ -202,7 +202,7 @@ volatile uint16_t p33c_DacInstance_Dispose(volatile uint16_t dacInstance)
 /*********************************************************************************
  * @fn volatile struct P33C_DAC_INSTANCE_s p33c_DacInstance_ConfigRead(volatile uint16_t dacInstance)
  * @brief Read the current configuration from the DAC instance registers
- * @param none
+ * @param void
  * @return 0 = failure, reading DAC instance was not successful (returns NULL)
  * @return n = success, reading DAC instance was successful (returns 16-bit wide pointer)
  * 
@@ -229,7 +229,7 @@ volatile struct P33C_DAC_INSTANCE_s p33c_DacInstance_ConfigRead(volatile uint16_
 /*********************************************************************************
  * @fn volatile uint16_t p33c_DacInstance_ConfigWrite(volatile uint16_t dacInstance, volatile struct P33C_DAC_INSTANCE_s dacConfig)
  * @brief Writes a user-defined configuration to the DAC instance registers
- * @param none
+ * @param void
  * @return 0 = failure, writing DAC instance was not successful
  * @retun  1 = success, writing DAC instance was successful
  * 

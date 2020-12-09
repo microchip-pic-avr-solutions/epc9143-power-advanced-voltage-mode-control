@@ -19,7 +19,6 @@
 /***********************************************************************************
  * @fn uint16_t sysOsTimer_Initialize
  * @brief  Initializes the timer used as timebase for the task scheduler
- * @param  (none)
  * @return unsigned integer
  * @return 0=failure
  * @return 1=success
@@ -66,7 +65,6 @@ volatile uint16_t sysOsTimer_Initialize (void)
 /***********************************************************************************
  * @fn uint16_t sysOsTimer_Enable
  * @brief  Enables the timer used as timebase for the task scheduler
- * @param  (none)
  * @return unsigned integer
  * @return 0=failure
  * @return 1=success

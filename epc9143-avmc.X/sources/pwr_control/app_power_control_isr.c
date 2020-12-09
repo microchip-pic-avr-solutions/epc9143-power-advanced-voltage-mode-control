@@ -11,12 +11,13 @@
 
 /*********************************************************************************
  * @ingroup app-layer-power-control-events
+ * @{
  * @fn void _BUCK_VLOOP_Interrupt(void)
  * @brief Main Control Interrupt
  * 
- * @param None
+ * @param void
  * 
- * @return None
+ * @return void
  *   
  * @details
  * The control interrupt is calling the control loop. The point in time where
