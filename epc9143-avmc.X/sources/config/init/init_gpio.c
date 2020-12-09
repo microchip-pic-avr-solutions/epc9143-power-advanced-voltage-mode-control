@@ -15,22 +15,16 @@
  */
 
 /***********************************************************************************
- * @fn DATA_TYPE FUNCTION_NAME
- * @brief  ADD_SHORT_DESCRIPTION/SUMMARY_HERE
- * @param  ADD_PARAMETER_HERE
- * @return DATA_TYPE SHORT_VALUE_DESCRIPTION
+ * @fn uint16_t sysGpio_Initialize(void)
+ * @brief  Resets the device input/output pins to digital inputs
+ * @return unsigned integer (0=failure, 1=success)
  * 
  * @details
- * ADD_DESCRIPTION_HERE
- *
- * <p><b>Example:</b></p>
- *
- * <code>
- * ADD_CODE_EXAMPLE_HERE
- * </code>
- *
- * <p><b>Remarks:</b></p>
- * ADD_REMARKS_HERE
+ *  When the device is coming out of RESET. all device pins are configured as
+ *  inputs and all analog functions will be enabled. Enabled analog functions
+ *  are a potential source for conflicts and are therefore turned off by default
+ *  during device startup to allow all peripheral configuration drivers to start
+ *  from a defined default state.
  *
  **********************************************************************************/
 

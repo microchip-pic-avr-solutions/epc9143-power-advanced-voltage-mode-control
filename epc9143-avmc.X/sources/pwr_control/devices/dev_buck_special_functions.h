@@ -38,8 +38,14 @@
 
 /****************************************************************************************************
  * @ingroup lib-layer-buck-specialfn-properties-public-data-types
- * @enum BUCK_SPECIAL_FUNCTIONS_e
- * @brief Enumeration of special function sub-states
+ * @enum    BUCK_SPECIAL_FUNCTIONS_e
+ * @brief   Enumeration of special function sub-states
+ * @details 
+ *  This enumeration provides labels for indices of the private array BuckConverterSpecialFunctions[].
+ *  External functions call special functions by calling the high level function 
+ *  drv_BuckConverter_SpecialFunctionExecute() by handing in a pointer to a power converter object
+ *  and the Special Function state to execute. This allows the extension of state machine to include 
+ *  Special Functions available.
  **************************************************************************************************** */
 typedef enum BUCK_SPECIAL_FUNCTIONS_e 
 {

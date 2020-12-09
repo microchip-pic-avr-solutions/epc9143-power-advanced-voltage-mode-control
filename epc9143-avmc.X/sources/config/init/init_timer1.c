@@ -15,6 +15,9 @@
 /**
  * @ingroup os-timer-initialization
  * @{
+ * @details
+ * The internal PLL is set up to operate the CPU at maximum speed of 100 MIPS 
+ * (100 MHz instruction cycle). 
  */
 /***********************************************************************************
  * @fn uint16_t sysOsTimer_Initialize

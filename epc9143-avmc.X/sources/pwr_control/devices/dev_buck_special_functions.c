@@ -93,21 +93,39 @@ volatile uint16_t (*BuckConverterSpecialFunctions[])(volatile struct BUCK_POWER_
 
 /*********************************************************************************
  * @ingroup lib-layer-buck-specialfn-functions-public
- * @fn drv_BuckConverter_SpecialFunctionExecute
+ * @fn     uint16_t drv_BuckConverter_SpecialFunctionExecute(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance, volatile enum BUCK_SPECIAL_FUNCTIONS_e specialFunction)
  * @brief  This is the public function call access point to call dedicated special sub-functions
  * @param  struct BUCK_POWER_CONTROLLER_s * buckInstance
  * @param  enum BUCK_SPECIAL_FUNCTIONS_e function
- * @return DATA_TYPE SHORT_VALUE_DESCRIPTION
+ * @return 0 = BUCK_OPSRET_ERROR   
+ * @return 1 = BUCK_OPSRET_COMPLETE
+ * @return 2 = BUCK_OPSRET_REPEAT  
+ * 
  * @details
- *  ADD_DESCRIPTION_HERE
+ *  This function call is the public API function call to execute one of the
+ *  special functions supported by this power converter device driver extension.
  *
  * <p><b>Example:</b></p>
+ * The following example initiates the automatic feedback sense offset calibration.
+ * Special Functions behave like all other state machine states and sub-states by 
+ * returning the results ERROR, COMPLETE or REPEAT. 
+ * 
+ * - BUCK_OPSRET_ERROR
+ *   An unexpected error occurred during execution of the Special Function routine,
+ *   which prevents the state machine from continuing. If a ERROR is returned,
+ *   it is recommended to reset the state machine and start all over.
+ * 
+ * - BUCK_OPSRET_COMPLETE
+ *   If the COMPLETE flag is returned, the Special Function has successfully completed 
+ *   and the state machine may move on.
+ * 
+ * - BUCK_OPSRET_REPEAT
+ *   If the REPEAT flag is returned, the function has to be called again until it returns
+ *   the COMPLETE flag.
+ * 
  * @code{.c}
- *  ADD_CODE_EXAMPLE_HERE
+ *  retval = drv_BuckConverter_SpecialFunctionExecute(&buckConverter, CS_OFSET_CALIBRATION);
  * @endcode
- *
- * @note
- *  ADD_REMARKS_HERE
  *
  **********************************************************************************/
 	
@@ -132,7 +150,7 @@ volatile uint16_t drv_BuckConverter_SpecialFunctionExecute(
     
 	return(retval);
 
-}
+} 
 
 /*******************************************************************************
  * PRIVATE FUNCTIONS
@@ -140,8 +158,8 @@ volatile uint16_t drv_BuckConverter_SpecialFunctionExecute(
 
 /*******************************************************************************
  * @ingroup lib-layer-buck-specialfn-functions-private
- * @fn	volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) 
- * @brief Performs an offset calibration of the current sense feedback signal(s)
+ * @fn	   volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) 
+ * @brief  Performs an offset calibration of the current sense feedback signal(s)
  * @param  volatile struct BUCK_POWER_CONTROLLER_s *buckInstance
  * @return unsigned integer (0=failure, 1=success)
  *  
