@@ -4,7 +4,7 @@
 @ingroup lib-layer
 @details
  The Buck Converter Library is a comprehensive device driver providing a state machine managing
- initialization, configurable, prtected startup, runtime reference tuning and auto-restart capabilities.
+ initialization, configurable, protected startup, runtime reference tuning and auto-restart capabilities.
  Special Functions are available to extend the essential features or the state machine supporting
  specific sub-circuits and functions.
 
@@ -86,13 +86,15 @@ library layer of buck converter device driver.
 enumerations, defines and macros of the library layer of the buck converter
 device driver.
 */
-    /*
-    @defgroup lib-layer-buck-states-functions-public Public Functions
-    @ingroup lib-layer-buck-states
-    @brief Public functions of the second library layer
-    @details This is the detailed description of public functions of the
-    library layer of buck converter device driver.
-    */
+
+/**
+@defgroup lib-layer-buck-states-functions-public Public Functions
+@ingroup lib-layer-buck-states
+@brief Public functions of the second library layer
+@details This is the detailed description of public functions of the
+library layer of buck converter device driver.
+@note This task doesn't have any public functions.
+*/
 
 /**
 @defgroup lib-layer-buck-states-properties-public Public Properties

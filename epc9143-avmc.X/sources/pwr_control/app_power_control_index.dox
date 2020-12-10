@@ -16,14 +16,14 @@
 @brief Public properties of the first application layer task
 @details This is the detailed description of public variables, data types,
 enumerations, defines and macros of the application layer of
-power control.
+the power control task.
 
 @defgroup app-layer-power-control-events Events and Interrupts
 @ingroup app-layer-power-control
 @brief Public properties of the first application layer task
 @details This is the detailed description of public variables, data types,
 enumerations, defines and macros of the application layer of
-power control.
+the power control task.
 
 @defgroup app-layer-power-control-functions-private Private Functions
 @ingroup app-layer-power-control
@@ -37,5 +37,6 @@ power control.
 @brief Public properties of the first application layer task
 @details This is the detailed description of public variables, data types,
 enumerations, defines and macros of the application layer of
-power control.
+the power control task.
+@note This task doesn't have any private properties.
 */

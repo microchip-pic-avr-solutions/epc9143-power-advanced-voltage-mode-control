@@ -1,34 +1,49 @@
-/* TASK LAYER: Fault Handler Application Layer Task Documentation */
+/* TASK LAYER: Fault Monitor Application Layer Task Documentation */
 /**
-@defgroup app-layer-fault-handler Fault Handler Application Layer 
+@defgroup app-layer-fault-monitor Fault Monitor Application Layer 
 @ingroup task-layer
-@details This generic fault handler driver declares a fault object data structure, which can be used in user code to create various different fault objects, which will get scanned and managed by the fault handler functions.
-     The main function of this fault handler is restricted to detecting fault conditions, differentiating between trip and release conditions. Fault conditions are defined in user code individually for each fault object.
+@details 
+    This generic fault monitor device driver declares a fault object data structure, 
+    which can be used in user code to create various different fault objects, which 
+	will get scanned and managed by the fault monitor functions during runtime.
+    The main function of this fault monitor is restricted to detecting fault conditions, 
+	differentiating between trip and release conditions. Fault conditions are defined 
+	in user code individually for each fault object.
+*/
 
-
-@defgroup app-layer-fault-handler-functions-public Public Functions
-@ingroup app-layer-fault-handler
+/**
+@defgroup app-layer-fault-monitor-functions-public Public Functions
+@ingroup app-layer-fault-monitor
 @brief Public functions of the first application layer task
-@details This is the detailed description of public functions of the
-application layer of fault handler.
+@details 
+    This is the detailed description of public functions of the
+    application layer of fault monitor.
+*/
 
-@defgroup app-layer-fault-handler-properties-public Public Properties
-@ingroup app-layer-fault-handler
+/**
+@defgroup app-layer-fault-monitor-properties-public Public Properties
+@ingroup app-layer-fault-monitor
 @brief Public properties of the first application layer task
 @details This is the detailed description of public variables, data types,
 enumerations, defines and macros of the application layer of
-fault handler.
+fault monitor.
+@note This task doesn't have any public properties.
+*/
 
-@defgroup app-layer-fault-handler-functions-private Private Functions
-@ingroup app-layer-fault-handler
+/**
+@defgroup app-layer-fault-monitor-functions-private Private Functions
+@ingroup app-layer-fault-monitor
 @brief Private functions of the first application layer task
 @details This is the detailed description of public functions of the
-application layer of fault handler.
+application layer of fault monitor.
+*/
 
-@defgroup app-layer-fault-handler-properties-private Private Properties
-@ingroup app-layer-fault-handler
+/**
+@defgroup app-layer-fault-monitor-properties-private Private Properties
+@ingroup app-layer-fault-monitor
 @brief Public properties of the first application layer task
 @details This is the detailed description of public variables, data types,
 enumerations, defines and macros of the application layer of
-fault handler.
+fault monitor.
+@note This task doesn't have any private properties.
 */
