@@ -59,9 +59,18 @@ A single, high-speed type IV (4P4Z) voltage mode controller with enforced PWM st
   - [EPC2053 Data Sheet](https://epc-co.com/epc/Portals/0/epc/documents/datasheets/EPC2053_datasheet.pdf)
 
 ## Software Used 
-  - [MPLAB® X IDE v5.40](https://www.microchip.com/mplabx-ide-windows-installer)
-  - [MPLAB® XC16 Compiler v1.50](https://www.microchip.com/mplabxc16windows)
+  - [MPLAB® X IDE, Version v5.40 or later](https://www.microchip.com/mplabx)
+    - [Download MPLAB® X IDE for Windows](https://www.microchip.com/mplabx-ide-windows-installer)
+    - [Download MPLAB® X IDE for Linux](https://www.microchip.com/mplabx-ide-linux-installer)
+    - [Download MPLAB® X IDE for MAC OS](https://www.microchip.com/mplabx-ide-osx-installer)
+ <br>
+  - [MPLAB® XC16 Compiler, Version v1.50 or later](https://www.microchip.com/xc16)
+    - [Download MPLAB® XC16 Compiler for Windows](https://www.microchip.com/mplabxc16windows)
+    - [Download MPLAB® XC16 Compiler for Linux](https://www.microchip.com/mplabxc16linux)
+    - [Download MPLAB® XC16 Compiler for MAC OS](https://www.microchip.com/mplabxc16osx)
+ <br>
   - [PowerSmart&trade; - Digital Control Library Designer, v0.9.12.642 (Pre-Release Version)](https://areiter128.github.io/DCLD/)
+    - [Download PowerSmart&trade; - Digital Control Library Designer for Windows](https://github.com/areiter128/DCLD/archive/release.zip)
 
 ## Hardware Used
 The EPC9143 1/16th brick power module is best tested when plugged into EPC9531 test fixture. This test fixture also provides all required interfaces to program and debug the dsPIC33CK32MP102 DSC as well as test points and banana jack connectors for easy and safe handling of the kit during bench tests. The EPC9531 QSG provides detailed operating procedure instructions.
