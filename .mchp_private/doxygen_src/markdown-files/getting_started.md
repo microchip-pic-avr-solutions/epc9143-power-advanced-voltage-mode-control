@@ -1,8 +1,13 @@
 
-## 1-Getting Started
+## Getting Started
 ### Introduction to the Microchip SMPS Firmware Framework Architecture
 
-This power converter firmware is based on a set of standardized software modules, which are initialized and executed by a central, two priority level, cooperative task scheduler. The standardized building blocks (modules) are providing a framework of functions provided by device driver modules, which are tailored to application-specific requirements by configuring their respective data objects.
+This power converter firmware is based on a set of standardized software modules, which are initialized and executed by a central, two priority level, cooperative task scheduler. The standardized building blocks (modules) are providing a framework of function building blocks (tasks) encapsulated in open-source libraries (device driver modules). These device driver modules are tailored to application-specific requirements by configuring their respective data objects (properties) and provide additional function calls (methods) for high-level control from external user code.
+
+#### a) Task Functions: 
+Each task provides the following set of standard functions:
+
+- 
 
 
 
