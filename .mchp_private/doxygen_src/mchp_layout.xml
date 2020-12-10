@@ -3,7 +3,7 @@
   <!-- Navigation index tabs for HTML output -->
   <navindex>
     <tab type="mainpage" visible="yes" title=""/>
-    <tab type="pages" visible="yes" title="Start Here" intro=""/>
+    <tab type="pages" visible="yes" title="Getting Started" intro=""/>
     <tab type="modules" visible="yes" title="Software Overview" intro=""/>
     <tab type="namespaces" visible="yes" title="">
       <tab type="namespacelist" visible="yes" title="" intro=""/>
@@ -223,4 +223,5 @@
     </memberdecl>
     <detaileddescription title=""/>
   </directory>
+
 </doxygenlayout>
