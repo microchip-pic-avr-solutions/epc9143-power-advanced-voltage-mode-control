@@ -41,36 +41,42 @@ A single, high-speed type IV (4P4Z) voltage mode controller with enforced PWM st
 ##### Firmware Documentation
   - [EPC9143 Online Firmware Documentation](https://microchip-pic-avr-examples.github.io/epc9143-power-advanced-voltage-mode-control)
 
-##### Firmware Documentation
-  - [EPC9143 300W 1/16th brick Power Module Reference Design Product Website](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EPC9143)
+##### Hardware Documentation
+- [EPC9143 300W 1/16th brick Power Module Reference Design Product Website](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EPC9143)
   - [EPC9143 Reference Design Quick Start Guide (QSG)](https://epc-co.com/epc/documents/guides/EPC9143_qsg.pdf)
   - [EPC9143 Reference Design Schematics](https://epc-co.com/epc/documents/schematics/EPC9143_Schematic.pdf)
   - [EPC9531 Test Fixture Quick Start Guide (QSG)](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf)
   - [EPC9531 Test Fixture Schematics](https://epc-co.com/epc/documents/schematics/EPC9531_Schematic.pdf)
 
 ##### Device Support
-  - [dsPIC33CK32MP102 Product Website](https://www.microchip.com/dsPIC33CK32MP102)
+*Featured Microchip Technology Products:*
+- [dsPIC33CK32MP102 Product Website](https://www.microchip.com/dsPIC33CK32MP102)
   - [dsPIC33CKxxMP10x Device Family Data Sheet](https://www.microchip.com/DS70005363)
   - [dsPIC33CKxxMP10x Device Family Silicon Errata and Data Sheet Clarification](https://www.microchip.com/DS80000809)
-  - [MCP6C02 Shunt Amplifier Product Website](https://www.microchip.com/MCP6C02)
+- [MCP6C02 Shunt Amplifier Product Website](https://www.microchip.com/MCP6C02)
   - [MCP6C02 Zero-Drift, High-Side Current Sense Amplifier](https://www.microchip.com/DS20006129)
 
-  - [EPC2053 100 V, 48/246 A Enhancement-Mode GaN Power Transistor](https://epc-co.com/epc/Products/eGaNFETsandICs/EPC2053.aspx)
+*Featured Efficient Power Conversion (EPC) Products:*
+- [EPC2053 100 V, 48/246 A Enhancement-Mode GaN Power Transistor](https://epc-co.com/epc/Products/eGaNFETsandICs/EPC2053.aspx)
   - [EPC2053 Data Sheet](https://epc-co.com/epc/Portals/0/epc/documents/datasheets/EPC2053_datasheet.pdf)
 
-## Software Used 
-  - [MPLAB® X IDE, Version v5.40 or later](https://www.microchip.com/mplabx)
-    - [Download MPLAB® X IDE for Windows](https://www.microchip.com/mplabx-ide-windows-installer)
-    - [Download MPLAB® X IDE for Linux](https://www.microchip.com/mplabx-ide-linux-installer)
-    - [Download MPLAB® X IDE for MAC OS](https://www.microchip.com/mplabx-ide-osx-installer)
- <br>
-  - [MPLAB® XC16 Compiler, Version v1.50 or later](https://www.microchip.com/xc16)
-    - [Download MPLAB® XC16 Compiler for Windows](https://www.microchip.com/mplabxc16windows)
-    - [Download MPLAB® XC16 Compiler for Linux](https://www.microchip.com/mplabxc16linux)
-    - [Download MPLAB® XC16 Compiler for MAC OS](https://www.microchip.com/mplabxc16osx)
- <br>
-  - [PowerSmart&trade; - Digital Control Library Designer, v0.9.12.642 (Pre-Release Version)](https://areiter128.github.io/DCLD/)
-    - [Download PowerSmart&trade; - Digital Control Library Designer for Windows](https://github.com/areiter128/DCLD/archive/release.zip)
+## Development Tools 
+
+##### MPLAB® X Integrated Development Environment (IDE)
+  - [Requires MPLAB® X IDE, Version v5.40 or later](https://www.microchip.com/mplabx)
+    - [Download latest version of MPLAB® X IDE for Windows](https://www.microchip.com/mplabx-ide-windows-installer)
+    - [Download latest version of MPLAB® X IDE for Linux](https://www.microchip.com/mplabx-ide-linux-installer)
+    - [Download latest version of MPLAB® X IDE for MAC OS](https://www.microchip.com/mplabx-ide-osx-installer)
+
+##### MPLAB® XC16 C-Compiler
+  - [Requires MPLAB® XC16 Compiler, Version v1.50 or later](https://www.microchip.com/xc16)
+    - [Download latest version of MPLAB® XC16 Compiler for Windows](https://www.microchip.com/mplabxc16windows)
+    - [Download latest version of MPLAB® XC16 Compiler for Linux](https://www.microchip.com/mplabxc16linux)
+    - [Download latest version of MPLAB® XC16 Compiler for MAC OS](https://www.microchip.com/mplabxc16osx)
+
+##### MPLAB® X PowerSmart™ Digital Control Library Designer
+  - [Optional: PowerSmart&trade; - Digital Control Library Designer, v0.9.12.642 or later (Pre-Release Version)](https://areiter128.github.io/DCLD/)
+    - [Download latest version of PowerSmart&trade; - DCLD for Windows](https://github.com/areiter128/DCLD/archive/release.zip)
 
 ## Hardware Used
 The EPC9143 1/16th brick power module is best tested when plugged into EPC9531 test fixture. This test fixture also provides all required interfaces to program and debug the dsPIC33CK32MP102 DSC as well as test points and banana jack connectors for easy and safe handling of the kit during bench tests. The EPC9531 QSG provides detailed operating procedure instructions.
