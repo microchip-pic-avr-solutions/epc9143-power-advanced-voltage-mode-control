@@ -49,14 +49,17 @@
 #include <stddef.h> // include standard definition data types
 
 /**
- * @addtogroup power-handler-variable
+ * @ingroup lib-layer-buck-ptemplate-properties-public-defines
  * @{
  */
 /* ********************************************************************************
  * PWM MODULE BASE REGISTER CONFIGURATION
  * *******************************************************************************/
-/* PCLKCON: PWM CLOCK CONTROL REGISTER
-
+/**
+ * @def REG_PCLKCON
+ * @brief PCLKCON: PWM CLOCK CONTROL REGISTER
+ */
+/* 
                            ________________ BIT 15: HRRDY: High-Resolution Ready bit
                           | _______________ BIT 14: HRERR: High-Resolution Error bit
                           || ______________ BIT 13: (unimplemented) 
@@ -74,9 +77,13 @@
                           |||||||||||||| __ BIT  1: MCLKSEL[1:0]: PWM Master Clock Selection bits
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
-#define REG_PCLKCON     0b0000000000000011
+#define REG_PCLKCON     0b0000000000000011  
 
-/* CMBTRIGL: COMBINATIONAL TRIGGER REGISTER LOW
+/**
+ * @def REG_CMBTRIGL
+ * @brief CMBTRIGL: COMBINATIONAL TRIGGER REGISTER LOW
+ */
+/* 
 
                            ________________ BIT 15: (unimplemented)
                           | _______________ BIT 14: (unimplemented)
@@ -95,8 +102,12 @@
                           |||||||||||||| __ BIT  1: CTA2EN: Enable Trigger Output from PWM Generator #2 as Source for Combinational Trigger A bit
                           ||||||||||||||| _ BIT  0: CTA1EN: Enable Trigger Output from PWM Generator #1 as Source for Combinational Trigger A bit
                           ||||||||||||||||  */
-#define REG_CMBTRIGL    0b0000000000000000
+#define REG_CMBTRIGL    0b0000000000000000      
 
+/**
+ * @def REG_CMBTRIGH
+ * @brief CMBTRIGH: COMBINATIONAL TRIGGER REGISTER HIGH
+ */
 /* CMBTRIGH: COMBINATIONAL TRIGGER REGISTER HIGH
 
                            ________________ BIT 15: (unimplemented)
@@ -116,9 +127,13 @@
                           |||||||||||||| __ BIT  1: CTB2EN: Enable Trigger Output from PWM Generator #2 as Source for Combinational Trigger B bit
                           ||||||||||||||| _ BIT  0: CTB1EN: Enable Trigger Output from PWM Generator #1 as Source for Combinational Trigger B bit
                           ||||||||||||||||  */
-#define REG_CMBTRIGH    0b0000000000000000
+#define REG_CMBTRIGH    0b0000000000000000  
 
-/* LOGCONA: COMBINATORIAL PWM LOGIC CONTROL REGISTER A
+/**
+ * @def REG_LOGCONA
+ * @brief LOGCONA: COMBINATORIAL PWM LOGIC CONTROL REGISTER A
+ */
+/* 
 
                            ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
                           | _______________ BIT 14: 
@@ -137,8 +152,12 @@
                           |||||||||||||| __ BIT  1: 
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
-#define REG_LOGCONA     0b0000000000000000
+#define REG_LOGCONA     0b0000000000000000  
 
+/**
+ * @def REG_LOGCONB
+ * @brief LOGCONB: COMBINATORIAL PWM LOGIC CONTROL REGISTER B
+ */
 /* LOGCONB: COMBINATORIAL PWM LOGIC CONTROL REGISTER B
 
                            ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
@@ -160,7 +179,11 @@
                           ||||||||||||||||  */
 #define REG_LOGCONB     0b0000000000000000
 
-/* LOGCONC: COMBINATORIAL PWM LOGIC CONTROL REGISTER C
+/**
+ * @def REG_LOGCONC
+ * @brief LOGCONC: COMBINATORIAL PWM LOGIC CONTROL REGISTER C
+ */
+/* 
 
                            ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
                           | _______________ BIT 14: 
@@ -181,7 +204,11 @@
                           ||||||||||||||||  */
 #define REG_LOGCONC     0b0000000000000000
 
-/* LOGCOND: COMBINATORIAL PWM LOGIC CONTROL REGISTER D
+/**
+ * @def REG_LOGCOND
+ * @brief LOGCOND: COMBINATORIAL PWM LOGIC CONTROL REGISTER D
+ */
+/* 
 
                            ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
                           | _______________ BIT 14: 
@@ -202,7 +229,11 @@
                           ||||||||||||||||  */
 #define REG_LOGCOND     0b0000000000000000
 
-/* LOGCONE: COMBINATORIAL PWM LOGIC CONTROL REGISTER E
+/**
+ * @def REG_LOGCONE
+ * @brief LOGCONE: COMBINATORIAL PWM LOGIC CONTROL REGISTER E
+ */
+/* 
 
                            ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
                           | _______________ BIT 14: 
@@ -223,7 +254,11 @@
                           ||||||||||||||||  */
 #define REG_LOGCONE     0b0000000000000000
 
-/* LOGCONF: COMBINATORIAL PWM LOGIC CONTROL REGISTER F
+/**
+ * @def REG_LOGCONF
+ * @brief LOGCONF: COMBINATORIAL PWM LOGIC CONTROL REGISTER F
+ */
+/* 
 
                            ________________ BIT 15: PWMS1y[3:0]: Combinatorial PWM Logic Source #1 Selection bits
                           | _______________ BIT 14: 
@@ -244,7 +279,11 @@
                           ||||||||||||||||  */
 #define REG_LOGCONF     0b0000000000000000
 
-/* PWMEVTA: PWM EVENT OUTPUT CONTROL REGISTER A
+/**
+ * @def REG_PWMEVTA
+ * @brief PWMEVTA: PWM EVENT OUTPUT CONTROL REGISTER A
+ */
+/* 
 
                            ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
                           | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
@@ -265,7 +304,11 @@
                           ||||||||||||||||  */
 #define REG_PWMEVTA     0b0000000000000000
 
-/* PWMEVTB: PWM EVENT OUTPUT CONTROL REGISTER B
+/**
+ * @def REG_PWMEVTB
+ * @brief PWMEVTB: PWM EVENT OUTPUT CONTROL REGISTER B
+ */
+/* 
 
                            ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
                           | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
@@ -286,7 +329,11 @@
                           ||||||||||||||||  */
 #define REG_PWMEVTB     0b0000000000000000
 
-/* PWMEVTC: PWM EVENT OUTPUT CONTROL REGISTER C
+/**
+ * @def REG_PWMEVTC
+ * @brief PWMEVTC: PWM EVENT OUTPUT CONTROL REGISTER C
+ */
+/* 
 
                            ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
                           | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
@@ -307,7 +354,11 @@
                           ||||||||||||||||  */
 #define REG_PWMEVTC     0b0000000000000000
 
-/* PWMEVTD: PWM EVENT OUTPUT CONTROL REGISTER D
+/**
+ * @def REG_PWMEVTD
+ * @brief PWMEVTD: PWM EVENT OUTPUT CONTROL REGISTER D
+ */
+/*
 
                            ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
                           | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
@@ -328,7 +379,11 @@
                           ||||||||||||||||  */
 #define REG_PWMEVTD     0b0000000000000000
 
-/* PWMEVTE: PWM EVENT OUTPUT CONTROL REGISTER E
+/**
+ * @def REG_PWMEVTE
+ * @brief PWMEVTE: PWM EVENT OUTPUT CONTROL REGISTER E
+ */
+/*
 
                            ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
                           | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
@@ -349,7 +404,11 @@
                           ||||||||||||||||  */
 #define REG_PWMEVTE     0b0000000000000000
 
-/* PWMEVTF: PWM EVENT OUTPUT CONTROL REGISTER F
+/**
+ * @def REG_PWMEVTF
+ * @brief PWMEVTF: PWM EVENT OUTPUT CONTROL REGISTER F
+ */
+/*
 
                            ________________ BIT 15: EVTyOEN: PWM Event Output Enable bit
                           | _______________ BIT 14: EVTyPOL: PWM Event Output Polarity bit
@@ -373,22 +432,55 @@
 /* ********************************************************************************
  * PWM GENERATOR CONFIGURATION
  * *******************************************************************************/
-    
-#define P33C_PGxCONL_PWM_ON     0x8000  // control bit in PGxCONL enabling/disabling the PWM generator
-#define P33C_PGxCONL_HRES_EN    0x0080  // control bit in PGxCONL enabling/disabling High Resolution Mode
-#define P33C_PGxIOCONL_OVREN    0x3000  // control bits in PGxIOCONL enabling/disabling the PWM output override
-#define P33C_PGxIOCONH_PEN      0x000C  // control bits in PGxIOCONH enabling/disabling the PWM outputs
-#define P33C_PGxSTAT_UPDREQ     0x0008  // Control bit in PGxSTAT setting the Update Request bit
-#define P33C_PGxCONH_MPERSEL    0x4000  // Control bit in PGxCONH seting the PERIOD register source
-    
-#define P33C_PGxCONH_UPDMOD_MSTR 0b001  // Master Immediate Update
-#define P33C_PGxCONH_UPDMOD_SLV  0b011  // Slaved immediate Update
+/**
+ * @def P33C_PGxCONL_PWM_ON
+ * @brief control bit in PGxCONL enabling/disabling the PWM generator
+ */    
+#define P33C_PGxCONL_PWM_ON     0x8000  
+/**
+ * @def P33C_PGxCONL_HRES_EN
+ * @brief control bit in PGxCONL enabling/disabling High Resolution Mode
+ */  
+#define P33C_PGxCONL_HRES_EN    0x0080  
+/**
+ * @def P33C_PGxIOCONL_OVREN
+ * @brief control bits in PGxIOCONL enabling/disabling the PWM output override
+ */  
+#define P33C_PGxIOCONL_OVREN    0x3000  
+/**
+ * @def P33C_PGxIOCONH_PEN
+ * @brief control bits in PGxIOCONH enabling/disabling the PWM outputs
+ */  
+#define P33C_PGxIOCONH_PEN      0x000C  
+/**
+ * @def P33C_PGxSTAT_UPDREQ
+ * @brief Control bit in PGxSTAT setting the Update Request bit
+ */  
+#define P33C_PGxSTAT_UPDREQ     0x0008  
+/**
+ * @def P33C_PGxCONH_MPERSEL
+ * @brief Control bit in PGxCONH seting the PERIOD register source
+ */  
+#define P33C_PGxCONH_MPERSEL    0x4000  
+/**
+ * @def P33C_PGxCONH_UPDMOD_MSTR
+ * @brief Master Immediate Update
+ */      
+#define P33C_PGxCONH_UPDMOD_MSTR 0b001  
+/**
+ * @def P33C_PGxCONH_UPDMOD_SLV
+ * @brief Slaved immediate Update
+ */  
+#define P33C_PGxCONH_UPDMOD_SLV  0b011  
 
 // ==============================================================================================
 // BUCK converter Peripheral Configuration for Voltage and Average Current Mode Control
 // ==============================================================================================
-
-/* PGxCONL: PWM GENERATOR x CONTROL REGISTER LOW
+/**
+ * @def REG_PGxCONL
+ * @brief PGxCONL: PWM GENERATOR x CONTROL REGISTER LOW
+ */  
+/* 
 
                            ________________ BIT 15: ON: Enable: PWM Generator Enable
                           | _______________ BIT 14: (reserved) 
@@ -408,8 +500,12 @@
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
 #define REG_PGxCONL     0b0000000010001000
-    
-/* PGxCONH: PWM GENERATOR x CONTROL REGISTER HIGH
+
+/**
+ * @def REG_PGxCONH
+ * @brief PGxCONH: PWM GENERATOR x CONTROL REGISTER LOW
+ */ 
+/*
 
                            ________________ BIT 15: MDCSEL: Master Duty Cycle Register Selection: 0 = PWM Generator uses PGxDC register
                           | _______________ BIT 14: MPERSEL: Master Period Register Selection: 1 = PWM Generator uses MPER register
@@ -430,7 +526,10 @@
                           ||||||||||||||||  */
 #define REG_PGxCONH     0b0000000100000000
 
-
+/**
+ * @def REG_PGxIOCONL
+ * @brief PGxIOCONL: PWM GENERATOR x I/O CONTROL REGISTER LOW
+ */
 /* PGxIOCONL: PWM GENERATOR x I/O CONTROL REGISTER LOW
 
                            ________________ BIT 15: CLMOD: Current-Limit Mode Selection
@@ -452,8 +551,11 @@
                           ||||||||||||||||  */
 #define REG_PGxIOCONL   0b0011000000000000
 
-   
-/* PGxIOCONH: PWM GENERATOR x I/O CONTROL REGISTER HIGH
+/**
+ * @def REG_PGxIOCONH
+ * @brief PGxIOCONH: PWM GENERATOR x I/O CONTROL REGISTER LOW
+ */   
+/* 
 
                            ________________ BIT 15: (unimplemented)
                           | _______________ BIT 14: CAPSRC[2:0]: Time Base Capture Source Selection
@@ -474,7 +576,11 @@
                           ||||||||||||||||  */
 #define REG_PGxIOCONH   0b0000000000000000
 
-/* PGxEVTL: PWM GENERATOR x EVENT REGISTER LOW
+/**
+ * @def REG_PGxEVTL
+ * @brief PGxEVTL: PWM GENERATOR x EVENT REGISTER LOW
+ */
+/* 
 
                            ________________ BIT 15: ADTR1PS[4:0]: ADC Trigger 1 Postscaler Selection
                           | _______________ BIT 14: 
@@ -495,8 +601,11 @@
                           ||||||||||||||||  */
 #define REG_PGxEVTL     0b0000000100011001
 
-
-/* PGxEVTH: PWM GENERATOR x EVENT REGISTER HIGH
+/**
+ * @def REG_PGxEVTH
+ * @brief PGxEVTH: PWM GENERATOR x EVENT REGISTER LOW
+ */
+/*
 
                            ________________ BIT 15: FLTIEN: PCI Fault Interrupt Enable
                           | _______________ BIT 14: CLIEN: PCI Current-Limit Interrupt Enable
@@ -517,8 +626,11 @@
                           ||||||||||||||||  */
 #define REG_PGxEVTH     0b0000000101000000
 
-
-/* PGxCLPCIL: PWM GENERATOR CURRENT LIMIT PCI REGISTER LOW
+/**
+ * @def REG_PGxCLPCIL
+ * @brief PGxCLPCIL: PWM GENERATOR CURRENT LIMIT PCI REGISTER LOW
+ */
+/* 
 
                            ________________ BIT 15: TSYNCDIS: Termination Synchronization Disable
                           | _______________ BIT 14: TERM[2:0]: Termination Event Selection
@@ -539,8 +651,12 @@
                           ||||||||||||||||  */
 //#define REG_PGxCLPCIL   0b0001101000011011    // Peak Current Mode Configuration
 #define REG_PGxCLPCIL   0b0000000000000000    
-    
-/* PGxCLPCIH: PWM GENERATOR CURRENT LIMIT PCI REGISTER HIGH
+
+/**
+ * @def REG_PGxCLPCIH
+ * @brief PGxCLPCIH: PWM GENERATOR CURRENT LIMIT PCI REGISTER HIGH
+ */
+/* 
 
                            ________________ BIT 15: BPEN: PCI Bypass Enable
                           | _______________ BIT 14: BPSEL[2:0]: PCI Bypass Source Selection
@@ -562,7 +678,11 @@
 //#define REG_PGxCLPCIH   0b0000011000000000  // Peak Current Mode Configuration
 #define REG_PGxCLPCIH   0b0000000000000000  
 
-/* PGxFPCIL: PWM GENERATOR FAULT PCI REGISTER LOW
+/**
+ * @def REG_PGxFPCIL
+ * @brief PGxFPCIL: PWM GENERATOR FAULT PCI REGISTER LOW
+ */
+/* 
 
                            ________________ BIT 15: TSYNCDIS: Termination Synchronization Disable
                           | _______________ BIT 14: TERM[2:0]: Termination Event Selection
@@ -582,8 +702,12 @@
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
 #define REG_PGxFPCIL    0b0000000000000000
-    
-/* PGxFPCIH: PWM GENERATOR FAULT PCI REGISTER HIGH
+
+/**
+ * @def REG_PGxFPCIH
+ * @brief PGxFPCIH: PWM GENERATOR FAULT PCI REGISTER HIGH
+ */
+/* 
 
                            ________________ BIT 15: BPEN: PCI Bypass Enable
                           | _______________ BIT 14: BPSEL[2:0]: PCI Bypass Source Selection
@@ -604,6 +728,10 @@
                           ||||||||||||||||  */
 #define REG_PGxFPCIH    0b0000000000000000
 
+/**
+ * @def REG_PGxFFPCIL
+ * @brief PGxFFPCIL: PWM GENERATOR FEED FORWARD PCI REGISTER LOW
+ */
 /* PGxFFPCIL: PWM GENERATOR FEED FORWARD PCI REGISTER LOW
 
                            ________________ BIT 15: TSYNCDIS: Termination Synchronization Disable
@@ -624,8 +752,12 @@
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
 #define REG_PGxFFPCIL   0b0000000000000000
-    
-/* PGxFFPCIH: PWM GENERATOR FEED FORWARD PCI REGISTER HIGH
+ 
+/**
+ * @def REG_PGxFFPCIH
+ * @brief PGxFFPCIH: PWM GENERATOR FEED FORWARD PCI REGISTER LOW
+ */
+/* 
 
                            ________________ BIT 15: BPEN: PCI Bypass Enable
                           | _______________ BIT 14: BPSEL[2:0]: PCI Bypass Source Selection
@@ -645,7 +777,11 @@
                           ||||||||||||||| _ BIT  0:               
                           ||||||||||||||||  */
 #define REG_PGxFFPCIH   0b0000000000000000
-    
+
+/**
+ * @def REG_PGxSPCIL
+ * @brief PGxSPCIL: PWM GENERATOR SOFTWARE PCI REGISTER LOW
+ */
 /* PGxSPCIL: PWM GENERATOR SOFTWARE PCI REGISTER LOW
 
                            ________________ BIT 15: TSYNCDIS: Termination Synchronization Disable
@@ -666,8 +802,12 @@
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
 #define REG_PGxSPCIL    0b0000000000000000
-    
-/* PGxSPCIH: PWM GENERATOR SOFTWARE PCI REGISTER HIGH
+  
+/**
+ * @def REG_PGxSPCIH
+ * @brief PGxSPCIH: PWM GENERATOR SOFTWARE PCI REGISTER LOW
+ */
+/* 
 
                            ________________ BIT 15: BPEN: PCI Bypass Enable
                           | _______________ BIT 14: BPSEL[2:0]: PCI Bypass Source Selection
@@ -688,7 +828,11 @@
                           ||||||||||||||||  */
 #define REG_PGxSPCIH    0b0000000000000000
 
-/* PGxLEBH: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER HIGH
+/**
+ * @def REG_PGxLEBH
+ * @brief PGxLEBH: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER HIGH
+ */
+/* 
 
                            ________________ BIT 15: (unimplemented)
                           | _______________ BIT 14: (unimplemented)
@@ -709,6 +853,10 @@
                           ||||||||||||||||  */
 #define REG_PGxLEBH     0b0000000000001000
 
+/**
+ * @def REG_PGxLEBL 
+ * @brief PGxLEBL: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER LOW
+ */
 /* PGxLEBL: PWM GENERATOR x LEADING-EDGE BLANKING REGISTER LOW
 
                            ________________ BIT 15: LEB[15:0]: Leading-Edge Blanking Period bits
@@ -730,7 +878,11 @@
                           ||||||||||||||||  */
 #define REG_PGxLEBL     0b0000000000000000
     
-/* PGxDCA: PWM GENERATOR x DUTY CYCLE ADJUSTMENT REGISTER
+/**
+ * @def REG_PGxDCA
+ * @brief PGxDCA: PWM GENERATOR x DUTY CYCLE ADJUSTMENT REGISTER
+ */
+/* 
 
                            ________________ BIT 15: PGxDCA[15:0]: PWM Generator x Duty Cycle Adjustment Register
                           | _______________ BIT 14: 

@@ -48,14 +48,14 @@
 #include <stddef.h> // include standard definition data types
 
 #include "devices/dev_buck_typedef.h"    // include buck converter object declarations
-#include "pwr_control/drivers/npnz16b.h" // include NPNZ control loop object declarations
+//#include "pwr_control/drivers/npnz16b.h" // include NPNZ control loop object declarations
 
 
-/*!BUCK_POWER_CONTROLLER_t
- * *************************************************************************************************
+/**************************************************************************************************
+ * @var volatile struct BUCK_POWER_CONTROLLER_s buck
  * @brief Global data object for the BUCK CONVERTER 
  * 
- * <b>Description:</b>
+ * @details
  * the 'buck' data object holds all status, control and monitoring values of the BUCK power 
  * controller. The BUCK_POWER_CONTROLLER_t data structure is defined in drv_buck_typedef.h.
  * Please refer to the comments on top of this file for further information.
@@ -65,7 +65,6 @@ extern volatile struct BUCK_POWER_CONTROLLER_s buck;
 
 // PUBLIC FUNCTION PROTOTYPE DECLARATION
 extern volatile uint16_t appPowerSupply_Initialize(void);
-extern volatile uint16_t appPowerSupply_Dispose(void);
 extern volatile uint16_t appPowerSupply_Execute(void);
 extern volatile uint16_t appPowerSupply_Start(void);
 extern volatile uint16_t appPowerSupply_Stop(void);

@@ -1,0 +1,150 @@
+/* LIBRARY LAYER: PRAL Library Layer Documentation */
+/**
+@defgroup device-abstraction-pral PRAL Library
+@ingroup lib-layer
+@details
+*/
+
+/**
+ @defgroup p33c-ccp-pral Capture Compare Module
+ @ingroup device-abstraction-pral
+ @brief Capture Compare Peripheral Module Special Function Register Abstraction Driver
+ 
+ @defgroup p33c-dac-pral Digital-To-Analog Converter Module
+ @ingroup device-abstraction-pral
+ @brief Digital-To-Analog Converter Peripheral Module Special Function Register Abstraction Driver
+
+ @defgroup p33c-dsp-pral Digital Signal Processor Converter Module
+ @ingroup device-abstraction-pral
+ @brief Digital Signal Processor Special Function Register Abstraction Driver
+
+ @defgroup p33c-gpio-pral General Purpose Input/Output
+ @ingroup device-abstraction-pral
+ @brief General Purpose Input/Output Special Function Register Abstraction Driver
+
+ @defgroup p33c-opa-pral Operational Amplifier Module
+ @ingroup device-abstraction-pral
+ @brief Operational Amplifier Peripheral Module Special Function Register Abstraction Driver
+
+ @defgroup p33c-osc-pral Oscillator Module
+ @ingroup device-abstraction-pral
+ @brief Oscillator Module Special Function Register Abstraction Driver
+
+ @defgroup p33c-pps-pral Peripheral Pin Select Module
+ @ingroup device-abstraction-pral
+ @brief Peripheral Pin Select Module Special Function Register Abstraction Driver
+
+ @defgroup p33c-pwm-pral High-Speed PWM Module
+ @ingroup device-abstraction-pral
+ @brief High-Speed PWM Module Special Function Register Abstraction Driver
+*/
+
+/*Public Functions*/
+/**
+@defgroup lib-layer-pral-functions-public-ccp Public Functions
+@ingroup p33c-ccp-pral
+@brief Public functions of the PRAL library layer
+@details This is the detailed description of public functions of the
+library layer of PRAL
+
+@defgroup lib-layer-pral-functions-public-dac Public Functions
+@ingroup p33c-dac-pral
+@brief Public functions of the PRAL library layer
+@details This is the detailed description of public functions of the
+library layer of PRAL
+
+@defgroup lib-layer-pral-functions-public-dsp Public Functions
+@ingroup p33c-dsp-pral
+@brief Public functions of the PRAL library layer
+@details This is the detailed description of public functions of the
+library layer of PRAL
+
+@defgroup lib-layer-pral-functions-public-gpio Public Functions
+@ingroup p33c-gpio-pral
+@brief Public functions of the PRAL library layer
+@details This is the detailed description of public functions of the
+library layer of PRAL
+
+@defgroup lib-layer-pral-functions-public-opa Public Functions
+@ingroup p33c-opa-pral
+@brief Public functions of the PRAL library layer
+@details This is the detailed description of public functions of the
+library layer of PRAL
+
+@defgroup lib-layer-pral-functions-public-osc Public Functions
+@ingroup p33c-osc-pral
+@brief Public functions of the PRAL library layer
+@details This is the detailed description of public functions of the
+library layer of PRAL
+
+@defgroup lib-layer-pral-functions-public-pps Public Functions
+@ingroup p33c-pps-pral
+@brief Public functions of the PRAL library layer
+@details This is the detailed description of public functions of the
+library layer of PRAL
+
+@defgroup lib-layer-pral-functions-public-pwm Public Functions
+@ingroup p33c-pwm-pral
+@brief Public functions of the PRAL library layer
+@details This is the detailed description of public functions of the
+library layer of PRAL
+*/
+
+/*Private Properties*/
+/**
+@defgroup lib-layer-pral-properties-private-ccp Private Properties
+@ingroup p33c-ccp-pral
+@brief Public properties of the PRAL library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+PRAL
+
+@defgroup lib-layer-pral-properties-private-dac Private Properties
+@ingroup p33c-dac-pral
+@brief Public properties of the PRAL library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+PRAL
+
+@defgroup lib-layer-pral-properties-private-dsp Private Properties
+@ingroup p33c-dsp-pral
+@brief Public properties of the PRAL library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+PRAL
+
+@defgroup lib-layer-pral-properties-private-gpio Private Properties
+@ingroup p33c-gpio-pral
+@brief Public properties of the PRAL library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+PRAL
+
+@defgroup lib-layer-pral-properties-private-opa Private Properties
+@ingroup p33c-opa-pral
+@brief Public properties of the PRAL library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+PRAL
+
+@defgroup lib-layer-pral-properties-private-osc Private Properties
+@ingroup p33c-osc-pral
+@brief Public properties of the PRAL library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+PRAL
+
+@defgroup lib-layer-pral-properties-private-pps Private Properties
+@ingroup p33c-pps-pral
+@brief Public properties of the PRAL library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+PRAL
+
+@defgroup lib-layer-pral-properties-private-pwm Private Properties
+@ingroup p33c-pwm-pral
+@brief Public properties of the PRAL library layer
+@details This is the detailed description of public variables, data types,
+enumerations, defines and macros of the library layer of
+PRAL
+*/

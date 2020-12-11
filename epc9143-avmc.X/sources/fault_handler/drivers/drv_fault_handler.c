@@ -43,16 +43,11 @@
 
 #include "drv_fault_handler.h" // 
 
-/**
- * @addtogroup fault-handler-struct
- */
-
-/**********************************************************************************
- * @struct FAULT_OBJECT_s fltobjClear
- * @brief Pre-initialized data structure object of a default fault object 
- * 
- * ********************************************************************************/
-
+/**@ingroup lib-layer-fault-properties-private-variables */
+/*******************************************************************************
+ * @var	FAULT_OBJECT_s fltobjClear
+ * @brief Clears the fault objects
+*****************************************************************************/
 volatile struct FAULT_OBJECT_s fltobjClear = 
 {
         .Status.bits.CompareType = FLTCMP_NONE,     ///< Clear fault object comparison type
@@ -72,18 +67,17 @@ volatile struct FAULT_OBJECT_s fltobjClear =
         .RecoveryResponse.ptrResponseFunction = NULL,  ///< Clear fault recovery response function pointer
     };
 
-/**
- * @addtogroup fault-handler-function
- * @{
- */
+/** 
+ * @ingroup lib-layer-fault-functions-public */
 /*******************************************************************************
  * @fn	uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj)
  * @param	FAULT_OBJECT_t* fltobj
- * @return  Unsigned Integer
+ * @return 0=failure 
+ * @return 1=success
  *
  * @brief Check current fault status of a user-defined fault object
  *
- * <b>Description</b>
+ * @details
  * This routine compares the most recent value of a global variable or SFR
  * (SOURCE) against user-defined thresholds. If the value violates/exceeds
  * one or more of the user defined conditions, a fault counter is incremented. 
@@ -98,7 +92,7 @@ volatile struct FAULT_OBJECT_s fltobjClear =
  * has been RSTCNT_MAX times below the RECOVERY_LEVEL threshold, the fault 
  * will automatically be cleared.
  * 
- *      @note If the value is within normal operating conditions, the fault 
+ * @note If the value is within normal operating conditions, the fault 
  *      counter will be cleared. Thus fault events must occur successively 
  *      incrementing the fault event counter high enough to eventually 
  *      trip a fault event. Thus the fault event counter can be used to 
@@ -173,7 +167,6 @@ volatile struct FAULT_OBJECT_s fltobjClear =
  * See also:
  * -
  *****************************************************************************/
-
 
 volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj) {
 
@@ -303,4 +296,4 @@ volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj) {
     return (fres); // Fault handler executed successfully
 }
 
-/** @} */ // end of group
+

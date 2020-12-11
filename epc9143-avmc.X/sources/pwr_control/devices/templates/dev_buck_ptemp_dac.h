@@ -38,15 +38,18 @@
 #include <stddef.h> // include standard definition data types
 
 /**
- * @addtogroup power-handler-variable 
+ * @ingroup lib-layer-buck-ptemplate-properties-public-defines
  * @{
  */
 
 /* ********************************************************************************
  * DAC / COMPARATOR / SLOPE COMPENSATION INSTANCE CONFIGURATION
  * *******************************************************************************/
-
-/* DACxCONL: DACx CONTROL REGISTER LOW
+/**
+ * @def REG_DACxCONL
+ * @brief DACxCONL: DACx CONTROL REGISTER LOW
+ */
+/* 
 
                            ________________ BIT 15: DACEN: Individual DACx Module Enable
                           | _______________ BIT 14: IRQM[1:0]: Interrupt Mode select
@@ -66,9 +69,13 @@
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
 //#define REG_DACxCONL    0b0000010100000101  // Peak Current Mode Configuration
-#define REG_DACxCONL    0b0000000000000000
+#define REG_DACxCONL    0b0000000000000000 
 
-/* DACxCONH: DACx CONTROL REGISTER HIGH
+/**
+ * @def REG_DACxCONH
+ * @brief DACxCONH: DACx CONTROL REGISTER LOW
+ */
+/* 
 
                            ________________ BIT 15: (unimplemented)
                           | _______________ BIT 14: (unimplemented)
@@ -88,12 +95,15 @@
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
 //#define REG_DACxCONH    0b0000010100000101  // Peak Current Mode Configuration
-#define REG_DACxCONH    0b0000000000000000
-
+#define REG_DACxCONH    0b0000000000000000 
 
 /* DACxCONH: DACx CONTROL REGISTER HIGH => Timing Register: User value will be set in code */
 /* DACxCONL: DACx CONTROL REGISTER LOW  => Timing Register: User value will be set in code */
-  
+
+/**
+ * @def REG_SLPxCONL
+ * @brief SLPxCONL: DACx SLOPE CONTROL REGISTER LOW
+ */  
 /* SLPxCONL: DACx SLOPE CONTROL REGISTER LOW
 
                            ________________ BIT 15: HCFSEL[3:0]: Hysteretic Comparator Function Input Selection
@@ -114,9 +124,13 @@
                           ||||||||||||||| _ BIT  0: 
                           ||||||||||||||||  */
 //#define REG_SLPxCONL    0b0000000100010001  // Peak Current Mode Configuration
-#define REG_SLPxCONL    0b0000000000000000
+#define REG_SLPxCONL    0b0000000000000000 
 
-/* SLPxCONH: DACx SLOPE CONTROL REGISTER HIGH
+/**
+ * @def REG_SLPxCONH
+ * @brief SLPxCONH: DACx SLOPE CONTROL REGISTER LOW
+ */ 
+/* 
 
                            ________________ BIT 15: SLOPEN: Slope Function Enable/On
                           | _______________ BIT 14: (unimplemented)
@@ -136,10 +150,7 @@
                           ||||||||||||||| _ BIT  0: (unimplemented)
                           ||||||||||||||||  */
 //#define REG_SLPxCONH    0b1000000000000000  // Peak Current Mode Configuration
-#define REG_SLPxCONH    0b0000000000000000
-    
-
-
+#define REG_SLPxCONH    0b0000000000000000 
 #endif	/* BUCK_CONVERTER_PERIPHERAL_CONFIGURATION_DAC_H */
 
 /**@}*/

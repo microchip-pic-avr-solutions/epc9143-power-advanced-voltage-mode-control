@@ -28,46 +28,17 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef INITIALIZE_DIGITAL_TO_ANALOG_CONVERTER_H
-#define	INITIALIZE_DIGITAL_TO_ANALOG_CONVERTER_H
+#ifndef SYSTEM_INITIALIZE_DIGITAL_TO_ANALOG_CONVERTER_H
+#define	SYSTEM_INITIALIZE_DIGITAL_TO_ANALOG_CONVERTER_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
 #include <stdbool.h>
 
-typedef struct {
-    
-    union {   
-        volatile DAC1CONLBITS bits; // Register bit-field
-        volatile uint16_t value; // 16-bit wide register value
-    }DACxCONL; // DACxCONL: DACx CONTROL LOW REGISTER
-    union {   
-        volatile DAC1CONHBITS bits; // Register bit-field
-        volatile uint16_t value; // 16-bit wide register value
-    }DACxCONH; // DACxCONH: DACx CONTROL HIGH REGISTER
-    union {   
-        volatile DAC1DATLBITS bits; // Register bit-field
-        volatile uint16_t value; // 16-bit wide register value
-    }DACxDATL; // DACxDATL: DACx DATA LOW REGISTER
-    union {   
-        volatile DAC1DATHBITS bits; // Register bit-field
-        volatile uint16_t value; // 16-bit wide register value
-    }DACxDATH; // DACxDATH: DACx DATA HIGH REGISTER
-    union {   
-        volatile SLP1CONLBITS bits; // Register bit-field
-        volatile uint16_t value; // 16-bit wide register value
-    }SLPxCONL; // DACx SLOPE CONTROL LOW REGISTER
-    union {   
-        volatile SLP1CONHBITS bits; // Register bit-field
-        volatile uint16_t value; // 16-bit wide register value
-    }SLPxCONH; // DACx SLOPE CONTROL LOW REGISTER
-    
-} __attribute__((packed)) P33C_DAC_INSTANCE_t; // DAC INSTANCE REGISTER SET
+extern volatile uint16_t sysDacModule_Initialize(void);
+extern volatile uint16_t sysDacOutput_Initialize(volatile uint16_t dacInstance);
+extern volatile uint16_t sysDacOutput_Enable(volatile uint16_t dacInstance);
+extern volatile uint16_t sysDacOutput_Disable(volatile uint16_t dacInstance);
 
-    
-extern volatile uint16_t init_dac_module(void);
-extern volatile uint16_t init_dac_channel(volatile uint16_t dacInstance);
-extern volatile uint16_t init_dac_enable(void);
-
-#endif	/* INITIALIZE_DIGITAL_TO_ANALOG_CONVERTER_H */
+#endif	/* SYSTEM_INITIALIZE_DIGITAL_TO_ANALOG_CONVERTER_H */
 

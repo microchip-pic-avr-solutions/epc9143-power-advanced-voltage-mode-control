@@ -26,26 +26,21 @@
 #include <stddef.h> // include standard definition data types
 
 #include "p33c_dac.h"
-
-/* @@p33c_DacModule_GetHandle
- * ********************************************************************************
- * Summary:
- *   Gets pointer to DAC Module SFR set
- * 
- * Parameters:
- *   (none)
- * 
- * Returns:
- *   struct P33C_DAC_MODULE_s:
- *      Pointer to DAC module special function register set object 
+/**
+ * @ingroup lib-layer-pral-functions-public-dac
+ * @{ 
+ */
+/*********************************************************************************
+ * @fn volatile struct P33C_DAC_MODULE_s* p33c_DacModule_GetHandle(void)
+ * @brief Gets pointer to DAC Module SFR set
+ * @param P33C_DAC_MODULE_s Pointer to DAC module special function register set object 
  *  
- * Description:
+ * @details
  *      This function returns the pointer to a DAC module register set
  *    Special Function Register memory space. This pointer can be used to 
  *    directly write to/read from the Special Function Registers of the 
  *    DAC peripheral module configuration.
- * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile struct P33C_DAC_MODULE_s* p33c_DacModule_GetHandle(void)
 {
@@ -57,19 +52,14 @@ volatile struct P33C_DAC_MODULE_s* p33c_DacModule_GetHandle(void)
     return(dac);
 }
 
-/* @@p33c_DacModule_Dispose
- * ********************************************************************************
- * Summary:
- *     Resets all DAC Module registers to their RESET default values
+/*********************************************************************************
+ * @fn volatile uint16_t p33c_DacModule_Dispose(void)
+ * @brief Resets all DAC Module registers to their RESET default values
+ * @param void
+ * @return 0 = failure, disposing DAC module was not successful
+ * @return 1 = success, disposing DAC module was successful
  * 
- * Parameters:
- *     (none)
- * 
- * Returns:
- *     0 = failure, disposing DAC module was not successful
- *     1 = success, disposing DAC module was successful
- * 
- * Description:
+ * @details
  *     This function clears all DAC module registers to their
  *     default values set when the device comes out of RESET. 
  * 
@@ -80,7 +70,7 @@ volatile struct P33C_DAC_MODULE_s* p33c_DacModule_GetHandle(void)
  *         - all DACs are operating in push-pull mode (open drain disabled)
  *         - all DACs are configured as input with their signal level HIGH
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t p33c_DacModule_Dispose(void)
 {
@@ -91,25 +81,20 @@ volatile uint16_t p33c_DacModule_Dispose(void)
     return(retval);
 }
 
-/* @@p33c_DacModule_ConfigRead
- * ********************************************************************************
- * Summary:
- *     Read the current configuration from the DAC module base registers
+/*********************************************************************************
+ * @fn volatile struct P33C_DAC_MODULE_s p33c_DacModule_ConfigRead(void)
+ * @brief Read the current configuration from the DAC module base registers
+ * @param void
+ * @return 0 = failure, reading DAC module was not successful (returns NULL)
+ * @return n = success, reading DAC module was successful (returns 16-bit wide pointer)
  * 
- * Parameters:
- *     (none)
- * 
- * Returns:
- *     0 = failure, reading DAC module was not successful (returns NULL)
- *     n = success, reading DAC module was successful (returns 16-bit wide pointer)
- * 
- * Description:
+ * @details
  *     This function reads all registers with their current configuration into
  *     a data structure of type P33C_DAC_MODULE_s. Users can read and 
  *     verify or modify the configuration to write it back to the DAC module  
  *     registers.
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile struct P33C_DAC_MODULE_s p33c_DacModule_ConfigRead(void)
 {
@@ -122,19 +107,14 @@ volatile struct P33C_DAC_MODULE_s p33c_DacModule_ConfigRead(void)
     
 }
 
-/* @@p33c_DacInstance_ConfigWrite
- * ********************************************************************************
- * Summary:
- *     Writes a user-defined configuration to the DAC module base registers
+/*********************************************************************************
+ * @fn volatile uint16_t p33c_DacModule_ConfigWrite(volatile struct P33C_DAC_MODULE_s dacModuleConfig)
+ * @brief Writes a user-defined configuration to the DAC module base registers
+ * @param void
+ * @return 0 = failure, writing DAC module was not successful
+ * @return 1 = success, writing DAC module was successful
  * 
- * Parameters:
- *     (none)
- * 
- * Returns:
- *     0 = failure, writing DAC module was not successful
- *     1 = success, writing DAC module was successful
- * 
- * Description:
+ * @details
  *     This function writes a user-defined DAC module configuration of type 
  *     P33C_DAC_MODULE_s to the DAC module base registers. The 
  *     individual register configurations have to be set in user-code 
@@ -142,7 +122,7 @@ volatile struct P33C_DAC_MODULE_s p33c_DacModule_ConfigRead(void)
  *     of standard functions, this driver provides templates, which can be 
  *     loaded and written directly.
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t p33c_DacModule_ConfigWrite(
         volatile struct P33C_DAC_MODULE_s dacModuleConfig
@@ -165,25 +145,19 @@ volatile uint16_t p33c_DacModule_ConfigWrite(
 /* ============================================================================== */
 
 
-/* @@p33c_DacInstance_GetHandle
- * ********************************************************************************
- * Summary:
- *   Gets pointer to DAC Instance SFR set
- * 
- * Parameters:
- *   uint16_t pgInstance:   Index of the selected DAC Instance (1=DAC1, 2=DAC2, etc.)
- * 
- * Returns:
- *   struct P33C_DAC_INSTANCE_s:
- *      DAC instance object of the selected DAC instance
+/*********************************************************************************
+ * @fn volatile struct P33C_DAC_INSTANCE_s* p33c_DacInstance_GetHandle(volatile uint16_t dac_Instance)
+ * @brief Gets pointer to DAC Instance SFR set
+ * @param uint16_t pgInstance:   Index of the selected DAC Instance (1=DAC1, 2=DAC2, etc.)
+ * @return P33C_DAC_INSTANCE_s DAC instance object of the selected DAC instance
  *  
- * Description:
+ * @details
  *      This function returns the pointer to a DAC instance register set in 
  *    Special Function Register memory space. This pointer can be used to directly
  *    write to/read from the Special Function Registers of a given peripheral
  *    instance.
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile struct P33C_DAC_INSTANCE_s* p33c_DacInstance_GetHandle(volatile uint16_t dac_Instance)
 {
@@ -196,19 +170,14 @@ volatile struct P33C_DAC_INSTANCE_s* p33c_DacInstance_GetHandle(volatile uint16_
     return(dac);
 }
 
-/* @@p33c_DacInstance_Dispose
- * ********************************************************************************
- * Summary:
- *     Resets all DAC Instance registers to their RESET default values
+/*********************************************************************************
+ * @fn volatile uint16_t p33c_DacInstance_Dispose(volatile uint16_t dacInstance)
+ * @brief Resets all DAC Instance registers to their RESET default values
+ * @param void
+ * @return 0 = failure, disposing DAC instance was not successful
+ * @return 1 = success, disposing DAC instance was successful
  * 
- * Parameters:
- *     (none)
- * 
- * Returns:
- *     0 = failure, disposing DAC instance was not successful
- *     1 = success, disposing DAC instance was successful
- * 
- * Description:
+ * @details
  *     This function clears all DAC instance registers to their
  *     default values set when the device comes out of RESET. 
  * 
@@ -219,7 +188,7 @@ volatile struct P33C_DAC_INSTANCE_s* p33c_DacInstance_GetHandle(volatile uint16_
  *         - all DACs are operating in push-pull mode (open drain disabled)
  *         - all DACs are configured as input with their signal level HIGH
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t p33c_DacInstance_Dispose(volatile uint16_t dacInstance)
 {
@@ -230,25 +199,20 @@ volatile uint16_t p33c_DacInstance_Dispose(volatile uint16_t dacInstance)
     return(retval);
 }
 
-/* @@p33c_DacInstance_ConfigRead
- * ********************************************************************************
- * Summary:
- *     Read the current configuration from the DAC instance registers
+/*********************************************************************************
+ * @fn volatile struct P33C_DAC_INSTANCE_s p33c_DacInstance_ConfigRead(volatile uint16_t dacInstance)
+ * @brief Read the current configuration from the DAC instance registers
+ * @param void
+ * @return 0 = failure, reading DAC instance was not successful (returns NULL)
+ * @return n = success, reading DAC instance was successful (returns 16-bit wide pointer)
  * 
- * Parameters:
- *     (none)
- * 
- * Returns:
- *     0 = failure, reading DAC instance was not successful (returns NULL)
- *     n = success, reading DAC instance was successful (returns 16-bit wide pointer)
- * 
- * Description:
+ * @details
  *     This function reads all registers with their current configuration into
  *     a data structure of type P33C_DAC_INSTANCE_s. Users can read and 
  *     verify or modify the configuration to write it back to the DAC instance  
  *     registers or copy configurations to other instances of the same type.
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile struct P33C_DAC_INSTANCE_s p33c_DacInstance_ConfigRead(volatile uint16_t dacInstance)
 {
@@ -262,19 +226,14 @@ volatile struct P33C_DAC_INSTANCE_s p33c_DacInstance_ConfigRead(volatile uint16_
     
 }
 
-/* @@p33c_DacInstance_ConfigWrite
- * ********************************************************************************
- * Summary:
- *     Writes a user-defined configuration to the DAC instance registers
+/*********************************************************************************
+ * @fn volatile uint16_t p33c_DacInstance_ConfigWrite(volatile uint16_t dacInstance, volatile struct P33C_DAC_INSTANCE_s dacConfig)
+ * @brief Writes a user-defined configuration to the DAC instance registers
+ * @param void
+ * @return 0 = failure, writing DAC instance was not successful
+ * @retun  1 = success, writing DAC instance was successful
  * 
- * Parameters:
- *     (none)
- * 
- * Returns:
- *     0 = failure, writing DAC instance was not successful
- *     1 = success, writing DAC instance was successful
- * 
- * Description:
+ * @details
  *     This function writes a user-defined DAC instance configuration of type 
  *     P33C_DAC_INSTANCE_s to the DAC instance registers. The 
  *     individual register configurations have to be set in user-code 
@@ -282,7 +241,7 @@ volatile struct P33C_DAC_INSTANCE_s p33c_DacInstance_ConfigRead(volatile uint16_
  *     of standard functions, this driver provides templates, which can be 
  *     loaded and written directly.
  * 
- * ********************************************************************************/
+ *********************************************************************************/
 
 volatile uint16_t p33c_DacInstance_ConfigWrite(
         volatile uint16_t dacInstance, 
@@ -301,28 +260,28 @@ volatile uint16_t p33c_DacInstance_ConfigWrite(
     
 }
 
+/**@}*/
 /* ============================================================================== */
 /* ============================================================================== */
 /* ============================================================================== */
 
-
-/* @@dacModuleConfigClear
- * ********************************************************************************
- * Summary:
- *   Default RESET configuration of the DAC module base SFRs
- * 
- * Data type:
- *   struct dacConfigClear:
- *      DAC Module Special Function Register (SFR) set
+/**
+ * @ingroup lib-layer-pral-properties-private-dac
+ * @{ 
+ */
+/*********************************************************************************
+ * @var dacModuleConfigClear
+ * @brief Default RESET configuration of the DAC module base SFRs
+ * @param dacConfigClear: DAC Module Special Function Register (SFR) set
  *
- * Description:
+ * @details
  *   Default configuration of the DAC module SFRs with all its registers 
  *   being reset to their default state when the device comes out of RESET.
  *   Programmers can use this template to reset (dispose) a previously used
- *   DAC module when it's not used anymore or to secure a known startup
+ *   DAC module when it's not used anymore or to ensure a known startup
  *   condition before writing individual configurations to its SFRs.
  * 
- * *******************************************************************************/
+ ********************************************************************************/
 
 volatile struct P33C_DAC_MODULE_s dacModuleConfigClear = {
 
@@ -332,40 +291,37 @@ volatile struct P33C_DAC_MODULE_s dacModuleConfigClear = {
 
     };
 
-/* @@dacModuleConfigDefault
- * ********************************************************************************
- * Summary:
- *   Default configuration of the DAC module base SFRs
- * 
- * Data type:
- *   struct dacConfigClear:
- *      DAC Module Special Function Register (SFR) set
+/*********************************************************************************
+ * @var dacModuleDefault
+ * @brief Default configuration of DAC module running from 500 MHz input clock
+ * @param dacModuleDefault: DAC Module Special Function Register (SFR) set
  *
- * Description:
- *   Default configuration of the DAC module SFRs with all its registers 
- *   being reset to their default state when the device comes out of RESET.
- *   Transition Mode Duration and Steady State Delay are both set =1.
+ * @details
+ * Default configuration of the DAC module SFRs with all its registers 
+ * being reset to their default state when the device comes out of RESET.
+ * The timing settings for settling time and transition mode time of the 
+ * built-in Pulse-Density Modulator ramp generator are reset to their
+ * recommended default values when operated from a 500 MHz clock input.
+ * (Please read the device data sheet for details)
  * 
- * *******************************************************************************/
-
-volatile struct P33C_DAC_MODULE_s dacModuleConfigDefault = {
-
-    .DacModuleCtrl1L.value = 0x0000,
-    .DacModuleCtrl2L.value = 0x008A,
-    .DacModuleCtrl2H.value = 0x0055
-
-    };
-
-/* @@dacConfigClear
- * ********************************************************************************
- * Summary:
- *   Default RESET configuration of one DAC instance channel SFRs
+ * Programmers can use this template to reset a previously used
+ * DAC module when it's not used anymore or to ensure a known startup
+ * condition before writing individual configurations to its SFRs.
  * 
- * Data type:
- *   struct dacConfigClear:
- *      DAC instance Special Function Register (SFR) set
+ ********************************************************************************/
+/*  */
+volatile struct P33C_DAC_MODULE_s dacModuleDefault = {
+    .DacModuleCtrl1L.value = 0x0080, ///< DAC Module disabled, DAC Stop In Idle Mode=0, DAC Clock Source=AFPLLO, DAC Clock Divider=1:1, Filter Clock Divider=1:1
+    .DacModuleCtrl2H.bits.SSTIME = 0x008A, ///< Steady-state setting time is set to default of 0x8A
+    .DacModuleCtrl2L.bits.TMODTIME = 0x0055 ///< Transition mode duration is set to default of 0x55
+};
+
+/*********************************************************************************
+ * @var dacConfigClear
+ * @brief Default RESET configuration of one DAC instance channel SFRs
+ * @param dacConfigClear: DAC instance Special Function Register (SFR) set
  *
- * Description:
+ * @details
  *   Default configuration of the DAC instance SFRs with all its registers 
  *   being reset to their default state when the device comes out of RESET.
  *   Programmers can use this template to reset (dispose) a previously used
@@ -386,4 +342,5 @@ volatile struct P33C_DAC_INSTANCE_s dacConfigClear = {
         
     };
 
+/**@}*/
 // END OF FILE

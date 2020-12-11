@@ -49,8 +49,7 @@
 #include <stddef.h> // include standard definitions  
 
 /**
- * 
- * @addtogroup fault-handler-enum
+ * @ingroup lib-layer-lib1-properties-public
  * @{
  */
 /***********************************************************************************
@@ -72,12 +71,6 @@ typedef enum FLT_COMPARE_TYPE_e {
         
 } FLT_COMPARE_TYPE_t;
 
-/** @} */ // end of group
-
-/**
- * @addtogroup fault-handler-struct
- * @{
- */
 
 /**********************************************************************************
  * @struct FLT_OBJECT_STATUS_s
@@ -151,9 +144,10 @@ typedef struct FAULT_OBJECT_s {
 } FAULT_OBJECT_t; // 
 
 /** @} */ // end of group
+
+
 // Public Fault Configuration Templates
 extern volatile struct FAULT_OBJECT_s fltobjClear;
-
 
 // Public Function Prototypes
 extern volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj);

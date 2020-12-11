@@ -1,4 +1,4 @@
-/***************************************************************************************************
+/* **************************************************************************************************
  * © 2006 Microchip Technology Inc.
  *
  * FileName:        fdrv_TrapHandler.c
@@ -51,31 +51,27 @@
  *	 within the trap service routine. Users may modify the basic framework provided here to suit 
  *	 to the needs of their application.
  *
- ***************************************************************************************************/
+ * **************************************************************************************************/
 
 #include <xc.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include "drv_trap_handler.h"
 
-// data structure used as buffer for trap monitoring
-volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog; 
 
+
+volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog; ///< data structure used as buffer for trap monitoring 
 
 
 /**************************************************************************************************
- * @fn volatile uint16_t drv_TrapHandler_SoftTrapsInitialize(
-                bool accumulator_a_overflow_trap_enable, 
-                bool accumulator_b_overflow_trap_enable, 
-                bool accumulator_catastrophic_overflow_trap_enable)
-
+ * @ingroup lib-layer-fault-functions-public
+ * @fn volatile uint16_t drv_TrapHandler_SoftTrapsInitialize(bool accumulator_a_overflow_trap_enable, bool accumulator_b_overflow_trap_enable, bool accumulator_catastrophic_overflow_trap_enable)
  * @brief Configures the software-configurable traps
  * @param bool accumulator_a_overflow_trap_enable
  * @param bool accumulator_b_overflow_trap_enable
  * @param bool accumulator_catastrophic_overflow_trap_enable
- * @return
  * 
- * <b>Description</b>
+ * @details
  * This routine sets the DSP-specific traps for overflow-events of accumulator A and B. 
  * 
  *************************************************************************************************/
@@ -93,10 +89,11 @@ volatile uint16_t drv_TrapHandler_SoftTrapsInitialize(
 
 
 /**************************************************************************************************
+ * @ingroup lib-layer-fault-functions-public
  * @fn void DefaultTrapHandler(enum TRAP_ID_e trap_id)
  * @brief Centralized trap handler routine
  * 
- * <b>Description</b>
+ * @details
  * This routine is used as centralized trap handler for all traps. Each trap is identified 
  * and logged by a unique trap ID and the status bits of traps and interrupt vectors are 
  * captured
@@ -130,75 +127,127 @@ void DefaultTrapHandler(enum TRAP_ID_e trap_id) {
     return;
 }
 
-
 // =================================================================================================
 //
 // PRIMARY EXCEPTION VECTOR HANDLERS
 //
 // =================================================================================================
-//
-// These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
-// simply ensure that device continuously executes code within the trap service routine. 
-//
-// Users may modify the basic framework provided here to suit to the needs of their application.
-//
-// =================================================================================================
 
+/**************************************************************************************************
+ * @ingroup lib-layer-fault-functions-public
+ * @{
+ * @fn void __attribute__((interrupt, no_auto_psv)) _ReservedTrap5(void)
+ * @brief basic framework for trap handler routine
+ * 
+ * @details
+ * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
+ * simply ensure that device continuously executes code within the trap service routine. 
+ *
+ * Users may modify the basic framework provided here to suit to the needs of their application.
+ *************************************************************************************************/
 void __attribute__((interrupt, no_auto_psv)) _ReservedTrap5(void) {
     DefaultTrapHandler(TRAP_RESERVED_TRAP_5_ERROR); // Call default trap handler
 }
 
+/**************************************************************************************************
+ * @fn void _ReservedTrap7(void)
+ * @brief basic framework for trap handler routine
+ * 
+ * @details
+ * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
+ * simply ensure that device continuously executes code within the trap service routine. 
+ *
+ * Users may modify the basic framework provided here to suit to the needs of their application.
+ *************************************************************************************************/
 void __attribute__((interrupt, no_auto_psv)) _ReservedTrap7(void) {
     DefaultTrapHandler(TRAP_RESERVED_TRAP_7_ERROR); // Call default trap handler
 }
 
-// =================================================================================================
-// Hard Trap Error is captured
-// =================================================================================================
-
+/**************************************************************************************************
+ * @fn void _HardTrapError(void)
+ * @brief basic framework for capturing Hard Trap Error
+ * 
+ * @details
+ * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
+ * simply ensure that device continuously executes code within the trap service routine. 
+ *
+ * In this function the hard trap error is captured.
+ *************************************************************************************************/
 void __attribute__((interrupt, no_auto_psv)) _HardTrapError(void) {
     DefaultTrapHandler(TRAP_HARD_TRAP_ERROR); // Call default trap handler
 }
 
-// =================================================================================================
-// Soft Trap Error is captured
-// =================================================================================================
-
+/**************************************************************************************************
+ * @fn void _SoftTrapError(void)
+ * @brief basic framework for capturing Soft Trap Error
+ * 
+ * @details
+ * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
+ * simply ensure that device continuously executes code within the trap service routine. 
+ *
+ * In this function the soft trap error is captured.
+ **************************************************************************************************/
 void __attribute__((interrupt, no_auto_psv)) _SoftTrapError(void) {
     DefaultTrapHandler(TRAP_SOFT_TRAP_ERROR);
 }
 
-// =================================================================================================
-// Oscillator Failure Trap is captured, when the system clock becomes unstable
-// =================================================================================================
-
+/**************************************************************************************************
+ * @fn void _OscillatorFail(void)
+ * @brief captures Oscillator failure
+ * 
+ * @details
+ * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
+ * simply ensure that device continuously executes code within the trap service routine. 
+ *
+ * Oscillator Failure Trap is captured, when the system clock becomes unstable
+ *************************************************************************************************/
 void __attribute__((interrupt, no_auto_psv)) _OscillatorFail(void) {
     DefaultTrapHandler(TRAP_OSCILLATOR_FAIL);
 }
 
-// =================================================================================================
-// Address Error Trap is captured, when a routine tries to access unknown memory addresses
-// in RAM or Flash via PSV.
-// =================================================================================================
-
+/**************************************************************************************************
+ * @fn void _AddressError(void)
+ * @brief captures Address error 
+ * 
+ * @details
+ * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
+ * simply ensure that device continuously executes code within the trap service routine. 
+ *
+ *Address Error Trap is captured, when a routine tries to access unknown memory addresses
+ *in RAM or Flash via PSV.
+ *************************************************************************************************/
 void __attribute__((interrupt, no_auto_psv)) _AddressError(void) {
     DefaultTrapHandler(TRAP_ADDRESS_ERROR);
 }
-// =================================================================================================
-// Stack Error Trap is captured, when a stack address error occurred
-// =================================================================================================
-
+/**************************************************************************************************
+ * @fn void _StackError(void)
+ * @brief captures Stack error 
+ * 
+ * @details
+ * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
+ * simply ensure that device continuously executes code within the trap service routine. 
+ *
+ * Stack Error Trap is captured, when a stack address error occurred.
+ *************************************************************************************************/
 void __attribute__((interrupt, no_auto_psv)) _StackError(void) {
     DefaultTrapHandler(TRAP_STACK_ERROR);
 }
-// =================================================================================================
-// Math Error Trap is captured, when a math operation cannot be solved (e.g. division by zero)
-// =================================================================================================
 
+/**************************************************************************************************
+ * @fn void  _MathError(void)
+ * @brief captures Math error 
+ * 
+ * @details
+ * These routines are used if INTCON2bits.ALTIVT = 1. All trap service routines in this file 
+ * simply ensure that device continuously executes code within the trap service routine. 
+ *
+ * Math Error Trap is captured, when a math operation cannot be solved (e.g. division by zero)
+ *************************************************************************************************/
 void __attribute__((interrupt, no_auto_psv)) _MathError(void) {
     DefaultTrapHandler(TRAP_MATH_ERROR);
 }
 
+/**@}*/
 #if (TRAP_DMA_SUPPORT == 1)
 #if defined (_DMACError)
 // =================================================================================================

@@ -1,4 +1,0 @@
-<map id="Input Voltage Feedback" name="Input Voltage Feedback">
-<area shape="rect" id="node1" href="$group__abstraction-layer.html" title="Abstraction Layer Defines." alt="" coords="5,5,176,31"/>
-<area shape="rect" id="node2" title="Declaration of input voltage limits, feedback gain and scaling and nominal operating points." alt="" coords="224,5,383,31"/>
-</map>

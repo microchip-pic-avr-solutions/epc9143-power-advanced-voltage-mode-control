@@ -28,30 +28,27 @@
 
 #include "p33c_dsp.h"
 
-/*@@p33c_dsp.c
- * ************************************************************************************************
- * Summary:
- * Driver file for dsPIC33C DSP Configuration SFRs
- *
- * Description:
+/*************************************************************************************************
+ * @file p33c_dsp.c
+ * @brief Driver file for dsPIC33C DSP Configuration SFRs
+ * @details
  * The DSP engine of dsPIC33 offers several options to optimize data processing for integer 
  * and fixed-point algorithmic, which can be defined and enabled using this library.
- * ***********************************************************************************************/
+ ************************************************************************************************/
 
 
-/*@@Dsp_Initialize()
- * *****************************************************************************************************
- * Summary:
- * Initializes the DSP engine in accordance to user settings 
+/******************************************************************************************************
+ * @ingroup lib-layer-pral-functions-public-dsp
+ * @{
+ * @fn 	volatile uint16_t Dsp_SetConfig(volatile struct DSP_CONFIG_s dsp_cfg) 
+ * @brief Initializes the DSP engine in accordance to user settings 
+ * @param 16-bit wide DSP configuration data structure DSP_CONFIG_s
  *
- * Parameters: 
- *  16-bit wide DSP configuration data structure DSP_CONFIG_s
- *
- * Description:
+ * @details
  * This routine writes a DSP user-configuration into the core configuration register and verifies
  * the data has been written correctly.
  * 
- * *****************************************************************************************************/
+ ******************************************************************************************************/
 
 volatile uint16_t Dsp_SetConfig(volatile struct DSP_CONFIG_s dsp_cfg)
 {
@@ -66,22 +63,17 @@ volatile uint16_t Dsp_SetConfig(volatile struct DSP_CONFIG_s dsp_cfg)
 } 
 
 
-/*@@Dsp_GetConfig()
- * *****************************************************************************************************
- * Summary:
- * Reads the DSP engine configuration 
+/******************************************************************************************************
+ * @fn volatile struct DSP_CONFIG_s Dsp_GetConfig(void)
+ * @brief Reads the DSP engine configuration 
+ * @param void 
+ * @return 16-bit wide DSP configuration data structure DSP_CONFIG_s
  *
- * Parameters: 
- * (none) 
- *
- * Returns:
- * 16-bit wide DSP configuration data structure DSP_CONFIG_s
- *
- * Description:
+ * @details
  * This routine writes a DSP user-configuration into the core configuration register and verifies
  * the data has been written correctly.
  * 
- * *****************************************************************************************************/
+ ******************************************************************************************************/
 
 volatile struct DSP_CONFIG_s Dsp_GetConfig(void)
 {
@@ -95,5 +87,6 @@ volatile struct DSP_CONFIG_s Dsp_GetConfig(void)
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
+/** @} */
 
-// EOF
+// end of file

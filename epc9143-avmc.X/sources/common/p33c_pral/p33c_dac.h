@@ -141,7 +141,7 @@ extern volatile uint16_t p33c_DacInstance_ConfigWrite(
  * ********************************************************************************************* */
 extern volatile struct P33C_DAC_MODULE_s dacModuleConfigClear;
 extern volatile struct P33C_DAC_INSTANCE_s dacConfigClear;
-
+extern volatile struct P33C_DAC_MODULE_s dacModuleDefault;
 
 #endif	/* P33C_DAC_SFR_ABSTRACTION_H */
 // END OF FILE

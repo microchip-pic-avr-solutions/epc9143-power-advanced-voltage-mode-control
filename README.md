@@ -3,22 +3,22 @@
 ## EPC9143 300W 16th Brick Non-Isolated Step Down Converter Advanced Voltage Mode Control Firmware
 **2-Phase Synchronous Buck Converter with Advanced Voltage Mode Control and Current Balancing**
 
-<p>
-  <center>
-    Top View <br>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9143_r4.png" alt="EPC9143 Top View" width="300">
-	</a>	
-  </center>
-</p>
-<p>
-  <center>
-    Bottom View <br>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9143_r4_back.png" alt="EPC9143 Top View" width="300">
-    </a>
-  </center>
-</p>
+<table style="border:0px dotted white; align:center; width:100%">
+<tr>
+ <td style="align:center;">
+ <td style="text-align:center; vertical-align: bottom; height:230px; width:300px;"> <img src="images/9143_r4.png" alt="EPC9143 Top View" width="300"> </td>
+ <td style="align:center; width:10px"> &nbsp; </td>
+ <td style="text-align:center; vertical-align: bottom; height:230px; width:300px"> <img src="images/9143_r4_back.png" alt="EPC9143 Bottom View" width="288"> </td>
+ <td style="align:center;">
+</tr>
+<tr>
+ <td style="align:center;">
+ <td align=center> <b>Top View</b> </td>
+ <td style="align:center;"> &nbsp; </td>
+ <td align=center> <b>Bottom View</b></td>
+ <td style="align:center;">
+</tr>
+</table>
 
 ## Summary
 This code example demonstrates a closed loop voltage mode control implementation for dsPIC33CK. It has specifically been developed for the EPC9143 Rev4.0 1/16 brick converter.
@@ -48,10 +48,29 @@ A single, high-speed type IV (4P4Z) voltage mode controller with enforced PWM st
   - [EPC9531 Test Fixture Quick Start Guide (QSG)](https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf)
   - [EPC9531 Test Fixture Schematics](https://epc-co.com/epc/documents/schematics/EPC9531_Schematic.pdf)
 
+##### Device Support
+  - [dsPIC33CK32MP102 Product Website](https://www.microchip.com/dsPIC33CK32MP102)
+  - [dsPIC33CKxxMP10x Device Family Data Sheet](https://www.microchip.com/DS70005363)
+  - [dsPIC33CKxxMP10x Device Family Silicon Errata and Data Sheet Clarification](https://www.microchip.com/DS80000809)
+  - [MCP6C02 Shunt Amplifier Product Website](https://www.microchip.com/MCP6C02)
+  - [MCP6C02 Zero-Drift, High-Side Current Sense Amplifier](https://www.microchip.com/DS20006129)
+
+  - [EPC2053 100 V, 48/246 A Enhancement-Mode GaN Power Transistor](https://epc-co.com/epc/Products/eGaNFETsandICs/EPC2053.aspx)
+  - [EPC2053 Data Sheet](https://epc-co.com/epc/Portals/0/epc/documents/datasheets/EPC2053_datasheet.pdf)
+
 ## Software Used 
-  - [MPLAB® X IDE v5.40](https://www.microchip.com/mplabx-ide-windows-installer)
-  - [MPLAB® XC16 Compiler v1.50](https://www.microchip.com/mplabxc16windows)
+  - [MPLAB® X IDE, Version v5.40 or later](https://www.microchip.com/mplabx)
+    - [Download MPLAB® X IDE for Windows](https://www.microchip.com/mplabx-ide-windows-installer)
+    - [Download MPLAB® X IDE for Linux](https://www.microchip.com/mplabx-ide-linux-installer)
+    - [Download MPLAB® X IDE for MAC OS](https://www.microchip.com/mplabx-ide-osx-installer)
+ <br>
+  - [MPLAB® XC16 Compiler, Version v1.50 or later](https://www.microchip.com/xc16)
+    - [Download MPLAB® XC16 Compiler for Windows](https://www.microchip.com/mplabxc16windows)
+    - [Download MPLAB® XC16 Compiler for Linux](https://www.microchip.com/mplabxc16linux)
+    - [Download MPLAB® XC16 Compiler for MAC OS](https://www.microchip.com/mplabxc16osx)
+ <br>
   - [PowerSmart&trade; - Digital Control Library Designer, v0.9.12.642 (Pre-Release Version)](https://areiter128.github.io/DCLD/)
+    - [Download PowerSmart&trade; - Digital Control Library Designer for Windows](https://github.com/areiter128/DCLD/archive/release.zip)
 
 ## Hardware Used
 The EPC9143 1/16th brick power module is best tested when plugged into EPC9531 test fixture. This test fixture also provides all required interfaces to program and debug the dsPIC33CK32MP102 DSC as well as test points and banana jack connectors for easy and safe handling of the kit during bench tests. The EPC9531 QSG provides detailed operating procedure instructions.
@@ -61,40 +80,26 @@ The EPC9143 1/16th brick power module is best tested when plugged into EPC9531 t
 
 <p>
   <center>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9531_test_fixture.png" alt="EPC9143 mounted on EPC9531 Test Fixture" width="500">
-	</a>
+    <img src="images/9531_test_fixture.png" alt="EPC9143 mounted on EPC9531 Test Fixture" width="500">
   </center>
 </p>
-
-## Device Support:
-Microchip devices used in this reference design:
-  - [dsPIC33CK32MP102](https://www.microchip.com/dsPIC33CK32MP102)
-  - [MCP6C02 Shunt Amplifier](https://www.microchip.com/MCP6C02)
-
-EPC devices used in this reference design
-  - [EPC2053: 100 V, 246 A Enhancement-Mode GaN Power Transistor](https://epc-co.com/epc/Products/eGaNFETsandICs/EPC2053.aspx)
 
 ## Setup
 The board comes programmed and ready to be used when unpacked. No reprogramming of the target device is required to operate the board unless features or settings such as the nominal output voltage or start-up timing need to be modified. 
 
 <p>
   <center>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9531_9143_setup.png" alt="EPC9531 Test Fixture Connections - Top View" width="700">
-	</a>
-  <br>
-  EPC9531 Test Fixture Connections - Top View
+    <img src="images/9531_9143_setup.png" alt="EPC9531 Test Fixture Connections - Top View" width="700">
+    <br>
+    EPC9531 Test Fixture Connections - Top View
   </center>
 </p>
 
 <p>
   <center>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/9531_bottom.png" alt="EPC9531 Test Fixture Connections - Bottom View" width="620">
-	</a>
-  <br>
-  EPC9531 Test Fixture Connections - Bottom View
+    <img src="images/9531_bottom.png" alt="EPC9531 Test Fixture Connections - Bottom View" width="620">
+    <br>
+    EPC9531 Test Fixture Connections - Bottom View
   </center>
 </p>
 
@@ -145,23 +150,12 @@ This firmware uses a digital type IV controller to close the feedback loop in vo
 
 <p>
   <center>
-    <a href="https://www.microchip.com/EPC9143" rel="nofollow">
-      <img src="images/type4-avmc.png" alt="EPC9143 type IV - Advanced Voltage Control Loop" width="800">
-	</a>
-  <br>
-  EPC9143 Type IV Controller - Advanced Voltage Control Loop
+    <img src="images/type4-avmc.png" alt="EPC9143 type IV - Advanced Voltage Control Loop" width="800">
+    <br>
+    EPC9143 Type IV Controller - Advanced Voltage Control Loop
   </center>
 </p>
-
 This control loop can be turned on/off by using the ENABLE bit in the STATUS word of the cNPNZ_t controller data structure. The adaptive loop gain modulation is permanently active as soon as the control loop is enabled.
-
-<p>
-  <center>
-    <img src="images/type4-avmc.png" alt="Advanced Type IV Voltage Mode Control with PWM Steering and Adaptive Gain Control" width="620">
-  <br>
-  Advanced Type IV Voltage Mode Control Block Diagram
-  </center>
-</p>
 
 ##### 3) Digital Controller Design
 
@@ -217,6 +211,7 @@ This code examples includes an alternative, proportional control loop which is c
 PROPORTIONAL CONTROLLERS ARE BY DEFAULT UNSTABLE AND NOT SUITED TO REGULATE THE OUTPUT OF A POWER SUPPLY UNDER NORMAL OPERATING CONDITIONS. DURING A PLANT MEASUREMENT IT IS MANDATORY THAT INPUT VOLTAGE AND LOAD REMAIN STABLE AND DO NOT CHANGE. 
 
 FOR MORE INFORMATION ABOUT HOW TO CONDUCT A POWER PLANT MEASUREMENT, PLEASE READ THE SECTIONS IN THE PowerSmart&trade; DCLD USER GUIDE.
+
 
 _________________________________________________
 (c) 2020, Microchip Technology Inc.

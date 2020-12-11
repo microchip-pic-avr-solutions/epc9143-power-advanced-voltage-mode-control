@@ -17,22 +17,44 @@
 #include "dev_buck_templates.h"
 
 /* PRIVATE VARIABLES */
-volatile uint16_t adcore_mask=0;
-volatile uint16_t adcore_diff_mask=0;
-
-/** 
- * @addtogroup power-handler-function 
+/**
+ * @ingroup lib-layer-buck-config-properties-private-variables
  * @{
  */
+/**
+ * @var adcore_mask
+ * @brief This variable is use to set the ADC core mask
+ */
+volatile uint16_t adcore_mask=0;        
+/**
+ * @var adcore_diff_mask
+ * @brief This variable is use to set the ADC core mask
+ */
+volatile uint16_t adcore_diff_mask=0;   
+/** @} */
+
+/* PRIVATE FUNCTION CALL PROTOTYPES */
+
+volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance);
+
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief Initializes the buck PWM module by resetting its registers to default
+ * @param void
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * @details
+ *    This function initializes the buck PWM module base registers with default
+ *     values for maximum performance. 
  * 
+ *     Default configuration:
+ *         - all PWM peripheral power is enabled
+ *         - all PWM generators are disabled
+ *         - default PWM Module configurations are written in buck PWM module base registers 
  *********************************************************************************/
 volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
 {
@@ -70,17 +92,24 @@ volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER
         pwm->vMPER.value = buckInstance->sw_node[0].period; // Set Period of phase #1
 
     return(retval);    
-}
+} /** @} */
 
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief  This function initializes the output pins for the PWM output and the default buck PWM settings
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * @details
+ *    This function initializes the buck PWM channel with default values for maximum performance. 
  * 
+ *     Default configuration:
+ *         - selected PWM outputs are enabled 
+ *         - PWM timing settings are loaded (i.e., duty cycle, period, dead-times, blanking)
+ *         - PWM synchronization is established
  *********************************************************************************/
 volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
 {
@@ -170,17 +199,20 @@ volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLE
     }
         
     return(retval);    
-}
+} /** @} */
 
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief This function enables the buck PWM operation
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
- * 
+ * @details
+ * This function starts the operation of the buck PWM by enabling the PWM 
+ * generator and its output pins.
  *********************************************************************************/
 volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
 {
@@ -219,17 +251,23 @@ volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckIns
     }
     
     return(retval);    
-}
+} /** @} */
 
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief  This function stops the buck PWM output
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
+ * @details
+ * This function shuts down the PWM output by disabling all PWM channels of the recent buck
+ * converter object, overriding the output pins and resetting the buck PWM duty cycle to
+ * its minimum duty ratio. 
  * 
+ * If the Power Good output is enabled, this output pin will also be reset.
  *********************************************************************************/
 volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
 {
@@ -262,17 +300,22 @@ volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInst
         retval &= buckGPIO_Clear(&buckInstance->gpio.PowerGood);
     
     return(retval);    
-}
+    
+} /** @} */
 
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief   This function disables the PWM generator IOs
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
- * 
+ * @details
+ * This function suspends the buck PWM operation by disabling all PWM outputs of the recent 
+ * buck converter configuration, overriding the PWM output pins and setting the 
+ * duty cycle to 0.
  *********************************************************************************/
 volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
 {
@@ -303,17 +346,20 @@ volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckI
         retval &= buckGPIO_Clear(&buckInstance->gpio.PowerGood);
     
     return(retval);    
-}
+    
+} /** @} */
 
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief  This function resumes the buck PWM operation
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
- * 
+ * @details
+ * THis function updates the PWM timing bit and the PWM output pins are enabled.
  *********************************************************************************/
 volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance) 
 {
@@ -338,18 +384,24 @@ volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckIn
 
     }
         
-    return(retval);    
-}
+    return(retval);  
+    
+} /** @} */
 
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile uint16_t buckADC_ModuleInitialize(void) 
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief  This fucntion initializes the buck by resetting all its registers to default
+ * @param	void
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
- * 
+ * @details
+ * The ADC initialization covers basic configurations like data format, clock sources and dividers
+ * as well as specific configurations for ADC cores. These settings are general, basic settings
+ * and not related to specific analog inputs. The standard configuration set here sets up the 
+ * ADC module and ADC cores for maximum performance.
  *********************************************************************************/
 volatile uint16_t buckADC_ModuleInitialize(void) 
 {
@@ -431,18 +483,23 @@ volatile uint16_t buckADC_ModuleInitialize(void)
     ADCORE1Hbits.ADCS = 0b0000000; // ADC Core x Input Clock Divider: 2 Source Clock Periods
     ADCORE1Hbits.EISEL = 0b111; // Early interrupt is set and an interrupt is generated 8 TADCORE clocks prior
     
-    return(retval);    
-}
+    return(retval);   
+    
+} /** @} */
 
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* adc_Instance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief  This function initializes the settings for the ADC channel
+ * @param	BUCK_ADC_INPUT_SETTINGS_t pointer to the ADC input channel configuration data structure
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
- * 
+ * @details
+ * This function initializes the ADC input registers based on the selected ADC channel. 
+ * This function sets the input channel trigger source, input mode, and the ADC core 
+ * connected to the selected channel. 
  *********************************************************************************/
 volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* adc_Instance) 
 {
@@ -524,17 +581,21 @@ volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* 
     }
     
     return(retval);
-}
+    
+} /** @} */
 
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile uint16_t buckADC_Start(void) 
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief   This function enables the ADC module and starts the ADC cores analog inputs for the required input signals 
+ * @param	void
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
- * 
+ * @details
+ * This function enables the ADC module, powers-up and enables the ADC cores used and waits 
+ * until ADC cores are ready.
  *********************************************************************************/
 volatile uint16_t buckADC_Start(void) 
 {
@@ -554,17 +615,20 @@ volatile uint16_t buckADC_Start(void)
 
 
     return(retval);    
-}
+    
+} /** @} */
 
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief   This function sets the selected general purpose input/ouput pins 
+ * @param	BUCK_GPIO_INSTANCE_s pointer to the GPIO instance of the converter control GPIO
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
- * 
+ * @details
+ * This function captures the user selected pin to be activated through LAT register.
  *********************************************************************************/
 volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
 {
@@ -588,17 +652,20 @@ volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOIns
     retval = (bool)((gpio->LATx.value & filter_mask) == (gpio->PORTx.value & filter_mask));
     
     return(retval);
-}
+    
+} /** @} */
 
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief   This function clears the selected general purpose input/output pin
+ * @param	BUCK_GPIO_INSTANCE_s pointer to the GPIO instance of the converter control GPIO
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
- * 
+ * @details
+ * This function captures the pin that the use desired to be put in inactive state. 
  *********************************************************************************/
 volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
 {
@@ -622,19 +689,20 @@ volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOI
     retval = (bool)((gpio->LATx.value & filter_mask) == (gpio->PORTx.value & filter_mask));
     
     return(retval);
-}
-
-
+    
+} /** @} */
 
 /*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
  * @fn	volatile bool buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @brief   This function gets the state of the selected pin
+ * @param	BUCK_GPIO_INSTANCE_s pointer to the GPIO instance of the converter control GPIO
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
- * 
+ * @details
+ * This function captures the selected pin and read its state.
  *********************************************************************************/
 volatile bool buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
 {
@@ -652,18 +720,56 @@ volatile bool buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPI
         retval = (1-retval);
     
     return(retval);
-}
+    
+} /** @} */
 
 
 /*******************************************************************************
- * @fn	volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
+ * @ingroup lib-layer-buck-config-functions-public
+ * @{
+ * @fn	    volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
+ * @brief   This function initializes the buck input pins
+ * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @return  0=failure
+ * @return  1=success
  *  
- * <b>Description</b> 
- * 
+ * @details
+ * This function initializes the ENABLE input pin and POWER GOOD output pin using the 
+ * buck GPIO_PrivateInitialize (URL = @ref buckGPIO_PrivateInitialize).
+ *********************************************************************************/
+volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
+{
+    volatile uint16_t retval=1;
+
+    // Initialize ENABLE input pin
+    if(buckInstance->gpio.EnableInput.enabled)
+        retval = buckGPIO_PrivateInitialize(&buckInstance->gpio.EnableInput);
+    
+    // Initialize POWER GOOD output pin
+    if(buckInstance->gpio.PowerGood.enabled)
+        retval = buckGPIO_PrivateInitialize(&buckInstance->gpio.PowerGood);
+
+    // If defined, reset POWER_GOOD output
+    if(buckInstance->gpio.PowerGood.enabled)
+        retval &= buckGPIO_Clear(&buckInstance->gpio.PowerGood);
+
+    return(retval);
+    
+} /** @} */
+
+
+/*******************************************************************************
+ * @ingroup lib-layer-buck-config-functions-private
+ * @{
+ * @fn	volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
+ * @brief   This function sets the pin as input or output 
+ * @param	BUCK_GPIO_INSTANCE_s pointer to the GPIO instance of the converter control GPIO
+ * @return  0=failure
+ * @return  1=success
+ *  
+ * @details
+ * This function captures the user selected pin then set the pin to inactive and
+ * set it as digital input or output pin. 
  *********************************************************************************/
 volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance)
 {
@@ -693,37 +799,6 @@ volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_
 
     return(retval);
 }
+/** @} */
 
-
-
-/*******************************************************************************
- * @fn	volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
- * @param	
- * @return  Unsigned Integer (0=failure, 1=success)
- *
- * @brief
- *  
- * <b>Description</b> 
- * 
- *********************************************************************************/
-volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance)
-{
-    volatile uint16_t retval=1;
-
-    // Initialize ENABLE input pin
-    if(buckInstance->gpio.EnableInput.enabled)
-        retval = buckGPIO_PrivateInitialize(&buckInstance->gpio.EnableInput);
-    
-    // Initialize POWER GOOD output pin
-    if(buckInstance->gpio.PowerGood.enabled)
-        retval = buckGPIO_PrivateInitialize(&buckInstance->gpio.PowerGood);
-
-    // If defined, reset POWER_GOOD output
-    if(buckInstance->gpio.PowerGood.enabled)
-        retval &= buckGPIO_Clear(&buckInstance->gpio.PowerGood);
-
-    return(retval);
-    
-}
-/**}*/
 // END OF FILE

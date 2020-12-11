@@ -1,4 +1,4 @@
-/***************************************************************************************************
+/* **************************************************************************************************
 * © 2020 Microchip Technology Inc.
 *
 * FileName:        drv_TrapHandler.h
@@ -51,7 +51,7 @@
 *	 within the trap service routine. Users may modify the basic framework provided here to suit 
 *	 to the needs of their application.
 *
-***************************************************************************************************/
+* **************************************************************************************************/
 
 #ifndef _GLOBAL_TRAPS_H_
 #define _GLOBAL_TRAPS_H_
@@ -61,6 +61,10 @@
 #include <stdint.h> // include standard integer types header file
 #include <stdbool.h> // include standard boolean types header file
 
+/**
+ * @ingroup lib-layer-fault-properties-public-defines
+ * @{ 
+ */
 
 /**********************************************************************************
  * @var TRAP_DMA_SUPPORT
@@ -73,9 +77,9 @@
 #endif
 
 
-#define FAULT_OBJECT_CPU_RESET_TRIGGER_BIT_MASK     0b0000000000000001
+#define FAULT_OBJECT_CPU_RESET_TRIGGER_BIT_MASK     0b0000000000000001 ///< This define is used to filter the fault object CPU reset trigger
 #define CPU_RESET_TRIGGER_LOW_BIT_MASK 0b00000000000000011011101110000000 ///< This define is used to filter on critical fault conditions used to trigger a CPU reset
-
+/**@}*/
 
 // =================================================================================================
 //
@@ -83,6 +87,10 @@
 //
 // =================================================================================================
 
+/**
+ * @ingroup lib-layer-fault-properties-public-data-types
+ * @{ 
+ */
 /**********************************************************************************
  * @enum TRAP_ID_e
  * @brief defining trap-ID for primary and secondary vectors 
@@ -113,16 +121,9 @@ typedef enum TRAP_ID_e
 
 } TRAP_ID_t;
 
-// =================================================================================================
-//
-//	DATA STRUCTURE USED TO TRACE TRAP OCCURENCES
-//
-// =================================================================================================
-
-
 /**********************************************************************************
  * @struct TRAP_FLAGS_s
- * @brief 
+ * @brief defining the trap Flag for primary and secondary vectors
  *
  *********************************************************************************/
 typedef struct TRAP_FLAGS_s
@@ -161,7 +162,7 @@ typedef struct TRAP_FLAGS_s
 
 /**********************************************************************************
  * @struct CPU_INTTREG_s
- * @brief 
+ * @brief defining the CPU interrupt for primary and secondary vectors
  *
  *********************************************************************************/
 typedef struct CPU_INTTREG_s
@@ -254,7 +255,7 @@ typedef struct TRAPLOG_STATUS_s
 
 /**********************************************************************************
  * @struct TASK_INFO_s
- * @brief 
+ * @brief provides information for executed task, fault event and operating mode ID of task manager 
  *********************************************************************************/
 
 typedef struct TASK_INFO_s 
@@ -287,6 +288,7 @@ typedef struct TRAP_LOGGER_s
     
 } TRAP_LOGGER_t; // Global data structure for trap event capturing
 
+/**@}*/
 
 // Global data structure used as buffer for trap monitoring
 extern volatile struct TRAP_LOGGER_s __attribute__((__persistent__))traplog; 
@@ -310,6 +312,10 @@ extern void __attribute__((__interrupt__)) _AddressError(void);
 extern void __attribute__((__interrupt__)) _StackError(void);
 extern void __attribute__((__interrupt__)) _MathError(void);
 
+/**
+ * @ingroup lib-layer-fault-properties-public-defines
+ * @{ 
+ */
 #if (TRAP_DMA_SUPPORT == 1)
   #if defined (_DMACError)
     extern void __attribute__((__interrupt__)) _DMACError(void);
@@ -337,3 +343,4 @@ extern void __attribute__((__interrupt__)) _AltMathError(void);
   
 #endif
   
+/**@}*/  

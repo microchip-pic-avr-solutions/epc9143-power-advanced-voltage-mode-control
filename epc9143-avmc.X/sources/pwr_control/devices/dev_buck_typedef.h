@@ -55,7 +55,7 @@
 
 
 /**
- * @addtogroup power-handler-variable
+ * @ingroup lib-layer-buck-converter-properties-public-defines
  * @{
  */
 #define BUCK_MPHASE_COUNT                BUCK_NO_OF_PHASES
@@ -79,17 +79,15 @@
 #define BUCK_STAT_DISABLED               0b0000000000000000
 /**@}*/
 
-/****************************************************************************************************
- * @addtogroup power-handler-enum
+/**
+ * @ingroup lib-layer-buck-converter-properties-public-data-types
  * @{
- *  
- **************************************************************************************************** */
-
+ */
 /****************************************************************************************************
  * @enum BUCK_OPSTATES_e
  * @brief  Enumeration of state machine operating states 
  **************************************************************************************************** */
-typedef enum BUCK_OPSTATES_e {  // Enumeration of state machine operating states 
+typedef enum BUCK_OPSTATES_e {  
     
     BUCK_OPSTATE_ERROR          = 0x00,  ///< power converter control state #0: in case of an error, state machine will reset to RESET
     BUCK_OPSTATE_INITIALIZE     = 0x01,  ///< power converter control state #1: initialize variables and hijack controller reference
@@ -139,16 +137,11 @@ typedef enum {
         
 } BUCK_CONTROL_MODE_e;
 
-/**@}*/
-/**
- * @addtogroup power-handler-struct
- * @{
- */
 /*****************************************************************************************************
  *  @struct BUCK_CONVERTER_STATUS_s
  *  @brief Generic power controller status word
  * 
- * <b>Description: </b>
+ * @details
  * The power controller status/control word contains status (low-byte) and control bits (high-byte). 
  * -# Status Bits:
  *      - ADC_ACTIVE: ADC is active and running (read only)
@@ -212,7 +205,7 @@ typedef struct BUCK_STATE_ID_s
  * @struct BUCK_STARTUP_SETTINGS_s
  * @brief Generic power controller startup settings
  * 
- * <b>Description:</b>
+ * @details
  * This data structure is used to set the startup settings such as power on delay, power good delay
  * and ramp up time. It further covers private values like startup counters and reference values
  * for voltage and current, which are used internally by the controller (read only) but are still
@@ -232,8 +225,6 @@ typedef struct BUCK_STARTUP_PERIOD_HANDLER_s {
 /****************************************************************************************************
  * @struct BUCK_CONVERTER_STARTUP_s
  * @brief 
- * 
- * <b>Description:</b>
  * *************************************************************************************************** */
  
 typedef struct BUCK_CONVERTER_STARTUP_s {
@@ -254,7 +245,6 @@ typedef struct BUCK_CONVERTER_STARTUP_s {
  * @struct BUCK_CONVERTER_DATA_s
  * @brief 
  * 
- * <b>Description:</b>
  **************************************************************************************************** */
 typedef struct BUCK_CONVERTER_DATA_s {
     
@@ -274,7 +264,7 @@ typedef struct BUCK_CONVERTER_DATA_s {
  * @struct BUCK_CONVERTER_CONTROL_s
  * @brief Generic power controller control settings
  * 
- * <b>Description:</b>
+ * @details
  * This data structure is used to set the overall settings to allow external software instances 
  * to control the power control object, such as voltage and current references.
  *  
@@ -293,7 +283,7 @@ typedef struct BUCK_CONVERTER_SETTINGS_s {
  * @struct BUCK_LOOP_SETTINGS_s
  * @brief Generic power control loop settings
  * 
- * <b>Description:</b>
+ * @details
  * This data structure is used to set the control loop settings such as pointers to controller 
  * objects and its function calls as well as basic user settings such as reference, feedback
  * signal offsets, trigger delays and minimum/maximum output clamping values.
@@ -321,7 +311,7 @@ typedef struct BUCK_LOOP_SETTINGS_s {
  * @struct BUCK_SWITCH_NODE_SETTINGS_s
  * @brief Generic power converter switch-node specifications
  * 
- * <b>Description: </b>
+ * @details
  * This data structure is used to set the converter switch-node specifications declaring which
  * PWM channel is used as well as its switching frequency, phase-shift, dead times and duty ratio
  * limits.
@@ -352,7 +342,7 @@ typedef struct BUCK_SWITCH_NODE_SETTINGS_s {
  * @struct BUCK_ADC_INPUT_SCALING_s 
  * @brief Generic power converter feedback specifications
  * 
- * <b>Description:</b>
+ * @details
  * This data structure is used to set the converter feedback specifications declaring which
  * ADC channels are used including the individual AD input configuration such as trigger mode,
  * input mode, result format and value normalization.
@@ -370,8 +360,6 @@ typedef struct BUCK_ADC_INPUT_SCALING_s {
 /****************************************************************************************************
  * @struct BUCK_ADC_INPUT_SETTINGS_s
  * @brief Generic power converter ADC input channel configuration
- * 
- * <b>Description:</b>
  * 
  * *************************************************************************************************** */
 typedef struct BUCK_ADC_INPUT_SETTINGS_s {
@@ -396,8 +384,6 @@ typedef struct BUCK_ADC_INPUT_SETTINGS_s {
  * @struct BUCK_FEEDBACK_SETTINGS_s
  * @brief 
  * 
- * <b>Description:</b>
- * 
  * *************************************************************************************************** */
 typedef struct BUCK_FEEDBACK_SETTINGS_s {
     
@@ -412,7 +398,7 @@ typedef struct BUCK_FEEDBACK_SETTINGS_s {
  * @struct BUCK_GPIO_SETTINGS_s
  * @brief Generic power converter GPIO specifications
  * 
- * <b>Description:</b>
+ * @details
  * This data structure is used to set the converter GPIO specifications declaring which
  * if and which additional GPIOs are used by the converter controller, such as POWER_GOOD.
  * 
@@ -420,7 +406,7 @@ typedef struct BUCK_FEEDBACK_SETTINGS_s {
 typedef struct BUCK_GPIO_INSTANCE_s {
     
     volatile bool enabled;      ///< Specifies, if this IO is used or not
-    volatile uint16_t port;     ///< GPIO port instance number (0=A, 1=B, 2=C, etc.)
+    volatile uint16_t port;     ///< GPIO port instance number (0=Port RA, 0=Port RB, 0=Port RC, etc.)
     volatile uint16_t pin;      ///< GPIO port pin number
     volatile uint16_t polarity; ///< Output polarity, where 0=ACTIVE HIGH, 1=ACTIVE_LOW
     volatile uint16_t io_type;  ///< Input/Output definition (0=output, 1=input)
@@ -430,9 +416,7 @@ typedef struct BUCK_GPIO_INSTANCE_s {
 /****************************************************************************************************
  * @struct BUCK_GPIO_SETTINGS_s
  * @brief Generic power converter GPIO specifications
- * 
- * <b>Description:</b>
- * 
+ *
  * *************************************************************************************************** */
 typedef struct BUCK_GPIO_SETTINGS_s {
     
@@ -449,9 +433,6 @@ typedef struct BUCK_GPIO_SETTINGS_s {
 /****************************************************************************************************
  * @struct BUCK_POWER_CONTROLLER_s
  * @brief 
- * 
- * <b>Description:</b>
- * 
  *****************************************************************************************************/
 typedef struct BUCK_POWER_CONTROLLER_s 
 {
@@ -471,7 +452,7 @@ typedef struct BUCK_POWER_CONTROLLER_s
 } BUCK_POWER_CONTROLLER_t; ///< BUCK control & monitoring data structure
 
 /**@}*/
-/**@}*/
+
 //#else
 //    #pragma message "Warning: dev_buck_typedef.h inclusion bypassed"
 #endif	/* BUCK_CONVERTER_TYPE_DEF_H */

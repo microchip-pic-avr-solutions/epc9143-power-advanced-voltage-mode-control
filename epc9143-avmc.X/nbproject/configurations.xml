@@ -17,6 +17,7 @@
           <itemPath>sources/config/init/init_timer1.h</itemPath>
           <itemPath>sources/config/init/init_opa.h</itemPath>
           <itemPath>sources/config/init/init_dac.h</itemPath>
+          <itemPath>sources/config/init/init_dsp.h</itemPath>
         </logicalFolder>
         <itemPath>sources/config/hal.h</itemPath>
         <itemPath>sources/config/system.h</itemPath>
@@ -49,11 +50,13 @@
             <itemPath>sources/pwr_control/devices/dev_buck_typedef.h</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_substates.h</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_templates.h</itemPath>
+            <itemPath>sources/pwr_control/devices/dev_buck_special_functions.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="drivers" projectFiles="true">
             <itemPath>sources/pwr_control/drivers/npnz16b.h</itemPath>
             <itemPath>sources/pwr_control/drivers/npnz16b.inc</itemPath>
             <itemPath>sources/pwr_control/drivers/v_loop.h</itemPath>
+            <itemPath>sources/pwr_control/drivers/v_loop_agc.h</itemPath>
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
@@ -71,6 +74,9 @@
         <itemPath>sources/common/p33c_pral/p33c_pwm.c</itemPath>
         <itemPath>sources/common/p33c_pral/p33c_pps.c</itemPath>
         <itemPath>sources/common/p33c_pral/p33c_dac.c</itemPath>
+        <itemPath>sources/common/p33c_pral/p33c_opa.c</itemPath>
+        <itemPath>sources/common/p33c_pral/p33c_osc.c</itemPath>
+        <itemPath>sources/common/p33c_pral/p33c_dsp.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="init" projectFiles="true">
@@ -79,6 +85,7 @@
           <itemPath>sources/config/init/init_timer1.c</itemPath>
           <itemPath>sources/config/init/init_opa.c</itemPath>
           <itemPath>sources/config/init/init_dac.c</itemPath>
+          <itemPath>sources/config/init/init_dsp.c</itemPath>
         </logicalFolder>
         <itemPath>sources/config/config_bits.c</itemPath>
         <itemPath>sources/config/system.c</itemPath>
@@ -97,6 +104,7 @@
           <logicalFolder name="f1" displayName="app" projectFiles="true">
             <itemPath>sources/pwr_control/app_power_control.c</itemPath>
             <itemPath>sources/pwr_control/app_power_control_isr.c</itemPath>
+            <itemPath>sources/pwr_control/app_power_config.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="devices" projectFiles="true">
             <logicalFolder name="f1" displayName="templates" projectFiles="true">
@@ -108,6 +116,7 @@
             <itemPath>sources/pwr_control/devices/dev_buck_pconfig.c</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_opstates.c</itemPath>
             <itemPath>sources/pwr_control/devices/dev_buck_substates.c</itemPath>
+            <itemPath>sources/pwr_control/devices/dev_buck_special_functions.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="drivers" projectFiles="true">
             <itemPath>sources/pwr_control/drivers/v_loop.c</itemPath>
@@ -145,7 +154,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>ICD4Tool</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.50</languageToolchainVersion>
+        <languageToolchainVersion>1.60</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
@@ -210,7 +219,7 @@
         <property key="oXC16gcc-sfr-warn" value="false"/>
         <property key="oXC16gcc-smar-io-lvl" value="1"/>
         <property key="oXC16gcc-smart-io-fmt" value=""/>
-        <property key="optimization-level" value="1"/>
+        <property key="optimization-level" value="0"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros" value=""/>

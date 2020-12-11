@@ -38,23 +38,54 @@
 #include <stddef.h> // include standard definition data types
 
 /**
- * @addtogroup power-handler-variable 
+ * @ingroup lib-layer-buck-ptemplate-properties-public-defines
  * @{
  */
 /* ********************************************************************************
  * ADC BASE MODULE BASE REGISTERS CONFIGURATION
  * *******************************************************************************/
-
-// Digital-To-Analog Converter and High Speed Comparator Special Function Register Set 
+/**
+ * @def ADC_POWERUP_TIMEOUT
+ * @brief Digital-To-Analog Converter and High Speed Comparator Special Function Register Set
+ */  
 #define ADC_POWERUP_TIMEOUT  5000
 /* SLPxDAT: DACx SLOPE DATA REGISTER => Timing Register: User value will be set in code */
 
 // ADC specific declarations
+/**
+ * @def ADC_CORE_MASK
+ * @brief This define masks all cores of ADC
+ */
 #define ADC_CORE_MASK           0b0000000010001111
+
+/**
+ * @def ADC_CORE0_MASK_INDEX
+ * @brief This define masks core 0 of ADC
+ */
 #define ADC_CORE0_MASK_INDEX    0b0000000000000001
+
+/**
+ * @def ADC_CORE1_MASK_INDEX
+ * @brief This define masks core 1 of ADC
+ */
 #define ADC_CORE1_MASK_INDEX    0b0000000000000010
+
+/**
+ * @def ADC_CORE2_MASK_INDEX
+ * @brief This define masks core 2 of ADC
+ */
 #define ADC_CORE2_MASK_INDEX    0b0000000000000100
+
+/**
+ * @def ADC_CORE3_MASK_INDEX
+ * @brief This define masks core 3 of ADC
+ */
 #define ADC_CORE3_MASK_INDEX    0b0000000000001000
+
+/**
+ * @def ADC_SHRCORE_MASK_INDEX
+ * @brief This define masks shared core of ADC
+ */
 #define ADC_SHRCORE_MASK_INDEX  0b0000000010000000
 
 /* ********************************************************************************

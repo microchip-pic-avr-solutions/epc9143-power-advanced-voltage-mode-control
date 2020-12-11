@@ -9,23 +9,22 @@
 #include <xc.h>
 #include "config/init/init_gpio.h"
 
+/**
+ * @ingroup gpio-initialization
+ * @{
+ */
+
 /***********************************************************************************
- * @fn DATA_TYPE FUNCTION_NAME
- * @brief  ADD_SHORT_DESCRIPTION/SUMMARY_HERE
- * @param  ADD_PARAMETER_HERE
- * @return DATA_TYPE SHORT_VALUE_DESCRIPTION
+ * @fn uint16_t sysGpio_Initialize(void)
+ * @brief  Resets the device input/output pins to digital inputs
+ * @return unsigned integer (0=failure, 1=success)
  * 
- * <b>Description</b>
- * ADD_DESCRIPTION_HERE
- *
- * <p><b>Example:</b></p>
- *
- * <code>
- * ADD_CODE_EXAMPLE_HERE
- * </code>
- *
- * <p><b>Remarks:</b></p>
- * ADD_REMARKS_HERE
+ * @details
+ *  When the device is coming out of RESET. all device pins are configured as
+ *  inputs and all analog functions will be enabled. Enabled analog functions
+ *  are a potential source for conflicts and are therefore turned off by default
+ *  during device startup to allow all peripheral configuration drivers to start
+ *  from a defined default state.
  *
  **********************************************************************************/
 
@@ -38,9 +37,19 @@ volatile uint16_t sysGpio_Initialize(void) {
     ANSELB = 0x0000;
     
     // Initialize debugging Pins
-    DBGPIN_1_INIT; ///< Device pin #1  (not routed)
-    DBGPIN_2_INIT; ///< Device pin #2  (not routed)
-    DBGPIN_3_INIT; ///< Device pin #25 (not routed)
+    #ifdef DBGPIN1_PIN
+    DBGPIN1_Init(); ///< Device pin #1  (not routed)
+    #endif
+    #ifdef DBGPIN2_PIN
+    DBGPIN2_Init(); ///< Device pin #2  (not routed)
+    #endif
+    #ifdef DBGPIN3_PIN
+    DBGPIN3_Init(); ///< Device pin #25 (not routed)
+    #endif
 
     return(retval);
 }
+
+/** @}*/ // end of group gpio-initialization
+
+// end of file

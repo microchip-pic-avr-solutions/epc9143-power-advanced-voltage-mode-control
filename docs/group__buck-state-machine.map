@@ -1,6 +1,0 @@
-<map id="Task Layer" name="Task Layer">
-<area shape="rect" id="node1" title="Task Layer." alt="" coords="188,45,275,70"/>
-<area shape="rect" id="node2" href="$group__buck-state-machine-struct.html" title="Buck State Machine Data Structures." alt="" coords="323,5,463,45"/>
-<area shape="rect" id="node3" href="$group__buck-state-machine-function.html" title="Buck State Machine Functions." alt="" coords="323,69,463,109"/>
-<area shape="rect" id="node4" href="$group__firmware-flow.html" title="Firmware Flowchart." alt="" coords="5,45,140,70"/>
-</map>

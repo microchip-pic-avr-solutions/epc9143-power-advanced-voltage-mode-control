@@ -9,24 +9,17 @@
 #include "config/hal.h"
 #include "app_power_control.h"
 
-/*!Power Converter Control Loop Interrupt
- * **************************************************************************************************
- * 
- * **************************************************************************************************/
-
-/**
- * @addtogroup power-handler-function
- * @{
- */
 /*********************************************************************************
+ * @ingroup app-layer-power-control-events
+ * @{
  * @fn void _BUCK_VLOOP_Interrupt(void)
  * @brief Main Control Interrupt
  * 
- * @param NONE
+ * @param void
  * 
- * @return NONE
+ * @return void
  *   
- * <b>Description<b>
+ * @details
  * The control interrupt is calling the control loop. The point in time where
  * this interrupt is thrown is determined by selecting the BUCK_VOUT_TRIGGER_MODE
  * option. 
@@ -35,8 +28,9 @@
 
 void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void)
 {
-    
-    DBGPIN_1_SET;
+    #ifdef DBGPIN1_Set
+    DBGPIN1_Set();
+    #endif
     
     buck.status.bits.adc_active = true;
     #if (PLANT_MEASUREMENT == false)
@@ -52,7 +46,9 @@ void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void
     // Clear the ADCANx interrupt flag 
     _BUCK_VLOOP_ISR_IF = 0;  
     
-    DBGPIN_1_CLEAR;
+    #ifdef DBGPIN1_Set
+    DBGPIN1_Clear();
+    #endif
     
 }
 /**@}*/

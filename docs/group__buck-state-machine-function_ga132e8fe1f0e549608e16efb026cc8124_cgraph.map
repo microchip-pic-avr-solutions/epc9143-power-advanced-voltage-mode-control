@@ -1,4 +1,0 @@
-<map id="SubState_VRampUp" name="SubState_VRampUp">
-<area shape="rect" id="node1" title="Description This is the essential step in which the output voltage is ramped up by incrementing the o..." alt="" coords="5,5,148,32"/>
-<area shape="rect" id="node2" href="$group__power-handler-function.html#ga474b1ea0d26dbfd268ec805a900c1c93" title="Description" alt="" coords="196,5,335,32"/>
-</map>

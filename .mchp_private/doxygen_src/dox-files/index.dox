@@ -1,135 +1,177 @@
+
+/* List of DOT images to be generated for use in markup files but without being referenced in comments */
+/**
+@dotfile dev-startup.gv
+*/
+
 //First layer
 /**
- @defgroup firmware-flow Firmware Flowchart
- @brief Firmware Flowchart 
- 
- @defgroup power-handler Power Control Handler Reference 
- @brief Power Control Handler Reference
- 
- @defgroup fault-handler Fault Handler Reference
- @brief Fault Handler Reference
- 
- @defgroup abstraction-layer Abstraction Layer Defines
- @brief Abstraction Layer Defines
+@defgroup firmware-flow Firmware Architecture
+@brief Firmware Flowchart 
+@details
 */
 
 //Firmware Flowchart index
 /**
- @defgroup device-start-up Device Start Up
- @ingroup firmware-flow
- @brief Device Start Up
+@defgroup device-start-up Device Start Up
+@ingroup firmware-flow
+@brief Device Start Up
+@details
+ When the device comes out of RESET, it is running off the selected oscillator at its natural frequency.
+ The startup oscillator type is declared in the FOSCSEL register by setting the respective configuration bits (FUSES).
+ FUSES (configuration bits) can only be set at compile time before the settings are programmed into the device.
+@code{.c} #pragma config FNOSC = FRCDIVN @endcode
+ 
+ - <b>Step 1 (System Initialization):</b><br><br>
+   The first step focusses on essential IC resources only, such as oscillator and device inputs/outputs.
+   The following modules are initialized in the given order:<br><br>
+   - <b>Main Oscillator: </b><br>
+   In this design the internal 8 MHz RC oscillator is used. Hence, the very first step in the firmware is to set up 
+   the internal PLL to operate the CPU at maximum speed of 100 MIPS (100 MHz instruction cycle).
+   <br><br>
+   - <b>Auxiliary Oscillator: </b><br>
+   The Auxiliary Oscillator is a second PLL, which can be set up to a different frequency than the main oscillator and 
+   provided to peripheral modules. This auxiliary clock signal is used by the PWM and ADC module to perform at maximum
+   speed and performance. In this design, the auxiliary clock is set up for 500 MHz base clock. 
+   <br><br>
+   - <b>GPIO Reset: </b><br>
+   To make sure there are no conflicts with individual application tasks and related peripheral configurations, all
+   General Purpose Inputs/Outputs (GPIOs) are set as digital inputs with its internal control signals set LOW.
+   <br><br>
+   - <b>Digital Signal Processor Logic (DSP): </b><br>
+   The internal Digital Signal Processing (DSP) engine is configured for fractional multiplication with saturation
+   enabled. This configuration is optimized for control loop computations. The control loops are able to self-manage 
+   their required DSP configuration, however, this would add execution cycles and increase the overall CPU load.
+   As no other task/process in this application uses the DSP, the DSP configuration has been taken out of the 
+   control loop CPU configuration self-management and added to the system initialization of the project as static 
+   configuration to reduce the overall CPU workload.
+   <br><br>
 
- @defgroup main-loop Main Loop
- @ingroup firmware-flow
- @brief Main Loop 
+ - <b>Step 2 (User Peripheral Initialization):</b><br><br>
+   The second step initializes user-defined peripherals, which are not managed by any other part of the application. 
+   The following modules are initialized in the given order:<br><br>
+   - <b>Digital-To-Analog Converter (DAC)</b><br>
+     This design requires an independent reference voltage to adjust external current sense shunt amplifier devices to 
+     offset their output voltage, allowing the monitoring of the full triangular inductor current waveform in discontinuous
+     as well as continuous conduction mode. Each DAC module of dsPIC33 also includes an analog high-sped comparator, which 
+     is not used in this configuration.
+     <br><br>
+   - <b>Operational Amplifier (OPA)</b><br>
+     The internally generated reference voltage (see DAC configuration above) is buffered by using one of the on-chip Operational
+     amplifiers. This section assigns the input pin to this op-amp and enables the output.
+   <br><br>
 
- @defgroup buck-state-machine Task Layer
- @ingroup firmware-flow
- @brief Task Layer
+ - <b>Step 3 (User Peripheral Initialization):</b><br><br>
+   In the third step all tasks of the application are initialized by calling their default API INITIALIZE function. Each task
+   module is self-managing and does not require additional parameters to be considered at this function call level. However, 
+   each task provides an individual application layer which is used to configure the task and all its implied settings and 
+   parameters. (Please refer to the documentation of each task for details.)<br><br>
+   - <b>Power Control Task</b><br>
+     The Power Control Task covers the complete management of the included power supply circuit and control loops.
+     This tasks utilizes a standard single- and multiphase buck converter library, which provides a complete runtime 
+     state-machine managing self-initialization, soft-start, soft-stop, runtime reference tuning and auto-restart.
+     It also includes enhanced features such as automatic adjustment to pre-biased outputs, feedback offset compensation
+     and supports different control modes such as voltage mode control (VMC) or average current mode control (ACMC).
+   <br><br>
+   - <b>Fault Monitor Task</b><br>
+     The Fault Monitor Task is a global task providing application-wide fault detection. The separation of power converter 
+     control and fault monitoring allows the consideration of application dependencies between tasks. 
+   <br><br>
+
+ - <b>Step 4 (OS Timer Initialization):</b><br><br>
+   In the fourth step the operating system time base is initialized. In this slim applicaiton the operating system
+   consists of two different task execution levels on two priority levels:
+   <br><br>
+   - <b>Low-Priority Task Execution</b><br>
+   the low priority tasks are executed
+   from a common function called @ref sysLowPriorityTasks_Execute. This task layer is executed with lowest priority (=0).
+   <br><br>
+   - <b>High-Priority Task Execution</b><br>
+   High priority tasks are executed from the Timer Interrupt Service Routine (ISR) of the OS timebase timer. 
+   The interupt priority is set one above the low priority task level (default = 1). in this application the 
+   alternate working registers of the device have been configured to automatically switch context when the timer 
+   interrupt is triggered by setting FUSE CTXT1 = IPL1.
+   @code{.c} #pragma config CTXT1 = IPL1 @endcode
+
+   <br><br>
+   <br><br>
+
+@defgroup main-loop Main Loop
+@ingroup firmware-flow
+@brief Main Loop 
+ 
+@defgroup main-loop-low-priority Low-Priority Task Execution
+@ingroup main-loop
+@brief Low priority task execution
+
+@defgroup main-loop-high-priority High-Priority Task Execution
+@ingroup main-loop
+@brief High priority task execution
+
+@defgroup task-layer Task Layer
+@ingroup firmware-flow
+@brief Task Layer
+
 */
 
-//Buck State Machine index
+//Device Start-Up Sub-Index
 /**
- @defgroup buck-state-machine-function Buck State Machine Functions
- @ingroup buck-state-machine
- @brief Buck State Machine Functions
+@defgroup system-initialization-mcu Essential Chip Resources
+@ingroup device-start-up
+@brief 
+@details
  
- @defgroup buck-state-machine-struct Buck State Machine Data Structures
- @ingroup buck-state-machine
- @brief Buck State Machine Data Structures
+@defgroup clock-initialization Main Oscillator Initialization
+@ingroup system-initialization-mcu
+@brief 
+@details
+ 
+@defgroup gpio-initialization Device Pin Configuration
+@ingroup system-initialization-mcu
+@brief 
+@details
+
+@defgroup system-initialization-user-peripherals Hardware-Specific Chip Resources
+@ingroup device-start-up
+@brief 
+@details
+ 
+@defgroup dac-initialization Digital-to-Analog Converter
+@ingroup system-initialization-user-peripherals
+@brief 
+@details
+ 
+@defgroup op-amp-initialization Operational Amplifier Configuration
+@ingroup system-initialization-user-peripherals
+@brief 
+@details
+
+@defgroup system-initialization-user-tasks Firmware Task Initialization
+@ingroup device-start-up
+@brief 
+@details
+ 
+@defgroup os-timer-initialization Operating System Time Base
+@ingroup system-initialization-user-tasks
+@brief 
+ 
 */
 
-//Power Control Handler Reference index
+// Hardware Abstraction Layer Title
 /**
- @defgroup power-handler-function Power Control Handler Functions
- @ingroup power-handler 
- @brief Power Control Handler Functions
- 
- @defgroup power-handler-struct Power Handler Data Structures
- @ingroup power-handler
- @brief Power Handler Data Structures
- 
- @defgroup power-handler-enum Power Control Handler Enumerations
- @ingroup power-handler
- @brief This enumeration is listing all defined states supported by the power controller state-machine.
-  The state machine handles the initialization of the power controller, stand-by, start up procedure
-  including Power-On-Delay, Ramp-Up and Power Good Delay until it ends up in a continuous operating
-  state. When reference values are changed while running, the state machine will tune into the new
-  reference values using the slew rates defined for the startup phase. 
- 
-  For more information on each state, please read the related sections.
- 
- @defgroup power-handler-variable Power Control Handler Variables
- @ingroup power-handler
- @brief Power Control Handler Variables
+@defgroup abstraction-layer Hardware Abstraction Layer
+@brief Hardware Abstraction Layer Declarations
+@details
+ The hardware abstraction layer introduces global defines which can be used in the firmware section of the source code to reference hardware dependent parameters and device peripheral instances and features.
+ This abstraction is essential to adapt to hardware changes including migration across microcontroller device families and hardware versions with minimum risk and time efforts.
+ As the microcontroller used in this design is a fixed, irreplaceable board component, this particular Hardware Abstraction Layer (HAL) covers declarations of circuit control and feedback signals as well as
+ associated microcontroller peripheral instances and features.
 */
 
-//Fault Handler Reference index
+
+// Library Layer
 /**
- @defgroup fault-handler-enum Fault Handler Enumeration
- @ingroup fault-handler
- @brief Fault Handler Enumeration
- 
- @defgroup fault-handler-struct Fault Handler Data Structure
- @ingroup fault-handler
- @brief 
- 
- @defgroup fault-handler-function Fault Handler Functions
- @ingroup fault-handler
- @brief Fault Handler Functions
-*/
-
-//Abstraction Layer Defines index
-/**
- @defgroup microcontroller-abstraction Microcontroller Abstraction
- @ingroup abstraction-layer 
- @brief 
-
- @defgroup state-machine-settings State Machine Settings
- @ingroup abstraction-layer 
- @brief 
- 
- @defgroup hardware-abstraction Hardware Abstraction
- @ingroup abstraction-layer 
- @brief 
- 
- @defgroup power-parameter Power Control Parameter Declaration
- @ingroup abstraction-layer
- @brief 
- 
- @defgroup fundamental-pwm-settings Fundamental PWM Settings 
- @ingroup abstraction-layer 
- @brief 
- 
- @defgroup input-voltage-feedback Input Voltage Feedback 
- @ingroup abstraction-layer
- @brief 
- 
- @defgroup output-voltage-feedback Output Voltage Feedback
- @ingroup abstraction-layer
- @brief 
- 
- @defgroup ideal-duty-cycle Ideal Duty Cycle 
- @ingroup abstraction-layer
- @brief 
- 
- @defgroup phase-current-feedback Phase Current Feedback
- @ingroup abstraction-layer
- @brief 
- 
- @defgroup adaptive-control Adaptive Gain Control Feed Forward 
- @ingroup abstraction-layer
- @brief 
- 
- @defgroup startup-behavior Startup Behavior  
- @ingroup abstraction-layer
- @brief 
- 
- @defgroup fault-object-declarations Fault Object Declarations
- @ingroup abstraction-layer
- @brief 
- 
- @defgroup controller-declarations Controller Declarations
- @ingroup abstraction-layer
- @brief 
-*/
+@defgroup lib-layer Library Layer 
+@brief
+@details
+*/ 

@@ -9,75 +9,94 @@
 #include "system.h"
 
 /**
- * 
- * @addtogroup device-start-up
+ * @ingroup system-initialization-mcu
  * @{
  */
 /***********************************************************************************
  * @fn volatile uint16_t SYSTEM_Initialize(void) 
- * @brief  Initializes essential chip resources and application task
- * @param  (none)
- * @return unsigned integer (0=failure, 1=success)
+ * @brief  Initializes essential chip resources
+ * @return unsigned integer 
+ * 0=failure
+ * 1=success
  * 
- * <b>Description</b>
+ * @details
  * The SYSTEM_Initialize function covers the initialization of essential chip 
  * resources such as main oscillator, auxiliary oscillator, watchdog timer and
- * general purpose I/Os (GPIO).
+ * general purpose I/Os (GPIO). All other, design specific peripherals are 
+ * initialized in the User Peripheral Initialization or by the respective 
+ * User Task Device Drivers included in the firmware project
  * 
- * In addition to the essential device initialization this function calls
- * the initialization of application specific user-tasks
- *
- * <p><b>Example:</b></p>
- *
- * <code>
- * ADD_CODE_EXAMPLE_HERE
- * </code>
- *
- * <p><b>Remarks:</b></p>
- * ADD_REMARKS_HERE
- *
  **********************************************************************************/
 volatile uint16_t SYSTEM_Initialize(void) 
 {
     volatile uint16_t retval=1;
 	
-    retval &= sysFosc_Initialize();        // Set up system oscillator for 100 MIPS operation
-    retval &= sysAclk_Initialize();        // Set up Auxiliary PLL for 500 MHz (source clock to PWM module)
-    retval &= init_timer1();      // Set up Timer1 as scheduler time base
-    retval &= sysGpio_Initialize();        // Initialize common device GPIOs
+    retval &= sysFosc_Initialize(); ///< Set up system oscillator for 100 MIPS operation
+    retval &= sysAclk_Initialize(); ///< Set up Auxiliary PLL for 500 MHz (source clock to PWM module)
+    retval &= sysGpio_Initialize(); ///< Initialize common device GPIOs
+    retval &= sysDsp_Initialize(); ///< Initialize the DSP engine for fractional multiplication with saturation
     
 	return(retval);
 
 }
 
+/** @}*/ // end of group system-initialization-mcu
+
+/**
+ * @ingroup system-initialization-user-peripherals
+ * @{
+ */
 /***********************************************************************************
- * @fn uint16_t sysUserTasks_Initialize
- * @brief  Initializes the user-defined tasks and chip resources
- * @param  (none)
+ * @fn uint16_t sysUserPeriperhals_Initialize
+ * @brief  Initializes the user-defined chip resources
  * @return unsigned integer (0=failure, 1=success)
  * 
- * <b>Description</b>
- * ADD_DESCRIPTION_HERE
- *
- * <p><b>Example:</b></p>
- *
- * <code>
- * ADD_CODE_EXAMPLE_HERE
- * </code>
- *
- * <p><b>Remarks:</b></p>
- * ADD_REMARKS_HERE
+ * @details
+ * The EPC9143 16th brick power module reference design uses further on-chip 
+ * resources to provide a programmable/tunable reference voltage to external 
+ * current sense shunt amplifier devices. This reference voltage is provided
+ * by one of the free on-chip Digital-To-Analog converter (DAC) instances. 
+ **********************************************************************************/
+volatile uint16_t sysUserPeriperhals_Initialize(void) {
+
+    volatile uint16_t retval=1;
+    
+    retval &= sysOpAmp_Initialize(ISENSE_REF_BUFFER_OPA_INSTANCE, true); // Initialize op-amp #2 used to drive the reference voltage for current sense amplifiers
+    
+    retval &= sysDacModule_Initialize();  // Initialize DAC module
+    retval &= sysDacOutput_Initialize(ISENSE_REF_DAC_INSTANCE); // Initialize DAC #1 used to generate the reference voltage for current sense amplifiers
+    retval &= sysDacOutput_Enable(ISENSE_REF_DAC_INSTANCE); // Enable DAC providing reference to current sense amplifiers
+
+    retval &= sysOpAmp_ModuleEnable(); // Enable the operational amplifier module
+    
+	return(retval);
+
+}
+
+/** @}*/ // end of group system-initialization-user-peripherals
+
+/**
+ * @ingroup system-initialization-user-tasks User Task Initialization
+ * @{
+ */
+/***********************************************************************************
+ * @fn uint16_t sysUserTasks_Initialize
+ * @brief  Initializes the user-defined tasks
+ * @return unsigned integer (0=failure, 1=success)
+ * 
+ * @details
+ * The EPC9143 16th brick power module reference design has a very simple GPIO 
+ * user interface, signaling the state of the output regulation on a POWER GOOD
+ * output pin. Hence, this firmware4 mainly consists of the power control state
+ * machine and fault handler, protecting the hardware.
  *
  **********************************************************************************/
 volatile uint16_t sysUserTasks_Initialize(void) {
 
     volatile uint16_t retval=1;
 	
-    retval &= init_opa(); // Initialize op-amp #2 used to drive the reference voltage for current sense amplifiers
-    
-    retval &= init_dac_module();  // Initialize DAC module
-    retval &= init_dac_channel(1); // Initialize DAC #1 used to generate the reference voltage for current sense amplifiers
-    retval &= init_dac_enable(); // Enable DAC setting the reference for current sense amplifiers
+    // Initialize task scheduler time base
+    retval &= sysOsTimer_Initialize();     // Set up Timer1 as scheduler time base (see MAIN_EXECUTION_PERIOD for details)
 
     // Initialize software modules
     retval &= appPowerSupply_Initialize(); // Initialize BUCK converter object and state machine
@@ -87,5 +106,6 @@ volatile uint16_t sysUserTasks_Initialize(void) {
 
 }
 
+/** @}*/ // end of group system-initialization-user-tasks
 
-/**@}*/
+// end of file

@@ -35,6 +35,7 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 
 #include "config/init/init_fosc.h"
+#include "config/init/init_dsp.h"
 #include "config/init/init_timer1.h"
 #include "config/init/init_gpio.h"
 
@@ -43,8 +44,9 @@
 
 /* PUCLIC FUNCTION CALL PROTOTYPES */
 
-volatile uint16_t SYSTEM_Initialize(void);
-volatile uint16_t sysUserTasks_Initialize(void);
+extern volatile uint16_t SYSTEM_Initialize(void);
+extern volatile uint16_t sysUserTasks_Initialize(void);
+extern volatile uint16_t sysUserPeriperhals_Initialize(void);
 
 #endif	/* APPLICAITON_SYSTEM_INITIALIZE_H */
 

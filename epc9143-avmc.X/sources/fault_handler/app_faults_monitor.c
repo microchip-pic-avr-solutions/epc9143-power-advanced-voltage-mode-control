@@ -1,5 +1,5 @@
 /*
- * File:   faults.c
+ * File:   app_faults_monitor.c
  * Author: M91406
  *
  * Created on March 12, 2020, 11:38 AM
@@ -25,47 +25,14 @@ volatile uint16_t __attribute__((always_inline)) ocp_FaultInitialize(void);
 volatile uint16_t __attribute__((always_inline)) regerr_FaultInitialize(void);
 
 
-/**
- * 
- * @addtogroup device-start-up
- * @{
- */
 /*********************************************************************************
- * @fn volatile uint16_t appFaultMonitor_Initialize(void)
- * @brief  Initialization of user-defined fault objects
- * @param (none)
- * @return unsigned integer   (0=failure, 1=success)
- * 
- * <b>Description</b>
- * 
- *********************************************************************************/
-
-volatile uint16_t appFaultMonitor_Initialize(void) 
-{
-    volatile uint16_t retval=1;
-    
-    // Initialize user fault objects
-    retval &= uvlo_FaultInitialize();
-    retval &= ovlo_FaultInitialize();
-    retval &= ocp_FaultInitialize();
-    retval &= regerr_FaultInitialize();
-    
-    return(retval);
-}
-/**@}*/
-
-
-/**
- * @addtogroup main-loop 
- * @{ 
- */
-/*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-public
  * @fn volatile uint16_t appFaultMonitor_Execute(void)  
  * @brief Application wide fault object monitoring routine
- * @param (none)
- * @return unsigned integer   (0=failure, 1=success)
+ * @return 0=failure 
+ * @return 1=success
  * 
- * <b>Description</b>
+ * @details
  *   In this function all user-defined fault objects are monitored for 
  *   threshold violations. While fault responses are triggered by each 
  *   fault object individually, system recovery from a fault condition is 
@@ -105,20 +72,41 @@ volatile uint16_t appFaultMonitor_Execute(void)
     
     return (retval);
 }
-/**@}*/
-
-/**
- * @addtogroup fault-handler-function
- * @{ 
- */
 
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-public
+ * @fn volatile uint16_t appFaultMonitor_Initialize(void)
+ * @brief  Initialization of user-defined fault objects
+ * @return 0=failure 
+ * @return 1=success
+ * 
+ * @details
+ * This function initializes the user-defined fault objects like the setpoints, 
+ * fault conditions and ADC sources for Under-voltage Lockout, 
+ * Over-voltage lockout, Output current protection and Regulation error. 
+ *********************************************************************************/
+
+volatile uint16_t appFaultMonitor_Initialize(void) 
+{
+    volatile uint16_t retval=1;
+    
+    // Initialize user fault objects
+    retval &= uvlo_FaultInitialize();
+    retval &= ovlo_FaultInitialize();
+    retval &= ocp_FaultInitialize();
+    retval &= regerr_FaultInitialize();
+    
+    return(retval);
+}
+
+/*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-public
  * @fn volatile uint16_t appFaultMonitor_Dispose(void) 
  * @brief Function clearing all fault object settings
- * @param (none)
- * @return unsigned integer   (0=failure, 1=success)
+ * @return 0=failure 
+ * @return 1=success
  * 
- * <b>Description</b>
+ * @details
  *   This function is used to clear all fault objects settings. Once cleared,
  *   the fault objects are detached from memory addresses and cannot be used
  *   for fault monitoring anymore until they have been re-initialized.
@@ -140,15 +128,18 @@ volatile uint16_t appFaultMonitor_Dispose(void)
  * PRIVATE FUNCTIONS
  * ********************************************************************************/
 
-
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-private
  * @fn volatile uint16_t uvlo_FaultInitialize(void)
- * @brief 
- * @param (none)
- * @return unsigned integer   (0=failure, 1=success)
+ * @brief Initializes the user-defined fault objects for under-voltage lockout
+ * @return 0=failure
+ * @return 1=success
  * 
- * <b>Description</b>
- * 
+ * @details
+ * In this function all user-defined fault objects are initialize and set to the
+ * threshold violations for under-voltage lockout. The ADC channel that monitors the
+ * voltage from the circuit is set in SourceObject while the threshold violation and
+ * recovery are set by TripResponse and RecoveryResponse objects.
  *********************************************************************************/
 
 volatile uint16_t uvlo_FaultInitialize(void)
@@ -183,13 +174,17 @@ volatile uint16_t uvlo_FaultInitialize(void)
 }
 
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-private
  * @fn volatile uint16_t ovlo_FaultInitialize(void)
- * @brief 
- * @param (none)
- * @return unsigned integer   (0=failure, 1=success)
+ * @brief Initializes the user-defined fault objects for overvoltage lockout
+ * @return 0=failure
+ * @return 1=success
  * 
- * <b>Description</b>
- * 
+ * @details
+ * In this function all user-defined fault objects are initialize and set the
+ * threshold violations for overvoltage lockout. The ADC channel that monitors the
+ * voltage from the circuit is set in SourceObject while the threshold violation and
+ * recovery are set by TripResponse and RecoveryResponse objects.
  *********************************************************************************/
 
 volatile uint16_t ovlo_FaultInitialize(void)
@@ -223,13 +218,17 @@ volatile uint16_t ovlo_FaultInitialize(void)
 }
     
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-private
  * @fn volatile uint16_t regerr_FaultInitialize(void)
- * @brief 
- * @param (none)
- * @return unsigned integer   (0=failure, 1=success)
+ * @brief Initializes the user-defined fault objects for regulation error
+ * @return 0=failure
+ * @return 1=success
  * 
- * <b>Description</b>
- * 
+ * @details
+ * In this function all user-defined fault objects are initialize and set to the 
+ * threshold violations for Regulation Error. The ADC channel that monitors the 
+ * voltage from the circuit is set in SourceObject while the threshold violation 
+ * and recovery are set by TripResponse and RecoveryResponse objects.   
  *********************************************************************************/
 volatile uint16_t regerr_FaultInitialize(void)
 {
@@ -262,13 +261,17 @@ volatile uint16_t regerr_FaultInitialize(void)
 }
     
 /*********************************************************************************
+ * @ingroup app-layer-fault-handler-functions-private
  * @fn volatile uint16_t ocp_FaultInitialize(void)
- * @brief 
- * @param (none)
- * @return unsigned integer   (0=failure, 1=success)
+ * @brief Initializes the user-defined fault objects for overcurrent protection
+ * @return 0=failure
+ * @return 1=success
  * 
- * <b>Description</b>
- * 
+ * @details
+ * In this function all user-defined fault objects are initialize and set to the 
+ * thresholds for overcurrent protection. The ADC channel that monitors the 
+ * voltage from the circuit is set in SourceObject while the threshold violation 
+ * and recovery are set by TripResponse and RecoveryResponse objects.   
  *********************************************************************************/
 volatile uint16_t ocp_FaultInitialize(void)
 {
@@ -299,5 +302,5 @@ volatile uint16_t ocp_FaultInitialize(void)
     return(retval);
     
 }
-/**@}*/    
-// END OF FILE
+
+// end of file
