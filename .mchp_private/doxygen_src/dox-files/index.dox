@@ -1,7 +1,9 @@
 
 /* List of DOT images to be generated for use in markup files but without being referenced in comments */
 /**
+@dotfile pconfig.gv
 @dotfile dev-startup.gv
+@dotfile flowchart.gv
 */
 
 //First layer
