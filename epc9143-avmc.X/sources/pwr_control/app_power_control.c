@@ -313,11 +313,11 @@ inline void appPowerSupply_CurrentBalancing(void)
     // if current in phase #1 is higher than phase current #2...
     if(buck.data.i_sns[0] > buck.data.i_sns[1]) 
     { // .. add 1 tick to phase #2 duty cycle
-        offset = ((++offset>0x07) ? 0x07 : offset);
+        offset = (((++offset)>0x07) ? 0x07 : offset);
     }
     else 
     { // .. sub 1 tick from phase #2 duty cycle
-        offset = ((--offset<0x00) ? 0x00 : offset);
+        offset = (((--offset)<0x00) ? 0x00 : offset);
     }
 
     buck.v_loop.controller->Ports.AltTarget.Offset = (uint16_t)offset;

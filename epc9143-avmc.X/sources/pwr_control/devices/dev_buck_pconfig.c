@@ -153,7 +153,7 @@ volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLE
         // ToDo: PWM Synchronization needs to be more universaL
         // PWM synchronization only work within groups of 4 (PG1-PG4 or PG5-PG8)
         // Multiphase boost converter auto PWM phase synchronization
-        if ((_i == 0) && (buckInstance->set_values.no_of_phases > 1))
+        if ((_i == 0) && ((uint16_t)(buckInstance->set_values.no_of_phases) > 1U))
         { // First phase is always master phase
             pg->PGxCONH.bits.MSTEN = 1; // Enable Master synchronization mode
             pg->PGxCONH.bits.SOCS = 0b0000; // Master PWM always triggers itself
@@ -180,7 +180,7 @@ volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLE
             pg->PGxCONH.bits.UPDMOD = 0b011; // Sync immediate update
             pg->PGxEVTL.bits.UPDTRG = 0; // User must set the UPDREQ bit (PGxSTAT[3]) manually
         }
-        else if (buckInstance->set_values.no_of_phases == 1)
+        else if (buckInstance->set_values.no_of_phases == 1U)
         { // This is only a single phase system (no PWM dependencies)
             pg->PGxCONH.bits.MSTEN = 0; // Disable Master synchronization mode
             pg->PGxCONH.bits.SOCS = 0b0000; // Master PWM always triggers itself
@@ -189,6 +189,7 @@ volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLE
             pg->PGxCONH.bits.UPDMOD = 0b001; // Immediate update
             pg->PGxEVTL.bits.UPDTRG = 0b11; // A write of the PGxTRIGA register automatically sets the UPDATE bit
         }
+        else { /* continue */ }
         
         // Update PWM generator timing registers
         pg->PGxSTAT.bits.UPDREQ = 1; // Manually set the Update Request bit 

@@ -241,7 +241,7 @@ volatile uint16_t State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
     volatile uint16_t retval=0;
     
     // If sub-state pointer index is out of range, reset to ZERO
-    if (buckInstance->state_id.bits.substate_id >= BuckRampUpSubStateList_size)
+    if ((uint16_t)(buckInstance->state_id.bits.substate_id) >= (uint16_t)(BuckRampUpSubStateList_size))
         buckInstance->state_id.bits.substate_id = 0;
     
     // If selected sub-state index contains a NULL-pointer, exit here
@@ -271,7 +271,7 @@ volatile uint16_t State_RampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInst
             buckInstance->state_id.bits.substate_id++;
             
             // CHeck if pointer is out of range
-            if (buckInstance->state_id.bits.substate_id < BuckRampUpSubStateList_size)
+            if ((uint16_t)(buckInstance->state_id.bits.substate_id) < (uint16_t)(BuckRampUpSubStateList_size))
             { // if execution list is not complete yet, return op-state as REPEAT
                 retval = BUCK_OPSRET_REPEAT;
 

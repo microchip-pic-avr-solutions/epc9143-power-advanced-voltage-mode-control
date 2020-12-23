@@ -108,7 +108,9 @@ volatile uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s 
 volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
 {
     volatile uint16_t _i=0;
-    volatile uint32_t _vout=0, _vin=0, _start_dc=0;
+    volatile uint32_t _vout=0;
+    volatile uint32_t _vin=0;
+    volatile uint32_t _start_dc=0;
 
     // Set BUSY bit until process is complete
     buckInstance->status.bits.busy = true;
@@ -174,11 +176,13 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
         { _start_dc = buckInstance->v_loop.minimum; }
         else if(_start_dc > buckInstance->v_loop.maximum) 
         { _start_dc = buckInstance->v_loop.maximum; }
+        else { /* continue */ }
 
         buckInstance->v_loop.ctrl_Precharge(buckInstance->v_loop.controller, 0, _start_dc);
         *buckInstance->v_loop.controller->Ports.Target.ptrAddress = _start_dc; // set initial PWM duty ratio
         if(buckInstance->v_loop.controller->Ports.AltTarget.ptrAddress != NULL)
             *buckInstance->v_loop.controller->Ports.AltTarget.ptrAddress = _start_dc; // set initial PWM duty ratio
+        else { /* continue */ }
 
     }
     else if (buckInstance->set_values.control_mode == BUCK_CONTROL_MODE_ACMC) 
@@ -190,6 +194,7 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
             { _start_dc = buckInstance->i_loop[_i].minimum; }
             else if(_start_dc > buckInstance->i_loop[_i].maximum) 
             { _start_dc = buckInstance->i_loop[_i].maximum; }
+            else { /* continue */ }
         }
         
         // Set initial duty cycle
@@ -204,6 +209,7 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
             *buckInstance->i_loop[_i].controller->Ports.Target.ptrAddress = _start_dc; // set initial PWM duty ratio
             if(buckInstance->i_loop[_i].controller->Ports.AltTarget.ptrAddress != NULL)
                 *buckInstance->i_loop[_i].controller->Ports.AltTarget.ptrAddress = _start_dc; // set initial PWM duty ratio
+            else { /* continue */ }
         }
     }
     else

@@ -34,7 +34,7 @@
  * *************************************************************************************************/
 
 #ifndef __DCLD_VERSION
-    #define __DCLD_VERSION    912
+  #define __DCLD_VERSION    912
 #endif
 
 /*@@NPNZ_STATUS_t data object

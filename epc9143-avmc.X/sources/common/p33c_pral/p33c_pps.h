@@ -578,8 +578,8 @@
 
 
 // Macro to derive Peripehral Pin Select Output number of Output Compare peripheral instance
-#define p33c_PPS_GetRPOR_OCM(x)   (uint8_t)PPSOUT_OCM_INSTANCES[x-1]
-#define p33c_PPS_GetRPOR_CMP(x)   (uint8_t)PPSOUT_CMP_INSTANCES[x-1]
+#define p33c_PPS_GetRPOR_OCM(x)   {(uint8_t)PPSOUT_OCM_INSTANCES[x-1]}
+#define p33c_PPS_GetRPOR_CMP(x)   {(uint8_t)PPSOUT_CMP_INSTANCES[x-1]}
 
 
 /* ---------------------------------------------------------------------------
