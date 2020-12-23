@@ -1,0 +1,8 @@
+<map id="ovlo_FaultInitialize" name="ovlo_FaultInitialize">
+<area shape="rect" id="node1" title="Initializes the user&#45;defined fault objects for overvoltage lockout." alt="" coords="5,5,132,32"/>
+<area shape="rect" id="node2" href="$group__app-layer-power-control-functions-public_gafa4e90d260e60cf20f06acee067c39cd.html#gafa4e90d260e60cf20f06acee067c39cd" title="This function stops the power supply operation." alt="" coords="180,5,357,32"/>
+<area shape="rect" id="node3" href="$group__lib-layer-buck-converter-functions-public_ga3287d86e7c3eecaa97d4bdf590ed0a15.html#ga3287d86e7c3eecaa97d4bdf590ed0a15" title="This function suspends the operation of the buck converter." alt="" coords="405,5,592,32"/>
+<area shape="rect" id="node4" href="$group__lib-layer-buck-converter-functions-public_ga75498c59a10db0738113104a547d8d0d.html#ga75498c59a10db0738113104a547d8d0d" title="This function is the main buck converter state machine executing the most recent state." alt="" coords="640,5,824,32"/>
+<area shape="rect" id="node5" href="$group__lib-layer-buck-config-functions-public_ga8e2253c136f05033e774d09032b283a1.html#ga8e2253c136f05033e774d09032b283a1" title="This function gets the state of the selected pin." alt="" coords="872,5,1032,32"/>
+<area shape="rect" id="node6" href="$group__lib-layer-pral-functions-public-gpio_ga4d67af688d8f7f911d79107974e11e6b.html#ga4d67af688d8f7f911d79107974e11e6b" title="Gets pointer to GPIO Instance SFR set." alt="" coords="1080,5,1281,32"/>
+</map>

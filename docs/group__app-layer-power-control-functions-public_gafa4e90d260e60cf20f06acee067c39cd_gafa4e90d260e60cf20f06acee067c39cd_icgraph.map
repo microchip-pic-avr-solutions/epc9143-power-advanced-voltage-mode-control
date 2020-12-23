@@ -1,0 +1,9 @@
+<map id="appPowerSupply_Suspend" name="appPowerSupply_Suspend">
+<area shape="rect" id="node1" title="This function stops the power supply operation." alt="" coords="616,81,793,108"/>
+<area shape="rect" id="node2" href="$group__app-layer-fault-monitor-functions-private_gac53e3bdc6df0dbea20258fc53991185f.html#gac53e3bdc6df0dbea20258fc53991185f" title="Initializes the user&#45;defined fault objects for overcurrent protection." alt="" coords="435,5,562,32"/>
+<area shape="rect" id="node5" href="$group__app-layer-fault-monitor-functions-private_ga1c1a8e73e88a0fc1b9fd6ebc6cf16524.html#ga1c1a8e73e88a0fc1b9fd6ebc6cf16524" title="Initializes the user&#45;defined fault objects for overvoltage lockout." alt="" coords="435,56,562,83"/>
+<area shape="rect" id="node6" href="$group__app-layer-fault-monitor-functions-private_ga30112272eb63176a17614933e950688b.html#ga30112272eb63176a17614933e950688b" title="Initializes the user&#45;defined fault objects for regulation error." alt="" coords="429,107,568,133"/>
+<area shape="rect" id="node7" href="$group__app-layer-fault-monitor-functions-private_gab1c6de31b4c981fb3afdb301a00f6e96.html#gab1c6de31b4c981fb3afdb301a00f6e96" title="Initializes the user&#45;defined fault objects for under&#45;voltage lockout." alt="" coords="435,157,562,184"/>
+<area shape="rect" id="node3" href="$group__app-layer-fault-handler-functions-public_ga0f8fb0fadf90485a834e15ecdd93216e.html#ga0f8fb0fadf90485a834e15ecdd93216e" title="Initialization of user&#45;defined fault objects." alt="" coords="212,81,381,108"/>
+<area shape="rect" id="node4" href="$group__user-task-initialization_ga2be64f5f0b9a2c0c6713f5a69d793e05.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" title="Initializes the user&#45;defined tasks." alt="" coords="5,81,164,108"/>
+</map>
