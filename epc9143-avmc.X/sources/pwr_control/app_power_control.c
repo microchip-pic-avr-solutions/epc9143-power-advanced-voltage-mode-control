@@ -46,7 +46,7 @@
 #include "app_power_control.h" // include applicaiton layer power control header file
 
 #include "./devices/dev_buck_converter.h" // include buck converter device
-#include "fault_handler/app_faults_monitor.h" // include fault monitor application object declarations
+#include "fault_handler/app_fault_monitor.h" // include fault monitor application object declarations
 
 
 /**************************************************************************************************

@@ -178,6 +178,7 @@
 #define _OSTIMER_IP            _T1IP ///< interrupt priority register
 #define _OSTIMER_IE            _T1IE ///< interrupt enable bit
 #define _OSTIMER_IF            _T1IF ///< interrupt flag bit
+#define _OSTIMER_PRIORITY       2    ///< interrupt priority (1 ... 7, default = 2)
 
 /** @} */ // end of group state-machine-mcal ~~~~~~~~~~
 

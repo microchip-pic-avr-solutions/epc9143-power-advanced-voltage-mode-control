@@ -6,14 +6,17 @@ digraph pconfig {
     fontname="Consolas, 'Courier New', Courier, Sans-Serif";
     fontsize=11;
     rankdir=TB;
-    ranksep=0.8;
-    nodesep=0.2;
+    ranksep=0.5;
+    nodesep=0.3;
     splines = ortho;
 
+    // Application Layer
     {
-        // Application Layer
+        
         label="Application Layer Initialization"
+        color=grey;
         rank = same;
+
         node [
                 shape=box, style=filled, fontcolor=black, fillcolor=darkseagreen1, 
                 fontname="Consolas, 'Courier New', Courier, Sans-Serif",
@@ -29,7 +32,7 @@ digraph pconfig {
         converter_object_init -> controller_init -> peripheral_init -> custom_init;
     }
 
-    // Power COnverter Device Driver
+    // Power Converter Device Driver
     subgraph cluster1
     {
         label="Power Converter Device Driver";
@@ -62,6 +65,19 @@ digraph pconfig {
             feedback_config[label="Feedback"];
             gpio_config[label="GPIO"];
 
+        node [
+                shape=box, 
+                style=filled, 
+                fillcolor=white, 
+                fontname="Consolas, 'Courier New', Courier, Sans-Serif",
+                fontsize=11,
+                width=2.4
+            ]; merge1; merge2; merge3;
+
+            merge1[label="merge settings"];
+            merge2[label="merge settings"];
+            merge3[label="merge settings"];
+
         node  [
                 shape=box, 
                 style=filled, 
@@ -79,9 +95,12 @@ digraph pconfig {
     }
 
     // SFR Abstraction Layer
+    subgraph cluster2
     {
         label="Register Abstraction Layer";
+        color=grey;
         rank = same;
+
         node [
                 shape=box, 
                 style=filled, 
@@ -98,8 +117,10 @@ digraph pconfig {
     }
 
     // Silicon Layer
+    subgraph cluster3
     {
         label="dsPIC33C MP Peripheral Special Function Registers";
+        color=grey;
         node  [
                 shape=record, 
                 style=filled, 
@@ -117,23 +138,26 @@ digraph pconfig {
 
     // Network Description PWM Configuration
     peripheral_init -> swnode_config;
-    swnode_config -> pwm_drv;
-    pwm_template -> pwm_drv;
+    swnode_config -> merge3;
+    pwm_template -> merge3;
+    merge3 -> pwm_drv;
     pwm_drv -> p33c_pral_pwm;
-    p33c_pral_pwm -> device_sfr_pwm:f2;
+    p33c_pral_pwm -> device_sfr_pwm;
 
 
     // Network Description ADC Configuration
     peripheral_init -> feedback_config;
-    feedback_config -> adc_drv;
-    adc_template -> adc_drv;
+    feedback_config -> merge2;
+    adc_template -> merge2;
+    merge2 -> adc_drv;
     adc_drv -> p33c_pral_adc;
-    p33c_pral_adc -> device_sfr_adc:f2;
+    p33c_pral_adc -> device_sfr_adc;
 
     // Network Description GPIO Configuration
     peripheral_init -> gpio_config;
-    gpio_config -> gpio_drv;
-    gpio_template -> gpio_drv;
+    gpio_config -> merge1;
+    gpio_template -> merge1;
+    merge1 -> gpio_drv;
     gpio_drv -> p33c_pral_gpio;
     p33c_pral_gpio -> device_sfr_gpio;
 

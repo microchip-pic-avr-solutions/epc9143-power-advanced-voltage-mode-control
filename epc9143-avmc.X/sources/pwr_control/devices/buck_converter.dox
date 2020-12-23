@@ -1,4 +1,6 @@
+/*----------------------------------------------------------------------------*/
 /* LIBRARY LAYER: Buck Converter Library Layer Documentation */
+/*----------------------------------------------------------------------------*/
 /**
 @defgroup lib-layer-buck Buck Converter Library
 @ingroup lib-layer
@@ -20,11 +22,27 @@
 @ingroup lib-layer-buck
 @brief 
 @details 
+ The buck converter device driver is a comprehensive, self-contained driver for single- and multiphase, 
+ non-isolated, asynchronous and synchronous buck covnerters. It comprises a state machine managing dynamic
+ soft-start and soft-stop control, runtime reference tuning and fault shut-down and self-recovery.
+
 
 @defgroup lib-layer-buck-states Buck State Machine
 @ingroup lib-layer-buck
 @brief 
 @details 
+ The converter state machine defines the steps required to initialize the power supply chip resources
+ and converter data objects, resets the most recent runtime data in preparation for a power supply startup,
+ monitors the status of fault and control flags and provides sub-functions for powering up the power converter
+ and its control system dependent on which kind of control mode is selected. 
+ 
+ The soft-start process includes programmable delays such as Power-On Delay and Power Good Delay including 
+ the ramp-up slew rate of the output voltage. In case of system or software errors, the state machine will 
+ shut down the power supply and execute a restart attempt.
+
+ The complete state machine is encapsulated in and managed by the converter device driver. No user control
+ is required other than calling the high-level 'drv_BuckConverter_Execute' device driver API function at 
+ a constant repetition rate.
 
 @defgroup lib-layer-buck-specialfn Buck Special Functions
 @ingroup lib-layer-buck
@@ -33,13 +51,19 @@
  The Special Function layer of the power converter state machine provides optional extension states
  to the common state machine functions, which might only be applicable to specific power converter 
  architectures or sub-circuit types. The common state machine incorporates calls of Special Function
- states at an approriate point making them optional available through user configuration in the 
+ states at an approriate point making them optionally available through user configuration in the 
  BUCK_CONVERTER_s data structure.
 
 @defgroup lib-layer-buck-config Buck Peripheral Configurations
 @ingroup lib-layer-buck
 @brief 
 @details 
+ The buck converter device driver self-manages its chip resources required to initialize and drive
+ the converter stage and related control loops. The device driver provides standard configurations
+ for all peripherals which are loaded into the respective Special Function Registers of each peripheral.
+ The generic configuraitons are sublemented by the user-settings written to the converter data structure
+ in the application layer initialization routine.
+
 
 @defgroup lib-layer-buck-ptemplate Buck Peripheral Templates
 @ingroup lib-layer-buck
@@ -53,13 +77,26 @@
 
 */
 
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
 /* Categories */
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------*/
+/* Buck Converter */
+/*----------------------------------------------------------------------------*/
+
 /** 
 @defgroup lib-layer-buck-converter-functions-public Public Functions
 @ingroup lib-layer-buck-converter
 @brief Public functions of the second library layer
-@details This is the detailed description of public functions of the
-library layer of buck converter device driver.
+@details 
+ This is the detailed description of public functions of the
+ buck converter device driver library application programming interface (API). 
+ 
+
+ 
 */
 
 /**
@@ -87,74 +124,58 @@ enumerations, defines and macros of the library layer of the buck converter
 device driver.
 */
 
+/*----------------------------------------------------------------------------*/
+/* Buck State Machine */
+/*----------------------------------------------------------------------------*/
+
 /**
 @defgroup lib-layer-buck-states-functions-public Public Functions
 @ingroup lib-layer-buck-states
 @brief Public functions of the second library layer
-@details This is the detailed description of public functions of the
-library layer of buck converter device driver.
-@note This task doesn't have any public functions.
+@details 
+ This is the detailed description of public functions of the state machine 
+ of the buck converter device driver library.
+@note (this part of the library does not have any public functions)
 */
 
 /**
 @defgroup lib-layer-buck-states-properties-public Public Properties
 @ingroup lib-layer-buck-states
 @brief Public properties of the second library layer
-@details This is the detailed description of public variables, data types,
-enumerations, defines and macros of the library layer of
-buck converter device driver.
+@details 
+ This is the detailed description of public variables, data types,
+ enumerations, defines and macros of the state machine of the buck converter 
+ device driver library.
 */
 /**
 @defgroup lib-layer-buck-states-functions-private Private Functions
 @ingroup lib-layer-buck-states
 @brief Private functions of the second library layer
-@details This is the detailed description of public functions of the
-library layer of buck converter device driver.
+@details 
+ This is the detailed description of public functions of the state machine 
+ of the buck converter device driver library.
 */
 /**
 @defgroup lib-layer-buck-states-properties-private Private Properties
 @ingroup lib-layer-buck-states
 @brief Public properties of the second library layer
-@details This is the detailed description of public variables, data types,
-enumerations, defines and macros of the library layer of
-buck converter device driver.
+@details 
+ This is the detailed description of public variables, data types,
+ enumerations, defines and macros of the state machine 
+ of the buck converter device driver library.
 */
-/**
-@defgroup lib-layer-buck-config-functions-public Public Functions
-@ingroup lib-layer-buck-config
-@brief Public functions of the second library layer
-@details This is the detailed description of public functions of the
-library layer of buck converter device driver.
-*/
-/**
-@defgroup lib-layer-buck-config-properties-public Public Properties
-@ingroup lib-layer-buck-config
-@brief Public properties of the second library layer
-@details This is the detailed description of public variables, data types,
-enumerations, defines and macros of the library layer of
-buck converter device driver.
-*/
-/**
-@defgroup lib-layer-buck-config-functions-private Private Functions
-@ingroup lib-layer-buck-config
-@brief Private functions of the second library layer
-@details This is the detailed description of public functions of the
-library layer of buck converter device driver.
-*/
-/**
-@defgroup lib-layer-buck-config-properties-private Private Properties
-@ingroup lib-layer-buck-config
-@brief Public properties of the second library layer
-@details This is the detailed description of public variables, data types,
-enumerations, defines and macros of the library layer of
-buck converter device driver.
-*/
+
+/*----------------------------------------------------------------------------*/
+/* Buck Special Function */
+/*----------------------------------------------------------------------------*/
+
 /**
 @defgroup lib-layer-buck-specialfn-functions-public Public Functions
 @ingroup lib-layer-buck-specialfn
 @brief Public functions of the second library layer
-@details This is the detailed description of public functions of the
-library layer of buck converter device driver.
+@details 
+ This is the detailed description of public functions of the
+ special function module of the buck converter device driver library.
 */
 /**
 @defgroup lib-layer-buck-specialfn-properties-public Public Properties
@@ -179,6 +200,50 @@ library layer of buck converter device driver.
 enumerations, defines and macros of the library layer of
 buck converter device driver.
 */
+
+/*----------------------------------------------------------------------------*/
+/* Buck Peripheral Configuration */
+/*----------------------------------------------------------------------------*/
+
+/**
+@defgroup lib-layer-buck-config-functions-public Public Functions
+@ingroup lib-layer-buck-config
+@brief Public functions of the second library layer
+@details 
+ This is the detailed description of public functions of the
+ peripheral configuration module of the buck converter device driver library.
+*/
+/**
+@defgroup lib-layer-buck-config-properties-public Public Properties
+@ingroup lib-layer-buck-config
+@brief Public properties of the second library layer
+@details 
+ This is the detailed description of public variables, data types,
+ enumerations, defines and macros of the peripheral configuration module
+ of the buck converter device driver library.
+*/
+/**
+@defgroup lib-layer-buck-config-functions-private Private Functions
+@ingroup lib-layer-buck-config
+@brief Private functions of the second library layer
+@details 
+ This is the detailed description of public functions of the
+ peripheral configuration module of the buck converter device driver library.
+*/
+/**
+@defgroup lib-layer-buck-config-properties-private Private Properties
+@ingroup lib-layer-buck-config
+@brief Public properties of the second library layer
+@details 
+ This is the detailed description of public variables, data types,
+ enumerations, defines and macros of the
+ peripheral configuration module of the buck converter device driver library.
+*/
+
+/*----------------------------------------------------------------------------*/
+/* Buck Peripheral Configuration Templates */
+/*----------------------------------------------------------------------------*/
+
 /**
 @defgroup lib-layer-buck-ptemplate-functions-public Public Functions
 @ingroup lib-layer-buck-ptemplate
@@ -210,7 +275,9 @@ enumerations, defines and macros of the library layer of
 buck converter device driver.
 */
 
+/*----------------------------------------------------------------------------*/
 /* Public Properties */
+/*----------------------------------------------------------------------------*/
 /**
 @defgroup lib-layer-buck-converter-properties-public-variables Variables
 @ingroup lib-layer-buck-converter-properties-public
@@ -227,12 +294,15 @@ buck converter device driver.
 
 @defgroup lib-layer-buck-states-properties-public-variables Variables
 @ingroup lib-layer-buck-states-properties-public
+@brief Public valiables of the buck converter state machine
 
 @defgroup lib-layer-buck-states-properties-public-data-types Data Types
 @ingroup lib-layer-buck-states-properties-public
+@brief Public data types of the buck converter state machine
 
 @defgroup lib-layer-buck-states-properties-public-defines Defines and Macros
 @ingroup lib-layer-buck-states-properties-public
+@brief Public defines and macros of the buck converter state machine
 
 */
 
@@ -279,7 +349,9 @@ buck converter device driver.
 
 */
 
+/*----------------------------------------------------------------------------*/
 /* Private Properties */
+/*----------------------------------------------------------------------------*/
 /**
 
 @defgroup lib-layer-buck-converter-properties-private-variables Variables

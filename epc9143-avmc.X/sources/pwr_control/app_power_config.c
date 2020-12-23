@@ -48,7 +48,7 @@
 #include "./drivers/v_loop.h" // include voltage control loop object
 #include "./drivers/v_loop_agc.h" // include voltage control loop adaptive gain control object
 
-#include "fault_handler/app_faults_monitor.h" // include fault monitor application object declarations
+#include "fault_handler/app_fault_monitor.h" // include fault monitor application object declarations
 
 
 /*******************************************************************************

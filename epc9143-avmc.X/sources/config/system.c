@@ -8,12 +8,9 @@
 #include "hal.h"
 #include "system.h"
 
-/**
- * @ingroup system-initialization-mcu
- * @{
- */
 /***********************************************************************************
- * @fn volatile uint16_t SYSTEM_Initialize(void) 
+ * @fn uint16_t SYSTEM_Initialize(void) 
+ * @ingroup mcu-initialization
  * @brief  Initializes essential chip resources
  * @return unsigned integer 
  * 0=failure
@@ -40,14 +37,9 @@ volatile uint16_t SYSTEM_Initialize(void)
 
 }
 
-/** @}*/ // end of group system-initialization-mcu
-
-/**
- * @ingroup system-initialization-user-peripherals
- * @{
- */
 /***********************************************************************************
- * @fn uint16_t sysUserPeriperhals_Initialize
+ * @fn uint16_t sysUserPeriperhals_Initialize(void)
+ * @ingroup user-peripherals-initialization
  * @brief  Initializes the user-defined chip resources
  * @return unsigned integer (0=failure, 1=success)
  * 
@@ -61,26 +53,35 @@ volatile uint16_t sysUserPeriperhals_Initialize(void) {
 
     volatile uint16_t retval=1;
     
+    // Initialize op-amp
     retval &= sysOpAmp_Initialize(ISENSE_REF_BUFFER_OPA_INSTANCE, true); // Initialize op-amp #2 used to drive the reference voltage for current sense amplifiers
     
+    // Initialize DAC
     retval &= sysDacModule_Initialize();  // Initialize DAC module
     retval &= sysDacOutput_Initialize(ISENSE_REF_DAC_INSTANCE); // Initialize DAC #1 used to generate the reference voltage for current sense amplifiers
     retval &= sysDacOutput_Enable(ISENSE_REF_DAC_INSTANCE); // Enable DAC providing reference to current sense amplifiers
 
+    // Enable op-amp
     retval &= sysOpAmp_ModuleEnable(); // Enable the operational amplifier module
+    
+    // Initialize debugging Pins
+    #ifdef DBGPIN1_PIN
+    DBGPIN1_Init(); ///< Device pin #1  (not routed)
+    #endif
+    #ifdef DBGPIN2_PIN
+    DBGPIN2_Init(); ///< Device pin #2  (not routed)
+    #endif
+    #ifdef DBGPIN3_PIN
+    DBGPIN3_Init(); ///< Device pin #25 (not routed)
+    #endif
     
 	return(retval);
 
 }
 
-/** @}*/ // end of group system-initialization-user-peripherals
-
-/**
- * @ingroup system-initialization-user-tasks User Task Initialization
- * @{
- */
 /***********************************************************************************
  * @fn uint16_t sysUserTasks_Initialize
+ * @ingroup user-task-initialization
  * @brief  Initializes the user-defined tasks
  * @return unsigned integer (0=failure, 1=success)
  * 
@@ -105,7 +106,5 @@ volatile uint16_t sysUserTasks_Initialize(void) {
 	return(retval);
 
 }
-
-/** @}*/ // end of group system-initialization-user-tasks
 
 // end of file

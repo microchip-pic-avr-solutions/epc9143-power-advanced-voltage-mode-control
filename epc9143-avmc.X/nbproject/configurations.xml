@@ -25,7 +25,7 @@
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
         <logicalFolder name="f4" displayName="fault_handler" projectFiles="true">
           <logicalFolder name="f1" displayName="app" projectFiles="true">
-            <itemPath>sources/fault_handler/app_faults_monitor.h</itemPath>
+            <itemPath>sources/fault_handler/app_fault_monitor.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="devices" projectFiles="true">
           </logicalFolder>
@@ -93,7 +93,7 @@
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
         <logicalFolder name="f4" displayName="fault_handler" projectFiles="true">
           <logicalFolder name="f1" displayName="app" projectFiles="true">
-            <itemPath>sources/fault_handler/app_faults_monitor.c</itemPath>
+            <itemPath>sources/fault_handler/app_fault_monitor.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="drivers" projectFiles="true">
             <itemPath>sources/fault_handler/drivers/drv_fault_handler.c</itemPath>
@@ -152,9 +152,9 @@
         <targetDevice>dsPIC33CK32MP102</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>ICD4Tool</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.60</languageToolchainVersion>
+        <languageToolchainVersion>1.50</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>

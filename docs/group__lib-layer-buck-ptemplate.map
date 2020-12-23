@@ -1,0 +1,8 @@
+<map id="Buck Peripheral Templates" name="Buck Peripheral Templates">
+<area shape="rect" id="node1" href="$group__lib-layer-buck-ptemplate-properties-private.html" title="Public properties of the second library layer." alt="" coords="433,5,557,31"/>
+<area shape="rect" id="node2" href="$group__lib-layer-buck-ptemplate-properties-public.html" title="Public properties of the second library layer." alt="" coords="435,55,556,80"/>
+<area shape="rect" id="node3" href="$group__lib-layer-buck-ptemplate-functions-public.html" title="Public functions of the second library layer." alt="" coords="436,104,555,129"/>
+<area shape="rect" id="node4" href="$group__lib-layer-buck.html" title=" " alt="" coords="5,80,159,105"/>
+<area shape="rect" id="node6" title=" " alt="" coords="207,80,385,105"/>
+<area shape="rect" id="node5" href="$group__lib-layer-buck-ptemplate-functions-private.html" title="Private functions of the second library layer." alt="" coords="434,153,557,179"/>
+</map>

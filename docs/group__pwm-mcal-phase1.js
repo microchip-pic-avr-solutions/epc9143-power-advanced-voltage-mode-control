@@ -1,0 +1,28 @@
+var group__pwm_mcal_phase1 =
+[
+    [ "_BUCK_PWM1_Interrupt", "group__pwm-mcal-phase1_ga195230ce73e5dcd706dd33c0688875b9.html#ga195230ce73e5dcd706dd33c0688875b9", null ],
+    [ "BUCK_PWM1_ADTR1OFS", "group__pwm-mcal-phase1_gae8ef5207f62c763a647c1126add78d71.html#gae8ef5207f62c763a647c1126add78d71", null ],
+    [ "BUCK_PWM1_ADTR1PS", "group__pwm-mcal-phase1_gad4c1d644d840ae40fb1c3bf156e094d4.html#gad4c1d644d840ae40fb1c3bf156e094d4", null ],
+    [ "BUCK_PWM1_CHANNEL", "group__pwm-mcal-phase1_ga6cfd3808e523d7887ad0b197463b1c04.html#ga6cfd3808e523d7887ad0b197463b1c04", null ],
+    [ "BUCK_PWM1_GPIO_INSTANCE", "group__pwm-mcal-phase1_ga33b112b8ae31a344dba25e5f7f89008a.html#ga33b112b8ae31a344dba25e5f7f89008a", null ],
+    [ "BUCK_PWM1_GPIO_PORT_PINH", "group__pwm-mcal-phase1_ga30dc10b4beac417a515cd9f1cf74e650.html#ga30dc10b4beac417a515cd9f1cf74e650", null ],
+    [ "BUCK_PWM1_GPIO_PORT_PINL", "group__pwm-mcal-phase1_ga3b2b86407102179c949a47553976173b.html#ga3b2b86407102179c949a47553976173b", null ],
+    [ "BUCK_PWM1_IE", "group__pwm-mcal-phase1_ga41bd0684c50a8a8bf45317d430afb55d.html#ga41bd0684c50a8a8bf45317d430afb55d", null ],
+    [ "BUCK_PWM1_IF", "group__pwm-mcal-phase1_gaf7a0419a7cdc85cfa9f15d2725929dad.html#gaf7a0419a7cdc85cfa9f15d2725929dad", null ],
+    [ "BUCK_PWM1_IP", "group__pwm-mcal-phase1_ga431c408b751862d5657d484e2cfd7f2c.html#ga431c408b751862d5657d484e2cfd7f2c", null ],
+    [ "BUCK_PWM1_PDC", "group__pwm-mcal-phase1_gad11a9aaf06735597a7cf651ecc24c695.html#gad11a9aaf06735597a7cf651ecc24c695", null ],
+    [ "BUCK_PWM1_PGxTRIGA", "group__pwm-mcal-phase1_ga045b5b0167485d7ffac1f615f3841cd0.html#ga045b5b0167485d7ffac1f615f3841cd0", null ],
+    [ "BUCK_PWM1_PGxTRIGB", "group__pwm-mcal-phase1_ga1fcb59af83c137b8e152f4dcb2c046dd.html#ga1fcb59af83c137b8e152f4dcb2c046dd", null ],
+    [ "BUCK_PWM1_PGxTRIGC", "group__pwm-mcal-phase1_ga87c98b81445b543417a842c4d9b65a9d.html#ga87c98b81445b543417a842c4d9b65a9d", null ],
+    [ "BUCK_PWM1_TRGSRC_TRG1", "group__pwm-mcal-phase1_gaf0bd1b3822a3571a72c0f9dcdc9dd35a.html#gaf0bd1b3822a3571a72c0f9dcdc9dd35a", null ],
+    [ "BUCK_PWM1_TRGSRC_TRG2", "group__pwm-mcal-phase1_ga72baa0492fb1aac5b49b62c24a2f542d.html#ga72baa0492fb1aac5b49b62c24a2f542d", null ],
+    [ "BUCK_PWM1_UPDREQ", "group__pwm-mcal-phase1_ga38ec407a829e75ea3a47c76892cba6ea.html#ga38ec407a829e75ea3a47c76892cba6ea", null ],
+    [ "BUCK_PWM1H_RD", "group__pwm-mcal-phase1_ga36e70034a027c7c887c8dc9525c1c559.html#ga36e70034a027c7c887c8dc9525c1c559", null ],
+    [ "BUCK_PWM1H_RPx", "group__pwm-mcal-phase1_ga5ff09f7a5e1e3ca41760290b3f0132df.html#ga5ff09f7a5e1e3ca41760290b3f0132df", null ],
+    [ "BUCK_PWM1H_TRIS", "group__pwm-mcal-phase1_gac8a35bf715dfb879f916e5c1c64b52af.html#gac8a35bf715dfb879f916e5c1c64b52af", null ],
+    [ "BUCK_PWM1H_WR", "group__pwm-mcal-phase1_gac46da0633d76faa98d4c48c3317fdffd.html#gac46da0633d76faa98d4c48c3317fdffd", null ],
+    [ "BUCK_PWM1L_RD", "group__pwm-mcal-phase1_gacc2a54344898d41093fd1e3aeb8e284a.html#gacc2a54344898d41093fd1e3aeb8e284a", null ],
+    [ "BUCK_PWM1L_RPx", "group__pwm-mcal-phase1_ga53f0bc93fabfc81c6123b0771b0beac9.html#ga53f0bc93fabfc81c6123b0771b0beac9", null ],
+    [ "BUCK_PWM1L_TRIS", "group__pwm-mcal-phase1_ga00b9cb1b3c17b781e85a41c1c4050732.html#ga00b9cb1b3c17b781e85a41c1c4050732", null ],
+    [ "BUCK_PWM1L_WR", "group__pwm-mcal-phase1_ga959b19bea8693d805c3ac37bb8045fe6.html#ga959b19bea8693d805c3ac37bb8045fe6", null ]
+];

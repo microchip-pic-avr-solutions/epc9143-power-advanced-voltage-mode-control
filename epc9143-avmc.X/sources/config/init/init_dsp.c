@@ -9,22 +9,43 @@
 #include <xc.h>
 #include "xc16_pral.h"
 
-/* === Initialize CPU ===================================================== */
+/***********************************************************************************
+ * @fn uint16_t sysDsp_Initialize(void)
+ * @ingroup dsp-initialization
+ * @brief  Digital Signal Processor initialization
+ * @return unsigned integer 
+ * 0=failure
+ * 1=success
+ * 
+ * @details
+ *   This routine initializes the default configuration of the 
+ *   DSP core for performing SMPS control loop libraries.
+ *   If any other section of the firmware needs to use the DSP 
+ *   with different settings, this code module would have to 
+ *   make sure the core configuration is reset to these defaults
+ *   when the SMPS control library is executed.
+ *  
+ *   @note: 
+ *   The configuration of the control library allows to add its own 
+ *   core configuration save & restore cycle in the control code.
+ *   Please enable this function in the control loop configuration
+ *   if conflicts between different DSP configurations cannot be 
+ *   resolved differently within the firmware.
+ *   This routine initializes the default configuration of the 
+ *   DSP core for performing SMPS control loop libraries.
+ *   If any other section of the firmware needs to use the DSP 
+ *   with different settings, this code module would have to 
+ *   make sure the core configuration is reset to these defaults
+ *   when the SMPS control library is executed.
+ *  
+ *   The configuration of the control library allows to add its own 
+ *   core configuration save & restore cycle in the control code.
+ *   Please enable this function in the control loop configuration
+ *   if conflicts between different DSP configurations cannot be 
+ *   resolved differently within the firmware.
+ *    
+ **********************************************************************************/
 volatile uint16_t sysDsp_Initialize(void) {
-
-    // This routine initializes the default configuration of the 
-    // DSP core for performing SMPS control loop libraries.
-    // If any other section of the firmware needs to use the DSP 
-    // with different settings, this code module would have to 
-    // make sure the core configuration is reset to these defaults
-    // when the SMPS control library is executed.
-    //
-    // Please note: 
-    // The configuration of the control library allows to add its own 
-    // core configuration save & restore cycle in the control code.
-    // Please enable this function in the control loop configuration
-    // if conflicts between different DSP configurations cannot be 
-    // resolved differently within the firmware.
     
     CORCONbits.ACCSAT = CORCON_ACCSAT_931;  // Accumulator Saturation Mode Selection: 9.31 saturation (super saturation)
     CORCONbits.IF = CORCON_IF_FRACTIONAL;   // Integer or Fractional Multiplier Mode Selection: Fractional mode is enabled for DSP multiply

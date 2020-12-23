@@ -42,7 +42,7 @@
 #include "config/system.h"
 
 // APPLICATION LAYER HEADER FILES
-#include "fault_handler/app_faults_monitor.h"
+#include "fault_handler/app_fault_monitor.h"
 #include "pwr_control/app_power_control.h"
 
 

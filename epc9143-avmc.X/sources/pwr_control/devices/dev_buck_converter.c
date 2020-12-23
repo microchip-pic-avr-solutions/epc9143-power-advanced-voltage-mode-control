@@ -15,10 +15,10 @@
 #include "dev_buck_pconfig.h"
 
 /*******************************************************************************
- * @ingroup lib-layer-buck-converter-functions-public
  * @fn	volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @ingroup lib-layer-buck-converter-functions-public
  * @brief This function initializes all peripheral modules and their instances used by the power controller
- * @param	void
+ * @param	struct BUCK_POWER_CONTROLLER_s *buckInstance
  * @return  0=failure
  * @return  1=success
  *  
@@ -64,9 +64,10 @@ volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_POWER_CONTRO
 }
 
 /*******************************************************************************
- * @ingroup lib-layer-buck-converter-functions-public
  * @fn	volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
+ * @ingroup lib-layer-buck-converter-functions-public
  * @brief This function is the main buck converter state machine executing the most recent state 
+ * @param   struct BUCK_POWER_CONTROLLER_s *buckInstance
  * @return  0 = BUCK_OPSRET_REPEAT
  * @return  1 = BUCK_OPSRET_COMPLETE
  * @return  2 = BUCK_OPSRET_REPEAT
@@ -79,7 +80,7 @@ volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_POWER_CONTRO
  *  - When state machine state returns an unknown result, the state machine will be reset to INITIALIZE again 
  *********************************************************************************/
 
-volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) 
+volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) 
 {
     volatile uint16_t retval=1;
     
@@ -182,9 +183,10 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
 }
 
 /*******************************************************************************
- * @ingroup lib-layer-buck-converter-functions-public
  * @fn	volatile uint16_t drv_BuckConverter_Start(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
+ * @ingroup lib-layer-buck-converter-functions-public
  * @brief   This function starts the buck converter
+ * @param   struct BUCK_POWER_CONTROLLER_s *buckInstance
  * @return  0=failure
  * @return  1=success
  *  
@@ -224,9 +226,10 @@ volatile uint16_t drv_BuckConverter_Start(volatile struct BUCK_POWER_CONTROLLER_
 }
 
 /*******************************************************************************
- * @ingroup lib-layer-buck-converter-functions-public
  * @fn	volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
+ * @ingroup lib-layer-buck-converter-functions-public
  * @brief  This function stop the buck converter opration
+ * @param  struct BUCK_POWER_CONTROLLER_s *buckInstance
  * @return 0=failure
  * @return 1=success
  * 
@@ -236,7 +239,7 @@ volatile uint16_t drv_BuckConverter_Start(volatile struct BUCK_POWER_CONTROLLER_
  * 
  *********************************************************************************/
 
-volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) {
+volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) {
 
     volatile uint16_t retval=1;
     volatile uint16_t _i=0;
@@ -260,7 +263,8 @@ volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s
 /*******************************************************************************
  * @ingroup lib-layer-buck-converter-functions-public
  * @fn	volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
- * @brief This function suspends the operation of the buck converter
+ * @brief  This function suspends the operation of the buck converter
+ * @param  struct BUCK_POWER_CONTROLLER_s *buckInstance
  * @return 0=failure
  * @return 1=success
  *
@@ -269,7 +273,7 @@ volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_POWER_CONTROLLER_s
  * State machine tasks which eventually shuts down the operation of the buck converter.
  *********************************************************************************/
 
-volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) {
+volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) {
     
     volatile uint16_t retval=1;
     
@@ -280,10 +284,10 @@ volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLE
 }
 
 /*******************************************************************************
- * @ingroup lib-layer-buck-converter-functions-public
  * @fn	volatile uint16_t drv_BuckConverter_Resume(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance)
+ * @ingroup lib-layer-buck-converter-functions-public
  * @brief  This function resume the operation of the buck converter
- * @param	void 
+ * @param   struct BUCK_POWER_CONTROLLER_s *buckInstance
  * @return  0=failure
  * @return  1=success
  * 
@@ -291,7 +295,7 @@ volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_POWER_CONTROLLE
  * This function executes the latest task in the state machine enforcing state switch immediately.
  *********************************************************************************/
 
-volatile uint16_t drv_BuckConverter_Resume(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance) {
+volatile uint16_t drv_BuckConverter_Resume(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) {
     
     volatile uint16_t retval=1;
     

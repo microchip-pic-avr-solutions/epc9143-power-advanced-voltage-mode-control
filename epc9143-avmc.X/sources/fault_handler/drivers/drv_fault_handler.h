@@ -55,7 +55,6 @@
 /***********************************************************************************
  * @enum FLT_COMPARE_TYPE_e
  * @brief This data structure is comprise of fault comparison types
- * 
  * @extends FLT_OBJECT_STATUS_s
  *********************************************************************************/
 
@@ -75,7 +74,6 @@ typedef enum FLT_COMPARE_TYPE_e {
 /**********************************************************************************
  * @struct FLT_OBJECT_STATUS_s
  * @brief This data structure defines the fault object status
- *
  * @extends FAULT_OBJECT_s
  *********************************************************************************/
 
@@ -100,7 +98,6 @@ typedef struct FLT_OBJECT_STATUS_s{
 /**********************************************************************************
  * @struct FLT_COMPARE_OBJECT_s
  * @brief This data structure defines the fault compare status
- * 
  * @extends FAULT_OBJECT_s
  *********************************************************************************/
 
@@ -115,7 +112,6 @@ typedef struct FLT_COMPARE_OBJECT_s {
 /**********************************************************************************
  * @struct FLT_EVENT_RESPONSE_s
  * @brief This data structure defines the fault monitor event response object
- * 
  * @extends FAULT_OBJECT_s
  *********************************************************************************/
 
@@ -147,7 +143,7 @@ typedef struct FAULT_OBJECT_s {
 
 
 // Public Fault Configuration Templates
-extern volatile struct FAULT_OBJECT_s fltobjClear;
+extern volatile struct FAULT_OBJECT_s fltObjectClear;
 
 // Public Function Prototypes
 extern volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj);

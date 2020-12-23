@@ -58,7 +58,7 @@ volatile uint16_t sysOsTimer_Initialize (void)
     PR1 = MAIN_EXEC_PER;
     
     // Reset interrupt and interrupt flag bit
-    _OSTIMER_IP = 1;  // Set interrupt priority to zero
+    _OSTIMER_IP = _OSTIMER_PRIORITY;  // Set interrupt priority to DEFAULT
     _OSTIMER_IF = 0;  // Reset interrupt flag bit
     _OSTIMER_IE = 0;  // Disable Timer1 interrupt
    

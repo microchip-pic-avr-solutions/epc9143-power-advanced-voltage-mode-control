@@ -38,11 +38,11 @@
 
 
 /******************************************************************************************************
+ * @fn 	  uint16_t Dsp_SetConfig(volatile struct DSP_CONFIG_s dsp_cfg) 
  * @ingroup lib-layer-pral-functions-public-dsp
- * @{
- * @fn 	volatile uint16_t Dsp_SetConfig(volatile struct DSP_CONFIG_s dsp_cfg) 
  * @brief Initializes the DSP engine in accordance to user settings 
- * @param 16-bit wide DSP configuration data structure DSP_CONFIG_s
+ * @param struct DSP_CONFIG_s dsp_cfg
+ * @return unsigned integer (0=failure, 1=success)
  *
  * @details
  * This routine writes a DSP user-configuration into the core configuration register and verifies
@@ -64,10 +64,10 @@ volatile uint16_t Dsp_SetConfig(volatile struct DSP_CONFIG_s dsp_cfg)
 
 
 /******************************************************************************************************
- * @fn volatile struct DSP_CONFIG_s Dsp_GetConfig(void)
+ * @fn struct DSP_CONFIG_s Dsp_GetConfig(void)
+ * @ingroup lib-layer-pral-functions-public-dsp
  * @brief Reads the DSP engine configuration 
- * @param void 
- * @return 16-bit wide DSP configuration data structure DSP_CONFIG_s
+ * @return struct DSP_CONFIG_s
  *
  * @details
  * This routine writes a DSP user-configuration into the core configuration register and verifies
@@ -87,6 +87,6 @@ volatile struct DSP_CONFIG_s Dsp_GetConfig(void)
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-/** @} */
+
 
 // end of file

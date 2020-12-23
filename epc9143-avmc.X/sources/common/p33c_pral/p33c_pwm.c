@@ -27,14 +27,10 @@
 
 #include "p33c_pwm.h"
 
-/**
- * @ingroup lib-layer-pral-functions-public-pwm
- * @{ 
- */
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmModule_Initialize(void)
+ * @fn uint16_t p33c_PwmModule_Initialize(void)
+ * @ingroup lib-layer-pral-functions-public-pwm
  * @brief Initializes the PWM base module by resetting all its registers to default
- * @param void
  * @return 0 = failure, disposing PWM generator was not successful
  * @return 1 = success, disposing PWM generator was successful
  * 
@@ -61,10 +57,10 @@ volatile uint16_t p33c_PwmModule_Initialize(void)
 }
 
 /*********************************************************************************
- * @fn volatile struct P33C_PWM_MODULE_s* p33c_PwmModule_GetHandle(void)
+ * @fn struct P33C_PWM_MODULE_s* p33c_PwmModule_GetHandle(void)
+ * @ingroup lib-layer-pral-functions-public-pwm
  * @brief Gets pointer to PWM module SFR set
- * @param pgInstance:   Index of the selected PWM generator (1=PG1, 2=PG2, etc.)
- * @return P33C_PWM_GENERATOR_s: PWM generator object of the selected PWM generator instance
+ * @return struct P33C_PWM_GENERATOR_s: PWM generator object of the selected PWM generator instance
  *  
  * @details
  *      This function returns the PWM generator index, the PWM generator group
@@ -86,9 +82,9 @@ volatile struct P33C_PWM_MODULE_s* p33c_PwmModule_GetHandle(void)
 }
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmModule_Dispose(void)
+ * @fn uint16_t p33c_PwmModule_Dispose(void)
+ * @ingroup lib-layer-pral-functions-public-pwm
  * @brief Resets all PWM base module registers to their RESET default values
- * @param void
  * @return  0 = failure, disposing PWM generator was not successful
  * @return  1 = success, disposing PWM generator was successful
  * 
@@ -115,11 +111,10 @@ volatile uint16_t p33c_PwmModule_Dispose(void)
 }
 
 /*********************************************************************************
- * @fn volatile struct P33C_PWM_MODULE_s p33c_PwmModule_ConfigRead(void)
+ * @fn struct P33C_PWM_MODULE_s p33c_PwmModule_ConfigRead(void)
+ * @ingroup lib-layer-pral-functions-public-pwm
  * @brief Read the current configuration from the PWM base module registers
- * @param void
- * @return 0 = failure, disposing PWM generator was not successful
- * @return 1 = success, disposing PWM generator was successful
+ * @return struct P33C_PWM_MODULE_s
  * 
  * @details
  *     This function reads all registers with their current configuration into
@@ -142,9 +137,10 @@ volatile struct P33C_PWM_MODULE_s p33c_PwmModule_ConfigRead(void)
 }
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmModule_ConfigWrite(volatile struct P33C_PWM_MODULE_s pwmConfig)
+ * @fn uint16_t p33c_PwmModule_ConfigWrite(volatile struct P33C_PWM_MODULE_s pwmConfig)
+ * @ingroup lib-layer-pral-functions-public-pwm
  * @brief Writes a user-defined configuration to the PWM base module registers
- * @param void
+ * @param struct P33C_PWM_MODULE_s pwmConfig
  * @return 0 = failure, disposing PWM generator was not successful
  * @return 1 = success, disposing PWM generator was successful
  * 
@@ -174,10 +170,11 @@ volatile uint16_t p33c_PwmModule_ConfigWrite(volatile struct P33C_PWM_MODULE_s p
 }
 
 /*********************************************************************************
- * @fn volatile struct P33C_PWM_GENERATOR_s p33c_PwmGenerator_ConfigRead(volatile uint16_t pwm_Instance)
- * @brief Disposes a given PWM generator by resetting all its registers to default
- * @param pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
- * @return P33C_PWM_GENERATOR_t: generic PWM generator Special Function Register set
+ * @fn struct P33C_PWM_GENERATOR_s p33c_PwmGenerator_ConfigRead(volatile uint16_t pgInstance)
+ * @ingroup lib-layer-pral-functions-public-pwm
+ * @brief  Disposes a given PWM generator by resetting all its registers to default
+ * @param  uint16_t pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
+ * @return struct P33C_PWM_GENERATOR_s: generic PWM generator Special Function Register set
  * 
  * @details
  *     This function copies the contents of all PWM generator registers of the 
@@ -188,25 +185,26 @@ volatile uint16_t p33c_PwmModule_ConfigWrite(volatile struct P33C_PWM_MODULE_s p
  * 
  *********************************************************************************/
 
-volatile struct P33C_PWM_GENERATOR_s p33c_PwmGenerator_ConfigRead(volatile uint16_t pwm_Instance)
+volatile struct P33C_PWM_GENERATOR_s p33c_PwmGenerator_ConfigRead(volatile uint16_t pgInstance)
 {
     volatile struct P33C_PWM_GENERATOR_s* pg;    
 
     // Set pointer to memory address of desired PWM instance
     pg = (volatile struct P33C_PWM_GENERATOR_s*) 
-        ((volatile uint8_t*) &PG1CONL + ((pwm_Instance - 1) * P33C_PWMGEN_SFR_OFFSET));
+        ((volatile uint8_t*) &PG1CONL + ((pgInstance - 1) * P33C_PWMGEN_SFR_OFFSET));
 
     return(*pg);
     
 }
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmGenerator_ConfigWrite(
+ * @fn uint16_t p33c_PwmGenerator_ConfigWrite(
         volatile uint16_t pgInstance, 
         volatile struct P33C_PWM_GENERATOR_s pgConfig)
+ * @ingroup lib-layer-pral-functions-public-pwm
  * @brief Disposes a given PWM generator by resetting all its registers to default
  * @param pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
- * @param P33C_PWM_GENERATOR_t: generic PWM generator Special Function Register set
+ * @param struct P33C_PWM_GENERATOR_s: generic PWM generator Special Function Register set
  * @return 0 = failure, disposing PWM generator was not successful
  * @return 1 = success, disposing PWM generator was successful
  * 
@@ -234,9 +232,10 @@ volatile uint16_t p33c_PwmGenerator_ConfigWrite(
 }
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmGenerator_Initialize(volatile uint16_t pgInstance)
- * @brief Initializes a given PWM generator by resetting all its registers to default
- * @param pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
+ * @fn uint16_t p33c_PwmGenerator_Initialize(volatile uint16_t pgInstance)
+ * @ingroup lib-layer-pral-functions-public-pwm
+ * @brief  Initializes a given PWM generator by resetting all its registers to default
+ * @param  uint16_t pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
  * @return 0 = failure, disposing PWM generator was not successful
  * @return 1 = success, disposing PWM generator was successful
  * 
@@ -275,9 +274,10 @@ volatile uint16_t p33c_PwmGenerator_Initialize(volatile uint16_t pgInstance)
 
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmGenerator_Dispose(volatile uint16_t pgInstance)
- * @brief Disposes a given PWM generator by resetting all its registers to default
- * @param pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
+ * @fn uint16_t p33c_PwmGenerator_Dispose(volatile uint16_t pgInstance)
+ * @ingroup lib-layer-pral-functions-public-pwm
+ * @brief  Disposes a given PWM generator by resetting all its registers to default
+ * @param  uint16_t pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
  * @return 0 = failure, disposing PWM generator was not successful
  * @return 1 = success, disposing PWM generator was successful
  * 
@@ -298,9 +298,10 @@ volatile uint16_t p33c_PwmGenerator_Dispose(volatile uint16_t pgInstance)
 }
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmGenerator_Enable(volatile struct P33C_PWM_GENERATOR_s* pg)
- * @brief Enables a given PWM generator with output pins disabled
- * @param pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
+ * @fn uint16_t p33c_PwmGenerator_Enable(volatile struct P33C_PWM_GENERATOR_s* pg)
+ * @ingroup lib-layer-pral-functions-public-pwm
+ * @brief  Enables a given PWM generator with output pins disabled
+ * @param  struct P33C_PWM_GENERATOR_s* pg
  * @return 0 = failure, enabling PWM generator was not successful
  * @return 1 = success, enabling PWM generator was successful
  * 
@@ -349,9 +350,10 @@ volatile uint16_t p33c_PwmGenerator_Enable(volatile struct P33C_PWM_GENERATOR_s*
 }
  
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmGenerator_Disable(volatile struct P33C_PWM_GENERATOR_s* pg)
- * @brief Disables a given PWM generator 
- * @param pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
+ * @fn uint16_t p33c_PwmGenerator_Disable(volatile struct P33C_PWM_GENERATOR_s* pg)
+ * @ingroup lib-layer-pral-functions-public-pwm
+ * @brief  Disables a given PWM generator 
+ * @param  struct P33C_PWM_GENERATOR_s* pg
  * @return 0 = failure, disabling PWM generator was not successful
  * @return 1 = success, disabling PWM generator was successful
  * 
@@ -381,9 +383,10 @@ volatile uint16_t p33c_PwmGenerator_Disable(volatile struct P33C_PWM_GENERATOR_s
 }
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmGenerator_Resume(volatile struct P33C_PWM_GENERATOR_s* pg)
- * @brief Disables a PWM generator IOs
- * @param pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
+ * @fn uint16_t p33c_PwmGenerator_Resume(volatile struct P33C_PWM_GENERATOR_s* pg)
+ * @ingroup lib-layer-pral-functions-public-pwm
+ * @brief  Disables a PWM generator IOs
+ * @param  struct P33C_PWM_GENERATOR_s* pg
  * @return 0 = failure, enabling PWM generator IOs was not successful
  * @return 1 = success, enabling PWM generator IOs was successful
  * 
@@ -408,9 +411,10 @@ volatile uint16_t p33c_PwmGenerator_Resume(volatile struct P33C_PWM_GENERATOR_s*
 }
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmGenerator_Suspend(volatile struct P33C_PWM_GENERATOR_s* pg)
- * @brief Disables a PWM generator IOs
- * @param pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
+ * @fn uint16_t p33c_PwmGenerator_Suspend(volatile struct P33C_PWM_GENERATOR_s* pg)
+ * @ingroup lib-layer-pral-functions-public-pwm
+ * @brief  Disables the PWM generator outputs but keeps the module running
+ * @param  struct P33C_PWM_GENERATOR_s* pg
  * @return 0 = failure, enabling PWM generator IOs was not successful
  * @return 1 = success, enabling PWM generator IOs was successful
  * 
@@ -436,10 +440,11 @@ volatile uint16_t p33c_PwmGenerator_Suspend(volatile struct P33C_PWM_GENERATOR_s
 
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmGenerator_SetPeriod(volatile struct P33C_PWM_GENERATOR_s* pg, volatile uint16_t period )
- * @brief Sets the period of a given PWM generator 
- * @param pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
- * @param period: Counter compare value of the generator time base
+ * @fn uint16_t p33c_PwmGenerator_SetPeriod(volatile struct P33C_PWM_GENERATOR_s* pg, volatile uint16_t period )
+ * @ingroup lib-layer-pral-functions-public-pwm
+ * @brief  Sets the period of a given PWM generator 
+ * @param  struct P33C_PWM_GENERATOR_s* pg
+ * @param  uint16_t period: Counter compare value of the generator time base
  * @return 0 = failure, disabling PWM generator was not successful
  * @return 1 = success, disabling PWM generator was successful
  * 
@@ -465,13 +470,14 @@ volatile uint16_t p33c_PwmGenerator_SetPeriod(
 
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmGenerator_SetDutyCycle(
+ * @fn uint16_t p33c_PwmGenerator_SetDutyCycle(
             volatile struct P33C_PWM_GENERATOR_s* pg, 
             volatile uint16_t duty
     )
+ * @ingroup lib-layer-pral-functions-public-pwm
  * @brief Sets the on-time of a given PWM generator 
- * @param pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
- * @param duty: Counter compare value of the generator time base
+ * @param struct P33C_PWM_GENERATOR_s* pg
+ * @param uint16_t duty
  * @return 0 = failure, disabling PWM generator was not successful
  * @return 1 = success, disabling PWM generator was successful
  * 
@@ -497,13 +503,15 @@ volatile uint16_t p33c_PwmGenerator_SetDutyCycle(
 
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmGenerator_SetDeadTimes(
+ * @fn uint16_t p33c_PwmGenerator_SetDeadTimes(
                 volatile struct P33C_PWM_GENERATOR_s* pg, 
                 volatile uint16_t dead_time_rising, 
                 volatile uint16_t dead_time_falling)
- * @brief Sets the dead-times of a given PWM generator 
- * @param pgInstance: Instance of the PWM generator (e.g. 1 = PG1, 2=PG2, etc.)
- * @param period: Counter compare value of the generator time base
+ * @ingroup lib-layer-pral-functions-public-pwm
+ * @brief  Sets the dead-times of a given PWM generator 
+ * @param  struct P33C_PWM_GENERATOR_s* pg
+ * @param  uint16_t dead_time_rising
+ / @param  uint16_t dead_time_falling
  * @return 0 = failure, disabling PWM generator was not successful
  * @return 1 = success, disabling PWM generator was successful
  * 
@@ -529,10 +537,11 @@ volatile uint16_t p33c_PwmGenerator_SetDeadTimes(
     
 }
 /*********************************************************************************
- * @fn volatile struct P33C_PWM_GENERATOR_s* p33c_PwmGenerator_GetHandle(volatile uint16_t pgInstance)
- * @brief Returns the PWM generator index
- * @param pgInstance:   Index of the selected PWM generator (1=PG1, 2=PG2, etc.)
- * @return P33C_PWM_GENERATOR_s: PWM generator object of the selected PWM generator instance
+ * @fn struct P33C_PWM_GENERATOR_s* p33c_PwmGenerator_GetHandle(volatile uint16_t pgInstance)
+ * @ingroup lib-layer-pral-functions-public-pwm
+ * @brief  Returns the PWM generator index
+ * @param  uint16_t pgInstance:   Index of the selected PWM generator (1=PG1, 2=PG2, etc.)
+ * @return struct P33C_PWM_GENERATOR_s*: Pointer to PWM generator object of the selected PWM generator instance
  *  
  * @details
  *      This function returns the PWM generator index, the PWM generator group
@@ -556,9 +565,11 @@ volatile struct P33C_PWM_GENERATOR_s* p33c_PwmGenerator_GetHandle(volatile uint1
 
 /*********************************************************************************
  * volatile uint16_t p33c_PwmGenerator_GetInstance(volatile struct P33C_PWM_GENERATOR_s* pg)
+ * @ingroup lib-layer-pral-functions-public-pwm
  * @brief Get the PWM generator index
- * @param pgInstance:   Index of the selected PWM generator (1=PG1, 2=PG2, etc.)
- * @return P33C_PWM_GENERATOR_s: PWM generator object of the selected PWM generator instance
+ * @param  struct P33C_PWM_GENERATOR_s* pg: Pointer to PWM generator instance SFRs
+ * @return 0 = failure, disabling PWM generator was not successful
+ * @return 1 = success, disabling PWM generator was successful
  *  
  * @details
  *      This function gets the PWM generator index, the PWM generator group
@@ -588,14 +599,17 @@ volatile uint16_t p33c_PwmGenerator_GetInstance(volatile struct P33C_PWM_GENERAT
 
 /*********************************************************************************
  * volatile uint16_t p33c_PwmGenerator_GetGroup(volatile struct P33C_PWM_GENERATOR_s* pg)
+ * @ingroup lib-layer-pral-functions-public-pwm
  * @brief Get the PWM generator group
- * @param pgInstance:   Index of the selected PWM generator (1=PG1, 2=PG2, etc.)
- * @return P33C_PWM_GENERATOR_s: PWM generator object of the selected PWM generator instance
+ * @param  struct P33C_PWM_GENERATOR_s* pg: Pointer to PWM generator instance SFRs 
+ * @return 0 = error, PWM generator group not found
+ * @return 1 = PWM generator is in group #1
+ * @return 2 = PWM generator is in group #2
  *  
  * @details
- *      This function identify the group where the PWM generator belongs
- *      (1 = [PG1-PG4], 2 = [PG5-PG8]) and verify if the PWMgenerator group is valid
- *      and available. 
+ *      This function identify the group toi which PWM generator belongs
+ *      (1 = [PG1-PG4], 2 = [PG5-PG8]) and verify if the PWMgenerator group 
+ *      is valid and available. If no group is found, the function returns '0'
  *********************************************************************************/
 volatile uint16_t p33c_PwmGenerator_GetGroup(volatile struct P33C_PWM_GENERATOR_s* pg)
 {
@@ -622,20 +636,21 @@ volatile uint16_t p33c_PwmGenerator_GetGroup(volatile struct P33C_PWM_GENERATOR_
 }
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_PwmGenerator_SyncGenerators(volatile struct P33C_PWM_GENERATOR_s* pgHandleMother, volatile uint16_t pgMotherTriggerOutput, volatile struct P33C_PWM_GENERATOR_s* pgHandleChild, volatile bool ChildImmediateUpdate)
+ * @fn uint16_t p33c_PwmGenerator_SyncGenerators(volatile struct P33C_PWM_GENERATOR_s* pgHandleMother, volatile uint16_t pgMotherTriggerOutput, volatile struct P33C_PWM_GENERATOR_s* pgHandleChild, volatile bool ChildImmediateUpdate)
+ * @ingroup lib-layer-pral-functions-public-pwm
  * @brief Sets the synchronization triggers of two PWM generators, of which the Mother PWM generator is the trigger provider and the Child PWM generator is the synchronization trigger receiver.
- * @param P33C_PWM_GENERATOR_s pgHandleMother: PWM generator object of triggering PWM generator (sync trigger provider)
- * @param  pgMotherTriggerOutput: Trigger output selection of sync trigger provider PWM generator
+ * @param struct P33C_PWM_GENERATOR_s* pgHandleMother: PWM generator object of triggering PWM generator (sync trigger provider)
+ * @param uint16_t pgMotherTriggerOutput: Trigger output selection of sync trigger provider PWM generator
  *          0 = EOC/SOC
  *          1 = PGxTRIGA
  *          2 = PGxTRIGB
  *          3 = PGxTRIGC
- * @param P33C_PWM_GENERATOR_s pgHandleChild PWM generator object of triggered PWM generator (sync trigger receiver)
- * @param bool EnableImmesiate
+ * @param struct P33C_PWM_GENERATOR_s* pgHandleChild: PWM generator object of triggered PWM generator (sync trigger receiver)
+ * @param bool ChildImmediateUpdate:
  *          true = synchronization trigger synchronizes Child PWM generator at trigger edge
  *          false = synchronization trigger synchronizes Child PWM generator at EOC/SOC
- * @return 0 = failure, disabling PWM generator was not successful
- * @return 1 = success, disabling PWM generator was successful
+ * @return 0 = failure, PWM generator synchronization was not successful
+ * @return 1 = success, PWM generator synchronization was successful
  * 
  * @details
  *      This function sets the synchronization triggers of two PWM generators, 
@@ -736,19 +751,15 @@ volatile uint16_t p33c_PwmGenerator_SyncGenerators(
     return(retval);       
 
 }
-/**@}*/
 
 /* ********************************************************************************************* * 
  * PWM MODULE BASE CONFIGURATION TEMPLATES
  * ********************************************************************************************* */
-/**
- * @ingroup lib-layer-pral-properties-private-pwm
- * @{ 
- */
+ 
 /*********************************************************************************
- * @var pwmConfigClear
+ * @var struct P33C_PWM_MODULE_s pwmConfigClear
+ * @ingroup lib-layer-pral-properties-private-pwm
  * @brief Default RESET configuration of the PWM module SFRs
- * @param P33C_PWM_MODULE_s: PWM module base Special Function Register (SFR) set
  *
  * @details
  *   Default configuration of the PWM module SFRs with all its registers being 
@@ -785,9 +796,9 @@ volatile struct P33C_PWM_MODULE_s pwmConfigClear = {
    };
 
 /*******************************************************************************
- * @var pwmConfigDefault
+ * @var struct P33C_PWM_MODULE_s pwmConfigDefault
+ * @ingroup lib-layer-pral-properties-private-pwm
  * @brief Default initialization configuration of the PWM module SFRs
- * @param P33C_PWM_MODULE_s: PWM module base Special Function Register (SFR) set
  *
  * @details
  *   Default configuration of the PWM module SFRs for normal operation at 
@@ -829,9 +840,9 @@ volatile struct P33C_PWM_MODULE_s pwmConfigDefault = {
  * ********************************************************************************************* */
 
 /*********************************************************************************
- * @var pgConfigClear
- * @brief Default RESET configuration of one PWM generator channel SFRs
- * @param P33C_PWM_GENERATOR_s: PWM module base Special Function Register (SFR) set
+ * @var struct P33C_PWM_GENERATOR_s pgConfigClear
+ * @ingroup lib-layer-pral-properties-private-pwm
+ * @brief Default RESET configuration of one PWM generator instance SFRs
  *
  * @details
  *   Default configuration of the PWM generator SFRs with all its registers 
@@ -874,5 +885,5 @@ volatile struct P33C_PWM_GENERATOR_s pgConfigClear = {
     };
 
 
-/**@}*/
-// END OF FILE
+
+// end of file

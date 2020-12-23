@@ -1,0 +1,8 @@
+<map id="appPowerSupply_Stop" name="appPowerSupply_Stop">
+<area shape="rect" id="node1" title="This function calls the buck converter device driver function stopping the power supply." alt="" coords="5,31,159,57"/>
+<area shape="rect" id="node2" href="$group__lib-layer-buck-converter-functions-public_gaa865d025fb1e5ae1e16e0c519c6ba9a2.html#gaa865d025fb1e5ae1e16e0c519c6ba9a2" title="This function stop the buck converter opration." alt="" coords="207,31,369,57"/>
+<area shape="rect" id="node3" href="$group__lib-layer-buck-config-functions-public_ga95896fb30d5fbdbaf4d4298fd7fe152b.html#ga95896fb30d5fbdbaf4d4298fd7fe152b" title="This function stops the buck PWM output." alt="" coords="417,31,535,57"/>
+<area shape="rect" id="node4" href="$group__lib-layer-buck-config-functions-public_ga7f1d554e08d756b8677b572216908a3a.html#ga7f1d554e08d756b8677b572216908a3a" title="This function clears the selected general purpose input/output pin." alt="" coords="629,5,747,32"/>
+<area shape="rect" id="node6" href="$group__lib-layer-pral-functions-public-pwm_ga55e525c7ac54a365ab6dad558ec17f0b.html#ga55e525c7ac54a365ab6dad558ec17f0b" title="Returns the PWM generator index." alt="" coords="583,56,793,83"/>
+<area shape="rect" id="node5" href="$group__lib-layer-pral-functions-public-gpio_ga4d67af688d8f7f911d79107974e11e6b.html#ga4d67af688d8f7f911d79107974e11e6b" title="Gets pointer to GPIO Instance SFR set." alt="" coords="841,5,1043,32"/>
+</map>
