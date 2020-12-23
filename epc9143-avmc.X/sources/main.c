@@ -18,6 +18,7 @@ volatile bool LOW_PRIORITY_GO = false;  // Flag allowing low priority tasks to b
 
 /* PRIVATE FUNCTION CALL PROTOTYPES */
 volatile uint16_t sysLowPriorityTasks_Execute(void);
+volatile uint16_t __attribute__((always_inline)) sysHighPriorityTasks_Execute(void);
 
 /**
  * @ingroup firmware-flow
@@ -147,22 +148,44 @@ volatile uint16_t sysLowPriorityTasks_Execute(void)
     return(retval);
 }
 
-/**@}*/ // end of group main-loop-low-priority
 
-/**
+/**********************************************************************************
+ * @fn      uint16_t sysHighPriorityTasks_Execute(void)
  * @ingroup main-loop-high-priority
- * @{
- */
+ * @brief   High priority task sequence executed at a fixed repetition frequency
+ * @return  unsigned integer (0=failure, 1=success)
+ * 
+ * @details
+ * This application executes different tasks of which some are time 
+ * critical while others are insensitive against execution period or
+ * execution repetition frequency jitter. 
+ * 
+ * The following function calls a sequence of time critical tasks. This
+ * function is called by an interrupt service routine at a higher priority
+ * than the main loop, enforcing a more time stringent execution repetition 
+ * frequency.
+ * 
+ * ********************************************************************************/
+
+volatile uint16_t sysHighPriorityTasks_Execute(void)
+{
+    volatile uint16_t retval=1;
+    
+    // Execute high priority, time critical tasks
+    retval &= appPowerSupply_Execute();   // Execute power supply state machine
+    retval &= appFaultMonitor_Execute();  // Execute fault handler
+    
+    return(retval);
+}
+
+
 /**********************************************************************************
  * @fn     void _OsTimerInterrupt(void)
  * @brief  High priority task sequence executed on a fixed 100 usec pace
  * 
  * @details
- * This application executes different tasks of which some are time 
- * critical while others are insensitive against execution time
- * jitter. The following interrupt is used to enforce the execution 
- * of the time critical tasks over the execution of non-time critical
- * tasks.
+ * This interrupt is used to call the high priority task sequence at a fixed
+ * repetition frequency of 10 kHz (= 100 us period). 
  * 
  * ********************************************************************************/
 
@@ -172,9 +195,7 @@ void __attribute__((__interrupt__, context, no_auto_psv)) _OsTimerInterrupt(void
     DBGPIN2_Set();              // Set the CPU debugging pin HIGH
     #endif
 
-    // Execute high priority, time critical tasks
-    appPowerSupply_Execute();   // Execute power supply state machine
-    appFaultMonitor_Execute();  // Execute fault handler
+    sysHighPriorityTasks_Execute(); // Execute list of high priority tasks
     
     LOW_PRIORITY_GO = true; // Set GO trigger for low priority tasks
     _OSTIMER_IF = 0; // Reset the interrupt flag bit
