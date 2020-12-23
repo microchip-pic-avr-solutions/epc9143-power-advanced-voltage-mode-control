@@ -40,7 +40,7 @@ A single, high-speed type IV (4P4Z) voltage mode controller with enforced PWM st
 
 ## Related Documentation
 ##### Firmware Documentation
-  - [EPC9143 Online Firmware Documentation](https://microchip-pic-avr-examples.github.io/epc9143-power-advanced-voltage-mode-control)
+  - [EPC9143 Online Firmware Documentation](https://microchip-pic-avr-solutions.github.io/epc9143-power-advanced-voltage-mode-control)
 
 ##### Hardware Documentation
 - [EPC9143 300W 1/16th brick Power Module Reference Design Product Website](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EPC9143)
