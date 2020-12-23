@@ -7,6 +7,7 @@
 
 
 #include <xc.h>
+#include "config/hal.h"
 
 // Configuration bits: selected in the GUI
 
@@ -18,7 +19,25 @@
 
 /*******************************************************************************************************/
 // FALTREG
-#pragma config CTXT1 = IPL1   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+#if (_OSTIMER_PRIORITY == 0)
+    #pragma config CTXT1 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+#elif (_OSTIMER_PRIORITY == 1)
+    #pragma config CTXT1 = IPL1   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+#elif (_OSTIMER_PRIORITY == 2)
+    #pragma config CTXT1 = IPL2   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+#elif (_OSTIMER_PRIORITY == 3)
+    #pragma config CTXT1 = IPL3   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+#elif (_OSTIMER_PRIORITY == 4)
+    #pragma config CTXT1 = IPL4   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+#elif (_OSTIMER_PRIORITY == 5)
+    #pragma config CTXT1 = IPL5   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+#elif (_OSTIMER_PRIORITY == 6)
+    #pragma config CTXT1 = IPL6   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+#else
+    #pragma config CTXT1 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+    #pragma message "WARNING: perating system timer priority invalid."
+#endif
+
 #pragma config CTXT2 = IPL5   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 2 bits->Not Assigned
 #pragma config CTXT3 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 3 bits->Not Assigned
 #pragma config CTXT4 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 4 bits->Not Assigned
@@ -80,5 +99,5 @@
 #pragma config ALTI2C1 = OFF    //Alternate I2C1 Pin bit->I2C1 mapped to SDA1/SCL1 pins
 #pragma config ALTI2C2 = OFF    //Alternate I2C2 Pin bit->I2C2 mapped to SDA2/SCL2 pins
 #pragma config SPI2PIN = PPS    //SPI2 Pin Select bit->SPI2 uses I/O remap (PPS) pins
-#pragma config SMB3EN = SMBUS3    //SM Bus Enable->SMBus 3.0 input levels
+#pragma config SMB3EN = SMBUS3  //SM Bus Enable->SMBus 3.0 input levels
 
