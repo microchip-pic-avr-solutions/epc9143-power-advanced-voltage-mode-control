@@ -2,7 +2,7 @@
  * © 2006 Microchip Technology Inc.
  *
  * FileName:        fdrv_TrapHandler.c
- * Dependencies:    Header file traps.h
+ * Dependencies:    Header file dvr_trap_handler.h
  * Processor:       dsPIC33FJxxx/dsPIC33EPxxx/dsPIC33CXxxx
  * Compiler:        MPLAB® X16 v1.36 or higher
  *
@@ -59,8 +59,7 @@
 #include "drv_trap_handler.h"
 
 
-
-volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog; ///< data structure used as buffer for trap monitoring 
+volatile struct TRAP_LOGGER_s traplog; ///< data structure used as buffer for trap monitoring 
 
 
 /**************************************************************************************************

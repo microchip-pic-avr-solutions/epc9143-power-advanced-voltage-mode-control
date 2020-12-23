@@ -147,7 +147,7 @@ typedef struct FAULT_OBJECT_s {
 
 
 // Public Fault Configuration Templates
-extern volatile struct FAULT_OBJECT_s fltobjClear;
+extern volatile struct FAULT_OBJECT_s fltObjectClear;
 
 // Public Function Prototypes
 extern volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj);

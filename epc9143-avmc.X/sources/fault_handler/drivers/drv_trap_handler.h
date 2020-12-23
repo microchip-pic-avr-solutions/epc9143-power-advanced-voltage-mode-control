@@ -291,7 +291,7 @@ typedef struct TRAP_LOGGER_s
 /**@}*/
 
 // Global data structure used as buffer for trap monitoring
-extern volatile struct TRAP_LOGGER_s __attribute__((__persistent__))traplog; 
+extern volatile __attribute__((__persistent__)) struct TRAP_LOGGER_s traplog; 
 
 // =================================================================================================
 //
