@@ -2,8 +2,11 @@ digraph dev_startup
 { 
     // Name Label and Format
     compound=true;
-    fontname="Consolas, 'Courier New', Courier, Sans-Serif";
-    fontsize=11;
+
+    graph[fontname="Handlee, Consolas, 'Courier New', Courier, Sans-Serif", fontsize=12];
+    node[fontname="Handlee, Consolas, 'Courier New', Courier, Sans-Serif", fontsize=11];
+    edge[fontname="Handlee, Consolas, 'Courier New', Courier, Sans-Serif", fontsize=11];
+
     ranksep=0.3;
     nodesep=0.6;
     rankdir=TB;
@@ -16,8 +19,6 @@ digraph dev_startup
         
         node [
             shape=diamond, style=filled, fontcolor=black, fillcolor=darkseagreen1, 
-            fontname="Consolas, 'Courier New', Courier, Sans-Serif",
-            fontsize=11,
             width = 2.2
         ];
 
@@ -27,8 +28,6 @@ digraph dev_startup
     {
         node [
             shape=box, style=filled, fontcolor=black, fillcolor=darkseagreen1, 
-            fontname="Consolas, 'Courier New', Courier, Sans-Serif",
-            fontsize=11,
             width = 2.2
         ]; 
             
@@ -43,8 +42,6 @@ digraph dev_startup
     {
         node [
             shape=record, style=filled, fontcolor=black, fillcolor=darkseagreen1, 
-            fontname="Consolas, 'Courier New', Courier, Sans-Serif",
-            fontsize=11,
             width = 2.2
             rankdir=TB, 
         ]; 

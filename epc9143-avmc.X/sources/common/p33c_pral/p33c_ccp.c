@@ -43,12 +43,11 @@ volatile struct P33C_CCP_INSTANCE_SFRSET_s ccpConfigDefault = {
 //    (none)
 
 /*********************************************************************************
+ * @fn     struct P33C_CCP_INSTANCE_SFRSET_s* p33c_CcpInstance_GetHandle(volatile uint16_t ccpInstance)
  * @ingroup lib-layer-pral-functions-public-ccp
- * @{
- * @fn volatile struct P33C_CCP_INSTANCE_SFRSET_s* p33c_CcpInstance_GetHandle(volatile uint16_t ccpInstance)
- * @brief Gets pointer to CCP instance SFR set
- * @param None
- * @return P33C_CCP_MODULE_SFRSET_s: Pointer to CCP instance special function register set object 
+ * @brief  Gets pointer to CCP instance SFR set
+ * @param  uint16_t ccpInstance
+ * @return struct P33C_CCP_INSTANCE_SFRSET_s*: Pointer to CCP instance special function register set object 
  *  
  * @details
  *      This function returns the pointer to a CCP module register set
@@ -70,11 +69,11 @@ volatile struct P33C_CCP_INSTANCE_SFRSET_s* p33c_CcpInstance_GetHandle(volatile 
 }
 
 /*********************************************************************************
- * @fn volatile struct P33C_CCP_INSTANCE_SFRSET_s p33c_CcpInstance_ConfigRead(volatile uint16_t ccpInstance)
- * @brief    Read the current configuration from the CCP instance registers
- * @param None
- * @return 0 = failure, reading from CCP instance was not successful
- * @return 1 = success, reading from CCP instance was successful
+ * @fn     struct P33C_CCP_INSTANCE_SFRSET_s p33c_CcpInstance_ConfigRead(volatile uint16_t ccpInstance)
+ * @ingroup lib-layer-pral-functions-public-ccp
+ * @brief  Read the current configuration from the CCP instance registers
+ * @param  uint16_t ccpInstance
+ * @return struct P33C_CCP_INSTANCE_SFRSET_s: SCCP/MCCP instance special function register set object 
  * 
  * @details
  *     This function reads all registers with their current configuration into
@@ -96,9 +95,11 @@ volatile struct P33C_CCP_INSTANCE_SFRSET_s p33c_CcpInstance_ConfigRead(volatile 
 }
 
 /********************************************************************************
- * @fn volatile uint16_t p33c_CcpInstance_ConfigWrite(volatile uint16_t ccpInstance, volatile struct P33C_CCP_INSTANCE_SFRSET_s ccpConfig)
- * @brief    Writes a user-defined configuration to the CCP instance registers
- * @param None
+ * @fn     uint16_t p33c_CcpInstance_ConfigWrite(volatile uint16_t ccpInstance, volatile struct P33C_CCP_INSTANCE_SFRSET_s ccpConfig)
+ * @ingroup lib-layer-pral-functions-public-ccp
+ * @brief  Writes a user-defined configuration to the CCP instance registers
+ * @param  uint16_t ccpInstance
+ * @param  struct P33C_CCP_INSTANCE_SFRSET_s ccpConfig
  * @return 0 = failure, writing to CCP instance was not successful
  * @return 1 = success, writing to CCP instance was successful
  * 
@@ -126,5 +127,5 @@ volatile uint16_t p33c_CcpInstance_ConfigWrite(volatile uint16_t ccpInstance,
     return(retval);
     
 }
- /**@}*/
-// END OF FILE
+
+// end of file

@@ -17,7 +17,7 @@
  * @{
  */
 /***********************************************************************************
- * @fn uint16_t sysOpAmp_Initialize
+ * @fn uint16_t sysOpAmp_Initialize(volatile uint16_t opaInstance, volatile bool disable_n_channel) 
  * @brief  Initializes the on-chip operational amplifier module
  * @return unsigned integer
  * @return 0=failure

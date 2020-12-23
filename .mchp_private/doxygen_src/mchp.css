@@ -130,9 +130,9 @@ div.navtab {
 /* @group Link Styling */
 
 a {
-	color: #3D578C;
+	color: #007fff;
 	font-weight: normal;
-	text-decoration: none;
+	text-decoration: none; /* underline; */
 }
 
 .contents a:visited {
@@ -140,6 +140,8 @@ a {
 }
 
 a:hover {
+        color: #007fff;
+	font-weight: normal;
 	text-decoration: underline;
 }
 
@@ -166,11 +168,11 @@ a.elRef {
 }
 
 a.code, a.code:visited, a.line, a.line:visited {
-	color: #4665A2; 
+	color: #0000ff; 
 }
 
 a.codeRef, a.codeRef:visited, a.lineRef, a.lineRef:visited {
-	color: #4665A2; 
+	color: #0000ff; 
 }
 
 /* @end */
@@ -364,7 +366,7 @@ img.formulaInl, img.inline {
 }
 
 div.center {
-	text-align: center;
+    text-align: center;
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 0px;

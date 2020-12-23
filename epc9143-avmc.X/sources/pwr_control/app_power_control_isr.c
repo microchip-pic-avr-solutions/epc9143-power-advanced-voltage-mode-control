@@ -10,14 +10,11 @@
 #include "app_power_control.h"
 
 /*********************************************************************************
+ * @fn      void _BUCK_VLOOP_Interrupt(void)
  * @ingroup app-layer-power-control-events
- * @{
- * @fn void _BUCK_VLOOP_Interrupt(void)
- * @brief Main Control Interrupt
- * 
- * @param void
- * 
- * @return void
+ * @brief   Main Control Interrupt
+ * @param   void
+ * @return  void
  *   
  * @details
  * The control interrupt is calling the control loop. The point in time where
@@ -33,6 +30,7 @@ void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void
     #endif
     
     buck.status.bits.adc_active = true;
+    
     #if (PLANT_MEASUREMENT == false)
     buck.v_loop.ctrl_Update(buck.v_loop.controller);
     #else
@@ -51,4 +49,5 @@ void __attribute__((__interrupt__, auto_psv, context))_BUCK_VLOOP_Interrupt(void
     #endif
     
 }
-/**@}*/
+
+// end of file

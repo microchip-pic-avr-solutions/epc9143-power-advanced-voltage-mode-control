@@ -8,12 +8,9 @@
 #include "hal.h"
 #include "system.h"
 
-/**
- * @ingroup system-initialization-mcu
- * @{
- */
 /***********************************************************************************
- * @fn volatile uint16_t SYSTEM_Initialize(void) 
+ * @fn uint16_t SYSTEM_Initialize(void) 
+ * @ingroup mcu-initialization
  * @brief  Initializes essential chip resources
  * @return unsigned integer 
  * 0=failure
@@ -40,14 +37,9 @@ volatile uint16_t SYSTEM_Initialize(void)
 
 }
 
-/** @}*/ // end of group system-initialization-mcu
-
-/**
- * @ingroup system-initialization-user-peripherals
- * @{
- */
 /***********************************************************************************
- * @fn uint16_t sysUserPeriperhals_Initialize
+ * @fn uint16_t sysUserPeriperhals_Initialize(void)
+ * @ingroup user-peripherals-initialization
  * @brief  Initializes the user-defined chip resources
  * @return unsigned integer (0=failure, 1=success)
  * 
@@ -87,14 +79,9 @@ volatile uint16_t sysUserPeriperhals_Initialize(void) {
 
 }
 
-/** @}*/ // end of group system-initialization-user-peripherals
-
-/**
- * @ingroup system-initialization-user-tasks User Task Initialization
- * @{
- */
 /***********************************************************************************
  * @fn uint16_t sysUserTasks_Initialize
+ * @ingroup user-task-initialization
  * @brief  Initializes the user-defined tasks
  * @return unsigned integer (0=failure, 1=success)
  * 
@@ -119,7 +106,5 @@ volatile uint16_t sysUserTasks_Initialize(void) {
 	return(retval);
 
 }
-
-/** @}*/ // end of group system-initialization-user-tasks
 
 // end of file

@@ -66,7 +66,7 @@
  * 
  * ***********************************************************************************************/
 
-typedef enum 
+typedef enum CPU_SPEED_DEFAULTS_e
 {
     CPU_SPEED_20_MIPS = 20, // CPU Speed setting for 20 MIPS operation
     CPU_SPEED_30_MIPS = 30, // CPU Speed setting for 30 MIPS operation
@@ -77,10 +77,10 @@ typedef enum
     CPU_SPEED_80_MIPS = 80, // CPU Speed setting for 80 MIPS operation
     CPU_SPEED_90_MIPS = 90, // CPU Speed setting for 90 MIPS operation
     CPU_SPEED_100_MIPS = 100 // CPU Speed setting for 100 MIPS operation
-} CPU_SPEED_DEFAULTS_e;  // Default CPU speed settings 
+} CPU_SPEED_DEFAULTS_t;  // Default CPU speed settings 
 
 
-typedef enum 
+typedef enum AUX_PLL_DEFAULTS_e
 {
     AFPLLO_100_MHZ  = 100, // Auxiliary PLL output frequency of 500 MHz
     AFPLLO_200_MHZ  = 200, // Auxiliary PLL output frequency of 500 MHz
@@ -90,7 +90,7 @@ typedef enum
     AFPLLO_600_MHZ  = 600, // Auxiliary PLL output frequency of 600 MHz
     AFPLLO_700_MHZ  = 700, // Auxiliary PLL output frequency of 700 MHz
     AFPLLO_800_MHZ  = 800  // Auxiliary PLL output frequency of 800 MHz
-} AUX_PLL_DEFAULTS_e;  // Default Auxiliary PLL output frequency settings 
+} AUX_PLL_DEFAULTS_t;  // Default Auxiliary PLL output frequency settings 
 
 
 /*!System OSCILLATOR_SYSTEM_FREQUENCIES_t
@@ -122,7 +122,7 @@ typedef enum
  * If only the internal FRC oscillator is used, this parameter should be set = 0.
  * ***********************************************************************************************/
 
-typedef struct {
+typedef struct OSCILLATOR_SYSTEM_FREQUENCIES_s {
     volatile uint32_t frc;      // Internal fast RC oscillator frequency incl. tuning
     volatile uint32_t fpri;     // External primary oscillator frequency 
     volatile uint32_t fclk;     // Clock frequency (external or internal oscillator frequency)
@@ -314,7 +314,7 @@ typedef enum {
 #define REG_CLKDIV_FRCDIVN_2    0b0000000100000000
 #define REG_CLKDIV_FRCDIVN_1    0b0000000000000000
 
-typedef enum {
+typedef enum CLKDIV_FRCDIVN_e {
     CLKDIV_FRCDIVN_1 = 0b000, // Fast RC Oscillator Clock Divider Setting 1:1
     CLKDIV_FRCDIVN_2 = 0b001, // Fast RC Oscillator Clock Divider Setting 1:2
     CLKDIV_FRCDIVN_4 = 0b010, // Fast RC Oscillator Clock Divider Setting 1:4
@@ -323,7 +323,7 @@ typedef enum {
     CLKDIV_FRCDIVN_32 = 0b101, // Fast RC Oscillator Clock Divider Setting 1:32
     CLKDIV_FRCDIVN_64 = 0b110, // Fast RC Oscillator Clock Divider Setting 1:64
     CLKDIV_FRCDIVN_256 = 0b111 // Fast RC Oscillator Clock Divider Setting 1:256
-} CLKDIV_FRCDIVN_e; // Internal Fast RC Oscillator Postscaler bits
+} CLKDIV_FRCDIVN_t; // Internal Fast RC Oscillator Postscaler bits
 
 #define REG_CLKDIV_ROI_ENABLED  0b1000000000000000
 #define REG_CLKDIV_ROI_DISABLED 0b0000000000000000
@@ -336,7 +336,7 @@ typedef enum {
 typedef struct {
     volatile CLKDIV_PLLPRE_e PLLPRE : 6; // PLL Phase Detector Input Divider Select bits (also denoted as ?N1?, PLL prescaler)
     volatile unsigned : 2;
-    volatile CLKDIV_FRCDIVN_e FRCDIV : 3; // Internal Fast RC Oscillator Postscaler bits
+    volatile enum CLKDIV_FRCDIVN_e FRCDIV : 3; // Internal Fast RC Oscillator Postscaler bits
     volatile CLKDIV_DOZEN_e DOZEN : 1; // Doze Mode Enable bit
     volatile CLKDIV_DOZE_e DOZE : 3; // Processor Clock Reduction Select bits
     volatile CLKDIV_ROI_e ROI : 1; // Recover on Interrupt bit
@@ -575,7 +575,7 @@ typedef union {
 
 #if defined (__P33SMPS_CH__) ||  defined (__P33SMPS_CK__)
 
-typedef enum {
+typedef enum OSCTUN_TUN_e {
     OSCTUN_TUN_MINUS_31 = 0b100001, // Center frequency -1.457% (=7.88344 MHz)
     OSCTUN_TUN_MINUS_30 = 0b100010, // Center frequency -1.41% (=7.8872 MHz)
     OSCTUN_TUN_MINUS_29 = 0b100011, // Center frequency -1.363% (=7.89096 MHz)
@@ -639,14 +639,14 @@ typedef enum {
     OSCTUN_TUN_PLUS_29 = 0b011101, // Center frequency +1.363% (=8.10904 MHz)
     OSCTUN_TUN_PLUS_30 = 0b011110, // Center frequency +1.41% (=8.1128 MHz)
     OSCTUN_TUN_PLUS_31 = 0b011111 // Center frequency +1.457% (=8.11656 MHz)
-} OSCTUN_TUN_e; // FRC Oscillator Tuning bits
+} OSCTUN_TUN_t; // FRC Oscillator Tuning bits
 
 #else
     #pragma message "error: === selected device family is not supported by oscillator mcal library ==="
 #endif
 
 typedef struct {
-    volatile OSCTUN_TUN_e TUN : 6; // FRC Oscillator Tuning bits
+    volatile enum OSCTUN_TUN_e TUN : 6; // FRC Oscillator Tuning bits
     volatile unsigned : 10; // reserved
 } __attribute__((packed)) OSCTUN_t;
 
@@ -1050,10 +1050,10 @@ typedef union {
 
 #if defined (__P33SMPS_CH__) ||  defined (__P33SMPS_CK__)
 
-typedef struct P33C_OSC_CONFIG_s {
+typedef struct OSC_CONFIG_s {
     volatile OSCCON_xOSC_TYPE_e osc_type;
-    volatile CLKDIV_FRCDIVN_e frc_div;
-    volatile OSCTUN_TUN_e frc_tune;
+    volatile enum CLKDIV_FRCDIVN_e frc_div;
+    volatile enum OSCTUN_TUN_e frc_tune;
     volatile CLKDIV_PLLPRE_e N1;
     volatile PLLFBD_PLLFBDIV_e M;
     volatile PLLDIV_POSTxDIV_e N2;
@@ -1061,7 +1061,7 @@ typedef struct P33C_OSC_CONFIG_s {
     volatile PLLDIV_VCODIV_e VCODIV;
 } OSC_CONFIG_t;
 
-typedef struct {
+typedef struct AUXOSC_CONFIG_s {
     volatile ACLKCON_APLLPRE_e N1;
     volatile APLLFBD_APLLFBDIV_e M;
     volatile APLLDIV_POSTxDIV_e N2;
@@ -1081,7 +1081,7 @@ typedef struct {
  *	ERROR CODES
  * **************************************************************************************/
 
-typedef enum {
+typedef enum OSC_CFG_ERR_RESULT_e{
     OSCERR_FAILURE = 0x0000, // Global Clock Error
     OSCERR_SUCCESS = 0x0001, // Clock initialization was successfully performed
     OSCERR_CSF = 0x0002, // Clock switch-over failed
@@ -1096,12 +1096,12 @@ typedef enum {
  *	Prototypes
  * **************************************************************************************/
 
-extern volatile uint16_t p33c_Osc_Initialize(volatile OSC_CONFIG_t osc_config);
-extern volatile uint16_t p33c_OscFrc_Initialize(volatile CLKDIV_FRCDIVN_e frc_div, volatile OSCTUN_TUN_e frc_tun);
-extern volatile uint16_t p33c_OscAuxClk_Initialize(volatile AUXOSC_CONFIG_t aux_clock_config);
+extern volatile uint16_t p33c_Osc_Initialize(volatile struct OSC_CONFIG_s osc_config);
+extern volatile uint16_t p33c_OscFrc_Initialize(volatile enum CLKDIV_FRCDIVN_e frc_div, volatile enum OSCTUN_TUN_e frc_tun);
+extern volatile uint16_t p33c_OscAuxClk_Initialize(volatile struct AUXOSC_CONFIG_s aux_clock_config);
 
-extern volatile uint16_t p33c_OscFrc_DefaultInitialize(volatile CPU_SPEED_DEFAULTS_e cpu_speed);
-extern volatile uint16_t p33c_OscAuxClk_DefaultInitialize(volatile AUX_PLL_DEFAULTS_e afpllo_frequency);
+extern volatile uint16_t p33c_OscFrc_DefaultInitialize(volatile enum CPU_SPEED_DEFAULTS_e cpu_speed);
+extern volatile uint16_t p33c_OscAuxClk_DefaultInitialize(volatile enum AUX_PLL_DEFAULTS_e afpllo_frequency);
 extern volatile uint16_t p33c_Osc_GetFrequencies(volatile uint32_t main_osc_frequency);
 
 #endif  /* MCAL_P33SMPS_OSCILLATOR_H */

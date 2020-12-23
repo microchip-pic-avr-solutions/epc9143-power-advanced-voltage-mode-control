@@ -22,8 +22,8 @@ volatile uint16_t __attribute__((always_inline)) SubState_IRampUp(volatile struc
 volatile uint16_t __attribute__((always_inline)) SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 
 /***********************************************************************************
- * @ingroup lib-layer-buck-states-properties-public-variables
  * @var     (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @ingroup lib-layer-buck-states-properties-public-variables
  * @brief   Function pointer array of buck converter startup sub-states
  **********************************************************************************/
 
@@ -38,8 +38,8 @@ volatile uint16_t (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_P
 };
 
 /***********************************************************************************
- * @ingroup lib-layer-buck-states-properties-public-variables
  * @var     BuckRampUpSubStateList_size
+ * @ingroup lib-layer-buck-states-properties-public-variables
  * @brief   Buck converter sub-state machine function pointer array size
  **********************************************************************************/
 
@@ -47,16 +47,16 @@ volatile uint16_t BuckRampUpSubStateList_size = (sizeof(BuckConverterRampUpSubSt
 
 
 /***********************************************************************************
+ * @fn      uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @ingroup lib-layer-buck-states-functions-private
- * @fn      volatile uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief   This function delays the startup until the Power-on Delay has expired 
- * @param	struct BUCK_POWER_CONTROLLER_s
+ * @param	struct BUCK_POWER_CONTROLLER_s *buckInstance: Pointer to buck converter data structure
  * @return  0=failure
  * @return  1=success
- * @details 
- *  After the converter has been cleared to get started, the power-on 
- *  delay counter is incremented until the defined power-on delay period 
- *  has expired. 
+ * @details
+ *  After the converter has been cleared to get started, the power-on
+ *  delay counter is incremented until the defined power-on delay period
+ *  has expired.
  **********************************************************************************/
 
 volatile uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
@@ -85,10 +85,10 @@ volatile uint16_t SubState_PowerOnDelay(volatile struct BUCK_POWER_CONTROLLER_s 
 }
 
 /***********************************************************************************
+ * @fn      uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @ingroup lib-layer-buck-states-functions-private
- * @fn volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @brief   This function calculate and pre-charge PWM outputs with ideal duty cycle 
- * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @param	struct BUCK_POWER_CONTROLLER_s *buckInstance: Pointer to buck converter data structure
  * @return  0=failure
  * @return  1=success
  * 
@@ -216,10 +216,10 @@ volatile uint16_t SubState_PrepareVRampUp(volatile struct BUCK_POWER_CONTROLLER_
 }
 
 /***********************************************************************************
+ * @fn      uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @ingroup lib-layer-buck-states-functions-private
- * @fn volatile uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @brief  This function ramps up the output voltage to its nominal regualtion point
- * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @brief   This function ramps up the output voltage to its nominal regualtion point
+ * @param	struct BUCK_POWER_CONTROLLER_s *buckInstance: Pointer to buck converter data structure
  * @return  0=failure
  * @return  1=success
  * 
@@ -297,11 +297,11 @@ volatile uint16_t SubState_VRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buck
 }
 
 /***********************************************************************************
+ * @fn      uint16_t SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @ingroup lib-layer-buck-states-functions-private
- * @fn volatile uint16_t SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @brief This function is for the average current mode where the output current 
- * is ramped up to nominal current
- * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @brief   This function is for the average current mode where the output current 
+ *          is ramped up to nominal current
+ * @param	struct BUCK_POWER_CONTROLLER_s *buckInstance: Pointer to buck converter data structure
  * @return  0=failure
  * @return  1=success
  * 
@@ -349,11 +349,11 @@ volatile uint16_t SubState_IRampUp(volatile struct BUCK_POWER_CONTROLLER_s *buck
 }
 
 /***********************************************************************************
+ * @fn      uint16_t SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
  * @ingroup lib-layer-buck-states-functions-private
- * @fn volatile uint16_t SubState_PowerGoodDelay(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @brief In this function, a counter is incremented until the power
- * good delay has expired.
- * @param	BUCK_POWER_CONTROLLER_s  pointer to buck converter data structure
+ * @brief   In this function, a counter is incremented until the power
+ *          good delay has expired.
+ * @param	struct BUCK_POWER_CONTROLLER_s *buckInstance: Pointer to buck converter data structure
  * @return  0=failure
  * @return  1=success
  * 

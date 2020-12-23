@@ -58,8 +58,8 @@ volatile struct CS_CALIBRATION_s calib_cs[BUCK_MPHASE_COUNT];
 volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
 
 /*******************************************************************************
- * @ingroup lib-layer-buck-specialfn-properties-private-variables
  * @var *BuckConverterRampUpSubStateMachine[](volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
+ * @ingroup lib-layer-buck-specialfn-properties-private-variables
  * @brief Function pointer list of all special function sub-state functions
  * @details
  * The function pointer list BuckConverterSpecialFunctions[] is providing public
@@ -92,8 +92,10 @@ volatile uint16_t (*BuckConverterSpecialFunctions[])(volatile struct BUCK_POWER_
 
 
 /*********************************************************************************
+ * @fn     uint16_t drv_BuckConverter_SpecialFunctionExecute(
+ *                          volatile struct BUCK_POWER_CONTROLLER_s * buckInstance, 
+ *                          volatile enum BUCK_SPECIAL_FUNCTIONS_e specialFunction)
  * @ingroup lib-layer-buck-specialfn-functions-public
- * @fn     uint16_t drv_BuckConverter_SpecialFunctionExecute(volatile struct BUCK_POWER_CONTROLLER_s * buckInstance, volatile enum BUCK_SPECIAL_FUNCTIONS_e specialFunction)
  * @brief  This is the public function call access point to call dedicated special sub-functions
  * @param  struct BUCK_POWER_CONTROLLER_s * buckInstance
  * @param  enum BUCK_SPECIAL_FUNCTIONS_e function
@@ -157,10 +159,10 @@ volatile uint16_t drv_BuckConverter_SpecialFunctionExecute(
  ******************************************************************************/
 
 /*******************************************************************************
+ * @fn	   uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) 
  * @ingroup lib-layer-buck-specialfn-functions-private
- * @fn	   volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) 
  * @brief  Performs an offset calibration of the current sense feedback signal(s)
- * @param  volatile struct BUCK_POWER_CONTROLLER_s *buckInstance
+ * @param  struct BUCK_POWER_CONTROLLER_s *buckInstance
  * @return unsigned integer (0=failure, 1=success)
  *  
  * @details

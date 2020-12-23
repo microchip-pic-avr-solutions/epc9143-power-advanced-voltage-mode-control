@@ -401,7 +401,7 @@ DISTRIBUTE_GROUP_DOC   = NO
 # is disabled and one has to add nested compounds explicitly via \ingroup.
 # The default value is: NO.
 
-GROUP_NESTED_COMPOUNDS = NO
+GROUP_NESTED_COMPOUNDS = YES
 
 # Set the SUBGROUPING tag to YES to allow class member groups of the same type
 # (for instance a group of public functions) to be put as a subgroup of that
@@ -847,8 +847,7 @@ WARN_LOGFILE           =
 INPUT                  = ../../epc9143-avmc.X/sources \
                          ../../README.md \
                          dox-files \
-                         markdown-files \
-                         markdown-files/introduction.md
+                         markdown-files
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -925,7 +924,19 @@ EXCLUDE_PATTERNS       =
 # Note that the wildcards are matched against the file with absolute path, so to
 # exclude all test directories use the pattern */test/*
 
-EXCLUDE_SYMBOLS        =
+EXCLUDE_SYMBOLS        = __attribute__ \
+                         ((packed)) \
+                         ((always_inline)) \
+                         ((__persistent__)) \
+                         ((__interrupt__)) \
+                         "((interrupt, no_auto_psv))" \
+                         "((__interrupt__, context, no_auto_psv))" \
+                         __persistent__ \
+                         packed \
+                         always_inline \
+                         interrupt \
+                         no_auto_psv \
+                         context
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or directories
 # that contain example code fragments that are included (see the \include

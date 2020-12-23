@@ -43,12 +43,17 @@
 
 #include "drv_fault_handler.h" // 
 
-/**@ingroup lib-layer-fault-properties-private-variables */
+
 /*******************************************************************************
- * @var	FAULT_OBJECT_s fltobjClear
+ * @var	FAULT_OBJECT_s fltObjectClear
+ * @ingroup lib-layer-fault-properties-private-variables
  * @brief Clears the fault objects
+ * @details
+ *  The fltObjectClear object is used during pre-initialization of user-defined
+ *  fault pbjects, clearing all settings and setting the FaultActive and
+ *  FaultStatus fault object status flag bts. 
 *****************************************************************************/
-volatile struct FAULT_OBJECT_s fltobjClear = 
+volatile struct FAULT_OBJECT_s fltObjectClear = 
 {
         .Status.bits.CompareType = FLTCMP_NONE,     ///< Clear fault object comparison type
         .Status.bits.Enabled = false,               ///< Clear fault object enable bit
@@ -67,11 +72,10 @@ volatile struct FAULT_OBJECT_s fltobjClear =
         .RecoveryResponse.ptrResponseFunction = NULL,  ///< Clear fault recovery response function pointer
     };
 
-/** 
- * @ingroup lib-layer-fault-functions-public */
 /*******************************************************************************
- * @fn	uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj)
- * @param	FAULT_OBJECT_t* fltobj
+ * @fn	uint16_t drv_FaultCheck(volatile struct FAULT_OBJECT_s* fltObject)
+ * @ingroup lib-layer-fault-functions-public
+ * @param	struct FAULT_OBJECT_s* fltObject
  * @return 0=failure 
  * @return 1=success
  *
@@ -292,3 +296,4 @@ volatile uint16_t drv_FaultCheck(volatile struct FAULT_OBJECT_s* fltObject) {
 }
 
 
+// end of file

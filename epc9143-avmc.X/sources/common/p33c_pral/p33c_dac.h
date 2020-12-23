@@ -132,7 +132,7 @@ extern volatile struct P33C_DAC_INSTANCE_s p33c_DacInstance_ConfigRead(
                 );
 
 extern volatile uint16_t p33c_DacInstance_ConfigWrite(
-                    volatile uint16_t dacInstance, 
+                    volatile uint16_t dacInstance,
                     volatile struct P33C_DAC_INSTANCE_s dacConfig
                 );
 

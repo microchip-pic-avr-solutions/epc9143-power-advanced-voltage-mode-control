@@ -15,12 +15,9 @@
 
 #define TIMEOUT_LIMIT   5000    // timeout counter maximum
 
-/**
- * @ingroup clock-initialization
- * @{
- */
 /***********************************************************************************
- * @fn uint16_t sysFosc_Initialize
+ * @fn uint16_t sysFosc_Initialize(void)
+ * @ingroup clock-initialization
  * @brief  System oscillator initialization
  * @return unsigned integer 
  * 0=failure
@@ -43,7 +40,8 @@ volatile uint16_t sysFosc_Initialize(void)
 }
 
 /***********************************************************************************
- * @fn uint16_t sysAclk_Initialize
+ * @fn uint16_t sysAclk_Initialize(void)
+ * @ingroup clock-initialization
  * @brief  Initializes the auxiliary clock of the device
  * @return unsigned integer (0=failure, 1=success)
  * 

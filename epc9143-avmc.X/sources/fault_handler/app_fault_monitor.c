@@ -11,6 +11,24 @@
 #include "drivers/drv_fault_handler.h"
 #include "pwr_control/app_power_control.h"
 
+/**
+ * @var struct FAULT_OBJECT_s fltobj_BuckUVLO  
+ * @ingroup app-layer-fault-monitor-properties-public
+ * @brief Under Voltage Lock Out Fault Object
+
+ * @var struct FAULT_OBJECT_s fltobj_BuckOVLO  
+ * @ingroup app-layer-fault-monitor-properties-public
+ * @brief Over Voltage Lock Out Fault Object
+
+ * @var struct FAULT_OBJECT_s fltobj_BuckOCP  
+ * @ingroup app-layer-fault-monitor-properties-public
+ * @brief Over Current Protection Fault Object
+
+ * @var struct FAULT_OBJECT_s fltobj_BuckRegErr  
+ * @ingroup app-layer-fault-monitor-properties-public
+ * @brief Regulation Error Fault Object
+
+ */ 
 
 // Define fault objects
 volatile struct FAULT_OBJECT_s fltobj_BuckUVLO;
@@ -26,8 +44,8 @@ volatile uint16_t __attribute__((always_inline)) regerr_FaultInitialize(void);
 
 
 /*********************************************************************************
+ * @fn uint16_t appFaultMonitor_Execute(void)  
  * @ingroup app-layer-fault-handler-functions-public
- * @fn volatile uint16_t appFaultMonitor_Execute(void)  
  * @brief Application wide fault object monitoring routine
  * @return 0=failure 
  * @return 1=success
@@ -74,8 +92,8 @@ volatile uint16_t appFaultMonitor_Execute(void)
 }
 
 /*********************************************************************************
+ * @fn uint16_t appFaultMonitor_Initialize(void)
  * @ingroup app-layer-fault-handler-functions-public
- * @fn volatile uint16_t appFaultMonitor_Initialize(void)
  * @brief  Initialization of user-defined fault objects
  * @return 0=failure 
  * @return 1=success
@@ -100,8 +118,8 @@ volatile uint16_t appFaultMonitor_Initialize(void)
 }
 
 /*********************************************************************************
+ * @fn uint16_t appFaultMonitor_Dispose(void) 
  * @ingroup app-layer-fault-handler-functions-public
- * @fn volatile uint16_t appFaultMonitor_Dispose(void) 
  * @brief Function clearing all fault object settings
  * @return 0=failure 
  * @return 1=success
@@ -129,8 +147,8 @@ volatile uint16_t appFaultMonitor_Dispose(void)
  * ********************************************************************************/
 
 /*********************************************************************************
- * @ingroup app-layer-fault-handler-functions-private
- * @fn volatile uint16_t uvlo_FaultInitialize(void)
+ * @fn uint16_t uvlo_FaultInitialize(void)
+ * @ingroup app-layer-fault-monitor-functions-private
  * @brief Initializes the user-defined fault objects for under-voltage lockout
  * @return 0=failure
  * @return 1=success
@@ -174,8 +192,8 @@ volatile uint16_t uvlo_FaultInitialize(void)
 }
 
 /*********************************************************************************
- * @ingroup app-layer-fault-handler-functions-private
- * @fn volatile uint16_t ovlo_FaultInitialize(void)
+ * @fn uint16_t ovlo_FaultInitialize(void)
+ * @ingroup app-layer-fault-monitor-functions-private
  * @brief Initializes the user-defined fault objects for overvoltage lockout
  * @return 0=failure
  * @return 1=success
@@ -218,8 +236,8 @@ volatile uint16_t ovlo_FaultInitialize(void)
 }
     
 /*********************************************************************************
- * @ingroup app-layer-fault-handler-functions-private
- * @fn volatile uint16_t regerr_FaultInitialize(void)
+ * @fn uint16_t regerr_FaultInitialize(void)
+ * @ingroup app-layer-fault-monitor-functions-private
  * @brief Initializes the user-defined fault objects for regulation error
  * @return 0=failure
  * @return 1=success
@@ -261,8 +279,8 @@ volatile uint16_t regerr_FaultInitialize(void)
 }
     
 /*********************************************************************************
- * @ingroup app-layer-fault-handler-functions-private
- * @fn volatile uint16_t ocp_FaultInitialize(void)
+ * @fn uint16_t ocp_FaultInitialize(void)
+ * @ingroup app-layer-fault-monitor-functions-private
  * @brief Initializes the user-defined fault objects for overcurrent protection
  * @return 0=failure
  * @return 1=success

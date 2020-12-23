@@ -20,17 +20,11 @@ volatile bool LOW_PRIORITY_GO = false;  // Flag allowing low priority tasks to b
 volatile uint16_t sysLowPriorityTasks_Execute(void);
 volatile uint16_t __attribute__((always_inline)) sysHighPriorityTasks_Execute(void);
 
-/**
- * @ingroup firmware-flow
- * @dotfile flowchart.gv
- * @{
- */
 /*******************************************************************************
  * @fn int main(void)
- * @return Signed Integer (0=failure, 1=success)
- *
+ * @ingroup firmware-flow
  * @brief  Application main function executed after device comes out of RESET
- * 
+ * @return Signed Integer (0=failure, 1=success)
  * @details
  * This function is the starting point of the firmware. It is called after the
  * device is coming out of RESET, starting to execute code. The startup sequence 
@@ -120,22 +114,20 @@ int main(void) {
     return (0);
 }
 
-/**@}*/ // end of group firmware-flow
-
-/**
- * @ingroup main-loop-low-priority
- * @{
- */
 /**********************************************************************************
- * @fn     void sysLowPriorityTasks_Execute(void)
- * @brief  Low priority task sequence executed after the high priority task sequence execution is complete
- * @return unsigned integer (0=failure, 1=success)
+ * @fn      uint16_t sysLowPriorityTasks_Execute(void)
+ * @ingroup main-loop-low-priority
+ * @brief   Low priority task sequence executed after the high priority task sequence execution is complete
+ * @return  unsigned integer (0=failure, 1=success)
  * 
  * @details
  * This application executes different tasks of which some are time 
  * critical while others are insensitive to execution time jitter. 
  * This function is calling all non-time critical tasks. it is called
  * after all high-priority tasks have been executed. 
+ * 
+ * @note
+ *  (this application does not execute low priority tasks)
  * 
  * ********************************************************************************/
 
@@ -207,9 +199,8 @@ void __attribute__((__interrupt__, context, no_auto_psv)) _OsTimerInterrupt(void
     return;
 }
 
-/**@}*/ // end of group main-loop-high-priority
 // ______________________________________
-// END OF FILE
+// end of file
 
 
 

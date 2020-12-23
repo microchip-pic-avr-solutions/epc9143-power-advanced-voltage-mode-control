@@ -51,16 +51,14 @@
  *  10/14/2020  Removed support for dsPIC33F and dsPIC33E
  * ***********************************************************************************************/
 
-/**
- * @ingroup lib-layer-pral-functions-public-pps
- * @{ 
- */
 /*************************************************************************************************
- * @fn volatile uint16_t PPS_LockIO(void)
+ * @fn uint16_t PPS_LockIO(void)
+ * @ingroup lib-layer-pral-functions-public-pps
  * @brief Locks the Peripheral Pin Select Configuration registers against accidental changes
- * @param void
- * @return 1: Success
- * @return 0: Error
+ * @return
+ *  unsigned integer 
+ *  1: Success
+ *  0: Error
  *
  * @details
  * This inline-assembly routine locks the Port Multiplexing Configuration registers by keeping
@@ -82,11 +80,13 @@ volatile uint16_t PPS_LockIO(void){
 }
 
 /*************************************************************************************************
- * @fn volatile uint16_t PPS_UnlockIO(void)
+ * @fn uint16_t PPS_UnlockIO(void)
+ * @ingroup lib-layer-pral-functions-public-pps
  * @brief Unlocks the Peripheral Pin Select Configuration registers to enable changes
- * @param void
- * @return 1: Success
- * @return 0: Error
+ * @return
+ *  unsigned integer 
+ *  1: Success
+ *  0: Error
  *
  * @details
  * This inline-assembly routine unlocks the Port Multiplexing Configuration registers by keeping
@@ -107,12 +107,15 @@ volatile uint16_t PPS_UnlockIO(void){
 }
 
 /*************************************************************************************************
- * @fn volatile uint16_t PPS_RemapOutput(volatile uint8_t pinno, volatile uint8_t peripheral)
+ * @fn uint16_t PPS_RemapOutput(volatile uint8_t pinno, volatile uint8_t peripheral)
+ * @ingroup lib-layer-pral-functions-public-pps
  * @brief Assigns a digital function output to a pin
- * @param pinno: Number of the RPx-pin, which should be assigned to the function
- * @param peripheral: Function, which should be assigned to the pin
- * @return 1: Success
- * @return 0: Error
+ * @param uint8_t pinno: Number of the RPx-pin, which should be assigned to the function
+ * @param uint8_t peripheral: Function, which should be assigned to the pin
+ * @return
+ *  unsigned integer 
+ *  1: Success
+ *  0: Error
  *
  * @details
  * Any supported digital function output (e.g. UART TxD) can be assigned to one of the RPx pins
@@ -120,8 +123,9 @@ volatile uint16_t PPS_UnlockIO(void){
  *
  *	smpsPPS_RemapOutput([RP-NUMBER], [FUNCTION])
  * 
- * <b>Example:</b><br>
+ * @code{.c}
  *	lres |= smpsPPS_RemapOutput(PIN_RP9 , PPSOUT_SYNCO1);	// Assign RP9 to PWMSyncClkOutput
+ * @endcode
  *
  * @see p33c_pps.h
  * 
@@ -143,12 +147,15 @@ volatile uint16_t PPS_RemapOutput(volatile uint8_t pinno, volatile uint8_t perip
 }
 
 /*************************************************************************************************
- * @fn volatile uint16_t PPS_RemapInput(volatile uint8_t pinno, volatile uint8_t *peripheral)
+ * @fn uint16_t PPS_RemapInput(volatile uint8_t pinno, volatile uint8_t *peripheral)
+ * @ingroup lib-layer-pral-functions-public-pps
  * @brief Assigns a pin to a digital function input
- * @param pinno: Number of the RPx-pin, which should be assigned to the function
- * @param peripheral: Function, which should be assigned to the pin
- * @return 1: Success
- * @return 0: Error
+ * @param uint8_t pinno: Number of the RPx-pin, which should be assigned to the function
+ * @param uint8_t *peripheral: Pointer to peripheral, which should be assigned to the pin
+ * @return 
+ *  unsigned integer 
+ *  1: Success
+ *  0: Error
  *
  * @details
  * Any RPx pin can be assigned to a supported digital function input (e.g. UART RxD). To assign 
@@ -156,8 +163,9 @@ volatile uint16_t PPS_RemapOutput(volatile uint8_t pinno, volatile uint8_t perip
  *
  *	smpsPPS_RemapInput([RP-NUMBER], [FUNCTION])
  * 
- * <b>Example:</b><br>
+ * @code{.c}
  *	lres |= smpsPPS_RemapInput(PIN_RP10, PPSIN_U1RX);		// Assign RP10 to UART1 RxD
+ * @endcode
  *
  * @see p33SMPS_pps.h, FOSC, IOL1WAY, IOL1WAY_ON, IOL1WAY_OFF, smpsPPS_LockIO, smpsPPS_UnlockIO, smpsPPS_RemapOutput, 
  *  smpsPPS_UnmapInput, smpsPPS_UnmapOutput
@@ -174,11 +182,14 @@ volatile uint16_t PPS_RemapInput(volatile uint8_t pinno, volatile uint8_t *perip
 }
 
 /*************************************************************************************************
- * @fn volatile uint16_t PPS_UnmapOutput(volatile uint8_t pinno)
- * @brief Disconnects a pin from a digital function output
- * @param pinno: Number of the RPx-pin
- * @return 1: Success
- * @return 0: Error
+ * @fn uint16_t PPS_UnmapOutput(volatile uint8_t pinno)
+ * @ingroup lib-layer-pral-functions-public-pps
+ * @brief   Disconnects a pin from a digital function output
+ * @param   uint8_t pinno: Number of the RPx-pin
+ * @return
+ *  unsigned integer  
+ *	1: Success
+ *  0: Error
  *
  * @details
  * An existing assignment between any RPx pin and a supported digital function output will be
@@ -186,8 +197,9 @@ volatile uint16_t PPS_RemapInput(volatile uint8_t pinno, volatile uint8_t *perip
  *
  *	smpsPPS_UnmapOutput([RP-NUMBER])
  * 
- * <b>Example:</b><br>
- *	result = smpsPPS_UnmapOutput(PIN_RP9);		// Dissolve RP9 assignment
+ * @code{.c}
+ *	lres |= smpsPPS_UnmapOutput(PIN_RP10);		// Dissolve RP10 assignment
+ * @endcode
  *
  * @see p33c_pps.h
  * 
@@ -203,11 +215,14 @@ volatile uint16_t PPS_UnmapOutput(volatile uint8_t pinno)
 }
 
 /*************************************************************************************************
- * @fn volatile uint16_t PPS_UnmapInput(volatile uint8_t *peripheral)
+ * @fn uint16_t PPS_UnmapInput(volatile uint8_t *peripheral)
+ * @ingroup lib-layer-pral-functions-public-pps
  * @brief  Disconnects a pin from a digital function input
- * @param pinno: Number of the RPx-pin
- * @return 1: Success
- * @return 0: Error
+ * @param uint8_t *peripheral: Pointer to peripheral, which should be assigned to the pin
+ * @return 
+ *  unsigned integer  
+ *	1: Success
+ *  0: Error
  *
  * @details
  * An existing assignment between any RPx pin and a supported digital function input will be
@@ -215,8 +230,9 @@ volatile uint16_t PPS_UnmapOutput(volatile uint8_t pinno)
  *
  *	smpsPPS_UnmapInput([RP-NUMBER])
  * 
- * <b>Example:</b><br>
+ * @code{.c}
  *	lres |= smpsPPS_UnmapInput(PIN_RP10);		// Dissolve RP10 assignment
+ * @endcode
  *
  * @see p33c_pps.h
  * 
@@ -231,5 +247,5 @@ volatile uint16_t PPS_UnmapInput(volatile uint8_t *peripheral)
 
 }
 
-/**@}*/
-// End Of File
+
+// end of file

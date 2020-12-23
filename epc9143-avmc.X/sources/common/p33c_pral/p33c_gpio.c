@@ -26,39 +26,38 @@
 #include <stddef.h> // include standard definition data types
 
 #include "p33c_gpio.h"
-/**
- * @ingroup lib-layer-pral-functions-public-gpio
- * @{ 
- */
+
 /*********************************************************************************
- * @fn volatile struct P33C_GPIO_INSTANCE_s* p33c_GpioInstance_GetHandle(volatile uint16_t gpio_Instance)
+ * @fn struct P33C_GPIO_INSTANCE_s* p33c_GpioInstance_GetHandle(volatile uint16_t gpioInstance)
+ * @ingroup lib-layer-pral-functions-public-gpio
  * @brief Gets pointer to GPIO Instance SFR set
- * @param pgInstance:   Index of the selected GPIO Instance (1=Port A, 2=Port B, etc.)
- * @return P33C_GPIO_INSTANCE_s: GPIO instance object of the selected GPIO instance
+ * @param uint16_t gpioInstance: Index of the selected GPIO Instance (1=Port A, 2=Port B, etc.)
+ * @return struct P33C_GPIO_INSTANCE_s: GPIO instance object of the selected GPIO instance
  *  
  * @details
- *      This function returns the pointer to a GPIO instance register set in 
+ *    This function returns the pointer to a GPIO instance register set in 
  *    Special Function Register memory space. This pointer can be used to directly
  *    write to/read from the Special Function Registers of a given peripheral
  *    instance.
  * 
  *********************************************************************************/
 
-volatile struct P33C_GPIO_INSTANCE_s* p33c_GpioInstance_GetHandle(volatile uint16_t gpio_Instance)
+volatile struct P33C_GPIO_INSTANCE_s* p33c_GpioInstance_GetHandle(volatile uint16_t gpioInstance)
 {
     volatile struct P33C_GPIO_INSTANCE_s* gpio;
     
     // Capture Handle: set pointer to memory address of desired GPIO instance
     gpio = (volatile struct P33C_GPIO_INSTANCE_s*) 
-        ((volatile uint8_t*) &ANSELA + (gpio_Instance * P33C_GPIO_SFR_OFFSET));
+        ((volatile uint8_t*) &ANSELA + (gpioInstance * P33C_GPIO_SFR_OFFSET));
     
     return(gpio);
 }
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_GpioInstance_Dispose(volatile uint16_t gpioInstance)
+ * @fn uint16_t p33c_GpioInstance_Dispose(volatile uint16_t gpioInstance)
+ * @ingroup lib-layer-pral-functions-public-gpio
  * @brief Resets all GPIO Instance registers to their RESET default values
- * @param void
+ * @param  uint16_t gpioInstance
  * @return 0 = failure, disposing GPIO instance was not successful
  * @return 1 = success, disposing GPIO instance was successful
  * 
@@ -85,9 +84,10 @@ volatile uint16_t p33c_GpioInstance_Dispose(volatile uint16_t gpioInstance)
 }
 
 /*********************************************************************************
- * @fn volatile struct P33C_GPIO_INSTANCE_s p33c_GpioInstance_ConfigRead(volatile uint16_t gpioInstance)
+ * @fn struct P33C_GPIO_INSTANCE_s p33c_GpioInstance_ConfigRead(volatile uint16_t gpioInstance)
+ * @ingroup lib-layer-pral-functions-public-gpio
  * @brief Read the current configuration from the GPIO instance registers  
- * @param void
+ * @param  uint16_t gpioInstance
  * @return 0 = failure, reading GPIO instance was not successful (returns NULL)
  * @return n = success, reading GPIO instance was successful (returns 16-bit wide pointer)
  * 
@@ -112,9 +112,11 @@ volatile struct P33C_GPIO_INSTANCE_s p33c_GpioInstance_ConfigRead(volatile uint1
 }
 
 /*********************************************************************************
- * @fn volatile uint16_t p33c_GpioInstance_ConfigWrite(volatile uint16_t gpioInstance,volatile struct P33C_GPIO_INSTANCE_s gpioConfig)
- * @brief Writes a user-defined configuration to the GPIO instance registers
- * @param void
+ * @fn uint16_t p33c_GpioInstance_ConfigWrite(volatile uint16_t gpioInstance,volatile struct P33C_GPIO_INSTANCE_s gpioConfig)
+ * @ingroup lib-layer-pral-functions-public-gpio
+ * @brief  Writes a user-defined configuration to the GPIO instance registers
+ * @param  uint16_t gpioInstance
+ * @param  struct P33C_GPIO_INSTANCE_s gpioConfig
  * @return 0 = failure, writing GPIO instance was not successful
  * @return 1 = success, writing GPIO instance was successful
  * 
@@ -145,19 +147,15 @@ volatile uint16_t p33c_GpioInstance_ConfigWrite(
     
 }
 
-/**@}*/
+
 /* ============================================================================== */
 /* ============================================================================== */
 /* ============================================================================== */
 
-/**
- * @ingroup lib-layer-pral-properties-private-gpio
- * @{ 
- */
 /*********************************************************************************
  * @var gpioConfigClear 
+ * @ingroup lib-layer-pral-properties-private-gpio
  * @brief Default RESET configuration of one GPIO instance SFRs
- * @param P33C_GPIO_INSTANCE_s GPIO Instance Special Function Register (SFR) set
  *
  * @details
  *   Default configuration of the GPIO instance SFRs with all its registers 
@@ -185,6 +183,5 @@ volatile struct P33C_GPIO_INSTANCE_s gpioConfigClear = {
         
     };
 
-/**@}*/
 
-// END OF FILE
+// end of file
