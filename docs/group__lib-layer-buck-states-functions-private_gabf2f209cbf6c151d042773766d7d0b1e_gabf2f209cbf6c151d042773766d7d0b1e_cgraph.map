@@ -1,0 +1,5 @@
+<map id="SubState_VRampUp" name="SubState_VRampUp">
+<area shape="rect" id="node1" title="This function ramps up the output voltage to its nominal regualtion point." alt="" coords="5,5,148,32"/>
+<area shape="rect" id="node2" href="$group__lib-layer-buck-config-functions-public_gaff06449235577b05c28639b3590f6b18.html#gaff06449235577b05c28639b3590f6b18" title="This function resumes the buck PWM operation." alt="" coords="196,5,335,32"/>
+<area shape="rect" id="node3" href="$group__lib-layer-pral-functions-public-pwm_ga55e525c7ac54a365ab6dad558ec17f0b.html#ga55e525c7ac54a365ab6dad558ec17f0b" title="Returns the PWM generator index." alt="" coords="383,5,593,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Oscillator Module (OSC)" name="Oscillator Module (OSC)">
+<area shape="rect" id="node1" title="Oscillator Module Special Function Register Abstraction Driver." alt="" coords="185,31,348,56"/>
+<area shape="rect" id="node2" href="$group__lib-layer-pral-properties-private-osc.html" title="Private properties of the OSC PRAL driver." alt="" coords="396,5,520,31"/>
+<area shape="rect" id="node4" href="$group__lib-layer-pral-functions-public-osc.html" title="Public functions of the OSC PRAL driver." alt="" coords="399,55,517,80"/>
+<area shape="rect" id="node3" href="$group__device-abstraction-pral.html" title=" " alt="" coords="5,16,137,71"/>
+</map>

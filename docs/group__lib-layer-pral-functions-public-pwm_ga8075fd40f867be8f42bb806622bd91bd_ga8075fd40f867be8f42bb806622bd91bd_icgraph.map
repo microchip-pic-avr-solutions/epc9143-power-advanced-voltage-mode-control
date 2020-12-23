@@ -1,0 +1,10 @@
+<map id="p33c_PwmModule_ConfigWrite" name="p33c_PwmModule_ConfigWrite">
+<area shape="rect" id="node1" title="Writes a user&#45;defined configuration to the PWM base module registers." alt="" coords="1133,63,1336,90"/>
+<area shape="rect" id="node2" href="$group__lib-layer-buck-config-functions-public_gab075da4956344ef5784a55311dccf5ef.html#gab075da4956344ef5784a55311dccf5ef" title="Initializes the buck PWM module by resetting its registers to default." alt="" coords="905,13,1083,39"/>
+<area shape="rect" id="node7" href="$group__lib-layer-pral-functions-public-pwm_ga74b71c6d4955b1553a13bd2a16bda73a.html#ga74b71c6d4955b1553a13bd2a16bda73a" title="Resets all PWM base module registers to their RESET default values." alt="" coords="903,63,1085,90"/>
+<area shape="rect" id="node8" href="$group__lib-layer-pral-functions-public-pwm_gac24b378de17cd1f040a2a562a3839084.html#gac24b378de17cd1f040a2a562a3839084" title="Initializes the PWM base module by resetting all its registers to default." alt="" coords="903,114,1085,141"/>
+<area shape="rect" id="node3" href="$group__lib-layer-buck-converter-functions-public_ga97eb8bdd17b9c2e169f0634ebabb5d19.html#ga97eb8bdd17b9c2e169f0634ebabb5d19" title="This function initializes all peripheral modules and their instances used by the power controller." alt="" coords="672,13,855,39"/>
+<area shape="rect" id="node4" href="$group__app-layer-power-control-functions-private_ga0b26acfec74d1804384b4ba1a3cffab4.html#ga0b26acfec74d1804384b4ba1a3cffab4" title="This function is used to load peripheral configuration templates from the power controller device dri..." alt="" coords="433,5,624,47"/>
+<area shape="rect" id="node5" href="$group__app-layer-power-control-functions-public_ga7a4cf6371d09457539f96a74b2809ca0.html#ga7a4cf6371d09457539f96a74b2809ca0" title="Calls the application layer power controller initialization." alt="" coords="212,13,385,39"/>
+<area shape="rect" id="node6" href="$group__user-task-initialization_ga2be64f5f0b9a2c0c6713f5a69d793e05.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" title="Initializes the user&#45;defined tasks." alt="" coords="5,13,164,39"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="drv_BuckConverter_Start" name="drv_BuckConverter_Start">
+<area shape="rect" id="node1" title="This function starts the buck converter." alt="" coords="5,31,169,57"/>
+<area shape="rect" id="node2" href="$group__lib-layer-buck-config-functions-public_gab089e35bcd5d68072aa53298ee276959.html#gab089e35bcd5d68072aa53298ee276959" title="This function enables the ADC module and starts the ADC cores analog inputs for the required input si..." alt="" coords="221,5,333,32"/>
+<area shape="rect" id="node3" href="$group__lib-layer-buck-config-functions-public_gab7e23719696d2148f9336ca604486db3.html#gab7e23719696d2148f9336ca604486db3" title="This function enables the buck PWM operation." alt="" coords="217,56,336,83"/>
+<area shape="rect" id="node4" href="$group__lib-layer-pral-functions-public-pwm_ga55e525c7ac54a365ab6dad558ec17f0b.html#ga55e525c7ac54a365ab6dad558ec17f0b" title="Returns the PWM generator index." alt="" coords="384,56,595,83"/>
+</map>
