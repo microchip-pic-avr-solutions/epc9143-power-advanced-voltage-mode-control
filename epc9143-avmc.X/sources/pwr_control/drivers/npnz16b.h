@@ -1,9 +1,9 @@
 /* *********************************************************************************
- * z-Domain Control Loop Designer, Version 0.9.12.642
+ * PowerSmart™ Digital Control Library Designer, Version 0.9.12.645
  * *********************************************************************************
  * Generic library header for z-domain compensation filter assembly functions
- * CGS Version: 3.0.0
- * CGS Date:    09/07/2020
+ * CGS Version: 3.0.1
+ * CGS Date:    12/16/2020
  * ********************************************************************************/
 // This is a guard condition so that contents of this file are not included
 // more than once.
@@ -16,25 +16,25 @@
 #include <stddef.h>                               // include standard definition data types
 #include <stdbool.h>                              // include standard boolean data types (true/false)
 
-/*@@DCLD_VERSION macro
+/*@@PSDCLD_VERSION macro
  * *************************************************************************************************
  * Summary:
  * Generic macro allowing to identify the file version of 'npnz16b.h'
  *
  * Description:
- * This version key represents the product version of DCLD as integer number
+ * This version key represents the product version of PS-DCLD as integer number
  * of the form [MAJOR][MINOR][REVISION] => version 0.9.3.xxx would be shown as 903.
  * User code can check if the file version is compliant with the proprietary user
  * code by using pre-compiler directives such as
  *
- * #if (__DCLD_VERSION > 908)
+ * #if (__PSDCLD_VERSION > 908)
  *  #pragma message "This code has not been tested with the recently included version of npnz16b.h"
  * #endif
  *
  * *************************************************************************************************/
 
-#ifndef __DCLD_VERSION
-  #define __DCLD_VERSION    912
+#ifndef __PSDCLD_VERSION
+    #define __PSDCLD_VERSION    912
 #endif
 
 /*@@NPNZ_STATUS_t data object

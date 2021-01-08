@@ -1,8 +1,8 @@
 ; **********************************************************************************
-;  SDK Version: z-Domain Control Loop Designer  v0.9.12.642
-;  CGS Version: Code Generator Script v3.0.0 (09/07/2020)
+;  SDK Version: PowerSmart™ Digital Control Library Designer v0.9.12.645
+;  CGS Version: Code Generator Script v3.0.1 (12/16/2020)
 ;  Author:      M91406
-;  Date/Time:   12/06/2020 15:02:37
+;  Date/Time:   01/07/2021 17:56:59
 ; **********************************************************************************
 ;  4P4Z Control Library File (Dual Bitshift-Scaling Mode)
 ; **********************************************************************************
@@ -18,7 +18,7 @@
     
 ;------------------------------------------------------------------------------
 ;include NPNZ16B_t data structure and global constants.
-    .include "./sources/pwr_control/drivers/npnz16b.inc" 
+    .include ".\sources\pwr_control\drivers\npnz16b.inc" ; include NPNZ16b_t object data structure value offsets and status flag labels
     
 ;------------------------------------------------------------------------------
 ;source code section.
