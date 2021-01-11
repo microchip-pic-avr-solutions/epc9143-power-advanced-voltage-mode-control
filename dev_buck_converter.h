@@ -19,7 +19,7 @@
  *  CLAIMS RELATED TO THE SOFTWARE WILL NOT EXCEED AMOUNT OF FEES, IF ANY,
  *  YOU PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
  *
- *  @file    app_buck_converter.h
+ *  @file    dev_buck_converter.h
  *  @brief   This file contains APIs to for the power control
  *
  *  @note
@@ -49,11 +49,9 @@
 
 #include "dev_buck_typedef.h"
 
-// ==============================================================================================
-// BUCK converter public function prototypes
-// ==============================================================================================
-
-// POWER CONVERTER FUNCTION API
+ // ==============================================================================================
+ // BUCK CONVERTER PUBLIC API FUNCTION CALL PROTOTYPES
+ // ==============================================================================================
 
 extern volatile uint16_t drv_BuckConverter_Initialize(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
 extern volatile uint16_t drv_BuckConverter_Execute(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
@@ -61,7 +59,6 @@ extern volatile uint16_t drv_BuckConverter_Start(volatile BUCK_POWER_CONTROLLER_
 extern volatile uint16_t drv_BuckConverter_Stop(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
 extern volatile uint16_t drv_BuckConverter_Suspend(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
 extern volatile uint16_t drv_BuckConverter_Resume(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-
 
 #endif	/* BUCK_CONVERTER_STATE_MACHINE_H */
 

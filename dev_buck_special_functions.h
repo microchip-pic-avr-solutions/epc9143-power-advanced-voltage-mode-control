@@ -20,29 +20,46 @@
  */
 
 /* 
- * File:   dev_buck_templates.h
- * Author: M91406
- * Comments: Peripheral Special Function Register Configuration Templates
+ * File:   
+ * Author: 
+ * Comments:
  * Revision history: 
- *   10/29/2020     1.0     initial release
  */
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef BUCK_CONVERTER_PERIPHERAL_CONFIGURATION_TEMPLATES_H
-#define	BUCK_CONVERTER_PERIPHERAL_CONFIGURATION_TEMPLATES_H
+#ifndef BUCK_CONVERTER_SPECIAL_FUNCTIONS_H
+#define	BUCK_CONVERTER_SPECIAL_FUNCTIONS_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h> // include standard integer data types
 #include <stdbool.h> // include standard boolean data types
 #include <stddef.h> // include standard definition data types
 
-#include "xc16_pral.h" // include peripheral register abstraction layer drivers
+/****************************************************************************************************
+ * @ingroup lib-layer-buck-specialfn-properties-public-data-types
+ * @enum    BUCK_SPECIAL_FUNCTIONS_e
+ * @brief   Enumeration of special function sub-states
+ * @details 
+ *  This enumeration provides labels for indices of the private array BuckConverterSpecialFunctions[].
+ *  External functions call special functions by calling the high level function 
+ *  drv_BuckConverter_SpecialFunctionExecute() by handing in a pointer to a power converter object
+ *  and the Special Function state to execute. This allows the extension of state machine to include 
+ *  Special Functions available.
+ **************************************************************************************************** */
+typedef enum BUCK_SPECIAL_FUNCTIONS_e 
+{
+    CS_OFSET_CALIBRATION    ///< Special Function Index of Current Sense Feedback Offset Calibration
+        
+} BUCK_SPECIAL_FUNCTIONS_t; // Enumeration of special function sub-states
 
-#include "templates/dev_buck_ptemp_pwm.h" // Include PWM configuration template header file
-#include "templates/dev_buck_ptemp_adc.h" // Include ADC configuration template header file
-#include "templates/dev_buck_ptemp_dac.h" // Include DAC configuration template header file
 
+/* PUBLIC FUNCTION CALL PROTOTYPES */
 
-#endif	/* BUCK_CONVERTER_PERIPHERAL_CONFIGURATION_TEMPLATES_H */
+extern volatile uint16_t drv_BuckConverter_SpecialFunctionExecute (
+                volatile struct BUCK_POWER_CONTROLLER_s * buckInstance, 
+                volatile enum BUCK_SPECIAL_FUNCTIONS_e specialFunction);
 
+#endif	/* BUCK_CONVERTER_SPECIAL_FUNCTIONS_H */
+
+// end of file

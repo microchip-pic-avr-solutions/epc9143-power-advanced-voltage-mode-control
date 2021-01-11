@@ -47,12 +47,11 @@
 #include <stdint.h> // include standard integer data types
 #include <stdbool.h> // include standard boolean data types
 
-// Buck converter state machine function pointer array
 extern volatile uint16_t (*BuckConverterRampUpSubStateMachine[])
-            (volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
+            (volatile struct BUCK_POWER_CONTROLLER_s *buckInstance); ///< Buck converter state machine function pointer array
 
-// Buck converter state machine function pointer array size
-extern volatile uint16_t BuckRampUpSubStateList_size;
+
+extern volatile uint16_t BuckRampUpSubStateList_size; ///< Buck converter state machine function pointer array size
 
 
 #endif	/* BUCK_CONVERTER_OPERATION_SUBSTATES_H */
