@@ -73,14 +73,14 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.status.bits.ready = false; // Clear Converter Ready flag
     buck.status.bits.adc_active = false; // Clear ADC STARTED flag
     buck.status.bits.pwm_active = false; // clear PWM STARTED flag
-//    buck.status.bits.power_source_detected = false; // Clear POWER SOURCE DETECTED flag // ToDo: remove
     buck.status.bits.cs_calib_complete = false; // Clear Current Sense Calibration flag
     buck.status.bits.fault_active = true; // Set global FAULT flag
     buck.status.bits.cs_calib_enable = BUCK_ISNS_OFFSET_CALIBRATION_ENABLE; // Topology current sensors need to be calibrated
     buck.status.bits.autorun = true;  // Allow the buck converter to run when cleared of faults
     buck.status.bits.enabled = false; // Disable buck converter
     buck.status.bits.suspend = true; // Set SUSPEND flag bit to keep power supply on hold until startup conditions are cleared
-
+    buck.status.bits.async_mode = false; // The power converter is starting up in synchronous mode
+    
     // Set Initial State Machine State
     buck.state_id.value = (uint32_t)BUCK_OPSTATE_INITIALIZE; // Reset Buck State Machine
     
@@ -103,10 +103,11 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.sw_node[0].gpio_instance = BUCK_PWM1_GPIO_INSTANCE;
     buck.sw_node[0].gpio_high = BUCK_PWM1_GPIO_PORT_PINH;
     buck.sw_node[0].gpio_low = BUCK_PWM1_GPIO_PORT_PINL;
-    buck.sw_node[0].master_period_enable = false; ///< Master time base is disabled, synchronization is established among PWM generators
+    buck.sw_node[0].master_period_enable = false; // Master time base is disabled, synchronization is established among PWM generators
 	buck.sw_node[0].high_resolution_enable = true;
+    buck.sw_node[0].sync_drive = true; // This topology is a synchronous buck converter
     buck.sw_node[0].period = BUCK_PWM_PERIOD;
-    buck.sw_node[0].phase = 0; ///< Master phase starts at timebase counot of =0
+    buck.sw_node[0].phase = 0; // Master phase starts at time-base count of =0
     buck.sw_node[0].duty_ratio_min = BUCK_PWM_DC_MIN;
     buck.sw_node[0].duty_ratio_init = BUCK_PWM_DC_MIN;
     buck.sw_node[0].duty_ratio_max = BUCK_PWM_DC_MAX;
