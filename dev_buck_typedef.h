@@ -167,14 +167,14 @@ typedef struct BUCK_CONVERTER_STATUS_s
         volatile unsigned :1;                   ///< Bit #3: (reserved)
         volatile bool cs_calib_complete :1;     ///< Bit #4: indicating that current sensor calibration has completed
         volatile bool fault_active :1;          ///< Bit #5: Flag bit indicating system is in enforced shut down mode (usually due to a fault condition)
-        volatile unsigned :1;                   ///< Bit #6: (reserved)
+        volatile bool suspend :1;               ///< Bit #6: Control bit to put the converter in suspend mode (turned off while ENABLE bit is still on)
         volatile bool busy :1;                  ///< Bit #7:  Flag bit indicating that the state machine is executing a process (e.g. startup-ramp)
 
         volatile bool cs_calib_enable :1;       ///< Bit #8:  Flag bit indicating that current sensors need to calibrated
-        volatile unsigned :1;                   ///< Bit #9:  (reserved)
+        volatile bool async_mode :1;            ///< Bit #9:  Control bit suspending the synchronous rectifier switch PWM channel
         volatile unsigned :1;                   ///< Bit #10: (reserved)
         volatile unsigned :1;                   ///< Bit #11: (reserved)
-        volatile bool suspend :1;               ///< Bit #12: Control bit to put the converter in suspend mode (turned off while ENABLE bit is still on)
+        volatile unsigned :1;                   ///< Bit #12: (reserved)
         volatile bool GO :1;                    ///< Bit #13: When set, the GO-bit fires up the power supply
         volatile bool autorun :1;               ///< Bit #14: Control bit determining if charger is starting automatically or on command (using the GO bit)
         volatile bool enabled :1;               ///< Bit #15: Control bit enabling/disabling the charger port
@@ -325,6 +325,7 @@ typedef struct BUCK_SWITCH_NODE_SETTINGS_s {
     volatile uint16_t gpio_low;             ///< GPIO port pin-number of PWMxL of the selected PWM generator
     volatile bool     master_period_enable; ///< Selecting MASTER or Individual period register
     volatile bool     high_resolution_enable; ///< Selecting if PWM module should use high-resolution mode 
+    volatile bool     sync_drive;           ///< Selecting if switch node is driven in synchronous or asnchronous mode
     volatile uint16_t period;               ///< Switching period
     volatile uint16_t phase;                ///< Switching signal phase-shift
     volatile uint16_t duty_ratio_init;      ///< Initial duty cycle when the PWM module is being turned on
@@ -352,7 +353,7 @@ typedef struct BUCK_SWITCH_NODE_SETTINGS_s {
 typedef struct BUCK_ADC_INPUT_SCALING_s {
     
     volatile int16_t factor; ///< Fractional scaling factor (range -1 ... 0.99969)
-    volatile int16_t scaler; ///< Feedback number scaler used for number normalization
+    volatile int16_t scaler; ///< Feedback bit-shift scaler used for number normalization
     volatile int16_t offset; ///< Signal offset as signed integer to be subtracted from ADC input
 
 } BUCK_ADC_INPUT_SCALING_t; ///< ADC input signal scaling = (ADCBUF - <offset>) * <factor> >> 2^<scaler>
@@ -409,7 +410,7 @@ typedef struct BUCK_GPIO_INSTANCE_s {
     volatile uint16_t port;     ///< GPIO port instance number (0=Port RA, 0=Port RB, 0=Port RC, etc.)
     volatile uint16_t pin;      ///< GPIO port pin number
     volatile uint16_t polarity; ///< Output polarity, where 0=ACTIVE HIGH, 1=ACTIVE_LOW
-    volatile uint16_t io_type;  ///< Input/Output definition (0=output, 1=input)
+    volatile uint16_t io_type;  ///< Input/Output definition (0=push-pull output, 1=input, 2=open-drain output)
 
 } BUCK_GPIO_INSTANCE_t; ///< GPIO instance of the converter control GPIO
 

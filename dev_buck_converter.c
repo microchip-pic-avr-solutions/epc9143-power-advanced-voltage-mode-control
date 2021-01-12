@@ -120,6 +120,7 @@ volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_POWER_CONTROLLE
         else
             buckInstance->state_id.value = (uint32_t)BUCK_OPSTATE_RESET;
         
+        // Call most recent state
         retval = BuckConverterStateMachine[buckInstance->state_id.bits.opstate_id](buckInstance);
         
         return((bool)(retval>0)); // Return

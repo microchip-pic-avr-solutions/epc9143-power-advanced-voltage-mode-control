@@ -218,6 +218,7 @@ volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckIns
     volatile uint16_t _i=0;
     volatile uint16_t timeout=0;
     volatile uint16_t pwm_Instance=0;
+    volatile uint16_t sync_sw_mask=0;
     volatile struct P33C_PWM_GENERATOR_s* pg;
 
     // Enable all PWM channels of the recent buck converter configuration
@@ -229,8 +230,8 @@ volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckIns
         // CAPTURE MEMORY ADDRESS OF GIVEN PWM GENERATOR INSTANCE
         pg = p33c_PwmGenerator_GetHandle(pwm_Instance);
 
-        pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN; // PWMxH/L Output Override Enable: PWM generator controls the PWMxH output pin
-        pg->PGxIOCONH.value &= ~(P33C_PGxIOCONH_PEN); // PWMxH/L Output Port Disable: PWM generator controls the PWMxH output pin
+        pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN_SYNC; // PWMxH/L Output Override Enable: PWM generator controls the PWMxH output pin
+        pg->PGxIOCONH.value &= ~(P33C_PGxIOCONH_PEN_SYNC); // PWMxH/L Output Port Disable: PWM generator controls the PWMxH output pin
 
         pg->PGxCONL.bits.ON = 1;  // PWM Generator Enable: PWM Generator is enabled
         pg->PGxSTAT.bits.UPDREQ = 1;  // Update all PWM timing registers
@@ -242,8 +243,17 @@ volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckIns
                 return(0);                                      // ... exit returning ERROR
         }
 
-        pg->PGxIOCONH.value |= P33C_PGxIOCONH_PEN; // PWMxH/L Output Port Enable: PWM generator controls the PWMxH output pin
+        // Select the control bits for either synchronous or asynchronous PWM drive
+        if (buckInstance->sw_node[_i].sync_drive)
+            sync_sw_mask = P33C_PGxIOCONH_PEN_SYNC;
+        else
+            sync_sw_mask = P33C_PGxIOCONH_PEN_ASYNC;
 
+        
+        // PWMxH/L Output Port Enable: PWM generator controls the PWMxH output pin
+        pg->PGxIOCONH.value |= sync_sw_mask; 
+
+        // Turn on PWM generator
         retval &= (volatile uint16_t)(pg->PGxCONL.bits.ON);
 
     }
@@ -282,8 +292,8 @@ volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInst
         // CAPTURE MEMORY ADDRESS OF GIVEN PWM GENERATOR INSTANCE
         pg = p33c_PwmGenerator_GetHandle(pwm_Instance);
 
-        pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN;  // PWMxH/L Output Override Enable
-        pg->PGxIOCONH.value &= ~(P33C_PGxIOCONH_PEN); // PWMxH/L Output Pint Control Disable
+        pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN_SYNC;  // PWMxH/L Output Override Enable
+        pg->PGxIOCONH.value &= ~(P33C_PGxIOCONH_PEN_SYNC); // PWMxH/L Output Pint Control Disable
         pg->PGxCONL.value &= ~(P33C_PGxCONL_PWM_ON);  // PWM Generator Disable
         pg->PGxDC.value = buckInstance->sw_node[_i].duty_ratio_min; // Reset Duty Cycle
         pg->PGxSTAT.value |= P33C_PGxSTAT_UPDREQ;     // Set the Update Request bit to update PWM timing
@@ -329,11 +339,11 @@ volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckI
         // CAPTURE MEMORY ADDRESS OF GIVEN PWM GENERATOR INSTANCE
         pg = p33c_PwmGenerator_GetHandle(pwm_Instance);
         
-        pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN; // PWMxH/L Output Override Enable
+        pg->PGxIOCONL.value |= P33C_PGxIOCONL_OVREN_SYNC; // PWMxH/L Output Override Enable
         pg->PGxDC.value = 0;  // Reset Duty Cycle
         pg->PGxSTAT.value |= P33C_PGxSTAT_UPDREQ; // Set the Update Request bit to update PWM timing
 
-        retval &= (bool)(pg->PGxIOCONL.value & P33C_PGxIOCONL_OVREN);
+        retval &= (bool)(pg->PGxIOCONL.value & P33C_PGxIOCONL_OVREN_SYNC);
 
     }
     
@@ -361,6 +371,7 @@ volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckIn
     volatile uint16_t retval=1;
     volatile uint16_t _i=0;
     volatile uint16_t pwm_Instance=0;
+    volatile uint16_t sync_sw_mask=0;
     volatile struct P33C_PWM_GENERATOR_s* pg;
 
     // Disable all PWM channels of the recent buck converter configuration
@@ -372,10 +383,17 @@ volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckIn
         // CAPTURE MEMORY ADDRESS OF GIVEN PWM GENERATOR INSTANCE
         pg = p33c_PwmGenerator_GetHandle(pwm_Instance);
     
+        // Select the control bits for either synchronous or asynchronous PWM drive
+        if ((buckInstance->sw_node[_i].sync_drive) || (buckInstance->status.bits.async_mode == false))
+            sync_sw_mask = P33C_PGxIOCONL_OVREN_SYNC;
+        else
+            sync_sw_mask = P33C_PGxIOCONL_OVREN_ASYNC;
+        
+        // Clear selected override bits
         pg->PGxSTAT.bits.UPDREQ = 1; // Set the Update Request bit to update PWM timing
-        pg->PGxIOCONL.value &= (volatile uint16_t)(~(P33C_PGxIOCONL_OVREN)); // PWMxH/L Output Override Disable
+        pg->PGxIOCONL.value &= (volatile uint16_t)(~(sync_sw_mask)); // PWMxH/L Output Override Disable
 
-        retval &= (uint16_t)((bool)(!(pg->PGxIOCONL.value & P33C_PGxIOCONL_OVREN)));
+        retval &= (uint16_t)((bool)(!(pg->PGxIOCONL.value & sync_sw_mask)));
 
     }
         
@@ -776,10 +794,16 @@ volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_
         gpio->LATx.value |= (0x0001 << buckGPIOInstance->pin); // Set pin bit in register
 
     // Set INPUT or OUTPUT in TRIS register
-    if(buckGPIOInstance->io_type == 0)
-        gpio->TRISx.value &= ~(0x0001 << buckGPIOInstance->pin); // Clear pin bit in register
-    else
+    if(buckGPIOInstance->io_type == 1)
         gpio->TRISx.value |= (0x0001 << buckGPIOInstance->pin); // Set pin bit in register
+    else 
+        gpio->TRISx.value &= ~(0x0001 << buckGPIOInstance->pin); // Clear pin bit in register
+
+    // Set Pin in Open Drain Configuration
+    if(buckGPIOInstance->io_type == 2)
+        gpio->ODCx.value |= (0x0001 << buckGPIOInstance->pin); // Set pin bit in register
+    else
+        gpio->ODCx.value &= ~(0x0001 << buckGPIOInstance->pin); // Clear pin bit in register
     
     // Set pin as DIGITAL IO
     gpio->ANSELx.value &= ~(0x0001 << buckGPIOInstance->pin); // Clear pin bit in register

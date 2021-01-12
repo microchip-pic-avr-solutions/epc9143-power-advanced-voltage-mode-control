@@ -446,12 +446,14 @@
  * @def P33C_PGxIOCONL_OVREN
  * @brief control bits in PGxIOCONL enabling/disabling the PWM output override
  */  
-#define P33C_PGxIOCONL_OVREN    0x3000  
+#define P33C_PGxIOCONL_OVREN_SYNC   0x3000  
+#define P33C_PGxIOCONL_OVREN_ASYNC  0x2000  
 /**
  * @def P33C_PGxIOCONH_PEN
  * @brief control bits in PGxIOCONH enabling/disabling the PWM outputs
  */  
-#define P33C_PGxIOCONH_PEN      0x000C  
+#define P33C_PGxIOCONH_PEN_SYNC     0x000C  
+#define P33C_PGxIOCONH_PEN_ASYNC    0x0008  
 /**
  * @def P33C_PGxSTAT_UPDREQ
  * @brief Control bit in PGxSTAT setting the Update Request bit
