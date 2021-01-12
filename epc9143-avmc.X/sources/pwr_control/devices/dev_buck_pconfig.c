@@ -794,10 +794,16 @@ volatile uint16_t buckGPIO_PrivateInitialize(volatile struct BUCK_GPIO_INSTANCE_
         gpio->LATx.value |= (0x0001 << buckGPIOInstance->pin); // Set pin bit in register
 
     // Set INPUT or OUTPUT in TRIS register
-    if(buckGPIOInstance->io_type == 0)
-        gpio->TRISx.value &= ~(0x0001 << buckGPIOInstance->pin); // Clear pin bit in register
-    else
+    if(buckGPIOInstance->io_type == 1)
         gpio->TRISx.value |= (0x0001 << buckGPIOInstance->pin); // Set pin bit in register
+    else 
+        gpio->TRISx.value &= ~(0x0001 << buckGPIOInstance->pin); // Clear pin bit in register
+
+    // Set Pin in Open Drain Configuration
+    if(buckGPIOInstance->io_type == 2)
+        gpio->ODCx.value |= (0x0001 << buckGPIOInstance->pin); // Set pin bit in register
+    else
+        gpio->ODCx.value &= ~(0x0001 << buckGPIOInstance->pin); // Clear pin bit in register
     
     // Set pin as DIGITAL IO
     gpio->ANSELx.value &= ~(0x0001 << buckGPIOInstance->pin); // Clear pin bit in register
