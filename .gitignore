@@ -22,6 +22,7 @@ docs/
 # Excluding Netbeans specific build directories and file types
 ~*.*
 .generated_files/
+.mchp_private/subtree/
 report/
 nbproject/build/
 nbproject/dist/
