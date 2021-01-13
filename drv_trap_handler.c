@@ -119,22 +119,21 @@ void DefaultTrapHandler(enum TRAP_ID_e trap_id) {
     traplog.trap_id = trap_id; // Capture Trap ID
     traplog.trap_count++; // Capture occurrence 
 
+    // These Nop()s can be used to place breakpoints 
+    // during debugging.
     Nop();
     Nop();
     Nop();
     Nop();
     Nop();
     Nop();
-    
-    // -------------------------------------------------
-    #ifdef __DEBUG
-//    while(1) {
-//        Nop();  // Use these NOPs to place breakpoint
-//        Nop();
-//        Nop();
-//    }
-    #endif
-    // -------------------------------------------------
+
+    // If the CPU RESET TRIGGER is enabled, reset CPU here
+    if (traplog.status.bits.cpu_reset_trigger)
+    {
+        traplog.reset_count++; // Capture RESET occurrence 
+        asm volatile ("RESET\n"); // Reset CPU
+    }
     
     return;
 }
