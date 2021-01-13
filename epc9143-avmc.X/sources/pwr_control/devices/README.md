@@ -13,7 +13,7 @@ Voltage and average current mode controlled single- and multiphase asynchronous 
 - [Introduction](#intro)
 - [Library Usage Guidelines](#lib_use)
 - [API Quick-Start Guide](#api_guide)
-- [API Public Data Object](#api_object)
+- [API Public Data Object](#api_objects)
 - [Buck Converter State Machine](#state_machine)
 - [History](#history)
 
@@ -59,7 +59,7 @@ Open *Sourcetree* Application
 * Click *Add* to open the Add Repository dialog
 
 Inside the Repository dialog
-* Enter *Remote Name* `subtree-buck`
+* Enter *Remote Name* `subrepo-buck`
 * Enter clone URL/path https://bitbucket.microchip.com/scm/mcu16asmpsl/subrepo-buck-converter.git
 * Under *Optional extended integration* → *Remote Account* select your user account
 * Click *OK* to close the dialog
@@ -72,30 +72,30 @@ Open Git Bash at root of target project repository and use the following command
 
 ##### Step 2) Cloning Subtree Repository
 
-Further using Git Bash use the subtree add command to clone the contents of this code library into the target project
+Further using Git Bash use the `subtree add` command to clone the contents of this code library into the target project
 
-* `$ git subtree add --squash --prefix=<code_library_target> subrepo-buck main`
+* `$ git subtree add --prefix=<code_library_target> subrepo-buck main --squash`
 
 with `<code_library_target>` = path to sub-folder within the target project directory structure this code library should be cloned to (e.g. my_project.X/sources/power_control/devices).
 
 #### 3) Pulling latest version from Library Repository
-When there is a new version of this code library is available, you can pull it by using the following command in the Git Bash:
+When a new version of this code library is available, you can pull it by using the `subtree pull` command in the Git Bash:
 
-`$ git pull --squash --prefix=<code_library_target> subtree-buck master`
+`$ git subtree pull --prefix=<code_library_target> subtree-buck main --squash`
 
-with `<code_library_target>` = path to sub-folder within the target project directory structure this code library should be cloned to (e.g. my_project.X/sources/power_control/devices).
+with `<code_library_target>` = path to sub-folder within the target project directory structure this code library has been cloned to (e.g. my_project.X/sources/fault_handler/drivers).
 
 #### 4) Pushing new version back to Library Repository
-When changes have been made to files of this code library, a new version can be pushed back to the library repository by using the following command in the Git Bash:
+When changes have been made to files of this code library, the new version can be pushed back to the library repository by using the `subtree push` command in the Git Bash:
 
-`$ git push --squash --prefix=<code_library_target> subtree-buck feature/version-update`
+`$ git subtree push --prefix=<code_library_target> subtree-buck feature/version-update --squash`
 
-with `<code_library_target>` = path to sub-folder within the target project directory structure this code library should be cloned to (e.g. my_project.X/sources/power_control/devices).
+with `<code_library_target>` = path to sub-folder within the target project directory structure this code library has been cloned to (e.g. my_project.X/sources/fault_handler/drivers).
 
 <span style="color:red">
-    Note:<br>
+    <u><b>Note:</b></u><br>
     Pushing directly to the library project 'main' or 'develop' branches may be prohibited. 
-    Hence, changes can only be pushed to feature branches. A Pull Request is required to review and merge changes to 'develop'. Once changes have been approved they may be merged into branch 'main' through another pull request. this new 'main' version can be tagged with a new version number, which then can be pulled into other target projects.
+    Hence, <i><u><b>changes can only be pushed to feature branches</b></u></i>. A Pull Request is required to review and merge changes to 'develop'. Once changes have been approved and merged int 'develop', they may be merged into branch 'main' and thus released as new version through another pull request. This new version of 'main' can be tagged with a new version number and pulled into target projects.
 </span>
 
 
@@ -145,8 +145,8 @@ The *BuckConverter Execute* function is executing the state machine managing the
 
 [[back](#startDoc)]
 
-<span id="api_object"> </span>
-#### API Public Data Object
+<span id="api_objects"> </span>
+#### API Public Data Objects
 
 The Buck Converter Data Object holds all configuration data of the user-defined buck converter, covering
 
