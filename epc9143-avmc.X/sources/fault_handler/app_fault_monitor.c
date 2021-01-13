@@ -66,10 +66,10 @@ volatile uint16_t appFaultMonitor_Execute(void)
     static bool pre_fault_active=false;
     
     // Call fault handler
-    retval &= drv_FaultCheck(&fltobj_BuckUVLO);
-    retval &= drv_FaultCheck(&fltobj_BuckOVLO);
-    retval &= drv_FaultCheck(&fltobj_BuckRegErr);
-    retval &= drv_FaultCheck(&fltobj_BuckOCP);
+    retval &= drv_FaultHandler_CheckObject(&fltobj_BuckUVLO);
+    retval &= drv_FaultHandler_CheckObject(&fltobj_BuckOVLO);
+    retval &= drv_FaultHandler_CheckObject(&fltobj_BuckRegErr);
+    retval &= drv_FaultHandler_CheckObject(&fltobj_BuckOCP);
 
     // Combine individual fault bits to a common fault indicator
     buck.status.bits.fault_active = (bool) (

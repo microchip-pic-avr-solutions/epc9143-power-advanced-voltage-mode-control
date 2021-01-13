@@ -261,7 +261,7 @@ typedef struct TRAPLOG_STATUS_s
 typedef struct TASK_INFO_s 
 {
     volatile uint16_t task_id; // Task ID of last executed task
-    volatile uint16_t fault_id;   // Fault ID causing a catastrophic fault event
+    volatile uint16_t fault_id; // Fault ID causing a catastrophic fault event
     volatile uint16_t op_mode; // Operating Mode ID of task manager
 
 } TASK_INFO_t;

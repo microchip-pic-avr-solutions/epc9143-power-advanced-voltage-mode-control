@@ -97,7 +97,7 @@ typedef struct FLT_OBJECT_STATUS_s{
 
 /**********************************************************************************
  * @struct FLT_COMPARE_OBJECT_s
- * @brief This data structure defines the fault compare status
+ * @brief This data structure defines the data object which will be monitored by the fault handler
  * @extends FAULT_OBJECT_s
  *********************************************************************************/
 
@@ -137,7 +137,7 @@ typedef struct FAULT_OBJECT_s {
     volatile struct FLT_EVENT_RESPONSE_s TripResponse;     ///< Settings defining the fault trip event
     volatile struct FLT_EVENT_RESPONSE_s RecoveryResponse; ///< Settings defining the fault recovery event
 
-} FAULT_OBJECT_t; // 
+} FAULT_OBJECT_t; ///< Generic fault object 
 
 /** @} */ // end of group
 
@@ -146,7 +146,7 @@ typedef struct FAULT_OBJECT_s {
 extern volatile struct FAULT_OBJECT_s fltObjectClear;
 
 // Public Function Prototypes
-extern volatile uint16_t drv_FaultCheck(volatile FAULT_OBJECT_t* fltobj);
+extern volatile uint16_t drv_FaultHandler_CheckObject(volatile struct FAULT_OBJECT_s* fltobj);
 
 #endif	/* FAULT_HANDLER_H */
 

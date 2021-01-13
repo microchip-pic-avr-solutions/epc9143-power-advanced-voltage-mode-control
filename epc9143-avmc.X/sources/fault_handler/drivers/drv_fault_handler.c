@@ -73,7 +73,7 @@ volatile struct FAULT_OBJECT_s fltObjectClear =
     };
 
 /*******************************************************************************
- * @fn	uint16_t drv_FaultCheck(volatile struct FAULT_OBJECT_s* fltObject)
+ * @fn	uint16_t drv_FaultHandler_CheckObject(volatile struct FAULT_OBJECT_s* fltObject)
  * @ingroup lib-layer-fault-functions-public
  * @param	struct FAULT_OBJECT_s* fltObject
  * @return 0=failure 
@@ -167,7 +167,7 @@ volatile struct FAULT_OBJECT_s fltObjectClear =
  * 
  *****************************************************************************/
 
-volatile uint16_t drv_FaultCheck(volatile struct FAULT_OBJECT_s* fltObject) {
+volatile uint16_t drv_FaultHandler_CheckObject(volatile struct FAULT_OBJECT_s* fltObject) {
 
     volatile uint16_t fres=1;
     volatile uint16_t source=0;
