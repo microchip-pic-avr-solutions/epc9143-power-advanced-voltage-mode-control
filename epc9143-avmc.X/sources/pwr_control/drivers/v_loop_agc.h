@@ -34,7 +34,7 @@
 
 // ADVANCED CONTROL FUNCTION DECLARATIONS
 
-extern void v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer to nPnZ data type object
+extern void __attribute__((near)) v_loop_AGCFactorUpdate(volatile NPNZ16b_t* controller); ///< Pointer to nPnZ data type object
                                                 // Calls the AGC Factor Modulation Function (Assembly)
 
 
