@@ -11,7 +11,7 @@
 *.elf
 
 # Excluding documentation output directories
-#docs/
+docs/
 
 # Excluding any executables
 *.exe
