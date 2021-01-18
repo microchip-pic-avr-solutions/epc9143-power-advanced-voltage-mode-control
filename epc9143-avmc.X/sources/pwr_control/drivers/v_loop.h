@@ -1,5 +1,5 @@
 /* *********************************************************************************
- * PowerSmart™ Digital Control Library Designer, Version 0.9.12.645
+ * PowerSmart™ Digital Control Library Designer, Version 0.9.12.657
  * *********************************************************************************
  * 4p4z controller function declarations and compensation filter coefficients
  * derived for following operating conditions:
@@ -9,14 +9,14 @@
  *  Sampling Frequency: 500000 Hz
  *  Fixed Point Format: Q15
  *  Scaling Mode:       3 - Dual Bit-Shift Scaling
- *  Input Gain:         0.208791208791209
+ *  Input Gain:         0.208791
  *
  * *********************************************************************************
- * CGS Version:         3.0.1
- * CGS Date:            12/16/2020
+ * CGS Version:         3.0.2
+ * CGS Date:            01/05/2021
  * *********************************************************************************
  * User:                M91406
- * Date/Time:           01/07/2021 17:56:59
+ * Date/Time:           01/18/2021 12:12:34
  * ********************************************************************************/
 
 // This is a guard condition so that contents of this file are not included
@@ -75,24 +75,24 @@ extern volatile struct NPNZ16b_s v_loop;          // user-controller data object
  * ******************************************************************************/
 
 // Initialization of v_loop controller object
-extern volatile uint16_t v_loop_Initialize(       // v_loop initialization function call
+extern volatile uint16_t __attribute__((near)) v_loop_Initialize( // v_loop initialization function call
         volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data type object
     );
 
 // Clears the 4P4Z controller output and error histories
-extern void v_loop_Reset(                         // v_loop reset function call (Assembly)
+extern void __attribute__((near)) v_loop_Reset(   // v_loop reset function call (Assembly)
         volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data type object
     );
 
 // Loads user-defined values into 4P4Z controller output and error histories
-extern void v_loop_Precharge(                     // v_loop history pre-charge function call (Assembly)
+extern void __attribute__((near)) v_loop_Precharge( // v_loop history pre-charge function call (Assembly)
         volatile struct NPNZ16b_s* controller,    // Pointer to NPNZ16b data type object
         volatile fractional ctrl_input,           // user-defined, constant error history value
         volatile fractional ctrl_output           // user-defined, constant control output history value
     );
 
 // Calls the v_loop control loop
-extern void v_loop_Update(                        // Calls the 4P4Z controller (Assembly)
+extern void __attribute__((near)) v_loop_Update(  // Calls the 4P4Z controller (Assembly)
         volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data type object
     );
 
@@ -100,7 +100,7 @@ extern void v_loop_Update(                        // Calls the 4P4Z controller (
 // THIS CONTROLLER IS USED FOR MEASUREMENTS OF THE PLANT TRANSFER FUNCTION ONLY.
 // THIS LOOP IS BY DEFAULT UNSTABLE AND ONLY WORKS UNDER STABLE TEST CONDITIONS
 // DO NOT USE THIS CONTROLLER TYPE FOR NORMAL OPERATION
-extern void v_loop_PTermUpdate(                   // Calls the P-Term controller (Assembly)
+extern void __attribute__((near)) v_loop_PTermUpdate( // Calls the P-Term controller (Assembly)
         volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data type object
     );
 

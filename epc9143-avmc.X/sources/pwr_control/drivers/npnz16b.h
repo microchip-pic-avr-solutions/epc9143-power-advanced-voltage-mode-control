@@ -1,9 +1,9 @@
 /* *********************************************************************************
- * PowerSmart™ Digital Control Library Designer, Version 0.9.12.645
+ * PowerSmart™ Digital Control Library Designer, Version 0.9.12.657
  * *********************************************************************************
  * Generic library header for z-domain compensation filter assembly functions
- * CGS Version: 3.0.1
- * CGS Date:    12/16/2020
+ * CGS Version: 3.0.2
+ * CGS Date:    01/05/2021
  * ********************************************************************************/
 // This is a guard condition so that contents of this file are not included
 // more than once.
@@ -289,29 +289,45 @@ typedef struct NPNZ_DATA_PROVIDERS_s{
 
 } __attribute__((packed)) NPNZ_DATA_PROVIDERS_t;  // Automated data provider pointers used to push most recent data points to user-defined variables
 
-/*@@NPNZ_CASCADE_TRG_t data object
+/*@@NPNZ_EXTENSION_HOOKS_t data object
  * *************************************************************************************************
  * Summary:
- * Cascaded Function Call Parameters
+ * User Extension Function Call Parameters
  *
  * Description:
- * The NPNZ_CASCADE_TRG_t data object holds all parameters required to perform cascaded
- * function call triggers. When enabled, the NPNZ controller can automatically call any
- * user-defined function after the execution of the control loop. This data object declares
- * a function pointer <ptrCascadedFunction> and one additional, 16-bit wide function parameter
- * <CascadedFunctionParam>.
+ * The NPNZ_EXTENSION_HOOKS_t data object holds all parameters required to call user-defined extension
+ * functions supporting advanced use cases, which are not covered by the standard functions provided.
+ * When enabled, the NPNZ controller can automatically call user-defined functions at specific points
+ * within the control loop execution flow. Each function pointer is supporting function calls with one
+ * additional, 16-bit wide function parameter for each extension call. These parameters can either be
+ * variables or pointers to variables including start addresses of user defined data structures.
  *
- * This feature is optional and needs to be enabled, configured and managed manually in
- * user code.
+ * Each extension function call is optional and needs to be enabled, configured and managed manually
+ * in user code.
  *
  * *************************************************************************************************/
 
-typedef struct NPNZ_CASCADE_TRG_s{
+typedef struct NPNZ_EXTENSION_HOOKS_s{
 
-    volatile uint16_t ptrCascadedFunction;        // Pointer to Function which should be called at the end of the control loop
-    volatile uint16_t CascadedFunctionParam;      // Parameter of function called (can be a pointer to a data structure)
+    volatile uint16_t ptrExtHookStartFunction;    // Pointer to Function which will be called at the beginning of the control loop
+    volatile uint16_t ExtHookStartFunctionParam;  // Parameter of function called (can be a variable or pointer to a data structure)
 
-} __attribute__((packed)) NPNZ_CASCADE_TRG_t;     // Function pointer and parameters used to build cascaded, daisy chained function sequences by calling an user-defined, external function at the end of the control loop execution
+    volatile uint16_t ptrExtHookSourceFunction;   // Pointer to Function which will be called after the source has been read and compensated
+    volatile uint16_t ExtHookSourceFunctionParam; // Parameter of function called (can be a variable or a pointer to a data structure)
+
+    volatile uint16_t ptrExtHookPreAntiWindupFunction; // Pointer to Function which will be called after the compensation filter computation is complete and before anti-windup clamping is applied
+    volatile uint16_t ExtHookPreAntiWindupFunctionParam; // Parameter of function called (can be a variable or a pointer to a data structure)
+
+    volatile uint16_t ptrExtHookTargetFunction;   // Pointer to Function which will be called before the most recent control output is written to target
+    volatile uint16_t ExtHookTargetFunctionParam; // Parameter of function called (can be a variable or a pointer to a data structure)
+
+    volatile uint16_t ptrExtHookStopFunction;     // Pointer to Function which is called at the end of the control loop but will be bypassed when the control loop is disabled
+    volatile uint16_t ExtHookStopFunctionParam;   // Parameter of function called (can be a variable or a pointer to a data structure)
+
+    volatile uint16_t ptrExtHookEndFunction;      // Pointer to Function which is called at the end of the control loop and will also be called when the control loop is disabled
+    volatile uint16_t ExtHookEndFunctionParam;    // Parameter of function called (can be a variable or a pointer to a data structure)
+
+} __attribute__((packed)) NPNZ_EXTENSION_HOOKS_t; // Function pointers and parameters used to tie in user-defined, external extension functions at specific points of the control loop execution
 
 /*@@NPNZ_GAIN_CONTROL_t data object
  * *************************************************************************************************
@@ -353,10 +369,14 @@ typedef struct NPNZ_GAIN_CONTROL_s{
 
 typedef struct NPNZ_USER_DATA_BUFFER_s{
 
-    volatile uint16_t usrParam1;                  // generic 16-bit wide, user-defined parameter #1 for advanced control options
-    volatile uint16_t usrParam2;                  // generic 16-bit wide, user-defined parameter #2 for advanced control options
-    volatile uint16_t usrParam3;                  // generic 16-bit wide, user-defined parameter #3 for advanced control options
-    volatile uint16_t usrParam4;                  // generic 16-bit wide, user-defined parameter #4 for advanced control options
+    volatile uint16_t usrParam0;                  // generic 16-bit wide, user-defined parameter #1 for advanced control options
+    volatile uint16_t usrParam1;                  // generic 16-bit wide, user-defined parameter #2 for advanced control options
+    volatile uint16_t usrParam2;                  // generic 16-bit wide, user-defined parameter #3 for advanced control options
+    volatile uint16_t usrParam3;                  // generic 16-bit wide, user-defined parameter #4 for advanced control options
+    volatile uint16_t usrParam4;                  // generic 16-bit wide, user-defined parameter #5 for advanced control options
+    volatile uint16_t usrParam5;                  // generic 16-bit wide, user-defined parameter #6 for advanced control options
+    volatile uint16_t usrParam6;                  // generic 16-bit wide, user-defined parameter #7 for advanced control options
+    volatile uint16_t usrParam7;                  // generic 16-bit wide, user-defined parameter #8 for advanced control options
 
 } __attribute__((packed)) NPNZ_USER_DATA_BUFFER_t; // Generic data buffer for undetermined use. These data buffers may be used by advanced control algorithms or be used by proprietary user code modules
 
@@ -379,11 +399,11 @@ typedef struct NPNZ16b_s {
     volatile struct NPNZ_STATUS_s status;         // Control Loop Status and Control flags
     volatile struct NPNZ_PORTS_s Ports;           // Controller input and output ports
     volatile struct NPNZ_FILTER_PARAMS_s Filter;  // Filter parameters such as pointer to history and coefficient arrays and number scaling
+    volatile struct NPNZ_GAIN_CONTROL_s GainControl; // Parameter section for advanced control options
     volatile struct NPNZ_LIMITS_s Limits;         // Input and output clamping values
     volatile struct NPNZ_ADC_TRGCTRL_s ADCTriggerControl; // Automatic ADC trigger placement options for ADC Trigger A and B
     volatile struct NPNZ_DATA_PROVIDERS_s DataProviders; // Automated data sources pushing recent data points to user-defined variables
-    volatile struct NPNZ_CASCADE_TRG_s CascadeTrigger; // Cascade triggers with parameters for next function call
-    volatile struct NPNZ_GAIN_CONTROL_s GainControl; // Parameter section for advanced control options
+    volatile struct NPNZ_EXTENSION_HOOKS_s ExtensionHooks; // User extension function triggers using function pointers with parameters
     volatile struct NPNZ_USER_DATA_BUFFER_s Advanced; // Parameter section for advanced user control options
 
 } __attribute__((packed)) NPNZ16b_t;              // Generic NPNZ16b Controller Object. This data structure is the main API data object providing single-point access to all controller settings and parameters

@@ -1,5 +1,5 @@
 /* *********************************************************************************
- * PowerSmart™ Digital Control Library Designer, Version 0.9.12.645
+ * PowerSmart™ Digital Control Library Designer, Version 0.9.12.657
  * *********************************************************************************
  * 4p4z controller function declarations and compensation filter coefficients
  * derived for following operating conditions:
@@ -9,14 +9,14 @@
  *  Sampling Frequency: 500000 Hz
  *  Fixed Point Format: Q15
  *  Scaling Mode:       3 - Dual Bit-Shift Scaling
- *  Input Gain:         0.208791208791209
+ *  Input Gain:         0.208791
  *
  * *********************************************************************************
- * CGS Version:         3.0.1
- * CGS Date:            12/16/2020
+ * CGS Version:         3.0.2
+ * CGS Date:            01/05/2021
  * *********************************************************************************
  * User:                M91406
- * Date/Time:           01/07/2021 17:56:59
+ * Date/Time:           01/18/2021 12:12:34
  * ********************************************************************************/
 
 #include "./pwr_control/drivers/v_loop.h"
@@ -52,7 +52,7 @@ volatile uint16_t v_loop_ErrorHistory_size = (sizeof(v_loop_histories.ErrorHisto
  *    fP1:    23800 Hz
  *    fP2:    217400 Hz
  *    fP3:    250000 Hz
- *    fZ1:    2800 Hz
+ *    fZ1:    2060 Hz
  *    fZ2:    8440 Hz
  *    fZ3:    25250 Hz
  *
@@ -70,22 +70,22 @@ volatile int32_t v_loop_ACoefficients [4] =
 
 volatile int32_t v_loop_BCoefficients [5] =
 {
-    0x00004672, // Coefficient B0 will be multiplied with error input e(n-0)
-    0x00008FF0, // Coefficient B1 will be multiplied with error input e(n-1)
-    0x0000E609, // Coefficient B2 will be multiplied with error input e(n-2)
-    0x00007023, // Coefficient B3 will be multiplied with error input e(n-3)
-    0x0000D397  // Coefficient B4 will be multiplied with error input e(n-4)
+    0x00002FA8, // Coefficient B0 will be multiplied with error input e(n-0)
+    0x0000B3C2, // Coefficient B1 will be multiplied with error input e(n-1)
+    0x0000EEB4, // Coefficient B2 will be multiplied with error input e(n-2)
+    0x00004C47, // Coefficient B3 will be multiplied with error input e(n-3)
+    0x0000E1AD  // Coefficient B4 will be multiplied with error input e(n-4)
 };
 
 // Coefficient normalization factors
 volatile int16_t v_loop_pre_scaler = 3;           // Bit-shift value used to perform input value normalization
 volatile int16_t v_loop_post_shift_A = -1;        // Bit-shift value A used to perform control output value backfward normalization
-volatile int16_t v_loop_post_shift_B = -1;        // Bit-shift value B used to perform control output value backfward normalization
+volatile int16_t v_loop_post_shift_B = -2;        // Bit-shift value B used to perform control output value backfward normalization
 volatile fractional v_loop_post_scaler = 0x0000;  // Q15 fractional factor used to perform control output value backfward normalization
 
 // P-Term Coefficient for Plant Measurements
-volatile int16_t v_loop_pterm_factor = 0x65D3;    // Q15 fractional of the Pterm factor
-volatile int16_t v_loop_pterm_scaler = 0xFFFF;    // Bit-shift scaler of the Pterm factor
+volatile int16_t v_loop_pterm_factor = 0x54D6;    // Q15 fractional of the Pterm factor
+volatile int16_t v_loop_pterm_scaler = 0x0000;    // Bit-shift scaler of the Pterm factor
 
 //Adaptive Gain Control Coefficient
 volatile int16_t v_loop_agc_factor_default = 0x7FFF; // Q15 fractional of the Pterm factor
