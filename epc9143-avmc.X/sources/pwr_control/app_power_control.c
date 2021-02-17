@@ -120,14 +120,20 @@ volatile uint16_t appPowerSupply_Execute(void)
     if((buck.state_id.bits.opstate_id >= BUCK_OPSTATE_RAMPUP) && 
        (buck.state_id.bits.substate_id >= BUCK_OPSTATE_V_RAMP_UP))
     {
+        // During and after startup, the dynamic compare object needs to be assigned to the correct source
         fltobj_BuckRegErr.ReferenceObject.ptrObject = buck.v_loop.controller->Ports.ptrControlReference;
+        
+        // Regulation Error and Over Current Protection fault objects only work if the converter is running
+        // Hence, they need to be enabled/disabled with the control loops
         #if (PLANT_MEASUREMENT == false)
         fltobj_BuckRegErr.Status.bits.Enabled = buck.v_loop.controller->status.bits.enabled;
+        fltobj_BuckOCP.Status.bits.Enabled = buck.v_loop.controller->status.bits.enabled;
         #endif
     }
     else 
     {
         fltobj_BuckRegErr.Status.bits.Enabled = false;
+        fltobj_BuckOCP.Status.bits.Enabled = false;
     }
     
     return(retval); 
