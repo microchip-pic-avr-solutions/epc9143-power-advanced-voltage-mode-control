@@ -6,15 +6,15 @@
 
 @details
  The main purpose or a hardware abstraction layer is to provide one central point 
- in complex firmware architectures where hardware dependencies can be speficied, 
- singal scalings can be defined and specific chip resources can be assigned to support/
+ in complex firmware architectures where hardware dependencies can be specified, 
+ signal scalings can be defined and specific chip resources can be assigned to support/
  connect generic software functions to the hardware. 
 
  This central definitions allow fast modifications and optimizations but also support 
  fast code migration between different hardware platforms. Thus, fast adaptation of new 
  hardware can be achieved by modifying this set of centralized definitions. 
 
- By ncluding a hardware abstraction header file in a project results in an automated 
+ By including a hardware abstraction header file in a project results in an automated 
  adaptation of all parameters available. To ensure no conflicts occur, each hardware 
  abstraction layer header file needs a unique identifier. This unique identifier is provided
  by the so-called Hardware Version ID.
@@ -222,7 +222,26 @@
 @ingroup phase-current-feedback
 @brief Device analog input pin, register and interrupt vector assignments of phase current feedback signal(s)
 */
+
+//Temperature Feedback Declarations
+/**
+@defgroup temperature-feedback Temperature Feedback
+@ingroup abstraction-layer
+@brief Declaration of temperature feedback parameters
  
+@defgroup temperature-feedback-settings User Settings
+@ingroup temperature-feedback
+@brief User-declaration of temperature feedback parameters using physical quantities
+
+@defgroup temperature-feedback-macros Conversion Macros
+@ingroup temperature-feedback
+@brief Conversion macros for user-declarations of temperature feedback parameters
+
+@defgroup temperature-feedback-mcal Microcontroller Abstraction
+@ingroup temperature-feedback
+@brief Device analog input pin, register and interrupt vector assignments of temperature feedback signal(s)
+*/
+
 //Adaptive Gain Control Declarations
 /**
 @defgroup adaptive-control Adaptive Gain Control Feed Forward 
