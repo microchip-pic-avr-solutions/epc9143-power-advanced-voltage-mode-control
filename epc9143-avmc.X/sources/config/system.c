@@ -65,14 +65,11 @@ volatile uint16_t sysUserPeriperhals_Initialize(void) {
     retval &= sysOpAmp_ModuleEnable(); // Enable the operational amplifier module
     
     // Initialize debugging Pins
-    #ifdef DBGPIN1_PIN
+    #if (DBGPIN1_ENABLE)
     DBGPIN1_Init(); ///< Device pin #1  (not routed)
     #endif
-    #ifdef DBGPIN2_PIN
+    #if (DBGPIN2_ENABLE)
     DBGPIN2_Init(); ///< Device pin #2  (not routed)
-    #endif
-    #ifdef DBGPIN3_PIN
-    DBGPIN3_Init(); ///< Device pin #25 (not routed)
     #endif
     
 	return(retval);
