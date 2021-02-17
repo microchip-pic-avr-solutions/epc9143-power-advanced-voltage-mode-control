@@ -211,7 +211,7 @@ volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTR
         }
 
         // Collect data samples
-        if (++calib_cs[_i].counter < CS_CALIB_STEPS)
+        if (calib_cs[_i].counter++ < CS_CALIB_STEPS)
         {
             calib_cs[_i].start = true; // Clear START flag bit
             calib_cs[_i].stop = false; // Clear STOP flag bit
