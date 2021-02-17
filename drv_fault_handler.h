@@ -54,7 +54,7 @@
  */
 /***********************************************************************************
  * @enum FLT_COMPARE_TYPE_e
- * @brief This data structure is comprise of fault comparison types
+ * @brief This data structure is comprised of fault comparison types
  * @extends FLT_OBJECT_STATUS_s
  *********************************************************************************/
 
