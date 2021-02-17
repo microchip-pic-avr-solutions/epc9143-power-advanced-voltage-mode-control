@@ -131,7 +131,6 @@
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
-      <itemPath>short_description</itemPath>
       <itemPath>sources/pwr_control/config/epc9143_r40_avmc.dcld</itemPath>
     </logicalFolder>
   </logicalFolder>
