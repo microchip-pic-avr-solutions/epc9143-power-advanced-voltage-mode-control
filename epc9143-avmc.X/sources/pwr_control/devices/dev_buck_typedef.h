@@ -410,7 +410,7 @@ typedef struct BUCK_GPIO_INSTANCE_s {
     volatile uint16_t port;     ///< GPIO port instance number (0=Port RA, 0=Port RB, 0=Port RC, etc.)
     volatile uint16_t pin;      ///< GPIO port pin number
     volatile uint16_t polarity; ///< Output polarity, where 0=ACTIVE HIGH, 1=ACTIVE_LOW
-    volatile uint16_t io_type;  ///< Input/Output definition (0=push-pull output, 1=input, 2=open-drain output)
+    volatile uint16_t io_type;  ///< Input/Output definition (0=push-pull output, 1=input, 2=open-drain output, 3=open drain input)
 
 } BUCK_GPIO_INSTANCE_t; ///< GPIO instance of the converter control GPIO
 
