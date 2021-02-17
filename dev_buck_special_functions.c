@@ -15,22 +15,23 @@
 #include "dev_buck_special_functions.h" // include buck converter special function defiition
 
 /***********************************************************************************
- * @ingroup lib-layer-buck-specialfn-properties-private-data-types
- * @struct CS_CALIBRATION_s
- * @brief  Current sense calibration data structure
+ * @ingroup lib-layer-buck-specialfn-properties-data-types
+ * @struct  CS_CALIBRATION_s
+ * @brief   Current sense calibration data structure
  **********************************************************************************/
-typedef struct CS_CALIBRATION_s 
+struct CS_CALIBRATION_s 
 {
     bool start;
     bool stop;
     volatile uint16_t counter;
     volatile uint32_t buffer;
-} CS_CALIBRATION_t;
+};
+typedef struct CS_CALIBRATION_s CS_CALIBRATION_t;
 
 /*********************************************************************************
- * @ingroup lib-layer-buck-specialfn-properties-private-variables
- * @var struct CS_CALIBRATION_s calib_cs[BUCK_MPHASE_COUNT]
- * @brief  Array of current sense calibration data objects of type CS_CALIBRATION_t
+ * @ingroup lib-layer-buck-specialfn-properties-variables
+ * @var     struct CS_CALIBRATION_s calib_cs[BUCK_MPHASE_COUNT]
+ * @brief   Array of current sense calibration data objects of type CS_CALIBRATION_t
  * @details
  *  The current sense feedback offset calibration requires a data space to 
  *  accumulate and average the static feedback offset value. The final result
@@ -44,10 +45,9 @@ typedef struct CS_CALIBRATION_s
 volatile struct CS_CALIBRATION_s calib_cs[BUCK_MPHASE_COUNT];
 
 /*********************************************************************************
- * @ingroup lib-layer-buck-specialfn-properties-private-defines
- * @def CS_CALIB_STEPS
- * @brief  Number of signal oversampling steps used to determine the calibration value
- *  
+ * @ingroup lib-layer-buck-specialfn-properties-defines
+ * @def     CS_CALIB_STEPS
+ * @brief   Number of signal oversampling steps used to determine the calibration value
  **********************************************************************************/
 // Current Sense
 #define CS_CALIB_STEPS  8
@@ -55,12 +55,12 @@ volatile struct CS_CALIBRATION_s calib_cs[BUCK_MPHASE_COUNT];
 
 // Private function prototypes of sub-state function calls
 
-volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance);
+volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_CONVERTER_s *buckInstance);
 
 /*******************************************************************************
- * @var *BuckConverterRampUpSubStateMachine[](volatile struct BUCK_POWER_CONTROLLER_s *buckInstance)
- * @ingroup lib-layer-buck-specialfn-properties-private-variables
- * @brief Function pointer list of all special function sub-state functions
+ * @var     BuckConverterSpecialFunctions[](volatile struct BUCK_CONVERTER_s *buckInstance)
+ * @ingroup lib-layer-buck-specialfn-properties-variables
+ * @brief   Function pointer list of all special function sub-state functions
  * @details
  * The function pointer list BuckConverterSpecialFunctions[] is providing public
  * access to a list of functions serving special purposes supporting specific 
@@ -71,7 +71,7 @@ volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTR
  * 
  * Each function needs to be called by handing over a parameter of type
  * 
- * - struct BUCK_POWER_CONTROLLER_s 
+ * - struct BUCK_CONVERTER_s 
  * 
  * Each function returns of type unsigned integer:
  * 
@@ -79,26 +79,25 @@ volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTR
  * - 1 = BUCK_OPSRET_COMPLETE
  * - 2 = BUCK_OPSRET_REPEAT
  * 
- * <b>Recently available Spacial Functions<b><br>
+ * <b>Recently available Special Functions<b><br>
  * 
  *  - Current Sense Feedback Offset Calibration
  * 
  *********************************************************************************/
 
-volatile uint16_t (*BuckConverterSpecialFunctions[])(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) = 
+volatile uint16_t (*BuckConverterSpecialFunctions[])
+                        (volatile struct BUCK_CONVERTER_s *buckInstance) = 
 {
     CurrentSenseOffsetCalibration ///< Function #0: Mutli-Cycle current sense feedbak offset calibration function 
 };
 
 
 /*********************************************************************************
- * @fn     uint16_t drv_BuckConverter_SpecialFunctionExecute(
- *                          volatile struct BUCK_POWER_CONTROLLER_s * buckInstance, 
- *                          volatile enum BUCK_SPECIAL_FUNCTIONS_e specialFunction)
- * @ingroup lib-layer-buck-specialfn-functions-public
+ * @fn volatile uint16_t drv_BuckConverter_SpecialFunctionExecute(volatile struct BUCK_CONVERTER_s * buckInstance, volatile enum BUCK_SPECIAL_FUNCTIONS_e specialFunction)
+ * @ingroup lib-layer-buck-specialfn-functions
  * @brief  This is the public function call access point to call dedicated special sub-functions
- * @param  struct BUCK_POWER_CONTROLLER_s * buckInstance
- * @param  enum BUCK_SPECIAL_FUNCTIONS_e function
+ * @param  buckInstance  Pointer to a Buck Converter data object of type struct BUCK_CONVERTER_s
+ * @param  specialFunction  Special function selection list of type enum BUCK_SPECIAL_FUNCTIONS_e 
  * @return 0 = BUCK_OPSRET_ERROR   
  * @return 1 = BUCK_OPSRET_COMPLETE
  * @return 2 = BUCK_OPSRET_REPEAT  
@@ -132,7 +131,7 @@ volatile uint16_t (*BuckConverterSpecialFunctions[])(volatile struct BUCK_POWER_
  **********************************************************************************/
 	
 volatile uint16_t drv_BuckConverter_SpecialFunctionExecute(
-        volatile struct BUCK_POWER_CONTROLLER_s * buckInstance, 
+        volatile struct BUCK_CONVERTER_s * buckInstance, 
         volatile enum BUCK_SPECIAL_FUNCTIONS_e specialFunction
         ) 
 {
@@ -154,16 +153,16 @@ volatile uint16_t drv_BuckConverter_SpecialFunctionExecute(
 
 } 
 
-/*******************************************************************************
+/* *****************************************************************************
  * PRIVATE FUNCTIONS
- ******************************************************************************/
+ * ****************************************************************************/
 
 /*******************************************************************************
- * @fn	   uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) 
- * @ingroup lib-layer-buck-specialfn-functions-private
- * @brief  Performs an offset calibration of the current sense feedback signal(s)
- * @param  struct BUCK_POWER_CONTROLLER_s *buckInstance
- * @return unsigned integer (0=failure, 1=success)
+ * @fn	    uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_CONVERTER_s *buckInstance) 
+ * @ingroup lib-layer-buck-specialfn-functions
+ * @brief   Performs an offset calibration of the current sense feedback signal(s)
+ * @param	buckInstance  Pointer to a Buck Converter data object of type struct BUCK_CONVERTER_s
+ * @return  unsigned integer (0=failure, 1=success)
  *  
  * @details
  * This function performs a current sense feedback channel zero-offset 
@@ -176,7 +175,7 @@ volatile uint16_t drv_BuckConverter_SpecialFunctionExecute(
  * the state machine to run.
  *********************************************************************************/
 
-volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTROLLER_s *buckInstance) 
+volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_CONVERTER_s *buckInstance) 
 {
     volatile uint16_t _i=0;
     volatile bool _complete=true;
@@ -211,7 +210,7 @@ volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTR
         }
 
         // Collect data samples
-        if (++calib_cs[_i].counter < CS_CALIB_STEPS)
+        if (calib_cs[_i].counter++ < CS_CALIB_STEPS)
         {
             calib_cs[_i].start = true; // Clear START flag bit
             calib_cs[_i].stop = false; // Clear STOP flag bit
@@ -233,11 +232,9 @@ volatile uint16_t CurrentSenseOffsetCalibration(volatile struct BUCK_POWER_CONTR
 
     // Return REPEAT until calibration is complete
     if (_complete)
-    { 
-        retval = (uint16_t)BUCK_OPSRET_COMPLETE;  // Return COMPLETE
-    }
+        retval = (uint16_t)BUCK_OPSRET_COMPLETE; // Return COMPLETE
     else
-    { retval = (uint16_t)BUCK_OPSRET_REPEAT; } // Return REPEAT
+        retval = (uint16_t)BUCK_OPSRET_REPEAT; // Return REPEAT
     
     return(retval);
     

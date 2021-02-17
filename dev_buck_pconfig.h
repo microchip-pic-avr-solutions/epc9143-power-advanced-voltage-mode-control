@@ -43,7 +43,7 @@
  * DEVICE GPIO INSTANCE CONFIGURATION
  * *******************************************************************************/
 
-extern volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
+extern volatile uint16_t buckGPIO_Initialize(volatile struct BUCK_CONVERTER_s* buckInstance);
 extern volatile uint16_t buckGPIO_Set(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance);
 extern volatile uint16_t buckGPIO_Clear(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance);
 extern volatile bool     buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE_s* buckGPIOInstance);
@@ -52,12 +52,12 @@ extern volatile bool     buckGPIO_GetPinState(volatile struct BUCK_GPIO_INSTANCE
  * HIGH SPEED PWM MODULE CONFIGURATION
  * *******************************************************************************/
     
-extern volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
-extern volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
-extern volatile uint16_t buckPWM_Start(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
-extern volatile uint16_t buckPWM_Stop(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
-extern volatile uint16_t buckPWM_Suspend(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
-extern volatile uint16_t buckPWM_Resume(volatile struct BUCK_POWER_CONTROLLER_s* buckInstance);
+extern volatile uint16_t buckPWM_ModuleInitialize(volatile struct BUCK_CONVERTER_s* buckInstance);
+extern volatile uint16_t buckPWM_ChannelInitialize(volatile struct BUCK_CONVERTER_s* buckInstance);
+extern volatile uint16_t buckPWM_Start(volatile struct BUCK_CONVERTER_s* buckInstance);
+extern volatile uint16_t buckPWM_Stop(volatile struct BUCK_CONVERTER_s* buckInstance);
+extern volatile uint16_t buckPWM_Suspend(volatile struct BUCK_CONVERTER_s* buckInstance);
+extern volatile uint16_t buckPWM_Resume(volatile struct BUCK_CONVERTER_s* buckInstance);
 
 extern volatile struct P33C_PWM_MODULE_s buckPwmModuleConfig;
 extern volatile struct P33C_PWM_GENERATOR_s buckPwmGeneratorConfig;

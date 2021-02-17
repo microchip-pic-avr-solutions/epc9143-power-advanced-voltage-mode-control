@@ -33,7 +33,7 @@
 /* 
  * File:   dev_buck_typedef.h
  * Author: M91406
- * Comments: Type definitions for the multiphase BUCK converter data object
+ * Comments: Type definitions of single- and multiphase Buck Converter data object
  * Revision history: 
  * 1.0  initial release
  * 1.1  restructured phase arrays in data object to optimize code execution and stay with unified API
@@ -50,44 +50,53 @@
 #include <stdbool.h> // include standard boolean data types (true/false)
 #include <stddef.h> // include standard definition data types
 
-#include "pwr_control/drivers/npnz16b.h"
+#include "power_control/drivers/npnz16b.h"
 #include "config/hal.h"
 
 
-/**
+/****************************************************************************************************
  * @ingroup lib-layer-buck-converter-properties-public-defines
- * @{
- */
-#define BUCK_MPHASE_COUNT                BUCK_NO_OF_PHASES
+ * @def     BUCK_MPHASE_COUNT
+ * @brief   Declaration of the number of power train phases of the Buck Converter
+ **************************************************************************************************** */
+#define BUCK_MPHASE_COUNT           BUCK_NO_OF_PHASES
 
 // Controller Status Bits
-#define BUCK_STAT_READY                  0b0000000000000001
-#define BUCK_STAT_ADC_ACTIVE             0b0000000000000010
-#define BUCK_STAT_PWM_ACTIVE             0b0000000000000100
-#define BUCK_STAT_POWERSOURCE_DETECTED   0b0000000000001000
-#define BUCK_STAT_CS_SENSE_READY         0b0000000000010000
+/****************************************************************************************************
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @enum    BUCK_STATUS_FLAGS_e
+ * @brief   Enumeration of status and control flags
+ * @extends BUCK_CONVERTER_CONSTANTS_s
+ **************************************************************************************************** */
+enum BUCK_STATUS_FLAGS_e 
+{  
+    BUCK_STAT_READY                = 0b0000000000000001,
+    BUCK_STAT_ADC_ACTIVE           = 0b0000000000000010,
+    BUCK_STAT_PWM_ACTIVE           = 0b0000000000000100,
+    BUCK_STAT_POWERSOURCE_DETECTED = 0b0000000000001000,
+    BUCK_STAT_CS_SENSE_READY       = 0b0000000000010000,
     
-#define BUCK_STAT_FORCED_SHUT_DOWN       0b0000000010000000
-#define BUCK_STAT_BUSY                   0b0000000100000000
+    BUCK_STAT_FORCED_SHUT_DOWN     = 0b0000000010000000,
+    BUCK_STAT_BUSY                 = 0b0000000100000000,
 
 // Controller Control Bits
-#define BUCK_STAT_GO                     0b0010000000000000
-#define BUCK_STAT_AUTORUN                0b0100000000000000
-#define BUCK_STAT_NO_AUTORUN             0b0000000000000000
+    BUCK_STAT_GO                   = 0b0010000000000000,
+    BUCK_STAT_AUTORUN              = 0b0100000000000000,
+    BUCK_STAT_NO_AUTORUN           = 0b0000000000000000,
+    
+    BUCK_STAT_ENABLED              = 0b1000000000000000,
+    BUCK_STAT_DISABLED             = 0b0000000000000000
+}; ///< Enumeration of all status and control flags of the Buck Converter status word
+typedef enum BUCK_STATUS_FLAGS_e BUCK_STATUS_FLAGS_t;
 
-#define BUCK_STAT_ENABLED                0b1000000000000000
-#define BUCK_STAT_DISABLED               0b0000000000000000
-/**@}*/
-
-/**
- * @ingroup lib-layer-buck-converter-properties-public-data-types
- * @{
- */
 /****************************************************************************************************
- * @enum BUCK_OPSTATES_e
- * @brief  Enumeration of state machine operating states 
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @enum    BUCK_OPSTATES_e
+ * @brief   Enumeration of state machine operating states 
+ * @extends BUCK_STATE_ID_s
+ * @extends BUCK_CONVERTER_CONSTANTS_s
  **************************************************************************************************** */
-typedef enum BUCK_OPSTATES_e {  
+enum BUCK_OPSTATES_e {  
     
     BUCK_OPSTATE_ERROR          = 0x00,  ///< power converter control state #0: in case of an error, state machine will reset to RESET
     BUCK_OPSTATE_INITIALIZE     = 0x01,  ///< power converter control state #1: initialize variables and hijack controller reference
@@ -96,14 +105,17 @@ typedef enum BUCK_OPSTATES_e {
     BUCK_OPSTATE_RAMPUP         = 0x04,  ///< power converter control state #4: Startup handler sub-state machine
     BUCK_OPSTATE_ONLINE         = 0x05   ///< power converter control state #5: Output in regulation and power is OK (normal continuous operation)
         
-} BUCK_OPSTATE_t; // Enumeration of state machine operating states 
-
+}; ///< Enumeration of state machine operating states 
+typedef enum BUCK_OPSTATES_e BUCK_OPSTATE_t; ///< Enumeration of state machine operating states
 
 /****************************************************************************************************
- * @enum BUCK_SUBSTATES_e
- * @brief Enumeration of state machine operating sub-states 
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @enum    BUCK_SUBSTATES_e
+ * @brief   Enumeration of state machine operating sub-states 
+ * @extends BUCK_STATE_ID_s
+ * @extends BUCK_CONVERTER_CONSTANTS_s
  **************************************************************************************************** */
-typedef enum BUCK_SUBSTATES_e {  // Enumeration of state machine operating sub-states
+enum BUCK_SUBSTATES_e {  // Enumeration of state machine operating sub-states
 
     BUCK_OPSTATE_POWER_ON_DELAY = 0x00,  ///< power converter control state #3: power on delay (no action)
     BUCK_OPSTATE_PREPARE_V_RAMP = 0x01,  ///< power converter control state #4: turn on PWM outputs and enable controller
@@ -111,35 +123,67 @@ typedef enum BUCK_SUBSTATES_e {  // Enumeration of state machine operating sub-s
     BUCK_OPSTATE_I_RAMP_UP      = 0x03,  ///< power converter control state #6: perform output current ramp up based on parameters and system response (average current mode only)
     BUCK_OPSTATE_PWRGOOD_DELAY  = 0x04   ///< power converter control state #7: Output reached regulation point but waits until things have settled
     
-} BUCK_OP_SUBSTATES_t; // Enumeration of state machine operating sub-states 
+}; ///< Enumeration of state machine operating sub-states 
+typedef enum BUCK_SUBSTATES_e BUCK_OP_SUBSTATES_t; ///< Enumeration of state machine operating sub-states data type
 
 /****************************************************************************************************
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
  * @enum BUCK_OPSTATE_RETURNS_e
  * @brief Enumeration of state machine operating state return values
+ * @extends BUCK_CONVERTER_CONSTANTS_s
  **************************************************************************************************** */
-typedef enum BUCK_OPSTATE_RETURNS_e {  // Enumeration of state machine operating state return values
+enum BUCK_OPSTATE_RETURNS_e {  // Enumeration of state machine operating state return values
     
     BUCK_OPSRET_ERROR           = 0x0000,  ///< power converter state return #0: internal error occurred
     BUCK_OPSRET_COMPLETE        = 0x0001,  ///< power converter state return #1: operation state has completed
     BUCK_OPSRET_REPEAT          = 0x0002   ///< power converter state return #2: operation state is in progress and needs to be recalled
         
-} BUCK_OPSTATE_RETURNS_t; // Enumeration of state machine operating state return values
+}; // Enumeration of state machine operating state return values
+typedef enum BUCK_OPSTATE_RETURNS_e BUCK_OPSTATE_RETURNS_t; // State Machine Operating State Return Values
 
 /****************************************************************************************************
- * @enum BUCK_CONTROL_MODE_e
- * @brief  Enumeration of the power supply mode control
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @enum    BUCK_CONTROL_MODE_e
+ * @brief   Enumeration of the power supply mode control
+ * @extends BUCK_CONVERTER_SETTINGS_s
+ * @extends BUCK_CONVERTER_CONSTANTS_s
  **************************************************************************************************** */
-typedef enum {
+enum BUCK_CONTROL_MODE_e{
     
     BUCK_CONTROL_MODE_VMC = 0,              ///< Voltage Mode Control
 //    BUCK_CONTROL_MODE_PCMC = 1,           // Peak Current Mode Control (not supported yet)
     BUCK_CONTROL_MODE_ACMC = 2              ///< Average Current Mode Control
         
-} BUCK_CONTROL_MODE_e;
+}; ///< Buck Converter Control Modes
+typedef enum BUCK_CONTROL_MODE_e BUCK_CONTROL_MODE_t; ///< Buck Converter Control Modes data type
+
+/****************************************************************************************************
+ * @ingroup lib-layer-buck-converter-properties-public-data-types
+ * @struct  BUCK_CONVERTER_CONSTANTS_s
+ * @brief   Structure providing all public enumerated lists of constants 
+ **************************************************************************************************** */
+struct BUCK_CONVERTER_CONSTANTS_s
+{
+    volatile enum BUCK_STATUS_FLAGS_e StatusFlags; ///< List of all status and control flags of the Buck Converter status word
+    volatile enum BUCK_OPSTATES_e OpStateOpCodes;  ///< List of State Machine Operating State IDs
+    volatile enum BUCK_SUBSTATES_e SubStateOpCodes;  ///< List of State Machine Sub-State IDs
+    volatile enum BUCK_OPSTATE_RETURNS_e OpStateReturnValues;  ///< List of State Machine Operating State Return Values
+    volatile enum BUCK_CONTROL_MODE_e ControlModes;  ///< List of Supported Control Modes
+};
+typedef struct BUCK_CONVERTER_CONSTANTS_s BUCK_CONVERTER_CONSTANTS_t;
+
+/****************************************************************************************************
+ * @ingroup lib-layer-buck-converter-properties-public-variables
+ * @var     BuckConverterConstants
+ * @brief   Structure providing all public enumerated lists of constants 
+ **************************************************************************************************** */
+extern volatile struct BUCK_CONVERTER_CONSTANTS_s BuckConverterConstants;
 
 /*****************************************************************************************************
- *  @struct BUCK_CONVERTER_STATUS_s
- *  @brief Generic power controller status word
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @struct BUCK_CONVERTER_STATUS_s
+ * @brief Generic power controller status word
+ * @extends BUCK_CONVERTER_s
  * 
  * @details
  * The power controller status/control word contains status (low-byte) and control bits (high-byte). 
@@ -148,7 +192,7 @@ typedef enum {
  *      - PWM_STARTED: PWM is active and running generating ADC triggers (read only)
  *      - POWERSOURCE_DETECTED: A valid power source has been detected allowing the converter to run (read only)
  *      - CS_READ: Current sense feedback ready (read only)
- *      - FORCED_SHUT_DOWN: Control(Status bit for external sowftware components forcing the converter to stay off
+ *      - FORCED_SHUT_DOWN: Control(Status bit for external software components forcing the converter to stay off
  *      - BUSY: Converter is currently going through an internal process (e.g. ramp up/down) (read only)
  *      
  * -# Control Bits
@@ -157,7 +201,7 @@ typedef enum {
  *      - GO: Control bit to manually start the power converter if (AUTOSTART=0)
  *  
  **************************************************************************************************** */
-typedef struct BUCK_CONVERTER_STATUS_s
+struct BUCK_CONVERTER_STATUS_s
 {
     union {
     struct{
@@ -182,14 +226,16 @@ typedef struct BUCK_CONVERTER_STATUS_s
 
 	volatile uint16_t value; // buffer for 16-bit word read/write operations
     };
-    
-} BUCK_CONVERTER_STATUS_t;
+}; // Buck Converter Status & Control word
+typedef struct BUCK_CONVERTER_STATUS_s BUCK_CONVERTER_STATUS_t; // Buck Converter Status & Control word data type
 
 /****************************************************************************************************
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
  * @struct BUCK_STATE_ID_s 
  * @brief data structure for the buck statement ID for sub-operating and operating states 
+ * @extends BUCK_CONVERTER_s
  **************************************************************************************************** */
-typedef struct BUCK_STATE_ID_s 
+struct BUCK_STATE_ID_s 
 {
     union {
     struct { 
@@ -198,12 +244,14 @@ typedef struct BUCK_STATE_ID_s
     } bits;
     volatile uint32_t value; // full state ID value access to main and sub-state machine state
     };
-    
-} BUCK_STATE_ID_t;
+}; // Buck Converter State Machine operating state ID
+typedef struct BUCK_STATE_ID_s BUCK_STATE_ID_t;  // Buck Converter State Machine operating state ID data type
 
 /****************************************************************************************************
- * @struct BUCK_STARTUP_SETTINGS_s
- * @brief Generic power controller startup settings
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @struct  BUCK_STARTUP_PERIOD_HANDLER_s
+ * @brief   Generic power controller startup period settings
+ * @extends BUCK_CONVERTER_STARTUP_s
  * 
  * @details
  * This data structure is used to set the startup settings such as power on delay, power good delay
@@ -212,41 +260,40 @@ typedef struct BUCK_STATE_ID_s
  * accessible for external code modules for monitoring, diagnostics and fault handling purposes.
  * 
  **************************************************************************************************** */
-typedef struct BUCK_STARTUP_PERIOD_HANDLER_s {
+struct BUCK_STARTUP_PERIOD_HANDLER_s {
     
     volatile uint16_t counter;      ///< Soft-Start Execution Counter (read only)
     volatile uint16_t period;       ///< Soft-Start Period (POD, RAMP PERIOD, PGD, etc.)
     volatile uint16_t reference;    ///< Internal dummy reference used to increment/decrement controller reference
     volatile uint16_t ref_inc_step; ///< Size/value of one reference increment/decrement or this period
     
-} BUCK_STARTUP_PERIOD_HANDLER_t; // Power converter soft-start auxiliary variables
-
+}; // Power converter soft-start auxiliary variables
+typedef struct BUCK_STARTUP_PERIOD_HANDLER_s BUCK_STARTUP_PERIOD_HANDLER_t; // Power converter soft-start auxiliary variables data types
 
 /****************************************************************************************************
- * @struct BUCK_CONVERTER_STARTUP_s
- * @brief 
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @struct  BUCK_CONVERTER_STARTUP_s
+ * @brief   Power Converter Startup Timing Settings
+ * @extends BUCK_CONVERTER_s
  * *************************************************************************************************** */
- 
-typedef struct BUCK_CONVERTER_STARTUP_s {
+ struct BUCK_CONVERTER_STARTUP_s {
     
     volatile struct BUCK_STARTUP_PERIOD_HANDLER_s power_on_delay;
     volatile struct BUCK_STARTUP_PERIOD_HANDLER_s power_good_delay;
     volatile struct BUCK_STARTUP_PERIOD_HANDLER_s i_ramp;
     volatile struct BUCK_STARTUP_PERIOD_HANDLER_s v_ramp;
     
-} BUCK_CONVERTER_STARTUP_t; // Power converter start-up settings and variables
-
-// ==============================================================================================
-// BUCK converter runtime data object 
-// ==============================================================================================
-
+}; // Power converter start-up settings and variables
+typedef struct BUCK_CONVERTER_STARTUP_s  BUCK_CONVERTER_STARTUP_t; // Power converter start-up settings and variables data type
 
 /****************************************************************************************************
- * @struct BUCK_CONVERTER_DATA_s
- * @brief 
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @struct  BUCK_CONVERTER_DATA_s
+ * @brief   Publicly accessible data buffer of most recent runtime data values
+ * @extends BUCK_CONVERTER_s
  * 
  **************************************************************************************************** */
-typedef struct BUCK_CONVERTER_DATA_s {
+struct BUCK_CONVERTER_DATA_s {
     
     volatile uint16_t i_sns[BUCK_MPHASE_COUNT];     ///< BUCK output current
     volatile uint16_t i_out;                        ///< BUCK common output current
@@ -258,30 +305,36 @@ typedef struct BUCK_CONVERTER_DATA_s {
     volatile uint16_t control_error;                ///< BUCK most recent control error value
     volatile uint16_t control_output;               ///< BUCK most recent control output value
     
-}BUCK_CONVERTER_DATA_t;         // BUCK runtime data
+}; // BUCK runtime data buffer
+typedef struct BUCK_CONVERTER_DATA_s BUCK_CONVERTER_DATA_t; // BUCK runtime data buffer data type
 
 /****************************************************************************************************
- * @struct BUCK_CONVERTER_CONTROL_s
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @struct BUCK_CONVERTER_SETTINGS_s
  * @brief Generic power controller control settings
+ * @extends BUCK_CONVERTER_s
  * 
  * @details
  * This data structure is used to set the overall settings to allow external software instances 
  * to control the power control object, such as voltage and current references.
  *  
  **************************************************************************************************** */
-typedef struct BUCK_CONVERTER_SETTINGS_s {
+struct BUCK_CONVERTER_SETTINGS_s {
     
-    volatile BUCK_CONTROL_MODE_e control_mode;  ///< Fundamental control mode 
+    volatile enum BUCK_CONTROL_MODE_e control_mode;  ///< Fundamental control mode 
     volatile uint16_t no_of_phases;             ///< number of converter phases
     volatile uint16_t v_ref;                    ///< User reference setting used to control the power converter controller
     volatile uint16_t i_ref;                    ///< User reference setting used to control the power converter controller
+    volatile uint16_t i_ref_startup;            ///< User setting of the initial current reference at startup (used to limit startup currents)
     
-} BUCK_CONVERTER_SETTINGS_t;  ///> Buck converter main settings
-
+};  ///> Buck converter main settings
+typedef struct BUCK_CONVERTER_SETTINGS_s BUCK_CONVERTER_SETTINGS_t;  ///> Buck converter main settings
 
 /****************************************************************************************************
- * @struct BUCK_LOOP_SETTINGS_s
- * @brief Generic power control loop settings
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @struct  BUCK_LOOP_SETTINGS_s
+ * @brief   Generic power control loop settings
+ * @extends BUCK_CONVERTER_s
  * 
  * @details
  * This data structure is used to set the control loop settings such as pointers to controller 
@@ -289,7 +342,7 @@ typedef struct BUCK_CONVERTER_SETTINGS_s {
  * signal offsets, trigger delays and minimum/maximum output clamping values.
  * 
  * *************************************************************************************************** */
-typedef struct BUCK_LOOP_SETTINGS_s {
+struct BUCK_LOOP_SETTINGS_s {
     
     // Properties (user settings)
     volatile uint16_t reference;            ///< Control loop reference variable
@@ -305,11 +358,14 @@ typedef struct BUCK_LOOP_SETTINGS_s {
     void (*ctrl_Update)(volatile struct NPNZ16b_s*); ///< Function pointer to UPDATE routine
     void (*ctrl_Precharge)(volatile struct NPNZ16b_s*, volatile fractional, volatile fractional); ///< Function pointer to PRECHARGE routine
     
-} BUCK_LOOP_SETTINGS_t; ///< User defined settings for control loops; 
+}; ///< User defined settings for control loops; 
+typedef struct BUCK_LOOP_SETTINGS_s BUCK_LOOP_SETTINGS_t; ///< User defined settings for control loops data type
 
 /****************************************************************************************************
- * @struct BUCK_SWITCH_NODE_SETTINGS_s
- * @brief Generic power converter switch-node specifications
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @struct  BUCK_SWITCH_NODE_SETTINGS_s
+ * @brief   Generic power converter switch-node specifications
+ * @extends BUCK_CONVERTER_s
  * 
  * @details
  * This data structure is used to set the converter switch-node specifications declaring which
@@ -317,12 +373,13 @@ typedef struct BUCK_LOOP_SETTINGS_s {
  * limits.
  * 
  * *************************************************************************************************** */
-typedef struct BUCK_SWITCH_NODE_SETTINGS_s {
+struct BUCK_SWITCH_NODE_SETTINGS_s {
     
     volatile uint16_t pwm_instance;         ///< number of the PWM channel used
     volatile uint16_t gpio_instance;        ///< GPIO instance of the selected PWM generator
     volatile uint16_t gpio_high;            ///< GPIO port pin-number of PWMxH of the selected PWM generator
     volatile uint16_t gpio_low;             ///< GPIO port pin-number of PWMxL of the selected PWM generator
+    volatile bool     swap_outputs;         ///< Selecting if PWMxH (default) or PWMxL should be the leading PWM output
     volatile bool     master_period_enable; ///< Selecting MASTER or Individual period register
     volatile bool     high_resolution_enable; ///< Selecting if PWM module should use high-resolution mode 
     volatile bool     sync_drive;           ///< Selecting if switch node is driven in synchronous or asnchronous mode
@@ -337,33 +394,36 @@ typedef struct BUCK_SWITCH_NODE_SETTINGS_s {
     volatile uint16_t trigger_scaler;       ///< PWM triggers for ADC will be generated every n-th cycle
     volatile uint16_t trigger_offset;       ///< PWM triggers for ADC will be offset by n cycles
     
-} BUCK_SWITCH_NODE_SETTINGS_t; ///< Switching signal timing settings
+}; ///< Switching signal timing settings
+typedef struct BUCK_SWITCH_NODE_SETTINGS_s  BUCK_SWITCH_NODE_SETTINGS_t; ///< Switching signal timing settings data type
 
 /****************************************************************************************************
- * @struct BUCK_ADC_INPUT_SCALING_s 
- * @brief Generic power converter feedback specifications
- * 
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @struct  BUCK_ADC_INPUT_SCALING_s 
+ * @brief   Generic power converter feedback specifications
+ * @extends BUCK_ADC_INPUT_SETTINGS_s
  * @details
  * This data structure is used to set the converter feedback specifications declaring which
  * ADC channels are used including the individual AD input configuration such as trigger mode,
  * input mode, result format and value normalization.
  * 
  * *************************************************************************************************** */
-
-typedef struct BUCK_ADC_INPUT_SCALING_s {
+struct BUCK_ADC_INPUT_SCALING_s {
     
     volatile int16_t factor; ///< Fractional scaling factor (range -1 ... 0.99969)
     volatile int16_t scaler; ///< Feedback bit-shift scaler used for number normalization
     volatile int16_t offset; ///< Signal offset as signed integer to be subtracted from ADC input
 
-} BUCK_ADC_INPUT_SCALING_t; ///< ADC input signal scaling = (ADCBUF - <offset>) * <factor> >> 2^<scaler>
+}; ///< ADC input signal scaling = (ADCBUF - <offset>) * <factor> >> 2^<scaler>
+typedef struct BUCK_ADC_INPUT_SCALING_s BUCK_ADC_INPUT_SCALING_t; ///< ADC input signal scaling data type
 
 /****************************************************************************************************
- * @struct BUCK_ADC_INPUT_SETTINGS_s
- * @brief Generic power converter ADC input channel configuration
- * 
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @struct  BUCK_ADC_INPUT_SETTINGS_s
+ * @brief   Generic power converter ADC input channel configuration
+ * @extends BUCK_FEEDBACK_SETTINGS_s
  * *************************************************************************************************** */
-typedef struct BUCK_ADC_INPUT_SETTINGS_s {
+struct BUCK_ADC_INPUT_SETTINGS_s {
     
     volatile bool enabled;                  ///< input channel enable bit
     volatile uint16_t* adc_buffer;          ///< pointer to ADC result buffer
@@ -378,33 +438,37 @@ typedef struct BUCK_ADC_INPUT_SETTINGS_s {
     volatile bool level_trigger;            ///< input channel level trigger mode enable bit
     volatile struct BUCK_ADC_INPUT_SCALING_s scaling; ///< normalization scaling settings
 
-} BUCK_ADC_INPUT_SETTINGS_t; ///< ADC input channel configuration
-
+}; ///< ADC input channel configuration
+typedef struct BUCK_ADC_INPUT_SETTINGS_s BUCK_ADC_INPUT_SETTINGS_t; ///< ADC input channel configuration data type
 
 /****************************************************************************************************
- * @struct BUCK_FEEDBACK_SETTINGS_s
- * @brief 
- * 
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @struct  BUCK_FEEDBACK_SETTINGS_s
+ * @brief   Power converter feedback input channel declarations
+ * @extends BUCK_CONVERTER_s
  * *************************************************************************************************** */
-typedef struct BUCK_FEEDBACK_SETTINGS_s {
+struct BUCK_FEEDBACK_SETTINGS_s {
     
     volatile struct BUCK_ADC_INPUT_SETTINGS_s ad_vin;                       ///< ADC input sampling input voltage
     volatile struct BUCK_ADC_INPUT_SETTINGS_s ad_vout;                      ///< ADC input sampling output voltage
     volatile struct BUCK_ADC_INPUT_SETTINGS_s ad_isns[BUCK_MPHASE_COUNT];   ///< ADC input sampling phase current
     volatile struct BUCK_ADC_INPUT_SETTINGS_s ad_temp;                      ///< ADC input sampling temperature
     
-} BUCK_FEEDBACK_SETTINGS_t; ///< Buck converter feedback declarations
+}; ///< Buck converter feedback declarations
+typedef struct BUCK_FEEDBACK_SETTINGS_s BUCK_FEEDBACK_SETTINGS_t; ///< Buck converter feedback declarations data type
 
 /****************************************************************************************************
- * @struct BUCK_GPIO_SETTINGS_s
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
+ * @struct BUCK_GPIO_INSTANCE_s
  * @brief Generic power converter GPIO specifications
+ * @extends BUCK_GPIO_SETTINGS_s
  * 
  * @details
  * This data structure is used to set the converter GPIO specifications declaring which
  * if and which additional GPIOs are used by the converter controller, such as POWER_GOOD.
  * 
  * *************************************************************************************************** */
-typedef struct BUCK_GPIO_INSTANCE_s {
+struct BUCK_GPIO_INSTANCE_s {
     
     volatile bool enabled;      ///< Specifies, if this IO is used or not
     volatile uint16_t port;     ///< GPIO port instance number (0=Port RA, 0=Port RB, 0=Port RC, etc.)
@@ -412,30 +476,29 @@ typedef struct BUCK_GPIO_INSTANCE_s {
     volatile uint16_t polarity; ///< Output polarity, where 0=ACTIVE HIGH, 1=ACTIVE_LOW
     volatile uint16_t io_type;  ///< Input/Output definition (0=push-pull output, 1=input, 2=open-drain output)
 
-} BUCK_GPIO_INSTANCE_t; ///< GPIO instance of the converter control GPIO
+}; ///< GPIO instance of the converter control GPIO
+typedef struct BUCK_GPIO_INSTANCE_s BUCK_GPIO_INSTANCE_t; ///< GPIO instance of the converter control GPIO data type
 
 /****************************************************************************************************
+ * @ingroup lib-layer-buck-converter-properties-private-data-types
  * @struct BUCK_GPIO_SETTINGS_s
  * @brief Generic power converter GPIO specifications
- *
+ * @extends BUCK_CONVERTER_s
  * *************************************************************************************************** */
-typedef struct BUCK_GPIO_SETTINGS_s {
+struct BUCK_GPIO_SETTINGS_s {
     
     volatile struct BUCK_GPIO_INSTANCE_s EnableInput; ///< External ENABLE input
     volatile struct BUCK_GPIO_INSTANCE_s PowerGood; ///< Power Good Output
 
-} BUCK_GPIO_SETTINGS_t; ///< GPIO instance of the converter control GPIO
-
-// ==============================================================================================
-// BUCK converter state machine data structure and defines
-
-// ==============================================================================================
+}; ///< GPIO instance of the converter control GPIO
+typedef struct BUCK_GPIO_SETTINGS_s BUCK_GPIO_SETTINGS_t; ///< GPIO instance of the converter control GPIO data type
 
 /****************************************************************************************************
- * @struct BUCK_POWER_CONTROLLER_s
- * @brief 
+ * @ingroup lib-layer-buck-converter-properties-public-data-types
+ * @struct  BUCK_CONVERTER_s
+ * @brief   Buck Converter data object
  *****************************************************************************************************/
-typedef struct BUCK_POWER_CONTROLLER_s 
+struct BUCK_CONVERTER_s 
 {
     volatile struct BUCK_CONVERTER_STATUS_s status;     ///< BUCK operation status bits 
     volatile struct BUCK_STATE_ID_s state_id;           ///< BUCK state machine operating state ID
@@ -450,9 +513,9 @@ typedef struct BUCK_POWER_CONTROLLER_s
     volatile struct BUCK_LOOP_SETTINGS_s v_loop;        ///< BUCK voltage control loop object
     volatile struct BUCK_LOOP_SETTINGS_s i_loop[BUCK_MPHASE_COUNT]; ///< BUCK Current control loop objects
     
-} BUCK_POWER_CONTROLLER_t; ///< BUCK control & monitoring data structure
+}; ///< BUCK control & monitoring data structure
+typedef struct BUCK_CONVERTER_s BUCK_POWER_CONTROLLER_t; ///< BUCK control & monitoring data structure data type
 
-/**@}*/
 
 //#else
 //    #pragma message "Warning: dev_buck_typedef.h inclusion bypassed"
