@@ -304,11 +304,11 @@ volatile uint16_t ocp_FaultInitialize(void)
     fltobj_BuckOCP.ReferenceObject.bitMask = 0xFFFF;  // Compare all bits of SOURCE (no bit filter)
     fltobj_BuckOCP.Status.bits.CompareType = FLTCMP_GREATER_THAN; // Select Compare-Type
 
-    fltobj_BuckOCP.TripResponse.compareThreshold = BUCK_ISNS_OCL;    // Set fault trip level
+    fltobj_BuckOCP.TripResponse.compareThreshold = BUCK_IOUT_OCL;    // Set fault trip level
     fltobj_BuckOCP.TripResponse.eventThreshold = BUCK_OCP_TDLY;    // Set counter level at which a FAULT condition will be tripped
     fltobj_BuckOCP.TripResponse.ptrResponseFunction = &appPowerSupply_Suspend; // Set pointer to user-function which should be called when a FAULT is tripped
 
-    fltobj_BuckOCP.RecoveryResponse.compareThreshold = BUCK_ISNS_OCL_RELEASE;   // Set fault recovery level
+    fltobj_BuckOCP.RecoveryResponse.compareThreshold = BUCK_IOUT_OCL_RELEASE;   // Set fault recovery level
     fltobj_BuckOCP.RecoveryResponse.eventThreshold = BUCK_OCP_RDLY;     // Set counter level at which a FAULT condition will be cleared
     fltobj_BuckOCP.RecoveryResponse.ptrResponseFunction = NULL; // Clear recovery function pointer
     
