@@ -513,7 +513,7 @@ struct BUCK_CONVERTER_s
     volatile struct BUCK_LOOP_SETTINGS_s i_loop[BUCK_MPHASE_COUNT]; ///< BUCK Current control loop objects
     
 }; ///< BUCK control & monitoring data structure
-typedef struct BUCK_CONVERTER_s BUCK_POWER_CONTROLLER_t; ///< BUCK control & monitoring data structure data type
+typedef struct BUCK_CONVERTER_s BUCK_CONVERTER_t; ///< BUCK control & monitoring data structure data type
 
 
 //#else
