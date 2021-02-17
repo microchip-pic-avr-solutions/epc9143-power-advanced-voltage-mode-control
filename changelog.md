@@ -1,4 +1,4 @@
-# epc9143-power-advanced-voltage-mode-control, release v2.1.0
+# epc9143-power-advanced-voltage-mode-control, release v2.2.0
 
 ### Release Highlights
 This release version is based on the original Advanced Voltage Mode Control scheme for the EPC9143 16th brick DC/DC converter power module reference design, hardware revision 4.0. With version 2.0 the state machine has been optimized and extended. Especially the converter startup has been made more robust and fault handling has been enhanced. With version 2.1 online documentation of the firmware has been added, which is now available as Github Pages:
