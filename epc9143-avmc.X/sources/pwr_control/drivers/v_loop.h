@@ -1,5 +1,5 @@
 /* *********************************************************************************
- * PowerSmart™ Digital Control Library Designer, Version 0.9.12.657
+ * PowerSmart™ Digital Control Library Designer, Version 0.9.12.672
  * *********************************************************************************
  * 4p4z controller function declarations and compensation filter coefficients
  * derived for following operating conditions:
@@ -12,11 +12,11 @@
  *  Input Gain:         0.208791
  *
  * *********************************************************************************
- * CGS Version:         3.0.2
- * CGS Date:            01/05/2021
+ * CGS Version:         3.0.6
+ * CGS Date:            02/03/2021
  * *********************************************************************************
  * User:                M91406
- * Date/Time:           01/18/2021 12:12:34
+ * Date/Time:           02/17/2021 10:08:26
  * ********************************************************************************/
 
 // This is a guard condition so that contents of this file are not included
@@ -33,7 +33,7 @@
 
 /* *******************************************************************************
  * Data Arrays:
- * The NPNZ16b_t data structure contains pointers to coefficient, control and error
+ * The NPNZ16b_s data structure contains pointers to coefficient, control and error
  * history arrays. The pointer target objects (variables and arrays) are defined
  * in controller source file v_loop.c
  *
@@ -45,63 +45,177 @@
  * source file v_loop.c
  * ******************************************************************************/
 
-typedef struct V_LOOP_CONTROL_LOOP_COEFFICIENTS_s
+/*********************************************************************************
+ * @ingroup special-function-layer-npnz16-data-objects
+ * @struct  V_LOOP_CONTROL_LOOP_COEFFICIENTS_s
+ * @brief   Data structure packing A- and B- coefficient arrays in a linear memory space for optimized DSP code execution
+ ********************************************************************************/
+struct V_LOOP_CONTROL_LOOP_COEFFICIENTS_s
 {
     volatile int32_t ACoefficients[4];            // A-Coefficients
     volatile int32_t BCoefficients[5];            // B-Coefficients
-} __attribute__((packed)) V_LOOP_CONTROL_LOOP_COEFFICIENTS_t; // Data structure packing A- and B- coefficient arrays in a linear memory space for optimized DSP code execution
+} __attribute__((packed));                        // Data structure packing A- and B- coefficient arrays in a linear memory space for optimized DSP code execution
+typedef struct V_LOOP_CONTROL_LOOP_COEFFICIENTS_s V_LOOP_CONTROL_LOOP_COEFFICIENTS_t;
 
-typedef struct V_LOOP_CONTROL_LOOP_HISTORIES_s
+/*********************************************************************************
+ * @ingroup special-function-layer-npnz16-data-objects
+ * @struct  V_LOOP_CONTROL_LOOP_HISTORIES_s
+ * @brief   Data structure packing A- and B- coefficient arrays in a linear memory space for optimized DSP code execution
+ ********************************************************************************/
+struct V_LOOP_CONTROL_LOOP_HISTORIES_s
 {
     volatile fractional ControlHistory[4];        // Control History Array
     volatile fractional ErrorHistory[5];          // Error History Array
-} __attribute__((packed)) V_LOOP_CONTROL_LOOP_HISTORIES_t; // Data structure packing control and error histories arrays in a linear memory space for optimized DSP code execution
+} __attribute__((packed));                        // Data structure packing control and error histories arrays in a linear memory space for optimized DSP code execution
+typedef struct V_LOOP_CONTROL_LOOP_HISTORIES_s V_LOOP_CONTROL_LOOP_HISTORIES_t; // Data type of data structure packing control and error histories arrays
 
-// P-Term Coefficient for Plant Measurements
-extern volatile int16_t v_loop_pterm_factor;      // Q15 fractional of the Pterm factor
-extern volatile int16_t v_loop_pterm_scaler;      // Bit-shift scaler of the Pterm factor
+/*********************************************************************************
+ * @ingroup special-function-layer-npnz16-variables
+ * @var     v_loop_pterm_factor
+ * @brief   Q15 fractional of the P-Term Coefficient for Plant Measurements
+ ********************************************************************************/
+extern volatile int16_t v_loop_pterm_factor;      // Q15 fractional of the P-Term factor
 
-//Adaptive Gain Control Coefficient
+/*********************************************************************************
+ * @ingroup special-function-layer-npnz16-variables
+ * @var     v_loop_pterm_scaler
+ * @brief   Bit-shift scaler of the P-Term Coefficient for Plant Measurements
+ ********************************************************************************/
+extern volatile int16_t v_loop_pterm_scaler;      // Bit-shift scaler of the P-Term factor
+
+/*********************************************************************************
+ * @ingroup special-function-layer-npnz16-variables
+ * @var     v_loop_agc_factor_default
+ * @brief   Q15 fractional of the Adaptive Gain Control Coefficient
+ ********************************************************************************/
 extern volatile int16_t v_loop_agc_factor_default; // Q15 fractional of the AGC factor
-extern volatile int16_t v_loop_agc_scaler_default; // Bit-shift scaler of the Pterm factor
+
+/*********************************************************************************
+ * @ingroup special-function-layer-npnz16-variables
+ * @var     v_loop_agc_scaler_default
+ * @brief   Bit-shift scaler of the Adaptive Gain Control Coefficient
+ ********************************************************************************/
+extern volatile int16_t v_loop_agc_scaler_default; // Bit-shift scaler of the AGC factor
 
 
-// User-defined NPNZ16b_s controller data object
+/*********************************************************************************
+ * @ingroup special-function-layer-npnz16-objects
+ * @var     v_loop
+ * @brief   External reference to user-defined NPNZ16b controller data object 'v_loop'
+ ********************************************************************************/
 extern volatile struct NPNZ16b_s v_loop;          // user-controller data object
 
 
 /* *******************************************************************************
- * Function call prototypes for initialization routines and control loops
+ * Function call prototypes for initialization routines and control loop handling
  * ******************************************************************************/
 
-// Initialization of v_loop controller object
-extern volatile uint16_t __attribute__((near)) v_loop_Initialize( // v_loop initialization function call
-        volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data type object
+/*********************************************************************************
+ * @fn volatile uint16_t v_loop_Initialize(volatile struct NPNZ16b_s* controller)
+ * @ingroup special-function-layer-npnz16-functions
+ * @brief Initializes controller coefficient arrays and normalization factors
+ * @param controller: Pointer to NPNZ Controller Data Object of type struct NPNZ16b_s
+ *
+ * @details
+ * This function needs to be called from user code at startup once to initialize
+ * coefficient arrays and number normalization settings of the v_loop controller
+ * object.
+ *
+ * @attention
+ * This routine DOES NOT initialize the complete controller object.
+ * User-defined settings such as pointers to the control reference, source and
+ * target registers, output minima and maxima and further, design-dependent
+ * settings, need to be specified in user code.
+ ********************************************************************************/
+extern volatile uint16_t v_loop_Initialize(       // v_loop initialization function call
+        volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data object
     );
 
-// Clears the 4P4Z controller output and error histories
-extern void __attribute__((near)) v_loop_Reset(   // v_loop reset function call (Assembly)
-        volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data type object
+/*********************************************************************************
+ * @fn void v_loop_Reset(volatile struct NPNZ16b_s* controller)
+ * @ingroup special-function-layer-npnz16-functions
+ * @brief Prototype of the Assembly routine '_v_loop_Reset' clearing the NPNZ16b controller output and error histories
+ * @param controller: Pointer to NPNZ16b data object of type struct NPNZ16b_s*
+ *
+ * @details
+ * This Assembly function clears the NPNZ16b controller output and
+ * error histories by settings all elements of the delay lines to zero. This
+ * resets the controller to ist default state. This function should be called
+ * every time before the control loop is started from a disabled, unbiased output.
+ * @note
+ * Use function 'v_loop_Precharge' to start the feedback loop controller when
+ * the output is pre-biased.
+ ********************************************************************************/
+extern void v_loop_Reset(                         // v_loop reset function call (Assembly)
+        volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data object
     );
 
-// Loads user-defined values into 4P4Z controller output and error histories
-extern void __attribute__((near)) v_loop_Precharge( // v_loop history pre-charge function call (Assembly)
-        volatile struct NPNZ16b_s* controller,    // Pointer to NPNZ16b data type object
+/*********************************************************************************
+ * @fn void v_loop_Precharge(volatile struct NPNZ16b_s* controller, volatile fractional ctrl_input, volatile fractional ctrl_output)
+ * @ingroup special-function-layer-npnz16-functions
+ * @brief Prototype of the Assembly routine '_v_loop_Precharge' loading user-defined values into the NPNZ16b  controller output and error histories
+ * @param controller: Pointer to NPNZ16b data object of type struct NPNZ16b_s*
+ * @param ctrl_input: user-defined, constant error history value of type fractional
+ * @param ctrl_output: user-defined, constant control output history value of type fractional
+ *
+ * @details
+ * This function loads user-defined values into NPNZ16b controller
+ * output and error histories where the parameters ctrl_input and ctrl_output
+ * will written to the entire delay line of the filter emulating a pre-existing
+ * steady state operation under the user defined conditions.
+ ********************************************************************************/
+extern void v_loop_Precharge(                     // v_loop history pre-charge function call (Assembly)
+        volatile struct NPNZ16b_s* controller,    // Pointer to NPNZ16b data object
         volatile fractional ctrl_input,           // user-defined, constant error history value
         volatile fractional ctrl_output           // user-defined, constant control output history value
     );
 
-// Calls the v_loop control loop
-extern void __attribute__((near)) v_loop_Update(  // Calls the 4P4Z controller (Assembly)
-        volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data type object
+/*********************************************************************************
+ * @fn void v_loop_Update(volatile struct NPNZ16b_s* controller)
+ * @ingroup special-function-layer-npnz16-functions
+ * @brief Prototype of the Assembly feedback control loop routine helping to call the v_loop controller from C-code
+ * @param controller: Pointer to NPNZ16b data object of type struct NPNZ16b_s*
+ *
+ * @details
+ * This function is the main controller function which must be called at
+ * the control frequency from the control interrupt service routine. It
+ * calculates the most recent control error and processes it in the compensation
+ * filter computation after which the new result is written to the control
+ * output target.
+ * Runtime control is provided through the NPNZ16b data object status & control word.
+ * @note
+ * Available control options depend on the controller feature configuration.
+ * Please refer to the user guide for more detailed information.
+ ********************************************************************************/
+extern void v_loop_Update(                        // Calls the 4P4Z controller (Assembly)
+        volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data object
     );
 
-// Calls the v_loop P-Term controller during measurements of plant transfer functions
-// THIS CONTROLLER IS USED FOR MEASUREMENTS OF THE PLANT TRANSFER FUNCTION ONLY.
-// THIS LOOP IS BY DEFAULT UNSTABLE AND ONLY WORKS UNDER STABLE TEST CONDITIONS
-// DO NOT USE THIS CONTROLLER TYPE FOR NORMAL OPERATION
-extern void __attribute__((near)) v_loop_PTermUpdate( // Calls the P-Term controller (Assembly)
-        volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data type object
+/*********************************************************************************
+ * @fn void v_loop_PTermUpdate(volatile struct NPNZ16b_s* controller)
+ * @ingroup special-function-layer-npnz16-functions
+ * @brief Prototype of the alternate Assembly P-Term control loop helping to call the v_loop P-Term controller from C-code
+ * @param controller: Pointer to NPNZ16b data object of type struct NPNZ16b_s*
+ *
+ * @details
+ * This function has been added as extension function supporting the development
+ * process, introducing an alternative control loop able to replace the conventional
+ * compensation feedback loop with a simple P-Term controller, allowing users to
+ * perform measurements of the plant transfer function.
+ * To use this function, users may replace the default compensation feedback loop
+ * function call v_loop_Update by v_loop_PTermUpdate to perform the measurement.
+ *
+ * This additional controller seamlessly fits into the controller data
+ * interface by using the same NPNZ16b_s data structure and does not need
+ * additional configuration or initialization.
+ *
+ * @attention
+ * THIS CONTROLLER IS USED FOR MEASUREMENTS OF THE PLANT TRANSFER FUNCTION ONLY.
+ * THIS LOOP IS BY DEFAULT UNSTABLE AND ONLY WORKS UNDER STABLE TEST CONDITIONS.
+ * DO NOT USE THIS CONTROLLER TYPE FOR NORMAL OPERATION
+ ********************************************************************************/
+extern void v_loop_PTermUpdate(                   // Calls the P-Term controller (Assembly)
+        volatile struct NPNZ16b_s* controller     // Pointer to NPNZ16b data object
     );
 
 #endif                                            // end of __SPECIAL_FUNCTION_LAYER_V_LOOP_H__

@@ -1,8 +1,8 @@
 ; **********************************************************************************
-;  SDK Version: PowerSmart™ Digital Control Library Designer v0.9.12.657
-;  CGS Version: Code Generator Script v3.0.2 (01/05/2021)
+;  SDK Version: PowerSmart™ Digital Control Library Designer v0.9.12.672
+;  CGS Version: Code Generator Script v3.0.6 (02/03/2021)
 ;  Author:      M91406
-;  Date/Time:   01/18/2021 12:12:34
+;  Date/Time:   02/17/2021 10:08:26
 ; **********************************************************************************
 ;  4P4Z Control Library File (Dual Bitshift-Scaling Mode)
 ; **********************************************************************************
@@ -17,8 +17,85 @@
     .section .data                          ; place constant data in the data section
     
 ;------------------------------------------------------------------------------
-;include NPNZ16B_t data structure and global constants.
-    .include "./sources/pwr_control/drivers/npnz16b.inc" ; include NPNZ16b_t object data structure value offsets and status flag labels
+; Define status flags bit positions
+    .equ NPNZ16_STATUS_ENABLED,      15     ; bit position of the ENABLE control bit
+    .equ NPNZ16_STATUS_INVERT_INPUT, 14     ; bit position of the INVERT_INPUT control bit
+    .equ NPNZ16_STATUS_SWAP_SOURCE,  13     ; bit position of the SWAP_SOURCE control bit
+    .equ NPNZ16_STATUS_SWAP_TARGET,  12     ; bit position of the SWAP_TARGET control bit
+    .equ NPNZ16_STATUS_AGC_ENABLED,  11     ; bit position of the AGC_ENABLED control bit
+    .equ NPNZ16_STATUS_USAT,         1      ; bit position of the UPPER_SATURATION_FLAG status bit
+    .equ NPNZ16_STATUS_LSAT,         0      ; bit position of the LOWER_SATURATION_FLAG status bit
+    
+;------------------------------------------------------------------------------
+; NPNZ16b_s data structure address offset declarations for data structure addressing
+    .equ Status,                        0   ; controller object status word at address-offset = 0
+    .equ ptrSourceRegister,             2   ; parameter group Ports.Source: pointer to source memory address
+    .equ SourceNormShift,               4   ; parameter group Ports.Source: bit-shift scaler of normalization factor
+    .equ SourceNormFactor,              6   ; parameter group Ports.Source: Q15 normalization factor
+    .equ SourceOffset,                  8   ; parameter group Ports.Source: value of source input signal/value offset
+    .equ ptrAltSourceRegister,          10  ; parameter group Ports.AltSource: pointer to alternate source memory address
+    .equ AltSourceNormShift,            12  ; parameter group Ports.AltSource: bit-shift scaler of normalization factor
+    .equ AltSourceNormFactor,           14  ; parameter group Ports.AltSource: Q15 normalization factor
+    .equ AltSourceOffset,               16  ; parameter group Ports.AltSource: value of alternate source input signal/value offset
+    .equ ptrTargetRegister,             18  ; parameter group Ports.Target: pointer to target memory address
+    .equ TargetNormShift,               20  ; parameter group Ports.Target: bit-shift scaler of normalization factor
+    .equ TargetNormFactor,              22  ; parameter group Ports.Target: Q15 normalization factor
+    .equ TargetOffset,                  24  ; parameter group Ports.Target: value of target output signal/value offset
+    .equ ptrAltTargetRegister,          26  ; parameter group Ports.AltTarget: pointer to alternate target memory address
+    .equ AltTargetNormShift,            28  ; parameter group Ports.AltTarget: bit-shift scaler of normalization factor
+    .equ AltTargetNormFactor,           30  ; parameter group Ports.AltTarget: Q15 normalization factor
+    .equ AltTargetOffset,               32  ; parameter group Ports.AltTarget: value of alternate target output signal/value offset
+    .equ ptrControlReference,           34  ; parameter group Ports.ConrolReference: pointer to control reference variable/register memory address
+    .equ ptrACoefficients,              36  ; parameter group Filter: pointer to A-coefficients array start address
+    .equ ptrBCoefficients,              38  ; parameter group Filter: pointer to B-coefficients array start address
+    .equ ptrControlHistory,             40  ; parameter group Filter: pointer to control history array start address
+    .equ ptrErrorHistory,               42  ; parameter group Filter: pointer to error history array start address
+    .equ ACoefficientsArraySize,        44  ; parameter group Filter: size of the A-coefficients array
+    .equ BCoefficientsArraySize,        46  ; parameter group Filter: size of the B-coefficients array
+    .equ ControlHistoryArraySize,       48  ; parameter group Filter: size of the control history array
+    .equ ErrorHistoryArraySize,         50  ; parameter group Filter: size of the error history array
+    .equ normPreShift,                  52  ; parameter group Filter: value of input value normalization bit-shift scaler
+    .equ normPostShiftA,                54  ; parameter group Filter: value of A-term normalization bit-shift scaler
+    .equ normPostShiftB,                56  ; parameter group Filter: value of B-term normalization bit-shift scaler
+    .equ normPostScaler,                58  ; parameter group Filter: control loop output normalization factor
+    .equ PTermScaler,                   60  ; parameter group Filter: P-Term coefficient scaler
+    .equ PTermFactor,                   62  ; parameter group Filter: P-Term coefficient fractional factor
+    .equ AgcScaler,                     64  ; parameter group GainControl: bit-shift scaler of Adaptive Gain Control Modulation factor
+    .equ AgcFactor,                     66  ; parameter group GainControl: Q15 value of Adaptive Gain Control Modulation factor
+    .equ AgcMedian,                     68  ; parameter group GainControl: Q15 value of Adaptive Gain Control Modulation nominal operating point
+    .equ ptrAgcObserverFunction,        70  ; parameter group GainControl: function pointer to observer function updating the AGC modulation factor
+    .equ MinOutput,                     72  ; parameter group Limits: minimum clamping value of primary control output
+    .equ MaxOutput,                     74  ; parameter group Limits: maximum clamping value of primary control output
+    .equ AltMinOutput,                  76  ; parameter group Limits: minimum clamping value of alternate control output
+    .equ AltMaxOutput,                  78  ; parameter group Limits: maximum clamping value of alternate control output
+    .equ ptrADCTriggerARegister,        80  ; parameter group ADCTriggerControl: pointer to ADC trigger A register memory address
+    .equ ADCTriggerAOffset,             82  ; parameter group ADCTriggerControl: value of ADC trigger A offset
+    .equ ptrADCTriggerBRegister,        84  ; parameter group ADCTriggerControl: pointer to ADC trigger B register memory address
+    .equ ADCTriggerBOffset,             86  ; parameter group ADCTriggerControl: value of ADC trigger B offset
+    .equ ptrDProvControlInput,          88  ; parameter group DataProviders: pointer to external variable/register the most recent, raw control input will be pushed to
+    .equ ptrDProvControlInputComp,      90  ; parameter group DataProviders: pointer to external variable/register the most recent, compensated control input will be pushed to
+    .equ ptrDProvControlError,          92  ; parameter group DataProviders: pointer to external variable/register the most recent control error will be pushed to
+    .equ ptrDProvControlOutput,         94  ; parameter group DataProviders: pointer to external variable/register the most recent control output will be pushed to
+    .equ ptrExtHookStartFunction,       96  ; parameter group ExtensionHooks: pointer to external extension function which will be called by this controller at the beginning after evaluating the enable flag. This function call will be bypassed when the controller is disabled.
+    .equ ExtHookStartFunctionParam,     98  ; parameter group ExtensionHooks: 16-bit wide function parameter variable or pointer to a parameter variable or data structure of extension function
+    .equ ptrExtHookSourceFunction,      100 ; parameter group ExtensionHooks: pointer to external extension function which will be called by this controller after the most recent controller input has been read and compensated but before the most recent error is calculated.
+    .equ ExtHookSourceFunctionParam,    102 ; parameter group ExtensionHooks: 16-bit wide function parameter variable or pointer to a parameter variable or data structure of extension function
+    .equ ptrExtHookPreAntiWindupFunction, 104 ; parameter group ExtensionHooks: pointer to external extension function which will be called by this controller after the most recent compensation filter result has been computed and before  anti-windup clamping is applied
+    .equ ExtHookPreAntiWindupFunctionParam, 106 ; parameter group ExtensionHooks: 16-bit wide function parameter variable or pointer to a parameter variable or data structure of extension function
+    .equ ptrExtHookTargetFunction,      108 ; parameter group ExtensionHooks: pointer to external extension function which will be called by this controller before the most recent controller output is written to target, after the value has passed through anti-windup clamping.
+    .equ ExtHookTargetFunctionParam,    110 ; parameter group ExtensionHooks: 16-bit wide function parameter variable or pointer to a parameter variable or data structure of extension function
+    .equ ptrExtHookStopFunction,        112 ; parameter group ExtensionHooks: pointer to external extension function which will be called by this controller after the compensation loop computation has been completed. This function call will be bypassed when the controller is disabled.
+    .equ ExtHookStopFunctionParam,      114 ; parameter group ExtensionHooks: 16-bit wide function parameter variable or pointer to a parameter variable or data structure of extension function
+    .equ ptrExtHookEndFunction,         116 ; parameter group ExtensionHooks: pointer to external extension function which will be called by this controller after the compensation loop computation has been completed, regardless of the loop execution being bypassed or not
+    .equ ExtHookEndFunctionParam,       118 ; parameter group ExtensionHooks: 16-bit wide function parameter variable or pointer to a parameter variable or data structure of extension function
+    .equ usrParam0,                     120 ; parameter group Advanced: generic 16-bit wide, user-defined parameter #1 for user-defined, advanced control options
+    .equ usrParam1,                     122 ; parameter group Advanced: generic 16-bit wide, user-defined parameter #2 for user-defined, advanced control options
+    .equ usrParam2,                     124 ; parameter group Advanced: generic 16-bit wide, user-defined parameter #3 for user-defined, advanced control options
+    .equ usrParam3,                     126 ; parameter group Advanced: generic 16-bit wide, user-defined parameter #4 for user-defined, advanced control options
+    .equ usrParam4,                     128 ; parameter group Advanced: generic 16-bit wide, user-defined parameter #5 for user-defined, advanced control options
+    .equ usrParam5,                     130 ; parameter group Advanced: generic 16-bit wide, user-defined parameter #6 for user-defined, advanced control options
+    .equ usrParam6,                     132 ; parameter group Advanced: generic 16-bit wide, user-defined parameter #7 for user-defined, advanced control options
+    .equ usrParam7,                     134 ; parameter group Advanced: generic 16-bit wide, user-defined parameter #8 for user-defined, advanced control options
     
 ;------------------------------------------------------------------------------
 ;source code section.
@@ -124,16 +201,18 @@
     
 ;------------------------------------------------------------------------------
 ; Controller Anti-Windup (control output value clamping)
-    ; Check for upper limit violation
-    mov [w0 + #MaxOutput], w6               ; load upper limit value
-    cpslt w4, w6                            ; compare values and skip next instruction if control output is within operating range (control output < upper limit)
-    mov w6, w4                              ; override controller output
-    V_LOOP_CLAMP_MAX_EXIT:
-    ; Check for lower limit violation
+     
+; Check for lower limit violation
     mov [w0 + #MinOutput], w6               ; load lower limit value
     cpsgt w4, w6                            ; compare values and skip next instruction if control output is within operating range (control output > lower limit)
     mov w6, w4                              ; override controller output
     V_LOOP_CLAMP_MIN_EXIT:
+     
+; Check for upper limit violation
+    mov [w0 + #MaxOutput], w6               ; load upper limit value
+    cpslt w4, w6                            ; compare values and skip next instruction if control output is within operating range (control output < upper limit)
+    mov w6, w4                              ; override controller output
+    V_LOOP_CLAMP_MAX_EXIT:
     
 ;------------------------------------------------------------------------------
 ; Write control output value to target
@@ -260,7 +339,7 @@
     
 ;------------------------------------------------------------------------------
 ; Global function declaration v_loop_PTermUpdate
-; This function executes a P-term based control loop used for plant measurements only.
+; This function executes a P-Term based control loop used for plant measurements only.
 ; THIS LOOP IS NOT SUITED FOR STABLE OPERATION
 ;------------------------------------------------------------------------------
 
@@ -271,12 +350,6 @@
 ; Check status word for Enable/Disable flag and bypass computation when disabled
     btss [w0], #NPNZ16_STATUS_ENABLED       ; check ENABLED bit state, skip (do not execute) next instruction if set
     bra V_LOOP_PTERM_LOOP_BYPASS            ; if ENABLED bit is cleared, jump to end of control code
-****
-script error: invalid command token '' found at 'execlist_dbsft[148]' 
-****
-****
-script error: invalid command token '' found at 'execlist_dbsft[149]' 
-****
     
 ;------------------------------------------------------------------------------
 ; Read data from input source
@@ -304,16 +377,18 @@ script error: invalid command token '' found at 'execlist_dbsft[149]'
     
 ;------------------------------------------------------------------------------
 ; Controller Anti-Windup (control output value clamping)
-    ; Check for upper limit violation
-    mov [w0 + #MaxOutput], w6               ; load upper limit value
-    cpslt w4, w6                            ; compare values and skip next instruction if control output is within operating range (control output < upper limit)
-    mov w6, w4                              ; override controller output
-    V_LOOP_PTERM_CLAMP_MAX_EXIT:
-    ; Check for lower limit violation
+     
+; Check for lower limit violation
     mov [w0 + #MinOutput], w6               ; load lower limit value
     cpsgt w4, w6                            ; compare values and skip next instruction if control output is within operating range (control output > lower limit)
     mov w6, w4                              ; override controller output
     V_LOOP_PTERM_CLAMP_MIN_EXIT:
+     
+; Check for upper limit violation
+    mov [w0 + #MaxOutput], w6               ; load upper limit value
+    cpslt w4, w6                            ; compare values and skip next instruction if control output is within operating range (control output < upper limit)
+    mov w6, w4                              ; override controller output
+    V_LOOP_PTERM_CLAMP_MAX_EXIT:
     
 ;------------------------------------------------------------------------------
 ; Write control output value to target
@@ -347,3 +422,14 @@ script error: invalid command token '' found at 'execlist_dbsft[149]'
     
 ;------------------------------------------------------------------------------
 
+    
+;------------------------------------------------------------------------------
+; End of file
+    .end                                    ; end of file v_loop_asm.s
+    
+;------------------------------------------------------------------------------
+
+     
+; **********************************************************************************
+;  Download latest version of this tool here: https://areiter128.github.io/DCLD
+; **********************************************************************************

@@ -21,10 +21,10 @@
 ;  TERMS.
 ; **********************************************************************************
 ; **********************************************************************************
-;  SDK Version: PowerSmart™ Digital Control Library Designer v0.9.12.657
-;  CGS Version: Code Generator Script v3.0.2 (01/05/2021)
+;  SDK Version: PowerSmart™ Digital Control Library Designer v0.9.12.672
+;  CGS Version: Code Generator Script v3.0.6 (02/03/2021)
 ;  Author:      M91406
-;  Date/Time:   01/18/2021 12:12:34
+;  Date/Time:   02/17/2021 10:08:26
 ; **********************************************************************************
     
 ;------------------------------------------------------------------------------
@@ -38,7 +38,7 @@
     .equ NPNZ16_STATUS_LSAT,         0      ; bit position of the LOWER_SATURATION_FLAG status bit
     
 ;------------------------------------------------------------------------------
-; NPNZ16b_t data structure address offset declarations for data structure addressing
+; NPNZ16b_s data structure address offset declarations for data structure addressing
     .equ Status,                        0   ; controller object status word at address-offset = 0
     .equ ptrSourceRegister,             2   ; parameter group Ports.Source: pointer to source memory address
     .equ SourceNormShift,               4   ; parameter group Ports.Source: bit-shift scaler of normalization factor
@@ -109,7 +109,7 @@
     .equ usrParam7,                     134 ; parameter group Advanced: generic 16-bit wide, user-defined parameter #8 for user-defined, advanced control options
     
 ;------------------------------------------------------------------------------
-;end of include of NPNZ16B_t data structure and global constants
+;end of include of NPNZ16b_s data structure and global constants
      
 ; **********************************************************************************
 ;  Download latest version of this tool here: https://areiter128.github.io/DCLD

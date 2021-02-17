@@ -1,5 +1,5 @@
 /* *********************************************************************************
- * PowerSmart™ Digital Control Library Designer, Version 0.9.12.657
+ * PowerSmart™ Digital Control Library Designer, Version 0.9.12.672
  * *********************************************************************************
  * 4p4z controller function declarations and compensation filter coefficients
  * derived for following operating conditions:
@@ -12,19 +12,21 @@
  *  Input Gain:         0.208791
  *
  * *********************************************************************************
- * CGS Version:         3.0.2
- * CGS Date:            01/05/2021
+ * CGS Version:         3.0.6
+ * CGS Date:            02/03/2021
  * *********************************************************************************
  * User:                M91406
- * Date/Time:           01/18/2021 12:12:34
+ * Date/Time:           02/17/2021 10:08:26
  * ********************************************************************************/
 
 #include "./pwr_control/drivers/v_loop.h"
 
 /* *********************************************************************************
  * Data Arrays:
+ * ============
+ *
  * This source file declares the default parameters of the z-domain compensation
- * filter. The NPNZ16b_t data structure contains two pointers to A- and B-
+ * filter. The NPNZ16b_s data structure contains two pointers to A- and B-
  * coefficient arrays and two pointers to control and error history arrays.
  *
  * For optimized data processing during DSP computations, these arrays must be
@@ -79,45 +81,31 @@ volatile int32_t v_loop_BCoefficients [5] =
 
 // Coefficient normalization factors
 volatile int16_t v_loop_pre_scaler = 3;           // Bit-shift value used to perform input value normalization
-volatile int16_t v_loop_post_shift_A = -1;        // Bit-shift value A used to perform control output value backfward normalization
-volatile int16_t v_loop_post_shift_B = -2;        // Bit-shift value B used to perform control output value backfward normalization
-volatile fractional v_loop_post_scaler = 0x0000;  // Q15 fractional factor used to perform control output value backfward normalization
+volatile int16_t v_loop_post_shift_A = -1;        // Bit-shift value A used to perform control output value backward normalization
+volatile int16_t v_loop_post_shift_B = -2;        // Bit-shift value B used to perform control output value backward normalization
+volatile fractional v_loop_post_scaler = 0x0000;  // Q15 fractional factor used to perform control output value backward normalization
 
 // P-Term Coefficient for Plant Measurements
-volatile int16_t v_loop_pterm_factor = 0x54D6;    // Q15 fractional of the Pterm factor
-volatile int16_t v_loop_pterm_scaler = 0x0000;    // Bit-shift scaler of the Pterm factor
+volatile int16_t v_loop_pterm_factor = 0x54D6;    // Q15 fractional of the P-Term factor
+volatile int16_t v_loop_pterm_scaler = 0x0000;    // Bit-shift scaler of the P-Term factor
 
 //Adaptive Gain Control Coefficient
-volatile int16_t v_loop_agc_factor_default = 0x7FFF; // Q15 fractional of the Pterm factor
+volatile int16_t v_loop_agc_factor_default = 0x7FFF; // Q15 fractional of the AGC factor
 volatile int16_t v_loop_agc_scaler_default = 0x0000; // Bit-shift scaler of the AGC factor
 
 
-// User-defined NPNZ16b_t controller data object
+// User-defined NPNZ16b_s controller data object
 volatile struct NPNZ16b_s v_loop;                 // user-controller data object
 
 /* ********************************************************************************/
 
-/*@@v_loop_Initialize()
- * *********************************************************************************
- * Summary: Initializes controller coefficient arrays and normalization
+/* *********************************************************************************
+ * Controller Initialization:
+ * ==========================
+  *
+ * Public controller initialization function loading known default settings
+ * into the NPNZ16b data structure.
  *
- * Parameters:
- *     - struct NPNZ16b_s* controller
- *
- * Returns:
- *     - uint16_t:  0->failure
- *                  1->success
- *
- * Description:
- * This function needs to be called from user code once to initialize coefficient
- * arrays and number normalization settings of the v_loop controller
- * object.
- *
- * PLEASE NOTE:
- * This routine DOES NOT initialize the complete controller object.
- * User-defined settings such as pointers to the control reference, source and
- * target registers, output minima and maxima and further, design-dependent
- * settings, need to be specified in user code.
  * ********************************************************************************/
 
 volatile uint16_t v_loop_Initialize(volatile struct NPNZ16b_s* controller)
@@ -125,7 +113,7 @@ volatile uint16_t v_loop_Initialize(volatile struct NPNZ16b_s* controller)
     volatile uint16_t i=0;
 
     // Initialize controller data structure at runtime with pre-defined default values
-    controller->status.value = NPNZ16_CONTROL_STATUS_CLEAR; // clear all status flag bits (will turn off execution))
+    controller->status.value = NPNZ_STATUS_CLEAR; // clear all status flag bits (will turn off execution))
 
     controller->Filter.ptrACoefficients = &v_loop_coefficients.ACoefficients[0]; // initialize pointer to A-coefficients array
     controller->Filter.ptrBCoefficients = &v_loop_coefficients.BCoefficients[0]; // initialize pointer to B-coefficients array
