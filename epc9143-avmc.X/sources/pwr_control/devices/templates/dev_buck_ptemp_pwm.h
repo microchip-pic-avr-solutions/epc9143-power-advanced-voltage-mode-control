@@ -49,7 +49,7 @@
 #include <stddef.h> // include standard definition data types
 
 /**
- * @ingroup lib-layer-buck-ptemplate-properties-public-defines
+ * @ingroup lib-layer-buck-ptemplate-properties-defines
  * @{
  */
 /* ********************************************************************************
@@ -443,17 +443,27 @@
  */  
 #define P33C_PGxCONL_HRES_EN    0x0080  
 /**
- * @def P33C_PGxIOCONL_OVREN
- * @brief control bits in PGxIOCONL enabling/disabling the PWM output override
+ * @def P33C_PGxIOCONL_OVREN_SYNC
+ * @brief control bits in PGxIOCONL enabling/disabling the PWM output override in synchronous mode
  */  
 #define P33C_PGxIOCONL_OVREN_SYNC   0x3000  
-#define P33C_PGxIOCONL_OVREN_ASYNC  0x2000  
 /**
- * @def P33C_PGxIOCONH_PEN
- * @brief control bits in PGxIOCONH enabling/disabling the PWM outputs
+ * @def P33C_PGxIOCONL_OVREN_ASYNC
+ * @brief control bits in PGxIOCONL enabling/disabling the PWM output override in asynchronous mode
+ */  
+#define P33C_PGxIOCONL_OVREN_ASYNC      0x2000  
+#define P33C_PGxIOCONL_OVREN_ASYNC_SWAP 0x1000  
+/**
+ * @def P33C_PGxIOCONH_PEN_SYNC
+ * @brief control bits in PGxIOCONH enabling/disabling the PWM outputs in synchronous mode
  */  
 #define P33C_PGxIOCONH_PEN_SYNC     0x000C  
-#define P33C_PGxIOCONH_PEN_ASYNC    0x0008  
+/**
+ * @def P33C_PGxIOCONH_PEN_SYNC
+ * @brief control bits in PGxIOCONH enabling/disabling the PWM outputs in asynchronous mode
+ */  
+#define P33C_PGxIOCONH_PEN_ASYNC        0x0008  
+#define P33C_PGxIOCONH_PEN_ASYNC_SWAP   0x0004
 /**
  * @def P33C_PGxSTAT_UPDREQ
  * @brief Control bit in PGxSTAT setting the Update Request bit

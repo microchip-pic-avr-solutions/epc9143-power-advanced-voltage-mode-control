@@ -37,7 +37,7 @@
 #include <stddef.h> // include standard definition data types
 
 /****************************************************************************************************
- * @ingroup lib-layer-buck-specialfn-properties-public-data-types
+ * @ingroup lib-layer-buck-specialfn-properties-data-types
  * @enum    BUCK_SPECIAL_FUNCTIONS_e
  * @brief   Enumeration of special function sub-states
  * @details 
@@ -57,7 +57,7 @@ typedef enum BUCK_SPECIAL_FUNCTIONS_e
 /* PUBLIC FUNCTION CALL PROTOTYPES */
 
 extern volatile uint16_t drv_BuckConverter_SpecialFunctionExecute (
-                volatile struct BUCK_POWER_CONTROLLER_s * buckInstance, 
+                volatile struct BUCK_CONVERTER_s * buckInstance, 
                 volatile enum BUCK_SPECIAL_FUNCTIONS_e specialFunction);
 
 #endif	/* BUCK_CONVERTER_SPECIAL_FUNCTIONS_H */

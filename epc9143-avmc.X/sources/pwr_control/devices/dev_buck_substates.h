@@ -47,9 +47,40 @@
 #include <stdint.h> // include standard integer data types
 #include <stdbool.h> // include standard boolean data types
 
-extern volatile uint16_t (*BuckConverterRampUpSubStateMachine[])
-            (volatile struct BUCK_POWER_CONTROLLER_s *buckInstance); ///< Buck converter state machine function pointer array
+/***********************************************************************************
+ * @ingroup lib-layer-buck-state-machine-properties-variables
+ * @var volatile uint16_t (*BuckConverterRampUpSubStateMachine[])(volatile struct BUCK_CONVERTER_s *buckInstance) 
+ * @brief   Function pointer array of buck converter startup sub-states
+ * @details
+ * The function pointer list BuckConverterRampUpSubStateMachine[] is providing 
+ * access to a list of state functions. Each function mapped into this array 
+ * as function pointer represents a self-contained, independent sub-state. 
+ * The main state machine will call functions from this list in order of their
+ * index within the array, starting from '0'. While this list is executed, the 
+ * calling main state is transparent by passing through the return value of the 
+ * most recent sub-state. Once all sub-states have been executed, the calling main 
+ * state will return the COMPLETE flag, allowing the main state machine to move on.
+ * 
+ * Each function needs to be called by handing over a parameter of type
+ * 
+ * - struct BUCK_CONVERTER_s 
+ * 
+ * Each function returns of type unsigned integer:
+ * 
+ * - 0 = BUCK_OPSRET_ERROR
+ * - 1 = BUCK_OPSRET_COMPLETE
+ * - 2 = BUCK_OPSRET_REPEAT
+ * 
+ **********************************************************************************/
 
+extern volatile uint16_t (*BuckConverterRampUpSubStateMachine[])
+            (volatile struct BUCK_CONVERTER_s *buckInstance); ///< Buck converter state machine function pointer array
+
+/***********************************************************************************
+ * @var     volatile uint16_t BuckRampUpSubStateList_size
+ * @ingroup lib-layer-buck-state-machine-properties-variables
+ * @brief   Buck converter sub-state machine function pointer array size
+ **********************************************************************************/
 
 extern volatile uint16_t BuckRampUpSubStateList_size; ///< Buck converter state machine function pointer array size
 

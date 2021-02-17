@@ -46,9 +46,40 @@
 #include <stdint.h> // include standard integer data types
 #include <stdbool.h> // include standard boolean data types
 
+/*******************************************************************************
+ * @var	volatile uint16_t(*BuckConverterStateMachine[])(volatile struct BUCK_CONVERTER_s *buckInstance) 
+ * @ingroup lib-layer-buck-state-machine-properties-variables
+ * @brief   Function pointer array defining the state machine execution sequence	
+ * @details
+ * The function pointer list BuckConverterStateMachine[] is providing 
+ * access to a list of state functions. Each function mapped into this array 
+ * as function pointer represents a self-contained, independent sub-state. 
+ * The main state machine will call functions from this list in order of their
+ * index within the array, starting from '0'. While this list is executed, the 
+ * calling main state is transparent by passing through the return value of the 
+ * most recent sub-state. Once all sub-states have been executed, the calling main 
+ * state will return the COMPLETE flag, allowing the main state machine to move on.
+ * 
+ * Each function needs to be called by handing over a parameter of type
+ * 
+ * - struct BUCK_CONVERTER_s 
+ * 
+ * Each function returns of type unsigned integer:
+ * 
+ * - 0 = BUCK_OPSRET_ERROR
+ * - 1 = BUCK_OPSRET_COMPLETE
+ * - 2 = BUCK_OPSRET_REPEAT
+ * 
+ **********************************************************************************/
 
 extern volatile uint16_t (*BuckConverterStateMachine[])
-            (volatile struct BUCK_POWER_CONTROLLER_s *buckInstance); ///< Buck converter state machine function pointer array
+            (volatile struct BUCK_CONVERTER_s *buckInstance); ///< Buck converter state machine function pointer array
+
+/*******************************************************************************
+ * @var	    volatile uint16_t BuckStateList_size
+ * @ingroup lib-layer-buck-state-machine-properties-variables 
+ * @brief   Buck converter state machine function pointer array size	
+ *********************************************************************************/
 
 extern volatile uint16_t BuckStateList_size; ///< Buck converter state machine function pointer array size
 

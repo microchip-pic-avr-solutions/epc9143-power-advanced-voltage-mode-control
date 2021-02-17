@@ -9,7 +9,7 @@
 #include "dev_buck_ptemp_dac.h" // include peripheral register configuration values header
 
 /****************************************************************************************************
- * @ingroup lib-layer-buck-ptemplate-properties-private-variables
+ * @ingroup lib-layer-buck-ptemplate-properties-variables
  * @var buckDacModuleConfig
  * @brief DAC module default configuration
  *****************************************************************************************************/
@@ -22,7 +22,7 @@ volatile struct P33C_DAC_MODULE_s buckDacModuleConfig =
 
 
 /****************************************************************************************************
- * @ingroup lib-layer-buck-ptemplate-properties-private-variables
+ * @ingroup lib-layer-buck-ptemplate-properties-variables
  * @var buckDacInstanceConfig
  * @brief DAC generator default configuration
  *****************************************************************************************************/
