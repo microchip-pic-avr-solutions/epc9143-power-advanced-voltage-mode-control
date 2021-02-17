@@ -48,8 +48,6 @@
 #include <stddef.h> // include standard definition data types
 
 #include "devices/dev_buck_typedef.h"    // include buck converter object declarations
-//#include "pwr_control/drivers/npnz16b.h" // include NPNZ control loop object declarations
-
 
 /**************************************************************************************************
  * @var volatile struct BUCK_POWER_CONTROLLER_s buck
