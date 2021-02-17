@@ -325,7 +325,6 @@ struct BUCK_CONVERTER_SETTINGS_s {
     volatile uint16_t no_of_phases;             ///< number of converter phases
     volatile uint16_t v_ref;                    ///< User reference setting used to control the power converter controller
     volatile uint16_t i_ref;                    ///< User reference setting used to control the power converter controller
-    volatile uint16_t i_ref_startup;            ///< User setting of the initial current reference at startup (used to limit startup currents)
     
 };  ///> Buck converter main settings
 typedef struct BUCK_CONVERTER_SETTINGS_s BUCK_CONVERTER_SETTINGS_t;  ///> Buck converter main settings
@@ -514,7 +513,7 @@ struct BUCK_CONVERTER_s
     volatile struct BUCK_LOOP_SETTINGS_s i_loop[BUCK_MPHASE_COUNT]; ///< BUCK Current control loop objects
     
 }; ///< BUCK control & monitoring data structure
-typedef struct BUCK_CONVERTER_s BUCK_POWER_CONTROLLER_t; ///< BUCK control & monitoring data structure data type
+typedef struct BUCK_CONVERTER_s BUCK_CONVERTER_t; ///< BUCK control & monitoring data structure data type
 
 
 //#else

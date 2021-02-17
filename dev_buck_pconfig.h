@@ -67,7 +67,7 @@ extern volatile struct P33C_PWM_GENERATOR_s buckPwmGeneratorConfig;
  * *******************************************************************************/
 
 extern volatile uint16_t buckADC_ModuleInitialize(void);
-extern volatile uint16_t buckADC_ChannelInitialize(volatile BUCK_ADC_INPUT_SETTINGS_t* adcInstance);
+extern volatile uint16_t buckADC_ChannelInitialize(volatile struct BUCK_ADC_INPUT_SETTINGS_s* adcInstance);
 extern volatile uint16_t buckADC_Start(void);
 
 /* ********************************************************************************
