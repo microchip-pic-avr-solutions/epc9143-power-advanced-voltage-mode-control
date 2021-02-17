@@ -53,12 +53,12 @@
  // BUCK CONVERTER PUBLIC API FUNCTION CALL PROTOTYPES
  // ==============================================================================================
 
-extern volatile uint16_t drv_BuckConverter_Initialize(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-extern volatile uint16_t drv_BuckConverter_Execute(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-extern volatile uint16_t drv_BuckConverter_Start(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-extern volatile uint16_t drv_BuckConverter_Stop(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-extern volatile uint16_t drv_BuckConverter_Suspend(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
-extern volatile uint16_t drv_BuckConverter_Resume(volatile BUCK_POWER_CONTROLLER_t* buckInstance);
+extern volatile uint16_t drv_BuckConverter_Initialize(volatile struct BUCK_CONVERTER_s* buckInstance);
+extern volatile uint16_t drv_BuckConverter_Execute(volatile struct BUCK_CONVERTER_s* buckInstance);
+extern volatile uint16_t drv_BuckConverter_Start(volatile struct BUCK_CONVERTER_s* buckInstance);
+extern volatile uint16_t drv_BuckConverter_Stop(volatile struct BUCK_CONVERTER_s* buckInstance);
+extern volatile uint16_t drv_BuckConverter_Suspend(volatile struct BUCK_CONVERTER_s* buckInstance);
+extern volatile uint16_t drv_BuckConverter_Resume(volatile struct BUCK_CONVERTER_s* buckInstance);
 
 #endif	/* BUCK_CONVERTER_STATE_MACHINE_H */
 
