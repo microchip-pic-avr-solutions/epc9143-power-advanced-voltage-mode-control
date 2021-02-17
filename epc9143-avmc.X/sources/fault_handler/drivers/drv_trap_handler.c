@@ -79,9 +79,9 @@ volatile struct TRAP_LOGGER_s traplog; ///< data structure used as buffer for tr
  *                  bool accumulator_catastrophic_overflow_trap_enable)
  * @ingroup lib-layer-fault-functions-public
  * @brief Configures the software-configurable traps
- * @param bool accumulator_a_overflow_trap_enable
- * @param bool accumulator_b_overflow_trap_enable
- * @param bool accumulator_catastrophic_overflow_trap_enable
+ * @param accumulator_a_overflow_trap_enable Flag of type Boolean enabling/disabling accumulator A trap at 1.31 overflow
+ * @param accumulator_b_overflow_trap_enable Flag of type Boolean enabling/disabling accumulator B trap at 1.31 overflow
+ * @param accumulator_catastrophic_overflow_trap_enable Flag of type Boolean enabling/disabling catastrophic accumulator trap at 9.31 overflow
  * 
  * @details
  * This routine sets the DSP-specific traps for overflow-events of accumulator A and B. 

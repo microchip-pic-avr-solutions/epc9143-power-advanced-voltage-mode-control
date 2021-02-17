@@ -94,6 +94,7 @@
 /**********************************************************************************
  * @enum TRAP_ID_e
  * @brief defining trap-ID for primary and secondary vectors 
+ * @extends TRAP_LOGGER_s
  *********************************************************************************/
 typedef enum TRAP_ID_e
 {
@@ -122,9 +123,9 @@ typedef enum TRAP_ID_e
 } TRAP_ID_t;
 
 /**********************************************************************************
- * @struct TRAP_FLAGS_s
- * @brief defining the trap Flag for primary and secondary vectors
- *
+ * @struct  TRAP_FLAGS_s
+ * @brief   Defines the Trap Flag for primary and secondary vectors
+ * @extends TRAP_LOGGER_s
  *********************************************************************************/
 typedef struct TRAP_FLAGS_s
 {
@@ -161,9 +162,9 @@ typedef struct TRAP_FLAGS_s
 }TRAP_FLAGS_t;
 
 /**********************************************************************************
- * @struct CPU_INTTREG_s
- * @brief defining the CPU interrupt for primary and secondary vectors
- *
+ * @struct  CPU_INTTREG_s
+ * @brief   defining the CPU interrupt for primary and secondary vectors
+ * @extends TRAP_LOGGER_s
  *********************************************************************************/
 typedef struct CPU_INTTREG_s
 {
@@ -185,7 +186,7 @@ typedef struct CPU_INTTREG_s
 /**********************************************************************************
  * @struct CPU_RCON_s 
  * @brief Data structure for RCON status capturing
- *
+ * @extends TRAP_LOGGER_s
  *********************************************************************************/
 typedef struct CPU_RCON_s 
 {
@@ -219,7 +220,7 @@ typedef struct CPU_RCON_s
 /**********************************************************************************
  * @struct TRAPLOG_STATUS_s
  * @brief Data structure for RCON status capturing
- *
+ * @extends TRAP_LOGGER_s
  *********************************************************************************/
 typedef struct TRAPLOG_STATUS_s 
 {
@@ -254,8 +255,9 @@ typedef struct TRAPLOG_STATUS_s
 } TRAPLOG_STATUS_t;
 
 /**********************************************************************************
- * @struct TASK_INFO_s
- * @brief provides information for executed task, fault event and operating mode ID of task manager 
+ * @struct  TASK_INFO_s
+ * @brief   Provides information for executed task, fault event and operating mode ID of task manager 
+ * @extends TRAP_LOGGER_s
  *********************************************************************************/
 
 typedef struct TASK_INFO_s 
