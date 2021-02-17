@@ -60,8 +60,7 @@
  * Please refer to the comments on top of this file for further information.
  *  
  **************************************************************************************************/
-volatile struct BUCK_POWER_CONTROLLER_s  buck;
-
+volatile struct BUCK_CONVERTER_s buck;
 
 /* PRIVATE FUNCTION PROTOTYPES */
 

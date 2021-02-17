@@ -59,7 +59,7 @@
  * Please refer to the comments on top of this file for further information.
  *  
  * *************************************************************************************************/
-extern volatile struct BUCK_POWER_CONTROLLER_s buck;
+extern volatile struct BUCK_CONVERTER_s buck;
 
 // PUBLIC FUNCTION PROTOTYPE DECLARATION
 extern volatile uint16_t appPowerSupply_Initialize(void);
