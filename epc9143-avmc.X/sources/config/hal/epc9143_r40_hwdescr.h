@@ -558,13 +558,17 @@
 
 // Feedback Declarations
 #define BUCK_ISNS_FEEDBACK_GAIN     (float) 0.050       ///< Current Gain in V/A
-#define BUCK_ISNS_MAXIMUM           (float) 26.50       ///< absolute total maximum output current (average)
-#define BUCK_ISNS_RELEASE           (float) 25.00       ///< current reset level after over current event
+#define BUCK_ISNS_MINIMUM           (float) 0.000       ///< absolute minimum output current (average)
+#define BUCK_ISNS_MAXIMUM           (float) 26.50       ///< absolute maximum output current (average)
+#define BUCK_ISNS_RELEASE           (float) 24.00       ///< current reset level after over current event
 #define BUCK_ISNS_REFERENCE         (float) 1.000       ///< output current reference (average)
+#define BUCK_ISNS_REFERENCE_STARTUP (float) 22.00       ///< maximum output current (average) at startup
 #define BUCK_ISNS_ADC_TRG_DELAY     (float) 120.0e-9    ///< ADC trigger delay for current sense in [sec]
 
 #define BUCK_ISNS1_FEEDBACK_OFFSET  (float) 1.650       ///< current sense #1 feedback offset (average)
 #define BUCK_ISNS2_FEEDBACK_OFFSET  (float) 1.650       ///< current sense #2 feedback offset (average)
+
+#define BUCK_ISNS_OFFSET_CALIBRATION_ENABLE false       ///< Current Sense Offset Calibration is disabled 
 
 /** @} */ // end of group
 
@@ -580,10 +584,17 @@
  */
 
 // Phase Current Feedback Settings Conversion Macros
-#define BUCK_ISNS_OCL           (uint16_t)((BUCK_ISNS_MAXIMUM * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRANULARITY)  ///< Over Current Limit
-#define BUCK_ISNS_OCL_RELEASE   (uint16_t)((BUCK_ISNS_RELEASE * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRANULARITY)  ///< Over Current Release Level
-#define BUCK_ISNS_REF           (uint16_t)(BUCK_ISNS_REFERENCE * BUCK_ISNS_FEEDBACK_GAIN / ADC_GRANULARITY)  ///< Output Current Reference
+#define BUCK_ISNS_REF           (uint16_t)((BUCK_ISNS_REFERENCE * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Output Current Reference
+#define BUCK_ISNS_REF_STARTUP   (uint16_t)((BUCK_ISNS_REFERENCE_STARTUP * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Output Current Startup Reference
+
+#define BUCK_ISNS1_MIN          (uint16_t)(int16_t)(((BUCK_ISNS_MINIMUM-BUCK_ISNS1_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_ISNS1_OCL          (uint16_t)(((BUCK_ISNS_MAXIMUM-BUCK_ISNS1_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_ISNS1_OCL_RELEASE  (uint16_t)(((BUCK_ISNS_RELEASE-BUCK_ISNS1_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Release Level
 #define BUCK_ISNS1_OFFFSET      (uint16_t)(BUCK_ISNS1_FEEDBACK_OFFSET / ADC_GRANULARITY)
+
+#define BUCK_ISNS2_MIN          (uint16_t)(int16_t)(((BUCK_ISNS_MINIMUM-BUCK_ISNS2_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_ISNS2_OCL          (uint16_t)(((BUCK_ISNS_MAXIMUM-BUCK_ISNS2_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_ISNS2_OCL_RELEASE  (uint16_t)(((BUCK_ISNS_RELEASE-BUCK_ISNS2_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Release Level
 #define BUCK_ISNS2_OFFFSET      (uint16_t)(BUCK_ISNS2_FEEDBACK_OFFSET / ADC_GRANULARITY)
 #define BUCK_ISNS_ADC_TRGDLY    (uint16_t)(BUCK_ISNS_ADC_TRG_DELAY / PWM_CLOCK_PERIOD)
 
