@@ -1,3 +1,8 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$struct_c_s___c_a_l_i_b_r_a_t_i_o_n__s.html" title="Current sense calibration data structure." alt="" coords="5,5,151,32"/>
+<area shape="rect" id="node1" href="$a01423.html" title="Global data structure for trap event capturing." alt="" coords="5,107,137,133"/>
+<area shape="rect" id="node2" href="$a01383.html" title="defining the CPU interrupt for primary and secondary vectors" alt="" coords="201,5,325,32"/>
+<area shape="rect" id="node3" href="$a01395.html" title="Data structure for RCON status capturing." alt="" coords="209,56,316,83"/>
+<area shape="rect" id="node4" href="$a01419.html" title="Provides information for executed task, fault event and operating mode ID of task manager." alt="" coords="209,107,316,133"/>
+<area shape="rect" id="node5" href="$a01371.html" title="Defines the Trap Flag for primary and secondary vectors." alt="" coords="203,157,323,184"/>
+<area shape="rect" id="node6" href="$a01407.html" title="Data structure for RCON status capturing." alt="" coords="185,208,340,235"/>
 </map>

@@ -224,7 +224,8 @@
 */
 
 //Temperature Feedback Declarations
-/**
+// EPC9143 DOES NOT HAVE ANY TEMPERATURE SENSOR
+/*
 @defgroup temperature-feedback Temperature Feedback
 @ingroup abstraction-layer
 @brief Declaration of temperature feedback parameters

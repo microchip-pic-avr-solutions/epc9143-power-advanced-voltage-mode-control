@@ -1,8 +1,0 @@
-<map id="Initializing Essential Chip Resources" name="Initializing Essential Chip Resources">
-<area shape="rect" id="node1" href="$group__mcu-initialization.html" title=" " alt="" coords="361,5,521,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="165,73,303,113"/>
-<area shape="rect" id="node3" href="$group__clock-initialization.html" title=" " alt="" coords="351,55,532,80"/>
-<area shape="rect" id="node4" href="$group__gpio-initialization.html" title=" " alt="" coords="360,104,523,129"/>
-<area shape="rect" id="node5" href="$group__dsp-initialization.html" title=" " alt="" coords="361,154,522,194"/>
-<area shape="rect" id="node6" href="$group__device-start-up.html" title="Device Start Up." alt="" coords="5,80,117,105"/>
-</map>

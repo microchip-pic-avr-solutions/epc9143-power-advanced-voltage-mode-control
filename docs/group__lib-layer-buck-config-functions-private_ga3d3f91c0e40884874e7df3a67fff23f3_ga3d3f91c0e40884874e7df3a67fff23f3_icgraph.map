@@ -1,8 +1,0 @@
-<map id="buckGPIO_PrivateInitialize" name="buckGPIO_PrivateInitialize">
-<area shape="rect" id="node1" title="This function sets the pin as input or output." alt="" coords="1087,13,1261,39"/>
-<area shape="rect" id="node2" href="$group__lib-layer-buck-config-functions-public_ga91d7498ed6191a32a87353d999c56589.html#ga91d7498ed6191a32a87353d999c56589" title="This function initializes the buck input pins." alt="" coords="903,13,1039,39"/>
-<area shape="rect" id="node3" href="$group__lib-layer-buck-converter-functions-public_ga97eb8bdd17b9c2e169f0634ebabb5d19.html#ga97eb8bdd17b9c2e169f0634ebabb5d19" title="This function initializes all peripheral modules and their instances used by the power controller." alt="" coords="672,13,855,39"/>
-<area shape="rect" id="node4" href="$group__app-layer-power-control-functions-private_ga0b26acfec74d1804384b4ba1a3cffab4.html#ga0b26acfec74d1804384b4ba1a3cffab4" title="This function is used to load peripheral configuration templates from the power controller device dri..." alt="" coords="433,5,624,47"/>
-<area shape="rect" id="node5" href="$group__app-layer-power-control-functions-public_ga7a4cf6371d09457539f96a74b2809ca0.html#ga7a4cf6371d09457539f96a74b2809ca0" title="Calls the application layer power controller initialization." alt="" coords="212,13,385,39"/>
-<area shape="rect" id="node6" href="$group__user-task-initialization_ga2be64f5f0b9a2c0c6713f5a69d793e05.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" title="Initializes the user&#45;defined tasks." alt="" coords="5,13,164,39"/>
-</map>
