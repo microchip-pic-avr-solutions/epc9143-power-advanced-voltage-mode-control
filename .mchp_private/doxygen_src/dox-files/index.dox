@@ -98,7 +98,7 @@ process of the firmware.
    <br><br>
 
  - <b>Step 4 (OS Timer Initialization):</b><br><br>
-   In the fourth step the operating system time base is initialized. In this slim applicaiton the operating system
+   In the fourth step the operating system time base is initialized. In this slim application the operating system
    consists of two different task execution levels on two priority levels:
    <br><br>
    - <b>Low-Priority Task Execution</b><br>
@@ -136,16 +136,6 @@ process of the firmware.
  being called on the defined priority level (default = 2). The interrupt service routine utiilzes an alternate
  working register set for optimum coontext management. By default, alternate working register set #1 is reserved
  for high priority tasks.
-
-@defgroup task-layer Task Layer
-@ingroup firmware-flow
-@brief Task Layer
-@details
- The task layer covers all user tasks executed by the task scheduler. Each task is an independent entity 
- called on its respective priority level defined by the user. Tasks are proprietary user code modules 
- representing specific funcitons of the application or end-product. 
-
-
 */
 
 //Device Start-Up Sub-Index
@@ -201,20 +191,23 @@ process of the firmware.
 @details
  This system initialization segment is reserved for user configurations, which are not covered 
  by standard library functions, such as circuit specific feedback signal conditioning or other
- independent funcitons.
+ independent functions.
 
 @defgroup user-peripherals-initialization User Peripheral Initialization
 @ingroup system-initialization-user-peripherals
 @brief 
 @details
- Some applicaitons require specific peripheral module functions to implement functions, 
+ Some applications require specific peripheral module functions to implement functions, 
  which are not covered by user-task device driver modules, such as special logic functions 
  or additional analog components like operational amplifiers for signal conditioning. This 
  initialization routine can be used to add user-configurations to the project, which are 
- independent from device driver modules, These special peripehral modules are initialized 
- before the user tasks. Users will have to decide when and how these additional peripehrals
+ independent from device driver modules, These special peripheral modules are initialized 
+ before the user tasks. Users will have to decide when and how these additional peripherals
  may be enabled to ensure no conflicts with user task device drivers occur.
+*/
 
+/* Application-specific hardware or microcontroller declarations */
+/**
 @defgroup dac-initialization Digital-to-Analog Converter
 @ingroup system-initialization-user-peripherals
 @brief 
@@ -226,7 +219,7 @@ process of the firmware.
  current waveform can swing above and below zero while still staying within the valid
  input voltage range of ADC converter inputs.
 @note
- The DAC output signal is buffered by utilizing one of the availalbe on-chip operational
+ The DAC output signal is buffered by utilizing one of the available on-chip operational
  amplifiers. Please refer to the Operational Amplifier Configuration section for details.
  
 @defgroup op-amp-initialization Operational Amplifier Configuration
@@ -240,12 +233,15 @@ process of the firmware.
 @note
  The DAC output signal is buffered by utilizing one of the availalbe on-chip operational
  amplifiers. Please refer to the Digital-to-Analog (DAC) Configuration section for details.
+*/ 
+
+/**   
 
 @defgroup system-initialization-user-tasks Initializing Firmware Tasks
 @ingroup device-start-up
 @brief 
 @details
- The appliation wide task execution requires a two step approach, where first the operating 
+ The application wide task execution requires a two step approach, where first the operating 
  system time base is configured and then all user-tasks are initialized. Once these two steps
  have been completed, the OS timer can be enabled and the main program will enter the main loop,
  continuously executing the specified and enabled user-tasks in high- and low-priority task
@@ -290,6 +286,18 @@ process of the firmware.
  associated microcontroller peripheral instances and features.
 */
 
+// Application Layer Sub-Index 
+/**
+@defgroup task-layer Application Layer
+@brief Task Layer
+@details
+ The task layer covers all user tasks executed by the task scheduler. Each task is an independent entity 
+ called on its respective priority level defined by the user. Tasks are proprietary user code modules 
+ representing specific functions of the application or end-product. 
+
+
+*/
+
 
 // Library Layer
 /**
@@ -303,4 +311,17 @@ process of the firmware.
 
   Please refer to the specific device driver libraries for more information on public functions and
   properties provided to tailor and apply the supported features.
+
+@defgroup lib-driver-layer Library Driver Layer 
+@brief Generic Library Driver Layer
+@details
+  Library drivers are generic function libraries providing specific sub-functions for library modules. 
+  Each library driver is widely self-contained and includes functional software routines and resource 
+  management functions. Because of their generic nature, each library driver requires to be configured 
+  by proprietary user code to tailor their function to a specific application. The settings required to 
+  set up the library driver data objects are routed through the overlaying device driver, which also provides
+  the API and public data objects holding the library driver settings.
+
+  Please refer to the specific library driver for more information.
+
 */ 
