@@ -35,23 +35,23 @@
          }
       },
       "peripherals":[
-         "PORT",
-         "PWM",
-		 "ADC",
-		 "Timer"
+        "PWM",
+        "SMPS PWM",
+        "ADC",
+        "TIMER",
+        "LCD"
       ],
 	  "subcategories": [
 		 "Power"
-	  ],
+		"Power Management and Conversion"
 	  "keywords": [
-		 "dsc",
-		 "dspic",
-		 "power",
-		 "power-conversion",
-		 "power-supply",
-		 "smps",
-		 "Digital Power",
-		 "Digital Signal Processing"
+		"dsPIC",
+        "DSC",
+        "Digital Power Conversion",
+        "Digital Filters",
+        "Power Conversion",
+        "Power Supply",
+		"SMPS"
 	  ]
    }
 }
