@@ -100,22 +100,6 @@
 @brief Conversion macros for user declarations of fault object trip and recovery delays
 */
 
-// Device GPIO Assignment Declarations 
-/**
-@defgroup circuit-peripherals Circuit Special Circuit Signals
-@ingroup abstraction-layer
-@brief 
-
-@defgroup circuit-gpio-mcal Device GPIO Assignments
-@ingroup circuit-peripherals
-@brief Assignment of microcontroller device pins to circuit functions and signals
- 
-@defgroup circuit-peripheral-mcal Device Peripheral Assignments
-@ingroup circuit-peripherals
-@brief Assignment of microcontroller device specific chip-resources to circuit functions and signals
- 
-*/
-
 //PWM Declarations
 /**
 @defgroup pwm-fundamentals PWM Settings
@@ -255,6 +239,23 @@
 @defgroup control-interrupt-vector-declarations Control Interrupt Vector Declarations
 @ingroup abstraction-layer
 @brief 
+*/
+
+
+// Device GPIO Assignment Declarations 
+/**
+@defgroup circuit-peripherals Special Circuit Signals
+@ingroup abstraction-layer
+@brief 
+
+@defgroup circuit-gpio-mcal Device GPIO Assignments
+@ingroup circuit-peripherals
+@brief Assignment of microcontroller device pins to circuit functions and signals
+ 
+@defgroup circuit-peripheral-mcal Device Peripheral Assignments
+@ingroup circuit-peripherals
+@brief Assignment of microcontroller device specific chip-resources to circuit functions and signals
+ 
 */
 
 // Special Firmware Options

@@ -4,7 +4,7 @@
 
 /**
 @defgroup device-abstraction-pral Peripheral Register Abstraction Layer (PRAL) Library
-@ingroup lib-layer
+@ingroup lib-driver-layer
 @details
     The Peripheral Register Abstraction Layer (PRAL) Library is used to provide abstracted (virtual)
     versions of periperhal specific Special Function Register (SFR) sets of specific peripherals. 
