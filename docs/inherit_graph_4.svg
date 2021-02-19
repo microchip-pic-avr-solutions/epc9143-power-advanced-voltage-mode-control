@@ -12,7 +12,7 @@
 <!-- Node0 -->
 <g id="node1" class="node">
 <title>Node0</title>
-<g id="a_node1"><a xlink:href="a01563.html" target="_top" xlink:title="Global NPNZ controller data object.">
+<g id="a_node1"><a xlink:href="a01559.html" target="_top" xlink:title="Global NPNZ controller data object.">
 <polygon fill="white" stroke="black" points="0,-152.5 0,-171.5 68,-171.5 68,-152.5 0,-152.5"/>
 <text text-anchor="middle" x="34" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">NPNZ16b_s</text>
 </a>
@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="node2" class="node">
 <title>Node1</title>
-<g id="a_node2"><a xlink:href="a01547.html" target="_top" xlink:title="Automated ADC Trigger handling.">
+<g id="a_node2"><a xlink:href="a01543.html" target="_top" xlink:title="Automated ADC Trigger handling.">
 <polygon fill="white" stroke="black" points="120.5,-304.5 120.5,-323.5 247.5,-323.5 247.5,-304.5 120.5,-304.5"/>
 <text text-anchor="middle" x="184" y="-311.5" font-family="Helvetica,sans-Serif" font-size="10.00">NPNZ_ADC_TRGCTRL_s</text>
 </a>
@@ -36,7 +36,7 @@
 <!-- Node2 -->
 <g id="node3" class="node">
 <title>Node2</title>
-<g id="a_node3"><a xlink:href="a01551.html" target="_top" xlink:title="Data Provider Target Memory Addresses.">
+<g id="a_node3"><a xlink:href="a01547.html" target="_top" xlink:title="Data Provider Target Memory Addresses.">
 <polygon fill="white" stroke="black" points="111,-266.5 111,-285.5 257,-285.5 257,-266.5 111,-266.5"/>
 <text text-anchor="middle" x="184" y="-273.5" font-family="Helvetica,sans-Serif" font-size="10.00">NPNZ_DATA_PROVIDERS_s</text>
 </a>
@@ -51,7 +51,7 @@
 <!-- Node3 -->
 <g id="node4" class="node">
 <title>Node3</title>
-<g id="a_node4"><a xlink:href="a01555.html" target="_top" xlink:title="User Extension Function Call Parameters.">
+<g id="a_node4"><a xlink:href="a01551.html" target="_top" xlink:title="User Extension Function Call Parameters.">
 <polygon fill="white" stroke="black" points="108,-228.5 108,-247.5 260,-247.5 260,-228.5 108,-228.5"/>
 <text text-anchor="middle" x="184" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00">NPNZ_EXTENSION_HOOKS_s</text>
 </a>
@@ -66,7 +66,7 @@
 <!-- Node4 -->
 <g id="node5" class="node">
 <title>Node4</title>
-<g id="a_node5"><a xlink:href="a01535.html" target="_top" xlink:title="Filter Coefficient Arrays, Number Format Handling and Input/Output History Parameters.">
+<g id="a_node5"><a xlink:href="a01531.html" target="_top" xlink:title="Filter Coefficient Arrays, Number Format Handling and Input/Output History Parameters.">
 <polygon fill="white" stroke="black" points="115.5,-190.5 115.5,-209.5 252.5,-209.5 252.5,-190.5 115.5,-190.5"/>
 <text text-anchor="middle" x="184" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">NPNZ_FILTER_PARAMS_s</text>
 </a>
@@ -81,7 +81,7 @@
 <!-- Node5 -->
 <g id="node6" class="node">
 <title>Node5</title>
-<g id="a_node6"><a xlink:href="a01539.html" target="_top" xlink:title="Adaptive Gain Control Modulation Parameters.">
+<g id="a_node6"><a xlink:href="a01535.html" target="_top" xlink:title="Adaptive Gain Control Modulation Parameters.">
 <polygon fill="white" stroke="black" points="118,-152.5 118,-171.5 250,-171.5 250,-152.5 118,-152.5"/>
 <text text-anchor="middle" x="184" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">NPNZ_GAIN_CONTROL_s</text>
 </a>
@@ -96,7 +96,7 @@
 <!-- Node6 -->
 <g id="node7" class="node">
 <title>Node6</title>
-<g id="a_node7"><a xlink:href="a01543.html" target="_top" xlink:title="System Anti&#45;Windup (Output Clamping) Thresholds.">
+<g id="a_node7"><a xlink:href="a01539.html" target="_top" xlink:title="System Anti&#45;Windup (Output Clamping) Thresholds.">
 <polygon fill="white" stroke="black" points="140,-114.5 140,-133.5 228,-133.5 228,-114.5 140,-114.5"/>
 <text text-anchor="middle" x="184" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">NPNZ_LIMITS_s</text>
 </a>
@@ -111,7 +111,7 @@
 <!-- Node7 -->
 <g id="node8" class="node">
 <title>Node7</title>
-<g id="a_node8"><a xlink:href="a01531.html" target="_top" xlink:title="Filter Coefficient Arrays, Number Format Handling and Input/Output History Parameters.">
+<g id="a_node8"><a xlink:href="a01527.html" target="_top" xlink:title="Filter Coefficient Arrays, Number Format Handling and Input/Output History Parameters.">
 <polygon fill="white" stroke="black" points="138.5,-76.5 138.5,-95.5 229.5,-95.5 229.5,-76.5 138.5,-76.5"/>
 <text text-anchor="middle" x="184" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">NPNZ_PORTS_s</text>
 </a>
@@ -126,7 +126,7 @@
 <!-- Node9 -->
 <g id="node10" class="node">
 <title>Node9</title>
-<g id="a_node10"><a xlink:href="a01511.html" target="_top" xlink:title="NPNZ16b controller object status and control word.">
+<g id="a_node10"><a xlink:href="a01507.html" target="_top" xlink:title="NPNZ16b controller object status and control word.">
 <polygon fill="white" stroke="black" points="136.5,-38.5 136.5,-57.5 231.5,-57.5 231.5,-38.5 136.5,-38.5"/>
 <text text-anchor="middle" x="184" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">NPNZ_STATUS_s</text>
 </a>
@@ -141,7 +141,7 @@
 <!-- Node10 -->
 <g id="node11" class="node">
 <title>Node10</title>
-<g id="a_node11"><a xlink:href="a01559.html" target="_top" xlink:title="User Data Space for Advanced Control Functions.">
+<g id="a_node11"><a xlink:href="a01555.html" target="_top" xlink:title="User Data Space for Advanced Control Functions.">
 <polygon fill="white" stroke="black" points="104,-0.5 104,-19.5 264,-19.5 264,-0.5 104,-0.5"/>
 <text text-anchor="middle" x="184" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">NPNZ_USER_DATA_BUFFER_s</text>
 </a>
@@ -156,7 +156,7 @@
 <!-- Node8 -->
 <g id="node9" class="node">
 <title>Node8</title>
-<g id="a_node9"><a xlink:href="a01527.html" target="_top" xlink:title="Data Input/Output Port declaration of memory addresses, signal offsets and normalization settings.">
+<g id="a_node9"><a xlink:href="a01523.html" target="_top" xlink:title="Data Input/Output Port declaration of memory addresses, signal offsets and normalization settings.">
 <polygon fill="white" stroke="black" points="300,-76.5 300,-95.5 384,-95.5 384,-76.5 300,-76.5"/>
 <text text-anchor="middle" x="342" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">NPNZ_PORT_s</text>
 </a>

@@ -8,13 +8,6 @@
  viewBox="0.00 0.00 1154.87 774.78" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(14.4 760.38)">
 <title>sfw_main</title>
-<g id="clust3" class="cluster">
-<title>cluster_1</title>
-<polygon fill="ivory" stroke="orange" points="194.81,-94 194.81,-450.61 368.81,-450.61 368.81,-94 194.81,-94"/>
-<text text-anchor="middle" x="281.81" y="-125.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">OS Timer ISR</text>
-<text text-anchor="middle" x="281.81" y="-113.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">High Priority (HP)</text>
-<text text-anchor="middle" x="281.81" y="-101.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">Tasks</text>
-</g>
 <g id="clust1" class="cluster">
 <title>cluster_0</title>
 <polygon fill="transparent" stroke="lightgrey" points="474.81,-148 474.81,-677.98 685.81,-677.98 685.81,-148 474.81,-148"/>
@@ -25,20 +18,27 @@
 <polygon fill="ivory" stroke="grey" points="482.81,-156 482.81,-596.73 677.81,-596.73 677.81,-156 482.81,-156"/>
 <text text-anchor="middle" x="642.31" y="-583.93" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">Main Loop</text>
 </g>
+<g id="clust3" class="cluster">
+<title>cluster_1</title>
+<polygon fill="ivory" stroke="orange" points="194.81,-94 194.81,-450.61 368.81,-450.61 368.81,-94 194.81,-94"/>
+<text text-anchor="middle" x="281.81" y="-125.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">OS Timer ISR</text>
+<text text-anchor="middle" x="281.81" y="-113.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">High Priority (HP)</text>
+<text text-anchor="middle" x="281.81" y="-101.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">Tasks</text>
+</g>
 <g id="clust4" class="cluster">
 <title>cluster_2</title>
 <polygon fill="transparent" stroke="transparent" points="693.81,-250.5 693.81,-737.98 1061.81,-737.98 1061.81,-250.5 693.81,-250.5"/>
 <text text-anchor="middle" x="877.81" y="-261.3" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="24.00"> &#160;&#160;&#160;&#160;</text>
-</g>
-<g id="clust5" class="cluster">
-<title>cluster_21</title>
-<polygon fill="transparent" stroke="transparent" points="701.81,-511.61 701.81,-729.98 1053.81,-729.98 1053.81,-511.61 701.81,-511.61"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_20</title>
 <polygon fill="ivory" stroke="orange" points="791.81,-292.5 791.81,-498.5 965.81,-498.5 965.81,-292.5 791.81,-292.5"/>
 <text text-anchor="middle" x="878.81" y="-311.7" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">High Speed</text>
 <text text-anchor="middle" x="878.81" y="-299.7" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">Control Loop ISR</text>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_21</title>
+<polygon fill="transparent" stroke="transparent" points="701.81,-511.61 701.81,-729.98 1053.81,-729.98 1053.81,-511.61 701.81,-511.61"/>
 </g>
 <!-- a0 -->
 <g id="node1" class="node">
