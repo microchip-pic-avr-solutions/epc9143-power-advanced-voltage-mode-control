@@ -42,7 +42,7 @@
         "LCD"
       ],
 	  "subcategories": [
-		 "Power"
+		"Power",
 		"Power Management and Conversion"
 	  "keywords": [
 		"dsPIC",
