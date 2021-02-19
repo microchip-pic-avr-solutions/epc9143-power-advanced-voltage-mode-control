@@ -183,11 +183,13 @@ volatile uint16_t sysHighPriorityTasks_Execute(void)
 
 void __attribute__((__interrupt__, context, no_auto_psv)) _OsTimerInterrupt(void)
 {
+    volatile uint16_t retval=1;
+
     #ifdef DBGPIN2_Set
     DBGPIN2_Set();              // Set the CPU debugging pin HIGH
     #endif
 
-    sysHighPriorityTasks_Execute(); // Execute list of high priority tasks
+    retval &= sysHighPriorityTasks_Execute(); // Execute list of high priority tasks
     
     LOW_PRIORITY_GO = true; // Set GO trigger for low priority tasks
     _OSTIMER_IF = 0; // Reset the interrupt flag bit
