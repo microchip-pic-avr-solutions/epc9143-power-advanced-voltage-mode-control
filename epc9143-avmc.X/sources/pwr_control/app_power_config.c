@@ -106,6 +106,7 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.sw_node[0].master_period_enable = false; // Master time base is disabled, synchronization is established among PWM generators
 	buck.sw_node[0].high_resolution_enable = true;
     buck.sw_node[0].sync_drive = true; // This topology is a synchronous buck converter
+    buck.sw_node[0].swap_outputs = false; // PWMxH is high-side, PWMxL is low-side
     buck.sw_node[0].period = BUCK_PWM_PERIOD;
     buck.sw_node[0].phase = 0; // Master phase starts at time-base count of =0
     buck.sw_node[0].duty_ratio_min = BUCK_PWM_DC_MIN;
@@ -124,6 +125,8 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.sw_node[1].gpio_low = BUCK_PWM2_GPIO_PORT_PINL;
     buck.sw_node[1].master_period_enable = false; ///< Master time base is disabled, synchronization is established among PWM generators
 	buck.sw_node[1].high_resolution_enable = true;
+    buck.sw_node[1].sync_drive = true; // This topology is a synchronous buck converter
+    buck.sw_node[1].swap_outputs = false; // PWMxH is high-side, PWMxL is low-side
     buck.sw_node[1].period = BUCK_PWM_PERIOD;
     buck.sw_node[1].phase = BUCK_PWM_PHASE_SHIFT; 
     buck.sw_node[1].duty_ratio_min = BUCK_PWM_DC_MIN;
@@ -236,6 +239,10 @@ volatile uint16_t appPowerSupply_ConverterObjectInitialize(void)
     buck.feedback.ad_isns[1].level_trigger = false;
     buck.feedback.ad_isns[1].signed_result = false;
 
+    buck.feedback.ad_isns[1].scaling.factor = BUCK_ISNS_NORM_FACTOR;
+    buck.feedback.ad_isns[1].scaling.scaler = BUCK_ISNS_NORM_SCALER;
+    buck.feedback.ad_isns[1].scaling.offset = BUCK_ISNS2_OFFFSET;
+    
     BUCK_ISNS2_ANSEL = (int)buck.feedback.ad_isns[1].enabled;
 
     
@@ -352,8 +359,8 @@ volatile uint16_t appPowerSupply_ControllerInitialize(void)
     // ADC Trigger Control Configuration
     buck.v_loop.controller->ADCTriggerControl.ptrADCTriggerARegister = &BUCK_VOUT_ADCTRIG;    // Using PGxTRIGA = ADC Trigger 1
     buck.v_loop.controller->ADCTriggerControl.ADCTriggerAOffset = buck.v_loop.trigger_offset; // Triggering at 50% off-time
-    buck.v_loop.controller->ADCTriggerControl.ptrADCTriggerBRegister = &BUCK_ISNS1_ADCTRIG;   // Using PGxTRIGB = ADC Trigger 2
-    buck.v_loop.controller->ADCTriggerControl.ADCTriggerBOffset = BUCK_ISNS_ADC_TRGDLY; // Triggering at 50% on-time
+    buck.v_loop.controller->ADCTriggerControl.ptrADCTriggerBRegister = &BUCK_VIN_ADCTRIG;   // Using PGxTRIGB = ADC Trigger 2
+    buck.v_loop.controller->ADCTriggerControl.ADCTriggerBOffset = BUCK_VIN_ADC_TRGDLY; // Triggering at 50% on-time
     
     // Data Provider Configuration
 	buck.v_loop.controller->DataProviders.ptrDProvControlInput = NULL;
