@@ -1,4 +1,4 @@
-<map id="Adaptive Gain Control Feed Forward" name="Adaptive Gain Control Feed Forward">
-<area shape="rect" id="node1" href="$a00484.html" title="Hardware Abstraction Layer Declarations." alt="" coords="5,5,152,45"/>
-<area shape="rect" id="node2" title="Declaration of macros calculating additional parameters for Adaptive Gain Modulation." alt="" coords="200,5,347,45"/>
+<map id="Device GPIO Assignments" name="Device GPIO Assignments">
+<area shape="rect" id="node1" href="$a00397.html" title=" " alt="" coords="5,5,159,31"/>
+<area shape="rect" id="node2" title="Assignment of microcontroller device pins to circuit functions and signals." alt="" coords="207,5,383,31"/>
 </map>

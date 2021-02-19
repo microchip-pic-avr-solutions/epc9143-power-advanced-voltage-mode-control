@@ -1,5 +1,11 @@
 var a00379 =
 [
-    [ "ISENSE_REF_BUFFER_OPA_INSTANCE", "a00379.html#ga8500c47905f053ab66fef821bc67af35", null ],
-    [ "ISENSE_REF_DAC_INSTANCE", "a00379.html#ga578bf956bef5cf2bcbba7b940b61c52d", null ]
+    [ "BUCK_LEB_PERIOD", "a00379.html#gab995ebe4d204b2618814cea80f7d6eb0", null ],
+    [ "BUCK_PWM_DC_MAX", "a00379.html#ga1d48ac69185f603b84967ce0e8d41713", null ],
+    [ "BUCK_PWM_DC_MIN", "a00379.html#gae2647a90f6c1fd8f7a3bb2a236a3b187", null ],
+    [ "BUCK_PWM_DEAD_TIME_FE", "a00379.html#ga2887c277f2ac42c326c2ccf61b3b1f3d", null ],
+    [ "BUCK_PWM_DEAD_TIME_LE", "a00379.html#gace85e0df46d4d83380cdd555d5e572bb", null ],
+    [ "BUCK_PWM_PERIOD", "a00379.html#gaf74e7d1749ac835a5c6be8c3faa8be80", null ],
+    [ "BUCK_PWM_PHASE_SHIFT", "a00379.html#ga8d1f73f218b93bd2301373cf458f8c85", null ],
+    [ "BUCK_SWITCHING_PERIOD", "a00379.html#gaeee647e1d9ee7976f26810db539bf3d2", null ]
 ];

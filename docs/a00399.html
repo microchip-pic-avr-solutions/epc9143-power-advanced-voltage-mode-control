@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EPC9143 300 W 16th Brick DC/DC Module Reference Design: Control Interrupt Vector Declarations</title>
+<title>EPC9143 300 W 16th Brick DC/DC Module Reference Design: Device Peripheral Assignments</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -96,199 +96,64 @@ $(document).ready(function(){initNavTree('a00399.html',''); initResizable(); });
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Control Interrupt Vector Declarations<div class="ingroups"><a class="el" href="a00484.html">Hardware Abstraction Layer</a></div></div>  </div>
+<div class="title">Device Peripheral Assignments<div class="ingroups"><a class="el" href="a00484.html">Hardware Abstraction Layer</a> &raquo; <a class="el" href="a00397.html">Special Circuit Signals</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Assignment of microcontroller device specific chip-resources to circuit functions and signals.  
+<a href="#details">More...</a></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for Control Interrupt Vector Declarations:</div>
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for Device Peripheral Assignments:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00399.svg" width="362" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00399.svg" width="415" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
-<tr class="memitem:ga0cfa7f19452962e44f33d62da824775d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00399.html#ga0cfa7f19452962e44f33d62da824775d">BUCK_VOUT_TRIG_PWM</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga0cfa7f19452962e44f33d62da824775d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control loop Interrupt Vector Settings.  <a href="a00399.html#ga0cfa7f19452962e44f33d62da824775d">More...</a><br /></td></tr>
-<tr class="separator:ga0cfa7f19452962e44f33d62da824775d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa46c260ebaea7e59a41e0c02c09b7012"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00399.html#gaa46c260ebaea7e59a41e0c02c09b7012">BUCK_VOUT_TRIG_ADC</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:gaa46c260ebaea7e59a41e0c02c09b7012"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buck VOUT control loop is called in ADC interrupt.  <a href="a00399.html#gaa46c260ebaea7e59a41e0c02c09b7012">More...</a><br /></td></tr>
-<tr class="separator:gaa46c260ebaea7e59a41e0c02c09b7012"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga753fe8fc858101ec0f3de3dbd5632929"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00399.html#ga753fe8fc858101ec0f3de3dbd5632929">BUCK_VOUT_TRIGGER_MODE</a>&#160;&#160;&#160;<a class="el" href="a00399.html#ga0cfa7f19452962e44f33d62da824775d">BUCK_VOUT_TRIG_PWM</a></td></tr>
-<tr class="memdesc:ga753fe8fc858101ec0f3de3dbd5632929"><td class="mdescLeft">&#160;</td><td class="mdescRight">Currently selected voltage loop interrupt vector.  <a href="a00399.html#ga753fe8fc858101ec0f3de3dbd5632929">More...</a><br /></td></tr>
-<tr class="separator:ga753fe8fc858101ec0f3de3dbd5632929"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga21c69aa2132f7c8296cf4a558144472d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00399.html#ga21c69aa2132f7c8296cf4a558144472d">BUCK_VOUT_ISR_PRIORITY</a>&#160;&#160;&#160;5</td></tr>
-<tr class="memdesc:ga21c69aa2132f7c8296cf4a558144472d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voltage loop interrupt vector priority (valid settings between 0...6 with 6 being the highest priority)  <a href="a00399.html#ga21c69aa2132f7c8296cf4a558144472d">More...</a><br /></td></tr>
-<tr class="separator:ga21c69aa2132f7c8296cf4a558144472d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4d26e0585523e4ab162ca9868517b878"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00399.html#ga4d26e0585523e4ab162ca9868517b878">_BUCK_VLOOP_Interrupt</a>&#160;&#160;&#160;_PWM2Interrupt</td></tr>
-<tr class="memdesc:ga4d26e0585523e4ab162ca9868517b878"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt vector function call label.  <a href="a00399.html#ga4d26e0585523e4ab162ca9868517b878">More...</a><br /></td></tr>
-<tr class="separator:ga4d26e0585523e4ab162ca9868517b878"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac652105fed34fa1602688a30bbd8b227"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00399.html#gac652105fed34fa1602688a30bbd8b227">_BUCK_VLOOP_ISR_IP</a>&#160;&#160;&#160;_PWM2IP</td></tr>
-<tr class="memdesc:gac652105fed34fa1602688a30bbd8b227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interupt vector priority register.  <a href="a00399.html#gac652105fed34fa1602688a30bbd8b227">More...</a><br /></td></tr>
-<tr class="separator:gac652105fed34fa1602688a30bbd8b227"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga86a33b4bdcca00d9c177cbcba36fe05b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00399.html#ga86a33b4bdcca00d9c177cbcba36fe05b">_BUCK_VLOOP_ISR_IF</a>&#160;&#160;&#160;_PWM2IF</td></tr>
-<tr class="memdesc:ga86a33b4bdcca00d9c177cbcba36fe05b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interupt vector flag bit register bit.  <a href="a00399.html#ga86a33b4bdcca00d9c177cbcba36fe05b">More...</a><br /></td></tr>
-<tr class="separator:ga86a33b4bdcca00d9c177cbcba36fe05b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga203d0dc5a0b331f39f7ed672d7fc7b31"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00399.html#ga203d0dc5a0b331f39f7ed672d7fc7b31">_BUCK_VLOOP_ISR_IE</a>&#160;&#160;&#160;_PWM2IE</td></tr>
-<tr class="memdesc:ga203d0dc5a0b331f39f7ed672d7fc7b31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interupt vector enable bit register bit.  <a href="a00399.html#ga203d0dc5a0b331f39f7ed672d7fc7b31">More...</a><br /></td></tr>
-<tr class="separator:ga203d0dc5a0b331f39f7ed672d7fc7b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga578bf956bef5cf2bcbba7b940b61c52d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00399.html#ga578bf956bef5cf2bcbba7b940b61c52d">ISENSE_REF_DAC_INSTANCE</a>&#160;&#160;&#160;1U</td></tr>
+<tr class="memdesc:ga578bf956bef5cf2bcbba7b940b61c52d"><td class="mdescLeft">&#160;</td><td class="mdescRight">User-declaration of global defines for PWM signal generator settings.  <a href="a00399.html#ga578bf956bef5cf2bcbba7b940b61c52d">More...</a><br /></td></tr>
+<tr class="separator:ga578bf956bef5cf2bcbba7b940b61c52d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8500c47905f053ab66fef821bc67af35"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00399.html#ga8500c47905f053ab66fef821bc67af35">ISENSE_REF_BUFFER_OPA_INSTANCE</a>&#160;&#160;&#160;2U</td></tr>
+<tr class="memdesc:ga8500c47905f053ab66fef821bc67af35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operational amplifier instance used to generate current semse amplifier reference voltage.  <a href="a00399.html#ga8500c47905f053ab66fef821bc67af35">More...</a><br /></td></tr>
+<tr class="separator:ga8500c47905f053ab66fef821bc67af35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>Assignment of microcontroller device specific chip-resources to circuit functions and signals. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ga4d26e0585523e4ab162ca9868517b878"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4d26e0585523e4ab162ca9868517b878">&#9670;&nbsp;</a></span>_BUCK_VLOOP_Interrupt</h2>
+<a id="ga8500c47905f053ab66fef821bc67af35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8500c47905f053ab66fef821bc67af35">&#9670;&nbsp;</a></span>ISENSE_REF_BUFFER_OPA_INSTANCE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void _BUCK_VLOOP_Interrupt</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">void</td><td>)</td>
-          <td>&#160;&#160;&#160;_PWM2Interrupt</td>
+          <td class="memname">#define ISENSE_REF_BUFFER_OPA_INSTANCE&#160;&#160;&#160;2U</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Interrupt vector function call label. </p>
-<p>Main Control Interrupt.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">void</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
-<p>The control interrupt is calling the control loop. The point in time where this interrupt is thrown is determined by selecting the BUCK_VOUT_TRIGGER_MODE option. </p>
+<p>Operational amplifier instance used to generate current semse amplifier reference voltage. </p>
 
-<p class="definition">Definition at line <a class="el" href="a00137_source.html#l00818">818</a> of file <a class="el" href="a00137_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a00137_source.html#l00241">241</a> of file <a class="el" href="a00137_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>
-<a id="ga203d0dc5a0b331f39f7ed672d7fc7b31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga203d0dc5a0b331f39f7ed672d7fc7b31">&#9670;&nbsp;</a></span>_BUCK_VLOOP_ISR_IE</h2>
+<a id="ga578bf956bef5cf2bcbba7b940b61c52d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga578bf956bef5cf2bcbba7b940b61c52d">&#9670;&nbsp;</a></span>ISENSE_REF_DAC_INSTANCE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define _BUCK_VLOOP_ISR_IE&#160;&#160;&#160;_PWM2IE</td>
+          <td class="memname">#define ISENSE_REF_DAC_INSTANCE&#160;&#160;&#160;1U</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Interupt vector enable bit register bit. </p>
+<p>User-declaration of global defines for PWM signal generator settings. </p>
+<p>This section defines fundamental PWM settings required for the interleaved buck converter of the EPC9143 300W 16th brick power module reference design. These settings are determined by hardware and defined using physical quantities. Pre-compiler macros are used to convert physical values into binary (integer) numbers to be written to Special Function Registers (SFR). Digital-To-Analog Converter instance used to generate current semse amplifier reference voltage </p>
 
-<p class="definition">Definition at line <a class="el" href="a00137_source.html#l00821">821</a> of file <a class="el" href="a00137_source.html">epc9143_r40_hwdescr.h</a>.</p>
-
-</div>
-</div>
-<a id="ga86a33b4bdcca00d9c177cbcba36fe05b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga86a33b4bdcca00d9c177cbcba36fe05b">&#9670;&nbsp;</a></span>_BUCK_VLOOP_ISR_IF</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _BUCK_VLOOP_ISR_IF&#160;&#160;&#160;_PWM2IF</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Interupt vector flag bit register bit. </p>
-
-<p class="definition">Definition at line <a class="el" href="a00137_source.html#l00820">820</a> of file <a class="el" href="a00137_source.html">epc9143_r40_hwdescr.h</a>.</p>
-
-</div>
-</div>
-<a id="gac652105fed34fa1602688a30bbd8b227"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac652105fed34fa1602688a30bbd8b227">&#9670;&nbsp;</a></span>_BUCK_VLOOP_ISR_IP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _BUCK_VLOOP_ISR_IP&#160;&#160;&#160;_PWM2IP</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Interupt vector priority register. </p>
-
-<p class="definition">Definition at line <a class="el" href="a00137_source.html#l00819">819</a> of file <a class="el" href="a00137_source.html">epc9143_r40_hwdescr.h</a>.</p>
-
-</div>
-</div>
-<a id="ga21c69aa2132f7c8296cf4a558144472d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga21c69aa2132f7c8296cf4a558144472d">&#9670;&nbsp;</a></span>BUCK_VOUT_ISR_PRIORITY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define BUCK_VOUT_ISR_PRIORITY&#160;&#160;&#160;5</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Voltage loop interrupt vector priority (valid settings between 0...6 with 6 being the highest priority) </p>
-
-<p class="definition">Definition at line <a class="el" href="a00137_source.html#l00810">810</a> of file <a class="el" href="a00137_source.html">epc9143_r40_hwdescr.h</a>.</p>
-
-</div>
-</div>
-<a id="gaa46c260ebaea7e59a41e0c02c09b7012"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa46c260ebaea7e59a41e0c02c09b7012">&#9670;&nbsp;</a></span>BUCK_VOUT_TRIG_ADC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define BUCK_VOUT_TRIG_ADC&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Buck VOUT control loop is called in ADC interrupt. </p>
-
-<p class="definition">Definition at line <a class="el" href="a00137_source.html#l00807">807</a> of file <a class="el" href="a00137_source.html">epc9143_r40_hwdescr.h</a>.</p>
-
-</div>
-</div>
-<a id="ga0cfa7f19452962e44f33d62da824775d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0cfa7f19452962e44f33d62da824775d">&#9670;&nbsp;</a></span>BUCK_VOUT_TRIG_PWM</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define BUCK_VOUT_TRIG_PWM&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control loop Interrupt Vector Settings. </p>
-<p><b>Description</b> Control loops are called in dedicated interrupt service routines of PWM events, ADC events or triggered by timers. This section allows users to set and modify the interrupt service routine triggers and their priority to set up and optimize the control system interrupt structure. Buck VOUT control loop is called in PWM interrupt </p>
-
-<p class="definition">Definition at line <a class="el" href="a00137_source.html#l00806">806</a> of file <a class="el" href="a00137_source.html">epc9143_r40_hwdescr.h</a>.</p>
-
-</div>
-</div>
-<a id="ga753fe8fc858101ec0f3de3dbd5632929"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga753fe8fc858101ec0f3de3dbd5632929">&#9670;&nbsp;</a></span>BUCK_VOUT_TRIGGER_MODE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define BUCK_VOUT_TRIGGER_MODE&#160;&#160;&#160;<a class="el" href="a00399.html#ga0cfa7f19452962e44f33d62da824775d">BUCK_VOUT_TRIG_PWM</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Currently selected voltage loop interrupt vector. </p>
-
-<p class="definition">Definition at line <a class="el" href="a00137_source.html#l00809">809</a> of file <a class="el" href="a00137_source.html">epc9143_r40_hwdescr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a00137_source.html#l00240">240</a> of file <a class="el" href="a00137_source.html">epc9143_r40_hwdescr.h</a>.</p>
 
 </div>
 </div>

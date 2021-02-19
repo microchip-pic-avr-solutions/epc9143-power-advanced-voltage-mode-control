@@ -1,11 +1,14 @@
 var a00389 =
 [
-    [ "_BUCK_VIN_ADCInterrupt", "a00389.html#ga501721dae24a62c9b8c884d7de0b2611", null ],
-    [ "_BUCK_VIN_ADCISR_IF", "a00389.html#ga47cf795321e845b3b6b2bc0679c55e0b", null ],
-    [ "BUCK_VIN_ADCBUF", "a00389.html#ga677e9cc4284911fb4b20198894b32478", null ],
-    [ "BUCK_VIN_ADCCORE", "a00389.html#ga53db8f7bdb4425578dfa64d6fcff0c79", null ],
-    [ "BUCK_VIN_ADCIN", "a00389.html#ga9160049921a7c481b69d7098c41f2152", null ],
-    [ "BUCK_VIN_ADCTRIG", "a00389.html#gab3f4ccd582e6df196f114dee7401ae9e", null ],
-    [ "BUCK_VIN_ANSEL", "a00389.html#gad69d0fffc2e8bbb40add0c81d05714ee", null ],
-    [ "BUCK_VIN_TRGSRC", "a00389.html#gaef301b39ff68f0c6f5d96996e5f4e5e4", null ]
+    [ "BUCK_VOUT_ADC_TRGDLY", "a00389.html#ga62220308b2f2b302fbf9ef2cf0eefad4", null ],
+    [ "BUCK_VOUT_DEV_RELEASE", "a00389.html#ga39f60f293aceb0c208718d11a7637487", null ],
+    [ "BUCK_VOUT_DEV_TRIP", "a00389.html#ga9d5cfb44a2773e8854f007c13c65cfca", null ],
+    [ "BUCK_VOUT_FEEDBACK_GAIN", "a00389.html#ga78e303e825ebbb38c8f61ddcb0a0d718", null ],
+    [ "BUCK_VOUT_NOM", "a00389.html#ga2f6b12d2606761c0b8a9bfdb446d2543", null ],
+    [ "BUCK_VOUT_NORM_FACTOR", "a00389.html#ga3c2ee8d6fd16a7f81797411913942854", null ],
+    [ "BUCK_VOUT_NORM_INV_G", "a00389.html#ga6f46102d2cb00d541e0cf6b3d7c3d46b", null ],
+    [ "BUCK_VOUT_NORM_SCALER", "a00389.html#ga2fb593feff154f722e2e42554df78218", null ],
+    [ "BUCK_VOUT_OFFSET", "a00389.html#ga403bc23d113ac96de0317aed5b8ae747", null ],
+    [ "BUCK_VOUT_RANGE_MAX", "a00389.html#ga8596a14d59666e7db30e52a5a3a39c8f", null ],
+    [ "BUCK_VOUT_REF", "a00389.html#ga42d8626bfa1f343d89033f82963fd2b5", null ]
 ];

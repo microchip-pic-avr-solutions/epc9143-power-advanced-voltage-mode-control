@@ -1,16 +1,16 @@
 <map id="Hardware Abstraction Layer" name="Hardware Abstraction Layer">
 <area shape="rect" id="node1" href="$a00371.html" title="Declaration of startup timing periods." alt="" coords="206,5,365,31"/>
-<area shape="rect" id="node2" title="Hardware Abstraction Layer Declarations." alt="" coords="5,310,152,350"/>
-<area shape="rect" id="node3" href="$a00377.html" title=" " alt="" coords="212,55,359,95"/>
-<area shape="rect" id="node4" href="$a00386.html" title="Declaration of input voltage feedback parameters." alt="" coords="206,120,365,145"/>
-<area shape="rect" id="node5" href="$a00367.html" title="Declaration of global state&#45;machine parameters." alt="" coords="206,169,365,195"/>
-<area shape="rect" id="node6" href="$a00394.html" title="Declaration of phase current feedback parameters." alt="" coords="202,219,369,244"/>
-<area shape="rect" id="node7" href="$a00374.html" title="Declaration of fault object trip and recovery delays." alt="" coords="203,268,368,293"/>
-<area shape="rect" id="node8" href="$a00400.html" title=" " alt="" coords="200,317,371,343"/>
-<area shape="rect" id="node9" href="$a00364.html" title="Declarations of fundamental microcontroller device parameters." alt="" coords="211,367,360,407"/>
-<area shape="rect" id="node10" href="$a00363.html" title="Global identified to the hardware version used." alt="" coords="215,432,355,457"/>
-<area shape="rect" id="node11" href="$a00398.html" title="Declaration of macros calculating additional parameters for Adaptive Gain Modulation." alt="" coords="212,482,359,522"/>
-<area shape="rect" id="node12" href="$a00399.html" title=" " alt="" coords="207,546,363,586"/>
-<area shape="rect" id="node13" href="$a00380.html" title="Declaration of fundamental PWM parameters." alt="" coords="232,611,339,636"/>
-<area shape="rect" id="node14" href="$a00390.html" title="Declaration of output voltage feedback parameters." alt="" coords="200,660,371,685"/>
+<area shape="rect" id="node2" title="Hardware Abstraction Layer Declarations." alt="" coords="5,294,152,334"/>
+<area shape="rect" id="node3" href="$a00397.html" title=" " alt="" coords="209,55,362,80"/>
+<area shape="rect" id="node4" href="$a00383.html" title="Declaration of input voltage feedback parameters." alt="" coords="206,104,365,129"/>
+<area shape="rect" id="node5" href="$a00367.html" title="Declaration of global state&#45;machine parameters." alt="" coords="206,153,365,179"/>
+<area shape="rect" id="node6" href="$a00391.html" title="Declaration of phase current feedback parameters." alt="" coords="202,203,369,228"/>
+<area shape="rect" id="node7" href="$a00374.html" title="Declaration of fault object trip and recovery delays." alt="" coords="203,252,368,277"/>
+<area shape="rect" id="node8" href="$a00400.html" title=" " alt="" coords="200,301,371,327"/>
+<area shape="rect" id="node9" href="$a00364.html" title="Declarations of fundamental microcontroller device parameters." alt="" coords="211,351,360,391"/>
+<area shape="rect" id="node10" href="$a00363.html" title="Global identified to the hardware version used." alt="" coords="215,416,355,441"/>
+<area shape="rect" id="node11" href="$a00395.html" title="Declaration of macros calculating additional parameters for Adaptive Gain Modulation." alt="" coords="212,466,359,506"/>
+<area shape="rect" id="node12" href="$a00396.html" title=" " alt="" coords="207,530,363,570"/>
+<area shape="rect" id="node13" href="$a00377.html" title="Declaration of fundamental PWM parameters." alt="" coords="232,595,339,620"/>
+<area shape="rect" id="node14" href="$a00387.html" title="Declaration of output voltage feedback parameters." alt="" coords="200,644,371,669"/>
 </map>

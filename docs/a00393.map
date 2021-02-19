@@ -1,4 +1,4 @@
-<map id="Microcontroller Abstraction" name="Microcontroller Abstraction">
-<area shape="rect" id="node1" title="Device analog input pin, register and interrupt vector assignments of output voltage feedback signal(..." alt="" coords="224,5,401,31"/>
-<area shape="rect" id="node2" href="$a00390.html" title="Declaration of output voltage feedback parameters." alt="" coords="5,5,176,31"/>
+<map id="Conversion Macros" name="Conversion Macros">
+<area shape="rect" id="node1" title="Conversion macros for user&#45;declarations of phase current feedback parameters." alt="" coords="220,5,352,31"/>
+<area shape="rect" id="node2" href="$a00391.html" title="Declaration of phase current feedback parameters." alt="" coords="5,5,172,31"/>
 </map>

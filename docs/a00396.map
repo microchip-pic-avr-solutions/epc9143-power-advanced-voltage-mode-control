@@ -1,4 +1,4 @@
-<map id="Conversion Macros" name="Conversion Macros">
-<area shape="rect" id="node1" title="Conversion macros for user&#45;declarations of phase current feedback parameters." alt="" coords="220,5,352,31"/>
-<area shape="rect" id="node2" href="$a00394.html" title="Declaration of phase current feedback parameters." alt="" coords="5,5,172,31"/>
+<map id="Control Interrupt Vector Declarations" name="Control Interrupt Vector Declarations">
+<area shape="rect" id="node1" href="$a00484.html" title="Hardware Abstraction Layer Declarations." alt="" coords="5,5,152,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="200,5,356,45"/>
 </map>

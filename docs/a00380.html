@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EPC9143 300 W 16th Brick DC/DC Module Reference Design: PWM Settings</title>
+<title>EPC9143 300 W 16th Brick DC/DC Module Reference Design: Microcontroller Abstraction</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -98,37 +98,30 @@ $(document).ready(function(){initNavTree('a00380.html',''); initResizable(); });
   <div class="summary">
 <a href="#groups">Modules</a>  </div>
   <div class="headertitle">
-<div class="title">PWM Settings<div class="ingroups"><a class="el" href="a00484.html">Hardware Abstraction Layer</a></div></div>  </div>
+<div class="title">Microcontroller Abstraction<div class="ingroups"><a class="el" href="a00484.html">Hardware Abstraction Layer</a> &raquo; <a class="el" href="a00377.html">PWM Settings</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Declaration of fundamental PWM parameters.  
+<p>PWM peripheral output pins, control signals and register assignments.  
 <a href="#details">More...</a></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for PWM Settings:</div>
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for Microcontroller Abstraction:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="a00380.svg" width="538" height="135"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="a00380.svg" width="526" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
 Modules</h2></td></tr>
-<tr class="memitem:a00381"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00381.html">User Settings</a></td></tr>
-<tr class="memdesc:a00381"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameter defintions using physical quantities. <br /></td></tr>
+<tr class="memitem:a00381"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00381.html">Converter Phase #1</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00382"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00382.html">Conversion Macros</a></td></tr>
-<tr class="memdesc:a00382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversion macros converting physical quantities of parameters into binary (integer) numbers for registers and variables. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00383"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00383.html">Microcontroller Abstraction</a></td></tr>
-<tr class="memdesc:a00383"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM peripheral output pins, control signals and register assignments. <br /></td></tr>
+<tr class="memitem:a00382"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00382.html">Converter Phase #2</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Declaration of fundamental PWM parameters. </p>
-<p>This section defines fundamental PWM settings required for the interleaved buck converter of the EPC9143 300W 16th brick power module reference design. This design requires two PWM generators, generating complementary, fixed frequency PWM waveforms operated 180° out of phase to commutate the switching nodes of both phases of the interleaved synchronous buck converter topology.</p>
-<p>These settings are determined by the hardware pinout and the target device used. Users can modify high level parameters such as PWM switching frequency and dead times by using physical quantities. Pre-compiler macros are used to automatically convert physical values into binary (integer) numbers at compile time to be written to variables and/or Special Function Registers (SFR) at runtime.</p>
-<p>This section is also used to assign peripheral instances to the device pins used as PWM generator outputs. This includes timing parameter registers, interrupt sources, ADC trigger signals and output pin control registers. </p>
+<p>PWM peripheral output pins, control signals and register assignments. </p>
+<p>In this section generic labels are assigned to dedicated device pins and peripheral registers of PWM generators used to commutate the power supply plant switching node. These settings allow the fast re-assignments of feedback signals in case of hardware changes and make the code more readable. </p>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.20-->

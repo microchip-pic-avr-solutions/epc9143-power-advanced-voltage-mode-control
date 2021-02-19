@@ -115,11 +115,11 @@ $(document).ready(function(){initNavTree('a00373.html',''); initResizable(); });
 <tr class="separator:gabba7830b442d410bf3c9beb934f024ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa489d990aa6315f54fee41b013f02fd3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00373.html#gaa489d990aa6315f54fee41b013f02fd3">BUCK_VRAMP_PER</a>&#160;&#160;&#160;(uint16_t)(((float)<a class="el" href="a00372.html#ga5adf9fb727870e57bf02ead3ac7c63ac">BUCK_VRAMP_PERIOD</a> / (float)<a class="el" href="a00368.html#gac8489c3fb9bb5db0d15a2e870c3e5def">MAIN_EXECUTION_PERIOD</a>)-1.0)</td></tr>
 <tr class="separator:gaa489d990aa6315f54fee41b013f02fd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1e532e985e4d737932c504e40950cc37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00373.html#ga1e532e985e4d737932c504e40950cc37">BUCK_VREF_STEP</a>&#160;&#160;&#160;(uint16_t)((float)<a class="el" href="a00392.html#ga42d8626bfa1f343d89033f82963fd2b5">BUCK_VOUT_REF</a> / (float)(<a class="el" href="a00373.html#gaa489d990aa6315f54fee41b013f02fd3">BUCK_VRAMP_PER</a> + 1.0))</td></tr>
+<tr class="memitem:ga1e532e985e4d737932c504e40950cc37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00373.html#ga1e532e985e4d737932c504e40950cc37">BUCK_VREF_STEP</a>&#160;&#160;&#160;(uint16_t)((float)<a class="el" href="a00389.html#ga42d8626bfa1f343d89033f82963fd2b5">BUCK_VOUT_REF</a> / (float)(<a class="el" href="a00373.html#gaa489d990aa6315f54fee41b013f02fd3">BUCK_VRAMP_PER</a> + 1.0))</td></tr>
 <tr class="separator:ga1e532e985e4d737932c504e40950cc37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga44bc7c5f1a38be0df740af9e95a57018"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00373.html#ga44bc7c5f1a38be0df740af9e95a57018">BUCK_IRAMP_PER</a>&#160;&#160;&#160;(uint16_t)(((float)<a class="el" href="a00372.html#ga97ee7cbed4a1ed9ebae5c8576d292103">BUCK_IRAMP_PERIOD</a> / (float)<a class="el" href="a00368.html#gac8489c3fb9bb5db0d15a2e870c3e5def">MAIN_EXECUTION_PERIOD</a>)-1.0)</td></tr>
 <tr class="separator:ga44bc7c5f1a38be0df740af9e95a57018"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga351c39d5d5de144dc1ce695066a52195"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00373.html#ga351c39d5d5de144dc1ce695066a52195">BUCK_IREF_STEP</a>&#160;&#160;&#160;(uint16_t)((float)<a class="el" href="a00396.html#ga781cfc9802c86ba6e1813b2615adac21">BUCK_ISNS_REF</a> / (float)(<a class="el" href="a00373.html#gaa489d990aa6315f54fee41b013f02fd3">BUCK_VRAMP_PER</a> + 1.0))</td></tr>
+<tr class="memitem:ga351c39d5d5de144dc1ce695066a52195"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00373.html#ga351c39d5d5de144dc1ce695066a52195">BUCK_IREF_STEP</a>&#160;&#160;&#160;(uint16_t)((float)<a class="el" href="a00393.html#ga781cfc9802c86ba6e1813b2615adac21">BUCK_ISNS_REF</a> / (float)(<a class="el" href="a00373.html#gaa489d990aa6315f54fee41b013f02fd3">BUCK_VRAMP_PER</a> + 1.0))</td></tr>
 <tr class="separator:ga351c39d5d5de144dc1ce695066a52195"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf341b4ac7178e33925ead7e712a2583b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00373.html#gaf341b4ac7178e33925ead7e712a2583b">BUCK_PGD</a>&#160;&#160;&#160;(uint16_t)(((float)<a class="el" href="a00372.html#ga4cf9c52e0a9c20641018ebdd2679f3c1">BUCK_POWER_GOOD_DELAY</a> / (float)<a class="el" href="a00368.html#gac8489c3fb9bb5db0d15a2e870c3e5def">MAIN_EXECUTION_PERIOD</a>)-1.0)</td></tr>
 <tr class="separator:gaf341b4ac7178e33925ead7e712a2583b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,7 +150,7 @@ $(document).ready(function(){initNavTree('a00373.html',''); initResizable(); });
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BUCK_IREF_STEP&#160;&#160;&#160;(uint16_t)((float)<a class="el" href="a00396.html#ga781cfc9802c86ba6e1813b2615adac21">BUCK_ISNS_REF</a> / (float)(<a class="el" href="a00373.html#gaa489d990aa6315f54fee41b013f02fd3">BUCK_VRAMP_PER</a> + 1.0))</td>
+          <td class="memname">#define BUCK_IREF_STEP&#160;&#160;&#160;(uint16_t)((float)<a class="el" href="a00393.html#ga781cfc9802c86ba6e1813b2615adac21">BUCK_ISNS_REF</a> / (float)(<a class="el" href="a00373.html#gaa489d990aa6315f54fee41b013f02fd3">BUCK_VRAMP_PER</a> + 1.0))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -217,7 +217,7 @@ $(document).ready(function(){initNavTree('a00373.html',''); initResizable(); });
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BUCK_VREF_STEP&#160;&#160;&#160;(uint16_t)((float)<a class="el" href="a00392.html#ga42d8626bfa1f343d89033f82963fd2b5">BUCK_VOUT_REF</a> / (float)(<a class="el" href="a00373.html#gaa489d990aa6315f54fee41b013f02fd3">BUCK_VRAMP_PER</a> + 1.0))</td>
+          <td class="memname">#define BUCK_VREF_STEP&#160;&#160;&#160;(uint16_t)((float)<a class="el" href="a00389.html#ga42d8626bfa1f343d89033f82963fd2b5">BUCK_VOUT_REF</a> / (float)(<a class="el" href="a00373.html#gaa489d990aa6315f54fee41b013f02fd3">BUCK_VRAMP_PER</a> + 1.0))</td>
         </tr>
       </table>
 </div><div class="memdoc">
