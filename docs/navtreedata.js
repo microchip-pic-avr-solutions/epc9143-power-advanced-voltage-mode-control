@@ -30,25 +30,26 @@ var NAVTREE =
       [ "Related Documentation", "index.html#autotoc_md2", null ],
       [ "Development Tools", "index.html#autotoc_md3", null ],
       [ "Hardware Used", "index.html#autotoc_md4", null ],
-      [ "Setup", "index.html#autotoc_md5", null ],
-      [ "Operation", "index.html#autotoc_md6", null ]
+      [ "Security and Safety Requirements", "index.html#autotoc_md5", null ],
+      [ "Setup", "index.html#autotoc_md6", null ],
+      [ "Operation", "index.html#autotoc_md7", null ]
     ] ],
     [ "Getting Started", "a01568.html", [
-      [ "Table of Contents", "a01568.html#autotoc_md8", null ],
-      [ "1) Microchip SMPS Firmware Framework Architecture Overview", "a01568.html#autotoc_md9", null ],
-      [ "2) Buck Converter State Machine", "a01568.html#autotoc_md10", null ],
-      [ "3) Fault Monitor", "a01568.html#autotoc_md11", null ],
-      [ "4) Evaluation, Customization and Code Migration", "a01568.html#autotoc_md12", null ],
-      [ "5) Digital Controller Design", "a01568.html#autotoc_md13", null ],
-      [ "6) Power Plant Measurement Support", "a01568.html#autotoc_md14", null ]
+      [ "Table of Contents", "a01568.html#autotoc_md9", null ],
+      [ "1) Microchip SMPS Firmware Framework Architecture Overview", "a01568.html#autotoc_md10", null ],
+      [ "2) Buck Converter State Machine", "a01568.html#autotoc_md11", null ],
+      [ "3) Fault Monitor", "a01568.html#autotoc_md12", null ],
+      [ "4) Evaluation, Customization and Code Migration", "a01568.html#autotoc_md13", null ],
+      [ "5) Digital Controller Design", "a01568.html#autotoc_md14", null ],
+      [ "6) Power Plant Measurement Support", "a01568.html#autotoc_md15", null ]
     ] ],
     [ "Power Supply Control", "a01569.html", [
-      [ "Table of Contents", "a01569.html#autotoc_md16", null ],
-      [ "1) Advanced Type IV Voltage Mode Control Loop Implementation", "a01569.html#autotoc_md17", null ],
-      [ "2) Control Loop Block Diagram", "a01569.html#autotoc_md18", null ],
-      [ "3) Control Loop Timing", "a01569.html#autotoc_md19", null ],
-      [ "4) Control Loop Flow Chart", "a01569.html#autotoc_md20", null ],
-      [ "5) Control Loop Firmware Implementation", "a01569.html#autotoc_md21", null ]
+      [ "Table of Contents", "a01569.html#autotoc_md17", null ],
+      [ "1) Advanced Type IV Voltage Mode Control Loop Implementation", "a01569.html#autotoc_md18", null ],
+      [ "2) Control Loop Block Diagram", "a01569.html#autotoc_md19", null ],
+      [ "3) Control Loop Timing", "a01569.html#autotoc_md20", null ],
+      [ "4) Control Loop Flow Chart", "a01569.html#autotoc_md21", null ],
+      [ "5) Control Loop Firmware Implementation", "a01569.html#autotoc_md22", null ]
     ] ],
     [ "Software Overview", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [

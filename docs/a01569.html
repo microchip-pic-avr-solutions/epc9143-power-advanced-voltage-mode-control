@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('a01569.html',''); initResizable(); });
 <div class="title">Power Supply Control </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><span id="startDoc"> </span> </p><div style="text-align:left"> <img src="images/startbanner.png" alt="Firmware Quick-Start Guide" height="70" width="880" class="inline"/> </div><h1><a class="anchor" id="autotoc_md16"></a>
+<div class="textblock"><p><span id="startDoc"> </span> </p><div style="text-align:left"> <img src="images/startbanner.png" alt="Firmware Quick-Start Guide" height="70" width="880" class="inline"/> </div><h1><a class="anchor" id="autotoc_md17"></a>
 Table of Contents</h1>
 <ul>
 <li><a href="#vmc_1">Advanced Type IV Voltage Mode Control Loop Implementation</a></li>
@@ -109,11 +109,11 @@ Table of Contents</h1>
 <li><a href="#vmc_5">Control Loop Firmware Implementation</a></li>
 </ul>
 <p><span id="vmc_1"> </span></p>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
 1) Advanced Type IV Voltage Mode Control Loop Implementation</h1>
 <p>This firmware demonstrates the implementation of an advanced, single loop voltage mode controller used to regulate the constant output voltage of the 300W 16th brick DC/DC converter power module reference design. The implementation of the Advanced Voltage Feedback Loop requires four Analog-to-Digital Converter (ADC) inputs oversampling the input and output voltage as well as one inductor current per phase of the converter and four PWM outputs (PWM high and PWM low of phases #1 and #2) to drive the power converter half-bridge switch nodes in synchronous mode.</p>
 <p>[<a href="#startDoc">back</a>] <span id="vmc_2"> </span></p>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md19"></a>
 2) Control Loop Block Diagram</h1>
 <p><em>Figure 1</em> shows the block diagram of the buck converter voltage mode controller, where one ADC input is used to sample the most recent level of the output voltage feedback signal, the second ADC input is used to sample the most recent level of the input voltage feedback signal and two additional ADC inputs are used to sample the most recent level of the phase current feedback signals. Once the most recent output voltage sample has been converted, the value is then compared against the internal reference value and the inverse of the deviation between reference and feedback (= <em>error</em>) is pushed through the discrete compensation filter.</p>
 <p>During execution, the control loop incorporates the most recent input voltage value calculating the input/output voltage related gain deviation from pre-defined nominal operating conditions. The detected gain deviation is then compensated by tuning the loop gain in real-time.</p>
@@ -129,7 +129,7 @@ Table of Contents</h1>
  </div><p> <br  />
 </p>
 <p>[<a href="#startDoc">back</a>] <span id="vmc_3"> </span></p>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
 3) Control Loop Timing</h1>
 <p>The single voltage loop controller is triggered by the PWM counter at the same time as the ADC is triggered. The control loop is executing the overhead code of calculating the first part of the compensation filter term (= <em>A-Term</em>) until the most recent ADC sample is available to be processed in the later part of the compensation filter term computation (= <em>B-Term</em>). This approach helps to shorten the overall response time of the controller measured between ADC trigger and write back event of the most recent controller result to the duty cycle register of the PWM generator. The new controller output value will then be divided by two and added to half of the period value to place the new ADC trigger point at 50% of the off-time. If the user has specified an additional offset to compensate FET driver propagation delays, this constant time-offset is also added before the ADC trigger location is updated. The the new duty cycle value will be updated immediately when the new value of the ADC trigger location is written to the PWM generator logic. By placing the ADC trigger point at 50% of the off time, the total control loop response is less than half a switching period, resulting in minimized phase erosion.</p>
 <div style="text-align:center"> <img src="images/control_timing.png" alt="Firmware Quick-Start Guide" width="800" class="inline"/> <br  />
@@ -137,7 +137,7 @@ Table of Contents</h1>
  </div><p> <br  />
 </p>
 <p>[<a href="#startDoc">back</a>] <span id="vmc_4"> </span></p>
-<h1><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 4) Control Loop Flow Chart</h1>
 <p><em>Figure 3</em> shows a typical flow chart of a discrete software feedback loop called at the desired control frequency. It covers the loop path from ADC trigger to PWM output shown in the block diagram above (see <em>Figure 2</em>) while supporting additional features like an <em>Enable/Disable Bypass Switch</em> or advanced features like <em>Adaptive Gain Control (AGC)</em>.</p>
 <ul>
@@ -150,7 +150,7 @@ Table of Contents</h1>
  </div><p> <br  />
 </p>
 <p>[<a href="#startDoc">back</a>] <span id="vmc_5"> </span></p>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md22"></a>
 5) Control Loop Firmware Implementation</h1>
 <p><em>Figure 4</em> shows a typical implementation of the power converter state machine and the high-speed control loop in a task scheduler based firmware environment.</p>
 <ul>

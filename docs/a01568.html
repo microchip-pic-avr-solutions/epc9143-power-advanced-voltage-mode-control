@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('a01568.html',''); initResizable(); });
 <div class="title">Getting Started </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><span id="startDoc"> </span> </p><div style="text-align:left"> <img src="images/startbanner.png" alt="Firmware Quick-Start Guide" height="70" class="inline"/> </div><h1><a class="anchor" id="autotoc_md8"></a>
+<div class="textblock"><p><span id="startDoc"> </span> </p><div style="text-align:left"> <img src="images/startbanner.png" alt="Firmware Quick-Start Guide" height="70" class="inline"/> </div><h1><a class="anchor" id="autotoc_md9"></a>
 Table of Contents</h1>
 <ul>
 <li><a href="#sfw_1">Microchip SMPS Firmware Framework Architecture Overview</a><ul>
@@ -126,7 +126,7 @@ Table of Contents</h1>
 <li><a href="#sfw_6">Power Plant Measurement Support</a></li>
 </ul>
 <p><span id="sfw_1"> </span> </p>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 1) Microchip SMPS Firmware Framework Architecture Overview</h1>
 <p>This introduction covers common aspects of the firmware architecture and provides guidance on specific firmware module documentation included in this document.</p>
 <p><span id="sfw_1a"> </span> </p><h3>a) Overall Process Alignment</h3>
@@ -159,7 +159,7 @@ Table of Contents</h1>
 <p>Hence, aligning low and high priority processes requires to break up the longer, more tolerant tasks in smaller sub-processes, which can be called in defined sequences, the so-called states. These states are then managed and monitored by individual sequencers called state machines. The more processes need to run in parallel, the smaller the individual states of a state machine need to be to allow most effective interleaving of parallel processes.</p>
 <p>[<a href="#startDoc">back</a>]</p>
 <p><span id="sfw_2"></span> </p>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 2) Buck Converter State Machine</h1>
 <p>The state machine managing the interleaved synchronous buck converter ot the EPC9143 1/16th brick power module reference design is implemented as high priority task in the task execution scheme described above. This state machine is tuned for constant voltage regulation. Hence, it offers user-programmable soft-start support including power on-delay, ramp up slope and power good delay, which allows users to tune the startup behavior and include this module in a larger sequencing scheme. The state machine further supports hardware triggered events such as an external ENABLE pin and a POWER GOOD output. Both active pins can be configured in push-pull or open drain mode.</p>
 <p>The startup configuration can be configured as shown in the following drawing:</p>
@@ -194,7 +194,7 @@ Table of Contents</h1>
 <p>If the power controller is shut down and reset by external commands (e.g. fault handler detecting a fault condition or through user-interaction), the state machine is switching into the SUSPEND state, which disables the PWM outputs and control loop execution, clears the control histories and resets the state machine back to RESET</p>
 <p>[<a href="#startDoc">back</a>]</p>
 <p><span id="sfw_3"></span> </p>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md12"></a>
 3) Fault Monitor</h1>
 <p>The fault handler is an independent firmware task, based on a fault monitor library, which is used to define certain so-called Fault Objects. A 'Fault Object' represents a value of a special function register or global user variable, which will monitored and validated by the Fault Monitor Library. The Library supports different comparisons for validation, such as</p>
 <ul>
@@ -218,7 +218,7 @@ Table of Contents</h1>
 </ul>
 <p>[<a href="#startDoc">back</a>]</p>
 <p><span id="sfw_4"></span> </p>
-<h1><a class="anchor" id="autotoc_md12"></a>
+<h1><a class="anchor" id="autotoc_md13"></a>
 4) Evaluation, Customization and Code Migration</h1>
 <p>This firmware utilizes a so-called hardware abstraction layer, allowing users to quickly change fundamental system parameters, adopt pin-out and hardware changes and even migrating the firmware across different designs without having to modify the actual source code.</p>
 <p>Any change to the firmware and fundamental operation of the reference design, including reprogramming of the nominal output voltage can be done by editing the hardware-specific values in the hardware description header file **'<a class="el" href="a00137_source.html">epc9143_r40_hwdescr.h</a>'** located in **'Project Manager =&gt; Header Files/Config'**</p>
@@ -246,7 +246,7 @@ Table of Contents</h1>
 <p>(line numbers given may be subject to change)</p>
 <p>[<a href="#startDoc">back</a>]</p>
 <p><span id="sfw_5"></span> </p>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 5) Digital Controller Design</h1>
 <p>The control loop source code is configured and generated by the PowerSmart&trade; - Digital Control Library Designer (DCLD) software.</p>
 <p>This additional design software is available for download on Github Pages:</p>
@@ -257,7 +257,7 @@ Table of Contents</h1>
 <p>Please refer to the user guide of PowerSmart&trade; DCLD which is included in the software and can be opened from the help menu of the application.</p>
 <p>[<a href="#startDoc">back</a>]</p>
 <p><span id="sfw_6"></span> </p>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md15"></a>
 6) Power Plant Measurement Support</h1>
 <p>This code examples includes an alternative, proportional control loop which is commonly used during measurements of the frequency response of the power plant. When the following define is set to <b>true</b>, the common main control loop is replaced by the proportional controller. </p><pre class="fragment">app_power_control.c, line 33:   #define PLANT_MEASUREMENT   false
 </pre><h5>PLEASE NOTE:</h5>

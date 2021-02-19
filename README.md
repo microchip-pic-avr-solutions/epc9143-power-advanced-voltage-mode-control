@@ -98,6 +98,16 @@ The EPC9143 1/16th brick power module is best tested when plugged into EPC9531 t
   </center>
 </p>
 
+
+## Security and Safety Requirements
+
+Unattended operating power supplies are always a potential safety risk as short circuits or failures of power components can occur at any time where even seemingly small power converters can cause fire or damage connected equipment.
+
+* This development board has not been FCC approved nor certified and must not be used outside a laboratory environment
+* Never operate the board unattended
+* Only use power supplies delivered with the board or equal, approved laboratory equipment
+* Read the user guide for detailed operating instructions to prevent damage to the board or connected equipment
+
 ## Setup
 The board comes programmed and ready to be used when unpacked. No reprogramming of the target device is required to operate the board unless features or settings such as the nominal output voltage or start-up timing need to be modified. 
 
