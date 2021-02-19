@@ -434,8 +434,8 @@
 #define BUCK_VIN_ADCCORE        8           ///< 0=Dedicated Core #0, 1=Dedicated Core #1, 8=Shared ADC Core
 #define BUCK_VIN_ADCIN          9           ///< Analog input number (e.g. '5' for 'AN5')
 #define BUCK_VIN_ADCBUF         ADCBUF9     ///< ADC input buffer of this ADC channel
-#define BUCK_VIN_ADCTRIG        PG2TRIGA    ///< Register used for trigger placement
-#define BUCK_VIN_TRGSRC         BUCK_PWM1_TRGSRC_TRG1 ///< PWM1 (=PG2) Trigger 2 via PGxTRIGB
+#define BUCK_VIN_ADCTRIG        PG4TRIGA    ///< Register used for trigger placement
+#define BUCK_VIN_TRGSRC         BUCK_PWM2_TRGSRC_TRG1 ///< PWM2 (=PG4) Trigger 1 via PGxTRIGA
 
 /** @} */ // end of group input-voltage-feedback-mcal ~~~~~~~~~~~~~~~~~~~~~~~~~
 
