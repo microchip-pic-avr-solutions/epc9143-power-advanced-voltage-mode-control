@@ -100,12 +100,22 @@ volatile uint16_t appPowerSupply_Execute(void)
 
     // Capture most recent samples
     buck.data.v_in = BUCK_VIN_ADCBUF;
+
+    // Collecting all phase current samples
     buck.data.i_sns[0] = BUCK_ISNS1_ADCBUF;
     buck.data.i_sns[1] = BUCK_ISNS2_ADCBUF;
-    
+
     // Accumulate phase currents
     for (_i=0; _i<buck.set_values.no_of_phases; _i++) 
-    { i_dummy += buck.data.i_sns[_i]; }
+    { 
+        if(buck.data.i_sns[_i] < buck.feedback.ad_isns[_i].scaling.offset)
+            buck.data.i_sns[_i] = 0;
+        else
+            buck.data.i_sns[_i] -= buck.feedback.ad_isns[_i].scaling.offset;
+
+        i_dummy += buck.data.i_sns[_i]; 
+    }
+
     buck.data.i_out = i_dummy; // Set output current value
 
     // Execute buck converter state machine
