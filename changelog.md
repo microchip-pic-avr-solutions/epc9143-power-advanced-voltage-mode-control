@@ -19,6 +19,7 @@ this bug caused previously configured op-amp instances to be reset when a new in
 ### Documentation Update
 The online documentation provided with this firmware was updated to account for the changes mentioned above. In addition, in this version also introduced additional chapters about the controller implementation and more detailed documentation of the NPNZ controller object classes used as feedback loop controllers.
 
+
 # epc9143-power-advanced-voltage-mode-control, release v2.1.0
 
 ### Release Highlights
@@ -32,6 +33,4 @@ A built-in adaptive gain control algorithm stabilizes gain variations of the vol
 
 ### Please Note
 This is the first release version published on Github. Previous firmware versions 1.0.0 through 1.3.x as well as version 2.0.x were only available as ZIP archive on the EPC9143 product website on [microchip.com](https://www.microchip.com/epc9143) and are not covered by this repository.
-
-
 
