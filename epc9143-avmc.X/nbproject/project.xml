@@ -18,8 +18,8 @@
                 <sourceRootElem>sources/common</sourceRootElem>
                 <sourceRootElem>sources/fault_handler</sourceRootElem>
                 <sourceRootElem>sources/fault_handler/drivers</sourceRootElem>
-                <sourceRootElem>sources/pwr_control/drivers</sourceRootElem>
-                <sourceRootElem>sources/pwr_control/devices</sourceRootElem>
+                <sourceRootElem>sources/power_control/drivers</sourceRootElem>
+                <sourceRootElem>sources/power_control/devices</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
