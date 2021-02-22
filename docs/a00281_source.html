@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EPC9143 300 W 16th Brick DC/DC Module Reference Design: epc9143-avmc.X/sources/pwr_control/devices/dev_buck_typedef.h Source File</title>
+<title>EPC9143 300 W 16th Brick DC/DC Module Reference Design: epc9143-avmc.X/sources/power_control/devices/dev_buck_typedef.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('a00281_source.html',''); initResizable
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span> <span class="comment">// include standard boolean data types (true/false)</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span> <span class="comment">// include standard definition data types</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#include &quot;../drivers/npnz16b.h&quot;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#include &quot;power_control/drivers/npnz16b.h&quot;</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#include &quot;config/hal.h&quot;</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
@@ -526,7 +526,7 @@ $(document).ready(function(){initNavTree('a00281_source.html',''); initResizable
 <div class="ttc" id="aa01487_html_a5b2dc4caf0113cd2fd142a46750a1b53"><div class="ttname"><a href="a01487.html#a5b2dc4caf0113cd2fd142a46750a1b53">BUCK_FEEDBACK_SETTINGS_s::ad_vin</a></div><div class="ttdeci">volatile struct BUCK_ADC_INPUT_SETTINGS_s ad_vin</div><div class="ttdoc">ADC input sampling input voltage.</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00437">dev_buck_typedef.h:451</a></div></div>
 <div class="ttc" id="aa01499_html_acf310bb58637ce822a55aea5e6ee80de"><div class="ttname"><a href="a01499.html#acf310bb58637ce822a55aea5e6ee80de">BUCK_CONVERTER_s::set_values</a></div><div class="ttdeci">volatile struct BUCK_CONVERTER_SETTINGS_s set_values</div><div class="ttdoc">Control field for global access to references.</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00476">dev_buck_typedef.h:505</a></div></div>
 <div class="ttc" id="aa01443_html_ac394992c7d47027da1de259f501bff0e"><div class="ttname"><a href="a01443.html#ac394992c7d47027da1de259f501bff0e">BUCK_STATE_ID_s::value</a></div><div class="ttdeci">volatile uint32_t value</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00245">dev_buck_typedef.h:245</a></div></div>
-<div class="ttc" id="aa01491_html_a3451100070bc5449a21daa618dca87cd"><div class="ttname"><a href="a01491.html#a3451100070bc5449a21daa618dca87cd">BUCK_GPIO_INSTANCE_s::io_type</a></div><div class="ttdeci">volatile uint16_t io_type</div><div class="ttdoc">Input/Output definition (0=push-pull output, 1=input, 2=open-drain output, 3=open drain input)</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00476">dev_buck_typedef.h:476</a></div></div>
+<div class="ttc" id="aa01491_html_a3451100070bc5449a21daa618dca87cd"><div class="ttname"><a href="a01491.html#a3451100070bc5449a21daa618dca87cd">BUCK_GPIO_INSTANCE_s::io_type</a></div><div class="ttdeci">volatile uint16_t io_type</div><div class="ttdoc">Input/Output definition (0=push-pull output, 1=input, 2=open-drain output)</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00476">dev_buck_typedef.h:476</a></div></div>
 <div class="ttc" id="aa01499_html_ace365e404e1a839717de3d05ee55d27a"><div class="ttname"><a href="a01499.html#ace365e404e1a839717de3d05ee55d27a">BUCK_CONVERTER_s::data</a></div><div class="ttdeci">volatile struct BUCK_CONVERTER_DATA_s data</div><div class="ttdoc">BUCK runtime data.</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00476">dev_buck_typedef.h:506</a></div></div>
 <div class="ttc" id="aa01471_html_ad15abe564957bceb1997a22552534262"><div class="ttname"><a href="a01471.html#ad15abe564957bceb1997a22552534262">BUCK_LOOP_SETTINGS_s::trigger_offset</a></div><div class="ttdeci">volatile uint16_t trigger_offset</div><div class="ttdoc">ADC trigger offset value for trigger fine-tuning.</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00349">dev_buck_typedef.h:349</a></div></div>
 <div class="ttc" id="aa01443_html_a9b9c59079d9b7f6ccbe8e83fa7f23d18"><div class="ttname"><a href="a01443.html#a9b9c59079d9b7f6ccbe8e83fa7f23d18">BUCK_STATE_ID_s::opstate_id</a></div><div class="ttdeci">enum BUCK_OPSTATES_e opstate_id</div><div class="ttdoc">Most recent operating state of main state machine.</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00245">dev_buck_typedef.h:242</a></div></div>
@@ -565,7 +565,7 @@ $(document).ready(function(){initNavTree('a00281_source.html',''); initResizable
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_488b9d04ee693d5b67418d8843ae5fee.html">epc9143-avmc.X</a></li><li class="navelem"><a class="el" href="dir_a7f935963e35749abab8dd916753f311.html">sources</a></li><li class="navelem"><a class="el" href="dir_693765e5ccde707b6624cad542d34564.html">pwr_control</a></li><li class="navelem"><a class="el" href="dir_2f6f7b7240dac53ae060c1c1fa2db7e6.html">devices</a></li><li class="navelem"><b>dev_buck_typedef.h</b></li>
+    <li class="navelem"><a class="el" href="dir_488b9d04ee693d5b67418d8843ae5fee.html">epc9143-avmc.X</a></li><li class="navelem"><a class="el" href="dir_a7f935963e35749abab8dd916753f311.html">sources</a></li><li class="navelem"><a class="el" href="dir_1e409382026c32eca513a266b5866109.html">power_control</a></li><li class="navelem"><a class="el" href="dir_7ddaa5af4566da9eb7cb89834ef81567.html">devices</a></li><li class="navelem"><b>dev_buck_typedef.h</b></li>
     <p style="height: 12px; padding-bottom: 8px; padding-right: 12px; vertical-align: bottom; text-align: right; font-size: 90%;">© 2021, Microchip Technology Inc.</p>
   </ul>
 </div>

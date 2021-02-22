@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EPC9143 300 W 16th Brick DC/DC Module Reference Design: epc9143-avmc.X/sources/pwr_control/devices/dev_buck_pconfig.c Source File</title>
+<title>EPC9143 300 W 16th Brick DC/DC Module Reference Design: epc9143-avmc.X/sources/power_control/devices/dev_buck_pconfig.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -362,7 +362,7 @@ $(document).ready(function(){initNavTree('a00260_source.html',''); initResizable
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="comment">// Disable all PWM outputs of the recent buck converter configuration</span></div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordflow">for</span>(_i=0; _i&lt; buckInstance-&gt;<a class="code" href="a01499.html#acf310bb58637ce822a55aea5e6ee80de">set_values</a>.<a class="code" href="a01467.html#ae002814d52c388ce7d51c8d566d63489">no_of_phases</a>; _i++) {</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <span class="comment">// Capture PWM instance of the recent channel</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="comment">// Capture PWM instance of the recent channel</span></div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        pwm_Instance = buckInstance-&gt;<a class="code" href="a01499.html#a17d0c1176b7be906e4e009e2cf10e3ff">sw_node</a>[_i].<a class="code" href="a01475.html#ac2593427e75f5587a35e071bfd512a87">pwm_instance</a>;</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="comment">// CAPTURE MEMORY ADDRESS OF GIVEN PWM GENERATOR INSTANCE</span></div>
@@ -836,7 +836,7 @@ $(document).ready(function(){initNavTree('a00260_source.html',''); initResizable
 <div class="ttc" id="aa00448_html_gac63073d04bc35c0cce5df47ea0d33165"><div class="ttname"><a href="a00448.html#gac63073d04bc35c0cce5df47ea0d33165">buckPWM_Start</a></div><div class="ttdeci">volatile uint16_t buckPWM_Start(volatile struct BUCK_CONVERTER_s *buckInstance)</div><div class="ttdoc">This function enables the buck PWM operation.</div><div class="ttdef"><b>Definition:</b> <a href="a00260_source.html#l00212">dev_buck_pconfig.c:212</a></div></div>
 <div class="ttc" id="aa01059_html_a6f03aa3f91afd0cd9366f138d2e7e2d4"><div class="ttname"><a href="a01059.html#a6f03aa3f91afd0cd9366f138d2e7e2d4">P33C_PWM_GENERATOR_s::PGxLEBL</a></div><div class="ttdeci">union P33C_PWM_GENERATOR_s::@69 PGxLEBL</div></div>
 <div class="ttc" id="aa01059_html_a1f70aa22c7e2f66244bf9228b674dd12"><div class="ttname"><a href="a01059.html#a1f70aa22c7e2f66244bf9228b674dd12">P33C_PWM_GENERATOR_s::PGxIOCONH</a></div><div class="ttdeci">union P33C_PWM_GENERATOR_s::@58 PGxIOCONH</div></div>
-<div class="ttc" id="aa01491_html_a3451100070bc5449a21daa618dca87cd"><div class="ttname"><a href="a01491.html#a3451100070bc5449a21daa618dca87cd">BUCK_GPIO_INSTANCE_s::io_type</a></div><div class="ttdeci">volatile uint16_t io_type</div><div class="ttdoc">Input/Output definition (0=push-pull output, 1=input, 2=open-drain output, 3=open drain input)</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00476">dev_buck_typedef.h:476</a></div></div>
+<div class="ttc" id="aa01491_html_a3451100070bc5449a21daa618dca87cd"><div class="ttname"><a href="a01491.html#a3451100070bc5449a21daa618dca87cd">BUCK_GPIO_INSTANCE_s::io_type</a></div><div class="ttdeci">volatile uint16_t io_type</div><div class="ttdoc">Input/Output definition (0=push-pull output, 1=input, 2=open-drain output)</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00476">dev_buck_typedef.h:476</a></div></div>
 <div class="ttc" id="aa01491_html_a085e9fc0863cee4864cf51dcfe1e32df"><div class="ttname"><a href="a01491.html#a085e9fc0863cee4864cf51dcfe1e32df">BUCK_GPIO_INSTANCE_s::enabled</a></div><div class="ttdeci">volatile bool enabled</div><div class="ttdoc">Specifies, if this IO is used or not.</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00472">dev_buck_typedef.h:472</a></div></div>
 <div class="ttc" id="aa01495_html_a734cbe6494d398c56fc249ded4953ea2"><div class="ttname"><a href="a01495.html#a734cbe6494d398c56fc249ded4953ea2">BUCK_GPIO_SETTINGS_s::PowerGood</a></div><div class="ttdeci">volatile struct BUCK_GPIO_INSTANCE_s PowerGood</div><div class="ttdoc">Power Good Output.</div><div class="ttdef"><b>Definition:</b> <a href="a00281_source.html#l00476">dev_buck_typedef.h:490</a></div></div>
 <div class="ttc" id="aa00458_html_gaabf456aad04a18f9b8049b51585c9ea0"><div class="ttname"><a href="a00458.html#gaabf456aad04a18f9b8049b51585c9ea0">P33C_PGxIOCONH_PEN_ASYNC</a></div><div class="ttdeci">#define P33C_PGxIOCONH_PEN_ASYNC</div><div class="ttdef"><b>Definition:</b> <a href="a00299_source.html#l00465">dev_buck_ptemp_pwm.h:465</a></div></div>
@@ -867,7 +867,7 @@ $(document).ready(function(){initNavTree('a00260_source.html',''); initResizable
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_488b9d04ee693d5b67418d8843ae5fee.html">epc9143-avmc.X</a></li><li class="navelem"><a class="el" href="dir_a7f935963e35749abab8dd916753f311.html">sources</a></li><li class="navelem"><a class="el" href="dir_693765e5ccde707b6624cad542d34564.html">pwr_control</a></li><li class="navelem"><a class="el" href="dir_2f6f7b7240dac53ae060c1c1fa2db7e6.html">devices</a></li><li class="navelem"><b>dev_buck_pconfig.c</b></li>
+    <li class="navelem"><a class="el" href="dir_488b9d04ee693d5b67418d8843ae5fee.html">epc9143-avmc.X</a></li><li class="navelem"><a class="el" href="dir_a7f935963e35749abab8dd916753f311.html">sources</a></li><li class="navelem"><a class="el" href="dir_1e409382026c32eca513a266b5866109.html">power_control</a></li><li class="navelem"><a class="el" href="dir_7ddaa5af4566da9eb7cb89834ef81567.html">devices</a></li><li class="navelem"><b>dev_buck_pconfig.c</b></li>
     <p style="height: 12px; padding-bottom: 8px; padding-right: 12px; vertical-align: bottom; text-align: right; font-size: 90%;">© 2021, Microchip Technology Inc.</p>
   </ul>
 </div>
