@@ -134,6 +134,7 @@ volatile uint16_t p33c_OscFrc_DefaultInitialize(volatile enum CPU_SPEED_DEFAULTS
  * If a oscillator switch-over is performed, additional settings in the _FOSCSEL and _FOSC
  * registers of the configuration bits may be required
  *************************************************************************************************/
+
 volatile uint16_t p33c_OscFrc_Initialize(volatile enum CLKDIV_FRCDIVN_e frc_div, volatile enum OSCTUN_TUN_e frc_tune)
 {
 #if defined (__P33SMPS_CH_MSTR__) || defined (__P33SMPS_CK__)
@@ -145,14 +146,10 @@ volatile uint16_t p33c_OscFrc_Initialize(volatile enum CLKDIV_FRCDIVN_e frc_div,
     // Set oscillator tuning
     // => FRC Oscillator tuning is only available on single core devices and 
     //    the master core of dual core devices
-    if(frc_tune != OSCTUNbits.TUN)      // If oscillator tuning is requested...
-    {
-    	OSCTUNbits.TUN = frc_tune;           // Set Tuning Register for FRC Oscillator
-    }
+    OSCTUNbits.TUN = frc_tune;      // Set Tuning Register for FRC Oscillator
 
     // Set FRC divider
-    if(frc_div != CLKDIVbits.FRCDIV)     // If fast RC oscillator scaling is requested...
-    { CLKDIVbits.FRCDIV = frc_div; }     // Set FRC frequency divider
+    CLKDIVbits.FRCDIV = frc_div;    // Set FRC frequency divider
 
     return(err);
     
@@ -196,7 +193,8 @@ volatile uint16_t p33c_OscFrc_Initialize(volatile enum CLKDIV_FRCDIVN_e frc_div,
 volatile uint16_t p33c_Osc_Initialize(volatile struct OSC_CONFIG_s osc_config)
 {
 
-    volatile uint16_t _n=0, err=0;
+    volatile uint16_t _n=0;
+    volatile uint16_t err=0;
 
     // =============================================================================================
     // First make sure we are not running from a PLL derived source, when modifying the PLL settings.
@@ -303,8 +301,6 @@ volatile uint16_t p33c_Osc_Initialize(volatile struct OSC_CONFIG_s osc_config)
 volatile uint16_t p33c_OscAuxClk_Initialize(volatile struct AUXOSC_CONFIG_s aux_clock_config)
 {
     
-	#if defined (__P33SMPS_CH__) || defined (__P33SMPS_CK__)
-
     // Set AVCO divider of Auxiliary PLL 
     APLLDIV1bits.AVCODIV   = aux_clock_config.AVCODIV;  // AVCO Scaler 1:n
 
@@ -325,11 +321,6 @@ volatile uint16_t p33c_OscAuxClk_Initialize(volatile struct AUXOSC_CONFIG_s aux_
     { return(0); }
     
     return(ACLKCON1bits.APLLEN);
-    
-    #else
-        #pragma message "error: === selected device family not supported by oscillator mcal driver library ==="
-    
-    #endif
     
 }
  

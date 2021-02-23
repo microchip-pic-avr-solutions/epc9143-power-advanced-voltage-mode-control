@@ -1,7 +1,0 @@
-<map id="Public Properties" name="Public Properties">
-<area shape="rect" id="node1" title="Public properties of the fault handler library layer." alt="" coords="196,55,317,80"/>
-<area shape="rect" id="node3" href="$group__lib-layer-fault-properties-public-data-types.html" title=" " alt="" coords="390,5,478,31"/>
-<area shape="rect" id="node4" href="$group__lib-layer-fault-properties-public-defines.html" title=" " alt="" coords="365,55,503,80"/>
-<area shape="rect" id="node5" href="$group__lib-layer-fault-properties-public-variables.html" title=" " alt="" coords="396,104,472,129"/>
-<area shape="rect" id="node2" href="$group__lib-layer-fault.html" title=" " alt="" coords="5,55,148,80"/>
-</map>

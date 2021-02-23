@@ -9,7 +9,7 @@
 
 #include "config/hal.h"
 #include "drivers/drv_fault_handler.h"
-#include "pwr_control/app_power_control.h"
+#include "power_control/app_power_control.h"
 
 /**
  * @var struct FAULT_OBJECT_s fltobj_BuckUVLO  
@@ -66,10 +66,10 @@ volatile uint16_t appFaultMonitor_Execute(void)
     static bool pre_fault_active=false;
     
     // Call fault handler
-    retval &= drv_FaultCheck(&fltobj_BuckUVLO);
-    retval &= drv_FaultCheck(&fltobj_BuckOVLO);
-    retval &= drv_FaultCheck(&fltobj_BuckRegErr);
-    retval &= drv_FaultCheck(&fltobj_BuckOCP);
+    retval &= drv_FaultHandler_CheckObject(&fltobj_BuckUVLO);
+    retval &= drv_FaultHandler_CheckObject(&fltobj_BuckOVLO);
+    retval &= drv_FaultHandler_CheckObject(&fltobj_BuckRegErr);
+    retval &= drv_FaultHandler_CheckObject(&fltobj_BuckOCP);
 
     // Combine individual fault bits to a common fault indicator
     buck.status.bits.fault_active = (bool) (
@@ -304,11 +304,11 @@ volatile uint16_t ocp_FaultInitialize(void)
     fltobj_BuckOCP.ReferenceObject.bitMask = 0xFFFF;  // Compare all bits of SOURCE (no bit filter)
     fltobj_BuckOCP.Status.bits.CompareType = FLTCMP_GREATER_THAN; // Select Compare-Type
 
-    fltobj_BuckOCP.TripResponse.compareThreshold = BUCK_ISNS_OCL;    // Set fault trip level
+    fltobj_BuckOCP.TripResponse.compareThreshold = BUCK_IOUT_OCL;    // Set fault trip level
     fltobj_BuckOCP.TripResponse.eventThreshold = BUCK_OCP_TDLY;    // Set counter level at which a FAULT condition will be tripped
     fltobj_BuckOCP.TripResponse.ptrResponseFunction = &appPowerSupply_Suspend; // Set pointer to user-function which should be called when a FAULT is tripped
 
-    fltobj_BuckOCP.RecoveryResponse.compareThreshold = BUCK_ISNS_OCL_RELEASE;   // Set fault recovery level
+    fltobj_BuckOCP.RecoveryResponse.compareThreshold = BUCK_IOUT_OCL_RELEASE;   // Set fault recovery level
     fltobj_BuckOCP.RecoveryResponse.eventThreshold = BUCK_OCP_RDLY;     // Set counter level at which a FAULT condition will be cleared
     fltobj_BuckOCP.RecoveryResponse.ptrResponseFunction = NULL; // Clear recovery function pointer
     

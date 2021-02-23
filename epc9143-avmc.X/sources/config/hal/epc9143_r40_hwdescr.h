@@ -434,8 +434,8 @@
 #define BUCK_VIN_ADCCORE        8           ///< 0=Dedicated Core #0, 1=Dedicated Core #1, 8=Shared ADC Core
 #define BUCK_VIN_ADCIN          9           ///< Analog input number (e.g. '5' for 'AN5')
 #define BUCK_VIN_ADCBUF         ADCBUF9     ///< ADC input buffer of this ADC channel
-#define BUCK_VIN_ADCTRIG        PG2TRIGA    ///< Register used for trigger placement
-#define BUCK_VIN_TRGSRC         BUCK_PWM1_TRGSRC_TRG1 ///< PWM1 (=PG2) Trigger 2 via PGxTRIGB
+#define BUCK_VIN_ADCTRIG        PG4TRIGA    ///< Register used for trigger placement
+#define BUCK_VIN_TRGSRC         BUCK_PWM2_TRGSRC_TRG1 ///< PWM2 (=PG4) Trigger 1 via PGxTRIGA
 
 /** @} */ // end of group input-voltage-feedback-mcal ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -490,8 +490,6 @@
 #define BUCK_VOUT_FEEDBACK_OFFSET   (float)(0.0)   ///< Physical, static signal offset in [V]
 #define BUCK_VOUT_ADC_TRG_DELAY     (float)(0.0e-9) ///< Trigger delay in [sec]
 
-#define BUCK_VOUT_FEEDBACK_GAIN     (float)((BUCK_VOUT_DIV_R2) / (BUCK_VOUT_DIV_R1 + BUCK_VOUT_DIV_R2))
-
 /** @} */ // end of group output-voltage-feedback-settings ~~~~~~~~~~~~~~~~~~~~
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -526,6 +524,8 @@
  * variables and used in calculations throughout the firmware.
  */
 
+#define BUCK_VOUT_FEEDBACK_GAIN (float)((BUCK_VOUT_DIV_R2) / (BUCK_VOUT_DIV_R1 + BUCK_VOUT_DIV_R2)) ///< Macro calculating the integer number equivalent of the output voltage feedback gain
+
 #define BUCK_VOUT_REF           (uint16_t)(BUCK_VOUT_NOMINAL * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRANULARITY) ///< Macro calculating the integer number equivalent of the output voltage reference given above in [V]
 #define BUCK_VOUT_NOM           BUCK_VOUT_REF ///< Alias macro of the integer number equivalent of the nominal output voltage given above in [V]
 #define BUCK_VOUT_DEV_TRIP      (uint16_t)(BUCK_VOUT_TOLERANCE_MAX * BUCK_VOUT_FEEDBACK_GAIN / ADC_GRANULARITY) ///< Macro calculating the integer number equivalent of the maximum allowed output voltage deviation given above in [V], which will lead to a converter shut down when exceeded.
@@ -557,10 +557,15 @@
  * *************************************************************************************************/
 
 // Feedback Declarations
-#define BUCK_ISNS_FEEDBACK_GAIN     (float) 0.050       ///< Current Gain in V/A
-#define BUCK_ISNS_MAXIMUM           (float) 26.50       ///< absolute total maximum output current (average)
-#define BUCK_ISNS_RELEASE           (float) 25.00       ///< current reset level after over current event
-#define BUCK_ISNS_REFERENCE         (float) 1.000       ///< output current reference (average)
+#define BUCK_IOUT_MINIMUM           (float) 0.000       ///< absolute minimum output current (average)
+#define BUCK_IOUT_MAXIMUM           (float) 26.50       ///< absolute maximum output current (average)
+#define BUCK_IOUT_RELEASE           (float) 24.00       ///< current reset level after over current event
+
+#define BUCK_ISNS_FEEDBACK_GAIN     (float) 0.050       ///< Phase Current Gain in V/A
+#define BUCK_ISNS_MINIMUM           (float) 0.000       ///< absolute minimum phase current (average)
+#define BUCK_ISNS_MAXIMUM           (float) 26.50       ///< absolute maximum phase current (average)
+#define BUCK_ISNS_RELEASE           (float) 24.00       ///< current reset level after over current event
+#define BUCK_ISNS_REFERENCE         (float) 18.00       ///< output current reference (average)
 #define BUCK_ISNS_ADC_TRG_DELAY     (float) 120.0e-9    ///< ADC trigger delay for current sense in [sec]
 
 #define BUCK_ISNS1_FEEDBACK_OFFSET  (float) 1.650       ///< current sense #1 feedback offset (average)
@@ -580,10 +585,19 @@
  */
 
 // Phase Current Feedback Settings Conversion Macros
-#define BUCK_ISNS_OCL           (uint16_t)((BUCK_ISNS_MAXIMUM * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRANULARITY)  ///< Over Current Limit
-#define BUCK_ISNS_OCL_RELEASE   (uint16_t)((BUCK_ISNS_RELEASE * BUCK_ISNS_FEEDBACK_GAIN + BUCK_ISNS1_FEEDBACK_OFFSET + BUCK_ISNS2_FEEDBACK_OFFSET) / ADC_GRANULARITY)  ///< Over Current Release Level
-#define BUCK_ISNS_REF           (uint16_t)(BUCK_ISNS_REFERENCE * BUCK_ISNS_FEEDBACK_GAIN / ADC_GRANULARITY)  ///< Output Current Reference
+#define BUCK_ISNS_REF           (uint16_t)((BUCK_ISNS_REFERENCE * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Output Current Reference
+#define BUCK_IOUT_MIN           (uint16_t)(int16_t)((BUCK_IOUT_MINIMUM * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_IOUT_OCL           (uint16_t)((BUCK_IOUT_MAXIMUM * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_IOUT_OCL_RELEASE   (uint16_t)((BUCK_IOUT_RELEASE * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Release Level
+
+#define BUCK_ISNS1_MIN          (uint16_t)(int16_t)(((BUCK_ISNS_MINIMUM-BUCK_ISNS1_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_ISNS1_OCL          (uint16_t)(((BUCK_ISNS_MAXIMUM-BUCK_ISNS1_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_ISNS1_OCL_RELEASE  (uint16_t)(((BUCK_ISNS_RELEASE-BUCK_ISNS1_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Release Level
 #define BUCK_ISNS1_OFFFSET      (uint16_t)(BUCK_ISNS1_FEEDBACK_OFFSET / ADC_GRANULARITY)
+
+#define BUCK_ISNS2_MIN          (uint16_t)(int16_t)(((BUCK_ISNS_MINIMUM-BUCK_ISNS2_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_ISNS2_OCL          (uint16_t)(((BUCK_ISNS_MAXIMUM-BUCK_ISNS2_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Limit
+#define BUCK_ISNS2_OCL_RELEASE  (uint16_t)(((BUCK_ISNS_RELEASE-BUCK_ISNS2_FEEDBACK_OFFSET) * BUCK_ISNS_FEEDBACK_GAIN) / ADC_GRANULARITY)  ///< Over Current Release Level
 #define BUCK_ISNS2_OFFFSET      (uint16_t)(BUCK_ISNS2_FEEDBACK_OFFSET / ADC_GRANULARITY)
 #define BUCK_ISNS_ADC_TRGDLY    (uint16_t)(BUCK_ISNS_ADC_TRG_DELAY / PWM_CLOCK_PERIOD)
 

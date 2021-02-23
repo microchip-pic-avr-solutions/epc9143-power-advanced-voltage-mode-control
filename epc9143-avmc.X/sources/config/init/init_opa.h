@@ -39,7 +39,7 @@
 
 extern volatile uint16_t sysOpAmp_Initialize(volatile uint16_t opaInstance, volatile bool disable_n_channel);
 extern volatile uint16_t sysOpAmp_ModuleEnable(void);
-
+extern volatile uint16_t sysOpAmp_ModuleReset(void);
 
 #endif	/* INITIALIZE_OPERATIONAL_AMPLIFIER_H */
 

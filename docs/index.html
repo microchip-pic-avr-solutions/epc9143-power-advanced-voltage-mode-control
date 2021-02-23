@@ -99,16 +99,20 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="title">EPC9143 300 W 16th Brick DC/DC Module Reference Design Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_D__Firmware_MCU16ASMPS_FirmwareProjects_epc9143-power-advanced-voltage-mode-control_README"></a><img src="microchip.jpg" alt="" class="inline" title="image"/>   </p>
-<h2>EPC9143 300W 16th Brick Non-Isolated Step Down Converter Advanced Voltage Mode Control Firmware</h2>
-<p><b>2-Phase Synchronous Buck Converter with Advanced Voltage Mode Control and Current Balancing</b></p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a><img src="microchip.jpg" alt="" class="inline" title="image"/>   </p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+EPC9143 300W 16th Brick Power Module Reference Design Firmware</h1>
+<h3>2-Phase Synchronous Buck Converter with Advanced Voltage Mode Control and Current Balancing**</h3>
 <table style="border: none; align:center; width:100%">
 <tr>
 <td style="align:center;"></td><td style="text-align:center; vertical-align: bottom; height:230px; width:300px;"><img src="images/9143_r4.png" alt="EPC9143 Top View" width="300" class="inline"/>  </td><td style="align:center; width:10px">&#160;  </td><td style="text-align:center; vertical-align: bottom; height:230px; width:300px"><img src="images/9143_r4_back.png" alt="EPC9143 Bottom View" width="288" class="inline"/>  </td><td style="align:center;"></td></tr>
 <tr>
 <td style="align:center;"></td><td align="center"><b>Top View</b>  </td><td style="align:center;">&#160;  </td><td align="center"><b>Bottom View</b> </td><td style="align:center;"></td></tr>
+<tr>
+<td align="center" colspan="5"><a href="https://www.microchip.com/EPC9143" target="_blank" rel="nofollow">300W 16th Brick Power Module Reference Designs (Part-No. EPC9143) </a>  </td></tr>
 </table>
-<h2>Summary</h2>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Summary</h2>
 <p>This code example demonstrates a closed loop voltage mode control implementation for dsPIC33CK. It has specifically been developed for the EPC9143 1/16th brick power module, hardware revision 4.0 (see 'Rev' number printed on board top view shown above for verification).</p>
 <p>The board starts up automatically when sufficient power is applied to the input terminals of the board, providing a regulated output voltage of 12 V DC at the output of the converter. The startup procedure is controlled and executed by the power controller state machine and includes a configurable startup procedure with power-on delay, ramp up period and power good delay before dropping into constant regulation mode.</p>
 <p>An additional fault handler routine continuously monitors incoming ADC data and peripheral status bits and shuts down the power supply if the input voltage is outside the defined maximum range (UVLO/OVLO) or if the output voltage is more than 0.5 V out of regulation for more than 10 milliseconds.</p>
@@ -123,7 +127,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li>Phase Margin: ~ 50°</li>
 <li>Gain Margin: ~ 12 dB</li>
 </ul>
-<h2>Related Documentation</h2>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Related Documentation</h2>
 <h5>Firmware Documentation</h5>
 <ul>
 <li><a href="https://microchip-pic-avr-solutions.github.io/epc9143-power-advanced-voltage-mode-control">EPC9143 Online Firmware Documentation</a></li>
@@ -156,7 +161,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </ul>
 </li>
 </ul>
-<h2>Development Tools</h2>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Development Tools</h2>
 <h5>MPLAB® X Integrated Development Environment (IDE)</h5>
 <ul>
 <li><a href="https://www.microchip.com/mplabx">Requires MPLAB® X IDE, Version v5.40 or later</a><ul>
@@ -182,24 +188,36 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </ul>
 </li>
 </ul>
-<h2>Hardware Used</h2>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Hardware Used</h2>
 <p>The EPC9143 1/16th brick power module is best tested when plugged into EPC9531 test fixture. This test fixture also provides all required interfaces to program and debug the dsPIC33CK32MP102 DSC as well as test points and banana jack connectors for easy and safe handling of the kit during bench tests. The EPC9531 QSG provides detailed operating procedure instructions.</p>
 <ul>
 <li>EPC9143: EPC9143 16th Brick Non-Isolated Step Down Converter, Revision 4.0</li>
 <li>EPC9531: EPC9531 test fixture for EPC9143 16th brick reference design</li>
 </ul>
-<center> <img src="images/9531_test_fixture.png" alt="EPC9143 mounted on EPC9531 Test Fixture" width="500" class="inline"/> </center> <h2>Setup</h2>
+<center> <img src="images/9531_test_fixture.png" alt="EPC9143 mounted on EPC9531 Test Fixture" width="500" class="inline"/> </center> <h2><a class="anchor" id="autotoc_md5"></a>
+Security and Safety Requirements</h2>
+<p>Unattended operating power supplies are always a potential safety risk as short circuits or failures of power components can occur at any time where even seemingly small power converters can cause fire or damage connected equipment.</p>
+<ul>
+<li>This development board has not been FCC approved nor certified and must not be used outside a laboratory environment</li>
+<li>Never operate the board unattended</li>
+<li>Only use power supplies delivered with the board or equal, approved laboratory equipment</li>
+<li>Read the user guide for detailed operating instructions to prevent damage to the board or connected equipment</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Setup</h2>
 <p>The board comes programmed and ready to be used when unpacked. No reprogramming of the target device is required to operate the board unless features or settings such as the nominal output voltage or start-up timing need to be modified.</p>
 <center> <img src="images/9531_9143_setup.png" alt="EPC9531 Test Fixture Connections - Top View" width="700" class="inline"/> <br  />
  EPC9531 Test Fixture Connections - Top View </center> <center> <img src="images/9531_bottom.png" alt="EPC9531 Test Fixture Connections - Bottom View" width="620" class="inline"/> <br  />
  EPC9531 Test Fixture Connections - Bottom View </center> <p>In case firmware based features need to be changed, the Microchip dsPIC33CK controller can be re-programmed using the in-circuit serial programming port (ICSP) available on the RJ-11 programming interface as well as the 5-pin header provided by the EPC9531 test fixture. These interfaces support all of Microchip’s in-circuit programmers/debuggers, such as MPLAB® ICD4, MPLAB® REAL ICE or MPLAB® PICkit4 and previous derivatives. See <a href="https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf">EPC9531 Quick Start Guide</a> for details.</p>
-<h2>Operation</h2>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Operation</h2>
 <p>The converter is starting up automatically when more than 10.5 V DC are applied across the input terminals of the EPC9531 test fixture. It is not recommended to operate the EPC9143 reference design without proper decoupling capacitance at either input or output. The EPC9531 test fixture provides the best test environment for the converter. Please read the <a href="https://epc-co.com/epc/documents/guides/EPC9531_qsg.pdf">EPC9531 Quick Start Guide</a> to get detailed information about the requirements for setup and operation of this reference design.</p>
 <h5>Cycle-by-Cycle Voltage Control Loop</h5>
 <p>This firmware uses a digital type IV controller to close the feedback loop in voltage mode control. This digital loop reads the most recent ADC sample of the output voltage and processes the derived value through a digital type IV (4P4Z) compensation filter. The numeric output is checked and, when necessary, clamped to user-defined minimum/maximum thresholds before being written to the PWM duty cycle register. As EPC9143 is a multiphase converter, a special PWM steering mode has been implemented supporting high-speed current balancing between the two phases. The voltage mode controller has been extended with a self-adapting loop gain tuning algorithm (AGC) stabilizing the frequency domain characteristic over input voltage, output voltage and load, always providing the exact same bandwidth of &gt;25 kHz and stability margins across the entire operating range.</p>
 <center> <img src="images/type4-avmc.png" alt="EPC9143 type IV - Advanced Voltage Control Loop" width="800" class="inline"/> <br  />
  EPC9143 Type IV Controller - Advanced Voltage Control Loop </center> <p>This control loop can be turned on/off by using the ENABLE bit in the STATUS word of the cNPNZ_t controller data structure. The adaptive loop gain modulation is permanently active as soon as the control loop is enabled.</p>
-<p>The control loop source code is configured and generated by the PowerSmart&trade; - Digital Control Library Designer (DCLD) software.</p>
+<p>The control loop source code is configured and generated by the PowerSmart&trade; - Digital Control Library Designer (PS-DCLD) software.</p>
 <p>This additional design software is available for download on Github Pages:</p>
 <ul>
 <li><a href="https://areiter128.github.io/DCLD">PowerSmart&trade; Digital Control Library Designer Github Page</a></li>
@@ -207,7 +225,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p>Once installed, the controller configuration can be modified. The most recent configuration can be opened from within the MPLAB X® IDE by right-clicking on the file **'v_loop.dcld'** located in the Important Files folder of the Project Manager. When right-clicked, select **'Open In System'** to open the configuration in PowerSmart&trade; DCLD.</p>
 <p>Please refer to the user guide of PowerSmart&trade; DCLD which is included in the software and can be opened from the help menu of the application.</p>
 <hr  />
-<p> (c) 2020, Microchip Technology Inc. </p>
+<p> (c) 2021, Microchip Technology Inc. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -215,7 +233,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <p style="height: 12px; padding-bottom: 8px; padding-right: 12px; vertical-align: bottom; text-align: right; font-size: 90%;">© 2020, Microchip Technology Inc.</p>
+    <p style="height: 12px; padding-bottom: 8px; padding-right: 12px; vertical-align: bottom; text-align: right; font-size: 90%;">© 2021, Microchip Technology Inc.</p>
   </ul>
 </div>
 </body>

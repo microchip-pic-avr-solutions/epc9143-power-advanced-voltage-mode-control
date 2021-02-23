@@ -1,16 +1,15 @@
 var searchData=
 [
-  ['circuit_20special_20circuit_20signals_1646',['Circuit Special Circuit Signals',['../group__circuit-peripherals.html',1,'']]],
-  ['control_20interrupt_20vector_20declarations_1647',['Control Interrupt Vector Declarations',['../group__control-interrupt-vector-declarations.html',1,'']]],
-  ['conversion_20macros_1648',['Conversion Macros',['../group__device-abstraction-macros.html',1,'']]],
-  ['conversion_20macros_1649',['Conversion Macros',['../group__fault-response-macros.html',1,'']]],
-  ['conversion_20macros_1650',['Conversion Macros',['../group__input-voltage-feedback-macros.html',1,'']]],
-  ['conversion_20macros_1651',['Conversion Macros',['../group__output-voltage-feedback-macros.html',1,'']]],
-  ['capture_20compare_20module_20_28sccp_2fmccp_29_1652',['Capture Compare Module (SCCP/MCCP)',['../group__p33c-ccp-pral.html',1,'']]],
-  ['conversion_20macros_1653',['Conversion Macros',['../group__phase-current-feedback-macros.html',1,'']]],
-  ['conversion_20macros_1654',['Conversion Macros',['../group__pwm-macros.html',1,'']]],
-  ['converter_20phase_20_231_1655',['Converter Phase #1',['../group__pwm-mcal-phase1.html',1,'']]],
-  ['converter_20phase_20_232_1656',['Converter Phase #2',['../group__pwm-mcal-phase2.html',1,'']]],
-  ['conversion_20macros_1657',['Conversion Macros',['../group__startup-timing-macros.html',1,'']]],
-  ['conversion_20macros_1658',['Conversion Macros',['../group__state-machine-macros.html',1,'']]]
+  ['control_20interrupt_20vector_20declarations_1685',['Control Interrupt Vector Declarations',['../a00396.html',1,'']]],
+  ['conversion_20macros_1686',['Conversion Macros',['../a00366.html',1,'']]],
+  ['conversion_20macros_1687',['Conversion Macros',['../a00376.html',1,'']]],
+  ['conversion_20macros_1688',['Conversion Macros',['../a00385.html',1,'']]],
+  ['conversion_20macros_1689',['Conversion Macros',['../a00389.html',1,'']]],
+  ['capture_20compare_20module_20_28sccp_2fmccp_29_1690',['Capture Compare Module (SCCP/MCCP)',['../a00339.html',1,'']]],
+  ['conversion_20macros_1691',['Conversion Macros',['../a00393.html',1,'']]],
+  ['conversion_20macros_1692',['Conversion Macros',['../a00379.html',1,'']]],
+  ['converter_20phase_20_231_1693',['Converter Phase #1',['../a00381.html',1,'']]],
+  ['converter_20phase_20_232_1694',['Converter Phase #2',['../a00382.html',1,'']]],
+  ['conversion_20macros_1695',['Conversion Macros',['../a00373.html',1,'']]],
+  ['conversion_20macros_1696',['Conversion Macros',['../a00369.html',1,'']]]
 ];

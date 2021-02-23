@@ -25,7 +25,32 @@
 var NAVTREE =
 [
   [ "EPC9143 300 W 16th Brick DC/DC Module Reference Design", "index.html", [
-    [ "Getting Started", "md_markdown-files_getting_started.html", null ],
+    [ "EPC9143 300W 16th Brick Power Module Reference Design Firmware", "index.html#autotoc_md0", [
+      [ "Summary", "index.html#autotoc_md1", null ],
+      [ "Related Documentation", "index.html#autotoc_md2", null ],
+      [ "Development Tools", "index.html#autotoc_md3", null ],
+      [ "Hardware Used", "index.html#autotoc_md4", null ],
+      [ "Security and Safety Requirements", "index.html#autotoc_md5", null ],
+      [ "Setup", "index.html#autotoc_md6", null ],
+      [ "Operation", "index.html#autotoc_md7", null ]
+    ] ],
+    [ "Getting Started", "a01568.html", [
+      [ "Table of Contents", "a01568.html#autotoc_md9", null ],
+      [ "1) Microchip SMPS Firmware Framework Architecture Overview", "a01568.html#autotoc_md10", null ],
+      [ "2) Buck Converter State Machine", "a01568.html#autotoc_md11", null ],
+      [ "3) Fault Monitor", "a01568.html#autotoc_md12", null ],
+      [ "4) Evaluation, Customization and Code Migration", "a01568.html#autotoc_md13", null ],
+      [ "5) Digital Controller Design", "a01568.html#autotoc_md14", null ],
+      [ "6) Power Plant Measurement Support", "a01568.html#autotoc_md15", null ]
+    ] ],
+    [ "Power Supply Control", "a01569.html", [
+      [ "Table of Contents", "a01569.html#autotoc_md17", null ],
+      [ "1) Advanced Type IV Voltage Mode Control Loop Implementation", "a01569.html#autotoc_md18", null ],
+      [ "2) Control Loop Block Diagram", "a01569.html#autotoc_md19", null ],
+      [ "3) Control Loop Timing", "a01569.html#autotoc_md20", null ],
+      [ "4) Control Loop Flow Chart", "a01569.html#autotoc_md21", null ],
+      [ "5) Control Loop Firmware Implementation", "a01569.html#autotoc_md22", null ]
+    ] ],
     [ "Software Overview", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -40,11 +65,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"group__lib-layer-buck-converter-properties-public-data-types_ga7f85834a96d2f15029e2d3126006629d.html#ga7f85834a96d2f15029e2d3126006629d",
-"group__op-amp-initialization_ga3cd080c9a48a5d74d8b2f89fdec161da.html#ga3cd080c9a48a5d74d8b2f89fdec161da",
-"struct_b_u_c_k___g_p_i_o___i_n_s_t_a_n_c_e__s_a3451100070bc5449a21daa618dca87cd.html#a3451100070bc5449a21daa618dca87cd",
-"struct_p33_c___d_a_c___i_n_s_t_a_n_c_e__s_a311ad21c14b7d9f41a2771ae84ac0b90.html#a311ad21c14b7d9f41a2771ae84ac0b90"
+"a00338.html",
+"a00386.html#ga677e9cc4284911fb4b20198894b32478",
+"a00448.html#gac63073d04bc35c0cce5df47ea0d33165",
+"a00863.html#a3f0c55f449560b03ce0ac43270c26600",
+"a01471.html#a95eb0e366ec0c0c509d13060e796a7c2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

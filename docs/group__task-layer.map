@@ -1,6 +1,0 @@
-<map id="Task Layer" name="Task Layer">
-<area shape="rect" id="node1" href="$group__app-layer-power-control.html" title=" " alt="" coords="337,5,508,45"/>
-<area shape="rect" id="node2" href="$group__app-layer-fault-monitor.html" title=" " alt="" coords="339,69,506,109"/>
-<area shape="rect" id="node3" title="Task Layer." alt="" coords="203,45,289,70"/>
-<area shape="rect" id="node4" href="$group__firmware-flow.html" title="Firmware Flowchart." alt="" coords="5,45,155,70"/>
-</map>

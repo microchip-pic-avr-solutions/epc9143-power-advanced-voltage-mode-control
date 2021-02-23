@@ -4,7 +4,7 @@
    "content":{
       "metaDataVersion":"1.0.0",
       "name":"com.microchip.mplabx.project.epc9143-power-advanced-voltage-mode-control",
-      "version":"2.1.0",
+      "version":"2.2.0",
       "displayName":"EPC9143 300W 16th Brick Power Module Reference Design",
       "projectName":"epc9143-power-advanced-voltage-mode-control",
       "shortDescription":"Firmware for EPC9143 300W 16th Brick Power Module Reference Design featuring advanced type IV voltage mode control with high-speed PWM steering",
@@ -35,23 +35,24 @@
          }
       },
       "peripherals":[
-         "PORT",
-         "PWM",
-		 "ADC",
-		 "Timer"
+        "PWM",
+        "SMPS PWM",
+        "ADC",
+        "TIMER",
+        "LCD"
       ],
 	  "subcategories": [
-		 "Power"
-	  ],
+		"Power",
+		"Power Management and Conversion"
+      ], 
 	  "keywords": [
-		 "dsc",
-		 "dspic",
-		 "power",
-		 "power-conversion",
-		 "power-supply",
-		 "smps",
-		 "Digital Power",
-		 "Digital Signal Processing"
+		"dsPIC",
+        "DSC",
+        "Digital Power Conversion",
+        "Digital Filters",
+        "Power Conversion",
+        "Power Supply",
+		"SMPS"
 	  ]
-   }
+    }
 }

@@ -129,7 +129,7 @@ volatile uint16_t PPS_UnlockIO(void){
  *
  * @see p33c_pps.h
  * 
- * ***********************************************************************************************/
+ *************************************************************************************************/
 volatile uint16_t PPS_RemapOutput(volatile uint8_t pinno, volatile uint8_t peripheral){
 	
     volatile uint16_t retval = 0;
@@ -214,7 +214,7 @@ volatile uint16_t PPS_UnmapOutput(volatile uint8_t pinno)
 
 }
 
-/*************************************************************************************************
+/************************************************************************************************
  * @fn uint16_t PPS_UnmapInput(volatile uint8_t *peripheral)
  * @ingroup lib-layer-pral-functions-public-pps
  * @brief  Disconnects a pin from a digital function input

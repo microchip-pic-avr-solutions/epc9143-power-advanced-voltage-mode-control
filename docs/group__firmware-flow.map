@@ -1,6 +1,0 @@
-<map id="Firmware Architecture" name="Firmware Architecture">
-<area shape="rect" id="node1" href="$group__main-loop.html" title="Main Loop." alt="" coords="217,5,300,31"/>
-<area shape="rect" id="node2" href="$group__task-layer.html" title="Task Layer." alt="" coords="215,55,302,80"/>
-<area shape="rect" id="node3" title="Firmware Flowchart." alt="" coords="5,55,155,80"/>
-<area shape="rect" id="node4" href="$group__device-start-up.html" title="Device Start Up." alt="" coords="203,104,315,129"/>
-</map>

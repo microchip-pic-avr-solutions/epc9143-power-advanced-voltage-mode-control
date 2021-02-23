@@ -19,28 +19,47 @@
 
 /*******************************************************************************************************/
 // FALTREG
+
 #if (_OSTIMER_PRIORITY == 0)
-    #pragma config CTXT1 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+    #pragma config CTXT1 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
 #elif (_OSTIMER_PRIORITY == 1)
-    #pragma config CTXT1 = IPL1   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+    #pragma config CTXT1 = IPL1   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
 #elif (_OSTIMER_PRIORITY == 2)
-    #pragma config CTXT1 = IPL2   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+    #pragma config CTXT1 = IPL2   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
 #elif (_OSTIMER_PRIORITY == 3)
-    #pragma config CTXT1 = IPL3   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+    #pragma config CTXT1 = IPL3   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
 #elif (_OSTIMER_PRIORITY == 4)
-    #pragma config CTXT1 = IPL4   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+    #pragma config CTXT1 = IPL4   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
 #elif (_OSTIMER_PRIORITY == 5)
-    #pragma config CTXT1 = IPL5   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+    #pragma config CTXT1 = IPL5   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
 #elif (_OSTIMER_PRIORITY == 6)
-    #pragma config CTXT1 = IPL6   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
+    #pragma config CTXT1 = IPL6   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
 #else
-    #pragma config CTXT1 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits->Not Assigned
-    #pragma message "WARNING: perating system timer priority invalid."
+    #pragma config CTXT1 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
+    #pragma message "WARNING: operating system timer priority invalid."
 #endif
 
-#pragma config CTXT2 = IPL5   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 2 bits->Not Assigned
-#pragma config CTXT3 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 3 bits->Not Assigned
-#pragma config CTXT4 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 4 bits->Not Assigned
+#if (BUCK_VOUT_ISR_PRIORITY == 0)
+    #pragma config CTXT2 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
+#elif (BUCK_VOUT_ISR_PRIORITY == 1)
+    #pragma config CTXT2 = IPL1   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
+#elif (BUCK_VOUT_ISR_PRIORITY == 2)
+    #pragma config CTXT1 = IPL2   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
+#elif (BUCK_VOUT_ISR_PRIORITY == 3)
+    #pragma config CTXT2 = IPL3   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
+#elif (BUCK_VOUT_ISR_PRIORITY == 4)
+    #pragma config CTXT2 = IPL4   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
+#elif (BUCK_VOUT_ISR_PRIORITY == 5)
+    #pragma config CTXT2 = IPL5   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
+#elif (BUCK_VOUT_ISR_PRIORITY == 6)
+    #pragma config CTXT2 = IPL6   //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
+#else
+    #pragma config CTXT2 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 1 bits
+    #pragma message "WARNING: buck converter output voltage loop control interrupt priority invalid."
+#endif
+
+#pragma config CTXT3 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 3 bits
+#pragma config CTXT4 = OFF    //Specifies Interrupt Priority Level (IPL) Associated to Alternate Working Register 4 bits
 
 /*******************************************************************************************************/
 // FSEC
