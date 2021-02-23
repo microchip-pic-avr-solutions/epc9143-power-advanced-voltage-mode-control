@@ -130,17 +130,19 @@ div.navtab {
 /* @group Link Styling */
 
 a {
-	color: #007fff;
+	/* color: #007fff; */
+	color: #0000ff;
 	font-weight: normal;
 	text-decoration: none; /* underline; */
 }
 
 .contents a:visited {
-	color: #4665A2;
+	/* color: #4665A2; */
+	color: #0000ff;
 }
 
 a:hover {
-        color: #007fff;
+    /* color: #007fff; */
 	font-weight: normal;
 	text-decoration: underline;
 }
@@ -221,7 +223,7 @@ div.fragment {
 }
 
 div.line {
-	font-family: monospace, fixed;
+	font-family: consolas, monospace, fixed;
         font-size: 13px;
 	min-height: 13px;
 	line-height: 1.0;
@@ -649,7 +651,7 @@ table.memberdecls {
 }
 
 .overload {
-        font-family: "courier new",courier,monospace;
+        font-family: consolas,"courier new",courier,monospace;
 	font-size: 65%;
 }
 
@@ -721,7 +723,7 @@ dl.reflist dd {
 }       
         
 .params .paramdir, .tparams .paramdir {
-        font-family: "courier new",courier,monospace;
+        font-family: consolas,"courier new",courier,monospace;
         vertical-align: top;
 }
 
@@ -765,6 +767,24 @@ span.mlabel {
 /* @end */
 
 /* these are for tree view inside a (index) page */
+#nav-tree .label {
+  margin:0px;
+  padding:0px;
+  font-family: Helvetica,sans-serif;
+  font: 14px Helvetica,sans-serif;
+  color: #32363d; !important;
+}
+#nav-tree .label a, a:link {
+	color: #32363d !important;
+	/* font-weight: normal; */
+	/* text-decoration: underline; */
+}
+
+#nav-tree .label a, a:link, a:visited {
+	color: #32363d !important;
+	/* font-weight: normal; */
+	/* text-decoration: underline; */
+}
 
 div.directory {
         margin: 10px 0px;
@@ -843,7 +863,7 @@ div.directory {
 }
 
 .icon {
-    font-family: Arial, Helvetica;
+    font-family: Helvetica;
     font-weight: bold;
     font-size: 12px;
     height: 14px;
@@ -1049,7 +1069,7 @@ table.fieldtable {
 	text-decoration: none;
 	outline: none;
 	color: #283A5D;
-	font-family: 'Lucida Grande',Geneva,Helvetica,Arial,sans-serif;
+	font-family: Helvetica,sans-serif;
 	text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
 	text-decoration: none;        
 }
@@ -1288,21 +1308,21 @@ dl.section dd {
 
 #projectname
 {
-	font: 300% Tahoma, Arial,sans-serif;
+	font: 300% Helvetica, Verdana, sans-serif;
 	margin: 0px;
 	padding: 2px 0px;
 }
     
 #projectbrief
 {
-	font: 120% Tahoma, Arial,sans-serif;
+	font: 120% Helvetica, Verdana, sans-serif;
 	margin: 0px;
 	padding: 0px;
 }
 
 #projectnumber
 {
-	font: 50% Tahoma, Arial,sans-serif;
+	font: 50% Helvetica, Verdana, sans-serif;
 	margin: 0px;
 	padding: 0px;
 }
@@ -1387,7 +1407,7 @@ div.toc {
 
 div.toc li {
         background: url("bdwn.png") no-repeat scroll 0 5px transparent;
-        font: 10px/1.2 Verdana,DejaVu Sans,Geneva,sans-serif;
+        font: 10px/1.2 Helvetica, Verdana, sans-serif;
         margin-top: 5px;
         padding-left: 10px;
         padding-top: 2px;
@@ -1400,7 +1420,7 @@ div.toc li {
 }
 
 div.toc h3 {
-        font: bold 12px/1.2 Arial,FreeSans,sans-serif;
+        font: bold 12px/1.2 Helvetica, Verdana, sans-serif;
 	color: #4665A2;
         border-bottom: 0 none;
         margin: 0;

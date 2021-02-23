@@ -1,7 +1,0 @@
-<map id="buckPWM_Start" name="buckPWM_Start">
-<area shape="rect" id="node1" title="This function enables the buck PWM operation." alt="" coords="848,5,967,32"/>
-<area shape="rect" id="node2" href="$group__lib-layer-buck-converter-functions-public_ga8c05ea0ee077172e4025d8b7a36f5c9f.html#ga8c05ea0ee077172e4025d8b7a36f5c9f" title="This function starts the buck converter." alt="" coords="636,5,800,32"/>
-<area shape="rect" id="node3" href="$group__app-layer-power-control-functions-public_ga9210070749c2ed49abd8a30b27f64151.html#ga9210070749c2ed49abd8a30b27f64151" title="This function calls the buck converter device driver function starting the power supply." alt="" coords="433,5,588,32"/>
-<area shape="rect" id="node4" href="$group__app-layer-power-control-functions-public_ga7a4cf6371d09457539f96a74b2809ca0.html#ga7a4cf6371d09457539f96a74b2809ca0" title="Calls the application layer power controller initialization." alt="" coords="212,5,385,32"/>
-<area shape="rect" id="node5" href="$group__user-task-initialization_ga2be64f5f0b9a2c0c6713f5a69d793e05.html#ga2be64f5f0b9a2c0c6713f5a69d793e05" title="Initializes the user&#45;defined tasks." alt="" coords="5,5,164,32"/>
-</map>

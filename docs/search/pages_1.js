@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getting_5fstarted_1778',['getting_started',['../md_markdown-files_getting_started.html',1,'']]]
+  ['power_20supply_20control_1826',['Power Supply Control',['../a01569.html',1,'']]]
 ];

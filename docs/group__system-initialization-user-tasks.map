@@ -1,6 +1,0 @@
-<map id="Initializing Firmware Tasks" name="Initializing Firmware Tasks">
-<area shape="rect" id="node1" href="$group__user-task-initialization.html" title=" " alt="" coords="369,5,523,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="165,23,301,63"/>
-<area shape="rect" id="node3" href="$group__os-timer-initialization.html" title=" " alt="" coords="349,55,543,80"/>
-<area shape="rect" id="node4" href="$group__device-start-up.html" title="Device Start Up." alt="" coords="5,31,117,56"/>
-</map>

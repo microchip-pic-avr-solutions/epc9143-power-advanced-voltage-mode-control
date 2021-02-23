@@ -1,0 +1,5 @@
+<map id="sysHighPriorityTasks_Execute" name="sysHighPriorityTasks_Execute">
+<area shape="rect" id="node1" title="High priority task sequence executed at a fixed repetition frequency." alt="" coords="5,23,151,65"/>
+<area shape="rect" id="node2" href="$a00402.html#gada20f38987e2849357f2808b4f74456e" title="Application wide fault object monitoring routine." alt="" coords="201,5,371,32"/>
+<area shape="rect" id="node3" href="$a00418.html#gabcaa178e71db5a9af38bb9be7986dd91" title="This is the top&#45;level function call triggering the most recent state machine of all associated power ..." alt="" coords="199,56,373,83"/>
+</map>

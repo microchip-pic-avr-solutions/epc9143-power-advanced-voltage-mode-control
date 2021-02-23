@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['currentsenseoffsetcalibration_1134',['CurrentSenseOffsetCalibration',['../group__lib-layer-buck-specialfn-functions-private_gabd16e55e1c0d0f4b5bb944df41162c0a.html#gabd16e55e1c0d0f4b5bb944df41162c0a',1,'dev_buck_special_functions.c']]]
+  ['currentsenseoffsetcalibration_1149',['CurrentSenseOffsetCalibration',['../a00442.html#ga337549d1d76534d9b092d7c8bdaf686a',1,'dev_buck_special_functions.c']]]
 ];

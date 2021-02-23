@@ -48,6 +48,7 @@ echo skipped
 goto skip_delete_output
 :delete_output
 del /F /Q *.*
+if exist ".\search" del /F /Q search\*.*
 echo done
 :skip_delete_output
 echo. 
@@ -58,7 +59,7 @@ set yesno="n"
 echo skipped
 goto skip_delete_images
 :delete_images
-del /F /Q images\*.*
+if exist ".\images" del /F /Q images\*.*
 echo done
 :skip_delete_images
 echo. 
@@ -69,13 +70,18 @@ set yesno="n"
 echo skipped
 :generate_output
 echo. 
+echo ##############  R U N   D O X Y G E N  ##############
 echo. 
 echo Calling Doxygen Generator...
 cd ..\.mchp_private\doxygen_src
 doxygen doxyfile
 echo. 
-echo Copying Image Folder:
+echo ##############  D O X Y G E N   E X E C U T I O N   E N D  ##############
+echo. 
+echo Merging Template Image Folders:
 Xcopy /e /i /c /r /y ..\..\images ..\..\docs\images
+if exist ".\markdown-files\images" Xcopy /e /i /c /r /y .\markdown-files\images ..\..\docs\images
+if exist ".\images" Xcopy /e /i /c /r /y .\images ..\..\docs\images
 echo. 
 echo ##############  D O N E  ##############
 echo. 

@@ -1,9 +1,0 @@
-<map id="Buck Converter Library" name="Buck Converter Library">
-<area shape="rect" id="node1" href="$group__lib-layer-buck-converter.html" title=" " alt="" coords="438,5,549,31"/>
-<area shape="rect" id="node2" href="$group__lib-layer-buck-config.html" title=" " alt="" coords="393,55,593,80"/>
-<area shape="rect" id="node3" href="$group__lib-layer-buck-specialfn.html" title=" " alt="" coords="413,104,573,129"/>
-<area shape="rect" id="node4" title=" " alt="" coords="192,104,345,129"/>
-<area shape="rect" id="node5" href="$group__lib-layer-buck-states.html" title=" " alt="" coords="423,153,563,179"/>
-<area shape="rect" id="node7" href="$group__lib-layer-buck-ptemplate.html" title=" " alt="" coords="404,203,583,228"/>
-<area shape="rect" id="node6" href="$group__lib-layer.html" title="Generic Device Driver Layer." alt="" coords="5,97,144,137"/>
-</map>

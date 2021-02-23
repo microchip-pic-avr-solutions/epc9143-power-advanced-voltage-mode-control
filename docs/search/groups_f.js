@@ -1,13 +1,12 @@
 var searchData=
 [
-  ['user_20settings_1776',['User Settings',['../group__device-abstraction-settings.html',1,'']]],
-  ['user_20settings_1777',['User Settings',['../group__fault-response-settings.html',1,'']]],
-  ['user_20settings_1778',['User Settings',['../group__input-voltage-feedback-settings.html',1,'']]],
-  ['user_20settings_1779',['User Settings',['../group__output-voltage-feedback-settings.html',1,'']]],
-  ['user_20settings_1780',['User Settings',['../group__phase-current-feedback-settings.html',1,'']]],
-  ['user_20settings_1781',['User Settings',['../group__pwm-settings.html',1,'']]],
-  ['user_20settings_1782',['User Settings',['../group__startup-timing-settings.html',1,'']]],
-  ['user_20settings_1783',['User Settings',['../group__state-machine-settings.html',1,'']]],
-  ['user_20peripheral_20initialization_1784',['User Peripheral Initialization',['../group__user-peripherals-initialization.html',1,'']]],
-  ['user_20task_20initialization_1785',['User Task Initialization',['../group__user-task-initialization.html',1,'']]]
+  ['variables_20_26_20constants_1816',['Variables &amp; Constants',['../a00431.html',1,'']]],
+  ['variables_20_26_20constants_1817',['Variables &amp; Constants',['../a00427.html',1,'']]],
+  ['variables_20_26_20constants_1818',['Variables &amp; Constants',['../a00450.html',1,'']]],
+  ['variables_20_26_20constants_1819',['Variables &amp; Constants',['../a00456.html',1,'']]],
+  ['variables_20_26_20constants_1820',['Variables &amp; Constants',['../a00444.html',1,'']]],
+  ['variables_20_26_20constants_1821',['Variables &amp; Constants',['../a00438.html',1,'']]],
+  ['variables_1822',['Variables',['../a00414.html',1,'']]],
+  ['variables_1823',['Variables',['../a00411.html',1,'']]],
+  ['variables_1824',['Variables',['../a00466.html',1,'']]]
 ];

@@ -1,7 +1,0 @@
-<map id="Private Properties" name="Private Properties">
-<area shape="rect" id="node1" href="$group__lib-layer-buck-ptemplate-properties-private-defines.html" title=" " alt="" coords="404,5,541,31"/>
-<area shape="rect" id="node2" title="Public properties of the second library layer." alt="" coords="232,55,356,80"/>
-<area shape="rect" id="node3" href="$group__lib-layer-buck-ptemplate-properties-private-variables.html" title=" " alt="" coords="435,55,511,80"/>
-<area shape="rect" id="node4" href="$group__lib-layer-buck-ptemplate-properties-private-data-types.html" title=" " alt="" coords="429,104,517,129"/>
-<area shape="rect" id="node5" href="$group__lib-layer-buck-ptemplate.html" title=" " alt="" coords="5,55,184,80"/>
-</map>

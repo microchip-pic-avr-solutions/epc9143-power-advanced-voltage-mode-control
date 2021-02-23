@@ -1,6 +1,8 @@
 var modules =
 [
-    [ "Firmware Architecture", "group__firmware-flow.html", "group__firmware-flow" ],
-    [ "Hardware Abstraction Layer", "group__abstraction-layer.html", "group__abstraction-layer" ],
-    [ "Device Driver Library Layer", "group__lib-layer.html", "group__lib-layer" ]
+    [ "Firmware Architecture", "a00467.html", "a00467" ],
+    [ "Hardware Abstraction Layer", "a00484.html", "a00484" ],
+    [ "Application Layer", "a00485.html", "a00485" ],
+    [ "Device Driver Library Layer", "a00486.html", "a00486" ],
+    [ "Library Driver Layer", "a00487.html", "a00487" ]
 ];

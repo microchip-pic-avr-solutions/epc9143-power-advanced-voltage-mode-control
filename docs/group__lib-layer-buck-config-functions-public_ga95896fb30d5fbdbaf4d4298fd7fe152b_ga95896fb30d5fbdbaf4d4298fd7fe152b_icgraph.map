@@ -1,5 +1,0 @@
-<map id="buckPWM_Stop" name="buckPWM_Stop">
-<area shape="rect" id="node1" title="This function stops the buck PWM output." alt="" coords="417,5,535,32"/>
-<area shape="rect" id="node2" href="$group__lib-layer-buck-converter-functions-public_gaa865d025fb1e5ae1e16e0c519c6ba9a2.html#gaa865d025fb1e5ae1e16e0c519c6ba9a2" title="This function stop the buck converter opration." alt="" coords="207,5,369,32"/>
-<area shape="rect" id="node3" href="$group__app-layer-power-control-functions-public_gaa7d413f62f7b5f25d152cc12354241f0.html#gaa7d413f62f7b5f25d152cc12354241f0" title="This function calls the buck converter device driver function stopping the power supply." alt="" coords="5,5,159,32"/>
-</map>

@@ -1,0 +1,4 @@
+<map id="p33c_GpioInstance_ConfigWrite" name="p33c_GpioInstance_ConfigWrite">
+<area shape="rect" id="node1" title="Writes a user&#45;defined configuration to the GPIO instance registers." alt="" coords="240,5,416,47"/>
+<area shape="rect" id="node2" href="$a00350.html#gaa1640e884e367bc54c91864dc3a3d7ed" title="Resets all GPIO Instance registers to their RESET default values." alt="" coords="5,13,192,39"/>
+</map>

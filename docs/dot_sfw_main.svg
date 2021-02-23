@@ -53,6 +53,13 @@ var viewHeight = 775;
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>sfw_main</title>
+<g id="clust3" class="cluster">
+<title>cluster_1</title>
+<polygon fill="ivory" stroke="orange" points="194.81,-94 194.81,-450.61 368.81,-450.61 368.81,-94 194.81,-94"/>
+<text text-anchor="middle" x="281.81" y="-125.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">OS Timer ISR</text>
+<text text-anchor="middle" x="281.81" y="-113.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">High Priority (HP)</text>
+<text text-anchor="middle" x="281.81" y="-101.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">Tasks</text>
+</g>
 <g id="clust1" class="cluster">
 <title>cluster_0</title>
 <polygon fill="transparent" stroke="lightgrey" points="474.81,-148 474.81,-677.98 685.81,-677.98 685.81,-148 474.81,-148"/>
@@ -62,13 +69,6 @@ var viewHeight = 775;
 <title>cluster_01</title>
 <polygon fill="ivory" stroke="grey" points="482.81,-156 482.81,-596.73 677.81,-596.73 677.81,-156 482.81,-156"/>
 <text text-anchor="middle" x="642.31" y="-583.93" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">Main Loop</text>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_1</title>
-<polygon fill="ivory" stroke="orange" points="194.81,-94 194.81,-450.61 368.81,-450.61 368.81,-94 194.81,-94"/>
-<text text-anchor="middle" x="281.81" y="-125.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">OS Timer ISR</text>
-<text text-anchor="middle" x="281.81" y="-113.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">High Priority (HP)</text>
-<text text-anchor="middle" x="281.81" y="-101.2" font-family="Handlee, Consolas, 'Courier New', Courier, Sans-Serif" font-size="11.00">Tasks</text>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_2</title>

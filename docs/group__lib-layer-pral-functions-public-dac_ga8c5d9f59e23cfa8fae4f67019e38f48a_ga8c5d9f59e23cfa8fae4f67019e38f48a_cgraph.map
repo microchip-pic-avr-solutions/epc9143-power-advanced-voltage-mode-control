@@ -1,4 +1,0 @@
-<map id="p33c_DacInstance_Dispose" name="p33c_DacInstance_Dispose">
-<area shape="rect" id="node1" title="Resets all DAC Instance registers to their RESET default values." alt="" coords="5,5,188,32"/>
-<area shape="rect" id="node2" href="$group__lib-layer-pral-functions-public-dac_gab54676266694c12b2728388b9c7e3f67.html#gab54676266694c12b2728388b9c7e3f67" title="Writes a user&#45;defined configuration to the DAC instance registers." alt="" coords="236,5,439,32"/>
-</map>

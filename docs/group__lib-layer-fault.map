@@ -1,8 +1,0 @@
-<map id="Fault Handler Library" name="Fault Handler Library">
-<area shape="rect" id="node1" href="$group__lib-layer-fault-functions-public.html" title="Public functions of the fault handler library layer." alt="" coords="385,5,504,31"/>
-<area shape="rect" id="node2" href="$group__lib-layer-fault-properties-public.html" title="Public properties of the fault handler library layer." alt="" coords="384,55,505,80"/>
-<area shape="rect" id="node3" title=" " alt="" coords="192,80,335,105"/>
-<area shape="rect" id="node4" href="$group__lib-layer-fault-functions-private.html" title="Private functions of the fault handler library layer." alt="" coords="383,104,506,129"/>
-<area shape="rect" id="node6" href="$group__lib-layer-fault-properties-private.html" title="Public properties of the fault handler library layer." alt="" coords="383,153,507,179"/>
-<area shape="rect" id="node5" href="$group__lib-layer.html" title="Generic Device Driver Layer." alt="" coords="5,73,144,113"/>
-</map>

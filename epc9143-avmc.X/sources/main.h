@@ -43,7 +43,7 @@
 
 // APPLICATION LAYER HEADER FILES
 #include "fault_handler/app_fault_monitor.h"
-#include "pwr_control/app_power_control.h"
+#include "power_control/app_power_control.h"
 
 
 extern volatile bool run_main; ///< Flag allowing to terminate the main loop and restart the CPU

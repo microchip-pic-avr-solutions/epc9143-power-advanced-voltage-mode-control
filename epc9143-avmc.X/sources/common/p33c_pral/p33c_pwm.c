@@ -260,7 +260,7 @@ volatile uint16_t p33c_PwmGenerator_Initialize(volatile uint16_t pgInstance)
     retval &= p33c_PwmGenerator_Disable(pg);
 
     // Reset all SFRs to default
-    p33c_PwmGenerator_ConfigWrite(pgInstance, pgConfigClear);
+    retval &= p33c_PwmGenerator_ConfigWrite(pgInstance, pgConfigClear);
     
     /* PWM GENERATOR CONTROL REGISTER LOW */
     pg->PGxCONL.bits.ON = 0;         // Disable PWM generator
@@ -677,8 +677,10 @@ volatile uint16_t p33c_PwmGenerator_SyncGenerators(
     )
 {
     volatile uint16_t retval=1;
-    volatile uint16_t pgMotherInstance=0, pgChildInstance=0;
-    volatile uint16_t pgMotherGroup=0, pgChildGroup=0;
+    volatile uint16_t pgMotherInstance=0;
+    volatile uint16_t pgChildInstance=0;
+    volatile uint16_t pgMotherGroup=0;
+    volatile uint16_t pgChildGroup=0;
     volatile uint16_t pgInstance;
     
     // Null-pointer protection

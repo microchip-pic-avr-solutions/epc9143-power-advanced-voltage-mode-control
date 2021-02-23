@@ -12,7 +12,7 @@
 
 #include "config/hal.h"
 #include "init_dac.h"
-#include "pwr_control/devices/dev_buck_typedef.h"
+#include "power_control/devices/dev_buck_typedef.h"
 
 /**
  * @ingroup dac-initialization

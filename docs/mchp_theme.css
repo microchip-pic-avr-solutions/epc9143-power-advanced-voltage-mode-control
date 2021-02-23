@@ -23,11 +23,15 @@ div.fragment, pre.fragment {
 }
 
 a, a:link {
-	color: #32363d !important;
+	color: #005Fff !important;
+	font-weight: normal;
+	/* text-decoration: underline; */
 }
 
 a, a:link, a:visited {
-	color: #32363d !important;
+	color: #005Fff !important;
+	font-weight: normal;
+	/* text-decoration: underline; */
 }
 
 .highlighted {
@@ -112,8 +116,23 @@ a.SelectItem:hover {
   text-shadow: none;
 }
 
+#nav-tree .label {
+  margin:0px;
+  padding:0px;
+  font-family: Helvetica, 'Trebuchet MS', sans-serif;
+}
+
+#nav-tree .label a {
+  padding:2px;
+}
+
+#nav-tree .selected a {
+  text-decoration:none;
+  color:#fff;
+}
+
 #nav-tree .label.selected {
-	font: 'Lucida Grande',Geneva,Helvetica,Arial,sans-serif;
+	font: Helvetica, 'Trebuchet MS', sans-serif;
 	font-weight: normal;
 }
 /* review and optimize left-side index format */
@@ -145,10 +164,16 @@ p code,
 li code,
 td code,
 dd code {
-	background-color: #ffffff;
-	border: 1px solid #A8B8D9;
+	font: font: Consolas,'Courier New',Courier,Monospace,serif;
+	font-size: 90%;
+	padding: 0px 3px 0px 3px;
+	background-color: #ededed;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #A8B8D9;
+	border-radius: 5px;
 
-	color: #D8D8D8;
+	color: #000000;
 }
 
 /*********************************************/
@@ -274,7 +299,7 @@ div.line {
 	background: transparent;
 	/*color: #d7d7d7;*/
 	color: #32363d;
-	font: consolas,'courier new',courier,monospace,sans-serif;
+	font: Consolas,'Courier New',Courier,Monospace,serif;
 }
 
 div.line a {
@@ -361,7 +386,9 @@ span.lineno a {
 }
 
 h2.groupheader {
-	color: #FF0000;
+	font-weight: bold;
+	font-size: 120%;
+	color: inherit;
 }
 
 /*********************************************/

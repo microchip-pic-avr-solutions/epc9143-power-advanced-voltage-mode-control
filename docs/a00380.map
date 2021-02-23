@@ -1,0 +1,6 @@
+<map id="Microcontroller Abstraction" name="Microcontroller Abstraction">
+<area shape="rect" id="node1" title="PWM peripheral output pins, control signals and register assignments." alt="" coords="160,31,337,56"/>
+<area shape="rect" id="node2" href="$a00381.html" title=" " alt="" coords="385,5,520,31"/>
+<area shape="rect" id="node3" href="$a00382.html" title=" " alt="" coords="385,55,520,80"/>
+<area shape="rect" id="node4" href="$a00377.html" title="Declaration of fundamental PWM parameters." alt="" coords="5,31,112,56"/>
+</map>
